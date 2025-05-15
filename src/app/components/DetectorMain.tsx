@@ -50,10 +50,10 @@ function getUsage() {
 function incrementUsage() {
   if (typeof window === 'undefined') return;
   const raw = localStorage.getItem(STORAGE_KEY);
-  let data = {};
+  let data: Record<string, number> = {};
   if (raw) {
     try {
-      data = JSON.parse(raw);
+      data = JSON.parse(raw) as Record<string, number>;
     } catch {
       data = {};
     }
