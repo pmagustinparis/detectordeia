@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 export const metadata: Metadata = {
   title: 'Detector de IA en Perú | Detecta textos generados por IA en español',
   description: 'Herramienta gratuita para detectar si un texto fue generado por IA en Perú. Analiza textos en español con alta precisión. Sin registro, 100% privado.',
