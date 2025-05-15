@@ -1,38 +1,35 @@
-import { MetadataRoute } from 'next';
+import { NextResponse } from 'next/server';
 
-const URL = 'https://detectordeia.ai';
-
-const paises = [
-  { code: 'es', name: 'España' },
-  { code: 'cl', name: 'Chile' },
-  { code: 'ar', name: 'Argentina' },
-  { code: 'co', name: 'Colombia' },
-  { code: 'mx', name: 'México' },
-  { code: 'pe', name: 'Perú' },
-];
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: `${URL}/`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1,
-    },
-    {
-      url: `${URL}/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+export async function GET() {
+  const urls = [
+    '',
+    'pricing',
+    'es',
+    'mx',
+    'ar',
+    'cl',
+    'co',
+    'pe',
+    'privacidad',
+    'terminos',
   ];
+  const baseUrl = 'https://detectordeia.ai';
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${urls
+      .map(
+        (url) => `
+      <url>
+        <loc>${baseUrl}/${url}</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+      </url>`
+      )
+      .join('')}
+  </urlset>`;
 
-  const countryPages: MetadataRoute.Sitemap = paises.map((pais) => ({
-    url: `${URL}/${pais.code}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly', // O 'yearly' si el contenido no cambia mucho
-    priority: 0.7, // Prioridad ligeramente menor que las páginas principales
-  }));
-
-  return [...staticPages, ...countryPages];
+  return new NextResponse(body, {
+    headers: {
+      'Content-Type': 'application/xml',
+    },
+  });
 } 
