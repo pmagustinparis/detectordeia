@@ -6,11 +6,12 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Función para filtrar frases sospechosas irrelevantes
+// Nueva función de filtrado de frases sospechosas
 function filterPhrases(phrases: Array<{ phrase: string; reason: string }>) {
+  const blacklist = ["solución", "eficaz", "optimizar"];
   return phrases.filter(p =>
-    p.phrase.split(" ").length > 2 &&
-    !["solución", "eficaz", "buscar espacio"].some(word => p.phrase.toLowerCase().includes(word))
+    p.phrase.split(" ").length >= 4 &&
+    !blacklist.some(b => p.phrase.toLowerCase().includes(b))
   );
 }
 
@@ -33,54 +34,37 @@ export async function POST(request: Request) {
       );
     }
 
-    // Prompt mejorado para análisis de texto
-    const prompt = `Eres un experto en lingüística computacional especializado en español (España y LATAM). Tu objetivo es detectar si un texto fue generado por inteligencia artificial (como ChatGPT) o por una persona humana.
+    // Prompt profundo orientado a español
+    const prompt = `Eres un sistema experto en detección de IA para textos en español (ES/LA), con especialización en registros formales e informales. Sigue este protocolo:
 
-🔍 Evalúa el texto en base a estos 4 niveles de análisis, asignando una puntuación de 0 a 25 para cada uno (máximo total: 100):
+1. Análisis por Capas Lingüísticas:
+   - Fonética: ¿El texto refleja pronunciaciones o alofonías regionales?
+   - Morfosintaxis: Analiza estructuras gramaticales humanas (errores, frases no cerradas).
+   - Semántica: Evalúa la riqueza del contenido y uso de sinónimos o reformulaciones.
+   - Pragmática: ¿El texto expresa opiniones, ambigüedad, intención real o subjetividad?
 
-1. **Léxico y estilo informal**  
-   - Humanos: presencia de modismos regionales, expresiones coloquiales, abreviaciones, emojis.  
-   - IA: uso excesivamente correcto, palabras genéricas, estructura neutra.
-
-2. **Estructura y ritmo sintáctico**  
-   - Humanos: variación de longitud entre frases, errores de puntuación, estilo conversacional.  
-   - IA: frases de longitud constante, puntuación perfecta, patrones repetitivos.
-
-3. **Errores humanos naturales**  
-   - Humanos: erratas, muletillas, autocorrecciones, cambios de tono.  
-   - IA: lenguaje consistentemente estructurado, sin errores ni cambios inesperados.
-
-4. **Subjetividad y autenticidad**  
-   - Humanos: opiniones, emociones, uso de primera persona o referencias personales.  
-   - IA: neutralidad excesiva, enfoque enciclopédico o demasiado factual.
-
-⚠️ No marques como sospechosa una palabra aislada. Marca solo **frases de al menos 3 palabras**. Prioriza las que presenten rigidez estructural o neutralidad extrema.
-
-IMPORTANTE: Responde SOLO con el siguiente JSON, sin texto adicional:
-
+2. Asigna puntuación (0–25) para cada capa:
 {
-  "probability": number,
   "scores": {
-    "lexical": number,
-    "syntax": number,
-    "humanErrors": number,
-    "subjectivity": number
+    "phonetic": number,
+    "morphoSyntax": number,
+    "semantic": number,
+    "pragmatic": number
   },
-  "suspiciousPhrases": [
-    {
-      "phrase": string,
-      "reason": string
-    }
-  ],
-  "confidenceLevel": "low" | "medium" | "high"
+  "probability": number (0 a 100),
+  "confidenceLevel": "low" | "medium" | "high",
+  "suspiciousPhrases": [{
+    "phrase": string,
+    "reason": string
+  }]
 }
 
-🧠 Ejemplos de frases que NO deben marcarse como sospechosas:
-- "La solución es esta" (común en humanos)
-- "Estoy viendo si puedo" (registro informal)
-- "Me pasa siempre igual" (autenticidad)
+Ejemplos de frases NO sospechosas:
+- "voy a buscar espacio"
+- "la solución no me convence"
+- "ayer me pasó algo similar"
 
-✍️ Texto a analizar:
+Texto a analizar:
 """${text}"""`;
 
     // Call OpenAI API to analyze the text
@@ -114,10 +98,10 @@ IMPORTANTE: Responde SOLO con el siguiente JSON, sin texto adicional:
     if (
       typeof analysis.probability !== 'number' ||
       typeof analysis.scores !== 'object' ||
-      typeof analysis.scores.lexical !== 'number' ||
-      typeof analysis.scores.syntax !== 'number' ||
-      typeof analysis.scores.humanErrors !== 'number' ||
-      typeof analysis.scores.subjectivity !== 'number' ||
+      typeof analysis.scores.phonetic !== 'number' ||
+      typeof analysis.scores.morphoSyntax !== 'number' ||
+      typeof analysis.scores.semantic !== 'number' ||
+      typeof analysis.scores.pragmatic !== 'number' ||
       !Array.isArray(analysis.suspiciousPhrases)
     ) {
       return NextResponse.json(
