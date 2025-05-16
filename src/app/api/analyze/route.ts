@@ -16,6 +16,7 @@ function filterPhrases(phrases: Array<{ phrase: string; reason: string }>) {
 }
 
 export async function POST(request: Request) {
+  console.log("Usando GPT-4 Turbo"); // Debug temporal
   try {
     const { text } = await request.json();
 
@@ -69,7 +70,7 @@ Texto a analizar:
 
     // Call OpenAI API to analyze the text
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-turbo",
       messages: [
         {
           role: "system",
@@ -81,6 +82,7 @@ Texto a analizar:
         }
       ],
       temperature: 0.3,
+      max_tokens: 2048,
       response_format: { type: "json_object" }
     });
 
