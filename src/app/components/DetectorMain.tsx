@@ -102,13 +102,22 @@ export default function DetectorMain({
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<{
     probability: number;
-    suspiciousPhrases: string[];
+    confidenceLevel: 'low' | 'medium' | 'high';
+    scores_by_category: {
+      markersIA: number;
+      markersHuman: number;
+    };
+    linguistic_footprints: { phrase: string; reason: string }[];
+    entropyScore?: number;
+    semanticSimilarity?: number;
+    interpretation?: string;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState(0);
   const [limitReached, setLimitReached] = useState(false);
   const detectorRef = useRef<HTMLDivElement>(null);
   const [textType, setTextType] = useState('default');
+  const [feedbackSent, setFeedbackSent] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -153,6 +162,7 @@ export default function DetectorMain({
       const current = getUsage();
       setUsage(current);
       setLimitReached(current >= DAILY_LIMIT);
+      setFeedbackSent(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
     } finally {
@@ -165,6 +175,20 @@ export default function DetectorMain({
     setResult(null);
     setError(null);
   };
+
+  async function sendFeedback(response: 'correcto' | 'incorrecto') {
+    if (!result || !text) return;
+    await fetch('/api/feedback', {
+      method: 'POST',
+      body: JSON.stringify({
+        originalText: text,
+        result: result.probability,
+        label: response
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+    setFeedbackSent(true);
+  }
 
   return (
     <section className="w-full bg-transparent flex flex-col items-center justify-center pt-6 pb-2 px-2">
@@ -246,11 +270,21 @@ export default function DetectorMain({
               <span className="text-[#7c3aed] text-xl">🛡️</span>
               <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
             </div>
-            <span className="text-xs text-gray-600 mb-2">Análisis realizado con IA de OpenAI, validado para español</span>
+            <span className="text-xs text-gray-600 mb-2">Análisis validado con tecnología avanzada para español</span>
             {result ? (
               <>
                 <div className="flex items-end gap-3 mb-1">
                   <span className={`text-4xl font-extrabold leading-none ${getResultColor(result.probability)}`}>{result.probability > 50 ? result.probability : 100 - result.probability}%</span>
+                  {/* Badge semántico */}
+                  {result.probability >= 80 && (
+                    <span className="ml-2 text-xs px-2 py-1 bg-red-100 text-red-800 rounded-full">Muy probable que sea IA</span>
+                  )}
+                  {result.probability >= 50 && result.probability < 80 && (
+                    <span className="ml-2 text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full">Posible mezcla</span>
+                  )}
+                  {result.probability < 50 && (
+                    <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Probablemente humano</span>
+                  )}
                   <span className={`text-base font-bold ${getResultColor(result.probability)}`}>{
                     result.probability > 50
                       ? 'Texto generado por IA'
@@ -259,37 +293,108 @@ export default function DetectorMain({
                         : 'El origen del texto no es concluyente'
                   }</span>
                 </div>
-                <ConfidenceBar value={result.probability} />
-                <div className="w-full max-w-xs mx-auto mb-2 mt-2">
-                  <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                    <span>IA – Generado</span>
-                    <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.probability}%</span>
-                  </div>
-                  <div className="border-dotted border-b border-gray-300 mb-1" />
-                  <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                    <span>Humano – Escrito</span>
-                    <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{100 - result.probability}%</span>
-                  </div>
-                  <div className="border-dotted border-b border-gray-300" />
+                {/* Mini insight dinámico */}
+                <div className="mt-2 text-sm text-gray-700">
+                  🧠 <strong>¿Por qué este resultado?</strong><br />
+                  {result.probability >= 80 && 
+                    "El texto muestra patrones muy uniformes, repetición de estructuras y un estilo demasiado consistente, características típicas de contenido generado automáticamente."}
+                  {result.probability >= 50 && result.probability < 80 && 
+                    "El texto presenta una mezcla de características: algunas secciones muestran patrones repetitivos mientras que otras tienen elementos más naturales y variados."}
+                  {result.probability < 50 && 
+                    "El texto muestra variación natural en el estilo, uso de lenguaje coloquial y elementos subjetivos, características típicas de contenido escrito por humanos."}
                 </div>
-                {result.suspiciousPhrases.length > 0 && (
+                <ConfidenceBar value={result.probability} />
+                {/* Interpretación explicativa */}
+                {result.interpretation && (
+                  <div className="mt-2 text-sm text-gray-600 italic">
+                    {result.interpretation}
+                  </div>
+                )}
+                {/* Marcadores IA y Humanos con tooltips */}
+                {result.scores_by_category && (
+                  <div className="w-full max-w-xs mx-auto mb-2 mt-2">
+                    <div className="flex justify-between text-base font-medium py-1 text-gray-800">
+                      <span>
+                        Marcadores IA
+                        <span className="ml-1 text-gray-400" title="Cantidad de rasgos típicos de textos generados por IA detectados en el texto.\nEjemplo: frases genéricas, estructura rígida, poca variedad de conectores.">❓</span>
+                      </span>
+                      <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersIA}/25</span>
+                    </div>
+                    <div className="border-dotted border-b border-gray-300 mb-1" />
+                    <div className="flex justify-between text-base font-medium py-1 text-gray-800">
+                      <span>
+                        Marcadores Humanos
+                        <span className="ml-1 text-gray-400" title="Cantidad de rasgos típicos de textos escritos por humanos detectados en el texto.\nEjemplo: modismos, subjetividad, estilo informal, digresiones.">❓</span>
+                      </span>
+                      <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersHuman}/25</span>
+                    </div>
+                    <div className="border-dotted border-b border-gray-300" />
+                  </div>
+                )}
+                {/* Mostrar huellas lingüísticas solo si existen */}
+                {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                   <div className="w-full max-w-xl mb-2">
-                    <h3 className="text-base font-semibold mb-1 flex items-center gap-2 text-gray-800"><span>⚠️</span>Frases sospechosas:</h3>
+                    <h3 className="text-base font-semibold mb-1 flex items-center gap-2 text-gray-800"><span>⚠️</span>Huellas lingüísticas detectadas:</h3>
                     <ul className="space-y-1">
-                      {result.suspiciousPhrases.map((phrase, index) => (
+                      {result.linguistic_footprints.map((item, index) => (
                         <li key={index} className="p-2 bg-yellow-50 text-yellow-900 rounded-lg text-xs">
-                          {phrase}
+                          <span className="font-bold">{item.phrase}:</span> {item.reason}
                         </li>
                       ))}
                     </ul>
                   </div>
                 )}
-                <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
-                <PremiumUpsellCompact textos={premiumCompactTextos} />
-                <div className="mt-2 text-xs text-yellow-700 bg-yellow-50 border border-yellow-200 rounded-lg p-2 text-center font-medium">
-                  ⚠️ <em>Nota:</em> Este sistema aún puede tener imprecisiones en casos donde los textos fueron modificados levemente luego de ser generados por IA.<br />
-                  Estamos trabajando activamente para mejorar la detección en esos escenarios. ¡Gracias por tu paciencia!
+                {/* Métricas cuantitativas adicionales */}
+                <div className="flex flex-wrap gap-2 mt-2 mb-2">
+                  {typeof result.entropyScore === 'number' && (
+                    <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold" title="Entropía: mide la variedad de palabras en el texto.\nBajo (<4.5): texto muy repetitivo, típico de IA.\nAlto (>5): texto variado, típico de humanos.">
+                      Entropía: <span className="ml-1 font-bold">{result.entropyScore}</span>
+                      <span className="ml-1 text-gray-400">❓</span>
+                    </span>
+                  )}
+                  {typeof result.semanticSimilarity === 'number' && (
+                    <span className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold" title="Similitud IA: compara tu texto con una plantilla típica de IA usando IA avanzada.\nAlto (>0.85): posible paráfrasis de IA.\nBajo (<0.8): texto más original o humano.">
+                      Similitud IA: <span className="ml-1 font-bold">{result.semanticSimilarity}</span>
+                      <span className="ml-1 text-gray-400">❓</span>
+                    </span>
+                  )}
                 </div>
+                {/* Próximamente: Reescribir como texto humano */}
+                <div className="bg-gray-100 text-gray-500 rounded-lg px-4 py-2 text-sm font-medium mb-2">
+                  Próximamente: Reescribir como texto humano 🤖➡️👤
+                </div>
+                <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
+                {/* Bloque premium compacto al final cuando hay resultado */}
+                <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xl text-[#a259f7]">🔒</span>
+                    <span className="font-bold text-base text-gray-800">¿Querés análisis premium?</span>
+                  </div>
+                  <div className="text-xs text-gray-700 mb-2">
+                    <ul className="text-left space-y-1">
+                      <li>• Análisis por criterios y explicaciones detalladas</li>
+                      <li>• Subida de archivos y API</li>
+                      <li>• Desde $7/mes</li>
+                    </ul>
+                  </div>
+                  <a
+                    href="/pricing"
+                    className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold py-2 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-1 text-center"
+                  >
+                    <span>✨</span> Ver Planes
+                  </a>
+                  <div className="text-xs text-gray-500">📝 Te avisaremos cuando estén disponibles</div>
+                </div>
+                {/* Bloque de feedback */}
+                {!feedbackSent && (
+                  <div className="mt-4 border p-3 rounded bg-gray-50">
+                    <p className="text-base font-bold text-[#7c3aed] mb-2">¿El resultado fue correcto?</p>
+                    <div className="flex gap-2">
+                      <button onClick={() => sendFeedback('correcto')} className="px-3 py-1 bg-green-100 rounded text-green-700 text-sm">Sí, fue correcto</button>
+                      <button onClick={() => sendFeedback('incorrecto')} className="px-3 py-1 bg-red-100 rounded text-red-700 text-sm">No, fue incorrecto</button>
+                    </div>
+                  </div>
+                )}
               </>
             ) : (
               <>
@@ -310,6 +415,7 @@ export default function DetectorMain({
                   </div>
                   <div className="border-dotted border-b border-gray-300" />
                 </div>
+                {/* Bloque premium solo en empty state */}
                 <PremiumUpsellBlock textos={premiumTextos} />
               </>
             )}
