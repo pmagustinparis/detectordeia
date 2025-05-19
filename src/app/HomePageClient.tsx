@@ -102,7 +102,12 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<{
     probability: number;
-    suspiciousPhrases: string[];
+    confidenceLevel: 'low' | 'medium' | 'high';
+    scores_by_category: {
+      markersIA: number;
+      markersHuman: number;
+    };
+    linguistic_footprints: { phrase: string; reason: string }[];
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState(0);
@@ -287,25 +292,27 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       "El texto muestra variación natural en el estilo, uso de lenguaje coloquial y elementos subjetivos, características típicas de contenido escrito por humanos."}
                   </div>
                   <ConfidenceBar value={result.probability} />
+                  {/* Mostrar puntajes markersIA y markersHuman */}
                   <div className="w-full max-w-xs mx-auto mb-2 mt-2">
                     <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                      <span>IA – Generado</span>
-                      <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.probability}%</span>
+                      <span>Marcadores IA</span>
+                      <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersIA}/25</span>
                     </div>
                     <div className="border-dotted border-b border-gray-300 mb-1" />
                     <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                      <span>Humano – Escrito</span>
-                      <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{100 - result.probability}%</span>
+                      <span>Marcadores Humanos</span>
+                      <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersHuman}/25</span>
                     </div>
                     <div className="border-dotted border-b border-gray-300" />
                   </div>
-                  {result.suspiciousPhrases.length > 0 && (
+                  {/* Mostrar huellas lingüísticas */}
+                  {result.linguistic_footprints.length > 0 && (
                     <div className="w-full max-w-xl mb-2">
-                      <h3 className="text-base font-semibold mb-1 flex items-center gap-2 text-gray-800"><span>⚠️</span>Frases sospechosas:</h3>
+                      <h3 className="text-base font-semibold mb-1 flex items-center gap-2 text-gray-800"><span>⚠️</span>Huellas lingüísticas detectadas:</h3>
                       <ul className="space-y-1">
-                        {result.suspiciousPhrases.map((phrase, index) => (
+                        {result.linguistic_footprints.map((item, index) => (
                           <li key={index} className="p-2 bg-yellow-50 text-yellow-900 rounded-lg text-xs">
-                            {phrase}
+                            <span className="font-bold">{item.phrase}:</span> {item.reason}
                           </li>
                         ))}
                       </ul>
