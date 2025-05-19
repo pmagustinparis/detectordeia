@@ -210,7 +210,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
       {/* Selector de tipo de texto */}
       <div className="mb-3 max-w-5xl mx-auto">
-        <label className="block text-sm font-medium mb-1">Tipo de texto</label>
+        <label className="block text-sm font-medium mb-1">Tipo de texto (prueba visible)</label>
         <select
           value={textType}
           onChange={(e) => setTextType(e.target.value)}
