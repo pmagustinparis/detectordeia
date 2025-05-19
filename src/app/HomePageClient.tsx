@@ -208,19 +208,6 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
 
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
-      {/* Selector de tipo de texto */}
-      <div className="mb-3 max-w-5xl mx-auto">
-        <label className="block text-sm font-medium mb-1">Tipo de texto (prueba visible)</label>
-        <select
-          value={textType}
-          onChange={(e) => setTextType(e.target.value)}
-          className="border rounded px-2 py-1 text-sm"
-        >
-          <option value="default">Sin especificar</option>
-          <option value="academic">Académico / formal</option>
-          <option value="informal">Conversación / informal</option>
-        </select>
-      </div>
       {/* HERO PRODUCT BLOCK: input, button, result, trust indicators */}
       <section className="w-full bg-transparent flex flex-col items-center justify-center pt-6 pb-2 px-2">
         <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-6 mt-4 leading-tight">El Mejor Detector de IA en Español</h1>
@@ -257,6 +244,19 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
               >
                 Limpiar
               </button>
+            </div>
+            {/* Selector de tipo de texto dentro de la tarjeta blanca */}
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-bold text-gray-800 mb-1">Tipo de texto</label>
+              <select
+                value={textType}
+                onChange={(e) => setTextType(e.target.value)}
+                className="w-full border-2 border-[#a259f7] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#a259f7]/50 transition"
+              >
+                <option value="default">Sin especificar</option>
+                <option value="academic">Académico / formal</option>
+                <option value="informal">Conversación / informal</option>
+              </select>
             </div>
             {error && (
               <div className="mt-1 p-2 bg-red-50 text-red-700 rounded-lg text-xs font-medium">
