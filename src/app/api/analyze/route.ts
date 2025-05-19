@@ -15,6 +15,51 @@ function filterPhrases(phrases: Array<{ phrase: string; reason: string }>) {
   );
 }
 
+// Preprocesamiento avanzado antes del análisis
+function enhancePreprocessing(text: string): string {
+  // Modismos comunes que suelen ser ignorados por GPT
+  const regionalisms = [
+    "che", "laburo", "pibe", "re bien", "posta", "chau", "dale", "vale", "tío", "currar", "flipar"
+  ];
+  regionalisms.forEach(word => {
+    text = text.replace(new RegExp(`\\b${word}\\b`, "gi"), `«${word}»`);
+  });
+  // Limpieza de muletillas que inducen error
+  text = text.replace(/\b(aquí|eso|este)\b/gi, "");
+  return text;
+}
+
+// Función para calcular la entropía del texto
+function calculateEntropy(text: string): number {
+  const tokens = text.split(/\s+/).filter(Boolean);
+  const freq: Record<string, number> = {};
+  tokens.forEach(token => {
+    freq[token] = (freq[token] || 0) + 1;
+  });
+  const total = tokens.length;
+  const probabilities = Object.values(freq).map(f => f / total);
+  const entropy = -probabilities.reduce((sum, p) => sum + p * Math.log2(p), 0);
+  return parseFloat(entropy.toFixed(2));
+}
+
+// Texto de referencia IA para embeddings
+const iaReferenceText = "La implementación de soluciones estratégicas permite optimizar los procesos de manera eficaz y escalable.";
+
+// Función para calcular similitud semántica usando embeddings de OpenAI
+async function calculateSemanticSimilarity(text1: string, text2: string): Promise<number> {
+  const [res1, res2] = await Promise.all([
+    openai.embeddings.create({ model: "text-embedding-ada-002", input: text1 }),
+    openai.embeddings.create({ model: "text-embedding-ada-002", input: text2 }),
+  ]);
+  const emb1 = res1.data[0].embedding;
+  const emb2 = res2.data[0].embedding;
+  const dot = emb1.reduce((sum, val, i) => sum + val * emb2[i], 0);
+  const mag1 = Math.sqrt(emb1.reduce((sum, val) => sum + val * val, 0));
+  const mag2 = Math.sqrt(emb2.reduce((sum, val) => sum + val * val, 0));
+  const similarity = dot / (mag1 * mag2);
+  return parseFloat(similarity.toFixed(4));
+}
+
 export async function POST(request: Request) {
   console.log("Usando GPT-4 Turbo"); // Debug temporal
   try {
@@ -35,47 +80,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Prompt robusto para detección de IA con awareness de ediciones mínimas y tipo de texto
-    const prompt = `Sos un sistema experto en detección de textos generados por inteligencia artificial en español (ES y LATAM). Tu tarea es identificar si un texto fue generado por IA, **incluso si ha sido mínimamente modificado por un humano** (cambios de puntuación, saltos de línea, emojis, etc.).
-
-Antes de evaluar el texto, considera esta declaración del usuario:
-**Tipo de texto esperado:** Redacción formal / académica / ensayo / mensaje personal / artículo / otro. (En este MVP lo asumís como "general").
-
-Tené en cuenta que:
-- Los usuarios pueden intentar "disfrazar" textos generados por IA mediante ediciones mínimas.
-- No debés penalizar un texto simplemente por estar bien escrito si eso es coherente con el estilo humano declarado.
-- Muchos textos humanos pueden tener estructura limpia, conectores claros o buena ortografía, sin ser generados por IA.
-
-### Análisis por Capas Lingüísticas:
-1. **Variación Estilística (0–25):** ¿El texto muestra riqueza expresiva, cambios de ritmo, conectores variados?
-2. **Subjetividad / Opinión (0–25):** ¿Incluye emociones, opiniones personales, perspectivas únicas?
-3. **Errores Humanos Naturales (0–25):** ¿Hay erratas menores, construcciones imperfectas, frases truncadas?
-4. **Coherencia Contextual (0–25):** ¿El texto fluye como una narración humana, con ideas no lineales o digresiones?
-
-### Formato de respuesta en JSON (obligatorio):
-{
-  "probability": number (de 0 a 100),
-  "scores": {
-    "styleVariation": number,
-    "subjectivity": number,
-    "humanErrors": number,
-    "contextualCoherence": number
-  },
-  "suspiciousPhrases": [{
-    "phrase": string,
-    "reason": string (explicación corta de por qué puede ser IA)
-  }],
-  "confidenceLevel": "low" | "medium" | "high"
-}
-
-### Ejemplos de frases que **NO** deberían considerarse sospechosas:
-- "La solución fue bastante efectiva para todos"
-- "Me pasó lo mismo la semana pasada"
-- "Es un tema complejo, pero lo intento entender"
-
-Analizá este texto considerando todo lo anterior:
-
-"""${text}"""`;
+    // Nuevo prompt avanzado y preprocesamiento
+    const prompt = `Eres un detector especializado en textos en español contemporáneo (España y LATAM). Tu tarea es determinar si un texto fue generado por IA o escrito por un humano, usando criterios lingüísticos avanzados.\n\nEvalúa lo siguiente (0 a 25 puntos cada uno):\n\n1. **Marcadores de IA**:\n   - Frases genéricas como \"optimización de procesos estratégicos\"\n   - Estructura gramatical rígida o excesivamente limpia\n   - Bajo uso de conectores variados\n   - Falta de errores o ambigüedad típica del lenguaje humano\n\n2. **Marcadores Humanos**:\n   - Uso de modismos o expresiones locales (\"che\", \"re bien\", \"vos\", etc.)\n   - Subjetividad u opiniones personales\n   - Estilo informal o mezcla de registros\n   - Digresiones o estructuras parcialmente caóticas\n\n**Retorno esperado (en JSON):**\n{\n  \"probability\": number, // 0 a 100\n  \"confidenceLevel\": \"low\" | \"medium\" | \"high\",\n  \"scores_by_category\": {\n    \"markersIA\": number,\n    \"markersHuman\": number\n  },\n  \"linguistic_footprints\": [\n    { \"phrase\": string, \"reason\": string }\n  ]\n}\n\nTexto a analizar:\n\"\"\"${enhancePreprocessing(text)}\"\"\"`;
 
     // Call OpenAI API to analyze the text
     const completion = await openai.chat.completions.create({
@@ -105,15 +111,14 @@ Analizá este texto considerando todo lo anterior:
       );
     }
 
-    // Validar estructura esperada
+    // Validar estructura esperada del nuevo output
     if (
       typeof analysis.probability !== 'number' ||
-      typeof analysis.scores !== 'object' ||
-      typeof analysis.scores.styleVariation !== 'number' ||
-      typeof analysis.scores.subjectivity !== 'number' ||
-      typeof analysis.scores.humanErrors !== 'number' ||
-      typeof analysis.scores.contextualCoherence !== 'number' ||
-      !Array.isArray(analysis.suspiciousPhrases)
+      !['low', 'medium', 'high'].includes(analysis.confidenceLevel) ||
+      typeof analysis.scores_by_category !== 'object' ||
+      typeof analysis.scores_by_category.markersIA !== 'number' ||
+      typeof analysis.scores_by_category.markersHuman !== 'number' ||
+      !Array.isArray(analysis.linguistic_footprints)
     ) {
       return NextResponse.json(
         { error: 'La respuesta de OpenAI no tiene el formato esperado.' },
@@ -121,14 +126,17 @@ Analizá este texto considerando todo lo anterior:
       );
     }
 
-    // Filtrar frases sospechosas irrelevantes
-    const filteredPhrases = filterPhrases(analysis.suspiciousPhrases);
+    // Calcular entropía y similitud semántica
+    const entropyScore = calculateEntropy(text);
+    const semanticSimilarity = await calculateSemanticSimilarity(text, iaReferenceText);
 
     return NextResponse.json({
       probability: analysis.probability,
-      scores: analysis.scores,
-      suspiciousPhrases: filteredPhrases.map(p => p.phrase), // Mantener compatibilidad con frontend actual
-      // confidenceLevel: analysis.confidenceLevel // Comentado para implementación futura
+      confidenceLevel: analysis.confidenceLevel,
+      scores_by_category: analysis.scores_by_category,
+      linguistic_footprints: analysis.linguistic_footprints,
+      entropyScore,
+      semanticSimilarity
     });
   } catch (error) {
     console.error('Error analyzing text:', error);

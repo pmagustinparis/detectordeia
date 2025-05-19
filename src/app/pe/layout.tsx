@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     creator: '@detectordeia',
     images: ['https://detectordeia.ai/logo.png'],
   },
-};
+}; 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
