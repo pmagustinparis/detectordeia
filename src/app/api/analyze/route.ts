@@ -35,37 +35,46 @@ export async function POST(request: Request) {
       );
     }
 
-    // Prompt profundo orientado a español
-    const prompt = `Eres un sistema experto en detección de IA para textos en español (ES/LA), con especialización en registros formales e informales. Sigue este protocolo:
+    // Prompt robusto para detección de IA con awareness de ediciones mínimas y tipo de texto
+    const prompt = `Sos un sistema experto en detección de textos generados por inteligencia artificial en español (ES y LATAM). Tu tarea es identificar si un texto fue generado por IA, **incluso si ha sido mínimamente modificado por un humano** (cambios de puntuación, saltos de línea, emojis, etc.).
 
-1. Análisis por Capas Lingüísticas:
-   - Fonética: ¿El texto refleja pronunciaciones o alofonías regionales?
-   - Morfosintaxis: Analiza estructuras gramaticales humanas (errores, frases no cerradas).
-   - Semántica: Evalúa la riqueza del contenido y uso de sinónimos o reformulaciones.
-   - Pragmática: ¿El texto expresa opiniones, ambigüedad, intención real o subjetividad?
+Antes de evaluar el texto, considera esta declaración del usuario:
+**Tipo de texto esperado:** Redacción formal / académica / ensayo / mensaje personal / artículo / otro. (En este MVP lo asumís como "general").
 
-2. Asigna puntuación (0–25) para cada capa:
+Tené en cuenta que:
+- Los usuarios pueden intentar "disfrazar" textos generados por IA mediante ediciones mínimas.
+- No debés penalizar un texto simplemente por estar bien escrito si eso es coherente con el estilo humano declarado.
+- Muchos textos humanos pueden tener estructura limpia, conectores claros o buena ortografía, sin ser generados por IA.
+
+### Análisis por Capas Lingüísticas:
+1. **Variación Estilística (0–25):** ¿El texto muestra riqueza expresiva, cambios de ritmo, conectores variados?
+2. **Subjetividad / Opinión (0–25):** ¿Incluye emociones, opiniones personales, perspectivas únicas?
+3. **Errores Humanos Naturales (0–25):** ¿Hay erratas menores, construcciones imperfectas, frases truncadas?
+4. **Coherencia Contextual (0–25):** ¿El texto fluye como una narración humana, con ideas no lineales o digresiones?
+
+### Formato de respuesta en JSON (obligatorio):
 {
+  "probability": number (de 0 a 100),
   "scores": {
-    "phonetic": number,
-    "morphoSyntax": number,
-    "semantic": number,
-    "pragmatic": number
+    "styleVariation": number,
+    "subjectivity": number,
+    "humanErrors": number,
+    "contextualCoherence": number
   },
-  "probability": number (0 a 100),
-  "confidenceLevel": "low" | "medium" | "high",
   "suspiciousPhrases": [{
     "phrase": string,
-    "reason": string
-  }]
+    "reason": string (explicación corta de por qué puede ser IA)
+  }],
+  "confidenceLevel": "low" | "medium" | "high"
 }
 
-Ejemplos de frases NO sospechosas:
-- "voy a buscar espacio"
-- "la solución no me convence"
-- "ayer me pasó algo similar"
+### Ejemplos de frases que **NO** deberían considerarse sospechosas:
+- "La solución fue bastante efectiva para todos"
+- "Me pasó lo mismo la semana pasada"
+- "Es un tema complejo, pero lo intento entender"
 
-Texto a analizar:
+Analizá este texto considerando todo lo anterior:
+
 """${text}"""`;
 
     // Call OpenAI API to analyze the text
@@ -100,10 +109,10 @@ Texto a analizar:
     if (
       typeof analysis.probability !== 'number' ||
       typeof analysis.scores !== 'object' ||
-      typeof analysis.scores.phonetic !== 'number' ||
-      typeof analysis.scores.morphoSyntax !== 'number' ||
-      typeof analysis.scores.semantic !== 'number' ||
-      typeof analysis.scores.pragmatic !== 'number' ||
+      typeof analysis.scores.styleVariation !== 'number' ||
+      typeof analysis.scores.subjectivity !== 'number' ||
+      typeof analysis.scores.humanErrors !== 'number' ||
+      typeof analysis.scores.contextualCoherence !== 'number' ||
       !Array.isArray(analysis.suspiciousPhrases)
     ) {
       return NextResponse.json(

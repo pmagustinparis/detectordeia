@@ -272,6 +272,10 @@ export default function DetectorMain({
                 )}
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
                 <PremiumUpsellCompact textos={premiumCompactTextos} />
+                <div className="mt-2 text-xs text-yellow-700 bg-yellow-50 border border-yellow-200 rounded-lg p-2 text-center font-medium">
+                  ⚠️ <em>Nota:</em> Este sistema aún puede tener imprecisiones en casos donde los textos fueron modificados levemente luego de ser generados por IA.<br />
+                  Estamos trabajando activamente para mejorar la detección en esos escenarios. ¡Gracias por tu paciencia!
+                </div>
               </>
             ) : (
               <>
