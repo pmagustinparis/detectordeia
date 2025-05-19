@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Términos y Condiciones – DetectordeIA.ai',
-  description: 'Lee los términos y condiciones de uso de DetectordeIA.ai. Transparencia, derechos y obligaciones para usuarios de la plataforma.'
+  description: 'Lee los términos y condiciones de uso de DetectordeIA.ai. Transparencia, derechos y obligaciones para usuarios de la plataforma.',
+  alternates: {
+    canonical: 'https://www.detectordeia.ai/terminos',
+  },
 };
 
 export default function Terminos() {
