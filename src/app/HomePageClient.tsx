@@ -292,21 +292,23 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       "El texto muestra variación natural en el estilo, uso de lenguaje coloquial y elementos subjetivos, características típicas de contenido escrito por humanos."}
                   </div>
                   <ConfidenceBar value={result.probability} />
-                  {/* Mostrar puntajes markersIA y markersHuman */}
-                  <div className="w-full max-w-xs mx-auto mb-2 mt-2">
-                    <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                      <span>Marcadores IA</span>
-                      <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersIA}/25</span>
+                  {/* Mostrar puntajes markersIA y markersHuman solo si existen */}
+                  {result.scores_by_category && (
+                    <div className="w-full max-w-xs mx-auto mb-2 mt-2">
+                      <div className="flex justify-between text-base font-medium py-1 text-gray-800">
+                        <span>Marcadores IA</span>
+                        <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersIA}/25</span>
+                      </div>
+                      <div className="border-dotted border-b border-gray-300 mb-1" />
+                      <div className="flex justify-between text-base font-medium py-1 text-gray-800">
+                        <span>Marcadores Humanos</span>
+                        <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersHuman}/25</span>
+                      </div>
+                      <div className="border-dotted border-b border-gray-300" />
                     </div>
-                    <div className="border-dotted border-b border-gray-300 mb-1" />
-                    <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                      <span>Marcadores Humanos</span>
-                      <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersHuman}/25</span>
-                    </div>
-                    <div className="border-dotted border-b border-gray-300" />
-                  </div>
-                  {/* Mostrar huellas lingüísticas */}
-                  {result.linguistic_footprints.length > 0 && (
+                  )}
+                  {/* Mostrar huellas lingüísticas solo si existen */}
+                  {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                     <div className="w-full max-w-xl mb-2">
                       <h3 className="text-base font-semibold mb-1 flex items-center gap-2 text-gray-800"><span>⚠️</span>Huellas lingüísticas detectadas:</h3>
                       <ul className="space-y-1">
