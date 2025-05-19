@@ -139,9 +139,20 @@ export async function POST(request: Request) {
     const semanticSimilarity = await calculateSemanticSimilarity(text, iaReferenceText);
     // Ajuste de probabilidad según tipo de texto
     let adjustedProbability = analysis.probability;
-    if (textType === "academic" && analysis.probability >= 60) {
+
+    // --- Validación de coherencia para evitar falsos positivos ---
+    const { markersIA, markersHuman } = analysis.scores_by_category;
+    if (markersHuman >= 15 && markersIA <= 10 && adjustedProbability > 40) {
+      adjustedProbability = 40;
+    }
+    if (markersIA >= 15 && markersHuman <= 10 && adjustedProbability < 60) {
+      adjustedProbability = 60;
+    }
+    // ------------------------------------------------------------
+
+    if (textType === "academic" && adjustedProbability >= 60) {
       adjustedProbability += 10;
-    } else if (textType === "informal" && analysis.probability <= 40) {
+    } else if (textType === "informal" && adjustedProbability <= 40) {
       adjustedProbability -= 10;
     }
     adjustedProbability = Math.max(0, Math.min(100, adjustedProbability));
