@@ -60,10 +60,18 @@ async function calculateSemanticSimilarity(text1: string, text2: string): Promis
   return parseFloat(similarity.toFixed(4));
 }
 
+function getInterpretation(prob: number, type: string) {
+  if (prob >= 85) return "Muy probablemente generado por IA.";
+  if (prob >= 60) return "Probablemente IA, pero podría ser humano.";
+  if (prob >= 40) return "No concluyente, posible mezcla o texto reformulado.";
+  if (prob >= 20) return "Probablemente humano, pero con patrones sospechosos.";
+  return "Muy probablemente escrito por un humano.";
+}
+
 export async function POST(request: Request) {
   console.log("Usando GPT-4 Turbo"); // Debug temporal
   try {
-    const { text } = await request.json();
+    const { text, textType = "default" } = await request.json();
 
     // Validate input
     if (!text || typeof text !== 'string') {
@@ -129,14 +137,23 @@ export async function POST(request: Request) {
     // Calcular entropía y similitud semántica
     const entropyScore = calculateEntropy(text);
     const semanticSimilarity = await calculateSemanticSimilarity(text, iaReferenceText);
+    // Ajuste de probabilidad según tipo de texto
+    let adjustedProbability = analysis.probability;
+    if (textType === "academic" && analysis.probability >= 60) {
+      adjustedProbability += 10;
+    } else if (textType === "informal" && analysis.probability <= 40) {
+      adjustedProbability -= 10;
+    }
+    adjustedProbability = Math.max(0, Math.min(100, adjustedProbability));
 
     return NextResponse.json({
-      probability: analysis.probability,
+      probability: adjustedProbability,
       confidenceLevel: analysis.confidenceLevel,
       scores_by_category: analysis.scores_by_category,
       linguistic_footprints: analysis.linguistic_footprints,
       entropyScore,
-      semanticSimilarity
+      semanticSimilarity,
+      interpretation: getInterpretation(adjustedProbability, textType)
     });
   } catch (error) {
     console.error('Error analyzing text:', error);

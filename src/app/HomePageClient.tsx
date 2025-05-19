@@ -120,6 +120,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
     linguistic_footprints: { phrase: string; reason: string }[];
     entropyScore?: number;
     semanticSimilarity?: number;
+    interpretation?: string;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState(0);
@@ -127,6 +128,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
   const detectorRef = useRef<HTMLDivElement>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
+  const [textType, setTextType] = useState('default');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -161,7 +163,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, textType }),
       });
       const data = await response.json();
       if (!response.ok) {
@@ -206,6 +208,19 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
 
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
+      {/* Selector de tipo de texto */}
+      <div className="mb-3 max-w-5xl mx-auto">
+        <label className="block text-sm font-medium mb-1">Tipo de texto</label>
+        <select
+          value={textType}
+          onChange={(e) => setTextType(e.target.value)}
+          className="border rounded px-2 py-1 text-sm"
+        >
+          <option value="default">Sin especificar</option>
+          <option value="academic">Académico / formal</option>
+          <option value="informal">Conversación / informal</option>
+        </select>
+      </div>
       {/* HERO PRODUCT BLOCK: input, button, result, trust indicators */}
       <section className="w-full bg-transparent flex flex-col items-center justify-center pt-6 pb-2 px-2">
         <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-6 mt-4 leading-tight">El Mejor Detector de IA en Español</h1>
@@ -319,6 +334,12 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       "El texto muestra variación natural en el estilo, uso de lenguaje coloquial y elementos subjetivos, características típicas de contenido escrito por humanos."}
                   </div>
                   <ConfidenceBar value={result.probability} />
+                  {/* Interpretación explicativa */}
+                  {result.interpretation && (
+                    <div className="mt-2 text-sm text-gray-600 italic">
+                      {result.interpretation}
+                    </div>
+                  )}
                   {/* Marcadores IA y Humanos con tooltips */}
                   {result.scores_by_category && (
                     <div className="w-full max-w-xs mx-auto mb-2 mt-2">
