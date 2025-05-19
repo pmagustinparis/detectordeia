@@ -394,18 +394,20 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                         <li>• Desde $7/mes</li>
                       </ul>
                     </div>
-                    <button
-                      onClick={() => setShowWaitlistModal(true)}
-                      className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold py-2 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-1"
+                    <a
+                      href="https://www.detectordeia.ai/pricing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold py-2 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-1 text-center"
                     >
                       <span>✨</span> Ver Planes
-                    </button>
+                    </a>
                     <div className="text-xs text-gray-500">📝 Te avisaremos cuando estén disponibles</div>
                   </div>
                   {/* Bloque de feedback */}
                   {!feedbackSent && (
                     <div className="mt-4 border p-3 rounded bg-gray-50">
-                      <p className="text-sm font-medium mb-2">¿El resultado fue correcto?</p>
+                      <p className="text-base font-bold text-[#7c3aed] mb-2">¿El resultado fue correcto?</p>
                       <div className="flex gap-2">
                         <button onClick={() => sendFeedback('correcto')} className="px-3 py-1 bg-green-100 rounded text-green-700 text-sm">Sí, fue correcto</button>
                         <button onClick={() => sendFeedback('incorrecto')} className="px-3 py-1 bg-red-100 rounded text-red-700 text-sm">No, fue incorrecto</button>
