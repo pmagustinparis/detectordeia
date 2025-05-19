@@ -251,11 +251,11 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
               <select
                 value={textType}
                 onChange={(e) => setTextType(e.target.value)}
-                className="w-full border-2 border-[#a259f7] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#a259f7]/50 transition"
+                className="w-full border-2 border-[#a259f7] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#a259f7]/50 transition text-black"
               >
-                <option value="default">Sin especificar</option>
-                <option value="academic">Académico / formal</option>
-                <option value="informal">Conversación / informal</option>
+                <option value="default" className="text-black">Sin especificar</option>
+                <option value="academic" className="text-black">Académico / formal</option>
+                <option value="informal" className="text-black">Conversación / informal</option>
               </select>
             </div>
             {error && (
