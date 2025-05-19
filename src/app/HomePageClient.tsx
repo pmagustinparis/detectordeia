@@ -108,6 +108,8 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
       markersHuman: number;
     };
     linguistic_footprints: { phrase: string; reason: string }[];
+    entropyScore?: number;
+    semanticSimilarity?: number;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState(0);
@@ -324,6 +326,19 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       </button>
                     </div>
                   )}
+                  {/* Métricas cuantitativas adicionales */}
+                  <div className="flex flex-wrap gap-2 mt-2 mb-2">
+                    {typeof result.entropyScore === 'number' && (
+                      <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold" title="Entropía: mide la diversidad de palabras. Bajo (<4.5) suele indicar texto IA.">
+                        Entropía: <span className="ml-1 font-bold">{result.entropyScore}</span>
+                      </span>
+                    )}
+                    {typeof result.semanticSimilarity === 'number' && (
+                      <span className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold" title="Similitud semántica con plantilla IA. Alto (>0.85) puede indicar paráfrasis de IA.">
+                        Similitud IA: <span className="ml-1 font-bold">{result.semanticSimilarity}</span>
+                      </span>
+                    )}
+                  </div>
                   <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
                   {/* Bloque premium compacto al final cuando hay resultado */}
                   <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
