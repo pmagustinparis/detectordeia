@@ -126,6 +126,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
   const [limitReached, setLimitReached] = useState(false);
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
   const detectorRef = useRef<HTMLDivElement>(null);
+  const [feedbackSent, setFeedbackSent] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -188,6 +189,20 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
     e.preventDefault();
     detectorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+  async function sendFeedback(response: 'correcto' | 'incorrecto') {
+    if (!result || !text) return;
+    await fetch('/api/feedback', {
+      method: 'POST',
+      body: JSON.stringify({
+        originalText: text,
+        result: result.probability,
+        label: response
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+    setFeedbackSent(true);
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
@@ -387,6 +402,16 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                     </button>
                     <div className="text-xs text-gray-500">📝 Te avisaremos cuando estén disponibles</div>
                   </div>
+                  {/* Bloque de feedback */}
+                  {!feedbackSent && (
+                    <div className="mt-4 border p-3 rounded bg-gray-50">
+                      <p className="text-sm font-medium mb-2">¿El resultado fue correcto?</p>
+                      <div className="flex gap-2">
+                        <button onClick={() => sendFeedback('correcto')} className="px-3 py-1 bg-green-100 rounded text-green-700 text-sm">Sí, fue correcto</button>
+                        <button onClick={() => sendFeedback('incorrecto')} className="px-3 py-1 bg-red-100 rounded text-red-700 text-sm">No, fue incorrecto</button>
+                      </div>
+                    </div>
+                  )}
                 </>
               ) : (
                 <>
