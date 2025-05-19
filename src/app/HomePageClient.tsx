@@ -97,6 +97,16 @@ const premiumCompactTextos = {
   aviso: '📝 Te avisaremos cuando estén disponibles',
 };
 
+// Tooltip helper
+const Tooltip = ({ text, children }: { text: string; children: React.ReactNode }) => (
+  <span className="relative group cursor-pointer">
+    {children}
+    <span className="absolute z-10 left-1/2 -translate-x-1/2 mt-2 w-max max-w-xs px-3 py-2 bg-gray-900 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-pre-line">
+      {text}
+    </span>
+  </span>
+);
+
 export default function HomePageClient() { // Renombrado de Home a HomePageClient
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -294,16 +304,26 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       "El texto muestra variación natural en el estilo, uso de lenguaje coloquial y elementos subjetivos, características típicas de contenido escrito por humanos."}
                   </div>
                   <ConfidenceBar value={result.probability} />
-                  {/* Mostrar puntajes markersIA y markersHuman solo si existen */}
+                  {/* Marcadores IA y Humanos con tooltips */}
                   {result.scores_by_category && (
                     <div className="w-full max-w-xs mx-auto mb-2 mt-2">
                       <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                        <span>Marcadores IA</span>
+                        <span>
+                          Marcadores IA
+                          <Tooltip text={"Cantidad de rasgos típicos de textos generados por IA detectados en el texto.\nEjemplo: frases genéricas, estructura rígida, poca variedad de conectores."}>
+                            <span className="ml-1 text-gray-400">❓</span>
+                          </Tooltip>
+                        </span>
                         <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersIA}/25</span>
                       </div>
                       <div className="border-dotted border-b border-gray-300 mb-1" />
                       <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                        <span>Marcadores Humanos</span>
+                        <span>
+                          Marcadores Humanos
+                          <Tooltip text={"Cantidad de rasgos típicos de textos escritos por humanos detectados en el texto.\nEjemplo: modismos, subjetividad, estilo informal, digresiones."}>
+                            <span className="ml-1 text-gray-400">❓</span>
+                          </Tooltip>
+                        </span>
                         <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersHuman}/25</span>
                       </div>
                       <div className="border-dotted border-b border-gray-300" />
@@ -320,24 +340,30 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                           </li>
                         ))}
                       </ul>
-                      {/* Botón humanizador */}
-                      <button className="mt-4 bg-gray-200 text-gray-600 text-sm px-4 py-2 rounded cursor-not-allowed">
-                        Próximamente: Reescribir como texto humano 🤖➡️👤
-                      </button>
                     </div>
                   )}
-                  {/* Métricas cuantitativas adicionales */}
+                  {/* Métricas cuantitativas adicionales (mover aquí) */}
                   <div className="flex flex-wrap gap-2 mt-2 mb-2">
                     {typeof result.entropyScore === 'number' && (
-                      <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold" title="Entropía: mide la diversidad de palabras. Bajo (<4.5) suele indicar texto IA.">
-                        Entropía: <span className="ml-1 font-bold">{result.entropyScore}</span>
-                      </span>
+                      <Tooltip text={"Entropía: mide la variedad de palabras en el texto.\nBajo (<4.5): texto muy repetitivo, típico de IA.\nAlto (>5): texto variado, típico de humanos."}>
+                        <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
+                          Entropía: <span className="ml-1 font-bold">{result.entropyScore}</span>
+                          <span className="ml-1 text-gray-400">❓</span>
+                        </span>
+                      </Tooltip>
                     )}
                     {typeof result.semanticSimilarity === 'number' && (
-                      <span className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold" title="Similitud semántica con plantilla IA. Alto (>0.85) puede indicar paráfrasis de IA.">
-                        Similitud IA: <span className="ml-1 font-bold">{result.semanticSimilarity}</span>
-                      </span>
+                      <Tooltip text={"Similitud IA: compara tu texto con una plantilla típica de IA usando IA avanzada.\nAlto (>0.85): posible paráfrasis de IA.\nBajo (<0.8): texto más original o humano."}>
+                        <span className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold">
+                          Similitud IA: <span className="ml-1 font-bold">{result.semanticSimilarity}</span>
+                          <span className="ml-1 text-gray-400">❓</span>
+                        </span>
+                      </Tooltip>
                     )}
+                  </div>
+                  {/* Próximamente: Reescribir como texto humano */}
+                  <div className="bg-gray-100 text-gray-500 rounded-lg px-4 py-2 text-sm font-medium mb-2">
+                    Próximamente: Reescribir como texto humano 🤖➡️👤
                   </div>
                   <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
                   {/* Bloque premium compacto al final cuando hay resultado */}
