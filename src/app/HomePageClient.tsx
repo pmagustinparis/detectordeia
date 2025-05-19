@@ -416,9 +416,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       </ul>
                     </div>
                     <a
-                      href="https://www.detectordeia.ai/pricing"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/pricing"
                       className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold py-2 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-1 text-center"
                     >
                       <span>✨</span> Ver Planes

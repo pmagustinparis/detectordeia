@@ -108,6 +108,7 @@ export default function DetectorMain({
   const [usage, setUsage] = useState(0);
   const [limitReached, setLimitReached] = useState(false);
   const detectorRef = useRef<HTMLDivElement>(null);
+  const [textType, setTextType] = useState('default');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -141,7 +142,7 @@ export default function DetectorMain({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, textType }),
       });
       const data = await response.json();
       if (!response.ok) {
@@ -202,6 +203,19 @@ export default function DetectorMain({
             >
               Limpiar
             </button>
+          </div>
+          {/* Selector de tipo de texto dentro de la tarjeta blanca */}
+          <div className="mt-2 mb-2">
+            <label className="block text-sm font-bold text-gray-800 mb-1">Tipo de texto</label>
+            <select
+              value={textType}
+              onChange={(e) => setTextType(e.target.value)}
+              className="w-full border-2 border-[#a259f7] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#a259f7]/50 transition text-black"
+            >
+              <option value="default" className="text-black">Sin especificar</option>
+              <option value="academic" className="text-black">Académico / formal</option>
+              <option value="informal" className="text-black">Conversación / informal</option>
+            </select>
           </div>
           {error && (
             <div className="mt-1 p-2 bg-red-50 text-red-700 rounded-lg text-xs font-medium">
