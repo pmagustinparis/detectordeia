@@ -278,19 +278,6 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
               <span className="mr-2">🤖</span>
               {isAnalyzing ? 'Analizando...' : 'Analizar texto gratis'}
             </button>
-            {isAnalyzing && (
-              <div className="mt-4 p-4 bg-[#f5f3ff] rounded-xl border border-[#e9d5ff]">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[#7c3aed]">✨</span>
-                  <span className="font-semibold text-[#7c3aed]">Los usuarios premium acceden a:</span>
-                </div>
-                <ul className="space-y-1 text-sm text-gray-700">
-                  <li className="flex items-center gap-2">✔️ Reescritura del texto como humano</li>
-                  <li className="flex items-center gap-2">✔️ Análisis por sección y comparativa</li>
-                  <li className="flex items-center gap-2">✔️ Subida de archivos</li>
-                </ul>
-              </div>
-            )}
             <p className="text-center text-sm text-gray-800 mt-1">Sin registro. 100% privado. Precisión líder en español.</p>
           </div>
           {/* Result block (right) */}
