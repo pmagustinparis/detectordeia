@@ -262,7 +262,7 @@ export default function DetectorMain({
             {isAnalyzing ? 'Analizando...' : 'Analizar texto gratis'}
           </button>
           {isAnalyzing && (
-            <div className="mt-4 p-4 bg-[#f5f3ff] rounded-xl border border-[#e9d5ff]">
+            <div className="mt-4 p-3 bg-[#f5f3ff] rounded-xl border border-[#e9d5ff] max-w-full overflow-hidden">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-[#7c3aed]">✨</span>
                 <span className="font-semibold text-[#7c3aed]">Los usuarios premium acceden a:</span>
