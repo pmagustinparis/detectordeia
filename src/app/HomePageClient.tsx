@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import PremiumUpsellBlock from './components/PremiumUpsellBlock';
 import PremiumUpsellCompact from './components/PremiumUpsellCompact';
+import FeedbackBlock from './components/FeedbackBlock';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -191,20 +192,6 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
     e.preventDefault();
     detectorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-
-  async function sendFeedback(response: 'correcto' | 'incorrecto') {
-    if (!result || !text) return;
-    await fetch('/api/feedback', {
-      method: 'POST',
-      body: JSON.stringify({
-        originalText: text,
-        result: result.probability,
-        label: response
-      }),
-      headers: { 'Content-Type': 'application/json' }
-    });
-    setFeedbackSent(true);
-  }
 
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
@@ -408,17 +395,14 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                     >
                       <span>✨</span> Ver Planes
                     </a>
-                    <div className="text-xs text-gray-500">📝 Te avisaremos cuando estén disponibles</div>
                   </div>
                   {/* Bloque de feedback */}
-                  {!feedbackSent && (
-                    <div className="mt-4 border p-3 rounded bg-gray-50">
-                      <p className="text-base font-bold text-[#7c3aed] mb-2">¿El resultado fue correcto?</p>
-                      <div className="flex gap-2">
-                        <button onClick={() => sendFeedback('correcto')} className="px-3 py-1 bg-green-100 rounded text-green-700 text-sm">Sí, fue correcto</button>
-                        <button onClick={() => sendFeedback('incorrecto')} className="px-3 py-1 bg-red-100 rounded text-red-700 text-sm">No, fue incorrecto</button>
-                      </div>
-                    </div>
+                  {!feedbackSent && result && (
+                    <FeedbackBlock
+                      originalText={text}
+                      result={result.probability}
+                      onSent={() => setFeedbackSent(true)}
+                    />
                   )}
                 </>
               ) : (

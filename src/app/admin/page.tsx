@@ -28,6 +28,14 @@ export default async function AdminPage() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-gray-900">Lista de Suscriptores</h1>
+      <div className="mb-4">
+        <a
+          href="/admin/feedback"
+          className="inline-block bg-[#a259f7] hover:bg-[#7c3aed] text-white font-bold py-2 px-4 rounded-xl shadow-md transition-all text-sm"
+        >
+          Ver feedbacks de usuarios
+        </a>
+      </div>
       {subscribers.length === 0 ? (
         <p className="text-gray-700">No hay suscriptores todavía.</p>
       ) : (

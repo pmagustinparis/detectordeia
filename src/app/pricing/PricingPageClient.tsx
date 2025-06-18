@@ -98,7 +98,7 @@ export default function PricingPageClient() { // Renombrado
           </ul>
           <a href="/#detector" className="mt-auto bg-[#a259f7] hover:bg-[#7c3aed] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all text-base">Empezar Gratis</a>
         </div>
-        <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-[#e9d5ff] opacity-60 grayscale">
+        <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-[#e9d5ff]">
           <h2 className="text-2xl font-bold text-[#a259f7] mb-2">Starter</h2>
           <div className="flex flex-col items-center mb-1">
             <span className="text-4xl font-extrabold text-gray-900 leading-tight">
@@ -119,13 +119,13 @@ export default function PricingPageClient() { // Renombrado
           </ul>
           <button
             onClick={() => openModal('Starter')}
-            className="mt-auto bg-[#a259f7] hover:bg-[#7c3aed] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all text-base"
+            className="mt-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all text-base"
           >
             Avísame cuando esté disponible
           </button>
           <p className="text-xs text-gray-500 mt-2 text-center">Este plan estará disponible próximamente</p>
         </div>
-        <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-[#e9d5ff] opacity-60 grayscale">
+        <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-[#e9d5ff]">
           <h2 className="text-2xl font-bold text-[#a259f7] mb-2">Pro</h2>
           <div className="flex flex-col items-center mb-1">
             <span className="text-4xl font-extrabold text-gray-900 leading-tight">
@@ -146,7 +146,7 @@ export default function PricingPageClient() { // Renombrado
           </ul>
           <button
             onClick={() => openModal('Pro')}
-            className="mt-auto bg-[#a259f7] hover:bg-[#7c3aed] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all text-base"
+            className="mt-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all text-base"
           >
             Avísame cuando esté disponible
           </button>

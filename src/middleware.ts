@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const USER = 'Boedo1908';
+const USER = 'Agus';
 const PASS = '1908';
 
 export function middleware(req: NextRequest) {

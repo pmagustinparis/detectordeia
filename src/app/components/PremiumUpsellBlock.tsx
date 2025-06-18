@@ -30,7 +30,6 @@ const PremiumUpsellBlock: React.FC<PremiumUpsellBlockProps> = ({ textos }) => (
     >
       <span>✨</span> {textos.cta}
     </a>
-    <div className="text-xs text-gray-500 mt-1">{textos.aviso}</div>
   </div>
 );
 

@@ -6,9 +6,22 @@ const FEEDBACK_PATH = path.resolve(process.cwd(), 'feedback.json');
 
 export async function POST(request: Request) {
   try {
-    const { originalText, result, label } = await request.json();
-    if (!originalText || !label) {
+    const body = await request.json();
+    // Compatibilidad: aceptar tanto el feedback viejo como el nuevo
+    const {
+      originalText,
+      result,
+      label, // feedback viejo
+      util,  // feedback nuevo
+      uso,   // feedback nuevo
+      comentario // feedback nuevo
+    } = body;
+    if (!originalText || (typeof result === 'undefined')) {
       return NextResponse.json({ error: 'Faltan datos' }, { status: 400 });
+    }
+    // Al menos uno de los dos tipos de feedback debe estar
+    if (!label && !util) {
+      return NextResponse.json({ error: 'Falta el tipo de feedback' }, { status: 400 });
     }
 
     let currentData: any[] = [];
@@ -23,7 +36,10 @@ export async function POST(request: Request) {
       timestamp: new Date().toISOString(),
       originalText,
       result,
-      label
+      label: label || null,
+      util: util || null,
+      uso: uso || null,
+      comentario: comentario || null
     });
 
     await writeFile(FEEDBACK_PATH, JSON.stringify(currentData, null, 2), 'utf-8');
