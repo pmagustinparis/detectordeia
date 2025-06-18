@@ -1,9 +1,15 @@
 import { supabase } from '@/lib/supabase';
+import fs from 'fs/promises';
+import path from 'path';
+
+const dataFilePath = path.join(process.cwd(), 'feedback.json');
 
 interface Feedback {
-  id: number;
-  created_at: string;
-  original_text: string;
+  id?: number;
+  created_at?: string;
+  timestamp?: string;
+  original_text?: string;
+  originalText?: string;
   result: number;
   label?: string | null;
   util?: string | null;
@@ -17,17 +23,31 @@ function truncate(text: string, max: number) {
 
 async function getFeedbacks(): Promise<Feedback[]> {
   try {
-    const { data, error } = await supabase
-      .from('feedbacks')
-      .select('*')
-      .order('created_at', { ascending: false });
+    // Si Supabase está configurado, usarlo
+    if (supabase) {
+      const { data, error } = await supabase
+        .from('feedbacks')
+        .select('*')
+        .order('created_at', { ascending: false });
 
-    if (error) {
-      console.error('Error fetching feedbacks:', error);
-      return [];
+      if (error) {
+        console.error('Error fetching feedbacks:', error);
+        return [];
+      }
+
+      return data || [];
+    } else {
+      // Fallback al archivo JSON si Supabase no está configurado
+      try {
+        const fileData = await fs.readFile(dataFilePath, 'utf-8');
+        return JSON.parse(fileData).reverse(); // más reciente primero
+      } catch (error: any) {
+        if (error.code !== 'ENOENT') {
+          console.error('Error leyendo feedback.json:', error);
+        }
+        return [];
+      }
     }
-
-    return data || [];
   } catch (error) {
     console.error('Error in getFeedbacks:', error);
     return [];
@@ -55,14 +75,18 @@ export default async function AdminFeedbackPage() {
             </tr>
           </thead>
           <tbody>
-            {feedbacks.map((fb) => (
-              <tr key={fb.id}>
-                <td className="py-2 px-2 border-b text-gray-800">{new Date(fb.created_at).toLocaleString()}</td>
+            {feedbacks.map((fb, index) => (
+              <tr key={fb.id || index}>
+                <td className="py-2 px-2 border-b text-gray-800">
+                  {new Date(fb.created_at || fb.timestamp || '').toLocaleString()}
+                </td>
                 <td className="py-2 px-2 border-b text-gray-800">{fb.util ?? fb.label ?? '-'}</td>
                 <td className="py-2 px-2 border-b text-gray-800">{fb.uso ?? '-'}</td>
                 <td className="py-2 px-2 border-b text-gray-800">{fb.comentario ?? '-'}</td>
                 <td className="py-2 px-2 border-b text-gray-800">{typeof fb.result === 'number' ? fb.result + '%' : '-'}</td>
-                <td className="py-2 px-2 border-b text-gray-800 max-w-xs">{truncate(fb.original_text, 80)}</td>
+                <td className="py-2 px-2 border-b text-gray-800 max-w-xs">
+                  {truncate(fb.original_text || fb.originalText || '', 80)}
+                </td>
               </tr>
             ))}
           </tbody>
