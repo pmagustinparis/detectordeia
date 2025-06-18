@@ -8,8 +8,8 @@ export function middleware(req: NextRequest) {
 
   if (basicAuth) {
     const authValue = basicAuth.split(' ')[1];
-    // Buffer.from está disponible en Edge Runtime
-    const [user, pass] = Buffer.from(authValue, 'base64').toString().split(':');
+    // Edge Runtime: usar atob en vez de Buffer.from
+    const [user, pass] = atob(authValue).split(':');
 
     if (user === USER && pass === PASS) {
       return NextResponse.next();
