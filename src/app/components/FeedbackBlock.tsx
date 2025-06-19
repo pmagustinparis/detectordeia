@@ -32,7 +32,8 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
     setEnviando(true);
     setError(null);
     try {
-      await fetch('/api/feedback', {
+      console.log('Enviando feedback:', { originalText, result, util, uso, comentario });
+      const response = await fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -43,12 +44,25 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
           comentario,
         }),
       });
+      
+      console.log('Respuesta del servidor:', response.status);
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error del servidor:', errorData);
+        throw new Error(errorData.error || 'Error del servidor');
+      }
+      
+      const data = await response.json();
+      console.log('Feedback enviado exitosamente:', data);
+      
       setEnviado(true);
       setShowToast(true);
       setTimeout(() => setShowToast(false), 2500);
       if (onSent) onSent();
     } catch (e) {
-      setError('Error al enviar feedback.');
+      console.error('Error al enviar feedback:', e);
+      setError(e instanceof Error ? e.message : 'Error al enviar feedback.');
     } finally {
       setEnviando(false);
     }
