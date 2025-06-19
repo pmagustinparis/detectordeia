@@ -3,30 +3,43 @@ import { supabase } from '@/lib/supabase';
 
 export async function POST(request: Request) {
   try {
-    console.log('Recibiendo request de feedback');
+    // Log variables de entorno (solo existencia)
+    console.log('Variables de entorno:', {
+      hasSupabaseUrl: !!process.env.SUPABASE_URL,
+      hasSupabaseKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY
+    });
+
     const body = await request.json();
-    console.log('Body recibido:', body);
     
     const {
       originalText,
       result,
-      label, // feedback viejo
-      util,  // feedback nuevo
-      uso,   // feedback nuevo
-      comentario // feedback nuevo
+      label,
+      util,
+      uso,
+      comentario
     } = body;
     
+    // Validaciones
     if (!originalText || (typeof result === 'undefined')) {
-      return NextResponse.json({ error: 'Faltan datos' }, { status: 400 });
+      console.log('Error: Faltan datos básicos', { originalText: !!originalText, result });
+      return NextResponse.json({ error: 'Faltan datos básicos' }, { status: 400 });
     }
-    // Al menos uno de los dos tipos de feedback debe estar
     if (!label && !util) {
-      return NextResponse.json({ error: 'Falta el tipo de feedback' }, { status: 400 });
+      console.log('Error: Falta tipo de feedback', { label, util });
+      return NextResponse.json({ error: 'Falta tipo de feedback' }, { status: 400 });
     }
 
-    console.log('Supabase disponible:', !!supabase);
-    
-    if (supabase) {
+    // Verificar Supabase
+    if (!supabase) {
+      console.error('Error: Cliente Supabase no inicializado');
+      return NextResponse.json({ 
+        error: 'Error de configuración del servidor',
+        details: 'Cliente Supabase no disponible'
+      }, { status: 500 });
+    }
+
+    try {
       console.log('Intentando insertar en Supabase...');
       const { data, error } = await supabase
         .from('feedbacks')
@@ -43,28 +56,32 @@ export async function POST(request: Request) {
         .select();
 
       if (error) {
-        console.error('Error detallado de Supabase:', {
+        console.error('Error de Supabase:', {
+          code: error.code,
           message: error.message,
           details: error.details,
           hint: error.hint
         });
-        return NextResponse.json({ error: 'Error al guardar feedback' }, { status: 500 });
+        return NextResponse.json({ 
+          error: 'Error al guardar en base de datos',
+          details: error.message
+        }, { status: 500 });
       }
 
-      console.log('Feedback guardado exitosamente:', data);
       return NextResponse.json({ status: 'ok', data });
+    } catch (supabaseError) {
+      console.error('Error al ejecutar query en Supabase:', supabaseError);
+      return NextResponse.json({ 
+        error: 'Error en operación de base de datos',
+        details: supabaseError instanceof Error ? supabaseError.message : 'Error desconocido'
+      }, { status: 500 });
     }
-
-    // Si no hay Supabase, devolver éxito de todos modos para no romper la UX
-    // pero logear para que sepamos que necesitamos configurar la DB
-    console.warn('Supabase no está configurado. El feedback no se guardará.');
-    return NextResponse.json({ 
-      status: 'ok',
-      warning: 'Feedback registrado en modo desarrollo'
-    });
     
   } catch (err) {
-    console.error('Error detallado en endpoint:', err);
-    return NextResponse.json({ error: 'Error interno' }, { status: 500 });
+    console.error('Error general en endpoint:', err);
+    return NextResponse.json({ 
+      error: 'Error interno del servidor',
+      details: err instanceof Error ? err.message : 'Error desconocido'
+    }, { status: 500 });
   }
 } 
