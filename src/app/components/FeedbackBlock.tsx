@@ -59,16 +59,33 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
       {/* Toast flotante */}
       {showToast && (
         <div className="fixed bottom-6 right-6 z-50 bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg text-base font-semibold animate-fade-in">
-          ¡Gracias por tu feedback!
+          <div className="flex items-center gap-2">
+            <span>🎉</span>
+            <span>¡Gracias por ayudarnos a mejorar!</span>
+          </div>
         </div>
       )}
       {enviado ? (
         <div className="mt-4 border p-3 rounded bg-green-50 text-green-700 text-sm font-semibold text-center">
-          ¡Gracias por tu feedback!
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <span>🎉</span>
+            <span>¡Gracias por tu feedback!</span>
+          </div>
+          <p className="text-xs text-green-600 font-normal">
+            Tu opinión nos ayuda a hacer el detector más preciso para todos
+          </p>
         </div>
       ) : (
         <div className="mt-4 border p-3 rounded bg-gray-50">
-          <p className="text-base font-bold text-[#7c3aed] mb-2">¿Te resultó útil el análisis?</p>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-lg">💡</span>
+            <div>
+              <p className="text-base font-bold text-[#7c3aed]">¿Te resultó útil el análisis?</p>
+              <p className="text-xs text-gray-600">
+                Tu feedback nos ayuda a mejorar la precisión del detector. Cada comentario nos permite afinar el algoritmo para que sea más útil para todos.
+              </p>
+            </div>
+          </div>
           <div className="flex gap-2 mb-2">
             <button
               className={`px-3 py-1 rounded text-sm font-semibold border transition-all ${util === 'si' ? 'bg-green-100 text-green-700 border-green-300' : 'bg-white text-green-700 border-green-200 hover:bg-green-50'}`}
@@ -97,7 +114,7 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
           </select>
           <textarea
             className="w-full border rounded p-2 text-sm mb-2 placeholder-gray-700 text-gray-800"
-            placeholder="¿Querés contarnos algo más? (opcional)"
+            placeholder="¿Querés contarnos algo más? Tu opinión nos ayuda a mejorar (opcional)"
             value={comentario}
             onChange={e => setComentario(e.target.value)}
             rows={2}
@@ -111,6 +128,15 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
           >
             {enviando ? 'Enviando...' : 'Enviar feedback'}
           </button>
+          <p className="text-xs text-gray-500 mt-2 text-center">
+            🚀 Con tu ayuda, hacemos el mejor detector de IA en español
+          </p>
+          <div className="text-xs text-gray-400 mt-1 text-center">
+            <span>💬 Ya recibimos feedback de +100 usuarios que nos ayudan a mejorar</span>
+          </div>
+          <div className="text-xs text-gray-400 mt-1 text-center">
+            <span>📈 Gracias a vos, el detector mejora cada día</span>
+          </div>
         </div>
       )}
     </>

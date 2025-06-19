@@ -69,6 +69,9 @@ export default function RootLayout({
             </div>
           </div>
           <p>Resultado orientativo - la precisión puede variar según el tipo de texto</p>
+          <p className="text-xs text-gray-400 mt-1">
+            💬 ¿Tenés feedback? Nos ayuda a mejorar para todos los usuarios
+          </p>
         </footer>
       </body>
     </html>
