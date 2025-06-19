@@ -60,12 +60,110 @@ async function calculateSemanticSimilarity(text1: string, text2: string): Promis
   return parseFloat(similarity.toFixed(4));
 }
 
-function getInterpretation(prob: number, type: string) {
-  if (prob >= 85) return "Muy probablemente generado por IA.";
-  if (prob >= 60) return "Probablemente IA, pero podría ser humano.";
-  if (prob >= 40) return "No concluyente, posible mezcla o texto reformulado.";
-  if (prob >= 20) return "Probablemente humano, pero con patrones sospechosos.";
-  return "Muy probablemente escrito por un humano.";
+function getInterpretation(prob: number, type: string, entropyScore?: number, semanticSimilarity?: number) {
+  // Interpretaciones basadas en métricas cuantitativas
+  let quantitativeNote = "";
+  if (entropyScore !== undefined && semanticSimilarity !== undefined) {
+    if (entropyScore < 3.5) {
+      quantitativeNote = " El texto es extremadamente repetitivo (entropía baja), lo que es típico de IA.";
+    } else if (semanticSimilarity > 0.9) {
+      quantitativeNote = " El texto es muy similar a plantillas típicas de IA.";
+    } else if (entropyScore > 5.5 && semanticSimilarity < 0.7) {
+      quantitativeNote = " El texto muestra alta variabilidad y poca similitud con plantillas IA, indicando autoría humana.";
+    }
+  }
+
+  if (type === "academic") {
+    if (prob >= 85) return "Muy probablemente generado por IA. El texto muestra patrones típicos de IA incluso para contenido académico." + quantitativeNote;
+    if (prob >= 60) return "Probablemente IA, pero la estructura formal académica puede confundir el análisis." + quantitativeNote;
+    if (prob >= 40) return "No concluyente. Los textos académicos suelen tener estructura rígida que puede parecer IA." + quantitativeNote;
+    if (prob >= 20) return "Probablemente humano, con estilo académico natural." + quantitativeNote;
+    return "Muy probablemente escrito por un humano con estilo académico formal." + quantitativeNote;
+  } else if (type === "informal") {
+    if (prob >= 85) return "Muy probablemente generado por IA. El texto es demasiado perfecto para ser conversacional." + quantitativeNote;
+    if (prob >= 60) return "Probablemente IA, aunque algunos patrones informales están presentes." + quantitativeNote;
+    if (prob >= 40) return "No concluyente. Mezcla de elementos informales y patrones sospechosos." + quantitativeNote;
+    if (prob >= 20) return "Probablemente humano, con estilo conversacional natural." + quantitativeNote;
+    return "Muy probablemente escrito por un humano con lenguaje informal y espontáneo." + quantitativeNote;
+  } else {
+    // Tipo por defecto
+    if (prob >= 85) return "Muy probablemente generado por IA." + quantitativeNote;
+    if (prob >= 60) return "Probablemente IA, pero podría ser humano." + quantitativeNote;
+    if (prob >= 40) return "No concluyente, posible mezcla o texto reformulado." + quantitativeNote;
+    if (prob >= 20) return "Probablemente humano, pero con patrones sospechosos." + quantitativeNote;
+    return "Muy probablemente escrito por un humano." + quantitativeNote;
+  }
+}
+
+// Nueva función para ajustar probabilidad según tipo de texto
+function adjustProbabilityByTextType(
+  probability: number, 
+  textType: string, 
+  scores: { markersIA: number; markersHuman: number },
+  entropyScore: number,
+  semanticSimilarity: number
+): number {
+  let adjustedProbability = probability;
+  
+  // Ajustes basados en métricas cuantitativas (independiente del tipo de texto)
+  if (entropyScore < 3.5) {
+    // Texto extremadamente repetitivo - muy probable IA
+    adjustedProbability = Math.max(adjustedProbability, 80);
+  } else if (entropyScore < 4.0) {
+    // Texto muy repetitivo - probable IA
+    adjustedProbability = Math.max(adjustedProbability, 70);
+  } else if (entropyScore > 5.5) {
+    // Texto muy variado - probable humano
+    adjustedProbability = Math.min(adjustedProbability, 35);
+  }
+  
+  if (semanticSimilarity > 0.9) {
+    // Muy similar a plantillas IA - muy probable IA
+    adjustedProbability = Math.max(adjustedProbability, 85);
+  } else if (semanticSimilarity > 0.85) {
+    // Similar a plantillas IA - probable IA
+    adjustedProbability = Math.max(adjustedProbability, 75);
+  } else if (semanticSimilarity < 0.7) {
+    // Poco similar a plantillas IA - probable humano
+    adjustedProbability = Math.min(adjustedProbability, 40);
+  }
+  
+  // Ajustes específicos por tipo de texto
+  if (textType === "academic") {
+    // Para textos académicos, ser más permisivo con estructura rígida
+    // pero más estricto con frases genéricas
+    if (scores.markersIA >= 15 && scores.markersHuman >= 10) {
+      // Si tiene muchos marcadores de ambos tipos, probablemente es humano
+      adjustedProbability = Math.min(adjustedProbability, 45);
+    } else if (scores.markersIA >= 18 && scores.markersHuman <= 8) {
+      // Si tiene muchos marcadores IA y pocos humanos, mantener alto
+      adjustedProbability = Math.max(adjustedProbability, 70);
+    } else if (entropyScore < 4.0 && semanticSimilarity > 0.85) {
+      // Texto muy repetitivo y similar a plantillas IA
+      adjustedProbability = Math.max(adjustedProbability, 75);
+    } else {
+      // Ajuste general para académicos: reducir falsos positivos
+      adjustedProbability = Math.max(0, adjustedProbability - 8);
+    }
+  } else if (textType === "informal") {
+    // Para textos informales, ser más permisivo con modismos y errores
+    // pero más estricto con estructura perfecta
+    if (scores.markersHuman >= 15 && scores.markersIA <= 12) {
+      // Si tiene muchos marcadores humanos y pocos IA, es muy probable humano
+      adjustedProbability = Math.min(adjustedProbability, 30);
+    } else if (scores.markersIA >= 16 && scores.markersHuman <= 8) {
+      // Si tiene muchos marcadores IA y pocos humanos, mantener alto
+      adjustedProbability = Math.max(adjustedProbability, 65);
+    } else if (entropyScore > 5.0 && semanticSimilarity < 0.75) {
+      // Texto muy variado y poco similar a plantillas IA
+      adjustedProbability = Math.min(adjustedProbability, 35);
+    } else {
+      // Ajuste general para informales: reducir falsos negativos
+      adjustedProbability = Math.min(100, adjustedProbability + 5);
+    }
+  }
+  
+  return Math.max(0, Math.min(100, adjustedProbability));
 }
 
 export async function POST(request: Request) {
@@ -137,7 +235,8 @@ export async function POST(request: Request) {
     // Calcular entropía y similitud semántica
     const entropyScore = calculateEntropy(text);
     const semanticSimilarity = await calculateSemanticSimilarity(text, iaReferenceText);
-    // Ajuste de probabilidad según tipo de texto
+    
+    // Ajuste de probabilidad según tipo de texto (lógica mejorada)
     let adjustedProbability = analysis.probability;
 
     // --- Validación de coherencia para evitar falsos positivos ---
@@ -150,12 +249,14 @@ export async function POST(request: Request) {
     }
     // ------------------------------------------------------------
 
-    if (textType === "academic" && adjustedProbability >= 60) {
-      adjustedProbability += 10;
-    } else if (textType === "informal" && adjustedProbability <= 40) {
-      adjustedProbability -= 10;
-    }
-    adjustedProbability = Math.max(0, Math.min(100, adjustedProbability));
+    // Aplicar ajuste inteligente según tipo de texto
+    adjustedProbability = adjustProbabilityByTextType(
+      adjustedProbability,
+      textType,
+      analysis.scores_by_category,
+      entropyScore,
+      semanticSimilarity
+    );
 
     return NextResponse.json({
       probability: adjustedProbability,
@@ -164,7 +265,7 @@ export async function POST(request: Request) {
       linguistic_footprints: analysis.linguistic_footprints,
       entropyScore,
       semanticSimilarity,
-      interpretation: getInterpretation(adjustedProbability, textType)
+      interpretation: getInterpretation(adjustedProbability, textType, entropyScore, semanticSimilarity)
     });
   } catch (error) {
     console.error('Error analyzing text:', error);

@@ -297,6 +297,20 @@ export default function DetectorMain({
                     {result.interpretation}
                   </div>
                 )}
+                {/* Indicador de ajuste por tipo de texto */}
+                {textType !== 'default' && (
+                  <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="flex items-center gap-2 text-xs text-blue-800">
+                      <span className="text-blue-600">⚙️</span>
+                      <span className="font-medium">
+                        {textType === 'academic' 
+                          ? 'Ajuste aplicado para texto académico: más permisivo con estructura formal'
+                          : 'Ajuste aplicado para texto informal: más permisivo con modismos y errores'
+                        }
+                      </span>
+                    </div>
+                  </div>
+                )}
                 {/* Marcadores IA y Humanos con tooltips */}
                 {result.scores_by_category && (
                   <div className="w-full max-w-xs mx-auto mb-2 mt-2">
