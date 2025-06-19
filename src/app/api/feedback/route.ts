@@ -1,14 +1,12 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
-import { writeFile, readFile } from 'fs/promises';
-import path from 'path';
-
-const FEEDBACK_PATH = path.resolve(process.cwd(), 'feedback.json');
 
 export async function POST(request: Request) {
   try {
+    console.log('Recibiendo request de feedback');
     const body = await request.json();
-    // Compatibilidad: aceptar tanto el feedback viejo como el nuevo
+    console.log('Body recibido:', body);
+    
     const {
       originalText,
       result,
@@ -26,8 +24,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Falta el tipo de feedback' }, { status: 400 });
     }
 
-    // Si Supabase está configurado, usarlo
+    console.log('Supabase disponible:', !!supabase);
+    
     if (supabase) {
+      console.log('Intentando insertar en Supabase...');
       const { data, error } = await supabase
         .from('feedbacks')
         .insert([
@@ -43,36 +43,28 @@ export async function POST(request: Request) {
         .select();
 
       if (error) {
-        console.error('Error inserting feedback:', error);
+        console.error('Error detallado de Supabase:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint
+        });
         return NextResponse.json({ error: 'Error al guardar feedback' }, { status: 500 });
       }
 
+      console.log('Feedback guardado exitosamente:', data);
       return NextResponse.json({ status: 'ok', data });
-    } else {
-      // Fallback al archivo JSON si Supabase no está configurado
-      let currentData: any[] = [];
-      try {
-        const raw = await readFile(FEEDBACK_PATH, 'utf-8');
-        currentData = JSON.parse(raw);
-      } catch (e) {
-        // No existe el archivo aún
-      }
-
-      currentData.push({
-        timestamp: new Date().toISOString(),
-        originalText,
-        result,
-        label: label || null,
-        util: util || null,
-        uso: uso || null,
-        comentario: comentario || null
-      });
-
-      await writeFile(FEEDBACK_PATH, JSON.stringify(currentData, null, 2), 'utf-8');
-      return NextResponse.json({ status: 'ok', fallback: true });
     }
+
+    // Si no hay Supabase, devolver éxito de todos modos para no romper la UX
+    // pero logear para que sepamos que necesitamos configurar la DB
+    console.warn('Supabase no está configurado. El feedback no se guardará.');
+    return NextResponse.json({ 
+      status: 'ok',
+      warning: 'Feedback registrado en modo desarrollo'
+    });
+    
   } catch (err) {
-    console.error('Error in feedback endpoint:', err);
+    console.error('Error detallado en endpoint:', err);
     return NextResponse.json({ error: 'Error interno' }, { status: 500 });
   }
 } 
