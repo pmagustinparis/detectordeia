@@ -16,7 +16,7 @@ const USOS = [
 ];
 
 export default function FeedbackBlock({ originalText, result, onSent }: FeedbackBlockProps) {
-  const [util, setUtil] = useState<string>('');
+  const [util, setUtil] = useState<number | null>(null);
   const [uso, setUso] = useState<string>('');
   const [comentario, setComentario] = useState<string>('');
   const [enviando, setEnviando] = useState(false);
@@ -102,15 +102,15 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
           </div>
           <div className="flex gap-2 mb-2">
             <button
-              className={`px-3 py-1 rounded text-sm font-semibold border transition-all ${util === 'si' ? 'bg-green-100 text-green-700 border-green-300' : 'bg-white text-green-700 border-green-200 hover:bg-green-50'}`}
-              onClick={() => setUtil('si')}
+              className={`px-3 py-1 rounded text-sm font-semibold border transition-all ${util === 1 ? 'bg-green-100 text-green-700 border-green-300' : 'bg-white text-green-700 border-green-200 hover:bg-green-50'}`}
+              onClick={() => setUtil(1)}
               type="button"
             >
               Sí, me ayudó
             </button>
             <button
-              className={`px-3 py-1 rounded text-sm font-semibold border transition-all ${util === 'no' ? 'bg-red-100 text-red-700 border-red-300' : 'bg-white text-red-700 border-red-200 hover:bg-red-50'}`}
-              onClick={() => setUtil('no')}
+              className={`px-3 py-1 rounded text-sm font-semibold border transition-all ${util === 5 ? 'bg-red-100 text-red-700 border-red-300' : 'bg-white text-red-700 border-red-200 hover:bg-red-50'}`}
+              onClick={() => setUtil(5)}
               type="button"
             >
               No, no me sirvió
