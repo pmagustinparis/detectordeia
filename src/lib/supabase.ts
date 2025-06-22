@@ -1,16 +1,25 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.SUPABASE_URL
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+// Estas variables son públicas y seguras para usar en el navegador.
+// Se configuran en Vercel con el prefijo NEXT_PUBLIC_
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-// Debug logs
-console.log('Supabase URL exists:', !!supabaseUrl)
-console.log('Supabase Service Key exists:', !!supabaseServiceKey)
+// Debug logs para el cliente (se ejecutarán solo en el navegador)
+if (typeof window !== 'undefined') {
+  console.log('Supabase URL (public) exists:', !!supabaseUrl)
+  console.log('Supabase Anon Key (public) exists:', !!supabaseAnonKey)
+}
 
-// Solo crear el cliente si las variables están configuradas
-export const supabase = supabaseUrl && supabaseServiceKey 
-  ? createClient(supabaseUrl, supabaseServiceKey)
-  : null
+// Creamos un único cliente de Supabase que puede ser usado en toda la aplicación (cliente y servidor).
+// Este cliente usa la clave anónima (pública), ideal para leer datos de forma segura.
+// Para operaciones que requieran privilegios de admin (como escribir en la base de datos),
+// debemos crear un cliente "admin" por separado directamente en las rutas de API del servidor.
+export const supabase = 
+  supabaseUrl && supabaseAnonKey 
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
 
-// Debug log
-console.log('Supabase client created:', !!supabase) 
+if (typeof window !== 'undefined') {
+  console.log('Supabase client (public) created:', !!supabase)
+} 
