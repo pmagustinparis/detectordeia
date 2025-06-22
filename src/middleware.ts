@@ -44,7 +44,7 @@ export function middleware(req: NextRequest) {
     return new NextResponse('Autenticación requerida', {
       status: 401,
       headers: {
-        'WWW-Authenticate': 'Basic realm="Área Segura"',
+        'WWW-Authenticate': 'Basic realm="Area Segura"',
       },
     });
   } catch (error) {
