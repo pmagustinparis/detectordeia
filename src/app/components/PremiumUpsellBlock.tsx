@@ -26,10 +26,11 @@ const PremiumUpsellBlock: React.FC<PremiumUpsellBlockProps> = ({ textos }) => (
     </div>
     <a
       href="/pricing"
-      className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all text-base flex items-center justify-center gap-2 mb-1"
+      className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all text-base flex items-center justify-center gap-2 mb-2"
     >
-      <span>✨</span> {textos.cta}
+      {textos.cta}
     </a>
+    <p className="text-xs text-gray-500">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
   </div>
 );
 

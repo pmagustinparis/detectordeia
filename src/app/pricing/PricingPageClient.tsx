@@ -119,11 +119,12 @@ export default function PricingPageClient() { // Renombrado
           </ul>
           <button
             onClick={() => openModal('Starter')}
-            className="mt-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all text-base"
+            className="mt-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all text-base"
           >
             Avísame cuando esté disponible
           </button>
           <p className="text-xs text-gray-500 mt-2 text-center">Este plan estará disponible próximamente</p>
+          <p className="text-xs text-gray-500 mt-1 text-center">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
         </div>
         <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-[#e9d5ff]">
           <h2 className="text-2xl font-bold text-[#a259f7] mb-2">Pro</h2>
@@ -146,11 +147,12 @@ export default function PricingPageClient() { // Renombrado
           </ul>
           <button
             onClick={() => openModal('Pro')}
-            className="mt-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all text-base"
+            className="mt-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all text-base"
           >
             Avísame cuando esté disponible
           </button>
           <p className="text-xs text-gray-500 mt-2 text-center">Este plan estará disponible próximamente</p>
+          <p className="text-xs text-gray-500 mt-1 text-center">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
         </div>
       </div>
       {showModal && (

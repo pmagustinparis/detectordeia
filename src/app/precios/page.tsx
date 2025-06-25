@@ -19,7 +19,7 @@ export default function PreciosPage() {
         <span>Máximo 500 caracteres por análisis</span>
       </li>
     </ul>
-    <a href="/" className="block w-full text-center bg-[#a259f7] hover:bg-[#7c3aed] text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+    <a href="/" className="block w-full text-center bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
       Probar Ahora
     </a>
   </div>
@@ -41,9 +41,10 @@ export default function PreciosPage() {
         <span>Hasta 10,000 caracteres por análisis</span>
       </li>
     </ul>
-    <a href="/premium" className="block w-full text-center bg-[#a259f7] hover:bg-[#7c3aed] text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-      Upgrade a Premium
+    <a href="/premium" className="block w-full text-center bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+      🔓 Desbloquear análisis avanzado
     </a>
+    <p className="text-xs text-gray-500 mt-2 text-center">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
   </div>
 </div> 
   );

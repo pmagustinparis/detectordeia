@@ -78,7 +78,7 @@ const premiumTextos = {
     'Acceso vía API para automatizar análisis',
   ],
   precio: '💰 Desde $7/mes – Planes Starter y Pro',
-  cta: 'Ver Planes',
+  cta: '🔓 Desbloquear análisis avanzado',
   aviso: '📝 Te avisaremos cuando los planes estén disponibles',
 };
 const premiumCompactTextos = {
@@ -88,7 +88,7 @@ const premiumCompactTextos = {
     'Subida de archivos y API',
     'Desde $7/mes',
   ],
-  cta: 'Ver Planes',
+  cta: '🔓 Desbloquear análisis avanzado',
   aviso: '📝 Te avisaremos cuando estén disponibles',
 };
 
@@ -236,7 +236,7 @@ export default function DetectorMain({
           {limitReached && (
             <div className="flex flex-col items-center gap-2 p-2 bg-red-50 rounded-lg border border-red-200 mt-1">
               <span className="text-red-700 font-semibold flex items-center gap-2 text-xs"><span>🚫</span>Has alcanzado el límite de {DAILY_LIMIT} análisis gratuitos hoy.</span>
-              <a href="/pricing" className="mt-1 bg-[#7c3aed] hover:bg-[#5b21b6] text-white font-bold py-1 px-3 rounded-xl shadow-md transition-all text-xs">Ver Planes</a>
+              <a href="/pricing" className="mt-1 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-3 rounded-xl shadow-md transition-all text-xs">🔓 Desbloquear análisis avanzado</a>
             </div>
           )}
           <button
@@ -291,6 +291,18 @@ export default function DetectorMain({
                     "El texto muestra variación natural en el estilo, uso de lenguaje coloquial y elementos subjetivos, características típicas de contenido escrito por humanos."}
                 </div>
                 <ConfidenceBar value={result.probability} />
+                
+                {/* CTA premium compacto inmediatamente después del resultado principal */}
+                <div className="w-full flex flex-col items-center my-3">
+                  <a
+                    href="/pricing"
+                    className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
+                  >
+                    🔓 Desbloquear análisis avanzado
+                  </a>
+                  <p className="text-xs text-gray-500 mt-1">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
+                </div>
+                
                 {/* Interpretación explicativa */}
                 {result.interpretation && (
                   <div className="mt-2 text-sm text-gray-600 italic">
@@ -380,10 +392,11 @@ export default function DetectorMain({
                   </div>
                   <a
                     href="/pricing"
-                    className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold py-2 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-1 text-center"
+                    className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
                   >
-                    <span>✨</span> Ver Planes
+                    🔓 Desbloquear análisis avanzado
                   </a>
+                  <p className="text-xs text-gray-500">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
                 </div>
                 {/* Bloque de feedback */}
                 {!feedbackSent && result && (

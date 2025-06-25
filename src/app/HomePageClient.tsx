@@ -84,7 +84,7 @@ const premiumTextos = {
     'Acceso vía API para automatizar análisis',
   ],
   precio: '💰 Desde $7/mes – Planes Starter y Pro',
-  cta: 'Ver Planes',
+  cta: '🔓 Desbloquear análisis avanzado',
   aviso: '📝 Te avisaremos cuando los planes estén disponibles',
 };
 const premiumCompactTextos = {
@@ -94,7 +94,7 @@ const premiumCompactTextos = {
     'Subida de archivos y API',
     'Desde $7/mes',
   ],
-  cta: 'Ver Planes',
+  cta: '🔓 Desbloquear análisis avanzado',
   aviso: '📝 Te avisaremos cuando estén disponibles',
 };
 
@@ -253,7 +253,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
             {limitReached && (
               <div className="flex flex-col items-center gap-2 p-2 bg-red-50 rounded-lg border border-red-200 mt-1">
                 <span className="text-red-700 font-semibold flex items-center gap-2 text-xs"><span>🚫</span>Has alcanzado el límite de {DAILY_LIMIT} análisis gratuitos hoy.</span>
-                <button className="mt-1 bg-[#7c3aed] hover:bg-[#5b21b6] text-white font-bold py-1 px-3 rounded-xl shadow-md transition-all text-xs">Desbloquear más análisis (próximamente)</button>
+                <a href="/pricing" className="mt-1 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-3 rounded-xl shadow-md transition-all text-xs">🔓 Desbloquear análisis avanzado</a>
               </div>
             )}
             <button
@@ -353,6 +353,16 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       <div className="border-dotted border-b border-gray-300" />
                     </div>
                   )}
+                  {/* CTA premium compacto inmediatamente después del resultado principal */}
+                  <div className="w-full flex flex-col items-center my-3">
+                    <a
+                      href="/pricing"
+                      className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
+                    >
+                      🔓 Desbloquear análisis avanzado
+                    </a>
+                    <p className="text-xs text-gray-500 mt-1">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
+                  </div>
                   {/* Mostrar huellas lingüísticas solo si existen */}
                   {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                     <div className="w-full max-w-xl mb-2">
@@ -385,31 +395,12 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       </Tooltip>
                     )}
                   </div>
+                  
                   {/* Próximamente: Reescribir como texto humano */}
                   <div className="bg-gray-100 text-gray-500 rounded-lg px-4 py-2 text-sm font-medium mb-2">
                     Próximamente: Reescribir como texto humano 🤖➡️👤
                   </div>
                   <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
-                  {/* Bloque premium compacto al final cuando hay resultado */}
-                  <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xl text-[#a259f7]">🔒</span>
-                      <span className="font-bold text-base text-gray-800">¿Querés análisis premium?</span>
-                    </div>
-                    <div className="text-xs text-gray-700 mb-2">
-                      <ul className="text-left space-y-1">
-                        <li>• Análisis por criterios y explicaciones detalladas</li>
-                        <li>• Subida de archivos y API</li>
-                        <li>• Desde $7/mes</li>
-                      </ul>
-                    </div>
-                    <a
-                      href="/pricing"
-                      className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-bold py-2 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-1 text-center"
-                    >
-                      <span>✨</span> Ver Planes
-                    </a>
-                  </div>
                   {/* Bloque de feedback */}
                   {!feedbackSent && result && (
                     <FeedbackBlock
@@ -417,6 +408,28 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       result={result.probability}
                       onSent={() => setFeedbackSent(true)}
                     />
+                  )}
+                  {result && (
+                    <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xl text-[#a259f7]">🔒</span>
+                        <span className="font-bold text-base text-gray-800">¿Querés análisis premium?</span>
+                      </div>
+                      <div className="text-xs text-gray-700 mb-2">
+                        <ul className="text-left space-y-1">
+                          <li>• Análisis por criterios y explicaciones detalladas</li>
+                          <li>• Subida de archivos y API</li>
+                          <li>• Desde $7/mes</li>
+                        </ul>
+                      </div>
+                      <a
+                        href="/pricing"
+                        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
+                      >
+                        🔓 Desbloquear análisis avanzado
+                      </a>
+                      <p className="text-xs text-gray-500">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
+                    </div>
                   )}
                 </>
               ) : (
