@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
 
 interface Feedback {
   id: number;
@@ -25,24 +24,27 @@ export default function FeedbackAdminPage() {
   const fetchFeedbacks = async () => {
     try {
       setLoading(true);
-      
-      if (!supabase) {
-        setError('Cliente Supabase no disponible');
+
+      const response = await fetch('/api/feedback');
+
+      if (!response.ok) {
+        throw new Error('Error al obtener feedbacks del servidor');
+      }
+
+      const data = await response.json();
+
+      if (data.error) {
+        console.error('Error al obtener feedbacks:', data.error);
+        setError(`Error al cargar feedbacks: ${data.error}`);
         return;
       }
 
-      const { data, error } = await supabase
-        .from('feedbacks')
-        .select('*')
-        .order('created_at', { ascending: false });
+      // Ordenar por fecha descendente (más reciente primero)
+      const sortedFeedbacks = (data.feedbacks || []).sort((a: Feedback, b: Feedback) => {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      });
 
-      if (error) {
-        console.error('Error al obtener feedbacks:', error);
-        setError(`Error al cargar feedbacks: ${error.message}`);
-        return;
-      }
-
-      setFeedbacks(data || []);
+      setFeedbacks(sortedFeedbacks);
     } catch (err) {
       console.error('Error inesperado:', err);
       setError('Error inesperado al cargar feedbacks');
