@@ -365,12 +365,6 @@ export default function DetectorMain({
                       <span className="ml-1 text-gray-400">❓</span>
                     </span>
                   )}
-                  {typeof result.semanticSimilarity === 'number' && (
-                    <span className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold" title="Similitud IA: compara tu texto con una plantilla típica de IA usando IA avanzada.\nAlto (>0.85): posible paráfrasis de IA.\nBajo (<0.8): texto más original o humano.">
-                      Similitud IA: <span className="ml-1 font-bold">{result.semanticSimilarity}</span>
-                      <span className="ml-1 text-gray-400">❓</span>
-                    </span>
-                  )}
                 </div>
                 {/* Próximamente: Reescribir como texto humano */}
                 <div className="bg-gray-100 text-gray-500 rounded-lg px-4 py-2 text-sm font-medium mb-2">

@@ -42,34 +42,14 @@ function calculateEntropy(text: string): number {
   return parseFloat(entropy.toFixed(2));
 }
 
-// Texto de referencia IA para embeddings
-const iaReferenceText = "La implementación de soluciones estratégicas permite optimizar los procesos de manera eficaz y escalable.";
-
-// Función para calcular similitud semántica usando embeddings de OpenAI
-async function calculateSemanticSimilarity(text1: string, text2: string): Promise<number> {
-  const [res1, res2] = await Promise.all([
-    openai.embeddings.create({ model: "text-embedding-ada-002", input: text1 }),
-    openai.embeddings.create({ model: "text-embedding-ada-002", input: text2 }),
-  ]);
-  const emb1 = res1.data[0].embedding;
-  const emb2 = res2.data[0].embedding;
-  const dot = emb1.reduce((sum, val, i) => sum + val * emb2[i], 0);
-  const mag1 = Math.sqrt(emb1.reduce((sum, val) => sum + val * val, 0));
-  const mag2 = Math.sqrt(emb2.reduce((sum, val) => sum + val * val, 0));
-  const similarity = dot / (mag1 * mag2);
-  return parseFloat(similarity.toFixed(4));
-}
-
-function getInterpretation(prob: number, type: string, entropyScore?: number, semanticSimilarity?: number) {
+function getInterpretation(prob: number, type: string, entropyScore?: number) {
   // Interpretaciones basadas en métricas cuantitativas
   let quantitativeNote = "";
-  if (entropyScore !== undefined && semanticSimilarity !== undefined) {
+  if (entropyScore !== undefined) {
     if (entropyScore < 3.5) {
       quantitativeNote = " El texto es extremadamente repetitivo (entropía baja), lo que es típico de IA.";
-    } else if (semanticSimilarity > 0.9) {
-      quantitativeNote = " El texto es muy similar a plantillas típicas de IA.";
-    } else if (entropyScore > 5.5 && semanticSimilarity < 0.7) {
-      quantitativeNote = " El texto muestra alta variabilidad y poca similitud con plantillas IA, indicando autoría humana.";
+    } else if (entropyScore > 5.5) {
+      quantitativeNote = " El texto muestra alta variabilidad, indicando autoría humana.";
     }
   }
 
@@ -97,15 +77,14 @@ function getInterpretation(prob: number, type: string, entropyScore?: number, se
 
 // Nueva función para ajustar probabilidad según tipo de texto
 function adjustProbabilityByTextType(
-  probability: number, 
-  textType: string, 
+  probability: number,
+  textType: string,
   scores: { markersIA: number; markersHuman: number },
-  entropyScore: number,
-  semanticSimilarity: number
+  entropyScore: number
 ): number {
   let adjustedProbability = probability;
-  
-  // Ajustes basados en métricas cuantitativas (independiente del tipo de texto)
+
+  // Ajustes basados en entropía (independiente del tipo de texto)
   if (entropyScore < 3.5) {
     // Texto extremadamente repetitivo - muy probable IA
     adjustedProbability = Math.max(adjustedProbability, 80);
@@ -116,18 +95,7 @@ function adjustProbabilityByTextType(
     // Texto muy variado - probable humano
     adjustedProbability = Math.min(adjustedProbability, 35);
   }
-  
-  if (semanticSimilarity > 0.9) {
-    // Muy similar a plantillas IA - muy probable IA
-    adjustedProbability = Math.max(adjustedProbability, 85);
-  } else if (semanticSimilarity > 0.85) {
-    // Similar a plantillas IA - probable IA
-    adjustedProbability = Math.max(adjustedProbability, 75);
-  } else if (semanticSimilarity < 0.7) {
-    // Poco similar a plantillas IA - probable humano
-    adjustedProbability = Math.min(adjustedProbability, 40);
-  }
-  
+
   // Ajustes específicos por tipo de texto
   if (textType === "academic") {
     // Para textos académicos, ser más permisivo con estructura rígida
@@ -138,9 +106,9 @@ function adjustProbabilityByTextType(
     } else if (scores.markersIA >= 18 && scores.markersHuman <= 8) {
       // Si tiene muchos marcadores IA y pocos humanos, mantener alto
       adjustedProbability = Math.max(adjustedProbability, 70);
-    } else if (entropyScore < 4.0 && semanticSimilarity > 0.85) {
-      // Texto muy repetitivo y similar a plantillas IA
-      adjustedProbability = Math.max(adjustedProbability, 75);
+    } else if (entropyScore < 4.0) {
+      // Texto muy repetitivo
+      adjustedProbability = Math.max(adjustedProbability, 70);
     } else {
       // Ajuste general para académicos: reducir falsos positivos
       adjustedProbability = Math.max(0, adjustedProbability - 8);
@@ -154,20 +122,20 @@ function adjustProbabilityByTextType(
     } else if (scores.markersIA >= 16 && scores.markersHuman <= 8) {
       // Si tiene muchos marcadores IA y pocos humanos, mantener alto
       adjustedProbability = Math.max(adjustedProbability, 65);
-    } else if (entropyScore > 5.0 && semanticSimilarity < 0.75) {
-      // Texto muy variado y poco similar a plantillas IA
+    } else if (entropyScore > 5.0) {
+      // Texto muy variado
       adjustedProbability = Math.min(adjustedProbability, 35);
     } else {
       // Ajuste general para informales: reducir falsos negativos
       adjustedProbability = Math.min(100, adjustedProbability + 5);
     }
   }
-  
+
   return Math.max(0, Math.min(100, adjustedProbability));
 }
 
 export async function POST(request: Request) {
-  console.log("Usando GPT-4 Turbo"); // Debug temporal
+  console.log("Usando GPT-3.5 Turbo"); // Debug temporal
   try {
     const { text, textType = "default" } = await request.json();
 
@@ -191,7 +159,7 @@ export async function POST(request: Request) {
 
     // Call OpenAI API to analyze the text
     const completion = await openai.chat.completions.create({
-      model: "gpt-4-turbo",
+      model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
@@ -232,10 +200,9 @@ export async function POST(request: Request) {
       );
     }
 
-    // Calcular entropía y similitud semántica
+    // Calcular entropía
     const entropyScore = calculateEntropy(text);
-    const semanticSimilarity = await calculateSemanticSimilarity(text, iaReferenceText);
-    
+
     // Ajuste de probabilidad según tipo de texto (lógica mejorada)
     let adjustedProbability = analysis.probability;
 
@@ -254,8 +221,7 @@ export async function POST(request: Request) {
       adjustedProbability,
       textType,
       analysis.scores_by_category,
-      entropyScore,
-      semanticSimilarity
+      entropyScore
     );
 
     return NextResponse.json({
@@ -264,8 +230,7 @@ export async function POST(request: Request) {
       scores_by_category: analysis.scores_by_category,
       linguistic_footprints: analysis.linguistic_footprints,
       entropyScore,
-      semanticSimilarity,
-      interpretation: getInterpretation(adjustedProbability, textType, entropyScore, semanticSimilarity)
+      interpretation: getInterpretation(adjustedProbability, textType, entropyScore)
     });
   } catch (error) {
     console.error('Error analyzing text:', error);

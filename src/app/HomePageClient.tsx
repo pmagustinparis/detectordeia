@@ -386,14 +386,6 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                         </span>
                       </Tooltip>
                     )}
-                    {typeof result.semanticSimilarity === 'number' && (
-                      <Tooltip text={"Similitud IA: compara tu texto con una plantilla típica de IA usando IA avanzada.\nAlto (>0.85): posible paráfrasis de IA.\nBajo (<0.8): texto más original o humano."}>
-                        <span className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold">
-                          Similitud IA: <span className="ml-1 font-bold">{result.semanticSimilarity}</span>
-                          <span className="ml-1 text-gray-400">❓</span>
-                        </span>
-                      </Tooltip>
-                    )}
                   </div>
                   
                   {/* Próximamente: Reescribir como texto humano */}
