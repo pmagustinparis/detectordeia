@@ -231,38 +231,14 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
           {/* Result block (right) */}
           <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
             <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col min-h-[260px] justify-between relative">
-              {/* Overlay premium cuando se excede el límite */}
-              {isLimitExceeded && result && (
-                <div className="absolute inset-0 bg-white/95 backdrop-blur-sm rounded-2xl flex items-center justify-center z-10 p-6">
-                  <div className="text-center max-w-md">
-                    <p className="text-red-600 font-semibold mb-3 text-sm flex items-center justify-center gap-2">
-                      <span>⚠️</span> {text.length}/{CHARACTER_LIMIT} caracteres. Límite superado.
-                    </p>
-                    <p className="text-gray-700 mb-4 text-sm">
-                      Para ver tu análisis completo y analizar sin límites, actualiza a Premium.
-                    </p>
-                    <a
-                      href="/pricing"
-                      className="inline-block w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all mb-3"
-                    >
-                      🔓 Actualizar ahora
-                    </a>
-                    <p className="text-xs text-gray-500">
-                      📝 Te avisaremos cuando los planes estén disponibles
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              <div className={isLimitExceeded && result ? "blur-sm pointer-events-none" : ""}>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[#7c3aed] text-xl">🛡️</span>
-                  <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
-                </div>
-                <span className="text-xs text-gray-600 mb-2">Análisis validado con tecnología avanzada para español</span>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#7c3aed] text-xl">🛡️</span>
+                <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
               </div>
+              <span className="text-xs text-gray-600 mb-2">Análisis validado con tecnología avanzada para español</span>
               {result ? (
-                <div className={isLimitExceeded ? "blur-sm pointer-events-none" : ""}>
+                <div className="relative">
+                <div className={isLimitExceeded ? "filter blur-sm" : ""}>
                 <>
                   <div className="flex items-end gap-3 mb-1">
                     <span className={`text-4xl font-extrabold leading-none ${getResultColor(result.probability)}`}>{result.probability > 50 ? result.probability : 100 - result.probability}%</span>
@@ -381,14 +357,14 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                   </div>
                   <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
                   {/* Bloque de feedback */}
-                  {!feedbackSent && result && (
+                  {!feedbackSent && result && !isLimitExceeded && (
                     <FeedbackBlock
                       originalText={text}
                       result={result.probability}
                       onSent={() => setFeedbackSent(true)}
                     />
                   )}
-                  {result && (
+                  {result && !isLimitExceeded && (
                     <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xl text-[#a259f7]">🔒</span>
@@ -411,6 +387,30 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                     </div>
                   )}
                 </>
+                </div>
+
+                {/* Overlay premium cuando se excede el límite */}
+                {isLimitExceeded && (
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white/90 flex items-center justify-center p-6 pointer-events-none">
+                    <div className="text-center max-w-sm bg-white rounded-2xl shadow-xl p-6 pointer-events-auto">
+                      <p className="text-red-600 font-bold mb-2 text-sm flex items-center justify-center gap-2">
+                        ⚠️ {text.length}/{CHARACTER_LIMIT} caracteres. Límite superado.
+                      </p>
+                      <p className="text-gray-700 mb-4 text-sm">
+                        Para ver tu análisis completo y analizar sin límites, actualiza a Premium.
+                      </p>
+                      <a
+                        href="/pricing"
+                        className="block w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all mb-2"
+                      >
+                        🔓 Actualizar ahora
+                      </a>
+                      <p className="text-xs text-gray-500">
+                        📝 Te avisaremos cuando los planes estén disponibles
+                      </p>
+                    </div>
+                  </div>
+                )}
                 </div>
               ) : (
                 <>
