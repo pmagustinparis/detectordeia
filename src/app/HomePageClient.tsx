@@ -86,6 +86,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLimitExceeded, setIsLimitExceeded] = useState(false);
+  const [analyzedTextLength, setAnalyzedTextLength] = useState(0);
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
   const detectorRef = useRef<HTMLDivElement>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
@@ -126,6 +127,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
           entropyScore: 4.5,
           interpretation: "Actualiza a Premium para ver el análisis completo"
         });
+        setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
       } else {
         // Análisis normal
@@ -141,6 +143,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
           throw new Error(data.error || 'Error al analizar el texto');
         }
         setResult(data);
+        setAnalyzedTextLength(text.length);
         setIsLimitExceeded(false);
       }
     } catch (err) {
@@ -155,6 +158,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
     setResult(null);
     setError(null);
     setIsLimitExceeded(false);
+    setAnalyzedTextLength(0);
   };
 
   const handleHeroCta = (e: React.MouseEvent) => {
@@ -183,7 +187,15 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                 className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-4 border-[#a259f7] rounded-2xl shadow-2xl focus:ring-4 focus:ring-[#a259f7]/50 focus:border-[#a259f7] p-6 text-lg text-gray-800 placeholder-gray-400 transition outline-none resize-none mb-1"
                 placeholder="Pega aquí el texto que quieras analizar (mínimo 250 caracteres)"
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => {
+                  setText(e.target.value);
+                  // Limpiar resultado cuando usuario edita el texto
+                  if (result) {
+                    setResult(null);
+                    setIsLimitExceeded(false);
+                    setAnalyzedTextLength(0);
+                  }
+                }}
                 aria-label="Texto a analizar"
               />
             </div>
@@ -394,7 +406,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white/90 flex items-center justify-center p-6 pointer-events-none">
                     <div className="text-center max-w-sm bg-white rounded-2xl shadow-xl p-6 pointer-events-auto">
                       <p className="text-red-600 font-bold mb-2 text-sm flex items-center justify-center gap-2">
-                        ⚠️ {text.length}/{CHARACTER_LIMIT} caracteres. Límite superado.
+                        ⚠️ {analyzedTextLength}/{CHARACTER_LIMIT} caracteres. Límite superado.
                       </p>
                       <p className="text-gray-700 mb-4 text-sm">
                         Para ver tu análisis completo y analizar sin límites, actualiza a Premium.
