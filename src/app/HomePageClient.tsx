@@ -100,8 +100,8 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
   };
 
   const handleAnalyze = async () => {
-    if (text.length < 250) {
-      setError('El texto debe tener al menos 250 caracteres');
+    if (text.length < 80) {
+      setError('El texto debe tener al menos 80 caracteres');
       return;
     }
 
@@ -185,7 +185,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
               <textarea
                 id="detector-textarea"
                 className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-4 border-[#a259f7] rounded-2xl shadow-2xl focus:ring-4 focus:ring-[#a259f7]/50 focus:border-[#a259f7] p-6 text-lg text-gray-800 placeholder-gray-400 transition outline-none resize-none mb-1"
-                placeholder="Pega aquí el texto que quieras analizar (mínimo 250 caracteres)"
+                placeholder="Pega aquí el texto que quieras analizar (mínimo 80 caracteres)"
                 value={text}
                 onChange={(e) => {
                   setText(e.target.value);
@@ -231,7 +231,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
             )}
             <button
               onClick={handleAnalyze}
-              disabled={isAnalyzing || text.length < 250}
+              disabled={isAnalyzing || text.length < 80}
               className={`mt-1 w-full bg-[#7c3aed] hover:bg-[#5b21b6] text-white py-2 rounded-xl font-bold text-base shadow-md transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
               aria-label="Detectar contenido de IA"
             >
