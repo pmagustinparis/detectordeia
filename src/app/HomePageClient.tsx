@@ -85,7 +85,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
     interpretation?: string;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [isLimitExceeded, setIsLimitExceeded] = useState(false);
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
   const detectorRef = useRef<HTMLDivElement>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
@@ -103,25 +103,46 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
       setError('El texto debe tener al menos 250 caracteres');
       return;
     }
-    if (text.length > CHARACTER_LIMIT) {
-      setShowPremiumModal(true);
-      return;
-    }
+
+    const exceededLimit = text.length > CHARACTER_LIMIT;
+
     setIsAnalyzing(true);
     setError(null);
+
     try {
-      const response = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text, textType }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Error al analizar el texto');
+      if (exceededLimit) {
+        // Mostrar resultado simulado cuando se excede el límite
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
+        setResult({
+          probability: 65,
+          confidenceLevel: 'medium',
+          scores_by_category: {
+            markersIA: 15,
+            markersHuman: 10
+          },
+          linguistic_footprints: [
+            { phrase: "Análisis completo disponible", reason: "Actualiza a Premium para ver detalles" }
+          ],
+          entropyScore: 4.5,
+          interpretation: "Actualiza a Premium para ver el análisis completo"
+        });
+        setIsLimitExceeded(true);
+      } else {
+        // Análisis normal
+        const response = await fetch('/api/analyze', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ text, textType }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || 'Error al analizar el texto');
+        }
+        setResult(data);
+        setIsLimitExceeded(false);
       }
-      setResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
     } finally {
@@ -133,6 +154,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
     setText('');
     setResult(null);
     setError(null);
+    setIsLimitExceeded(false);
   };
 
   const handleHeroCta = (e: React.MouseEvent) => {
@@ -202,19 +224,45 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
               aria-label="Detectar contenido de IA"
             >
               <span className="mr-2">🤖</span>
-              {isAnalyzing ? 'Analizando...' : 'Analizar texto gratis'}
+              {isAnalyzing ? 'Analizando...' : 'Analizar texto'}
             </button>
             <p className="text-center text-sm text-gray-800 mt-1">Sin registro. 100% privado. Precisión líder en español.</p>
           </div>
           {/* Result block (right) */}
           <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col min-h-[260px] justify-between">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[#7c3aed] text-xl">🛡️</span>
-                <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
+            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col min-h-[260px] justify-between relative">
+              {/* Overlay premium cuando se excede el límite */}
+              {isLimitExceeded && result && (
+                <div className="absolute inset-0 bg-white/95 backdrop-blur-sm rounded-2xl flex items-center justify-center z-10 p-6">
+                  <div className="text-center max-w-md">
+                    <p className="text-red-600 font-semibold mb-3 text-sm flex items-center justify-center gap-2">
+                      <span>⚠️</span> {text.length}/{CHARACTER_LIMIT} caracteres. Límite superado.
+                    </p>
+                    <p className="text-gray-700 mb-4 text-sm">
+                      Para ver tu análisis completo y analizar sin límites, actualiza a Premium.
+                    </p>
+                    <a
+                      href="/pricing"
+                      className="inline-block w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all mb-3"
+                    >
+                      🔓 Actualizar ahora
+                    </a>
+                    <p className="text-xs text-gray-500">
+                      📝 Te avisaremos cuando los planes estén disponibles
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              <div className={isLimitExceeded && result ? "blur-sm pointer-events-none" : ""}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[#7c3aed] text-xl">🛡️</span>
+                  <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
+                </div>
+                <span className="text-xs text-gray-600 mb-2">Análisis validado con tecnología avanzada para español</span>
               </div>
-              <span className="text-xs text-gray-600 mb-2">Análisis validado con tecnología avanzada para español</span>
               {result ? (
+                <div className={isLimitExceeded ? "blur-sm pointer-events-none" : ""}>
                 <>
                   <div className="flex items-end gap-3 mb-1">
                     <span className={`text-4xl font-extrabold leading-none ${getResultColor(result.probability)}`}>{result.probability > 50 ? result.probability : 100 - result.probability}%</span>
@@ -363,6 +411,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                     </div>
                   )}
                 </>
+                </div>
               ) : (
                 <>
                   <div className="flex items-end gap-3 mb-1">
@@ -460,59 +509,6 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
           </div>
         </div>
       </section>
-
-      {/* Modal Premium para límite de caracteres excedido */}
-      {showPremiumModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowPremiumModal(false)}>
-          <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold text-gray-800">Límite alcanzado</h3>
-              <button
-                onClick={() => setShowPremiumModal(false)}
-                className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
-                aria-label="Cerrar modal"
-              >
-                ×
-              </button>
-            </div>
-            <div className="mb-4">
-              <p className="text-gray-700 mb-3">
-                El plan gratuito permite analizar hasta <strong>{CHARACTER_LIMIT} caracteres</strong> por análisis.
-              </p>
-              <p className="text-gray-700 mb-4">
-                Tu texto tiene <strong className="text-red-600">{text.length} caracteres</strong>.
-              </p>
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-                <h4 className="font-bold text-gray-800 mb-2 flex items-center gap-2">
-                  <span>🔓</span> Con el plan Premium:
-                </h4>
-                <ul className="text-sm text-gray-700 space-y-1">
-                  <li>• Análisis sin límite de caracteres</li>
-                  <li>• Análisis por criterios y explicaciones detalladas</li>
-                  <li>• Subida de archivos .txt, .docx, .pdf</li>
-                  <li>• Acceso vía API</li>
-                  <li>• Desde $7/mes</li>
-                </ul>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <a
-                href="/pricing"
-                className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-center"
-              >
-                🔓 Actualizar a Premium
-              </a>
-              <button
-                onClick={() => setShowPremiumModal(false)}
-                className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-4 rounded-xl transition-all"
-              >
-                Cerrar
-              </button>
-            </div>
-            <p className="text-xs text-gray-500 text-center mt-3">📝 Te avisaremos cuando los planes estén disponibles</p>
-          </div>
-        </div>
-      )}
 
       {/* Waitlist Modal */}
       {showWaitlistModal && (
