@@ -156,23 +156,44 @@ export default function DetectorMain({
   };
 
   return (
-    <section className="w-full bg-transparent flex flex-col items-center justify-center pt-6 pb-2 px-2">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-[#7c3aed] mb-2 tracking-tight leading-tight">{h1}</h1>
-      <p className="text-base md:text-lg text-gray-800 mb-3 max-w-2xl mx-auto">{subtitle}</p>
-      <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
+    <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
+
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight animate-fade-in">
+        <span className="gradient-text-primary">{h1}</span>
+      </h1>
+      <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>{subtitle}</p>
+      <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
         {/* Input + Button (left) */}
-        <div className="flex-1 bg-white rounded-2xl shadow-lg p-6 flex flex-col justify-between min-w-[320px] max-h-[600px]">
+        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px] card-elevated">
           {/* Trust indicators */}
-          <div className="flex items-center gap-2 mb-2">
-            <span className="inline-block bg-[#e9d5ff] text-[#7c3aed] font-bold rounded-lg px-3 py-1 text-xs">No login</span>
-            <span className="inline-block bg-[#e9d5ff] text-[#7c3aed] font-bold rounded-lg px-3 py-1 text-xs">100% privado</span>
-            <span className="inline-block bg-[#e9d5ff] text-[#7c3aed] font-bold rounded-lg px-3 py-1 text-xs">En español</span>
+          <div className="flex items-center gap-2 mb-3 flex-wrap">
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              No login
+            </span>
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+              </svg>
+              100% privado
+            </span>
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
+              </svg>
+              En español
+            </span>
           </div>
-          <label htmlFor="detector-textarea" className="block text-base font-bold text-gray-800 mb-1">Pega tu texto para analizar</label>
+          <label htmlFor="detector-textarea" className="block text-base font-semibold text-gray-800 mb-2">Pega tu texto para analizar</label>
           <div className="flex flex-col flex-grow">
             <textarea
               id="detector-textarea"
-              className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-4 border-[#a259f7] rounded-2xl shadow-2xl focus:ring-4 focus:ring-[#a259f7]/50 focus:border-[#a259f7] p-6 text-lg text-gray-800 placeholder-gray-400 transition outline-none resize-none mb-1"
+              className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-2 border-violet-200 rounded-2xl shadow-inner focus:ring-4 focus:ring-violet-300/50 focus:border-violet-400 p-5 text-base text-gray-800 placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-violet-300"
               placeholder="Pega aquí el texto que quieras analizar (mínimo 80 caracteres)"
               value={text}
               onChange={(e) => {
@@ -187,11 +208,11 @@ export default function DetectorMain({
               aria-label="Texto a analizar"
             />
           </div>
-          <div className="flex justify-between items-center text-base text-gray-800 mt-0 mb-1 gap-2">
-            <span className={getCounterColor()}>{text.length}/{CHARACTER_LIMIT}</span>
+          <div className="flex justify-between items-center text-sm text-gray-600 mt-0 mb-1 gap-2">
+            <span className={getCounterColor() + ' font-medium'}>{text.length}/{CHARACTER_LIMIT}</span>
             <button
               onClick={handleClear}
-              className="text-[#7c3aed] ml-2 hover:underline transition-all disabled:opacity-40"
+              className="text-violet-600 font-semibold ml-2 hover:text-violet-700 hover:underline transition-all disabled:opacity-40"
               type="button"
               disabled={text.length === 0 && !result}
               aria-label="Limpiar texto"
@@ -201,41 +222,45 @@ export default function DetectorMain({
           </div>
           {/* Selector de tipo de texto dentro de la tarjeta blanca */}
           <div className="mt-2 mb-2">
-            <label className="block text-sm font-bold text-gray-800 mb-1">Tipo de texto</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Tipo de texto</label>
             <select
               value={textType}
               onChange={(e) => setTextType(e.target.value)}
-              className="w-full border-2 border-[#a259f7] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#a259f7]/50 transition text-black"
+              className="w-full border-2 border-violet-200 rounded-xl px-3 py-2.5 text-sm bg-white hover:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-300/50 focus:border-violet-400 transition-all text-gray-700"
             >
-              <option value="default" className="text-black">Sin especificar</option>
-              <option value="academic" className="text-black">Académico / formal</option>
-              <option value="informal" className="text-black">Conversación / informal</option>
+              <option value="default" className="text-gray-700">Sin especificar</option>
+              <option value="academic" className="text-gray-700">Académico / formal</option>
+              <option value="informal" className="text-gray-700">Conversación / informal</option>
             </select>
           </div>
           {error && (
-            <div className="mt-1 p-2 bg-red-50 text-red-700 rounded-lg text-xs font-medium">
+            <div className="mt-1 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs font-medium">
               {error}
             </div>
           )}
           <button
             onClick={handleAnalyze}
             disabled={isAnalyzing || text.length < 80}
-            className={`mt-1 w-full bg-[#7c3aed] hover:bg-[#5b21b6] text-white py-2 rounded-xl font-bold text-base shadow-md transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+            className={`mt-2 w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isAnalyzing ? 'animate-pulse-glow' : ''}`}
             aria-label="Detectar contenido de IA"
           >
-            <span className="mr-2">🤖</span>
+            <span className="text-xl">🤖</span>
             {isAnalyzing ? 'Analizando...' : 'Analizar texto'}
           </button>
-          <p className="text-center text-sm text-gray-800 mt-1">Sin registro. 100% privado. Precisión líder en español.</p>
+          <p className="text-center text-sm text-gray-600 mt-2 font-medium">Sin registro. 100% privado. Precisión líder en español.</p>
         </div>
         {/* Result block (right) */}
         <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col min-h-[260px] justify-between relative">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-[#7c3aed] text-xl">🛡️</span>
-              <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 shadow-md">
+                <span className="text-white text-lg">🛡️</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
+                <span className="text-xs text-gray-500">Tecnología avanzada para español</span>
+              </div>
             </div>
-            <span className="text-xs text-gray-600 mb-2">Análisis validado con tecnología avanzada para español</span>
             {result ? (
               <div className="relative">
               <div className={isLimitExceeded ? "filter blur-sm" : ""}>

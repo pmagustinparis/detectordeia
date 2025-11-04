@@ -167,24 +167,50 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 pb-10 px-2">
+    <div className="min-h-screen pb-10 px-2">
       {/* HERO PRODUCT BLOCK: input, button, result, trust indicators */}
-      <section className="w-full bg-transparent flex flex-col items-center justify-center pt-6 pb-2 px-2">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-6 mt-4 leading-tight">El Mejor Detector de IA en Español</h1>
-        <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
+      <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
+        {/* Elementos decorativos de fondo */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
+
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 mt-4 leading-tight animate-fade-in">
+          <span className="gradient-text-primary">El Mejor Detector de IA</span>
+          <br />
+          <span className="text-gray-800">en Español</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 text-center mb-8 max-w-3xl animate-fade-in" style={{animationDelay: '0.2s'}}>
+          Detecta contenido generado por IA con precisión líder. Gratis, privado y sin registro.
+        </p>
+        <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
           {/* Input + Button (left) */}
-          <div className="flex-1 bg-white rounded-2xl shadow-lg p-6 flex flex-col justify-between min-w-[320px] max-h-[600px]">
+          <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px] card-elevated">
             {/* Trust indicators */}
-            <div className="flex items-center gap-2 mb-2">
-              <span className="inline-block bg-[#e9d5ff] text-[#7c3aed] font-bold rounded-lg px-3 py-1 text-xs">No login</span>
-              <span className="inline-block bg-[#e9d5ff] text-[#7c3aed] font-bold rounded-lg px-3 py-1 text-xs">100% privado</span>
-              <span className="inline-block bg-[#e9d5ff] text-[#7c3aed] font-bold rounded-lg px-3 py-1 text-xs">En español</span>
+            <div className="flex items-center gap-2 mb-3 flex-wrap">
+              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                No login
+              </span>
+              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                </svg>
+                100% privado
+              </span>
+              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
+                </svg>
+                En español
+              </span>
             </div>
-            <label htmlFor="detector-textarea" className="block text-base font-bold text-gray-800 mb-1">Pega tu texto para analizar</label>
+            <label htmlFor="detector-textarea" className="block text-base font-semibold text-gray-800 mb-2">Pega tu texto para analizar</label>
             <div className="flex flex-col flex-grow">
               <textarea
                 id="detector-textarea"
-                className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-4 border-[#a259f7] rounded-2xl shadow-2xl focus:ring-4 focus:ring-[#a259f7]/50 focus:border-[#a259f7] p-6 text-lg text-gray-800 placeholder-gray-400 transition outline-none resize-none mb-1"
+                className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-2 border-violet-200 rounded-2xl shadow-inner focus:ring-4 focus:ring-violet-300/50 focus:border-violet-400 p-5 text-base text-gray-800 placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-violet-300"
                 placeholder="Pega aquí el texto que quieras analizar (mínimo 80 caracteres)"
                 value={text}
                 onChange={(e) => {
@@ -199,11 +225,11 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                 aria-label="Texto a analizar"
               />
             </div>
-            <div className="flex justify-between items-center text-base text-gray-800 mt-0 mb-1 gap-2">
-              <span className={getCounterColor()}>{text.length}/{CHARACTER_LIMIT}</span>
+            <div className="flex justify-between items-center text-sm text-gray-600 mt-0 mb-1 gap-2">
+              <span className={getCounterColor() + ' font-medium'}>{text.length}/{CHARACTER_LIMIT}</span>
               <button
                 onClick={handleClear}
-                className="text-[#5b21b6] font-bold ml-2 hover:underline transition-all disabled:opacity-40"
+                className="text-violet-600 font-semibold ml-2 hover:text-violet-700 hover:underline transition-all disabled:opacity-40"
                 type="button"
                 disabled={text.length === 0 && !result}
                 aria-label="Limpiar texto"
@@ -213,41 +239,45 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
             </div>
             {/* Selector de tipo de texto dentro de la tarjeta blanca */}
             <div className="mt-2 mb-2">
-              <label className="block text-sm font-bold text-gray-800 mb-1">Tipo de texto</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Tipo de texto</label>
               <select
                 value={textType}
                 onChange={(e) => setTextType(e.target.value)}
-                className="w-full border-2 border-[#a259f7] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#a259f7]/50 transition text-black"
+                className="w-full border-2 border-violet-200 rounded-xl px-3 py-2.5 text-sm bg-white hover:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-300/50 focus:border-violet-400 transition-all text-gray-700"
               >
-                <option value="default" className="text-black">Sin especificar</option>
-                <option value="academic" className="text-black">Académico / formal</option>
-                <option value="informal" className="text-black">Conversación / informal</option>
+                <option value="default" className="text-gray-700">Sin especificar</option>
+                <option value="academic" className="text-gray-700">Académico / formal</option>
+                <option value="informal" className="text-gray-700">Conversación / informal</option>
               </select>
             </div>
             {error && (
-              <div className="mt-1 p-2 bg-red-50 text-red-700 rounded-lg text-xs font-medium">
+              <div className="mt-1 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs font-medium">
                 {error}
               </div>
             )}
             <button
               onClick={handleAnalyze}
               disabled={isAnalyzing || text.length < 80}
-              className={`mt-1 w-full bg-[#7c3aed] hover:bg-[#5b21b6] text-white py-2 rounded-xl font-bold text-base shadow-md transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+              className={`mt-2 w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isAnalyzing ? 'animate-pulse-glow' : ''}`}
               aria-label="Detectar contenido de IA"
             >
-              <span className="mr-2">🤖</span>
+              <span className="text-xl">🤖</span>
               {isAnalyzing ? 'Analizando...' : 'Analizar texto'}
             </button>
-            <p className="text-center text-sm text-gray-800 mt-1">Sin registro. 100% privado. Precisión líder en español.</p>
+            <p className="text-center text-sm text-gray-600 mt-2 font-medium">Sin registro. 100% privado. Precisión líder en español.</p>
           </div>
           {/* Result block (right) */}
           <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col min-h-[260px] justify-between relative">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[#7c3aed] text-xl">🛡️</span>
-                <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 shadow-md">
+                  <span className="text-white text-lg">🛡️</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
+                  <span className="text-xs text-gray-500">Tecnología avanzada para español</span>
+                </div>
               </div>
-              <span className="text-xs text-gray-600 mb-2">Análisis validado con tecnología avanzada para español</span>
               {result ? (
                 <div className="relative">
                 <div className={isLimitExceeded ? "filter blur-sm" : ""}>
@@ -453,71 +483,140 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
       </section>
 
       {/* VALUE PROPS/FEATURES ROW - MOVIDO FUERA DEL GRID PRINCIPAL */}
-      <section className="max-w-5xl mx-auto mb-12 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-0">
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-          <span className="text-3xl mb-2">🎯</span>
-          <h3 className="font-bold text-lg mb-1 text-gray-800">Precisión en español</h3>
-          <p className="text-gray-700 text-sm">Optimizado para textos de España y LATAM. Resultados confiables y explicados.</p>
+      <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8 animate-slide-in-bottom">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+            <span className="text-3xl">🎯</span>
+          </div>
+          <h3 className="font-bold text-lg mb-2 text-gray-800">Precisión en español</h3>
+          <p className="text-gray-600 text-sm leading-relaxed">Optimizado para textos de España y LATAM. Resultados confiables y explicados.</p>
         </div>
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-          <span className="text-3xl mb-2">🔒</span>
-          <h3 className="font-bold text-lg mb-1 text-gray-800">Privacidad total</h3>
-          <p className="text-gray-700 text-sm">Tus textos no se guardan ni comparten. 100% privado y seguro.</p>
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+            <span className="text-3xl">🔒</span>
+          </div>
+          <h3 className="font-bold text-lg mb-2 text-gray-800">Privacidad total</h3>
+          <p className="text-gray-600 text-sm leading-relaxed">Tus textos no se guardan ni comparten. 100% privado y seguro.</p>
         </div>
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-          <span className="text-3xl mb-2">⚡</span>
-          <h3 className="font-bold text-lg mb-1 text-gray-800">Sin registro</h3>
-          <p className="text-gray-700 text-sm">Analizá textos gratis, sin crear cuenta. Análisis ilimitados.</p>
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+            <span className="text-3xl">⚡</span>
+          </div>
+          <h3 className="font-bold text-lg mb-2 text-gray-800">Sin registro</h3>
+          <p className="text-gray-600 text-sm leading-relaxed">Analizá textos gratis, sin crear cuenta. Análisis ilimitados.</p>
         </div>
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-          <span className="text-3xl mb-2">📊</span>
-          <h3 className="font-bold text-lg mb-1 text-gray-800">Reportes avanzados</h3>
-          <p className="text-gray-700 text-sm">Planes premium con archivos, historial y reportes detallados.</p>
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+            <span className="text-3xl">📊</span>
+          </div>
+          <h3 className="font-bold text-lg mb-2 text-gray-800">Reportes avanzados</h3>
+          <p className="text-gray-600 text-sm leading-relaxed">Planes premium con archivos, historial y reportes detallados.</p>
         </div>
       </section>
 
       {/* SECCIÓN DE BENEFICIOS */}
-      <section className="max-w-5xl mx-auto mb-12 px-2">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-center text-[#7c3aed] mb-8">¿Para quién es DetectordeIA.ai?</h2>
-        <div className="grid md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-            <span className="text-3xl mb-2">🎓</span>
-            <h3 className="font-bold text-lg mb-1 text-gray-800">Estudiantes</h3>
-            <p className="text-gray-700 text-sm">Verificá la originalidad de tus trabajos y evitá problemas académicos.</p>
+      <section className="max-w-5xl mx-auto mb-16 px-2">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 animate-fade-in">
+          <span className="gradient-text-primary">¿Para quién es</span>
+          <span className="text-gray-800"> DetectordeIA.ai?</span>
+        </h2>
+        <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+          Diseñado para profesionales, educadores, estudiantes y creadores de contenido
+        </p>
+        <div className="grid md:grid-cols-4 gap-6 animate-slide-in-bottom">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <span className="text-4xl">🎓</span>
+            </div>
+            <h3 className="font-bold text-lg mb-2 text-gray-800">Estudiantes</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">Verificá la originalidad de tus trabajos y evitá problemas académicos.</p>
           </div>
-          <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-            <span className="text-3xl mb-2">👩‍🏫</span>
-            <h3 className="font-bold text-lg mb-1 text-gray-800">Docentes</h3>
-            <p className="text-gray-700 text-sm">Detectá IA en exámenes, ensayos y tareas. Herramienta confiable para educación.</p>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <span className="text-4xl">👩‍🏫</span>
+            </div>
+            <h3 className="font-bold text-lg mb-2 text-gray-800">Docentes</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">Detectá IA en exámenes, ensayos y tareas. Herramienta confiable para educación.</p>
           </div>
-          <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-            <span className="text-3xl mb-2">🏢</span>
-            <h3 className="font-bold text-lg mb-1 text-gray-800">Empresas</h3>
-            <p className="text-gray-700 text-sm">Controlá la autenticidad de informes y comunicaciones.</p>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <span className="text-4xl">🏢</span>
+            </div>
+            <h3 className="font-bold text-lg mb-2 text-gray-800">Empresas</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">Controlá la autenticidad de informes y comunicaciones.</p>
           </div>
-          <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
-            <span className="text-3xl mb-2">✍️</span>
-            <h3 className="font-bold text-lg mb-1 text-gray-800">Creadores de contenido</h3>
-            <p className="text-gray-700 text-sm">Asegurá la originalidad y mejorá tu posicionamiento en buscadores.</p>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <span className="text-4xl">✍️</span>
+            </div>
+            <h3 className="font-bold text-lg mb-2 text-gray-800">Creadores de contenido</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">Asegurá la originalidad y mejorá tu posicionamiento en buscadores.</p>
           </div>
         </div>
       </section>
 
       {/* SECCIÓN FAQ SEO */}
-      <section className="max-w-5xl mx-auto mb-20 px-2">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-center text-[#7c3aed] mb-8">Preguntas frecuentes sobre el detector de IA</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">¿Qué tan preciso es DetectordeIA.ai?</h3>
-            <p className="text-gray-700 text-sm mb-4">Optimizado para español, utiliza IA avanzada y validación con Perplexity. Ideal para educación, empresas y creadores.</p>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">¿Se guarda o comparte mi texto?</h3>
-            <p className="text-gray-700 text-sm mb-4">No. Los textos analizados sin login no se almacenan ni comparten.</p>
+      <section id="faq" className="max-w-5xl mx-auto mb-20 px-2">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 animate-fade-in">
+          <span className="gradient-text-primary">Preguntas frecuentes</span>
+          <span className="text-gray-800"> sobre el detector de IA</span>
+        </h2>
+        <p className="text-center text-gray-600 mb-10">
+          Todo lo que necesitás saber sobre nuestro detector
+        </p>
+        <div className="grid md:grid-cols-2 gap-6 animate-slide-in-bottom">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 card-elevated">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center flex-shrink-0 shadow-md">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">¿Qué tan preciso es DetectordeIA.ai?</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">Optimizado para español, utiliza IA avanzada y validación con Perplexity. Ideal para educación, empresas y creadores.</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">¿Puedo analizar archivos o textos largos?</h3>
-            <p className="text-gray-700 text-sm mb-4">Sí, en los planes premium podés subir archivos y analizar hasta 50.000 caracteres.</p>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">¿Cómo funciona el plan gratuito?</h3>
-            <p className="text-gray-700 text-sm mb-4">Hasta 1.200 caracteres por análisis, análisis ilimitados, sin registro.</p>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 card-elevated">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center flex-shrink-0 shadow-md">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">¿Se guarda o comparte mi texto?</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">No. Los textos analizados sin login no se almacenan ni comparten. Tu privacidad es nuestra prioridad.</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 card-elevated">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-md">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">¿Puedo analizar archivos o textos largos?</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">Sí, en los planes premium podés subir archivos y analizar hasta 50.000 caracteres.</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 card-elevated">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0 shadow-md">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">¿Cómo funciona el plan gratuito?</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">Hasta 1.200 caracteres por análisis, análisis ilimitados, sin registro.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
