@@ -29,6 +29,12 @@ export default function Header() {
               Detector
             </Link>
             <Link
+              href="/humanizador"
+              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
+            >
+              Humanizador
+            </Link>
+            <Link
               href="/pricing"
               className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
             >
@@ -99,6 +105,13 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Detector
+              </Link>
+              <Link
+                href="/humanizador"
+                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Humanizador
               </Link>
               <Link
                 href="/pricing"

@@ -1,51 +1,88 @@
-import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { NextResponse } from 'next/server';
+import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { JWT } from 'google-auth-library';
 
-// La ruta al archivo JSON. Asumimos que la raíz del proyecto es donde está la carpeta 'app'.
-// Dentro de la carpeta 'app' estará nuestro subscribers.json
-const dataFilePath = path.join(process.cwd(), 'subscribers.json');
-
-interface Subscriber {
-  date: string;
-  email: string;
-  plan: string;
-}
-
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
-    const { email, plan } = body;
+    // Verificar variables de entorno
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+    const privateKey = process.env.GOOGLE_PRIVATE_KEY;
 
-    if (!email || !plan) {
-      return NextResponse.json({ message: 'Email y plan son requeridos' }, { status: 400 });
+    if (!spreadsheetId || !clientEmail || !privateKey) {
+      console.error('Error: Faltan variables de Google Sheets en el servidor.');
+      return NextResponse.json({
+        error: 'Error de configuración del servidor',
+        details: 'El servicio de suscripción no está configurado.'
+      }, { status: 500 });
     }
 
-    let subscribers: Subscriber[] = [];
-    try {
-      const fileData = await fs.readFile(dataFilePath, 'utf-8');
-      subscribers = JSON.parse(fileData);
-    } catch (error: any) {
-      // Si el archivo no existe o hay error al parsear, empezamos con una lista vacía
-      if (error.code !== 'ENOENT') {
-        console.error('Error al leer subscribers.json:', error);
-        // No relanzamos el error, simplemente empezamos con una lista vacía
-      }
+    const body = await request.json();
+
+    if (!body.email) {
+      console.error('Error: Email requerido');
+      return NextResponse.json({
+        error: 'Email requerido',
+        details: 'El campo email es obligatorio'
+      }, { status: 400 });
     }
 
-    const newSubscriber: Subscriber = {
-      date: new Date().toISOString(),
-      email,
-      plan,
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(body.email)) {
+      return NextResponse.json({
+        error: 'Email inválido',
+        details: 'El formato del email no es válido'
+      }, { status: 400 });
+    }
+
+    // Configurar autenticación con Google
+    const serviceAccountAuth = new JWT({
+      email: clientEmail,
+      key: privateKey.replace(/\\n/g, '\n'), // Convertir \n literales a saltos de línea
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+
+    // Conectar a la hoja de cálculo
+    const doc = new GoogleSpreadsheet(spreadsheetId, serviceAccountAuth);
+    await doc.loadInfo();
+
+    // Buscar o crear la hoja "Premium Subscriptions"
+    let sheet = doc.sheetsByTitle['Premium Subscriptions'];
+    if (!sheet) {
+      sheet = await doc.addSheet({
+        title: 'Premium Subscriptions',
+        headerValues: ['Fecha', 'Email', 'Origen', 'IP', 'User Agent']
+      });
+    }
+
+    // Obtener IP y User Agent del request
+    const forwarded = request.headers.get('x-forwarded-for');
+    const ip = forwarded ? forwarded.split(',')[0] : request.headers.get('x-real-ip') || 'unknown';
+    const userAgent = request.headers.get('user-agent') || 'unknown';
+
+    // Preparar fila
+    const now = new Date().toISOString();
+    const rowData = {
+      'Fecha': now,
+      'Email': body.email,
+      'Origen': body.source || 'unknown',
+      'IP': ip,
+      'User Agent': userAgent
     };
 
-    subscribers.push(newSubscriber);
+    // Agregar fila
+    await sheet.addRow(rowData);
+    return NextResponse.json({
+      success: true,
+      message: 'Email guardado correctamente'
+    });
 
-    await fs.writeFile(dataFilePath, JSON.stringify(subscribers, null, 2), 'utf-8');
-
-    return NextResponse.json({ message: 'Suscripción exitosa' }, { status: 200 });
-  } catch (error) {
-    console.error('Error en /api/subscribe:', error);
-    return NextResponse.json({ message: 'Error interno del servidor' }, { status: 500 });
+  } catch (err) {
+    console.error('Error inesperado en endpoint:', err);
+    return NextResponse.json({
+      error: 'Error interno',
+      details: err instanceof Error ? err.message : 'Error desconocido'
+    }, { status: 500 });
   }
-} 
+}

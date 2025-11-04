@@ -262,8 +262,8 @@ export default function DetectorMain({
               </div>
             </div>
             {result ? (
-              <div className="relative">
-              <div className={isLimitExceeded ? "filter blur-sm" : ""}>
+              <div className="relative" style={{maxHeight: '500px', overflow: 'hidden'}}>
+              <div className={isLimitExceeded ? "filter blur-sm overflow-y-auto" : "overflow-y-auto"} style={{maxHeight: '500px'}}>
                 <div className="flex items-end gap-3 mb-1">
                   <span className={`text-4xl font-extrabold leading-none ${getResultColor(result.probability)}`}>{result.probability > 50 ? result.probability : 100 - result.probability}%</span>
                   {/* Badge semántico */}

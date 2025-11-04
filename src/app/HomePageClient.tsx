@@ -621,6 +621,40 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
         </div>
       </section>
 
+      {/* Otras Herramientas Section */}
+      <section className="max-w-4xl mx-auto mb-16 px-2">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+          <span className="gradient-text-primary">Otras</span>
+          <span className="text-gray-800"> herramientas</span>
+        </h2>
+        <p className="text-center text-gray-600 mb-10">
+          Más herramientas para trabajar con contenido de IA
+        </p>
+
+        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
+              <span className="text-3xl">✨</span>
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
+                ¿Tu texto suena a IA? Humanízalo
+              </h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Transforma texto generado por ChatGPT, Claude o cualquier IA en contenido que suena natural y humano. Gratis, sin registro, optimizado para español.
+              </p>
+              <a
+                href="/humanizador"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <span>Probar el Humanizador de IA</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Waitlist Modal */}
       {showWaitlistModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
