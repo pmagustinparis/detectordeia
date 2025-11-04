@@ -28,41 +28,7 @@ const getResultColor = (value: number) => {
   return 'text-[#27ae60]';
 };
 
-const DAILY_LIMIT = 10;
-const STORAGE_KEY = 'analyze-usage';
-
-function getTodayKey() {
-  const today = new Date();
-  return today.toISOString().slice(0, 10);
-}
-
-function getUsage() {
-  if (typeof window === 'undefined') return 0;
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return 0;
-  try {
-    const data = JSON.parse(raw);
-    return data[getTodayKey()] || 0;
-  } catch {
-    return 0;
-  }
-}
-
-function incrementUsage() {
-  if (typeof window === 'undefined') return;
-  const raw = localStorage.getItem(STORAGE_KEY);
-  let data: Record<string, number> = {};
-  if (raw) {
-    try {
-      data = JSON.parse(raw) as Record<string, number>;
-    } catch {
-      data = {};
-    }
-  }
-  const today = getTodayKey();
-  data[today] = (data[today] || 0) + 1;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
+const CHARACTER_LIMIT = 1200;
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
@@ -114,34 +80,24 @@ export default function DetectorMain({
     interpretation?: string;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [usage, setUsage] = useState(0);
-  const [limitReached, setLimitReached] = useState(false);
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
   const detectorRef = useRef<HTMLDivElement>(null);
   const [textType, setTextType] = useState('default');
   const [feedbackSent, setFeedbackSent] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const current = getUsage();
-      setUsage(current);
-      setLimitReached(current >= DAILY_LIMIT);
-    }
-  }, []);
-
   const getCounterColor = () => {
-    if (text.length > 5000) return 'text-red-600';
-    if (text.length > 4800) return 'text-yellow-600';
+    if (text.length > CHARACTER_LIMIT) return 'text-red-600';
+    if (text.length > CHARACTER_LIMIT * 0.9) return 'text-yellow-600';
     return 'text-gray-500';
   };
 
   const handleAnalyze = async () => {
-    if (limitReached) return;
     if (text.length < 250) {
       setError('El texto debe tener al menos 250 caracteres');
       return;
     }
-    if (text.length > 5000) {
-      setError('El texto no puede exceder los 5000 caracteres');
+    if (text.length > CHARACTER_LIMIT) {
+      setShowPremiumModal(true);
       return;
     }
     setIsAnalyzing(true);
@@ -159,10 +115,6 @@ export default function DetectorMain({
         throw new Error(data.error || 'Error al analizar el texto');
       }
       setResult(data);
-      incrementUsage();
-      const current = getUsage();
-      setUsage(current);
-      setLimitReached(current >= DAILY_LIMIT);
       setFeedbackSent(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
@@ -198,13 +150,11 @@ export default function DetectorMain({
               placeholder="Pega aquí el texto que quieras analizar (mínimo 250 caracteres)"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              maxLength={5000}
               aria-label="Texto a analizar"
             />
           </div>
           <div className="flex justify-between items-center text-base text-gray-800 mt-0 mb-1 gap-2">
-            <span>{text.length}/5000</span>
-            <span>Usos: {usage} / 10</span>
+            <span className={getCounterColor()}>{text.length}/{CHARACTER_LIMIT}</span>
             <button
               onClick={handleClear}
               className="text-[#7c3aed] ml-2 hover:underline transition-all disabled:opacity-40"
@@ -233,15 +183,9 @@ export default function DetectorMain({
               {error}
             </div>
           )}
-          {limitReached && (
-            <div className="flex flex-col items-center gap-2 p-2 bg-red-50 rounded-lg border border-red-200 mt-1">
-              <span className="text-red-700 font-semibold flex items-center gap-2 text-xs"><span>🚫</span>Has alcanzado el límite de {DAILY_LIMIT} análisis gratuitos hoy.</span>
-              <a href="/pricing" className="mt-1 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-3 rounded-xl shadow-md transition-all text-xs">🔓 Desbloquear análisis avanzado</a>
-            </div>
-          )}
           <button
             onClick={handleAnalyze}
-            disabled={isAnalyzing || text.length < 250 || text.length > 5000 || limitReached}
+            disabled={isAnalyzing || text.length < 250}
             className={`mt-1 w-full bg-[#7c3aed] hover:bg-[#5b21b6] text-white py-2 rounded-xl font-bold text-base shadow-md transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
             aria-label="Detectar contenido de IA"
           >
@@ -427,6 +371,59 @@ export default function DetectorMain({
           </div>
         </div>
       </div>
+
+      {/* Modal Premium para límite de caracteres excedido */}
+      {showPremiumModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowPremiumModal(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold text-gray-800">Límite alcanzado</h3>
+              <button
+                onClick={() => setShowPremiumModal(false)}
+                className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
+                aria-label="Cerrar modal"
+              >
+                ×
+              </button>
+            </div>
+            <div className="mb-4">
+              <p className="text-gray-700 mb-3">
+                El plan gratuito permite analizar hasta <strong>{CHARACTER_LIMIT} caracteres</strong> por análisis.
+              </p>
+              <p className="text-gray-700 mb-4">
+                Tu texto tiene <strong className="text-red-600">{text.length} caracteres</strong>.
+              </p>
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
+                <h4 className="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                  <span>🔓</span> Con el plan Premium:
+                </h4>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  <li>• Análisis sin límite de caracteres</li>
+                  <li>• Análisis por criterios y explicaciones detalladas</li>
+                  <li>• Subida de archivos .txt, .docx, .pdf</li>
+                  <li>• Acceso vía API</li>
+                  <li>• Desde $7/mes</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <a
+                href="/pricing"
+                className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-center"
+              >
+                🔓 Actualizar a Premium
+              </a>
+              <button
+                onClick={() => setShowPremiumModal(false)}
+                className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-4 rounded-xl transition-all"
+              >
+                Cerrar
+              </button>
+            </div>
+            <p className="text-xs text-gray-500 text-center mt-3">📝 Te avisaremos cuando los planes estén disponibles</p>
+          </div>
+        </div>
+      )}
     </section>
   );
 } 

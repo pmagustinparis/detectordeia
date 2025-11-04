@@ -147,9 +147,9 @@ export async function POST(request: Request) {
       );
     }
 
-    if (text.length > 5000) {
+    if (text.length > 1200) {
       return NextResponse.json(
-        { error: 'El texto no puede exceder los 5000 caracteres' },
+        { error: 'El texto no puede exceder los 1200 caracteres' },
         { status: 400 }
       );
     }
