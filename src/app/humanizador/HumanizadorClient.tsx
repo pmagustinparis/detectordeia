@@ -241,25 +241,52 @@ export default function HumanizadorClient() {
 
       {/* Link a otras herramientas */}
       <section className="max-w-4xl mx-auto mb-16 px-2">
-        <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl shadow-lg border border-cyan-200 p-8 card-elevated">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center shadow-lg flex-shrink-0">
-              <span className="text-3xl">🔍</span>
+        <div className="space-y-6">
+          {/* Detector */}
+          <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl shadow-lg border border-cyan-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">🔍</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Quieres verificar si tu texto pasa como humano?
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Después de humanizar tu texto, usa nuestro Detector de IA para verificar que suene natural y no active detectores.
+                </p>
+                <a
+                  href="/"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-700 hover:to-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Detector de IA</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                ¿Quieres verificar si tu texto pasa como humano?
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Después de humanizar tu texto, usa nuestro Detector de IA para verificar que suene natural y no active detectores.
-              </p>
-              <a
-                href="/"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-700 hover:to-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <span>Probar el Detector de IA</span>
-                <span>→</span>
-              </a>
+          </div>
+
+          {/* Parafraseador */}
+          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-lg border border-purple-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">🔄</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Necesitas reescribir tu texto con otras palabras?
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Usa nuestro Parafraseador para reescribir tu texto manteniendo el significado. Sin plagio, optimizado para español.
+                </p>
+                <a
+                  href="/parafraseador"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Parafraseador</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

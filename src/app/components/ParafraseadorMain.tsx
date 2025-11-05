@@ -121,7 +121,7 @@ export default function ParafraseadorMain() {
     <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
       {/* COLUMNA IZQUIERDA - INPUT */}
-      <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px', maxHeight: '600px'}}>
+      <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px'}}>
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">

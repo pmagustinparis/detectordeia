@@ -241,25 +241,52 @@ export default function ParafraseadorClient() {
 
       {/* Link a otras herramientas */}
       <section className="max-w-4xl mx-auto mb-16 px-2">
-        <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl shadow-lg border border-cyan-200 p-8 card-elevated">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center shadow-lg flex-shrink-0">
-              <span className="text-3xl">🤖</span>
+        <div className="space-y-6">
+          {/* Humanizador */}
+          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">✨</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Tu texto suena muy robótico o generado por IA?
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Usa nuestro Humanizador de IA para hacer que tu texto parafraseado suene más natural y humano.
+                </p>
+                <a
+                  href="/humanizador"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Humanizador</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                ¿Tu texto suena muy robótico o generado por IA?
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Usa nuestro Humanizador de IA para hacer que tu texto parafraseado suene más natural y humano.
-              </p>
-              <a
-                href="/humanizador"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-700 hover:to-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <span>Probar el Humanizador</span>
-                <span>→</span>
-              </a>
+          </div>
+
+          {/* Detector */}
+          <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl shadow-lg border border-cyan-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">🔍</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Quieres verificar si tu texto detecta como IA?
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Usa nuestro Detector de IA para analizar si tu texto parafraseado pasa como contenido humano.
+                </p>
+                <a
+                  href="/"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-700 hover:to-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Detector</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

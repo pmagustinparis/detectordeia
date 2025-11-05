@@ -635,25 +635,52 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
           Más herramientas para trabajar con contenido de IA
         </p>
 
-        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
-              <span className="text-3xl">✨</span>
+        <div className="space-y-6">
+          {/* Humanizador */}
+          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">✨</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Tu texto suena a IA? Humanízalo
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Transforma texto generado por ChatGPT, Claude o cualquier IA en contenido que suena natural y humano. Gratis, sin registro, optimizado para español.
+                </p>
+                <a
+                  href="/humanizador"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Humanizador de IA</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                ¿Tu texto suena a IA? Humanízalo
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Transforma texto generado por ChatGPT, Claude o cualquier IA en contenido que suena natural y humano. Gratis, sin registro, optimizado para español.
-              </p>
-              <a
-                href="/humanizador"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <span>Probar el Humanizador de IA</span>
-                <span>→</span>
-              </a>
+          </div>
+
+          {/* Parafraseador */}
+          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-lg border border-purple-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">🔄</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Necesitas reescribir tu texto? Parafraseálo
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Reescribe cualquier texto con otras palabras manteniendo el significado. Sin plagio, sin registro, optimizado para español.
+                </p>
+                <a
+                  href="/parafraseador"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Parafraseador</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
