@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import CookieBanner from '../components/CookieBanner';
 import Header from '../components/Header';
-import PromoBanner from '../components/PromoBanner';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +36,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" sizes="16x16" />
       </head>
       <body className={inter.className}>
-        <PromoBanner />
         <Header />
         <main className="min-h-screen gradient-bg-primary">
         {children}
