@@ -284,10 +284,10 @@ export default function ParafraseadorMain() {
           </div>
 
           {result ? (
-            <div className="relative" style={{flexGrow: 1, display: 'flex', flexDirection: 'column', maxHeight: '400px'}}>
-              <div className={isLimitExceeded ? "filter blur-sm overflow-y-auto" : "overflow-y-auto"} style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
+            <div className="relative" style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
+              <div className={isLimitExceeded ? "filter blur-sm" : ""} style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
                 {/* Área de resultado */}
-                <div className="w-full border-2 border-emerald-200 rounded-2xl bg-emerald-50/30 p-4 text-base text-gray-800 mb-3 whitespace-pre-wrap leading-relaxed" style={{minHeight: '280px'}}>
+                <div className="w-full border-2 border-emerald-200 rounded-2xl bg-emerald-50/30 p-4 text-base text-gray-800 mb-3 whitespace-pre-wrap leading-relaxed overflow-y-auto" style={{minHeight: '280px', maxHeight: '320px'}}>
                   {result}
                 </div>
 
