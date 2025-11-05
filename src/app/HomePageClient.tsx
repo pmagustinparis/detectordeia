@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import PremiumUpsellBlock from './components/PremiumUpsellBlock';
 import PremiumUpsellCompact from './components/PremiumUpsellCompact';
 import FeedbackBlock from './components/FeedbackBlock';
+import HumanizadorPromoBanner from './components/HumanizadorPromoBanner';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -168,6 +169,9 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
 
   return (
     <div className="min-h-screen pb-10 px-2">
+      {/* Banner Promocional - Lanzamiento Humanizador */}
+      <HumanizadorPromoBanner />
+
       {/* HERO PRODUCT BLOCK: input, button, result, trust indicators */}
       <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
         {/* Elementos decorativos de fondo */}

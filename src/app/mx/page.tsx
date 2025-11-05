@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import DetectorMain from '../components/DetectorMain';
+import HumanizadorPromoBanner from '../components/HumanizadorPromoBanner';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para México – DetectordeIA.ai',
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
 export default function DetectorMexico() {
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
+      <HumanizadorPromoBanner />
       <DetectorMain 
         h1="Detector de IA para México"
         subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en México. Herramienta gratuita, sin registro, optimizada para español de México. Ideal para estudiantes, docentes y empresas mexicanas."

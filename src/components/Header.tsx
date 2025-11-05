@@ -40,18 +40,18 @@ export default function Header() {
             >
               Precios
             </Link>
-            <a
-              href="#features"
+            <Link
+              href="/#features"
               className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
             >
               Funciones
-            </a>
-            <a
-              href="#faq"
+            </Link>
+            <Link
+              href="/#faq"
               className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
             >
               FAQ
-            </a>
+            </Link>
           </nav>
 
           {/* CTA Button */}
@@ -120,20 +120,20 @@ export default function Header() {
               >
                 Precios
               </Link>
-              <a
-                href="#features"
+              <Link
+                href="/#features"
                 className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Funciones
-              </a>
-              <a
-                href="#faq"
+              </Link>
+              <Link
+                href="/#faq"
                 className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FAQ
-              </a>
+              </Link>
               <Link
                 href="/pricing"
                 className="mx-4 mt-2 px-6 py-2.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl shadow-md text-center"
