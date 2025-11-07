@@ -44,147 +44,177 @@ Usuario Free (50 usos/día) → Dashboard con historial → Listo para Premium (
 
 ---
 
-## 📅 CRONOGRAMA DE IMPLEMENTACIÓN
+## 📅 CRONOGRAMA DE IMPLEMENTACIÓN (ACTUALIZADO)
 
-### **Sprint 1: Setup Supabase + Schema** (3-4 días)
+> **NOTA:** Roadmap reorganizado priorizando rate limiting antes que dashboard.
+> **Fecha actualización:** 2025-01-07
+> **Razón:** Dashboard necesita datos reales de tracking para ser útil. Primero implementamos tracking/rate limiting, luego mostramos los datos.
+
+---
+
+### ✅ **Sprint 1: Setup Supabase + Schema** (COMPLETADO)
 
 #### Día 1: Configuración inicial
-- [ ] **Agustín:** Crear proyecto en Supabase (5 min)
-- [ ] **Claude:** Escribir migrations SQL completas (1 hora)
-- [ ] **Agustín:** Ejecutar migrations en Supabase SQL Editor (2 min)
-- [ ] **Claude:** Verificar que tablas se crearon correctamente
+- [x] **Agustín:** Crear proyecto en Supabase (5 min)
+- [x] **Claude:** Escribir migrations SQL completas (1 hora)
+- [x] **Agustín:** Ejecutar migrations en Supabase SQL Editor (2 min)
+- [x] **Claude:** Verificar que tablas se crearon correctamente
 
 #### Día 2: Google OAuth
-- [ ] **Agustín:** Configurar Google OAuth en Google Cloud Console (10 min)
-- [ ] **Agustín:** Habilitar Google provider en Supabase Auth (5 min)
-- [ ] **Claude:** Configurar Supabase client en Next.js
-- [ ] **Claude:** Crear route /auth/callback
+- [x] **Agustín:** Configurar Google OAuth en Google Cloud Console (10 min)
+- [x] **Agustín:** Habilitar Google provider en Supabase Auth (5 min)
+- [x] **Claude:** Configurar Supabase client en Next.js
+- [x] **Claude:** Crear route /auth/callback
 
 #### Día 3: Environment variables + Testing
-- [ ] **Agustín:** Copiar credenciales Supabase a Vercel (5 min)
-- [ ] **Claude:** Testear conexión local a Supabase
-- [ ] **Claude:** Testear conexión en preview deployment
-- [ ] **Agustín:** Verificar que preview funciona
+- [x] **Agustín:** Copiar credenciales Supabase a Vercel (5 min)
+- [x] **Claude:** Testear conexión local a Supabase
+- [x] **Claude:** Testear conexión en preview deployment
+- [x] **Agustín:** Verificar que preview funciona
 
 #### Día 4: Buffer / Ajustes
-- [ ] Resolver cualquier issue del setup
-- [ ] Documentar configuración final
+- [x] Resolver cualquier issue del setup
+- [x] Documentar configuración final
+
+**Status:** ✅ 100% - Supabase funcionando con 5 tablas + RLS policies + OAuth configurado
 
 ---
 
-### **Sprint 2: Auth + Middleware** (3-4 días)
+### ✅ **Sprint 2: Auth + Middleware** (COMPLETADO)
 
 #### Día 5: Middleware + Protected routes
-- [ ] **Claude:** Crear middleware para proteger rutas
-- [ ] **Claude:** Proteger /dashboard (redirect a /login si no auth)
-- [ ] **Claude:** Proteger API routes (return 401 si no auth)
-- [ ] **Claude:** Testear protección de rutas
+- [x] **Claude:** Crear middleware para proteger rutas
+- [x] **Claude:** Proteger /dashboard (redirect a /login si no auth)
+- [x] **Claude:** Proteger API routes (return 401 si no auth)
+- [x] **Claude:** Testear protección de rutas
 
 #### Día 6: Auth UI Components
-- [ ] **Claude:** Crear `<AuthButton />` component
-- [ ] **Claude:** Integrar en `<Header />`
-- [ ] **Claude:** Crear página /login (o modal)
-- [ ] **Claude:** Implementar logout functionality
+- [x] **Claude:** Crear `<AuthButton />` component
+- [x] **Claude:** Integrar en `<Header />`
+- [x] **Claude:** Crear página /login (o modal)
+- [x] **Claude:** Implementar logout functionality
 
 #### Día 7: Auth Flow completo
-- [ ] **Claude:** Implementar trigger para crear user en DB al registrarse
-- [ ] **Claude:** Testear flow completo: Sign up → Dashboard
-- [ ] **Claude:** Testear flow: Sign in → Dashboard
-- [ ] **Claude:** Testear flow: Logout → Home
+- [x] **Claude:** Implementar trigger para crear user en DB al registrarse
+- [x] **Claude:** Testear flow completo: Sign up → Dashboard
+- [x] **Claude:** Testear flow: Sign in → Dashboard
+- [x] **Claude:** Testear flow: Logout → Home
 
 #### Día 8: Polish + Edge cases
-- [ ] **Claude:** Manejar errores de OAuth
-- [ ] **Claude:** Loading states en auth
-- [ ] **Claude:** Redirect después de login
+- [x] **Claude:** Manejar errores de OAuth
+- [x] **Claude:** Loading states en auth
+- [x] **Claude:** Redirect después de login
+
+#### BONUS implementado (no planeado):
+- [x] **Claude:** Sistema de incentivos progresivos (2-4 usos, 5+ usos)
+- [x] **Claude:** Badges dinámicos "Sin registro" → "Cuenta activa"
+- [x] **Claude:** Fix pestañeo de badges al cargar
+- [x] **Claude:** useAuth hook custom
+
+**Status:** ✅ 100% - Auth completo + Dashboard básico + Incentivos funcionando
 
 ---
 
-### **Sprint 3: Dashboard + Historial** (3-4 días)
+### 🔄 **Sprint 4: Rate Limiting + Tracking** (EN PROGRESO - PRIORIDAD #1)
 
-#### Día 9: Dashboard básico
-- [ ] **Claude:** Crear /dashboard/page.tsx
-- [ ] **Claude:** Implementar query de user profile
-- [ ] **Claude:** Mostrar: Nombre, email, avatar, plan_type
-- [ ] **Claude:** UI básica del dashboard
+> **CAMBIO DE ORDEN:** Este sprint se movió antes del Sprint 3 porque necesitamos tracking funcionando antes de mostrar datos en dashboard.
 
-#### Día 10: Usage stats
-- [ ] **Claude:** Query de usage stats (usos hoy, usos mes)
-- [ ] **Claude:** Mostrar límites restantes
-- [ ] **Claude:** Progress bars visuales
-- [ ] **Claude:** Testear con datos de prueba
+#### Día 9: Anonymous ID + Tracking básico
+- [ ] **Claude:** Implementar generación de anonymous_id (cookie persistente)
+- [ ] **Claude:** Función `trackUsage(userId, anonymousId, toolType, metadata)`
+- [ ] **Claude:** Testear que se guarden registros en usage_tracking
+- [ ] **Claude:** Testear que anonymous_id persiste entre sesiones
 
-#### Día 11: Historial
-- [ ] **Claude:** Query de historial (últimos 10 usos + 7 días)
-- [ ] **Claude:** UI de lista de historial
-- [ ] **Claude:** Modal para ver detalle completo
-- [ ] **Claude:** Botones: Copiar, Descargar, Eliminar
-
-#### Día 12: Premium CTA + Polish
-- [ ] **Claude:** Banner de Premium en dashboard (dismissible)
-- [ ] **Claude:** Integrar EmailCaptureModal
-- [ ] **Claude:** Responsive design del dashboard
-- [ ] **Claude:** Testing completo de dashboard
-
----
-
-### **Sprint 4: Rate Limiting + Tracking** (3-4 días)
-
-#### Día 13: Anonymous ID + Tracking básico
-- [ ] **Claude:** Implementar generación de anonymous_id (cookie)
-- [ ] **Claude:** Función para insertar en usage_tracking
-- [ ] **Claude:** Testear que se guarden registros
-
-#### Día 14: Rate limiting en API routes
+#### Día 10: Rate limiting en API routes
 - [ ] **Claude:** Función `checkRateLimit(userId, anonymousId, toolType)`
+  - Return: `{ allowed: boolean, remaining: number, limit: number, resetAt: Date }`
 - [ ] **Claude:** Integrar en /api/humanize
 - [ ] **Claude:** Integrar en /api/paraphrase
-- [ ] **Claude:** Integrar en /api/detect
-- [ ] **Claude:** Return 429 cuando límite excedido
+- [ ] **Claude:** Integrar en /api/analyze
+- [ ] **Claude:** Return 429 cuando límite excedido con header X-RateLimit-*
 
-#### Día 15: Usage Limit Overlay
+#### Día 11: Usage Limit Overlay + Client-side
 - [ ] **Claude:** Crear `<UsageLimitOverlay />` component
-- [ ] **Claude:** Integrar en HumanizadorMain
-- [ ] **Claude:** Integrar en ParafraseadorMain
-- [ ] **Claude:** Integrar en DetectorMain
-- [ ] **Claude:** Copy según estrategia de messaging
+- [ ] **Claude:** Integrar en HumanizadorMain (mostrar cuando 429)
+- [ ] **Claude:** Integrar en ParafraseadorMain (mostrar cuando 429)
+- [ ] **Claude:** Integrar en HomePageClient/DetectorMain (mostrar cuando 429)
+- [ ] **Claude:** Copy según estrategia de messaging:
+  - Anónimo: "Usaste tus 10 análisis gratis hoy. Regístrate para 50/día"
+  - Free: "Límite diario alcanzado (50/día). Vuelve mañana o upgrade a Premium"
 
-#### Día 16: History saving
-- [ ] **Claude:** Guardar en history al procesar (solo autenticados)
-- [ ] **Claude:** Verificar que aparece en dashboard
-- [ ] **Claude:** Testear límite de 10 usos
-- [ ] **Claude:** Testear filtro de 7 días
+#### Día 12: History saving
+- [ ] **Claude:** Guardar en history al procesar (solo usuarios autenticados)
+- [ ] **Claude:** Función `saveToHistory(userId, toolType, input, output, metadata)`
+- [ ] **Claude:** Integrar en las 3 herramientas
+- [ ] **Claude:** Testear que aparece en dashboard
+- [ ] **Claude:** Testear límite de 10 usos (eliminar más viejos)
+- [ ] **Claude:** Testear filtro de 7 días (cleanup automático)
+
+**Status:** ⏳ 0% - **EMPEZAMOS AQUÍ**
 
 ---
 
-### **Sprint 5: Migración + Testing Final** (2-3 días)
+### ⏸️ **Sprint 3: Dashboard + Historial** (PENDIENTE - Después de Sprint 4)
 
-#### Día 17: Migración de emails
+> **CAMBIO DE ORDEN:** Se implementará DESPUÉS del Sprint 4 porque necesita datos reales de tracking para ser útil.
+
+#### Día 13: Usage stats
+- [ ] **Claude:** Query de usage stats (usos hoy, usos este mes)
+- [ ] **Claude:** Mostrar límites restantes (ej: "15/50 usos hoy")
+- [ ] **Claude:** Progress bars visuales por herramienta
+- [ ] **Claude:** Testear con datos reales de usage_tracking
+
+#### Día 14: Historial UI
+- [ ] **Claude:** Query de historial (últimos 10 usos + 7 días)
+- [ ] **Claude:** UI de lista de historial con filtros
+- [ ] **Claude:** Modal para ver detalle completo (input + output)
+- [ ] **Claude:** Botones: Copiar output, Descargar .txt, Eliminar
+
+#### Día 15: Dashboard polish
+- [ ] **Claude:** Banner de Premium en dashboard (dismissible)
+- [ ] **Claude:** Integrar EmailCaptureModal desde banner
+- [ ] **Claude:** Responsive design del dashboard
+- [ ] **Claude:** Empty states cuando no hay historial
+- [ ] **Claude:** Loading states en queries
+- [ ] **Claude:** Testing completo de dashboard
+
+**Status:** ⏳ 30% - Dashboard básico existe pero sin stats reales ni historial
+
+---
+
+### ⏸️ **Sprint 5: Migración + Testing Final** (PENDIENTE - Al final)
+
+#### Día 16: Migración de emails
 - [ ] **Agustín:** Exportar Google Sheet a CSV (2 min)
-- [ ] **Claude:** Script de migración CSV → Supabase
+- [ ] **Claude:** Script de migración CSV → Supabase email_waitlist
 - [ ] **Agustín:** Ejecutar script (5 min)
-- [ ] **Ambos:** Verificar count de emails migrados
+- [ ] **Ambos:** Verificar count de emails migrados (validar que no se perdió nada)
 
-#### Día 18: Testing end-to-end
-- [ ] **Claude:** Test flow anónimo → límite → registro
-- [ ] **Claude:** Test flow registrado → uso → historial
-- [ ] **Claude:** Test reset de límites a medianoche
+#### Día 17: Testing end-to-end
+- [ ] **Claude:** Test flow anónimo → límite → registro (Flow 1 completo)
+- [ ] **Claude:** Test flow registrado → uso → historial (Flow 2 completo)
+- [ ] **Claude:** Test flow límite Free alcanzado (Flow 3 completo)
+- [ ] **Claude:** Test reset de límites a medianoche (UTC)
 - [ ] **Claude:** Test eliminación de uso en historial
-- [ ] **Claude:** Test exportar datos (GDPR)
-- [ ] **Claude:** Test eliminar cuenta (GDPR)
+- [ ] **Claude:** Test exportar datos (GDPR feature)
+- [ ] **Claude:** Test eliminar cuenta (GDPR feature)
 
-#### Día 19: Performance + Security audit
-- [ ] **Claude:** Verificar RLS policies funcionando
-- [ ] **Claude:** Verificar que queries tienen indexes
-- [ ] **Claude:** Performance test: response time <2s
-- [ ] **Claude:** Security test: no se puede acceder a datos de otros users
-- [ ] **Claude:** Verificar env vars no en código
+#### Día 18: Performance + Security audit
+- [ ] **Claude:** Verificar RLS policies funcionando (intentar acceder a data de otro user)
+- [ ] **Claude:** Verificar que queries tienen indexes necesarios
+- [ ] **Claude:** Performance test: response time <2s en p95
+- [ ] **Claude:** Security test: no env vars en código, HTTPS activo
+- [ ] **Claude:** Load test: 100 requests simultáneos sin fallar
 
-#### Día 20: Deploy a producción
+#### Día 19: Deploy a producción
 - [ ] **Claude:** Commit y push final
-- [ ] **Agustín:** Merge a main
+- [ ] **Claude:** Crear PR con resumen de cambios
+- [ ] **Agustín:** Review + merge a main
 - [ ] **Agustín:** Deploy a producción en Vercel
-- [ ] **Ambos:** Smoke test en producción
+- [ ] **Ambos:** Smoke test en producción (registrarse, usar herramienta, ver historial)
 - [ ] **Ambos:** Monitoreo post-deploy (24h)
+
+**Status:** ⏳ 0% - Pendiente hasta terminar Sprints 3 y 4
 
 ---
 
@@ -273,31 +303,37 @@ Al completar Fase 0, tendremos:
 
 ---
 
-## 🎯 DEFINICIÓN DE "DONE"
+## 🎯 DEFINICIÓN DE "DONE" (ACTUALIZADO)
 
 Fase 0 está completa cuando:
 
 ### ✅ Funcional
-- [ ] Usuario puede registrarse con Google
-- [ ] Usuario puede iniciar sesión
-- [ ] Usuario puede cerrar sesión
-- [ ] Dashboard muestra datos correctos
-- [ ] Historial muestra últimos 10 usos
-- [ ] Límites funcionan (10 anónimo, 50 free)
-- [ ] Overlay aparece al llegar a límite
-- [ ] Emails migrados correctamente
+- [x] Usuario puede registrarse con Google ✅
+- [x] Usuario puede iniciar sesión ✅
+- [x] Usuario puede cerrar sesión ✅
+- [ ] **Límites funcionan (10 anónimo, 50 free)** ⏳ Sprint 4
+- [ ] **Overlay aparece al llegar a límite** ⏳ Sprint 4
+- [ ] **Historial guarda automáticamente** ⏳ Sprint 4
+- [ ] Dashboard muestra datos correctos (stats + historial) ⏳ Sprint 3
+- [ ] Historial muestra últimos 10 usos + 7 días ⏳ Sprint 3
+- [ ] Emails migrados correctamente ⏳ Sprint 5
 
 ### ✅ Técnico
-- [ ] Response time <2s en p95
-- [ ] Error rate <1%
-- [ ] RLS policies funcionando
-- [ ] No bugs P0 (críticos)
+- [x] Supabase configurado con 5 tablas ✅
+- [x] RLS policies creadas ✅
+- [x] Auth flow completo ✅
+- [ ] Response time <2s en p95 ⏳ Sprint 5
+- [ ] Error rate <1% ⏳ Sprint 5
+- [ ] No bugs P0 (críticos) ⏳ Testing continuo
 
 ### ✅ Seguridad
-- [ ] No se puede acceder a datos de otros users
-- [ ] Env vars no en código
-- [ ] HTTPS activo
-- [ ] Features GDPR funcionando
+- [x] Env vars no en código ✅
+- [x] HTTPS activo ✅
+- [ ] RLS policies funcionando (verificar) ⏳ Sprint 5
+- [ ] No se puede acceder a datos de otros users ⏳ Sprint 5
+- [ ] Features GDPR funcionando ⏳ Sprint 5
+
+**Progreso actual:** ~40% completado (2/5 sprints)
 
 ---
 
