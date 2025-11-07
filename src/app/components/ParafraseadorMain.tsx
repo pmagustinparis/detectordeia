@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EmailCaptureModal from './EmailCaptureModal';
+import { useAuth } from '@/lib/hooks/useAuth';
 
 const CHARACTER_LIMIT = 600;
 const MIN_CHARACTERS = 50;
 
 export default function ParafraseadorMain() {
+  const { isAuthenticated } = useAuth();
   const [text, setText] = useState('');
   const [isParaphrasing, setIsParaphrasing] = useState(false);
   const [result, setResult] = useState<string | null>(null);
@@ -15,6 +17,15 @@ export default function ParafraseadorMain() {
   const [analyzedTextLength, setAnalyzedTextLength] = useState(0);
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [emailModalSource, setEmailModalSource] = useState('');
+  const [usageCount, setUsageCount] = useState(0);
+
+  // Track usage count for anonymous users
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('parafraseador_usage_count') || '0');
+      setUsageCount(count);
+    }
+  }, [isAuthenticated]);
 
   // Colores del contador dinámico
   const getCounterColor = () => {
@@ -63,6 +74,13 @@ export default function ParafraseadorMain() {
       setResult(data.paraphrasedText);
       setAnalyzedTextLength(text.length);
       setIsLimitExceeded(exceededLimit);
+
+      // Incrementar contador de uso para usuarios anónimos
+      if (!isAuthenticated) {
+        const newCount = usageCount + 1;
+        setUsageCount(newCount);
+        localStorage.setItem('parafraseador_usage_count', newCount.toString());
+      }
 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al parafrasear el texto');
@@ -143,6 +161,21 @@ export default function ParafraseadorMain() {
             </svg>
             En español
           </span>
+          {!isAuthenticated ? (
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-gray-100 to-slate-100 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+              </svg>
+              Sin registro
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Cuenta activa
+            </span>
+          )}
         </div>
 
         <label htmlFor="parafraseador-textarea" className="block text-base font-semibold text-gray-800 mb-2">
@@ -317,6 +350,45 @@ export default function ParafraseadorMain() {
                     Tu texto ha sido parafraseado correctamente
                   </span>
                 </div>
+
+                {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
+                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                  <div className="mt-3 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
+                    <p className="text-sm font-semibold text-violet-800 mb-1">
+                      💡 ¿Usás seguido las herramientas?
+                    </p>
+                    <p className="text-xs text-violet-700 mb-2">
+                      Registrándote gratis podés guardar tu historial y acceder a todas tus paráfrasis desde cualquier dispositivo.
+                    </p>
+                    <a
+                      href="/dashboard"
+                      className="inline-block text-xs font-bold text-violet-600 hover:text-violet-700 hover:underline"
+                    >
+                      Crear cuenta gratis →
+                    </a>
+                  </div>
+                )}
+
+                {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
+                {!isAuthenticated && usageCount >= 5 && (
+                  <div className="mt-3 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
+                    <p className="text-sm font-bold text-cyan-900 mb-2">
+                      🚀 ¡Ya usaste el Parafraseador {usageCount} veces!
+                    </p>
+                    <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
+                      Registrándote gratis obtenés:<br/>
+                      • <strong>Historial</strong> de tus últimos usos<br/>
+                      • <strong>Más usos diarios</strong> (hasta 50 usos/día)<br/>
+                      • <strong>Acceso a futuras features</strong> antes que nadie
+                    </p>
+                    <a
+                      href="/dashboard"
+                      className="inline-block w-full text-center bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all"
+                    >
+                      Crear cuenta gratis en 10 segundos
+                    </a>
+                  </div>
+                )}
               </div>
 
               {/* Overlay premium cuando se excede el límite */}

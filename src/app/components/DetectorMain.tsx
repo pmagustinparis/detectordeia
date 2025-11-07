@@ -87,6 +87,15 @@ export default function DetectorMain({
   const detectorRef = useRef<HTMLDivElement>(null);
   const [textType, setTextType] = useState('default');
   const [feedbackSent, setFeedbackSent] = useState(false);
+  const [usageCount, setUsageCount] = useState(0);
+
+  // Track usage count for anonymous users
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('detector_usage_count') || '0');
+      setUsageCount(count);
+    }
+  }, [isAuthenticated]);
 
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
@@ -141,6 +150,13 @@ export default function DetectorMain({
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(false);
         setFeedbackSent(false);
+
+        // Incrementar contador de uso para usuarios anónimos (solo análisis reales)
+        if (!isAuthenticated) {
+          const newCount = usageCount + 1;
+          setUsageCount(newCount);
+          localStorage.setItem('detector_usage_count', newCount.toString());
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
@@ -386,6 +402,46 @@ export default function DetectorMain({
                   Próximamente: Reescribir como texto humano 🤖➡️👤
                 </div>
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
+
+                {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
+                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                  <div className="mt-4 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
+                    <p className="text-sm font-semibold text-violet-800 mb-1">
+                      💡 ¿Usás seguido las herramientas?
+                    </p>
+                    <p className="text-xs text-violet-700 mb-2">
+                      Registrándote gratis podés guardar tu historial y acceder a todos tus análisis desde cualquier dispositivo.
+                    </p>
+                    <a
+                      href="/dashboard"
+                      className="inline-block text-xs font-bold text-violet-600 hover:text-violet-700 hover:underline"
+                    >
+                      Crear cuenta gratis →
+                    </a>
+                  </div>
+                )}
+
+                {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
+                {!isAuthenticated && usageCount >= 5 && (
+                  <div className="mt-4 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
+                    <p className="text-sm font-bold text-cyan-900 mb-2">
+                      🚀 ¡Ya usaste el Detector {usageCount} veces!
+                    </p>
+                    <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
+                      Registrándote gratis obtenés:<br/>
+                      • <strong>Historial</strong> de tus últimos análisis<br/>
+                      • <strong>Más usos diarios</strong> (hasta 50 usos/día)<br/>
+                      • <strong>Acceso a futuras features</strong> antes que nadie
+                    </p>
+                    <a
+                      href="/dashboard"
+                      className="inline-block w-full text-center bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all"
+                    >
+                      Crear cuenta gratis en 10 segundos
+                    </a>
+                  </div>
+                )}
+
                 {/* Bloque premium compacto al final cuando hay resultado */}
                 <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">

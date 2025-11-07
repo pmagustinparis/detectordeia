@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EmailCaptureModal from './EmailCaptureModal';
+import { useAuth } from '@/lib/hooks/useAuth';
 
 const CHARACTER_LIMIT = 600;
 const MIN_CHARACTERS = 50;
 
 export default function HumanizadorMain() {
+  const { isAuthenticated } = useAuth();
   const [text, setText] = useState('');
   const [isHumanizing, setIsHumanizing] = useState(false);
   const [result, setResult] = useState<string | null>(null);
@@ -15,6 +17,15 @@ export default function HumanizadorMain() {
   const [analyzedTextLength, setAnalyzedTextLength] = useState(0);
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [emailModalSource, setEmailModalSource] = useState('');
+  const [usageCount, setUsageCount] = useState(0);
+
+  // Track usage count for anonymous users
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('humanizador_usage_count') || '0');
+      setUsageCount(count);
+    }
+  }, [isAuthenticated]);
 
   // Colores del contador dinámico
   const getCounterColor = () => {
@@ -63,6 +74,13 @@ export default function HumanizadorMain() {
       setResult(data.humanizedText);
       setAnalyzedTextLength(text.length);
       setIsLimitExceeded(exceededLimit);
+
+      // Incrementar contador de uso para usuarios anónimos
+      if (!isAuthenticated) {
+        const newCount = usageCount + 1;
+        setUsageCount(newCount);
+        localStorage.setItem('humanizador_usage_count', newCount.toString());
+      }
 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al humanizar el texto');
@@ -126,12 +144,21 @@ export default function HumanizadorMain() {
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            No login
-          </span>
+          {!isAuthenticated ? (
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Sin registro
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Cuenta activa
+            </span>
+          )}
           <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -309,12 +336,60 @@ export default function HumanizadorMain() {
                 </div>
 
                 {/* Mensaje de éxito */}
-                <div className="p-3 bg-green-50 border border-green-200 rounded-xl flex items-center gap-2">
+                <div className="p-3 bg-green-50 border border-green-200 rounded-xl flex items-center gap-2 mb-3">
                   <span className="text-green-600 text-xl">✅</span>
                   <span className="text-sm font-medium text-green-800">
                     Tu texto ha sido humanizado correctamente
                   </span>
                 </div>
+
+                {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
+                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                  <div className="p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
+                    <div className="flex items-start gap-2">
+                      <span className="text-lg">💡</span>
+                      <div className="flex-1">
+                        <p className="text-sm font-semibold text-violet-900 mb-1">
+                          ¿Usás seguido las herramientas?
+                        </p>
+                        <p className="text-xs text-violet-700 mb-2">
+                          Registrándote gratis podés guardar tu historial y obtener más usos diarios.
+                        </p>
+                        <a
+                          href="/dashboard"
+                          className="inline-block text-xs font-semibold text-violet-600 hover:text-violet-700 underline"
+                        >
+                          Crear cuenta gratis →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!isAuthenticated && usageCount >= 5 && (
+                  <div className="p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">🚀</span>
+                      <div className="flex-1">
+                        <p className="text-sm font-bold text-cyan-900 mb-1">
+                          ¡Ya usaste el Humanizador {usageCount} veces!
+                        </p>
+                        <p className="text-xs text-cyan-700 mb-3">
+                          Registrándote gratis obtenés:<br/>
+                          • Historial de tus últimos usos<br/>
+                          • Más usos diarios (hasta 50/día)<br/>
+                          • Acceso a futuras features
+                        </p>
+                        <a
+                          href="/dashboard"
+                          className="inline-block bg-cyan-600 hover:bg-cyan-700 text-white text-xs font-bold py-2 px-4 rounded-lg transition-all"
+                        >
+                          Crear cuenta gratis en 10 segundos
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Overlay premium cuando se excede el límite */}
