@@ -20,26 +20,26 @@ export default function DashboardClient({ user, usageStats, history }: Dashboard
     parafraseador: 'Parafraseador',
   };
 
-  // Tool colors
+  // Tool colors (más diferenciados para mejor UX)
   const toolColors: Record<string, string> = {
-    detector: 'violet',
-    humanizador: 'emerald',
-    parafraseador: 'purple',
+    detector: 'blue',        // Azul - análisis/tecnología
+    humanizador: 'emerald',  // Verde - natural/humano
+    parafraseador: 'orange', // Naranja - creatividad/transformación
   };
 
   // Get tool color class (full class name for Tailwind)
   const getToolColorClass = (tool: string) => {
-    if (tool === 'detector') return 'bg-violet-500';
+    if (tool === 'detector') return 'bg-blue-500';
     if (tool === 'humanizador') return 'bg-emerald-500';
-    if (tool === 'parafraseador') return 'bg-purple-500';
+    if (tool === 'parafraseador') return 'bg-orange-500';
     return 'bg-gray-500';
   };
 
   // Get tool badge classes (full class names for Tailwind)
   const getToolBadgeClasses = (tool: string) => {
-    if (tool === 'detector') return 'bg-violet-100 text-violet-700';
+    if (tool === 'detector') return 'bg-blue-100 text-blue-700';
     if (tool === 'humanizador') return 'bg-emerald-100 text-emerald-700';
-    if (tool === 'parafraseador') return 'bg-purple-100 text-purple-700';
+    if (tool === 'parafraseador') return 'bg-orange-100 text-orange-700';
     return 'bg-gray-100 text-gray-700';
   };
 
