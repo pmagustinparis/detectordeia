@@ -188,43 +188,40 @@ Usuario Free (50 usos/día) → Dashboard con historial → Listo para Premium (
 
 ---
 
-### ⏸️ **Sprint 5: Migración + Testing Final** (PENDIENTE - Al final)
+### ⏸️ **Sprint 5: Testing + Deploy Final** (PENDIENTE - Al final)
 
-#### Día 16: Migración de emails
-- [ ] **Agustín:** Exportar Google Sheet a CSV (2 min)
-- [ ] **Claude:** Script de migración CSV → Supabase email_waitlist
-- [ ] **Agustín:** Ejecutar script (5 min)
-- [ ] **Ambos:** Verificar count de emails migrados (validar que no se perdió nada)
+> **NOTA:** No hay migración de emails necesaria - no hay datos en Google Sheets todavía.
 
-#### Día 17: Testing end-to-end
-- [ ] **Claude:** Test flow anónimo → límite → registro (Flow 1 completo)
-- [ ] **Claude:** Test flow registrado → uso → historial (Flow 2 completo)
-- [ ] **Claude:** Test flow límite Free alcanzado (Flow 3 completo)
-- [ ] **Claude:** Test reset de límites a medianoche (UTC)
-- [ ] **Claude:** Test eliminación de uso en historial
-- [ ] **Claude:** Test exportar datos (GDPR feature)
-- [ ] **Claude:** Test eliminar cuenta (GDPR feature)
+#### Día 16: Testing end-to-end en producción
+- [ ] **Agustín:** Deploy rama actual a producción (2 min)
+- [ ] **Claude + Agustín:** Test flow anónimo → límite → registro (Flow 1 completo)
+- [ ] **Claude + Agustín:** Test flow registrado → uso → historial (Flow 2 completo)
+- [ ] **Claude + Agustín:** Test flow límite Free alcanzado (Flow 3 completo)
+- [ ] **Claude + Agustín:** Verificar historial guarda correctamente
+- [ ] **Claude + Agustín:** Verificar dashboard muestra stats correctos
+- [ ] **Claude + Agustín:** Verificar modal de historial (copy/download)
 
-#### Día 18: Performance + Security audit
+#### Día 17: Performance + Security audit
 - [ ] **Claude:** Verificar RLS policies funcionando (intentar acceder a data de otro user)
 - [ ] **Claude:** Verificar que queries tienen indexes necesarios
 - [ ] **Claude:** Performance test: response time <2s en p95
 - [ ] **Claude:** Security test: no env vars en código, HTTPS activo
-- [ ] **Claude:** Load test: 100 requests simultáneos sin fallar
+- [ ] **Claude:** Verificar que rate limits funcionan correctamente
 
-#### Día 19: Deploy a producción
+#### Día 18: Final polish + Deploy
+- [ ] **Claude:** Fix cualquier bug encontrado en testing
 - [ ] **Claude:** Commit y push final
-- [ ] **Claude:** Crear PR con resumen de cambios
+- [ ] **Claude:** Crear PR con resumen completo de Fase 0
 - [ ] **Agustín:** Review + merge a main
-- [ ] **Agustín:** Deploy a producción en Vercel
-- [ ] **Ambos:** Smoke test en producción (registrarse, usar herramienta, ver historial)
+- [ ] **Agustín:** Deploy final a producción en Vercel
+- [ ] **Ambos:** Smoke test en producción
 - [ ] **Ambos:** Monitoreo post-deploy (24h)
 
-**Status:** ⏳ 0% - Pendiente hasta terminar Sprints 3 y 4
+**Status:** ⏳ 0% - Listo para empezar - Sprints 1-4 completos
 
 ---
 
-## 🔧 TAREAS DE AGUSTÍN (Total: ~30 min)
+## 🔧 TAREAS DE AGUSTÍN (Total: ~15 min)
 
 ### Setup inicial (Día 1-3):
 1. ✅ Crear proyecto Supabase (5 min)
@@ -233,12 +230,10 @@ Usuario Free (50 usos/día) → Dashboard con historial → Listo para Premium (
 4. ✅ Habilitar Google en Supabase (2 min)
 5. ✅ Copiar env vars a Vercel (5 min)
 
-### Migración (Día 17):
-6. ✅ Exportar emails de Google Sheets (2 min)
-7. ✅ Ejecutar script de migración (5 min)
-
-### Deploy (Día 20):
-8. ✅ Merge a main y deploy (5 min)
+### Testing + Deploy (Día 16-18):
+6. ⏳ Deploy rama actual a producción para testing (2 min)
+7. ⏳ Testing en producción junto con Claude (~30 min)
+8. ⏳ Merge a main y deploy final (5 min)
 
 **Total tiempo Agustín:** ~35 min (repartido en 3 semanas)
 
@@ -322,7 +317,6 @@ Fase 0 está completa cuando:
 - [x] **Historial guarda automáticamente** ✅ Sprint 4
 - [x] Dashboard muestra datos correctos (stats + historial) ✅ Sprint 3
 - [x] Historial muestra últimos 10 usos + 7 días ✅ Sprint 3
-- [ ] Emails migrados correctamente ⏳ Sprint 5
 
 ### ✅ Técnico
 - [x] Supabase configurado con 5 tablas ✅
