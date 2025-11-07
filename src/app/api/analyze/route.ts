@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { createClient } from '@/lib/supabase/server';
+import { checkRateLimit, getRateLimitHeaders } from '@/lib/tracking/checkRateLimit';
+import { trackUsage } from '@/lib/tracking/trackUsage';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -137,7 +140,42 @@ function adjustProbabilityByTextType(
 export async function POST(request: Request) {
   console.log("Usando GPT-3.5 Turbo"); // Debug temporal
   try {
-    const { text, textType = "default" } = await request.json();
+    const { text, textType = "default", anonymousId } = await request.json();
+
+    // Obtener userId si está autenticado
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const userId = user?.id || null;
+
+    // 🚨 RATE LIMITING CHECK
+    const rateLimit = await checkRateLimit({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'detector',
+    });
+
+    // Si alcanzó el límite, retornar 429
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: 'Límite diario alcanzado',
+          message:
+            rateLimit.userType === 'anonymous'
+              ? `Usaste tus ${rateLimit.limit} análisis gratis hoy. Regístrate para obtener ${50} análisis diarios.`
+              : `Alcanzaste el límite de ${rateLimit.limit} análisis diarios. Vuelve mañana o actualiza a Premium.`,
+          limit: rateLimit.limit,
+          remaining: rateLimit.remaining,
+          resetAt: rateLimit.resetAt,
+          userType: rateLimit.userType,
+        },
+        {
+          status: 429,
+          headers: getRateLimitHeaders(rateLimit),
+        }
+      );
+    }
 
     // Validate input
     if (!text || typeof text !== 'string') {
@@ -224,14 +262,42 @@ export async function POST(request: Request) {
       entropyScore
     );
 
-    return NextResponse.json({
-      probability: adjustedProbability,
-      confidenceLevel: analysis.confidenceLevel,
-      scores_by_category: analysis.scores_by_category,
-      linguistic_footprints: analysis.linguistic_footprints,
-      entropyScore,
-      interpretation: getInterpretation(adjustedProbability, textType, entropyScore)
+    // ✅ TRACK USAGE - Registrar uso exitoso
+    await trackUsage({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'detector',
+      characterCount: text.length,
+      metadata: {
+        textType,
+        probability: adjustedProbability,
+        confidenceLevel: analysis.confidenceLevel,
+        entropyScore,
+      },
     });
+
+    // Retornar con headers de rate limit
+    return NextResponse.json(
+      {
+        probability: adjustedProbability,
+        confidenceLevel: analysis.confidenceLevel,
+        scores_by_category: analysis.scores_by_category,
+        linguistic_footprints: analysis.linguistic_footprints,
+        entropyScore,
+        interpretation: getInterpretation(adjustedProbability, textType, entropyScore),
+        rateLimit: {
+          remaining: rateLimit.remaining - 1,
+          limit: rateLimit.limit,
+          resetAt: rateLimit.resetAt,
+        },
+      },
+      {
+        headers: getRateLimitHeaders({
+          ...rateLimit,
+          remaining: rateLimit.remaining - 1,
+        }),
+      }
+    );
   } catch (error) {
     console.error('Error analyzing text:', error);
     return NextResponse.json(

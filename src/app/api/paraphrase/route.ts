@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { createClient } from '@/lib/supabase/server';
+import { checkRateLimit, getRateLimitHeaders } from '@/lib/tracking/checkRateLimit';
+import { trackUsage } from '@/lib/tracking/trackUsage';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -12,7 +15,42 @@ const MAX_CHARACTERS_ABSOLUTE = 15000; // Límite absoluto (premium futuro)
 
 export async function POST(request: Request) {
   try {
-    const { text, mode = 'standard' } = await request.json();
+    const { text, mode = 'standard', anonymousId } = await request.json();
+
+    // Obtener userId si está autenticado
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const userId = user?.id || null;
+
+    // 🚨 RATE LIMITING CHECK
+    const rateLimit = await checkRateLimit({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'parafraseador',
+    });
+
+    // Si alcanzó el límite, retornar 429
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: 'Límite diario alcanzado',
+          message:
+            rateLimit.userType === 'anonymous'
+              ? `Usaste tus ${rateLimit.limit} paráfrasis gratis hoy. Regístrate para obtener ${50} paráfrasis diarias.`
+              : `Alcanzaste el límite de ${rateLimit.limit} paráfrasis diarias. Vuelve mañana o actualiza a Premium.`,
+          limit: rateLimit.limit,
+          remaining: rateLimit.remaining,
+          resetAt: rateLimit.resetAt,
+          userType: rateLimit.userType,
+        },
+        {
+          status: 429,
+          headers: getRateLimitHeaders(rateLimit),
+        }
+      );
+    }
 
     // Validaciones
     if (!text || typeof text !== 'string') {
@@ -114,11 +152,37 @@ TEXTO PARAFRASEADO:`;
       );
     }
 
-    return NextResponse.json({
-      success: true,
-      paraphrasedText: paraphrasedText,
-      mode: mode
+    // ✅ TRACK USAGE - Registrar uso exitoso
+    await trackUsage({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'parafraseador',
+      characterCount: text.length,
+      metadata: {
+        mode,
+        exceededFreeLimit,
+      },
     });
+
+    // Retornar con headers de rate limit
+    return NextResponse.json(
+      {
+        success: true,
+        paraphrasedText: paraphrasedText,
+        mode: mode,
+        rateLimit: {
+          remaining: rateLimit.remaining - 1,
+          limit: rateLimit.limit,
+          resetAt: rateLimit.resetAt,
+        },
+      },
+      {
+        headers: getRateLimitHeaders({
+          ...rateLimit,
+          remaining: rateLimit.remaining - 1,
+        }),
+      }
+    );
 
   } catch (error) {
     console.error('Error paraphrasing text:', error);
