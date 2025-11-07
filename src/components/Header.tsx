@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import AuthButton from './AuthButton';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -60,14 +61,9 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* CTA Button */}
+          {/* Auth & CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/pricing"
-              className="px-6 py-2.5 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 btn-glow"
-            >
-              Probar Premium
-            </Link>
+            <AuthButton />
           </div>
 
           {/* Mobile menu button */}
@@ -147,13 +143,9 @@ export default function Header() {
               >
                 FAQ
               </Link>
-              <Link
-                href="/pricing"
-                className="mx-4 mt-2 px-6 py-2.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl shadow-md text-center"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Probar Premium
-              </Link>
+              <div className="px-4 mt-4 border-t border-gray-200 pt-4">
+                <AuthButton />
+              </div>
             </nav>
           </div>
         )}
