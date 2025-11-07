@@ -48,13 +48,30 @@ export async function trackUsage(
     // Crear cliente Supabase
     const supabase = await createClient();
 
+    // Si userId está presente (auth_id), obtener el users.id correspondiente
+    let internalUserId: string | null = null;
+    if (userId) {
+      const { data: userData } = await supabase
+        .from('users')
+        .select('id')
+        .eq('auth_id', userId)
+        .single();
+
+      if (userData) {
+        internalUserId = userData.id;
+      } else {
+        console.error('[trackUsage] Usuario no encontrado en tabla users para auth_id:', userId);
+      }
+    }
+
     // Insertar registro en usage_tracking
     const { error } = await supabase.from('usage_tracking').insert({
-      user_id: userId || null,
+      user_id: internalUserId,
       anonymous_id: anonymousId || null,
       tool_type: toolType,
-      character_count: characterCount || null,
-      metadata: metadata || null,
+      input_length: characterCount || 0,
+      output_length: null,
+      success: true,
       created_at: new Date().toISOString(),
     });
 

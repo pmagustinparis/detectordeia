@@ -31,10 +31,10 @@ export async function getUserUsageStats(userId: string): Promise<UsageStats | nu
   try {
     const supabase = await createClient();
 
-    // Obtener plan del usuario
+    // Obtener id interno y plan del usuario
     const { data: user } = await supabase
       .from('users')
-      .select('plan_type')
+      .select('id, plan_type')
       .eq('auth_id', userId)
       .single();
 
@@ -63,21 +63,21 @@ export async function getUserUsageStats(userId: string): Promise<UsageStats | nu
     const { count: usesToday } = await supabase
       .from('usage_tracking')
       .select('id', { count: 'exact', head: true })
-      .eq('user_id', userId)
+      .eq('user_id', user.id)
       .gte('created_at', startOfToday.toISOString());
 
     // Query: Usos de este mes
     const { count: usesThisMonth } = await supabase
       .from('usage_tracking')
       .select('id', { count: 'exact', head: true })
-      .eq('user_id', userId)
+      .eq('user_id', user.id)
       .gte('created_at', startOfMonth.toISOString());
 
     // Query: Usos de hoy por herramienta
     const { data: usesTodayData } = await supabase
       .from('usage_tracking')
       .select('tool_type')
-      .eq('user_id', userId)
+      .eq('user_id', user.id)
       .gte('created_at', startOfToday.toISOString());
 
     const usesTodayByTool = {
@@ -120,10 +120,10 @@ export async function getUserHistory(userId: string) {
   try {
     const supabase = await createClient();
 
-    // Obtener plan del usuario
+    // Obtener id interno y plan del usuario
     const { data: user } = await supabase
       .from('users')
-      .select('plan_type')
+      .select('id, plan_type')
       .eq('auth_id', userId)
       .single();
 
@@ -145,7 +145,7 @@ export async function getUserHistory(userId: string) {
     const { data: history, error } = await supabase
       .from('history')
       .select('*')
-      .eq('user_id', userId)
+      .eq('user_id', user.id)
       .gte('created_at', cutoffDate.toISOString())
       .order('created_at', { ascending: false })
       .limit(limits.maxRecords);

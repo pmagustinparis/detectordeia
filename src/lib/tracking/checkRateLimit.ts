@@ -57,16 +57,18 @@ export async function checkRateLimit(
     // Determinar tipo de usuario y límite
     let userType: 'anonymous' | 'free' | 'premium' = 'anonymous';
     let limit = RATE_LIMITS.anonymous;
+    let internalUserId: string | null = null;
 
     if (userId) {
-      // Usuario autenticado: verificar su plan
+      // Usuario autenticado: obtener id interno y plan
       const { data: user } = await supabase
         .from('users')
-        .select('plan_type')
+        .select('id, plan_type')
         .eq('auth_id', userId)
         .single();
 
       if (user) {
+        internalUserId = user.id;
         userType = user.plan_type === 'premium' ? 'premium' : 'free';
         limit = RATE_LIMITS[userType];
       }
@@ -87,8 +89,8 @@ export async function checkRateLimit(
       .gte('created_at', startOfToday.toISOString());
 
     // Filtrar por userId o anonymousId
-    if (userId) {
-      query = query.eq('user_id', userId);
+    if (internalUserId) {
+      query = query.eq('user_id', internalUserId);
     } else if (anonymousId) {
       query = query.eq('anonymous_id', anonymousId);
     }

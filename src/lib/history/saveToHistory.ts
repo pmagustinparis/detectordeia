@@ -51,31 +51,31 @@ export async function saveToHistory(
     // Crear cliente Supabase
     const supabase = await createClient();
 
-    // Obtener info del usuario (para verificar plan)
+    // Obtener info del usuario (id interno y plan)
     const { data: user } = await supabase
       .from('users')
-      .select('plan_type')
+      .select('id, plan_type')
       .eq('auth_id', userId)
       .single();
 
     if (!user) {
-      console.error('[saveToHistory] Usuario no encontrado');
+      console.error('[saveToHistory] Usuario no encontrado para auth_id:', userId);
       return {
         success: false,
         error: 'Usuario no encontrado',
       };
     }
 
-    // Insertar en history
+    // Insertar en history (usando users.id, no auth_id)
     const { data: history, error: insertError } = await supabase
       .from('history')
       .insert({
-        user_id: userId,
+        user_id: user.id,
         tool_type: toolType,
         input_text: inputText,
         output_text: outputText,
-        character_count: characterCount,
-        metadata: metadata || null,
+        input_length: inputText.length,
+        output_length: outputText.length,
         created_at: new Date().toISOString(),
       })
       .select('id')
@@ -94,7 +94,7 @@ export async function saveToHistory(
       ? { maxRecords: 100, maxDays: 30 }
       : { maxRecords: 10, maxDays: 7 };
 
-    await cleanupOldHistory(userId, limits.maxRecords, limits.maxDays);
+    await cleanupOldHistory(user.id, limits.maxRecords, limits.maxDays);
 
     return {
       success: true,
