@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, getRateLimitHeaders } from '@/lib/tracking/checkRateLimit';
 import { trackUsage } from '@/lib/tracking/trackUsage';
+import { saveToHistory } from '@/lib/history/saveToHistory';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -275,6 +276,28 @@ export async function POST(request: Request) {
         entropyScore,
       },
     });
+
+    // 💾 SAVE TO HISTORY - Guardar en historial (solo usuarios autenticados)
+    if (userId) {
+      await saveToHistory({
+        userId,
+        toolType: 'detector',
+        inputText: text,
+        outputText: JSON.stringify({
+          probability: adjustedProbability,
+          confidenceLevel: analysis.confidenceLevel,
+          interpretation: getInterpretation(adjustedProbability, textType, entropyScore),
+        }),
+        characterCount: text.length,
+        metadata: {
+          textType,
+          probability: adjustedProbability,
+          confidenceLevel: analysis.confidenceLevel,
+          entropyScore,
+          scores_by_category: analysis.scores_by_category,
+        },
+      });
+    }
 
     // Retornar con headers de rate limit
     return NextResponse.json(

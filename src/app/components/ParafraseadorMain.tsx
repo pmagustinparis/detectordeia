@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import EmailCaptureModal from './EmailCaptureModal';
+import UsageLimitOverlay from './UsageLimitOverlay';
 import { useAuth } from '@/lib/hooks/useAuth';
+import { getAnonymousId } from '@/lib/tracking/anonymousId';
 
 const CHARACTER_LIMIT = 600;
 const MIN_CHARACTERS = 50;
@@ -18,6 +20,14 @@ export default function ParafraseadorMain() {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [emailModalSource, setEmailModalSource] = useState('');
   const [usageCount, setUsageCount] = useState(0);
+
+  // Rate limit overlay state
+  const [isLimitReached, setIsLimitReached] = useState(false);
+  const [rateLimitInfo, setRateLimitInfo] = useState<{
+    userType: 'anonymous' | 'free' | 'premium';
+    limit: number;
+    resetAt: Date;
+  } | null>(null);
 
   // Track usage count for anonymous users
   useEffect(() => {
@@ -52,6 +62,9 @@ export default function ParafraseadorMain() {
     setError(null);
 
     try {
+      // Obtener anonymousId para usuarios no autenticados
+      const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
+
       // Llamada a API de parafraseo (SIEMPRE se ejecuta, aunque exceda el límite)
       const response = await fetch('/api/paraphrase', {
         method: 'POST',
@@ -60,11 +73,23 @@ export default function ParafraseadorMain() {
         },
         body: JSON.stringify({
           text: text,
-          mode: 'standard'
+          mode: 'standard',
+          anonymousId,
         }),
       });
 
       const data = await response.json();
+
+      // 🚨 RATE LIMIT REACHED (429)
+      if (response.status === 429) {
+        setRateLimitInfo({
+          userType: data.userType || 'anonymous',
+          limit: data.limit || 10,
+          resetAt: new Date(data.resetAt),
+        });
+        setIsLimitReached(true);
+        return;
+      }
 
       if (!response.ok) {
         throw new Error(data.error || 'Error al parafrasear el texto');
@@ -459,6 +484,18 @@ export default function ParafraseadorMain() {
         onClose={() => setIsEmailModalOpen(false)}
         source={emailModalSource}
       />
+
+      {/* Usage Limit Overlay */}
+      {rateLimitInfo && (
+        <UsageLimitOverlay
+          isOpen={isLimitReached}
+          onClose={() => setIsLimitReached(false)}
+          userType={rateLimitInfo.userType}
+          limit={rateLimitInfo.limit}
+          resetAt={rateLimitInfo.resetAt}
+          toolName="Parafraseador"
+        />
+      )}
 
     </div>
   );

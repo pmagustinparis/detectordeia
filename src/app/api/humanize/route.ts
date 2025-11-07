@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, getRateLimitHeaders } from '@/lib/tracking/checkRateLimit';
 import { trackUsage } from '@/lib/tracking/trackUsage';
+import { saveToHistory } from '@/lib/history/saveToHistory';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -162,6 +163,21 @@ TEXTO HUMANIZADO:`;
         exceededFreeLimit,
       },
     });
+
+    // 💾 SAVE TO HISTORY - Guardar en historial (solo usuarios autenticados)
+    if (userId) {
+      await saveToHistory({
+        userId,
+        toolType: 'humanizador',
+        inputText: text,
+        outputText: humanizedText,
+        characterCount: text.length,
+        metadata: {
+          mode,
+          exceededFreeLimit,
+        },
+      });
+    }
 
     // Retornar con headers de rate limit
     return NextResponse.json(
