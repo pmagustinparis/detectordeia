@@ -587,198 +587,207 @@ MODIFICAR:
 
 ---
 
-## 🟡 FASE 2: Analytics y Optimización
-**Prioridad:** BAJA - Después de Fase 1
-**Tiempo estimado:** 2 semanas
-**Estado:** ❌ NO iniciado
+## 🔍 FASE 2: SEO y pSEO (Programmatic SEO)
+**Prioridad:** ALTA - Después de Fase 1
+**Tiempo estimado:** 2-3 semanas
+**Estado:** ⏸️ Pendiente (post-monetización)
 
+**Objetivo:** Atraer tráfico orgánico mediante optimización SEO y generación de páginas programáticas.
+
+### A. Research de Keywords
 ```
-□ Google Analytics 4 avanzado:
-  - Eventos custom:
-    - humanize_clicked
-    - humanize_success
-    - paraphrase_clicked
-    - paraphrase_success
-    - detect_clicked
-    - detect_success
-    - email_captured
-    - checkout_started
-    - checkout_completed
-  - Funnels de conversión:
-    - Free user → Email capture → Premium purchase
-  - User properties: subscription_status, signup_date
-  - E-commerce tracking para Stripe
+□ Análisis con Keywords Everywhere:
+  - Keywords principales actuales (detectar ia, humanizador, parafraseador)
+  - Long-tail keywords con intención de búsqueda
+  - Análisis de volumen + dificultad + CPC
+  - Identificar gaps de contenido
 
-□ Hotjar o Microsoft Clarity:
-  - Heatmaps de las 3 herramientas
-  - Session recordings
-  - Identificar puntos de fricción
-  - A/B testing de CTAs
+□ Análisis SERP:
+  - Revisar top 10 resultados por keyword
+  - Identificar featured snippets
+  - Analizar intención de búsqueda (informacional, transaccional)
+  - Competencia directa e indirecta
 
-□ Dashboard interno de métricas:
-  - Crear /src/app/admin/analytics/page.tsx
-  - Métricas clave (KPIs):
-    - DAU (Daily Active Users)
-    - MAU (Monthly Active Users)
-    - Conversión free → premium (%)
-    - Churn rate (%)
-    - MRR (Monthly Recurring Revenue)
-    - ARR (Annual Recurring Revenue)
-    - LTV (Lifetime Value)
-    - Uso por herramienta
-    - Caracteres promedio por uso
-    - Emails en waitlist vs convertidos
-  - Gráficos con recharts o Chart.js
-  - Solo accesible por admin (tu email)
-
-□ Email marketing automatizado:
-  - Setup Resend.com + React Email
-  - Templates:
-    - Welcome email (al registrarse)
-    - Tips de uso (día 3)
-    - Recordatorio features premium (día 7)
-    - Descuento especial (día 14 si no convirtió)
-    - Re-engagement (30 días inactivo)
-  - Secuencias automatizadas
-  - Unsubscribe handling
-
-□ A/B Testing:
-  - Probar variantes de CTAs
-  - Probar precio ($7 vs $9 vs $5)
-  - Probar copy de landing pages
-  - Usar Vercel Edge Config o feature flags
+□ Oportunidades de ranking:
+  - Keywords con alta intención + baja competencia
+  - Preguntas frecuentes en "People Also Ask"
+  - Variaciones regionales (España vs LATAM)
+  - Keywords de comparación ("detector vs humanizador")
 ```
+
+### B. Optimización On-Page Actual
+```
+□ Auditoría de páginas existentes:
+  - / (home - Detector)
+  - /humanizador
+  - /parafraseador
+  - /pricing
+  - /dashboard (no-index)
+  - Páginas de países (/mx, /ar, etc.)
+
+□ Mejoras técnicas:
+  - Title tags optimizados por keyword
+  - Meta descriptions persuasivas
+  - Headers (H1, H2, H3) con keywords
+  - Internal linking estratégico
+  - Image alt text
+  - Schema.org markup expandido
+
+□ Actualizar sitemap.xml:
+  - Incluir todas las páginas públicas
+  - Priority y changefreq correctos
+  - Submit a Google Search Console
+
+□ Optimizar robots.txt:
+  - Bloquear /dashboard, /api
+  - Permitir todo lo demás
+  - Link al sitemap
+```
+
+### C. pSEO (Programmatic SEO)
+```
+□ Generar páginas por keyword long-tail:
+  - "detector de ia gratis"
+  - "como detectar texto de chatgpt"
+  - "humanizador de texto ia online"
+  - "parafrasear sin plagio"
+  - "evitar detectores de ia"
+  - + 20-30 keywords más
+
+□ Templates de páginas pSEO:
+  - /blog/[keyword-slug] (artículos SEO)
+  - /herramientas/[tool-variation] (variaciones de herramientas)
+  - /guias/[guide-topic] (guías paso a paso)
+
+□ Contenido optimizado:
+  - 800-1500 palabras por página
+  - Responder intención de búsqueda
+  - CTAs a herramientas principales
+  - Internal linking entre artículos
+
+□ Automatización (opcional):
+  - Templates reutilizables
+  - Generación con IA (revisado manualmente)
+  - Deploy automático con Next.js
+```
+
+### D. Link Building Básico
+```
+□ Directorios relevantes:
+  - Product Hunt
+  - AlternativeTo
+  - Directorio de herramientas AI
+
+□ Guest posting:
+  - Blogs de IA en español
+  - Sitios de educación
+  - Comunidades de escritores
+
+□ Menciones:
+  - Reddit (r/OpenAI, r/ChatGPT - español)
+  - Twitter/X
+  - LinkedIn
+```
+
+### E. Monitoreo y Medición
+```
+□ Google Search Console:
+  - Configurado ✅
+  - Monitorear impresiones, clicks, CTR
+  - Identificar keywords ganando posiciones
+  - Corregir errores de indexación
+
+□ Google Analytics 4:
+  - Ya configurado ✅
+  - Segmentar tráfico orgánico
+  - Bounce rate por landing page
+  - Conversiones desde SEO
+
+□ Tracking de rankings:
+  - Herramienta: Ahrefs, SEMrush, o manual
+  - Top 10-20 keywords objetivo
+  - Monitoreo semanal/mensual
+```
+
+**Resultado esperado:**
+- 2-3x tráfico orgánico en 3 meses
+- Top 10 para 5-10 keywords principales
+- 20-30 páginas pSEO indexadas
+- Mayor conversión desde búsqueda orgánica
 
 ---
 
-## 🟢 FASE 3: Expansión de Features
-**Prioridad:** FUTURA - Después de tener usuarios pagos
-**Tiempo estimado:** 1-2 meses
-**Estado:** ❌ NO iniciado
+## 📊 FASE 3: Analytics y Optimización
+**Prioridad:** MEDIA - Después de Fase 2
+**Tiempo estimado:** 1-2 semanas
+**Estado:** ⏸️ Pendiente (post-SEO)
 
+**Objetivo:** Profundizar en métricas y optimizar conversión.
+
+### A. Analytics Avanzado
 ```
-□ Modo Batch (procesar múltiples textos):
-  - Subir archivo .txt o .docx
-  - Procesar múltiples párrafos
-  - Descargar resultado completo
-  - Solo premium
+□ Google Analytics 4 eventos custom:
+  - checkout_started
+  - checkout_completed
+  - premium_feature_clicked
+  - limit_reached
+  - email_captured
 
-□ Comparador lado-a-lado:
-  - Mostrar original | resultado
-  - Highlight de diferencias
-  - Útil para revisar cambios
+□ Funnels de conversión:
+  - Anónimo → Registro → Premium
+  - Landing → Tool usage → Limit → Upgrade
 
-□ Detector de plagio integrado:
-  - API externa (Copyscape, Copyleaks)
-  - Verificar si texto es original
-  - Complemento al parafraseador
-
-□ Exportar múltiples formatos:
-  - .docx (Word) con mammoth.js
-  - .pdf con jsPDF
-  - .md (Markdown)
-  - Solo premium
-
-□ API pública REST:
-  - Endpoints:
-    - POST /api/v1/detect
-    - POST /api/v1/humanize
-    - POST /api/v1/paraphrase
-  - API keys por usuario
-  - Rate limiting (100 requests/día premium)
-  - Documentación con Swagger/OpenAPI
-  - Plan API: $15/mes (50k caracteres/mes)
-
-□ Integración Google Docs:
-  - Add-on de Google Workspace
-  - Humanizar/Parafrasear desde el doc
-  - Reemplazar texto inline
-
-□ Plugin de Chrome:
-  - Seleccionar texto en cualquier web
-  - Click derecho → Humanizar/Parafrasear
-  - Popup con resultado
-
-□ Slack/Discord bot:
-  - Comando /humanizar [texto]
-  - Comando /parafrasear [texto]
-  - Para equipos
+□ User properties:
+  - subscription_status
+  - signup_date
+  - preferred_tool
 ```
 
----
-
-## 🌍 FASE 4: Internacionalización
-**Prioridad:** FUTURA - Después de validar español
-**Tiempo estimado:** 1-2 meses
-**Estado:** ❌ NO iniciado
-
+### B. Dashboard Interno de Métricas
 ```
-□ Soporte multiidioma en la app:
-  - i18n con next-intl
-  - Idiomas objetivo:
-    - Español (actual) 🇪🇸
-    - Inglés 🇺🇸
-    - Portugués (Brasil) 🇧🇷
-    - Francés 🇫🇷
-  - Traducir toda la UI
-  - Selector de idioma en header
+□ Crear /admin/analytics (solo para Agustín):
+  - MRR (Monthly Recurring Revenue)
+  - Usuarios activos (DAU, MAU)
+  - Conversión free → premium (%)
+  - Churn rate (%)
+  - LTV (Lifetime Value)
+  - Uso por herramienta
+  - Top keywords (desde Search Console)
 
-□ Modelos especializados por idioma:
-  - Prompts en cada idioma
-  - Verificar calidad con usuarios nativos
-  - Ajustar temperaturas según idioma
-
-□ Landing pages localizadas:
-  - /es (España) - actual
-  - /mx (México) - actual
-  - /co, /ar, /cl, /pe (LATAM)
-  - /en (USA)
-  - /br (Brasil)
-  - /fr (Francia)
-  - SEO localizado por país
-
-□ Precios por región:
-  - Purchasing Power Parity
-  - México: $99 MXN/mes (~$5 USD)
-  - Argentina: $3,000 ARS/mes (~$3 USD)
-  - Brasil: R$25 BRL/mes (~$5 USD)
-  - España: €7 EUR/mes
-
-□ Soporte en múltiples idiomas:
-  - Email support en español e inglés
-  - FAQ traducidas
-  - Chatbot multiidioma (futuro)
+□ Gráficos visuales:
+  - Recharts o Chart.js
+  - Vista temporal (día, semana, mes)
+  - Comparativas mes vs mes
 ```
 
----
-
-## 📱 FASE 5: Apps Móviles
-**Prioridad:** FUTURA - Después de tracción web
-**Tiempo estimado:** 3-4 meses
-**Estado:** ❌ NO iniciado
-
+### C. Email Marketing Automatizado
 ```
-□ App iOS:
-  - React Native o Swift nativo
-  - Mismas 3 herramientas
-  - Face ID / Touch ID login
-  - Sincronización con cuenta web
-  - Historial offline
-  - Share extension
+□ Setup Resend.com + React Email:
+  - Welcome email (al registrarse)
+  - Tips de uso (día 3)
+  - Recordatorio features premium (día 7)
+  - Email de conversión (día 14 si no convirtió)
 
-□ App Android:
-  - React Native o Kotlin nativo
-  - Mismas features que iOS
-  - Biometric auth
-  - Sincronización con cuenta web
-
-□ Features mobile-specific:
-  - Notificaciones push
-  - Compartir a otras apps
-  - Copiar al portapapeles
-  - Modo offline (caché)
-  - Widget de home screen
+□ Secuencias:
+  - Onboarding (3 emails)
+  - Nurture to premium (4 emails)
+  - Re-engagement (usuarios inactivos)
 ```
+
+### D. A/B Testing (Opcional)
+```
+□ Testear:
+  - Pricing ($7 vs $9 vs $5)
+  - CTAs en overlay de límite
+  - Copy de página /pricing
+  - Duración de trial (7 días vs 14 días)
+```
+
+**Resultado esperado:**
+- Mayor visibilidad de métricas clave
+- Mejora en conversión free → premium (+1-2%)
+- Email marketing automatizado funcionando
+- Decisiones basadas en datos
 
 ---
 
@@ -820,87 +829,148 @@ AÑO 1:
 
 # 🎯 PRIORIDADES INMEDIATAS
 
-## Esta semana:
-1. ✅ ~~Captura de emails funcionando~~ (DONE)
-2. ✅ ~~Footer modernizado~~ (DONE)
-3. ✅ ~~Parafraseador completo~~ (DONE)
-4. ❌ Push a producción (próximo)
+## ✅ Completado:
+1. ✅ Fase 0: Auth + DB + Dashboard + Rate Limiting (100%)
+2. ✅ Testing y deploy en producción
+3. ✅ 3 herramientas funcionando (Detector, Humanizador, Parafraseador)
 
-## Próximas 2 semanas:
-1. Fase 0A: Setup Supabase + Schema DB
-2. Fase 0B: Google OAuth
-3. Fase 0C: Migrar emails de Google Sheets
+## 📋 Próximos pasos:
 
-## Próximo mes:
-1. Fase 0: Completar (Auth + DB + Dashboard)
-2. Fase 1: Iniciar (Stripe setup)
+### 1️⃣ **ANTES DE FASE 1** (Ahora - Research):
+- [ ] Definir pricing final ($7/mes vs otras opciones)
+- [ ] Definir features premium exactas
+- [ ] Definir límites free vs premium
+- [ ] Definir copy de página /pricing
+- [ ] Definir estrategia de trial (7 días gratis vs sin trial)
+
+### 2️⃣ **FASE 1** (3-4 semanas):
+- [ ] Sprint 1: Stripe Setup
+- [ ] Sprint 2: Features Premium (15K chars, 5 modos, slider)
+- [ ] Sprint 3: Página Pricing optimizada
+- [ ] Sprint 4: Launch + primeros usuarios pagos
+
+### 3️⃣ **FASE 2** (Post-monetización):
+- [ ] Research keywords con Keywords Everywhere
+- [ ] Crear 20-30 páginas pSEO
+- [ ] Optimizar SEO on-page
+- [ ] Link building básico
 
 ---
 
-# 📝 DECISIONES TÉCNICAS PENDIENTES
+# 📝 DECISIONES PENDIENTES (Research de Agustín)
 
-## A decidir en Fase 0:
+## Para definir antes de Fase 1:
+
+### Pricing:
 ```
-□ ¿Usamos Supabase Auth o NextAuth.js?
-  → Recomendación: Supabase Auth (más integrado)
+□ ¿Precio final? Opciones:
+  - $7/mes (propuesta inicial)
+  - $5/mes (más accesible)
+  - $9/mes (mayor valor percibido)
+  - Otro precio?
 
-□ ¿Qué hacer con usuarios anónimos actuales?
-  → Permitir seguir usando free sin registro
-  → Tracking solo si logueados
+□ ¿Trial gratuito?
+  - Opción 1: 7 días gratis sin tarjeta
+  - Opción 2: Sin trial, pago directo
+  - Opción 3: 14 días gratis con tarjeta
 
-□ ¿Guardar historial de usuarios free?
-  → NO (solo premium)
-
-□ ¿Soft delete o hard delete?
-  → Soft delete (deleted_at column)
-```
-
-## A decidir en Fase 1:
-```
-□ ¿Trial gratuito de premium?
-  → Recomendación: 7 días gratis, luego $7/mes
+□ ¿Plan anual desde el inicio?
+  - Ejemplo: $70/año (ahorro 17%)
+  - O implementar después?
 
 □ ¿Descuento para early adopters?
-  → 20% off primer mes (código EARLYBIRD)
-
-□ ¿Plan anual con descuento?
-  → $70/año ($5.83/mes) - ahorro 17%
-
-□ ¿Qué hacer con usuarios que cancelan?
-  → Mantener acceso hasta fin de período
-  → Email de win-back después de 30 días
+  - Ejemplo: Código EARLYBIRD (20% off primer mes)
+  - O precio normal desde el inicio?
 ```
+
+### Features Premium:
+```
+□ Límites de caracteres:
+  - Free: 600 chars (actual)
+  - Premium: ¿15,000 chars? ¿10,000? ¿20,000?
+
+□ Modos disponibles:
+  - Free: 1 modo (Estándar)
+  - Premium: ¿5 modos? (Formal, Creativo, Simplificado, Académico + Estándar)
+
+□ Historial:
+  - Free: 10 usos + 7 días (actual)
+  - Premium: ¿100 usos + 30 días? ¿Ilimitado?
+
+□ Otras features premium:
+  - Slider de intensidad (Parafraseador)
+  - ¿Exportar PDF/DOCX? (puede esperar)
+  - ¿Soporte prioritario? ¿Cómo?
+  - ¿Otras ideas?
+```
+
+### Copy y Messaging:
+```
+□ Value proposition principal:
+  - ¿Qué mensaje resuena más?
+  - "Texto humano, sin límites"
+  - "Evita cualquier detector de IA"
+  - "Herramientas profesionales de IA"
+  - Otro?
+
+□ Página /pricing:
+  - ¿Qué enfatizar?
+  - ¿Testimonios? (cuando estén disponibles)
+  - ¿Garantía de reembolso?
+  - ¿Comparativa con competencia?
+```
+
+### Cancelación y Retención:
+```
+□ Usuarios que cancelan:
+  - ¿Mantener acceso hasta fin de período?
+  - ¿Email de win-back? ¿Cuándo?
+  - ¿Encuesta de por qué cancelaron?
+
+□ Churn prevention:
+  - ¿Email antes de renovación?
+  - ¿Recordatorios de valor?
+```
+
+**Acción:** Agustín hace research y define todas estas decisiones antes de empezar implementación de Fase 1.
 
 ---
 
-# 🚫 NO HACER (Por ahora)
+# 🚫 NO HACER (Fuera de scope)
+
+**Foco:** Monetizar lo que ya tenemos, atraer tráfico, optimizar conversión.
 
 ```
-✗ Más herramientas (ya tenemos 3)
+✗ Más herramientas antes de validar Premium
+✗ Apps móviles (iOS/Android)
+✗ Internacionalización (otros idiomas)
+✗ API pública REST
+✗ Integraciones complejas (Google Docs, Chrome Extension, Slack bots)
+✗ Features avanzadas (batch processing, detector de plagio)
 ✗ Anuncios (queremos UX limpia)
 ✗ Vender datos de usuarios
-✗ Features complejas antes de validar producto
-✗ Sobre-ingeniería
 ✗ Múltiples planes (solo Free y Premium)
-✗ Trial sin tarjeta (pedir tarjeta desde inicio)
+✗ Sobre-ingeniería
 ```
+
+**Enfoque actual:** Fase 1 (Monetización) → Fase 2 (SEO/pSEO) → Fase 3 (Analytics)
 
 ---
 
 # 📞 CONTACTO Y RECURSOS
 
 **Proyecto:** https://www.detectordeia.ai
-**Google Sheet (Waitlist):** [Link privado]
 **Vercel:** https://vercel.com/dashboard
 **Google Cloud Console:** https://console.cloud.google.com
-**Supabase:** https://supabase.com (pendiente)
-**Stripe:** https://stripe.com (pendiente)
+**Supabase:** https://supabase.com ✅
+**Stripe:** https://stripe.com (pendiente Fase 1)
 
 **Email:** hola@detectordeia.ai
 **Twitter:** @detectordeia
 
 ---
 
-**Última actualización:** Noviembre 2025
-**Próxima revisión:** Al completar Fase 0
-**Versión:** 1.0
+**Última actualización:** 2025-11-07
+**Estado:** Fase 0 ✅ Completada | Fase 1 ⏸️ En definición
+**Próxima revisión:** Al empezar Fase 1 (post-research)
+**Versión:** 2.0 (roadmap simplificado y enfocado)

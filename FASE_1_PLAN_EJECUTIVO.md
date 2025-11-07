@@ -292,17 +292,58 @@ Fase 1 está completa cuando:
 
 ## 🎬 PRÓXIMA ACCIÓN
 
-**¿Listo para empezar Fase 1?**
+**ESTADO ACTUAL:** Fase 1 en pausa para research y definición.
 
-**Paso 1 (AHORA):** Confirmar decisiones pendientes
-- Precio: ¿$7/mes confirmado?
-- Trial: ¿7 días gratis?
-- Features: ¿algo más que agregar/quitar?
+**Paso 1 (AHORA - Agustín):** Research y definir decisiones pendientes
+- [ ] Precio final: ¿$7/mes? ¿$5? ¿$9? ¿Otro?
+- [ ] Trial: ¿7 días gratis sin tarjeta? ¿Sin trial? ¿14 días con tarjeta?
+- [ ] Features premium exactas: límites, modos, historial
+- [ ] Copy de página /pricing
+- [ ] Value proposition principal
+- [ ] Estrategia de descuentos para early adopters
 
-**Paso 2 (DESPUÉS):** Empezar Sprint 1 - Stripe Setup
+**Paso 2 (DESPUÉS DEL RESEARCH):** Empezar Sprint 1 - Stripe Setup
 - Agustín: crear cuenta Stripe + producto
 - Claude: implementar endpoints + webhooks
 
+**Paso 3 (PARALELO A FASE 1):** SEO Research
+- Keywords con Keywords Everywhere
+- Identificar oportunidades de pSEO
+- Planificar 20-30 páginas a crear
+
 ---
 
-**¡Con Fase 0 completa, estamos listos para monetizar! 🚀**
+## 📋 NUEVO ROADMAP SIMPLIFICADO
+
+```
+✅ FASE 0: Auth + DB + Dashboard → COMPLETADA
+
+⏸️ FASE 1: Monetización → En definición (research)
+   ├─ Sprint 1: Stripe Setup
+   ├─ Sprint 2: Features Premium
+   ├─ Sprint 3: Pricing Page
+   └─ Sprint 4: Launch
+
+📈 FASE 2: SEO y pSEO → Post-monetización
+   ├─ Research keywords
+   ├─ Crear 20-30 páginas pSEO
+   ├─ Optimizar on-page
+   └─ Link building básico
+
+📊 FASE 3: Analytics → Post-SEO
+   ├─ Analytics avanzado
+   ├─ Dashboard interno
+   └─ Email marketing automatizado
+
+❌ FASES 4-5 ELIMINADAS:
+   - Apps móviles ❌
+   - Internacionalización ❌
+   - API pública ❌
+   - Integraciones complejas ❌
+```
+
+**Foco:** Monetizar → Atraer tráfico → Optimizar conversión
+
+---
+
+**¡Con Fase 0 completa, estamos listos para monetizar después del research! 🚀**
