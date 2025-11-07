@@ -8,9 +8,12 @@
 
 ## 📊 ESTADO ACTUAL
 
-**Fase:** Pre-Monetización ✅ COMPLETADA
+**Fase:** Fase 0 ✅ COMPLETADA (Auth + DB + Dashboard)
 **En producción:** https://www.detectordeia.ai
-**Capturando emails:** ✅ SÍ (Google Sheets)
+**Capturando emails:** ✅ SÍ (Supabase)
+**Usuarios autenticados:** ✅ SÍ (Google OAuth)
+**Rate limiting activo:** ✅ SÍ (10 anónimo / 50 free)
+**Dashboard funcional:** ✅ SÍ (stats + historial)
 **Usuarios pagos:** ❌ NO (pendiente Fase 1)
 
 ---
@@ -298,230 +301,117 @@ Analytics:
 
 ---
 
-# 🔲 TODO - PENDIENTE
+## 🎯 10. FASE 0: Base de Datos + Autenticación
+**Estado:** ✅ COMPLETADA (2025-11-07)
 
-## 🔴 FASE 0: Base de Datos + Autenticación
-**Prioridad:** ALTA - Bloqueante para monetización
-**Tiempo estimado:** 2-3 semanas
-**Estado:** ❌ NO iniciado
+**Lo que se implementó:**
 
-### A. Supabase Setup
+### A. Supabase Setup ✅
+- ✅ Proyecto Supabase creado y configurado
+- ✅ Base de datos PostgreSQL con 5 tablas:
+  - `users` - Información de usuarios
+  - `subscriptions` - Estado de suscripciones (free/premium)
+  - `usage_tracking` - Tracking de cada uso por herramienta
+  - `email_waitlist` - Emails capturados para waitlist
+  - `history` - Historial de usos (últimos 10 + 7 días)
+- ✅ Row Level Security (RLS) policies configuradas
+- ✅ Índices optimizados para performance
+- ✅ Supabase client en Next.js (browser + server + middleware)
+- ✅ Variables de entorno configuradas en Vercel
+
+### B. Autenticación con Google SSO ✅
+- ✅ Google OAuth configurado en Google Cloud Console
+- ✅ Google provider habilitado en Supabase Auth
+- ✅ Componentes de Auth implementados:
+  - `AuthButton.tsx` - Botón login/logout con dropdown
+  - `useAuth.ts` - Hook custom de autenticación
+- ✅ Header actualizado con menú de usuario
+- ✅ Página /auth/callback para OAuth
+- ✅ Trigger automático: crear user en DB al registrarse
+- ✅ Session management con cookies
+- ✅ Middleware protegiendo rutas /dashboard
+
+### C. Dashboard de Usuario ✅
+- ✅ `/dashboard` - Dashboard completo con:
+  - Información de cuenta (avatar, email, nombre)
+  - Stats de uso: usos hoy, usos mes, por herramienta
+  - Progress bars visuales con límites (ej: "15/50 usos hoy")
+  - Historial de últimos 10 usos + 7 días
+  - Modal de detalle (ver input/output completo)
+  - Actions: Copiar output, Descargar .txt
+  - Diseño responsive con gradientes
+  - Colores diferenciados por herramienta (azul/verde/naranja)
+
+### D. Rate Limiting + Tracking ✅
+- ✅ Anonymous ID system (cookie persistente)
+- ✅ Función `trackUsage()` guardando en DB
+- ✅ Función `checkRateLimit()`:
+  - 10 usos/día para anónimos
+  - 50 usos/día para usuarios free
+- ✅ Rate limiting integrado en todas las APIs
+- ✅ `UsageLimitOverlay` component mostrando límite alcanzado
+- ✅ History saving automático (solo usuarios autenticados)
+
+### E. Testing + Deploy ✅
+- ✅ Testing end-to-end en producción
+- ✅ Performance audit: response time <2s ✅
+- ✅ Security audit: RLS, HTTPS, env vars ✅
+- ✅ Deploy a producción funcionando
+
+**Archivos clave creados:**
 ```
-□ Crear cuenta/proyecto Supabase
-□ Configurar base de datos PostgreSQL
-□ Diseñar schema completo:
+Backend/DB:
+├── /supabase-migrations.sql
+├── /src/lib/supabase/client.ts
+├── /src/lib/supabase/server.ts
+└── /src/lib/supabase/middleware.ts
 
-  tabla: users
-  ├── id (uuid, PK)
-  ├── email (text, unique)
-  ├── name (text, nullable)
-  ├── avatar_url (text, nullable)
-  ├── created_at (timestamp)
-  ├── updated_at (timestamp)
-  └── subscription_status (enum: free, premium, cancelled)
+Auth:
+├── /src/lib/hooks/useAuth.ts
+├── /src/components/AuthButton.tsx
+├── /src/app/auth/callback/route.ts
+└── /src/middleware.ts
 
-  tabla: subscriptions
-  ├── id (uuid, PK)
-  ├── user_id (uuid, FK → users.id)
-  ├── stripe_customer_id (text, unique)
-  ├── stripe_subscription_id (text, unique, nullable)
-  ├── plan (enum: free, premium)
-  ├── status (enum: active, cancelled, past_due)
-  ├── current_period_end (timestamp)
-  ├── created_at (timestamp)
-  └── updated_at (timestamp)
+Tracking & Limits:
+├── /src/lib/tracking/anonymousId.ts
+├── /src/lib/tracking/trackUsage.ts
+├── /src/lib/rateLimit/checkRateLimit.ts
+└── /src/app/components/UsageLimitOverlay.tsx
 
-  tabla: usage_tracking
-  ├── id (uuid, PK)
-  ├── user_id (uuid, FK → users.id)
-  ├── tool (enum: detector, humanizador, parafraseador)
-  ├── characters_used (integer)
-  ├── mode (text: standard, formal, creative, etc.)
-  ├── created_at (timestamp)
-  └── cost_cents (integer, nullable - para calcular usage en futuro)
+Dashboard:
+├── /src/lib/queries/usageStats.ts
+├── /src/app/dashboard/page.tsx
+└── /src/app/dashboard/DashboardClient.tsx
 
-  tabla: email_waitlist
-  ├── id (uuid, PK)
-  ├── email (text, unique)
-  ├── source (text)
-  ├── tool (text, nullable)
-  ├── created_at (timestamp)
-  ├── notified (boolean, default: false)
-  └── notified_at (timestamp, nullable)
-
-  tabla: humanize_history (para premium)
-  ├── id (uuid, PK)
-  ├── user_id (uuid, FK → users.id)
-  ├── original_text (text)
-  ├── humanized_text (text)
-  ├── mode (text)
-  ├── characters (integer)
-  ├── created_at (timestamp)
-  └── deleted_at (timestamp, nullable - soft delete)
-
-  tabla: paraphrase_history (para premium)
-  ├── id (uuid, PK)
-  ├── user_id (uuid, FK → users.id)
-  ├── original_text (text)
-  ├── paraphrased_text (text)
-  ├── mode (text)
-  ├── characters (integer)
-  ├── created_at (timestamp)
-  └── deleted_at (timestamp, nullable)
-
-□ Configurar Row Level Security (RLS) policies:
-  - Users pueden ver solo sus propios datos
-  - Usage tracking solo visible por el usuario
-  - History solo visible por el usuario
-
-□ Crear índices para performance:
-  - users.email (unique)
-  - usage_tracking.user_id + created_at
-  - subscriptions.stripe_customer_id
-  - humanize_history.user_id + created_at
-  - paraphrase_history.user_id + created_at
-
-□ Setup Supabase client en Next.js:
-  - Instalar @supabase/supabase-js
-  - Instalar @supabase/auth-helpers-nextjs
-  - Configurar variables de entorno:
-    - NEXT_PUBLIC_SUPABASE_URL
-    - NEXT_PUBLIC_SUPABASE_ANON_KEY
-    - SUPABASE_SERVICE_ROLE_KEY (solo backend)
-
-□ Crear utilidades de Supabase:
-  - /src/lib/supabase/client.ts (client-side)
-  - /src/lib/supabase/server.ts (server-side)
-  - /src/lib/supabase/middleware.ts (para auth)
+APIs Actualizadas:
+├── /src/app/api/humanize/route.ts (+ tracking/rate limiting)
+├── /src/app/api/paraphrase/route.ts (+ tracking/rate limiting)
+└── /src/app/api/analyze/route.ts (+ tracking/rate limiting)
 ```
 
-### B. Autenticación con Google SSO
-```
-□ Configurar Google OAuth en Google Cloud Console
-  - Crear OAuth 2.0 credentials
-  - Authorized redirect URIs para Vercel
-  - Obtener Client ID y Client Secret
+**Documentación:**
+- ✅ `FASE_0_PLAN_CONCEPTUAL.md` - Plan técnico completo
+- ✅ `FASE_0_DECISIONES_FINALES.md` - Decisiones de producto
+- ✅ `FASE_0_PASO_A_PASO.md` - Roadmap detallado
+- ✅ `FASE_0_ESTADO_ACTUAL.md` - Estado final
+- ✅ `SETUP_SUPABASE_FASE_0.md` - Guía de setup
 
-□ Configurar Supabase Auth:
-  - Habilitar Google provider en Supabase Dashboard
-  - Agregar Google Client ID y Secret
-  - Configurar redirect URLs
-
-□ Implementar componentes de Auth:
-  - /src/components/auth/LoginButton.tsx
-  - /src/components/auth/LogoutButton.tsx
-  - /src/components/auth/UserMenu.tsx (dropdown con avatar)
-  - /src/components/auth/AuthProvider.tsx (context)
-
-□ Actualizar Header:
-  - Mostrar botón "Iniciar sesión" si no autenticado
-  - Mostrar UserMenu con avatar si autenticado
-  - Dropdown con: Dashboard, Configuración, Cerrar sesión
-
-□ Crear páginas de auth:
-  - /src/app/auth/callback/route.ts (callback de Google)
-  - /src/app/login/page.tsx (opcional, redirect)
-  - /src/app/dashboard/page.tsx (user dashboard)
-
-□ Implementar lógica de auth:
-  - Guardar usuario en DB al primer login
-  - Crear subscription "free" automáticamente
-  - Session management con cookies
-  - Refresh token automático
-
-□ Middleware de autenticación:
-  - Proteger rutas /dashboard/*
-  - Proteger rutas /api/* que requieren auth
-  - Redirect a /login si no autenticado
-```
-
-### C. Migrar datos de Google Sheets a Supabase
-```
-□ Exportar Google Sheet a CSV
-□ Limpiar duplicados de emails
-□ Importar a tabla email_waitlist en Supabase
-□ Verificar integridad de datos
-□ Actualizar /api/subscribe para usar Supabase:
-  - Guardar en email_waitlist table
-  - Mantener Google Sheets como backup (opcional)
-```
-
-### D. Dashboard de Usuario
-```
-□ Crear /src/app/dashboard/page.tsx:
-  - Ver información de cuenta (email, nombre, avatar)
-  - Ver plan actual (Free / Premium)
-  - Ver uso del mes actual:
-    - Caracteres usados por herramienta
-    - Gráfico de uso
-  - Botón "Actualizar a Premium" (si free)
-  - Botón "Gestionar suscripción" (si premium)
-
-□ Crear /src/app/dashboard/history/page.tsx (solo premium):
-  - Historial de humanizaciones
-  - Historial de parafraseos
-  - Filtros: herramienta, fecha
-  - Paginación
-  - Botones: Ver, Copiar, Descargar, Eliminar
-
-□ Crear /src/app/dashboard/settings/page.tsx:
-  - Editar nombre
-  - Cambiar avatar
-  - Eliminar cuenta (soft delete)
-```
-
-### E. Proteger APIs con Auth
-```
-□ Actualizar /api/humanize:
-  - Verificar auth con Supabase
-  - Si no auth → funciona igual (600 chars)
-  - Si auth free → funciona igual (600 chars)
-  - Si auth premium → 15,000 chars + todos los modos
-  - Guardar en usage_tracking
-  - Si premium, guardar en humanize_history
-
-□ Actualizar /api/paraphrase:
-  - Misma lógica que humanize
-  - Guardar en paraphrase_history si premium
-
-□ Actualizar /api/analyze:
-  - Similar, pero menos crítico
-  - Solo tracking si autenticado
-```
-
-**Archivos a crear/modificar:**
-```
-CREAR:
-- /src/lib/supabase/client.ts
-- /src/lib/supabase/server.ts
-- /src/lib/supabase/middleware.ts
-- /src/components/auth/LoginButton.tsx
-- /src/components/auth/LogoutButton.tsx
-- /src/components/auth/UserMenu.tsx
-- /src/components/auth/AuthProvider.tsx
-- /src/app/auth/callback/route.ts
-- /src/app/dashboard/page.tsx
-- /src/app/dashboard/history/page.tsx
-- /src/app/dashboard/settings/page.tsx
-- /src/app/dashboard/layout.tsx
-- /src/middleware.ts (Next.js middleware para auth)
-
-MODIFICAR:
-- /src/components/Header.tsx (agregar auth UI)
-- /src/app/api/humanize/route.ts (agregar auth logic)
-- /src/app/api/paraphrase/route.ts (agregar auth logic)
-- /src/app/api/analyze/route.ts (agregar tracking)
-- /src/app/api/subscribe/route.ts (usar Supabase)
-- /src/app/layout.tsx (AuthProvider wrapper)
-```
+**Commits clave:**
+- 93986f0 - Mejoras de colores en dashboard
+- d4b03b6 - Fix progress bars
+- cf64494 - Fix schema mismatch crítico
+- ae38dbe - Implementar dashboard con datos reales (Sprint 3)
+- 56b91b0 - Implementar rate limiting (Sprint 4)
+- 36d4603 - Implementar Supabase auth (Sprint 1)
 
 ---
 
+# 🔲 TODO - PENDIENTE
+
 ## 🟠 FASE 1: Monetización Premium
-**Prioridad:** MEDIA - Después de Fase 0
+**Prioridad:** ALTA - Siguiente paso inmediato
 **Tiempo estimado:** 3-4 semanas
-**Estado:** ❌ NO iniciado
-**Bloqueado por:** Fase 0 (necesita auth y DB)
+**Estado:** ⏸️ Lista para empezar (Fase 0 completada)
 
 ### A. Integración Stripe
 ```
