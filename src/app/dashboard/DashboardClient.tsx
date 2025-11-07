@@ -27,6 +27,22 @@ export default function DashboardClient({ user, usageStats, history }: Dashboard
     parafraseador: 'purple',
   };
 
+  // Get tool color class (full class name for Tailwind)
+  const getToolColorClass = (tool: string) => {
+    if (tool === 'detector') return 'bg-violet-500';
+    if (tool === 'humanizador') return 'bg-emerald-500';
+    if (tool === 'parafraseador') return 'bg-purple-500';
+    return 'bg-gray-500';
+  };
+
+  // Get tool badge classes (full class names for Tailwind)
+  const getToolBadgeClasses = (tool: string) => {
+    if (tool === 'detector') return 'bg-violet-100 text-violet-700';
+    if (tool === 'humanizador') return 'bg-emerald-100 text-emerald-700';
+    if (tool === 'parafraseador') return 'bg-purple-100 text-purple-700';
+    return 'bg-gray-100 text-gray-700';
+  };
+
   // Progress bar color based on usage
   const getProgressColor = (used: number, limit: number) => {
     const percentage = (used / limit) * 100;
@@ -150,7 +166,7 @@ export default function DashboardClient({ user, usageStats, history }: Dashboard
                   </div>
                   <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                     <div
-                      className={`h-full bg-${toolColors[tool]}-500 transition-all duration-300`}
+                      className={`h-full ${getToolColorClass(tool)} transition-all duration-300`}
                       style={{ width: `${Math.min((count / usageStats.limit) * 100, 100)}%` }}
                     />
                   </div>
@@ -210,12 +226,12 @@ export default function DashboardClient({ user, usageStats, history }: Dashboard
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold bg-${toolColors[item.tool_type]}-100 text-${toolColors[item.tool_type]}-700`}>
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${getToolBadgeClasses(item.tool_type)}`}>
                           {toolNames[item.tool_type]}
                         </span>
                         <span className="text-xs text-gray-500">{formatDate(item.created_at)}</span>
                         <span className="text-xs text-gray-400">·</span>
-                        <span className="text-xs text-gray-500">{item.character_count} caracteres</span>
+                        <span className="text-xs text-gray-500">{item.input_length} caracteres</span>
                       </div>
                       <p className="text-sm text-gray-700 line-clamp-2">
                         {item.input_text.substring(0, 150)}
@@ -257,7 +273,7 @@ export default function DashboardClient({ user, usageStats, history }: Dashboard
                   <div>
                     <h3 className="text-2xl font-bold">{toolNames[selectedHistory.tool_type]}</h3>
                     <p className="text-violet-100 text-sm mt-1">
-                      {formatDate(selectedHistory.created_at)} · {selectedHistory.character_count} caracteres
+                      {formatDate(selectedHistory.created_at)} · {selectedHistory.input_length} caracteres
                     </p>
                   </div>
                   <button
