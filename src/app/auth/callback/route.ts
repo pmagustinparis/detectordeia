@@ -5,33 +5,40 @@ import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url);
-  const code = searchParams.get('code');
-  const next = searchParams.get('next') ?? '/dashboard';
+  const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get('code');
+  const next = requestUrl.searchParams.get('next') ?? '/dashboard';
 
   if (code) {
     const supabase = await createClient();
-
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error) {
-      // Redirect exitoso al dashboard (o a donde venía)
+      // Construir URL de redirect correcta
       const forwardedHost = request.headers.get('x-forwarded-host');
-      const isLocalEnv = process.env.NODE_ENV === 'development';
+      const protocol = request.headers.get('x-forwarded-proto') || 'https';
 
-      if (isLocalEnv) {
-        // Desarrollo local
-        return NextResponse.redirect(`${origin}${next}`);
-      } else if (forwardedHost) {
-        // Producción con Vercel
-        return NextResponse.redirect(`https://${forwardedHost}${next}`);
-      } else {
-        // Fallback
-        return NextResponse.redirect(`${origin}${next}`);
+      // Detectar el host correcto
+      let redirectHost = forwardedHost || requestUrl.host;
+
+      // En producción, asegurarnos de usar detectordeia.ai o www.detectordeia.ai
+      if (redirectHost.includes('vercel.app') || redirectHost.includes('localhost')) {
+        // Si estamos en Vercel o localhost, verificar si hay un dominio custom
+        const isProduction = process.env.VERCEL_ENV === 'production';
+        if (isProduction) {
+          redirectHost = 'detectordeia.ai';
+        }
       }
+
+      const redirectUrl = `${protocol}://${redirectHost}${next}`;
+      return NextResponse.redirect(redirectUrl);
     }
   }
 
   // Error en el auth: redirect a home con error
-  return NextResponse.redirect(`${origin}/auth/auth-code-error`);
+  const forwardedHost = request.headers.get('x-forwarded-host');
+  const protocol = request.headers.get('x-forwarded-proto') || 'https';
+  const redirectHost = forwardedHost || requestUrl.host;
+
+  return NextResponse.redirect(`${protocol}://${redirectHost}/auth/auth-code-error`);
 }
