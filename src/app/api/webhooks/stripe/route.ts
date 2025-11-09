@@ -145,7 +145,7 @@ async function handleCheckoutCompleted(
 
 // Manejar actualización de suscripción
 async function handleSubscriptionUpdated(
-  subscription: Stripe.Subscription,
+  subscription: any,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
   const { error } = await supabase
@@ -168,7 +168,7 @@ async function handleSubscriptionUpdated(
 
 // Manejar cancelación de suscripción
 async function handleSubscriptionDeleted(
-  subscription: Stripe.Subscription,
+  subscription: any,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
   // Obtener el user_id desde la suscripción
