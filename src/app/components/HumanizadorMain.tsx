@@ -325,11 +325,22 @@ export default function HumanizadorMain() {
 
                   {/* Tooltip para modos bloqueados */}
                   {isLocked && (
-                    <div className="absolute left-0 right-0 top-full mt-2 bg-gray-900 text-white text-xs rounded-lg p-3 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                      <p className="font-semibold mb-1">🔒 Modo {mode.name} - Plan Pro</p>
-                      <p className="text-gray-300">
-                        Este modo requiere una suscripción Pro. Actualiza para desbloquear todos los modos de humanización.
-                      </p>
+                    <div className="absolute left-0 right-0 top-full mt-2 bg-gradient-to-br from-violet-600 to-purple-600 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border-2 border-violet-400">
+                      <div className="flex items-start gap-2 mb-2">
+                        <span className="text-xl">🔒</span>
+                        <div>
+                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
+                          <p className="text-violet-100 leading-relaxed">
+                            Humaniza tu texto con <strong>{mode.name.toLowerCase()}</strong> profesional.
+                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + hasta <strong>15,000 caracteres</strong>.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-center mt-2 pt-2 border-t border-violet-400/50">
+                        <p className="text-violet-100 font-semibold">
+                          Desde $10/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>
