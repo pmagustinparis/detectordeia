@@ -66,7 +66,7 @@ export default function DetectorMain({
   h1?: string;
   subtitle?: string;
 }) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<{
@@ -88,6 +88,7 @@ export default function DetectorMain({
   const [textType, setTextType] = useState('default');
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [usageCount, setUsageCount] = useState(0);
+  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
 
   // Track usage count for anonymous users
   useEffect(() => {
@@ -96,6 +97,29 @@ export default function DetectorMain({
       setUsageCount(count);
     }
   }, [isAuthenticated]);
+
+  // Obtener plan del usuario
+  useEffect(() => {
+    async function fetchUserPlan() {
+      if (!isAuthenticated || !user) {
+        setUserPlan('free');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          setUserPlan(data.plan_type || 'free');
+        }
+      } catch (error) {
+        console.error('Error fetching user plan:', error);
+        setUserPlan('free');
+      }
+    }
+
+    fetchUserPlan();
+  }, [isAuthenticated, user]);
 
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
@@ -515,8 +539,10 @@ export default function DetectorMain({
                   </div>
                   <div className="border-dotted border-b border-gray-300" />
                 </div>
-                {/* Bloque premium solo en empty state */}
-                <PremiumUpsellBlock textos={premiumTextos} />
+                {/* Bloque premium solo en empty state - SOLO para usuarios FREE */}
+                {userPlan !== 'premium' && (
+                  <PremiumUpsellBlock textos={premiumTextos} />
+                )}
               </>
             )}
           </div>

@@ -1,13 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HumanizadorMain from '../components/HumanizadorMain';
 import EmailCaptureModal from '../components/EmailCaptureModal';
 import FAQSection from '../components/FAQSection';
+import { useAuth } from '@/lib/hooks/useAuth';
 
 export default function HumanizadorClient() {
+  const { isAuthenticated, user } = useAuth();
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [emailModalSource, setEmailModalSource] = useState('');
+  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+
+  // Obtener plan del usuario
+  useEffect(() => {
+    async function fetchUserPlan() {
+      if (!isAuthenticated || !user) {
+        setUserPlan('free');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          setUserPlan(data.plan_type || 'free');
+        }
+      } catch (error) {
+        console.error('Error fetching user plan:', error);
+        setUserPlan('free');
+      }
+    }
+
+    fetchUserPlan();
+  }, [isAuthenticated, user]);
 
   const openEmailModal = (source: string) => {
     setEmailModalSource(source);
@@ -37,51 +63,53 @@ export default function HumanizadorClient() {
         <HumanizadorMain />
       </section>
 
-      {/* Premium Upsell Block */}
-      <section className="max-w-3xl mx-auto mt-12 mb-16 px-2">
-        <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl shadow-xl border border-violet-200 p-8 text-center card-elevated">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-3xl">🔓</span>
-            <h2 className="text-2xl font-bold text-gray-800">
-              ¿Necesitas humanizar textos más largos?
-            </h2>
+      {/* Premium Upsell Block - SOLO para usuarios FREE */}
+      {userPlan !== 'premium' && (
+        <section className="max-w-3xl mx-auto mt-12 mb-16 px-2">
+          <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl shadow-xl border border-violet-200 p-8 text-center card-elevated">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="text-3xl">🔓</span>
+              <h2 className="text-2xl font-bold text-gray-800">
+                ¿Necesitas humanizar textos más largos?
+              </h2>
+            </div>
+
+            <p className="text-violet-700 font-semibold text-lg mb-4">
+              Próximamente: Plan Premium
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
+              <div className="flex items-start gap-2">
+                <span className="text-green-600 text-lg">✓</span>
+                <span className="text-sm text-gray-700">Hasta 15,000 caracteres por uso</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-green-600 text-lg">✓</span>
+                <span className="text-sm text-gray-700">Modo Avanzado con adaptación regional</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-green-600 text-lg">✓</span>
+                <span className="text-sm text-gray-700">Historial completo de humanizaciones</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-green-600 text-lg">✓</span>
+                <span className="text-sm text-gray-700">Carga de archivos (.txt, .docx, .pdf)</span>
+              </div>
+            </div>
+
+            <p className="text-xl font-bold text-gray-800 mb-4">
+              Desde $7/mes
+            </p>
+
+            <button
+              onClick={() => openEmailModal('humanizador-bottom-upsell')}
+              className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Avísame cuando esté disponible
+            </button>
           </div>
-
-          <p className="text-violet-700 font-semibold text-lg mb-4">
-            Próximamente: Plan Premium
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
-            <div className="flex items-start gap-2">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-sm text-gray-700">Hasta 15,000 caracteres por uso</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-sm text-gray-700">Modo Avanzado con adaptación regional</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-sm text-gray-700">Historial completo de humanizaciones</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-sm text-gray-700">Carga de archivos (.txt, .docx, .pdf)</span>
-            </div>
-          </div>
-
-          <p className="text-xl font-bold text-gray-800 mb-4">
-            Desde $7/mes
-          </p>
-
-          <button
-            onClick={() => openEmailModal('humanizador-bottom-upsell')}
-            className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            Avísame cuando esté disponible
-          </button>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Por qué usar el humanizador Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
@@ -292,31 +320,33 @@ export default function HumanizadorClient() {
         </div>
       </section>
 
-      {/* CTA Final Section */}
-      <section className="max-w-4xl mx-auto mb-16 px-2">
-        <div className="bg-gradient-to-br from-violet-600 to-purple-600 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white relative overflow-hidden">
-          {/* Elementos decorativos */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-300/20 rounded-full blur-3xl"></div>
+      {/* CTA Final Section - SOLO para usuarios FREE */}
+      {userPlan !== 'premium' && (
+        <section className="max-w-4xl mx-auto mb-16 px-2">
+          <div className="bg-gradient-to-br from-violet-600 to-purple-600 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white relative overflow-hidden">
+            {/* Elementos decorativos */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-300/20 rounded-full blur-3xl"></div>
 
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-              Comienza a humanizar tus textos ahora
-            </h2>
-            <p className="text-lg md:text-xl text-violet-100 mb-8 max-w-2xl mx-auto">
-              Transforma texto generado por IA en contenido natural y humano en segundos. Sin registro, 100% privado, optimizado para español.
-            </p>
-            <button
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="px-8 py-4 bg-white text-violet-600 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
-            >
-              Probar el humanizador gratis
-            </button>
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+                Comienza a humanizar tus textos ahora
+              </h2>
+              <p className="text-lg md:text-xl text-violet-100 mb-8 max-w-2xl mx-auto">
+                Transforma texto generado por IA en contenido natural y humano en segundos. Sin registro, 100% privado, optimizado para español.
+              </p>
+              <button
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="px-8 py-4 bg-white text-violet-600 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
+              >
+                Probar el humanizador gratis
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Modal de captura de email */}
       <EmailCaptureModal
