@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
+import CharacterLimitModal from './CharacterLimitModal';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
 
 const CHARACTER_LIMIT = 600;
+const CHARACTER_LIMIT_PREMIUM = 15000;
 const MIN_CHARACTERS = 50;
 
 export default function HumanizadorMain() {
@@ -458,29 +460,6 @@ export default function HumanizadorMain() {
                   </div>
                 )}
               </div>
-
-              {/* Overlay premium cuando se excede el límite (SOLO usuarios FREE) */}
-              {isLimitExceeded && userPlan !== 'premium' && (
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white/90 flex items-center justify-center p-6 pointer-events-none">
-                  <div className="text-center max-w-sm bg-white rounded-2xl shadow-xl p-6 pointer-events-auto">
-                    <p className="text-red-600 font-bold mb-2 text-sm flex items-center justify-center gap-2">
-                      ⚠️ {analyzedTextLength}/{CHARACTER_LIMIT} caracteres. Límite superado.
-                    </p>
-                    <p className="text-gray-700 mb-4 text-sm">
-                      Para ver tu texto humanizado completo y humanizar sin límites, actualiza a Premium.
-                    </p>
-                    <button
-                      onClick={() => openEmailModal('humanizador-overlay-premium')}
-                      className="block w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all mb-2"
-                    >
-                      🔓 Avísame cuando esté disponible
-                    </button>
-                    <p className="text-xs text-gray-500">
-                      📝 Serás el primero en saber cuando Premium esté listo
-                    </p>
-                  </div>
-                </div>
-              )}
             </div>
           ) : (
             <>
@@ -539,6 +518,19 @@ export default function HumanizadorMain() {
           toolName="Humanizador"
         />
       )}
+
+      {/* Character Limit Modal */}
+      <CharacterLimitModal
+        isOpen={isLimitExceeded && userPlan !== 'premium'}
+        onClose={() => {
+          setIsLimitExceeded(false);
+          setResult(null);
+        }}
+        toolName="Humanizador"
+        currentChars={analyzedTextLength}
+        maxChars={CHARACTER_LIMIT}
+        premiumMaxChars={CHARACTER_LIMIT_PREMIUM}
+      />
 
     </div>
   );
