@@ -104,15 +104,20 @@ export default function DashboardClient({ user, usageStats, history, planType, h
         method: 'POST',
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Error al crear sesión del portal');
+        throw new Error(data.error || 'Error al crear sesión del portal');
       }
 
-      const { url } = await response.json();
-      window.location.href = url;
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error al abrir el portal de gestión. Intenta nuevamente.');
+      if (!data.url) {
+        throw new Error('No se recibió URL del portal');
+      }
+
+      window.location.href = data.url;
+    } catch (error: any) {
+      console.error('Error al abrir portal:', error);
+      alert(`Error al abrir el portal de gestión: ${error.message}\n\nSi el problema persiste, contacta a soporte.`);
       setIsLoadingPortal(false);
     }
   };
