@@ -8,10 +8,13 @@ interface DashboardClientProps {
   user: User;
   usageStats: UsageStats | null;
   history: any[];
+  planType: 'free' | 'premium';
+  hasStripeCustomer: boolean;
 }
 
-export default function DashboardClient({ user, usageStats, history }: DashboardClientProps) {
+export default function DashboardClient({ user, usageStats, history, planType, hasStripeCustomer }: DashboardClientProps) {
   const [selectedHistory, setSelectedHistory] = useState<any>(null);
+  const [isLoadingPortal, setIsLoadingPortal] = useState(false);
 
   // Tool name mapping
   const toolNames: Record<string, string> = {
@@ -86,6 +89,27 @@ export default function DashboardClient({ user, usageStats, history }: Dashboard
     document.body.removeChild(element);
   };
 
+  // Open Stripe Customer Portal
+  const openCustomerPortal = async () => {
+    setIsLoadingPortal(true);
+    try {
+      const response = await fetch('/api/create-portal-session', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al crear sesión del portal');
+      }
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al abrir el portal de gestión. Intenta nuevamente.');
+      setIsLoadingPortal(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 to-white pb-12">
       <div className="max-w-6xl mx-auto px-4 py-12">
@@ -108,12 +132,36 @@ export default function DashboardClient({ user, usageStats, history }: Dashboard
                 ¡Hola, {user.user_metadata?.full_name || user.email?.split('@')[0]}!
               </h1>
               <p className="text-gray-600 mt-1">{user.email}</p>
-              <span className="inline-block mt-2 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
-                ✓ Plan Free
+              <span className={`inline-block mt-2 px-3 py-1 rounded-full text-sm font-semibold ${
+                planType === 'premium'
+                  ? 'bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700'
+                  : 'bg-green-100 text-green-700'
+              }`}>
+                {planType === 'premium' ? '✨ Plan Pro' : '✓ Plan Free'}
               </span>
             </div>
           </div>
         </div>
+
+        {/* Subscription Management - Solo para usuarios Pro */}
+        {planType === 'premium' && hasStripeCustomer && (
+          <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl shadow-lg p-8 mb-8 border-2 border-violet-200">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <span>💳</span>
+              Gestión de Suscripción
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Administra tu suscripción, actualiza tu método de pago o consulta tu historial de facturas.
+            </p>
+            <button
+              onClick={openCustomerPortal}
+              disabled={isLoadingPortal}
+              className="bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-violet-700 hover:to-purple-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoadingPortal ? 'Cargando...' : 'Abrir Portal de Gestión'}
+            </button>
+          </div>
+        )}
 
         {/* Usage Stats */}
         {usageStats && (
