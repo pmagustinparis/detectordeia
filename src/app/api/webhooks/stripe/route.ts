@@ -105,9 +105,9 @@ async function handleCheckoutCompleted(
   // Obtener la suscripción de Stripe
   const subscriptionId = session.subscription as string;
   const stripe = getStripe();
-  const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
+  const subscription: any = await stripe.subscriptions.retrieve(subscriptionId, {
     expand: ['items.data.price'],
-  }) as Stripe.Subscription;
+  });
 
   // Crear registro de suscripción en Supabase
   const { error: subscriptionError } = await supabase
