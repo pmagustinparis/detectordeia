@@ -231,7 +231,9 @@ export default function DashboardClient({ user, usageStats, history, planType, h
                 <div className="text-sm text-violet-600 font-medium mt-1">Usos hoy</div>
               </div>
               <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 border-2 border-cyan-200">
-                <div className="text-3xl font-bold text-cyan-700">{usageStats.remaining}</div>
+                <div className="text-3xl font-bold text-cyan-700">
+                  {usageStats.remaining === Infinity ? 'Ilimitado' : usageStats.remaining}
+                </div>
                 <div className="text-sm text-cyan-600 font-medium mt-1">Usos restantes hoy</div>
               </div>
               <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-6 border-2 border-emerald-200">
@@ -245,7 +247,7 @@ export default function DashboardClient({ user, usageStats, history, planType, h
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm font-semibold text-gray-700">Límite diario total</span>
                 <span className="text-sm font-bold text-gray-900">
-                  {usageStats.usesToday} / {usageStats.limit}
+                  {usageStats.usesToday} / {usageStats.limit === Infinity ? 'Ilimitado' : usageStats.limit}
                 </span>
               </div>
               <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">

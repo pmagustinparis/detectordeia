@@ -157,7 +157,7 @@ export default function PricingPageClient() {
     },
     {
       q: "¿Ofrecen reembolsos?",
-      a: "Ofrecemos una garantía de reembolso de 7 días en todos nuestros planes. Si no estás satisfecho, te devolvemos tu dinero sin preguntas.",
+      a: "No ofrecemos reembolsos. Al suscribirte, aceptas nuestros términos de servicio y la política de no reembolso. Puedes cancelar tu suscripción en cualquier momento desde el portal de gestión, y mantendrás acceso hasta el final del período pagado.",
     },
   ];
 

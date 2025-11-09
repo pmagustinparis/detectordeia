@@ -68,8 +68,8 @@ export default function Terminos() {
         <li>Autorizas cargos recurrentes según el plan elegido (mensual o anual)</li>
         <li>Puedes cancelar en cualquier momento desde el portal de gestión de suscripción</li>
         <li>Las cancelaciones surten efecto al final del período de facturación actual</li>
-        <li>Ofrecemos garantía de reembolso de 7 días para nuevas suscripciones</li>
-        <li>No se realizan reembolsos parciales por períodos no utilizados</li>
+        <li>No ofrecemos reembolsos. Al suscribirte, aceptas esta política de no reembolso</li>
+        <li>Al cancelar, mantendrás acceso hasta el final del período de facturación actual sin reembolso por días no utilizados</li>
       </ul>
 
       <h2 className="text-2xl font-bold mt-8 mb-3">7. Privacidad y Datos</h2>
