@@ -200,7 +200,7 @@ async function handleSubscriptionDeleted(
 
 // Manejar fallo de pago
 async function handlePaymentFailed(
-  invoice: Stripe.Invoice,
+  invoice: any,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
   const subscriptionId = invoice.subscription as string;
