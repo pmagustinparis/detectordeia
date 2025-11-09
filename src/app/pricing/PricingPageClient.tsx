@@ -339,8 +339,32 @@ export default function PricingPageClient() {
           </div>
         </div>
 
+        {/* Scroll Hint - Ver Comparación */}
+        <div className="flex flex-col items-center justify-center py-8 mb-8">
+          <p className="text-lg font-semibold text-gray-700 mb-3">
+            ¿Querés ver todas las diferencias en detalle?
+          </p>
+          <button
+            onClick={() => {
+              const comparisonTable = document.getElementById('comparison-table');
+              comparisonTable?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="flex flex-col items-center gap-2 text-violet-600 hover:text-violet-700 transition-all group"
+          >
+            <span className="font-bold text-base">Ver Comparación Completa</span>
+            <svg
+              className="w-8 h-8 animate-bounce group-hover:scale-110 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </button>
+        </div>
+
         {/* Feature Comparison Table */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 mb-20">
+        <div id="comparison-table" className="bg-white rounded-3xl shadow-xl p-8 mb-20">
           <h2 className="text-3xl font-bold text-center mb-8">
             <span className="gradient-text-primary">Comparación Completa</span>
           </h2>
@@ -348,10 +372,10 @@ export default function PricingPageClient() {
             <table className="w-full">
               <thead>
                 <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-4 px-4 font-semibold text-gray-700">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-700">Free</th>
+                  <th className="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
+                  <th className="text-center py-4 px-4 font-semibold text-gray-900">Free</th>
                   <th className="text-center py-4 px-4 font-semibold bg-violet-50 text-violet-700 rounded-t-xl">Pro</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-700">Team</th>
+                  <th className="text-center py-4 px-4 font-semibold text-gray-900">Team</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
@@ -363,15 +387,15 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4">10</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 font-semibold">Ilimitado</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Caracteres por análisis</td>
-                  <td className="text-center py-3 px-4">600</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">600</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">15,000</td>
-                  <td className="text-center py-3 px-4 font-semibold">15,000</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">15,000</td>
                 </tr>
 
                 {/* Humanizador Features */}
@@ -382,15 +406,15 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4">10</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 font-semibold">Ilimitado</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
-                  <td className="text-center py-3 px-4">Estándar</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
-                  <td className="text-center py-3 px-4 font-semibold">5 modos</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">5 modos</td>
                 </tr>
 
                 {/* Parafraseador Features */}
@@ -401,15 +425,15 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4">10</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 font-semibold">Ilimitado</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
-                  <td className="text-center py-3 px-4">Estándar</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
-                  <td className="text-center py-3 px-4 font-semibold">5 modos</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">5 modos</td>
                 </tr>
 
                 {/* General Features */}
@@ -420,27 +444,27 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Historial</td>
-                  <td className="text-center py-3 px-4">❌</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅</td>
-                  <td className="text-center py-3 px-4 font-semibold">✅</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Soporte</td>
-                  <td className="text-center py-3 px-4">Email</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Email</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Prioritario</td>
-                  <td className="text-center py-3 px-4 font-semibold">Dedicado</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Dedicado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Gestión de equipo</td>
-                  <td className="text-center py-3 px-4">❌</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
                   <td className="text-center py-3 px-4 bg-violet-50">❌</td>
-                  <td className="text-center py-3 px-4 font-semibold">✅</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Facturación consolidada</td>
-                  <td className="text-center py-3 px-4">❌</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
                   <td className="text-center py-3 px-4 bg-violet-50">❌</td>
-                  <td className="text-center py-3 px-4 font-semibold">✅</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅</td>
                 </tr>
               </tbody>
             </table>
