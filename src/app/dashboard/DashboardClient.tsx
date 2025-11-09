@@ -15,6 +15,13 @@ interface DashboardClientProps {
 export default function DashboardClient({ user, usageStats, history, planType, hasStripeCustomer }: DashboardClientProps) {
   const [selectedHistory, setSelectedHistory] = useState<any>(null);
   const [isLoadingPortal, setIsLoadingPortal] = useState(false);
+  const [isBannerDismissed, setIsBannerDismissed] = useState(() => {
+    // Check if banner was dismissed in localStorage
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('upgrade_banner_dismissed') === 'true';
+    }
+    return false;
+  });
 
   // Tool name mapping
   const toolNames: Record<string, string> = {
@@ -110,8 +117,54 @@ export default function DashboardClient({ user, usageStats, history, planType, h
     }
   };
 
+  // Dismiss upgrade banner
+  const dismissBanner = () => {
+    setIsBannerDismissed(true);
+    localStorage.setItem('upgrade_banner_dismissed', 'true');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 to-white pb-12">
+      {/* Upgrade Banner - Solo para usuarios Free */}
+      {planType === 'free' && !isBannerDismissed && (
+        <div className="sticky top-0 z-40 bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 text-white shadow-lg">
+          <div className="max-w-6xl mx-auto px-4 py-3">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3 flex-1">
+                <div className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-white/20">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-sm sm:text-base">
+                    ¡Desbloquea todo el potencial de DetectorDeIA!
+                  </p>
+                  <p className="text-xs sm:text-sm text-violet-100 hidden sm:block">
+                    Usos ilimitados • 5 modos premium • 15,000 caracteres • Desde $10/mes
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href="/pricing"
+                  className="bg-white text-violet-600 hover:bg-violet-50 font-bold py-2 px-4 sm:px-6 rounded-lg shadow-md hover:shadow-lg transition-all text-sm sm:text-base whitespace-nowrap"
+                >
+                  Ver Planes
+                </a>
+                <button
+                  onClick={dismissBanner}
+                  className="text-white/80 hover:text-white p-2 transition-colors"
+                  aria-label="Cerrar banner"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
