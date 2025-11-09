@@ -739,7 +739,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
               </div>
               <div>
                 <h3 className="font-bold text-lg mb-2 text-gray-800">¿Cómo funciona el plan gratuito?</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">Hasta 1.200 caracteres por análisis, análisis ilimitados, sin registro.</p>
+                <p className="text-gray-600 text-sm leading-relaxed">3 análisis diarios entre las 3 herramientas, sin registro. Hasta 1.200 caracteres por análisis en el Detector.</p>
               </div>
             </div>
           </div>

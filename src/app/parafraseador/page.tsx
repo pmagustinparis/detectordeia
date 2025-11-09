@@ -67,7 +67,7 @@ export default function ParafraseadorPage() {
               'Sin plagio garantizado',
               'Sin registro requerido',
               '600 caracteres gratis',
-              'Usos ilimitados',
+              '10 usos diarios',
               'Optimizado para español',
             ],
           }),
@@ -103,7 +103,7 @@ export default function ParafraseadorPage() {
                 name: '¿Es gratis el parafraseador?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sí, puedes usar el parafraseador de forma completamente gratuita sin registro. El plan gratuito permite parafrasear hasta 600 caracteres por uso, con usos ilimitados al día.',
+                  text: 'Sí, puedes usar el parafraseador de forma gratuita sin registro (3 usos diarios) o registrarte gratis para obtener 10 usos diarios. El plan gratuito permite parafrasear hasta 600 caracteres por uso.',
                 },
               },
               {
@@ -111,7 +111,7 @@ export default function ParafraseadorPage() {
                 name: '¿Cuántas veces puedo usarlo gratis?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: '¡Todas las veces que quieras! No hay límite diario de usos en el plan gratuito. Solo hay un límite de 600 caracteres por cada paráfrasis.',
+                  text: 'Sin registro: 3 usos diarios totales entre las 3 herramientas. Registrándote gratis: 10 usos diarios del Parafraseador. Con Plan Pro: usos ilimitados. Límite de 600 caracteres por paráfrasis en planes gratuitos.',
                 },
               },
               {
