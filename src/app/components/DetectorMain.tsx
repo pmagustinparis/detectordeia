@@ -33,30 +33,26 @@ const CHARACTER_LIMIT = 1200;
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
-  titulo: '¿Querés análisis más avanzados y herramientas premium?',
-  subtitulo: 'Incluido en Plan Pro:',
+  titulo: 'Desbloquea todo el poder del Detector',
+  subtitulo: 'Incluido en Plan Pro',
   bullets: [
-    'Análisis por criterios (estilo, subjetividad, errores, coherencia)',
-    'Explicaciones detalladas por cada frase sospechosa',
-    'Subida de archivos .txt, .docx, .pdf',
-    'Comparativa contra textos humanos reales',
-    'Reescritura de texto IA y Humanizador (futuro)',
-    'Historial de análisis',
-    'Acceso vía API para automatizar análisis',
+    'Usos ilimitados diarios en todas las herramientas',
+    'Hasta 25,000 caracteres por análisis en el Detector',
+    '5 modos premium en Humanizador y Parafraseador',
+    'Historial completo de todos tus análisis',
+    'Soporte prioritario vía email',
   ],
-  precio: '💰 Desde $10/mes – Plan Pro',
-  cta: '🔓 Ver Planes y Precios',
-  aviso: '💳 Pago seguro con Stripe',
+  precio: 'Desde $10/mes o $96/año',
+  cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: '¿Querés análisis premium?',
+  titulo: 'Desbloquea Plan Pro',
   bullets: [
-    'Análisis por criterios y explicaciones detalladas',
-    'Subida de archivos y API',
-    'Desde $10/mes',
+    'Usos ilimitados + 25K caracteres',
+    '5 modos premium + Historial completo',
+    'Desde $10/mes o $96/año',
   ],
-  cta: '🔓 Ver Planes y Precios',
-  aviso: '💳 Pago seguro con Stripe',
+  cta: 'Ver Planes',
 };
 
 export default function DetectorMain({
