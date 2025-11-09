@@ -2,13 +2,13 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@/lib/supabase/server';
 
-// Inicializar Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-10-29.clover',
-});
-
 export async function POST(request: Request) {
   try {
+    // Inicializar Stripe (dentro de la función para evitar errores en build time)
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+      apiVersion: '2025-10-29.clover',
+    });
+
     const { plan_interval } = await request.json();
 
     // Validar plan_interval
