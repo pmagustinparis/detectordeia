@@ -5,7 +5,7 @@ import SuccessClient from './SuccessClient';
 export default async function SuccessPage({
   searchParams,
 }: {
-  searchParams: { session_id?: string };
+  searchParams: Promise<{ session_id?: string }>;
 }) {
   const supabase = await createClient();
 
@@ -17,6 +17,9 @@ export default async function SuccessPage({
     redirect('/');
   }
 
+  // Await searchParams (Next.js 15 requirement)
+  const params = await searchParams;
+
   // Obtener datos del usuario actualizado
   const { data: userData } = await supabase
     .from('users')
@@ -26,7 +29,7 @@ export default async function SuccessPage({
 
   return (
     <SuccessClient
-      sessionId={searchParams.session_id}
+      sessionId={params.session_id}
       userEmail={userData?.email || user.email || ''}
       planType={userData?.plan_type || 'free'}
     />
