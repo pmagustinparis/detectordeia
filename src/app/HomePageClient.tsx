@@ -628,7 +628,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
             <span className="text-3xl">⚡</span>
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Sin registro</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">Analizá textos gratis, sin crear cuenta. Análisis ilimitados.</p>
+          <p className="text-gray-600 text-sm leading-relaxed">Analizá textos gratis, sin crear cuenta. 10 usos diarios.</p>
         </div>
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
