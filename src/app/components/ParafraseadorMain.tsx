@@ -5,12 +5,13 @@ import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
+import { PARAPHRASER_MODES, type ParaphraserMode } from '@/lib/prompts/paraphraser';
 
 const CHARACTER_LIMIT = 600;
 const MIN_CHARACTERS = 50;
 
 export default function ParafraseadorMain() {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
   const [text, setText] = useState('');
   const [isParaphrasing, setIsParaphrasing] = useState(false);
   const [result, setResult] = useState<string | null>(null);
@@ -20,6 +21,8 @@ export default function ParafraseadorMain() {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [emailModalSource, setEmailModalSource] = useState('');
   const [usageCount, setUsageCount] = useState(0);
+  const [selectedMode, setSelectedMode] = useState<ParaphraserMode>('standard');
+  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
 
   // Rate limit overlay state
   const [isLimitReached, setIsLimitReached] = useState(false);
@@ -36,6 +39,29 @@ export default function ParafraseadorMain() {
       setUsageCount(count);
     }
   }, [isAuthenticated]);
+
+  // Obtener plan del usuario
+  useEffect(() => {
+    async function fetchUserPlan() {
+      if (!isAuthenticated || !user) {
+        setUserPlan('free');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          setUserPlan(data.plan_type || 'free');
+        }
+      } catch (error) {
+        console.error('Error fetching user plan:', error);
+        setUserPlan('free');
+      }
+    }
+
+    fetchUserPlan();
+  }, [isAuthenticated, user]);
 
   // Colores del contador dinámico
   const getCounterColor = () => {
@@ -73,7 +99,7 @@ export default function ParafraseadorMain() {
         },
         body: JSON.stringify({
           text: text,
-          mode: 'standard',
+          mode: selectedMode,
           anonymousId,
         }),
       });
@@ -88,6 +114,12 @@ export default function ParafraseadorMain() {
           resetAt: new Date(data.resetAt),
         });
         setIsLimitReached(true);
+        return;
+      }
+
+      // 🔒 MODO PREMIUM REQUERIDO (403)
+      if (response.status === 403 && data.requiresPremium) {
+        setError(data.message || 'Este modo requiere Plan Pro');
         return;
       }
 
@@ -245,62 +277,66 @@ export default function ParafraseadorMain() {
           </button>
         </div>
 
-        {/* SELECTOR DE MODO - Compacto */}
+        {/* SELECTOR DE MODO - 5 Modos Dinámicos */}
         <div className="mb-2">
           <label className="block text-sm font-semibold text-gray-700 mb-1.5">Modo de parafraseo</label>
           <div className="space-y-2">
-            {/* Modo Estándar - Disponible */}
-            <label className="flex items-center p-2.5 border-2 border-violet-200 rounded-xl bg-white hover:border-violet-300 transition-all cursor-pointer">
-              <input
-                type="radio"
-                name="mode"
-                value="standard"
-                checked={true}
-                readOnly
-                className="w-4 h-4 text-violet-600 focus:ring-violet-500"
-              />
-              <div className="ml-2 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-gray-800">⚪ Estándar</span>
-                  <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
-                    Disponible
-                  </span>
-                </div>
-              </div>
-            </label>
+            {Object.entries(PARAPHRASER_MODES).map(([key, mode]) => {
+              const modeKey = key as ParaphraserMode;
+              const isLocked = mode.isPremium && userPlan !== 'premium';
+              const isSelected = selectedMode === modeKey;
 
-            {/* Modos Premium - Bloqueados */}
-            {[
-              { name: 'Formal', emoji: '🔒', desc: 'Tono profesional y académico' },
-              { name: 'Creativo', emoji: '🔒', desc: 'Cambios profundos y creativos' },
-              { name: 'Simplificado', emoji: '🔒', desc: 'Más fácil de entender' },
-              { name: 'Académico', emoji: '🔒', desc: 'Estilo universitario riguroso' }
-            ].map((mode) => (
-              <div key={mode.name} className="relative group">
-                <label className="flex items-center p-2.5 border-2 border-gray-200 rounded-xl bg-gray-50 opacity-60 cursor-not-allowed">
-                  <input
-                    type="radio"
-                    name="mode"
-                    disabled
-                    className="w-4 h-4 text-gray-400"
-                  />
-                  <div className="ml-2 flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-gray-700">{mode.emoji} {mode.name}</span>
-                      <span className="text-xs bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full font-medium">
-                        Premium
-                      </span>
+              return (
+                <div key={modeKey} className="relative group">
+                  <label
+                    className={`flex items-center p-2.5 border-2 rounded-xl transition-all ${
+                      isLocked
+                        ? 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
+                        : isSelected
+                        ? 'border-violet-400 bg-violet-50 cursor-pointer'
+                        : 'border-violet-200 bg-white hover:border-violet-300 cursor-pointer'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="mode"
+                      value={modeKey}
+                      checked={isSelected}
+                      disabled={isLocked}
+                      onChange={() => !isLocked && setSelectedMode(modeKey)}
+                      className={`w-4 h-4 ${isLocked ? 'text-gray-400' : 'text-violet-600 focus:ring-violet-500'}`}
+                    />
+                    <div className="ml-2 flex-1">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="text-sm font-semibold text-gray-800">
+                          {mode.icon} {mode.name}
+                        </span>
+                        <span
+                          className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                            mode.isPremium
+                              ? 'bg-violet-100 text-violet-700'
+                              : 'bg-green-100 text-green-700'
+                          }`}
+                        >
+                          {mode.isPremium ? 'PRO' : 'FREE'}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-600">{mode.description}</p>
                     </div>
-                  </div>
-                </label>
+                  </label>
 
-                {/* Tooltip */}
-                <div className="absolute left-0 right-0 top-full mt-2 bg-gray-900 text-white text-xs rounded-lg p-3 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                  <p className="font-semibold mb-1">Modo {mode.name} - Próximamente</p>
-                  <p className="text-gray-300">{mode.desc}</p>
+                  {/* Tooltip para modos bloqueados */}
+                  {isLocked && (
+                    <div className="absolute left-0 right-0 top-full mt-2 bg-gray-900 text-white text-xs rounded-lg p-3 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                      <p className="font-semibold mb-1">🔒 Modo {mode.name} - Plan Pro</p>
+                      <p className="text-gray-300">
+                        Este modo requiere una suscripción Pro. Actualiza para desbloquear todos los modos de parafraseo.
+                      </p>
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
