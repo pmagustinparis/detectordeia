@@ -199,7 +199,7 @@ TEXTO HUMANIZADO:`;
         characterCount: text.length,
         metadata: {
           mode,
-          exceededFreeLimit,
+          userPlan,
         },
       });
     }
