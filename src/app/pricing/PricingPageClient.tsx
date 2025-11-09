@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/hooks/useAuth";
+import { createClient } from "@/lib/supabase/client";
 
 const PRICES = {
   free: { monthly: 0, annual: 0 },
@@ -21,6 +22,21 @@ export default function PricingPageClient() {
   });
   const [teamSubmitted, setTeamSubmitted] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
+
+  // Check if user just logged in and had a pending checkout
+  useEffect(() => {
+    if (isAuthenticated) {
+      const pendingPlan = localStorage.getItem('pending_plan_checkout');
+      if (pendingPlan) {
+        const planInterval = pendingPlan as 'month' | 'year';
+        localStorage.removeItem('pending_plan_checkout');
+        // Trigger checkout after a small delay to ensure auth is fully settled
+        setTimeout(() => {
+          handleCheckout(planInterval);
+        }, 500);
+      }
+    }
+  }, [isAuthenticated]);
 
   const handleTeamSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,48 +59,61 @@ export default function PricingPageClient() {
     }
   };
 
-  const handleCheckout = async (priceId: string) => {
+  const handleCheckout = async (planInterval: 'month' | 'year') => {
     try {
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          priceId,
-          successUrl: `${window.location.origin}/success`,
-          cancelUrl: `${window.location.origin}/pricing`,
+          plan_interval: planInterval,
         }),
       });
 
-      const { url } = await response.json();
+      const { url, error } = await response.json();
+
+      if (error) {
+        console.error('Error from API:', error);
+        alert('Error al crear la sesión de pago. Por favor, intenta de nuevo.');
+        return;
+      }
+
       if (url) {
         window.location.href = url;
       }
     } catch (error) {
       console.error('Error creating checkout session:', error);
+      alert('Error al procesar tu solicitud. Por favor, intenta de nuevo.');
+    }
+  };
+
+  const handleProCTAClick = async () => {
+    if (!isAuthenticated) {
+      // Save the plan selection and trigger login
+      const planInterval = billing === 'monthly' ? 'month' : 'year';
+      localStorage.setItem('pending_plan_checkout', planInterval);
+
+      // Trigger Google OAuth login
+      const supabase = createClient();
+      await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback?next=/pricing`,
+        },
+      });
+    } else {
+      // User is authenticated, proceed to checkout
+      const planInterval = billing === 'monthly' ? 'month' : 'year';
+      await handleCheckout(planInterval);
     }
   };
 
   const getProCTA = () => {
-    if (!isAuthenticated) {
-      return (
-        <a
-          href="/dashboard"
-          className="mt-auto bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base"
-        >
-          Registrate Gratis y Actualiza
-        </a>
-      );
-    }
-
-    // TODO: Get price IDs from environment
-    const priceId = billing === 'monthly' ? 'price_monthly_id' : 'price_annual_id';
-
     return (
       <button
-        onClick={() => handleCheckout(priceId)}
+        onClick={handleProCTAClick}
         className="mt-auto bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base"
       >
-        Actualizar a Pro
+        {isAuthenticated ? 'Actualizar a Pro' : 'Registrate Gratis y Actualiza'}
       </button>
     );
   };

@@ -90,14 +90,14 @@ export async function POST(request: Request) {
       ],
       mode: 'subscription',
       success_url: `${request.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${request.headers.get('origin')}/dashboard`,
+      cancel_url: `${request.headers.get('origin')}/pricing`,
       metadata: {
         supabase_user_id: userData.id,
         plan_interval: plan_interval,
       },
     });
 
-    return NextResponse.json({ sessionId: session.id });
+    return NextResponse.json({ url: session.url, sessionId: session.id });
 
   } catch (error: any) {
     console.error('Error creando checkout session:', error);
