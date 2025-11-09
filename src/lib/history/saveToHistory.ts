@@ -4,8 +4,8 @@
  * Guarda automáticamente el historial de usos para usuarios autenticados.
  *
  * Límites:
- * - Free: Últimos 10 usos + 7 días
- * - Premium: 100 usos + 30 días (Fase 1)
+ * - Free: Últimos 5 usos + 3 días
+ * - Premium: 100 usos + 30 días
  */
 
 import { createClient } from '@/lib/supabase/server';
@@ -92,7 +92,7 @@ export async function saveToHistory(
     // 🧹 CLEANUP - Mantener solo últimos N usos + X días
     const limits = user.plan_type === 'premium'
       ? { maxRecords: 100, maxDays: 30 }
-      : { maxRecords: 10, maxDays: 7 };
+      : { maxRecords: 5, maxDays: 3 };
 
     await cleanupOldHistory(user.id, limits.maxRecords, limits.maxDays);
 

@@ -25,6 +25,20 @@ export async function POST(request: Request) {
     } = await supabase.auth.getUser();
     const userId = user?.id || null;
 
+    // Obtener plan del usuario
+    let userPlan: 'free' | 'premium' = 'free';
+    if (userId) {
+      const { data: userData } = await supabase
+        .from('users')
+        .select('plan_type')
+        .eq('auth_id', userId)
+        .single();
+
+      if (userData && userData.plan_type === 'premium') {
+        userPlan = 'premium';
+      }
+    }
+
     // 🚨 RATE LIMITING CHECK
     const rateLimit = await checkRateLimit({
       userId: userId || undefined,
@@ -39,8 +53,8 @@ export async function POST(request: Request) {
           error: 'Límite diario alcanzado',
           message:
             rateLimit.userType === 'anonymous'
-              ? `Usaste tus ${rateLimit.limit} paráfrasis gratis hoy. Regístrate para obtener ${50} paráfrasis diarias.`
-              : `Alcanzaste el límite de ${rateLimit.limit} paráfrasis diarias. Vuelve mañana o actualiza a Premium.`,
+              ? `Usaste tus ${rateLimit.limit} paráfrasis gratis hoy. Regístrate para obtener más paráfrasis diarias.`
+              : `Alcanzaste el límite de ${rateLimit.limit} paráfrasis diarias. Vuelve mañana o actualiza a Pro para paráfrasis ilimitadas.`,
           limit: rateLimit.limit,
           remaining: rateLimit.remaining,
           resetAt: rateLimit.resetAt,
@@ -68,15 +82,26 @@ export async function POST(request: Request) {
       );
     }
 
-    if (text.length > MAX_CHARACTERS_ABSOLUTE) {
+    // Límites de caracteres según plan
+    const CHARACTER_LIMITS = {
+      free: 600,
+      premium: 15000,
+    };
+
+    const charLimit = CHARACTER_LIMITS[userPlan];
+
+    if (text.length > charLimit) {
       return NextResponse.json(
-        { error: `El texto no puede exceder los ${MAX_CHARACTERS_ABSOLUTE} caracteres` },
+        {
+          error: userPlan === 'free'
+            ? 'El texto excede el límite de 600 caracteres del plan Free. Actualiza a Pro para parafrasear hasta 15,000 caracteres.'
+            : 'El texto excede el límite de 15,000 caracteres.',
+          charLimit,
+          currentLength: text.length,
+        },
         { status: 400 }
       );
     }
-
-    // Detectar si excede el límite free (pero NO rechazar)
-    const exceededFreeLimit = text.length > MAX_CHARACTERS_FREE;
 
     // Prompt de parafraseo (Modo Estándar)
     const systemPrompt = `Eres un experto parafraseador de textos en español. Tu objetivo es reescribir textos usando sinónimos apropiados y reestructurando oraciones, manteniendo EXACTAMENTE el mismo significado original.

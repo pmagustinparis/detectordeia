@@ -3,20 +3,33 @@
  *
  * Verifica si un usuario ha alcanzado su límite de usos diarios.
  *
- * Límites:
- * - Anónimo: 10 usos/día
- * - Free: 50 usos/día
- * - Premium: ilimitado (Fase 1)
+ * Límites por herramienta:
+ * - Anónimo: 3 usos/día (total entre las 3 herramientas)
+ * - Free:
+ *   - Detector: 15 análisis/día
+ *   - Humanizador: 10 usos/día
+ *   - Parafraseador: 10 usos/día
+ * - Premium: ilimitado
  */
 
 import { createClient } from '@/lib/supabase/server';
 import type { ToolType } from './trackUsage';
 
-// Límites por tipo de usuario
+// Límites por tipo de usuario y herramienta
 const RATE_LIMITS = {
-  anonymous: 10,
-  free: 50,
-  premium: Infinity, // Sin límite (Fase 1)
+  anonymous: {
+    total: 3, // Límite global para anónimos (entre las 3 herramientas)
+  },
+  free: {
+    detector: 15,
+    humanizador: 10,
+    parafraseador: 10,
+  },
+  premium: {
+    detector: Infinity,
+    humanizador: Infinity,
+    parafraseador: Infinity,
+  },
 };
 
 export interface RateLimitResult {
@@ -31,7 +44,7 @@ export interface RateLimitResult {
 export interface CheckRateLimitParams {
   userId?: string; // UUID del usuario autenticado
   anonymousId?: string; // UUID del usuario anónimo
-  toolType?: ToolType; // Opcional: verificar límite por herramienta específica
+  toolType: ToolType; // Requerido: verificar límite por herramienta específica
 }
 
 /**
@@ -56,7 +69,7 @@ export async function checkRateLimit(
 
     // Determinar tipo de usuario y límite
     let userType: 'anonymous' | 'free' | 'premium' = 'anonymous';
-    let limit = RATE_LIMITS.anonymous;
+    let limit: number;
     let internalUserId: string | null = null;
 
     if (userId) {
@@ -70,8 +83,20 @@ export async function checkRateLimit(
       if (user) {
         internalUserId = user.id;
         userType = user.plan_type === 'premium' ? 'premium' : 'free';
-        limit = RATE_LIMITS[userType];
+
+        // Límite según plan y herramienta
+        if (userType === 'premium') {
+          limit = Infinity; // Sin límite para premium
+        } else {
+          limit = RATE_LIMITS.free[toolType];
+        }
+      } else {
+        // Usuario no encontrado, tratar como anónimo
+        limit = RATE_LIMITS.anonymous.total;
       }
+    } else {
+      // Usuario anónimo: límite total (no por herramienta)
+      limit = RATE_LIMITS.anonymous.total;
     }
 
     // Calcular inicio del día actual (00:00 UTC)
@@ -91,13 +116,12 @@ export async function checkRateLimit(
     // Filtrar por userId o anonymousId
     if (internalUserId) {
       query = query.eq('user_id', internalUserId);
+      // Para usuarios autenticados, filtrar por herramienta específica
+      query = query.eq('tool_type', toolType);
     } else if (anonymousId) {
       query = query.eq('anonymous_id', anonymousId);
-    }
-
-    // Opcional: filtrar por herramienta específica
-    if (toolType) {
-      query = query.eq('tool_type', toolType);
+      // Para anónimos, NO filtrar por herramienta (límite total)
+      // Contar todos los usos del día sin importar la herramienta
     }
 
     // Ejecutar query

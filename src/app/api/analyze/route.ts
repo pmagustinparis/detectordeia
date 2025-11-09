@@ -150,6 +150,20 @@ export async function POST(request: Request) {
     } = await supabase.auth.getUser();
     const userId = user?.id || null;
 
+    // Obtener plan del usuario
+    let userPlan: 'free' | 'premium' = 'free';
+    if (userId) {
+      const { data: userData } = await supabase
+        .from('users')
+        .select('plan_type')
+        .eq('auth_id', userId)
+        .single();
+
+      if (userData && userData.plan_type === 'premium') {
+        userPlan = 'premium';
+      }
+    }
+
     // 🚨 RATE LIMITING CHECK
     const rateLimit = await checkRateLimit({
       userId: userId || undefined,
@@ -164,8 +178,8 @@ export async function POST(request: Request) {
           error: 'Límite diario alcanzado',
           message:
             rateLimit.userType === 'anonymous'
-              ? `Usaste tus ${rateLimit.limit} análisis gratis hoy. Regístrate para obtener ${50} análisis diarios.`
-              : `Alcanzaste el límite de ${rateLimit.limit} análisis diarios. Vuelve mañana o actualiza a Premium.`,
+              ? `Usaste tus ${rateLimit.limit} análisis gratis hoy. Regístrate para obtener más análisis diarios.`
+              : `Alcanzaste el límite de ${rateLimit.limit} análisis diarios. Vuelve mañana o actualiza a Pro para análisis ilimitados.`,
           limit: rateLimit.limit,
           remaining: rateLimit.remaining,
           resetAt: rateLimit.resetAt,
@@ -186,9 +200,23 @@ export async function POST(request: Request) {
       );
     }
 
-    if (text.length > 1200) {
+    // Límites de caracteres según plan
+    const CHARACTER_LIMITS = {
+      free: 1200,
+      premium: 25000,
+    };
+
+    const charLimit = CHARACTER_LIMITS[userPlan];
+
+    if (text.length > charLimit) {
       return NextResponse.json(
-        { error: 'El texto no puede exceder los 1200 caracteres' },
+        {
+          error: userPlan === 'free'
+            ? 'El texto excede el límite de 1,200 caracteres del plan Free. Actualiza a Pro para analizar hasta 25,000 caracteres.'
+            : 'El texto excede el límite de 25,000 caracteres.',
+          charLimit,
+          currentLength: text.length,
+        },
         { status: 400 }
       );
     }
