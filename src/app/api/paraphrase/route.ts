@@ -186,7 +186,7 @@ TEXTO PARAFRASEADO:`;
       characterCount: text.length,
       metadata: {
         mode,
-        exceededFreeLimit,
+        userPlan,
       },
     });
 
@@ -200,7 +200,7 @@ TEXTO PARAFRASEADO:`;
         characterCount: text.length,
         metadata: {
           mode,
-          exceededFreeLimit,
+          userPlan,
         },
       });
     }
