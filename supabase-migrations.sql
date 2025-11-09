@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS subscriptions (
   stripe_customer_id VARCHAR(255) UNIQUE,
   stripe_subscription_id VARCHAR(255) UNIQUE,
   stripe_price_id VARCHAR(255),
+  plan_interval VARCHAR(10) CHECK (plan_interval IN ('month', 'year')),
 
   -- Status
   status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'canceled', 'past_due', 'trialing', 'incomplete')),
