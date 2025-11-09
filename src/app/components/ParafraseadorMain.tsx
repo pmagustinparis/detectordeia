@@ -454,8 +454,8 @@ export default function ParafraseadorMain() {
                 )}
               </div>
 
-              {/* Overlay premium cuando se excede el límite */}
-              {isLimitExceeded && (
+              {/* Overlay premium cuando se excede el límite (SOLO usuarios FREE) */}
+              {isLimitExceeded && userPlan !== 'premium' && (
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white/90 flex items-center justify-center p-6 pointer-events-none">
                   <div className="text-center max-w-sm bg-white rounded-2xl shadow-xl p-6 pointer-events-auto">
                     <p className="text-red-600 font-bold mb-2 text-sm flex items-center justify-center gap-2">

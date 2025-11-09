@@ -197,7 +197,7 @@ export default function HumanizadorMain() {
     <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
       {/* COLUMNA IZQUIERDA - INPUT */}
-      <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px', maxHeight: '600px'}}>
+      <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px'}}>
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
@@ -459,8 +459,8 @@ export default function HumanizadorMain() {
                 )}
               </div>
 
-              {/* Overlay premium cuando se excede el límite */}
-              {isLimitExceeded && (
+              {/* Overlay premium cuando se excede el límite (SOLO usuarios FREE) */}
+              {isLimitExceeded && userPlan !== 'premium' && (
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white/90 flex items-center justify-center p-6 pointer-events-none">
                   <div className="text-center max-w-sm bg-white rounded-2xl shadow-xl p-6 pointer-events-auto">
                     <p className="text-red-600 font-bold mb-2 text-sm flex items-center justify-center gap-2">
