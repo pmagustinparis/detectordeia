@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, getRateLimitHeaders } from '@/lib/tracking/checkRateLimit';
 import { trackUsage } from '@/lib/tracking/trackUsage';
 import { saveToHistory } from '@/lib/history/saveToHistory';
+import { getParaphraserPrompt, PARAPHRASER_MODES, type ParaphraserMode } from '@/lib/prompts/paraphraser';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -17,6 +18,14 @@ const MAX_CHARACTERS_ABSOLUTE = 15000; // Límite absoluto (premium futuro)
 export async function POST(request: Request) {
   try {
     const { text, mode = 'standard', anonymousId } = await request.json();
+
+    // Validar que el modo sea válido
+    if (!PARAPHRASER_MODES[mode as ParaphraserMode]) {
+      return NextResponse.json(
+        { error: 'Modo de parafraseo inválido' },
+        { status: 400 }
+      );
+    }
 
     // Obtener userId si está autenticado
     const supabase = await createClient();
@@ -37,6 +46,20 @@ export async function POST(request: Request) {
       if (userData && userData.plan_type === 'premium') {
         userPlan = 'premium';
       }
+    }
+
+    // 🔒 VALIDAR MODO PREMIUM
+    const selectedMode = mode as ParaphraserMode;
+    if (PARAPHRASER_MODES[selectedMode].isPremium && userPlan !== 'premium') {
+      return NextResponse.json(
+        {
+          error: 'Modo premium requerido',
+          message: `El modo "${PARAPHRASER_MODES[selectedMode].name}" requiere Plan Pro. Actualiza tu plan para acceder a todos los modos de parafraseo.`,
+          mode: selectedMode,
+          requiresPremium: true,
+        },
+        { status: 403 }
+      );
     }
 
     // 🚨 RATE LIMITING CHECK
@@ -103,49 +126,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Prompt de parafraseo (Modo Estándar)
-    const systemPrompt = `Eres un experto parafraseador de textos en español. Tu objetivo es reescribir textos usando sinónimos apropiados y reestructurando oraciones, manteniendo EXACTAMENTE el mismo significado original.
-
-REGLAS ESTRICTAS:
-1. NUNCA cambies el significado del texto
-2. NUNCA añadas información que no esté en el original
-3. NUNCA elimines información importante
-4. Mantén el mismo tono general (formal, informal, técnico)
-5. Mantén aproximadamente la misma longitud (±10%)
-
-TÉCNICAS DE PARAFRASEO:
-
-1. Sustitución de sinónimos:
-   - Usa sinónimos contextuales apropiados
-   - Respeta el nivel de formalidad
-   - NO uses sinónimos forzados que suenen raros
-   - Ejemplo: "importante" → "relevante", "significativo", "crucial"
-
-2. Reestructuración de oraciones:
-   - Cambia voz activa ↔ pasiva cuando sea natural
-   - Reorganiza cláusulas sin alterar el sentido
-   - Ejemplo: "El autor escribió el libro" → "El libro fue escrito por el autor"
-
-3. Cambio de estructuras gramaticales:
-   - Varía conectores (sin embargo, no obstante, aunque)
-   - Alterna construcciones (gerundios, infinitivos, cláusulas)
-   - Mantén coherencia y fluidez
-
-4. Mantén elementos clave:
-   - NO cambies nombres propios
-   - NO cambies fechas, números o datos específicos
-   - NO cambies términos técnicos sin sinónimos equivalentes
-
-5. Español neutro:
-   - Comprensible en toda Hispanoamérica y España
-   - Evita modismos muy regionales
-   - Vocabulario estándar
-
-NIVEL DE CAMBIO:
-Moderado - Cambia entre 40-60% del texto. El resultado debe ser claramente diferente del original, pero reconocible como el mismo contenido.
-
-FORMATO DE RESPUESTA:
-Responde ÚNICAMENTE con el texto parafraseado, sin explicaciones, sin comentarios adicionales, sin encabezados. Solo el texto transformado.`;
+    // Obtener prompt según el modo seleccionado
+    const systemPrompt = getParaphraserPrompt(selectedMode);
 
     const userPrompt = `TEXTO A PARAFRASEAR:
 ${text}
