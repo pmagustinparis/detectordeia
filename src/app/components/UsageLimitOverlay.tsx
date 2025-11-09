@@ -141,7 +141,7 @@ export default function UsageLimitOverlay({
 
               <div className="bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-5 mb-6">
                 <p className="text-sm font-bold text-cyan-900 mb-3">
-                  🚀 Próximamente: Plan Premium
+                  🚀 Actualiza a Plan Pro
                 </p>
                 <ul className="space-y-2 text-sm text-cyan-800">
                   <li className="flex items-start gap-2">
@@ -150,11 +150,11 @@ export default function UsageLimitOverlay({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Hasta 15,000 caracteres</strong> por uso</span>
+                    <span><strong>5 modos premium</strong> en Humanizador y Parafraseador</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Modo Avanzado</strong> con adaptación regional</span>
+                    <span><strong>Hasta 15,000 caracteres</strong> por uso</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
@@ -162,21 +162,17 @@ export default function UsageLimitOverlay({
                   </li>
                 </ul>
                 <p className="text-xs text-cyan-700 mt-3">
-                  Desde $7/mes • Disponible próximamente
+                  Desde $10/mes • Ahorra 20% con plan anual
                 </p>
               </div>
 
-              {/* CTA - Email waitlist */}
-              <button
-                onClick={() => {
-                  onClose();
-                  // TODO: Open email capture modal
-                  console.log('Open email capture modal');
-                }}
+              {/* CTA - Upgrade to Pro */}
+              <a
+                href="/pricing"
                 className="block w-full text-center bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
               >
-                Avísame Cuando Esté Disponible
-              </button>
+                Actualizar a Plan Pro
+              </a>
 
               <button
                 onClick={onClose}

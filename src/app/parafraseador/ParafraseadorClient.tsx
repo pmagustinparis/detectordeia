@@ -75,17 +75,17 @@ export default function ParafraseadorClient() {
             </div>
 
             <p className="text-violet-700 font-semibold text-lg mb-4">
-              Próximamente: Plan Premium
+              Plan Pro – Ya Disponible
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">5 modos de parafraseo</span>
+                <span className="text-sm text-gray-700">5 modos de parafraseo (Formal, Creativo, etc.)</span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">Hasta 15,000 caracteres</span>
+                <span className="text-sm text-gray-700">Hasta 15,000 caracteres por uso</span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
@@ -98,15 +98,15 @@ export default function ParafraseadorClient() {
             </div>
 
             <p className="text-xl font-bold text-gray-800 mb-4">
-              Desde $7/mes
+              Desde $10/mes • Ahorra 20% con plan anual
             </p>
 
-            <button
-              onClick={() => openEmailModal('parafraseador-bottom-upsell')}
-              className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            <a
+              href="/pricing"
+              className="inline-block w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
             >
-              Avísame cuando esté disponible
-            </button>
+              Ver Planes y Precios
+            </a>
           </div>
         </section>
       )}

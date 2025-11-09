@@ -38,7 +38,7 @@ const CHARACTER_LIMIT = 1200;
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
   titulo: '¿Querés análisis más avanzados y herramientas premium?',
-  subtitulo: 'Próximamente en los planes premium:',
+  subtitulo: 'Incluido en Plan Pro:',
   bullets: [
     'Análisis por criterios (estilo, subjetividad, errores, coherencia)',
     'Explicaciones detalladas por cada frase sospechosa',
@@ -48,19 +48,19 @@ const premiumTextos = {
     'Historial de análisis',
     'Acceso vía API para automatizar análisis',
   ],
-  precio: '💰 Desde $7/mes – Planes Starter y Pro',
-  cta: '🔓 Desbloquear análisis avanzado',
-  aviso: '📝 Te avisaremos cuando los planes estén disponibles',
+  precio: '💰 Desde $10/mes – Plan Pro',
+  cta: '🔓 Ver Planes y Precios',
+  aviso: '💳 Pago seguro con Stripe',
 };
 const premiumCompactTextos = {
   titulo: '¿Querés análisis premium?',
   bullets: [
     'Análisis por criterios y explicaciones detalladas',
     'Subida de archivos y API',
-    'Desde $7/mes',
+    'Desde $10/mes',
   ],
-  cta: '🔓 Desbloquear análisis avanzado',
-  aviso: '📝 Te avisaremos cuando estén disponibles',
+  cta: '🔓 Ver Planes y Precios',
+  aviso: '💳 Pago seguro con Stripe',
 };
 
 // Tooltip helper
