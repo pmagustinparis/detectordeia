@@ -74,9 +74,10 @@ const Tooltip = ({ text, children }: { text: string; children: React.ReactNode }
 );
 
 export default function HomePageClient() { // Renombrado de Home a HomePageClient
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
   const [result, setResult] = useState<{
     probability: number;
     confidenceLevel: 'low' | 'medium' | 'high';
@@ -113,6 +114,27 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
       setUsageCount(count);
     }
   }, [isAuthenticated]);
+
+  // Fetch user plan for authenticated users
+  useEffect(() => {
+    async function fetchUserPlan() {
+      if (!isAuthenticated || !user) {
+        setUserPlan('free');
+        return;
+      }
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          setUserPlan(data.plan_type || 'free');
+        }
+      } catch (error) {
+        console.error('Error fetching user plan:', error);
+        setUserPlan('free');
+      }
+    }
+    fetchUserPlan();
+  }, [isAuthenticated, user]);
 
   // Colores del contador
   const getCounterColor = () => {
@@ -416,16 +438,18 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       <div className="border-dotted border-b border-gray-300" />
                     </div>
                   )}
-                  {/* CTA premium compacto inmediatamente después del resultado principal */}
-                  <div className="w-full flex flex-col items-center my-3">
-                    <a
-                      href="/pricing"
-                      className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
-                    >
-                      🔓 Desbloquear análisis avanzado
-                    </a>
-                    <p className="text-xs text-gray-500 mt-1">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
-                  </div>
+                  {/* CTA premium compacto inmediatamente después del resultado principal - SOLO para usuarios FREE */}
+                  {userPlan !== 'premium' && (
+                    <div className="w-full flex flex-col items-center my-3">
+                      <a
+                        href="/pricing"
+                        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
+                      >
+                        🔓 Desbloquear análisis avanzado
+                      </a>
+                      <p className="text-xs text-gray-500 mt-1">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
+                    </div>
+                  )}
                   {/* Mostrar huellas lingüísticas solo si existen */}
                   {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                     <div className="w-full max-w-xl mb-2">
@@ -504,7 +528,8 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       onSent={() => setFeedbackSent(true)}
                     />
                   )}
-                  {result && !isLimitExceeded && (
+                  {/* Premium upsell compact - SOLO para usuarios FREE */}
+                  {result && !isLimitExceeded && userPlan !== 'premium' && (
                     <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xl text-[#a259f7]">🔒</span>
@@ -571,8 +596,10 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                     </div>
                     <div className="border-dotted border-b border-gray-300" />
                   </div>
-                  {/* Bloque premium solo en empty state */}
-                  <PremiumUpsellBlock textos={premiumTextos} />
+                  {/* Bloque premium solo en empty state - SOLO para usuarios FREE */}
+                  {userPlan !== 'premium' && (
+                    <PremiumUpsellBlock textos={premiumTextos} />
+                  )}
                 </>
               )}
             </div>
