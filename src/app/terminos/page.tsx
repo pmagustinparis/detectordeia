@@ -22,7 +22,7 @@ export default function Terminos() {
       <h2 className="text-xl font-bold mt-8 mb-2">5. Modificaciones</h2>
       <p className="text-gray-700 mb-4">Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán publicados en esta página y el uso continuado del servicio implica la aceptación de los mismos.</p>
       <h2 className="text-xl font-bold mt-8 mb-2">6. Contacto</h2>
-      <p className="text-gray-700 mb-4">Para consultas sobre estos términos, puedes escribirnos a <a href="mailto:hola@detectordeia.ai" className="text-[#a259f7] underline">hola@detectordeia.ai</a>.</p>
+      <p className="text-gray-700 mb-4">Para consultas sobre estos términos, puedes escribirnos a <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline">buildbyagus@gmail.com</a>.</p>
     </div>
   );
 } 

@@ -17,13 +17,13 @@ export default function Privacidad() {
       <h2 className="text-xl font-bold mt-8 mb-2">4. Consentimiento y Derechos GDPR</h2>
       <p className="text-gray-700 mb-4">Al enviar tu email o utilizar el sitio, das tu consentimiento explícito para el tratamiento de tus datos según esta política. Como usuario europeo, tienes derecho a acceder, rectificar, eliminar, limitar u oponerte al tratamiento de tus datos, así como a retirar tu consentimiento en cualquier momento.</p>
       <h2 className="text-xl font-bold mt-8 mb-2">5. Ejercicio de Derechos</h2>
-      <p className="text-gray-700 mb-4">Puedes ejercer tus derechos escribiendo a <a href="mailto:hola@detectordeia.ai" className="text-[#a259f7] underline">hola@detectordeia.ai</a>. Responderemos a la brevedad y en cumplimiento de la normativa europea.</p>
+      <p className="text-gray-700 mb-4">Puedes ejercer tus derechos escribiendo a <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline">buildbyagus@gmail.com</a>. Responderemos a la brevedad y en cumplimiento de la normativa europea.</p>
       <h2 className="text-xl font-bold mt-8 mb-2">6. Seguridad</h2>
       <p className="text-gray-700 mb-4">Implementamos medidas de seguridad razonables para proteger tu información. Sin embargo, ningún sistema es 100% seguro.</p>
       <h2 className="text-xl font-bold mt-8 mb-2">7. Cambios en la Política</h2>
       <p className="text-gray-700 mb-4">Podemos actualizar esta política en cualquier momento. Te notificaremos sobre cambios importantes a través del sitio web o por email si corresponde.</p>
       <h2 className="text-xl font-bold mt-8 mb-2">8. Contacto</h2>
-      <p className="text-gray-700 mb-4">Si tienes dudas sobre esta política, escríbenos a <a href="mailto:hola@detectordeia.ai" className="text-[#a259f7] underline">hola@detectordeia.ai</a>.</p>
+      <p className="text-gray-700 mb-4">Si tienes dudas sobre esta política, escríbenos a <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline">buildbyagus@gmail.com</a>.</p>
     </div>
   );
 } 

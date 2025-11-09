@@ -58,10 +58,10 @@ export default function RootLayout({
                   Suite completa de herramientas de IA en español: detecta, humaniza y parafrasea textos. Gratis, privado y sin registro.
                 </p>
                 <div className="flex gap-3">
-                  <a href="https://twitter.com/detectordeia" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-violet-600 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                  <a href="https://x.com/builtbyagus" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-violet-600 flex items-center justify-center transition-all duration-300 hover:scale-110">
                     <span className="text-lg">𝕏</span>
                   </a>
-                  <a href="mailto:hola@detectordeia.ai" className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-violet-600 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                  <a href="mailto:buildbyagus@gmail.com" className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-violet-600 flex items-center justify-center transition-all duration-300 hover:scale-110">
                     <span className="text-lg">✉️</span>
                   </a>
                 </div>
@@ -125,7 +125,7 @@ export default function RootLayout({
                     Resultado orientativo - la precisión puede variar según el tipo de texto
                   </p>
                 </div>
-                <a href="mailto:hola@detectordeia.ai?subject=Feedback" className="text-gray-500 hover:text-violet-400 text-xs flex items-center gap-1 transition-colors">
+                <a href="mailto:buildbyagus@gmail.com?subject=Feedback DetectorDeIA" className="text-gray-500 hover:text-violet-400 text-xs flex items-center gap-1 transition-colors">
                   <span>💬</span>
                   <span>Tu feedback nos ayuda a mejorar</span>
                 </a>
