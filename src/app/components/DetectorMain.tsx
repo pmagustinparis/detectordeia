@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
 import FeedbackBlock from './FeedbackBlock';
+import { useAuth } from '@/lib/hooks/useAuth';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -32,30 +33,26 @@ const CHARACTER_LIMIT = 1200;
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
-  titulo: '¿Querés análisis más avanzados y herramientas premium?',
-  subtitulo: 'Próximamente en los planes premium:',
+  titulo: 'Desbloquea todo el poder del Detector',
+  subtitulo: 'Incluido en Plan Pro',
   bullets: [
-    'Análisis por criterios (estilo, subjetividad, errores, coherencia)',
-    'Explicaciones detalladas por cada frase sospechosa',
-    'Subida de archivos .txt, .docx, .pdf',
-    'Comparativa contra textos humanos reales',
-    'Reescritura de texto IA y Humanizador (futuro)',
-    'Historial de análisis',
-    'Acceso vía API para automatizar análisis',
+    'Usos ilimitados diarios en todas las herramientas',
+    'Hasta 25,000 caracteres por análisis en el Detector',
+    '5 modos premium en Humanizador y Parafraseador',
+    'Historial completo de todos tus análisis',
+    'Soporte prioritario vía email',
   ],
-  precio: '💰 Desde $7/mes – Planes Starter y Pro',
-  cta: '🔓 Desbloquear análisis avanzado',
-  aviso: '📝 Te avisaremos cuando los planes estén disponibles',
+  precio: 'Desde $10/mes o $96/año',
+  cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: '¿Querés análisis premium?',
+  titulo: 'Desbloquea Plan Pro',
   bullets: [
-    'Análisis por criterios y explicaciones detalladas',
-    'Subida de archivos y API',
-    'Desde $7/mes',
+    'Usos ilimitados + 25K caracteres',
+    '5 modos premium + Historial completo',
+    'Desde $10/mes o $96/año',
   ],
-  cta: '🔓 Desbloquear análisis avanzado',
-  aviso: '📝 Te avisaremos cuando estén disponibles',
+  cta: 'Ver Planes',
 };
 
 export default function DetectorMain({
@@ -65,6 +62,7 @@ export default function DetectorMain({
   h1?: string;
   subtitle?: string;
 }) {
+  const { isAuthenticated, user } = useAuth();
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<{
@@ -98,6 +96,39 @@ export default function DetectorMain({
   const detectorRef = useRef<HTMLDivElement>(null);
   const [textType, setTextType] = useState('default');
   const [feedbackSent, setFeedbackSent] = useState(false);
+  const [usageCount, setUsageCount] = useState(0);
+  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+
+  // Track usage count for anonymous users
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('detector_usage_count') || '0');
+      setUsageCount(count);
+    }
+  }, [isAuthenticated]);
+
+  // Obtener plan del usuario
+  useEffect(() => {
+    async function fetchUserPlan() {
+      if (!isAuthenticated || !user) {
+        setUserPlan('free');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          setUserPlan(data.plan_type || 'free');
+        }
+      } catch (error) {
+        console.error('Error fetching user plan:', error);
+        setUserPlan('free');
+      }
+    }
+
+    fetchUserPlan();
+  }, [isAuthenticated, user]);
 
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
@@ -152,6 +183,13 @@ export default function DetectorMain({
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(false);
         setFeedbackSent(false);
+
+        // Incrementar contador de uso para usuarios anónimos (solo análisis reales)
+        if (!isAuthenticated) {
+          const newCount = usageCount + 1;
+          setUsageCount(newCount);
+          localStorage.setItem('detector_usage_count', newCount.toString());
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
@@ -183,12 +221,21 @@ export default function DetectorMain({
         <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px] card-elevated">
           {/* Trust indicators */}
           <div className="flex items-center gap-2 mb-3 flex-wrap">
-            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              No login
-            </span>
+            {!isAuthenticated ? (
+              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Sin registro
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Cuenta activa
+              </span>
+            )}
             <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -493,12 +540,51 @@ export default function DetectorMain({
                     )}
                   </div>
                 )}
-
                 {/* Próximamente: Reescribir como texto humano */}
                 <div className="bg-gray-100 text-gray-500 rounded-lg px-4 py-2 text-sm font-medium mb-2">
                   Próximamente: Reescribir como texto humano 🤖➡️👤
                 </div>
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
+
+                {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
+                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                  <div className="mt-4 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
+                    <p className="text-sm font-semibold text-violet-800 mb-1">
+                      💡 ¿Usás seguido las herramientas?
+                    </p>
+                    <p className="text-xs text-violet-700 mb-2">
+                      Registrándote gratis podés guardar tu historial y acceder a todos tus análisis desde cualquier dispositivo.
+                    </p>
+                    <a
+                      href="/dashboard"
+                      className="inline-block text-xs font-bold text-violet-600 hover:text-violet-700 hover:underline"
+                    >
+                      Crear cuenta gratis →
+                    </a>
+                  </div>
+                )}
+
+                {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
+                {!isAuthenticated && usageCount >= 5 && (
+                  <div className="mt-4 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
+                    <p className="text-sm font-bold text-cyan-900 mb-2">
+                      🚀 ¡Ya usaste el Detector {usageCount} veces!
+                    </p>
+                    <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
+                      Registrándote gratis obtenés:<br/>
+                      • <strong>Historial</strong> de tus últimos análisis<br/>
+                      • <strong>Más usos diarios</strong> (hasta 50 usos/día)<br/>
+                      • <strong>Acceso a futuras features</strong> antes que nadie
+                    </p>
+                    <a
+                      href="/dashboard"
+                      className="inline-block w-full text-center bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all"
+                    >
+                      Crear cuenta gratis en 10 segundos
+                    </a>
+                  </div>
+                )}
+
                 {/* Bloque premium compacto al final cuando hay resultado */}
                 <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">
@@ -572,8 +658,10 @@ export default function DetectorMain({
                   </div>
                   <div className="border-dotted border-b border-gray-300" />
                 </div>
-                {/* Bloque premium solo en empty state */}
-                <PremiumUpsellBlock textos={premiumTextos} />
+                {/* Bloque premium solo en empty state - SOLO para usuarios FREE */}
+                {userPlan !== 'premium' && (
+                  <PremiumUpsellBlock textos={premiumTextos} />
+                )}
               </>
             )}
           </div>

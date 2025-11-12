@@ -1,0 +1,176 @@
+/**
+ * Rate Limiting System
+ *
+ * Verifica si un usuario ha alcanzado su límite de usos diarios.
+ *
+ * Límites por herramienta:
+ * - Anónimo: 3 usos/día (total entre las 3 herramientas)
+ * - Free:
+ *   - Detector: 15 análisis/día
+ *   - Humanizador: 10 usos/día
+ *   - Parafraseador: 10 usos/día
+ * - Premium: ilimitado
+ */
+
+import { createClient } from '@/lib/supabase/server';
+import type { ToolType } from './trackUsage';
+
+// Límites por tipo de usuario y herramienta
+const RATE_LIMITS = {
+  anonymous: {
+    total: 3, // Límite global para anónimos (entre las 3 herramientas)
+  },
+  free: {
+    detector: 15,
+    humanizador: 10,
+    parafraseador: 10,
+  },
+  premium: {
+    detector: Infinity,
+    humanizador: Infinity,
+    parafraseador: Infinity,
+  },
+};
+
+export interface RateLimitResult {
+  allowed: boolean; // ¿Puede hacer la request?
+  remaining: number; // Usos restantes hoy
+  limit: number; // Límite total
+  usedToday: number; // Usos consumidos hoy
+  resetAt: Date; // Cuándo resetea el límite (medianoche UTC)
+  userType: 'anonymous' | 'free' | 'premium';
+}
+
+export interface CheckRateLimitParams {
+  userId?: string; // UUID del usuario autenticado
+  anonymousId?: string; // UUID del usuario anónimo
+  toolType: ToolType; // Requerido: verificar límite por herramienta específica
+}
+
+/**
+ * Verifica si un usuario puede hacer otra request según su límite diario
+ *
+ * @param params - Parámetros de verificación
+ * @returns Resultado del rate limit check
+ */
+export async function checkRateLimit(
+  params: CheckRateLimitParams
+): Promise<RateLimitResult> {
+  try {
+    const { userId, anonymousId, toolType } = params;
+
+    // Validar que al menos userId o anonymousId estén presentes
+    if (!userId && !anonymousId) {
+      throw new Error('userId o anonymousId requeridos');
+    }
+
+    // Crear cliente Supabase
+    const supabase = await createClient();
+
+    // Determinar tipo de usuario y límite
+    let userType: 'anonymous' | 'free' | 'premium' = 'anonymous';
+    let limit: number;
+    let internalUserId: string | null = null;
+
+    if (userId) {
+      // Usuario autenticado: obtener id interno y plan
+      const { data: user } = await supabase
+        .from('users')
+        .select('id, plan_type')
+        .eq('auth_id', userId)
+        .single();
+
+      if (user) {
+        internalUserId = user.id;
+        userType = user.plan_type === 'premium' ? 'premium' : 'free';
+
+        // Límite según plan y herramienta
+        if (userType === 'premium') {
+          limit = Infinity; // Sin límite para premium
+        } else {
+          limit = RATE_LIMITS.free[toolType];
+        }
+      } else {
+        // Usuario no encontrado, tratar como anónimo
+        limit = RATE_LIMITS.anonymous.total;
+      }
+    } else {
+      // Usuario anónimo: límite total (no por herramienta)
+      limit = RATE_LIMITS.anonymous.total;
+    }
+
+    // Calcular inicio del día actual (00:00 UTC)
+    const startOfToday = new Date();
+    startOfToday.setUTCHours(0, 0, 0, 0);
+
+    // Calcular inicio del día siguiente (para resetAt)
+    const startOfTomorrow = new Date(startOfToday);
+    startOfTomorrow.setUTCDate(startOfTomorrow.getUTCDate() + 1);
+
+    // Construir query base
+    let query = supabase
+      .from('usage_tracking')
+      .select('id', { count: 'exact', head: true })
+      .gte('created_at', startOfToday.toISOString());
+
+    // Filtrar por userId o anonymousId
+    if (internalUserId) {
+      query = query.eq('user_id', internalUserId);
+      // Para usuarios autenticados, filtrar por herramienta específica
+      query = query.eq('tool_type', toolType);
+    } else if (anonymousId) {
+      query = query.eq('anonymous_id', anonymousId);
+      // Para anónimos, NO filtrar por herramienta (límite total)
+      // Contar todos los usos del día sin importar la herramienta
+    }
+
+    // Ejecutar query
+    const { count, error } = await query;
+
+    if (error) {
+      console.error('[checkRateLimit] Error consultando DB:', error);
+      throw error;
+    }
+
+    const usedToday = count || 0;
+    const remaining = Math.max(0, limit - usedToday);
+    const allowed = usedToday < limit;
+
+    return {
+      allowed,
+      remaining,
+      limit,
+      usedToday,
+      resetAt: startOfTomorrow,
+      userType,
+    };
+  } catch (err) {
+    console.error('[checkRateLimit] Error:', err);
+
+    // En caso de error, permitir la request para no bloquear el servicio
+    // pero loggear el error
+    return {
+      allowed: true,
+      remaining: 0,
+      limit: 0,
+      usedToday: 0,
+      resetAt: new Date(),
+      userType: 'anonymous',
+    };
+  }
+}
+
+/**
+ * Obtiene los headers HTTP estándar de rate limiting
+ * Para incluir en las responses de las APIs
+ *
+ * @param result - Resultado del checkRateLimit
+ * @returns Headers para la response
+ */
+export function getRateLimitHeaders(result: RateLimitResult): Record<string, string> {
+  return {
+    'X-RateLimit-Limit': result.limit.toString(),
+    'X-RateLimit-Remaining': result.remaining.toString(),
+    'X-RateLimit-Reset': Math.floor(result.resetAt.getTime() / 1000).toString(), // Unix timestamp
+  };
+}

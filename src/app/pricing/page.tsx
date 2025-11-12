@@ -3,13 +3,13 @@ import PricingPageClient from './PricingPageClient'; // Importamos el componente
 
 export const metadata: Metadata = {
   title: 'Planes y Precios | Detector de IA - DetectordeIA.ai',
-  description: 'Descubre los planes premium de DetectordeIA.ai. Elige entre Starter y Pro para acceder a análisis avanzados, subida de archivos, reportes detallados y más. Optimizado para el mercado hispanohablante.',
+  description: 'Elige el plan perfecto para ti. Plan Free gratis, Plan Pro desde $10/mes con usos ilimitados y 5 modos premium, o Plan Team personalizado para equipos. Detector, Humanizador y Parafraseador de IA en español.',
   alternates: {
     canonical: 'https://detectordeia.ai/pricing',
   },
   openGraph: {
     title: 'Planes y Precios | Detector de IA - DetectordeIA.ai',
-    description: 'Elige el plan premium que mejor se adapta a tus necesidades de detección de IA.',
+    description: 'Plan Free gratis, Plan Pro $10/mes con usos ilimitados, Plan Team personalizado. Detector, Humanizador y Parafraseador de IA en español.',
     url: 'https://detectordeia.ai/pricing',
     siteName: 'DetectordeIA.ai',
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Planes y Precios | Detector de IA - DetectordeIA.ai',
-    description: 'Elige el plan premium que mejor se adapta a tus necesidades de detección de IA.',
+    description: 'Plan Free gratis, Plan Pro $10/mes, Plan Team personalizado. Herramientas de IA en español.',
     images: ['https://detectordeia.ai/logo.png'],
   },
 };

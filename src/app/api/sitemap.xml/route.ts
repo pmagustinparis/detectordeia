@@ -4,6 +4,8 @@ export async function GET() {
   const baseUrl = 'https://detectordeia.ai';
   const staticRoutes = [
     '', // home
+    'humanizador',
+    'parafraseador',
     'planes',
     'privacidad',
     'terminos',

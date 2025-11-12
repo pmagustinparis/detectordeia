@@ -5,6 +5,9 @@ import PremiumUpsellBlock from './components/PremiumUpsellBlock';
 import PremiumUpsellCompact from './components/PremiumUpsellCompact';
 import FeedbackBlock from './components/FeedbackBlock';
 import HumanizadorPromoBanner from './components/HumanizadorPromoBanner';
+import UsageLimitOverlay from './components/UsageLimitOverlay';
+import { useAuth } from '@/lib/hooks/useAuth';
+import { getAnonymousId } from '@/lib/tracking/anonymousId';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -34,30 +37,26 @@ const CHARACTER_LIMIT = 1200;
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
-  titulo: '¿Querés análisis más avanzados y herramientas premium?',
-  subtitulo: 'Próximamente en los planes premium:',
+  titulo: 'Desbloquea todo el poder del Detector',
+  subtitulo: 'Incluido en Plan Pro',
   bullets: [
-    'Análisis por criterios (estilo, subjetividad, errores, coherencia)',
-    'Explicaciones detalladas por cada frase sospechosa',
-    'Subida de archivos .txt, .docx, .pdf',
-    'Comparativa contra textos humanos reales',
-    'Reescritura de texto IA y Humanizador (futuro)',
-    'Historial de análisis',
-    'Acceso vía API para automatizar análisis',
+    'Usos ilimitados diarios en todas las herramientas',
+    'Hasta 25,000 caracteres por análisis en el Detector',
+    '5 modos premium en Humanizador y Parafraseador',
+    'Historial completo de todos tus análisis',
+    'Soporte prioritario vía email',
   ],
-  precio: '💰 Desde $7/mes – Planes Starter y Pro',
-  cta: '🔓 Desbloquear análisis avanzado',
-  aviso: '📝 Te avisaremos cuando los planes estén disponibles',
+  precio: 'Desde $10/mes o $96/año',
+  cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: '¿Querés análisis premium?',
+  titulo: 'Desbloquea Plan Pro',
   bullets: [
-    'Análisis por criterios y explicaciones detalladas',
-    'Subida de archivos y API',
-    'Desde $7/mes',
+    'Usos ilimitados + 25K caracteres',
+    '5 modos premium + Historial completo',
+    'Desde $10/mes o $96/año',
   ],
-  cta: '🔓 Desbloquear análisis avanzado',
-  aviso: '📝 Te avisaremos cuando estén disponibles',
+  cta: 'Ver Planes',
 };
 
 // Tooltip helper
@@ -71,8 +70,10 @@ const Tooltip = ({ text, children }: { text: string; children: React.ReactNode }
 );
 
 export default function HomePageClient() { // Renombrado de Home a HomePageClient
+  const { isAuthenticated, loading, user } = useAuth();
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
   const [result, setResult] = useState<{
     probability: number;
     confidenceLevel: 'low' | 'medium' | 'high';
@@ -92,6 +93,44 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
   const detectorRef = useRef<HTMLDivElement>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [textType, setTextType] = useState('default');
+  const [usageCount, setUsageCount] = useState(0);
+
+  // Rate limit overlay state
+  const [isLimitReached, setIsLimitReached] = useState(false);
+  const [rateLimitInfo, setRateLimitInfo] = useState<{
+    userType: 'anonymous' | 'free' | 'premium';
+    limit: number;
+    resetAt: Date;
+  } | null>(null);
+
+  // Track usage count for anonymous users
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const count = parseInt(localStorage.getItem('detector_usage_count') || '0');
+      setUsageCount(count);
+    }
+  }, [isAuthenticated]);
+
+  // Fetch user plan for authenticated users
+  useEffect(() => {
+    async function fetchUserPlan() {
+      if (!isAuthenticated || !user) {
+        setUserPlan('free');
+        return;
+      }
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          setUserPlan(data.plan_type || 'free');
+        }
+      } catch (error) {
+        console.error('Error fetching user plan:', error);
+        setUserPlan('free');
+      }
+    }
+    fetchUserPlan();
+  }, [isAuthenticated, user]);
 
   // Colores del contador
   const getCounterColor = () => {
@@ -132,20 +171,42 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
         setIsLimitExceeded(true);
       } else {
         // Análisis normal
+        // Obtener anonymousId para usuarios no autenticados
+        const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
+
         const response = await fetch('/api/analyze', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ text, textType }),
+          body: JSON.stringify({ text, textType, anonymousId }),
         });
         const data = await response.json();
+
+        // 🚨 RATE LIMIT REACHED (429)
+        if (response.status === 429) {
+          setRateLimitInfo({
+            userType: data.userType || 'anonymous',
+            limit: data.limit || 10,
+            resetAt: new Date(data.resetAt),
+          });
+          setIsLimitReached(true);
+          return;
+        }
+
         if (!response.ok) {
           throw new Error(data.error || 'Error al analizar el texto');
         }
         setResult(data);
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(false);
+
+        // Incrementar contador de uso para usuarios anónimos (solo análisis reales)
+        if (!isAuthenticated) {
+          const newCount = usageCount + 1;
+          setUsageCount(newCount);
+          localStorage.setItem('detector_usage_count', newCount.toString());
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
@@ -191,12 +252,23 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
           <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px] card-elevated">
             {/* Trust indicators */}
             <div className="flex items-center gap-2 mb-3 flex-wrap">
-              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                No login
-              </span>
+              {!loading && (
+                !isAuthenticated ? (
+                  <span className="inline-flex items-center gap-1 bg-gradient-to-r from-gray-100 to-slate-100 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                    </svg>
+                    Sin registro
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Cuenta activa
+                  </span>
+                )
+              )}
               <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -362,16 +434,18 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       <div className="border-dotted border-b border-gray-300" />
                     </div>
                   )}
-                  {/* CTA premium compacto inmediatamente después del resultado principal */}
-                  <div className="w-full flex flex-col items-center my-3">
-                    <a
-                      href="/pricing"
-                      className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
-                    >
-                      🔓 Desbloquear análisis avanzado
-                    </a>
-                    <p className="text-xs text-gray-500 mt-1">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
-                  </div>
+                  {/* CTA premium compacto inmediatamente después del resultado principal - SOLO para usuarios FREE */}
+                  {userPlan !== 'premium' && (
+                    <div className="w-full flex flex-col items-center my-3">
+                      <a
+                        href="/pricing"
+                        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
+                      >
+                        🔓 Desbloquear análisis avanzado
+                      </a>
+                      <p className="text-xs text-gray-500 mt-1">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
+                    </div>
+                  )}
                   {/* Mostrar huellas lingüísticas solo si existen */}
                   {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                     <div className="w-full max-w-xl mb-2">
@@ -402,6 +476,46 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                     Próximamente: Reescribir como texto humano 🤖➡️👤
                   </div>
                   <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
+
+                  {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
+                  {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                    <div className="mt-4 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
+                      <p className="text-sm font-semibold text-violet-800 mb-1">
+                        💡 ¿Usás seguido las herramientas?
+                      </p>
+                      <p className="text-xs text-violet-700 mb-2">
+                        Registrándote gratis podés guardar tu historial y acceder a todos tus análisis desde cualquier dispositivo.
+                      </p>
+                      <a
+                        href="/dashboard"
+                        className="inline-block text-xs font-bold text-violet-600 hover:text-violet-700 hover:underline"
+                      >
+                        Crear cuenta gratis →
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
+                  {!isAuthenticated && usageCount >= 5 && (
+                    <div className="mt-4 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
+                      <p className="text-sm font-bold text-cyan-900 mb-2">
+                        🚀 ¡Ya usaste el Detector {usageCount} veces!
+                      </p>
+                      <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
+                        Registrándote gratis obtenés:<br/>
+                        • <strong>Historial</strong> de tus últimos análisis<br/>
+                        • <strong>Más usos diarios</strong> (hasta 50 usos/día)<br/>
+                        • <strong>Acceso a futuras features</strong> antes que nadie
+                      </p>
+                      <a
+                        href="/dashboard"
+                        className="inline-block w-full text-center bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all"
+                      >
+                        Crear cuenta gratis en 10 segundos
+                      </a>
+                    </div>
+                  )}
+
                   {/* Bloque de feedback */}
                   {!feedbackSent && result && !isLimitExceeded && (
                     <FeedbackBlock
@@ -410,7 +524,8 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       onSent={() => setFeedbackSent(true)}
                     />
                   )}
-                  {result && !isLimitExceeded && (
+                  {/* Premium upsell compact - SOLO para usuarios FREE */}
+                  {result && !isLimitExceeded && userPlan !== 'premium' && (
                     <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xl text-[#a259f7]">🔒</span>
@@ -477,8 +592,10 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                     </div>
                     <div className="border-dotted border-b border-gray-300" />
                   </div>
-                  {/* Bloque premium solo en empty state */}
-                  <PremiumUpsellBlock textos={premiumTextos} />
+                  {/* Bloque premium solo en empty state - SOLO para usuarios FREE */}
+                  {userPlan !== 'premium' && (
+                    <PremiumUpsellBlock textos={premiumTextos} />
+                  )}
                 </>
               )}
             </div>
@@ -507,7 +624,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
             <span className="text-3xl">⚡</span>
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Sin registro</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">Analizá textos gratis, sin crear cuenta. Análisis ilimitados.</p>
+          <p className="text-gray-600 text-sm leading-relaxed">Analizá textos gratis, sin crear cuenta. 10 usos diarios.</p>
         </div>
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
@@ -618,7 +735,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
               </div>
               <div>
                 <h3 className="font-bold text-lg mb-2 text-gray-800">¿Cómo funciona el plan gratuito?</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">Hasta 1.200 caracteres por análisis, análisis ilimitados, sin registro.</p>
+                <p className="text-gray-600 text-sm leading-relaxed">3 análisis diarios entre las 3 herramientas, sin registro. Hasta 1.200 caracteres por análisis en el Detector.</p>
               </div>
             </div>
           </div>
@@ -635,25 +752,52 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
           Más herramientas para trabajar con contenido de IA
         </p>
 
-        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
-              <span className="text-3xl">✨</span>
+        <div className="space-y-6">
+          {/* Humanizador */}
+          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">✨</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Tu texto suena a IA? Humanízalo
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Transforma texto generado por ChatGPT, Claude o cualquier IA en contenido que suena natural y humano. Gratis, sin registro, optimizado para español.
+                </p>
+                <a
+                  href="/humanizador"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Humanizador de IA</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                ¿Tu texto suena a IA? Humanízalo
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Transforma texto generado por ChatGPT, Claude o cualquier IA en contenido que suena natural y humano. Gratis, sin registro, optimizado para español.
-              </p>
-              <a
-                href="/humanizador"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <span>Probar el Humanizador de IA</span>
-                <span>→</span>
-              </a>
+          </div>
+
+          {/* Parafraseador */}
+          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-lg border border-purple-200 p-8 card-elevated">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <span className="text-3xl">🔄</span>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  ¿Necesitas reescribir tu texto? Parafraseálo
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Reescribe cualquier texto con otras palabras manteniendo el significado. Sin plagio, sin registro, optimizado para español.
+                </p>
+                <a
+                  href="/parafraseador"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Probar el Parafraseador</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -678,6 +822,18 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
             </div>
           </div>
         </div>
+      )}
+
+      {/* Usage Limit Overlay */}
+      {rateLimitInfo && (
+        <UsageLimitOverlay
+          isOpen={isLimitReached}
+          onClose={() => setIsLimitReached(false)}
+          userType={rateLimitInfo.userType}
+          limit={rateLimitInfo.limit}
+          resetAt={rateLimitInfo.resetAt}
+          toolName="Detector"
+        />
       )}
     </div>
   );

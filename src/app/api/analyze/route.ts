@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { createClient } from '@/lib/supabase/server';
+import { checkRateLimit, getRateLimitHeaders } from '@/lib/tracking/checkRateLimit';
+import { trackUsage } from '@/lib/tracking/trackUsage';
+import { saveToHistory } from '@/lib/history/saveToHistory';
 import { improvedFreeAnalysis } from '@/lib/analysis/multiPassAnalysis';
 
 // Initialize OpenAI client
@@ -138,7 +142,56 @@ function adjustProbabilityByTextType(
 export async function POST(request: Request) {
   console.log("Usando GPT-3.5 Turbo"); // Debug temporal
   try {
-    const { text, textType = "default" } = await request.json();
+    const { text, textType = "default", anonymousId } = await request.json();
+
+    // Obtener userId si está autenticado
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const userId = user?.id || null;
+
+    // Obtener plan del usuario
+    let userPlan: 'free' | 'premium' = 'free';
+    if (userId) {
+      const { data: userData } = await supabase
+        .from('users')
+        .select('plan_type')
+        .eq('auth_id', userId)
+        .single();
+
+      if (userData && userData.plan_type === 'premium') {
+        userPlan = 'premium';
+      }
+    }
+
+    // 🚨 RATE LIMITING CHECK
+    const rateLimit = await checkRateLimit({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'detector',
+    });
+
+    // Si alcanzó el límite, retornar 429
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: 'Límite diario alcanzado',
+          message:
+            rateLimit.userType === 'anonymous'
+              ? `Usaste tus ${rateLimit.limit} análisis gratis hoy. Regístrate para obtener más análisis diarios.`
+              : `Alcanzaste el límite de ${rateLimit.limit} análisis diarios. Vuelve mañana o actualiza a Pro para análisis ilimitados.`,
+          limit: rateLimit.limit,
+          remaining: rateLimit.remaining,
+          resetAt: rateLimit.resetAt,
+          userType: rateLimit.userType,
+        },
+        {
+          status: 429,
+          headers: getRateLimitHeaders(rateLimit),
+        }
+      );
+    }
 
     // Validate input
     if (!text || typeof text !== 'string') {
@@ -148,9 +201,23 @@ export async function POST(request: Request) {
       );
     }
 
-    if (text.length > 1200) {
+    // Límites de caracteres según plan
+    const CHARACTER_LIMITS = {
+      free: 1200,
+      premium: 25000,
+    };
+
+    const charLimit = CHARACTER_LIMITS[userPlan];
+
+    if (text.length > charLimit) {
       return NextResponse.json(
-        { error: 'El texto no puede exceder los 1200 caracteres' },
+        {
+          error: userPlan === 'free'
+            ? 'El texto excede el límite de 1,200 caracteres del plan Free. Actualiza a Pro para analizar hasta 25,000 caracteres.'
+            : 'El texto excede el límite de 25,000 caracteres.',
+          charLimit,
+          currentLength: text.length,
+        },
         { status: 400 }
       );
     }
@@ -158,7 +225,7 @@ export async function POST(request: Request) {
     // 🚀 NUEVO SISTEMA: Análisis mejorado con múltiples pasadas
     console.log('🔍 Iniciando análisis mejorado multi-pasada...');
 
-    const isRegisteredUser = false; // En esta rama no hay auth todavía
+    const isRegisteredUser = !!userId;
 
     const analysis = await improvedFreeAnalysis(text, textType, isRegisteredUser);
 
@@ -168,28 +235,78 @@ export async function POST(request: Request) {
     const adjustedProbability = analysis.probability;
     const entropyScore = analysis.advancedMetrics.entropy || calculateEntropy(text);
 
-    return NextResponse.json({
-      probability: adjustedProbability,
-      confidenceLevel: analysis.confidenceLevel,
-      scores_by_category: analysis.scores_by_category,
-      linguistic_footprints: analysis.linguistic_footprints,
-      entropyScore,
-      interpretation: getInterpretation(adjustedProbability, textType, entropyScore),
-      // 🆕 Nueva información del análisis mejorado
-      advancedMetrics: {
-        perplexity: analysis.advancedMetrics.perplexity,
-        lexicalDiversity: analysis.advancedMetrics.lexicalDiversity,
-        ngramRepetition: analysis.advancedMetrics.ngramRepetition,
-        sentenceVariance: analysis.advancedMetrics.sentenceVariance,
-        punctuationConsistency: analysis.advancedMetrics.punctuationConsistency,
-      },
-      metricsInsights: analysis.metricsInsights,
-      analysisQuality: {
-        modelsUsed: analysis.usedModels,
-        numberOfPasses: analysis.usedModels.length,
-        usedPremiumModel: analysis.usedModels.includes('gpt-4o-mini'),
+    // ✅ TRACK USAGE - Registrar uso exitoso
+    await trackUsage({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'detector',
+      characterCount: text.length,
+      metadata: {
+        textType,
+        probability: adjustedProbability,
+        confidenceLevel: analysis.confidenceLevel,
+        entropyScore,
       },
     });
+
+    // 💾 SAVE TO HISTORY - Guardar en historial (solo usuarios autenticados)
+    if (userId) {
+      await saveToHistory({
+        userId,
+        toolType: 'detector',
+        inputText: text,
+        outputText: JSON.stringify({
+          probability: adjustedProbability,
+          confidenceLevel: analysis.confidenceLevel,
+          interpretation: getInterpretation(adjustedProbability, textType, entropyScore),
+        }),
+        characterCount: text.length,
+        metadata: {
+          textType,
+          probability: adjustedProbability,
+          confidenceLevel: analysis.confidenceLevel,
+          entropyScore,
+          scores_by_category: analysis.scores_by_category,
+        },
+      });
+    }
+
+    // Retornar con headers de rate limit y nueva información
+    return NextResponse.json(
+      {
+        probability: adjustedProbability,
+        confidenceLevel: analysis.confidenceLevel,
+        scores_by_category: analysis.scores_by_category,
+        linguistic_footprints: analysis.linguistic_footprints,
+        entropyScore,
+        interpretation: getInterpretation(adjustedProbability, textType, entropyScore),
+        // 🆕 Nueva información del análisis mejorado
+        advancedMetrics: {
+          perplexity: analysis.advancedMetrics.perplexity,
+          lexicalDiversity: analysis.advancedMetrics.lexicalDiversity,
+          ngramRepetition: analysis.advancedMetrics.ngramRepetition,
+          sentenceVariance: analysis.advancedMetrics.sentenceVariance,
+          punctuationConsistency: analysis.advancedMetrics.punctuationConsistency,
+        },
+        metricsInsights: analysis.metricsInsights,
+        analysisQuality: {
+          modelsUsed: analysis.usedModels,
+          numberOfPasses: analysis.usedModels.length,
+          usedPremiumModel: analysis.usedModels.includes('gpt-4o-mini'),
+        },
+        rateLimit: {
+          remaining: rateLimit.remaining - 1,
+          limit: rateLimit.limit,
+          resetAt: rateLimit.resetAt,
+        },
+      },
+      {
+        headers: getRateLimitHeaders({
+          ...rateLimit,
+          remaining: rateLimit.remaining - 1,
+        }),
+      }
+    );
   } catch (error) {
     console.error('Error analyzing text:', error);
     return NextResponse.json(
