@@ -78,6 +78,19 @@ export default function DetectorMain({
     entropyScore?: number;
     semanticSimilarity?: number;
     interpretation?: string;
+    advancedMetrics?: {
+      perplexity: number;
+      lexicalDiversity: number;
+      ngramRepetition: number;
+      sentenceVariance: number;
+      punctuationConsistency: number;
+    };
+    metricsInsights?: string[];
+    analysisQuality?: {
+      modelsUsed: string[];
+      numberOfPasses: number;
+      usedPremiumModel: boolean;
+    };
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLimitExceeded, setIsLimitExceeded] = useState(false);
@@ -370,6 +383,117 @@ export default function DetectorMain({
                     </span>
                   )}
                 </div>
+
+                {/* 🆕 MÉTRICAS AVANZADAS */}
+                {result.advancedMetrics && (
+                  <div className="mt-4 p-4 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-lg">📊</span>
+                      <h3 className="text-sm font-bold text-gray-800">Análisis Lingüístico Avanzado</h3>
+                      {result.analysisQuality?.usedPremiumModel && (
+                        <span className="ml-auto text-xs px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full font-semibold">
+                          ⚡ Análisis Mejorado
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 mb-3">
+                      {/* Perplejidad */}
+                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
+                        <div className="text-xs text-gray-600 mb-0.5">Perplejidad</div>
+                        <div className="flex items-center gap-1">
+                          <span className={`text-lg font-bold ${result.advancedMetrics.perplexity < 3 ? 'text-red-600' : result.advancedMetrics.perplexity > 7 ? 'text-green-600' : 'text-yellow-600'}`}>
+                            {result.advancedMetrics.perplexity.toFixed(1)}
+                          </span>
+                          <span className="text-xs text-gray-500">/10</span>
+                        </div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {result.advancedMetrics.perplexity < 3 && '⚠️ Muy predecible'}
+                          {result.advancedMetrics.perplexity >= 3 && result.advancedMetrics.perplexity < 7 && '✓ Normal'}
+                          {result.advancedMetrics.perplexity >= 7 && '✓ Muy variado'}
+                        </div>
+                      </div>
+
+                      {/* Diversidad Léxica */}
+                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
+                        <div className="text-xs text-gray-600 mb-0.5">Diversidad Léxica</div>
+                        <div className="flex items-center gap-1">
+                          <span className={`text-lg font-bold ${result.advancedMetrics.lexicalDiversity < 0.4 ? 'text-red-600' : result.advancedMetrics.lexicalDiversity > 0.6 ? 'text-green-600' : 'text-yellow-600'}`}>
+                            {result.advancedMetrics.lexicalDiversity.toFixed(2)}
+                          </span>
+                        </div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {result.advancedMetrics.lexicalDiversity < 0.4 && '⚠️ Repetitivo'}
+                          {result.advancedMetrics.lexicalDiversity >= 0.4 && result.advancedMetrics.lexicalDiversity < 0.6 && '✓ Normal'}
+                          {result.advancedMetrics.lexicalDiversity >= 0.6 && '✓ Muy diverso'}
+                        </div>
+                      </div>
+
+                      {/* N-gramas Repetitivos */}
+                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
+                        <div className="text-xs text-gray-600 mb-0.5">Patrones Repetitivos</div>
+                        <div className="flex items-center gap-1">
+                          <span className={`text-lg font-bold ${result.advancedMetrics.ngramRepetition > 6 ? 'text-red-600' : result.advancedMetrics.ngramRepetition > 3 ? 'text-yellow-600' : 'text-green-600'}`}>
+                            {result.advancedMetrics.ngramRepetition.toFixed(1)}
+                          </span>
+                          <span className="text-xs text-gray-500">/10</span>
+                        </div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {result.advancedMetrics.ngramRepetition > 6 && '⚠️ Muy repetitivo'}
+                          {result.advancedMetrics.ngramRepetition > 3 && result.advancedMetrics.ngramRepetition <= 6 && '⚡ Moderado'}
+                          {result.advancedMetrics.ngramRepetition <= 3 && '✓ Bajo'}
+                        </div>
+                      </div>
+
+                      {/* Varianza de Oraciones */}
+                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
+                        <div className="text-xs text-gray-600 mb-0.5">Variación Oraciones</div>
+                        <div className="flex items-center gap-1">
+                          <span className={`text-lg font-bold ${result.advancedMetrics.sentenceVariance < 2 ? 'text-red-600' : result.advancedMetrics.sentenceVariance > 5 ? 'text-green-600' : 'text-yellow-600'}`}>
+                            {result.advancedMetrics.sentenceVariance.toFixed(1)}
+                          </span>
+                        </div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {result.advancedMetrics.sentenceVariance < 2 && '⚠️ Muy uniforme'}
+                          {result.advancedMetrics.sentenceVariance >= 2 && result.advancedMetrics.sentenceVariance < 5 && '✓ Normal'}
+                          {result.advancedMetrics.sentenceVariance >= 5 && '✓ Muy variado'}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Insights de métricas */}
+                    {result.metricsInsights && result.metricsInsights.length > 0 && (
+                      <div className="space-y-1">
+                        {result.metricsInsights.slice(0, 3).map((insight, index) => (
+                          <div key={index} className="flex items-start gap-1 text-xs text-violet-800 bg-white/70 rounded-lg p-2 border border-violet-100">
+                            <span className="text-violet-600">•</span>
+                            <span>{insight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Información de calidad del análisis */}
+                    {result.analysisQuality && (
+                      <div className="mt-3 pt-3 border-t border-violet-200">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-gray-600">Calidad del análisis:</span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-semibold text-violet-700">
+                              {result.analysisQuality.numberOfPasses} pasada{result.analysisQuality.numberOfPasses > 1 ? 's' : ''}
+                            </span>
+                            {result.analysisQuality.usedPremiumModel && (
+                              <span className="px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full text-xs font-semibold">
+                                GPT-4o-mini
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {/* Próximamente: Reescribir como texto humano */}
                 <div className="bg-gray-100 text-gray-500 rounded-lg px-4 py-2 text-sm font-medium mb-2">
                   Próximamente: Reescribir como texto humano 🤖➡️👤
