@@ -283,7 +283,11 @@ export default function PricingPageClient() {
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {/* Free Plan */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 border-gray-200 hover:border-violet-200 transition-all duration-300">
+          <div className={`bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 transition-all duration-300 ${
+            isAuthenticated && userPlan === 'premium'
+              ? 'border-gray-200 opacity-60'
+              : 'border-gray-200 hover:border-violet-200'
+          }`}>
             <div className="mb-6">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Free</h2>
               <p className="text-gray-600 text-sm">Perfecto para empezar</p>
@@ -318,12 +322,21 @@ export default function PricingPageClient() {
                 <span className="text-gray-700">Sin registro</span>
               </li>
             </ul>
-            <a
-              href="/"
-              className="w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all"
-            >
-              Empezar Gratis
-            </a>
+            {isAuthenticated && userPlan === 'premium' ? (
+              <button
+                disabled
+                className="w-full text-center bg-gray-300 text-gray-500 font-bold py-3 px-6 rounded-xl shadow-md cursor-not-allowed"
+              >
+                Tu plan actual es Pro
+              </button>
+            ) : (
+              <a
+                href="/"
+                className="w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all"
+              >
+                Empezar Gratis
+              </a>
+            )}
           </div>
 
           {/* Pro Plan - POPULAR */}
