@@ -84,7 +84,9 @@ Responde en formato JSON:
   "linguistic_footprints": [
     { "phrase": string, "reason": string }
   ]
-}`;
+}
+
+IMPORTANTE: En "linguistic_footprints", SOLO incluye frases que aparecen LITERALMENTE en el texto analizado arriba. NO inventes frases ni parafrasees. Copia EXACTAMENTE las frases sospechosas del texto original. Si no hay frases específicas sospechosas, devuelve un array vacío [].`;
 }
 
 /**
@@ -133,7 +135,9 @@ Responde en JSON:
   "linguistic_footprints": [
     { "phrase": string, "reason": string }
   ]
-}`;
+}
+
+IMPORTANTE: En "linguistic_footprints", SOLO incluye frases que aparecen LITERALMENTE en el texto analizado arriba. NO inventes frases ni parafrasees. Copia EXACTAMENTE las frases del texto original. Si no hay frases específicas sospechosas, devuelve un array vacío [].`;
 }
 
 /**
@@ -333,6 +337,28 @@ export async function improvedFreeAnalysis(
     (fp, index, self) => index === self.findIndex(t => t.phrase === fp.phrase)
   );
 
+  // 🚨 VALIDACIÓN CRÍTICA: Filtrar footprints que NO aparecen en el texto original
+  // Esto previene alucinaciones donde GPT inventa frases o incluye contenido del prompt
+  const validatedFootprints = uniqueFootprints.filter(fp => {
+    if (!fp.phrase || fp.phrase.trim().length === 0) {
+      return false; // Eliminar frases vacías
+    }
+
+    // Normalizar para comparación: minúsculas y sin espacios extra
+    const normalizedText = text.toLowerCase().trim();
+    const normalizedPhrase = fp.phrase.toLowerCase().trim();
+
+    // Verificar que la frase aparece LITERALMENTE en el texto original
+    const existsInText = normalizedText.includes(normalizedPhrase);
+
+    // Log para debugging (solo en desarrollo)
+    if (!existsInText && process.env.NODE_ENV === 'development') {
+      console.warn(`⚠️ Footprint filtrado (no existe en texto): "${fp.phrase}"`);
+    }
+
+    return existsInText;
+  });
+
   return {
     probability: combined.probability,
     confidenceLevel: combined.confidenceLevel,
@@ -340,7 +366,7 @@ export async function improvedFreeAnalysis(
       markersIA: avgMarkersIA,
       markersHuman: avgMarkersHuman,
     },
-    linguistic_footprints: uniqueFootprints.slice(0, 8), // Limitar a 8 más relevantes
+    linguistic_footprints: validatedFootprints.slice(0, 8), // Limitar a 8 más relevantes
     advancedMetrics,
     metricsInsights,
     usedModels: combined.usedModels,
