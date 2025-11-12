@@ -22,6 +22,33 @@ export default function PricingPageClient() {
   });
   const [teamSubmitted, setTeamSubmitted] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
+  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+  const [loadingPlan, setLoadingPlan] = useState(true);
+
+  // Fetch user plan when authenticated
+  useEffect(() => {
+    async function fetchUserPlan() {
+      if (!isAuthenticated) {
+        setUserPlan('free');
+        setLoadingPlan(false);
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          setUserPlan(data.plan_type || 'free');
+        }
+      } catch (error) {
+        console.error('Error fetching user plan:', error);
+        setUserPlan('free');
+      } finally {
+        setLoadingPlan(false);
+      }
+    }
+    fetchUserPlan();
+  }, [isAuthenticated]);
 
   // Check if user just logged in and had a pending checkout
   useEffect(() => {
@@ -86,7 +113,36 @@ export default function PricingPageClient() {
     }
   };
 
+  const handleManageSubscription = async () => {
+    try {
+      const response = await fetch('/api/create-portal-session', {
+        method: 'POST',
+      });
+
+      const { url, error } = await response.json();
+
+      if (error) {
+        console.error('Error from API:', error);
+        alert('Error al abrir el portal de gestión. Por favor, intenta de nuevo.');
+        return;
+      }
+
+      if (url) {
+        window.location.href = url;
+      }
+    } catch (error) {
+      console.error('Error opening portal:', error);
+      alert('Error al procesar tu solicitud. Por favor, intenta de nuevo.');
+    }
+  };
+
   const handleProCTAClick = async () => {
+    // Si el usuario ya es PRO, ir al portal de gestión
+    if (isAuthenticated && userPlan === 'premium') {
+      await handleManageSubscription();
+      return;
+    }
+
     if (!isAuthenticated) {
       // Save the plan selection and trigger login
       const planInterval = billing === 'monthly' ? 'month' : 'year';
@@ -108,10 +164,23 @@ export default function PricingPageClient() {
   };
 
   const getProCTA = () => {
+    // Si el usuario ya es PRO
+    if (isAuthenticated && userPlan === 'premium') {
+      return (
+        <button
+          onClick={handleProCTAClick}
+          className="mt-auto w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
+        >
+          ✓ Plan Activo - Gestionar
+        </button>
+      );
+    }
+
+    // Usuario no PRO
     return (
       <button
         onClick={handleProCTAClick}
-        className="mt-auto bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
+        className="mt-auto w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
       >
         {isAuthenticated ? 'Actualizar a Pro' : 'Registrate Gratis y Actualiza'}
       </button>
