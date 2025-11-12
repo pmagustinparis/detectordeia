@@ -470,11 +470,7 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       </Tooltip>
                     )}
                   </div>
-                  
-                  {/* Próximamente: Reescribir como texto humano */}
-                  <div className="bg-gray-100 text-gray-500 rounded-lg px-4 py-2 text-sm font-medium mb-2">
-                    Próximamente: Reescribir como texto humano 🤖➡️👤
-                  </div>
+
                   <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
 
                   {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
@@ -533,18 +529,20 @@ export default function HomePageClient() { // Renombrado de Home a HomePageClien
                       </div>
                       <div className="text-xs text-gray-700 mb-2">
                         <ul className="text-left space-y-1">
-                          <li>• Análisis por criterios y explicaciones detalladas</li>
-                          <li>• Subida de archivos y API</li>
-                          <li>• Desde $7/mes</li>
+                          <li>• Usos ilimitados en todas las herramientas</li>
+                          <li>• Hasta 25,000 caracteres por análisis</li>
+                          <li>• 5 modos premium en Humanizador y Parafraseador</li>
+                          <li>• Historial completo de análisis</li>
+                          <li>• Desde $10/mes o $96/año</li>
                         </ul>
                       </div>
                       <a
                         href="/pricing"
                         className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
                       >
-                        🔓 Desbloquear análisis avanzado
+                        🔓 Ver Planes y Precios
                       </a>
-                      <p className="text-xs text-gray-500">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
+                      <p className="text-xs text-gray-500">Soporte prioritario vía email incluido</p>
                     </div>
                   )}
                 </>
