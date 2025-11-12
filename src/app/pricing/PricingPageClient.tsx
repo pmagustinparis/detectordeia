@@ -111,7 +111,7 @@ export default function PricingPageClient() {
     return (
       <button
         onClick={handleProCTAClick}
-        className="mt-auto bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base"
+        className="mt-auto bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
       >
         {isAuthenticated ? 'Actualizar a Pro' : 'Registrate Gratis y Actualiza'}
       </button>
@@ -361,7 +361,7 @@ export default function PricingPageClient() {
             </ul>
             <button
               onClick={() => setShowTeamModal(true)}
-              className="w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all"
+              className="w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all cursor-pointer"
             >
               Contactar Ventas
             </button>
