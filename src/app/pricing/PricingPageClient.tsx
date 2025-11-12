@@ -266,7 +266,7 @@ export default function PricingPageClient() {
               <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Pro
               </h2>
-              <p className="text-gray-700 text-sm font-medium">Para profesionales</p>
+              <p className="text-gray-700 text-sm font-medium">Para profesionales y estudiantes</p>
             </div>
             <div className="mb-2">
               <span className="text-5xl font-extrabold text-gray-900">
