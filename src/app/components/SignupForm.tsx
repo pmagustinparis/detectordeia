@@ -158,7 +158,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-400"
           placeholder="Tu nombre"
         />
       </div>
@@ -175,7 +175,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-400"
           placeholder="tu@email.com"
         />
       </div>
@@ -193,7 +193,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             value={formData.password}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all pr-12"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all pr-12 text-gray-900 placeholder:text-gray-400"
             placeholder="Mínimo 8 caracteres"
           />
           <button

@@ -153,7 +153,7 @@ export default function ResetPasswordForm() {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all pr-12"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all pr-12 text-gray-900 placeholder:text-gray-400"
               placeholder="Mínimo 8 caracteres"
             />
             <button
@@ -206,7 +206,7 @@ export default function ResetPasswordForm() {
               value={formData.confirmPassword}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all pr-12"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all pr-12 text-gray-900 placeholder:text-gray-400"
               placeholder="Confirma tu contraseña"
             />
             <button
