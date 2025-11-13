@@ -11,9 +11,9 @@ import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
   anonymous: 400,  // Anónimos: 400 caracteres
-  authenticated: 600,  // Free: 600 caracteres (mismo que antes)
+  free: 600,  // Free: 600 caracteres
+  premium: 15000,  // Premium: 15000 caracteres
 };
-const CHARACTER_LIMIT_PREMIUM = 15000;
 const MIN_CHARACTERS = 50;
 
 export default function HumanizadorMain() {
@@ -31,11 +31,11 @@ export default function HumanizadorMain() {
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
 
   // Límite de caracteres dinámico basado en autenticación y plan
-  const CHARACTER_LIMIT = userPlan === 'premium'
-    ? CHARACTER_LIMIT_PREMIUM
-    : isAuthenticated
-      ? CHARACTER_LIMITS.authenticated
-      : CHARACTER_LIMITS.anonymous;
+  const CHARACTER_LIMIT = !isAuthenticated
+    ? CHARACTER_LIMITS.anonymous
+    : userPlan === 'premium'
+      ? CHARACTER_LIMITS.premium
+      : CHARACTER_LIMITS.free;
 
   // Rate limit overlay state
   const [isLimitReached, setIsLimitReached] = useState(false);
@@ -557,7 +557,7 @@ export default function HumanizadorMain() {
         toolName="Humanizador"
         currentChars={analyzedTextLength}
         maxChars={CHARACTER_LIMIT}
-        premiumMaxChars={CHARACTER_LIMIT_PREMIUM}
+        premiumMaxChars={CHARACTER_LIMITS.premium}
       />
 
     </div>

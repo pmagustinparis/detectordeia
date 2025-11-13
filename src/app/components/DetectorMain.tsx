@@ -32,7 +32,8 @@ const getResultColor = (value: number) => {
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
   anonymous: 800,  // Anónimos: 800 caracteres
-  authenticated: 1200,  // Free/Premium: 1200 caracteres (mismo que antes)
+  free: 1200,  // Free: 1200 caracteres
+  premium: 15000,  // Premium: 15000 caracteres
 };
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
@@ -103,8 +104,12 @@ export default function DetectorMain({
   const [usageCount, setUsageCount] = useState(0);
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
 
-  // Límite de caracteres dinámico basado en autenticación
-  const CHARACTER_LIMIT = isAuthenticated ? CHARACTER_LIMITS.authenticated : CHARACTER_LIMITS.anonymous;
+  // Límite de caracteres dinámico basado en autenticación y plan
+  const CHARACTER_LIMIT = !isAuthenticated
+    ? CHARACTER_LIMITS.anonymous
+    : userPlan === 'premium'
+      ? CHARACTER_LIMITS.premium
+      : CHARACTER_LIMITS.free;
 
   // Track usage count for anonymous users
   useEffect(() => {
