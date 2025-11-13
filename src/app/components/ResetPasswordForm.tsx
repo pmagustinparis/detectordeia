@@ -20,8 +20,8 @@ export default function ResetPasswordForm() {
 
   // Validación de contraseña
   const isValidPassword = (password: string) => {
-    // Mínimo 8 caracteres, al menos 1 número y 1 letra
-    const regex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+    // Mínimo 8 caracteres, al menos 1 minúscula, 1 mayúscula y 1 número
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     return regex.test(password);
   };
 
@@ -39,7 +39,7 @@ export default function ResetPasswordForm() {
 
     // Validaciones
     if (!isValidPassword(formData.password)) {
-      setError('La contraseña debe tener al menos 8 caracteres, 1 número y 1 letra.');
+      setError('La contraseña debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas y números.');
       return;
     }
 
@@ -189,7 +189,7 @@ export default function ResetPasswordForm() {
             </button>
           </div>
           <p className="text-xs text-gray-500 mt-1">
-            Mínimo 8 caracteres, al menos 1 número y 1 letra
+            Mínimo 8 caracteres, incluir mayúsculas, minúsculas y números
           </p>
         </div>
 
