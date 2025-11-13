@@ -215,13 +215,13 @@ export default function DashboardClient({ user, usageStats, history, planType, h
                 Nuestro equipo de soporte está disponible para resolver tus dudas y ayudarte con cualquier consulta.
               </p>
               <a
-                href="mailto:buldibyagus@gmail.com"
+                href="mailto:buildbyagus@gmail.com"
                 className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold text-sm transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                buldibyagus@gmail.com
+                buildbyagus@gmail.com
               </a>
             </div>
           </div>
