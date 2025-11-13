@@ -1,10 +1,5 @@
-import mammoth from 'mammoth';
-import * as pdfjsLib from 'pdfjs-dist';
-
-// Configurar el worker de PDF.js para Next.js
-if (typeof window !== 'undefined') {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
-}
+// Lazy imports para evitar problemas con SSR
+// Las librerías se cargan dinámicamente solo cuando se necesitan en el cliente
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB en bytes
 const SUPPORTED_TYPES = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
@@ -42,6 +37,14 @@ function validateFile(file: File): { valid: boolean; error?: string } {
  */
 async function extractTextFromPDF(file: File): Promise<string> {
   try {
+    // Dynamic import para evitar problemas con SSR
+    const pdfjsLib = await import('pdfjs-dist');
+
+    // Configurar worker
+    if (typeof window !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+    }
+
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
 
@@ -69,6 +72,9 @@ async function extractTextFromPDF(file: File): Promise<string> {
  */
 async function extractTextFromDOCX(file: File): Promise<string> {
   try {
+    // Dynamic import para evitar problemas con SSR
+    const mammoth = await import('mammoth');
+
     const arrayBuffer = await file.arrayBuffer();
     const result = await mammoth.extractRawText({ arrayBuffer });
     return result.value.trim();
