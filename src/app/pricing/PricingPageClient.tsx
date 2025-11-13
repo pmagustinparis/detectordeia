@@ -566,6 +566,12 @@ export default function PricingPageClient() {
                   <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅</td>
                 </tr>
                 <tr className="border-b border-gray-100">
+                  <td className="py-3 px-4 text-gray-700">Subida de archivos</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
+                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅ PDF, DOCX, TXT</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅ PDF, DOCX, TXT</td>
+                </tr>
+                <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Soporte</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">Email</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Prioritario</td>
