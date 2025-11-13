@@ -9,14 +9,14 @@ export const metadata = {
 export default function Privacidad() {
   return (
     <div className="max-w-3xl mx-auto py-16 px-4">
-      <h1 className="text-4xl font-bold mb-6">Política de Privacidad</h1>
+      <h1 className="text-4xl font-bold mb-6 text-gray-900">Política de Privacidad</h1>
       <p className="text-gray-600 text-sm mb-8">Última actualización: Enero 2025</p>
       <p className="text-gray-700 mb-6">En DetectordeIA.ai nos tomamos muy en serio la privacidad de nuestros usuarios y cumplimos con el Reglamento General de Protección de Datos (GDPR) de la Unión Europea y normativas de protección de datos aplicables. A continuación, detallamos de manera transparente cómo recopilamos, usamos, almacenamos y protegemos tu información personal.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">1. Responsable del Tratamiento</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">1. Responsable del Tratamiento</h2>
       <p className="text-gray-700 mb-4">El responsable del tratamiento de tus datos personales es DetectordeIA.ai. Para cualquier consulta relacionada con la privacidad de tus datos, puedes contactarnos en <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline font-semibold">buildbyagus@gmail.com</a>.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">2. Datos que Recopilamos</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">2. Datos que Recopilamos</h2>
       <p className="text-gray-700 mb-4">Los datos que recopilamos dependen de tu tipo de usuario y del uso que hagas de la plataforma:</p>
 
       <p className="text-gray-700 mb-2"><strong>Usuarios Anónimos (sin registro):</strong></p>
@@ -46,7 +46,7 @@ export default function Privacidad() {
 
       <p className="text-gray-700 mb-4"><strong>Importante:</strong> Los textos que analices usando nuestras herramientas (Detector, Humanizador, Parafraseador) <strong>no se almacenan permanentemente</strong> en nuestros servidores y <strong>no se utilizan para entrenar modelos de IA</strong>. Solo se procesan temporalmente para devolver el resultado y luego se eliminan.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">3. Finalidad del Tratamiento</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">3. Finalidad del Tratamiento</h2>
       <p className="text-gray-700 mb-4">Utilizamos tus datos personales para las siguientes finalidades:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li><strong>Provisión del servicio:</strong> Permitir el acceso y uso de las herramientas de IA</li>
@@ -60,7 +60,7 @@ export default function Privacidad() {
         <li><strong>Seguridad y prevención de fraude:</strong> Detectar y prevenir uso indebido, abusos o actividades fraudulentas</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">4. Base Legal del Tratamiento</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">4. Base Legal del Tratamiento</h2>
       <p className="text-gray-700 mb-4">Tratamos tus datos personales basándonos en las siguientes bases legales:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li><strong>Consentimiento:</strong> Al registrarte o suscribirte, das tu consentimiento explícito</li>
@@ -69,7 +69,7 @@ export default function Privacidad() {
         <li><strong>Obligación legal:</strong> Para cumplir con normativas fiscales y de protección de datos</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">5. Compartición de Datos con Terceros</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">5. Compartición de Datos con Terceros</h2>
       <p className="text-gray-700 mb-4">No vendemos ni compartimos tus datos personales con terceros con fines comerciales. Sin embargo, utilizamos servicios de terceros esenciales para la operación de la plataforma:</p>
 
       <p className="text-gray-700 mb-2"><strong>Proveedores de servicios que utilizamos:</strong></p>
@@ -84,7 +84,7 @@ export default function Privacidad() {
 
       <p className="text-gray-700 mb-4">Todos estos proveedores cumplen con estándares de seguridad y privacidad adecuados y solo procesan tus datos según nuestras instrucciones.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">6. Cookies y Tecnologías de Seguimiento</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">6. Cookies y Tecnologías de Seguimiento</h2>
       <p className="text-gray-700 mb-4">DetectordeIA.ai utiliza las siguientes tecnologías de seguimiento:</p>
 
       <p className="text-gray-700 mb-2"><strong>Cookies esenciales:</strong></p>
@@ -108,7 +108,7 @@ export default function Privacidad() {
 
       <p className="text-gray-700 mb-4">Puedes gestionar las cookies desde la configuración de tu navegador. Ten en cuenta que bloquear cookies esenciales puede afectar el funcionamiento de la plataforma.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">7. Retención de Datos</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">7. Retención de Datos</h2>
       <p className="text-gray-700 mb-4">Conservamos tus datos personales durante el tiempo necesario para cumplir con las finalidades descritas:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li><strong>Usuarios anónimos:</strong> Identificadores de sesión se eliminan tras 24 horas de inactividad</li>
@@ -119,7 +119,7 @@ export default function Privacidad() {
       </ul>
       <p className="text-gray-700 mb-4">Puedes solicitar la eliminación de tu cuenta y datos en cualquier momento escribiendo a <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline">buildbyagus@gmail.com</a>.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">8. Tus Derechos bajo GDPR</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">8. Tus Derechos bajo GDPR</h2>
       <p className="text-gray-700 mb-4">Como usuario, especialmente si resides en la Unión Europea, tienes los siguientes derechos:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li><strong>Derecho de acceso:</strong> Puedes solicitar una copia de todos los datos personales que tenemos sobre ti</li>
@@ -132,7 +132,7 @@ export default function Privacidad() {
         <li><strong>Derecho a presentar reclamación:</strong> Puedes presentar una queja ante la autoridad de protección de datos de tu país</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">9. Cómo Ejercer tus Derechos</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">9. Cómo Ejercer tus Derechos</h2>
       <p className="text-gray-700 mb-4">Para ejercer cualquiera de tus derechos, puedes:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Enviar un email a <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline font-semibold">buildbyagus@gmail.com</a></li>
@@ -142,7 +142,7 @@ export default function Privacidad() {
       </ul>
       <p className="text-gray-700 mb-4">Responderemos a tu solicitud en un plazo máximo de 30 días y sin costo alguno, en cumplimiento con la normativa europea.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">10. Seguridad de los Datos</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">10. Seguridad de los Datos</h2>
       <p className="text-gray-700 mb-4">Implementamos medidas técnicas y organizativas apropiadas para proteger tus datos personales:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Cifrado HTTPS/TLS en todas las comunicaciones</li>
@@ -155,10 +155,10 @@ export default function Privacidad() {
       </ul>
       <p className="text-gray-700 mb-4">Sin embargo, ningún sistema es 100% seguro. Te recomendamos mantener la confidencialidad de tus credenciales de acceso.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">11. Privacidad de Menores</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">11. Privacidad de Menores</h2>
       <p className="text-gray-700 mb-4">DetectordeIA.ai no está dirigido a menores de 13 años. No recopilamos intencionalmente datos personales de menores de 13 años. Si descubrimos que hemos recopilado datos de un menor sin consentimiento parental, eliminaremos dicha información de inmediato. Si eres padre/madre y crees que tu hijo nos ha proporcionado datos personales, contáctanos en <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline">buildbyagus@gmail.com</a>.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">12. Transferencias Internacionales de Datos</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">12. Transferencias Internacionales de Datos</h2>
       <p className="text-gray-700 mb-4">Algunos de nuestros proveedores de servicios pueden estar ubicados fuera del Espacio Económico Europeo (EEE). En estos casos, nos aseguramos de que existan garantías adecuadas de protección de datos mediante:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Cláusulas contractuales estándar aprobadas por la Comisión Europea</li>
@@ -166,7 +166,7 @@ export default function Privacidad() {
         <li>Medidas de seguridad adicionales</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">13. Cambios en esta Política</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">13. Cambios en esta Política</h2>
       <p className="text-gray-700 mb-4">Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento para reflejar cambios en nuestras prácticas o por requisitos legales. Los cambios importantes serán notificados mediante:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Aviso destacado en el sitio web</li>
@@ -175,7 +175,7 @@ export default function Privacidad() {
       </ul>
       <p className="text-gray-700 mb-4">Te recomendamos revisar esta política periódicamente. El uso continuado del servicio tras las modificaciones implica la aceptación de la política actualizada.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">14. Contacto y Consultas</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">14. Contacto y Consultas</h2>
       <p className="text-gray-700 mb-4">Si tienes dudas, consultas o inquietudes sobre esta Política de Privacidad o sobre cómo tratamos tus datos personales, no dudes en contactarnos:</p>
       <ul className="list-none mb-4 text-gray-700 space-y-2">
         <li><strong>Email:</strong> <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline font-semibold">buildbyagus@gmail.com</a></li>

@@ -9,11 +9,11 @@ export const metadata = {
 export default function Terminos() {
   return (
     <div className="max-w-3xl mx-auto py-16 px-4">
-      <h1 className="text-4xl font-bold mb-6">Términos y Condiciones</h1>
+      <h1 className="text-4xl font-bold mb-6 text-gray-900">Términos y Condiciones</h1>
       <p className="text-gray-600 text-sm mb-8">Última actualización: Enero 2025</p>
       <p className="text-gray-700 mb-6">Bienvenido a DetectordeIA.ai. Al utilizar nuestro sitio web y servicios, aceptas los siguientes términos y condiciones. Por favor, léelos cuidadosamente.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">1. Descripción del Servicio</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">1. Descripción del Servicio</h2>
       <p className="text-gray-700 mb-4">DetectordeIA.ai es una plataforma online que ofrece tres herramientas de inteligencia artificial en español:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li><strong>Detector de IA:</strong> Analiza textos para identificar si fueron generados por inteligencia artificial</li>
@@ -22,7 +22,7 @@ export default function Terminos() {
       </ul>
       <p className="text-gray-700 mb-4">Ofrecemos un Plan Free gratuito y planes de pago (Plan Pro y Plan Team) con funcionalidades adicionales.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">2. Planes y Servicios</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">2. Planes y Servicios</h2>
       <p className="text-gray-700 mb-2"><strong>Plan Free:</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>10 usos diarios por herramienta</li>
@@ -40,7 +40,7 @@ export default function Terminos() {
       </ul>
       <p className="text-gray-700 mb-4"><strong>Plan Team:</strong> Pricing personalizado para equipos con gestión centralizada, facturación consolidada y soporte dedicado.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">3. Uso Permitido</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">3. Uso Permitido</h2>
       <p className="text-gray-700 mb-4">El usuario se compromete a utilizar la plataforma de manera lícita y conforme a estos términos. <strong>No está permitido:</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>El uso automatizado mediante bots, scripts o scraping sin autorización</li>
@@ -50,10 +50,10 @@ export default function Terminos() {
         <li>Ingeniería inversa, descompilación o intento de extraer el código fuente</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">4. Propiedad Intelectual</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">4. Propiedad Intelectual</h2>
       <p className="text-gray-700 mb-4">Todo el contenido, marca, software, diseño y metodologías de DetectordeIA.ai son propiedad exclusiva de sus creadores. No se permite la copia, distribución, modificación o uso no autorizado del contenido. Los textos analizados por los usuarios son propiedad de los mismos y no se almacenan ni se utilizan para entrenar modelos.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">5. Limitación de Responsabilidad</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">5. Limitación de Responsabilidad</h2>
       <p className="text-gray-700 mb-4">DetectordeIA.ai ofrece resultados <strong>orientativos</strong> y no garantiza la precisión absoluta en la detección de textos generados por IA. La precisión puede variar según el tipo de texto, el modelo de IA utilizado y otros factores. El usuario acepta que:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>El uso del servicio es bajo su propio riesgo</li>
@@ -62,7 +62,7 @@ export default function Terminos() {
         <li>No garantizamos disponibilidad ininterrumpida del servicio (puede haber mantenimiento, actualizaciones o fallos técnicos)</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">6. Pagos y Suscripciones</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">6. Pagos y Suscripciones</h2>
       <p className="text-gray-700 mb-4">Los pagos se procesan de forma segura a través de Stripe. Al suscribirte a un plan de pago:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Autorizas cargos recurrentes según el plan elegido (mensual o anual)</li>
@@ -72,19 +72,19 @@ export default function Terminos() {
         <li>Al cancelar, mantendrás acceso hasta el final del período de facturación actual sin reembolso por días no utilizados</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">7. Privacidad y Datos</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">7. Privacidad y Datos</h2>
       <p className="text-gray-700 mb-4">El tratamiento de tus datos personales se rige por nuestra <a href="/privacidad" className="text-[#a259f7] underline">Política de Privacidad</a>, que forma parte integral de estos términos. Cumplimos con el GDPR y normativas de protección de datos aplicables.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">8. Terminación del Servicio</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">8. Terminación del Servicio</h2>
       <p className="text-gray-700 mb-4">Nos reservamos el derecho de suspender o terminar el acceso al servicio a cualquier usuario que viole estos términos, sin previo aviso y sin reembolso. El usuario puede cancelar su cuenta en cualquier momento.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">9. Modificaciones</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">9. Modificaciones</h2>
       <p className="text-gray-700 mb-4">Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios importantes serán notificados a través del sitio web o por email. El uso continuado del servicio después de las modificaciones implica la aceptación de los nuevos términos.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">10. Ley Aplicable y Jurisdicción</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">10. Ley Aplicable y Jurisdicción</h2>
       <p className="text-gray-700 mb-4">Estos términos se rigen por las leyes aplicables en la jurisdicción del servicio. Cualquier disputa será resuelta mediante arbitraje o en los tribunales competentes.</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-3">11. Contacto</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">11. Contacto</h2>
       <p className="text-gray-700 mb-4">Para consultas sobre estos términos, puedes escribirnos a <a href="mailto:buildbyagus@gmail.com" className="text-[#a259f7] underline font-semibold">buildbyagus@gmail.com</a>.</p>
     </div>
   );
