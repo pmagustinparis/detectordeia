@@ -706,16 +706,16 @@ export default function DetectorMain({
                   </div>
                 </div>
                 <p className="text-xs text-gray-600 mb-4">
-                  🔒 100% gratis · Sin tarjeta · Solo Google OAuth · En 10 segundos
+                  🔒 100% gratis · Sin tarjeta · Registro en 30 segundos
                 </p>
                 <a
-                  href="/auth/login"
+                  href="/auth/signup"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />
                   </svg>
-                  Registrarse Gratis con Google
+                  Registrarse Gratis
                 </a>
               </div>
             </div>
