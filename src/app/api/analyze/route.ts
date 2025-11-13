@@ -204,7 +204,7 @@ export async function POST(request: Request) {
     // Límites de caracteres según plan
     const CHARACTER_LIMITS = {
       free: 1200,
-      premium: 25000,
+      premium: 15000,
     };
 
     const charLimit = CHARACTER_LIMITS[userPlan];
