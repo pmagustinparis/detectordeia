@@ -41,7 +41,7 @@ const premiumTextos = {
   subtitulo: 'Incluido en Plan Pro',
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
-    'Hasta 25,000 caracteres por análisis en el Detector',
+    'Hasta 15,000 caracteres por análisis en el Detector',
     '5 modos premium en Humanizador y Parafraseador',
     'Historial completo de todos tus análisis',
     'Soporte prioritario vía email',
@@ -597,7 +597,7 @@ export default function DetectorMain({
                   <div className="text-xs text-gray-700 mb-2">
                     <ul className="text-left space-y-1">
                       <li>• Usos ilimitados en todas las herramientas</li>
-                      <li>• Hasta 25,000 caracteres por análisis</li>
+                      <li>• Hasta 15,000 caracteres por análisis</li>
                       <li>• 5 modos premium en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
                       <li>• Desde $10/mes o $96/año</li>

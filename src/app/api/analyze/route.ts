@@ -213,8 +213,8 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: userPlan === 'free'
-            ? 'El texto excede el límite de 1,200 caracteres del plan Free. Actualiza a Pro para analizar hasta 25,000 caracteres.'
-            : 'El texto excede el límite de 25,000 caracteres.',
+            ? 'El texto excede el límite de 1,200 caracteres del plan Free. Actualiza a Pro para analizar hasta 15,000 caracteres.'
+            : 'El texto excede el límite de 15,000 caracteres.',
           charLimit,
           currentLength: text.length,
         },

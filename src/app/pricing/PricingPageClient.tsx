@@ -301,13 +301,13 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">10 usos diarios</span>
+                <span className="text-gray-700">15 usos diarios</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">Hasta 600 caracteres</span>
+                <span className="text-gray-700">Hasta 1,200 caracteres</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -319,7 +319,7 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">Sin registro</span>
+                <span className="text-gray-700">Gratis siempre</span>
               </li>
             </ul>
             {isAuthenticated && userPlan === 'premium' ? (
@@ -498,13 +498,13 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Caracteres por análisis</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">600</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">1,200</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">15,000</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-semibold">15,000</td>
                 </tr>
@@ -517,7 +517,7 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
@@ -536,7 +536,7 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
