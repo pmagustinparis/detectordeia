@@ -29,7 +29,11 @@ const getResultColor = (value: number) => {
   return 'text-[#27ae60]';
 };
 
-const CHARACTER_LIMIT = 1200;
+// Límites de caracteres según tipo de usuario
+const CHARACTER_LIMITS = {
+  anonymous: 800,  // Anónimos: 800 caracteres
+  authenticated: 1200,  // Free/Premium: 1200 caracteres (mismo que antes)
+};
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
@@ -98,6 +102,9 @@ export default function DetectorMain({
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [usageCount, setUsageCount] = useState(0);
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+
+  // Límite de caracteres dinámico basado en autenticación
+  const CHARACTER_LIMIT = isAuthenticated ? CHARACTER_LIMITS.authenticated : CHARACTER_LIMITS.anonymous;
 
   // Track usage count for anonymous users
   useEffect(() => {
@@ -665,6 +672,56 @@ export default function DetectorMain({
           </div>
         </div>
       </div>
+
+      {/* Banner de incentivo para registro - Anónimos que ya usaron 2+ veces */}
+      {!isAuthenticated && usageCount >= 2 && (
+        <div className="max-w-5xl mx-auto mt-8 px-2 animate-slide-in-bottom">
+          <div className="bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-300 rounded-2xl shadow-xl p-6">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center shadow-lg">
+                  <span className="text-3xl">🎁</span>
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  ¿Te está gustando el Detector? Registrate gratis y obtené más
+                </h3>
+                <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-green-600 font-bold">✓</span>
+                    <span><strong>15 usos diarios</strong> (vs 3 ahora)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-green-600 font-bold">✓</span>
+                    <span><strong>1200 caracteres</strong> en Detector (vs 800 ahora)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-green-600 font-bold">✓</span>
+                    <span><strong>600 caracteres</strong> en Humanizador y Parafraseador (vs 400 ahora)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-green-600 font-bold">✓</span>
+                    <span><strong>Historial</strong> de tus últimos 20 análisis</span>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-600 mb-4">
+                  🔒 100% gratis · Sin tarjeta · Solo Google OAuth · En 10 segundos
+                </p>
+                <a
+                  href="/auth/login"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />
+                  </svg>
+                  Registrarse Gratis con Google
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 } 

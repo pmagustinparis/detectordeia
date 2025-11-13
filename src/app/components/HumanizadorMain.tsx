@@ -8,7 +8,11 @@ import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
 
-const CHARACTER_LIMIT = 600;
+// Límites de caracteres según tipo de usuario
+const CHARACTER_LIMITS = {
+  anonymous: 400,  // Anónimos: 400 caracteres
+  authenticated: 600,  // Free: 600 caracteres (mismo que antes)
+};
 const CHARACTER_LIMIT_PREMIUM = 15000;
 const MIN_CHARACTERS = 50;
 
@@ -25,6 +29,13 @@ export default function HumanizadorMain() {
   const [usageCount, setUsageCount] = useState(0);
   const [selectedMode, setSelectedMode] = useState<HumanizerMode>('standard');
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+
+  // Límite de caracteres dinámico basado en autenticación y plan
+  const CHARACTER_LIMIT = userPlan === 'premium'
+    ? CHARACTER_LIMIT_PREMIUM
+    : isAuthenticated
+      ? CHARACTER_LIMITS.authenticated
+      : CHARACTER_LIMITS.anonymous;
 
   // Rate limit overlay state
   const [isLimitReached, setIsLimitReached] = useState(false);
