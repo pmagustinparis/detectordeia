@@ -4,7 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
 import FeedbackBlock from './FeedbackBlock';
+import FileUploadButton from './FileUploadButton';
 import { useAuth } from '@/lib/hooks/useAuth';
+import { extractTextFromFile } from '@/lib/fileParser';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -43,6 +45,7 @@ const premiumTextos = {
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
     'Hasta 15,000 caracteres por análisis en el Detector',
+    'Subida de archivos (PDF, DOCX, TXT)',
     '5 modos premium en Humanizador y Parafraseador',
     'Historial completo de todos tus análisis',
     'Soporte prioritario vía email',
@@ -218,6 +221,40 @@ export default function DetectorMain({
     setAnalyzedTextLength(0);
   };
 
+  const handleFileTextExtracted = (extractedText: string, wasTruncated: boolean) => {
+    setText(extractedText);
+    setResult(null);
+    setIsLimitExceeded(false);
+    setAnalyzedTextLength(0);
+
+    if (wasTruncated) {
+      setError(`✂️ Archivo procesado. Se mostraron los primeros ${CHARACTER_LIMIT.toLocaleString()} caracteres.`);
+      setTimeout(() => setError(null), 5000);
+    }
+  };
+
+  const handleDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
+
+    if (userPlan !== 'premium') {
+      window.location.href = '/pricing';
+      return;
+    }
+
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+
+    try {
+      const result = await extractTextFromFile(file, CHARACTER_LIMIT);
+      handleFileTextExtracted(result.text, result.wasTruncated);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Error al procesar el archivo';
+      setError(errorMessage);
+      setTimeout(() => setError(null), 5000);
+    }
+  };
+
   return (
     <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
@@ -262,6 +299,16 @@ export default function DetectorMain({
             </span>
           </div>
           <label htmlFor="detector-textarea" className="block text-base font-semibold text-gray-800 mb-2">Pega tu texto para analizar</label>
+
+          {/* File Upload Button */}
+          <FileUploadButton
+            onTextExtracted={handleFileTextExtracted}
+            maxChars={CHARACTER_LIMIT}
+            disabled={isAnalyzing}
+            userPlan={userPlan}
+            className="mb-3"
+          />
+
           <div className="flex flex-col flex-grow">
             <textarea
               id="detector-textarea"
@@ -277,6 +324,16 @@ export default function DetectorMain({
                   setAnalyzedTextLength(0);
                 }
               }}
+              onDragOver={(e) => {
+                e.preventDefault();
+                if (userPlan === 'premium') {
+                  e.currentTarget.classList.add('border-violet-400', 'bg-violet-50');
+                }
+              }}
+              onDragLeave={(e) => {
+                e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
+              }}
+              onDrop={handleDrop}
               aria-label="Texto a analizar"
             />
           </div>
@@ -603,6 +660,7 @@ export default function DetectorMain({
                     <ul className="text-left space-y-1">
                       <li>• Usos ilimitados en todas las herramientas</li>
                       <li>• Hasta 15,000 caracteres por análisis</li>
+                      <li>• Subida de archivos (PDF, DOCX, TXT)</li>
                       <li>• 5 modos premium en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
                       <li>• Desde $10/mes o $96/año</li>

@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react';
 import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
 import CharacterLimitModal from './CharacterLimitModal';
+import FileUploadButton from './FileUploadButton';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
+import { extractTextFromFile } from '@/lib/fileParser';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -187,6 +189,40 @@ export default function HumanizadorMain() {
     }
   };
 
+  const handleFileTextExtracted = (extractedText: string, wasTruncated: boolean) => {
+    setText(extractedText);
+    setResult(null);
+    setIsLimitExceeded(false);
+    setAnalyzedTextLength(0);
+
+    if (wasTruncated) {
+      setError(`✂️ Archivo procesado. Se mostraron los primeros ${CHARACTER_LIMIT.toLocaleString()} caracteres.`);
+      setTimeout(() => setError(null), 5000);
+    }
+  };
+
+  const handleDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
+
+    if (userPlan !== 'premium') {
+      window.location.href = '/pricing';
+      return;
+    }
+
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+
+    try {
+      const result = await extractTextFromFile(file, CHARACTER_LIMIT);
+      handleFileTextExtracted(result.text, result.wasTruncated);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Error al procesar el archivo';
+      setError(errorMessage);
+      setTimeout(() => setError(null), 5000);
+    }
+  };
+
   const handleDownload = () => {
     if (result) {
       const blob = new Blob([result], { type: 'text/plain' });
@@ -249,6 +285,15 @@ export default function HumanizadorMain() {
           Pega tu texto para humanizar
         </label>
 
+        {/* File Upload Button */}
+        <FileUploadButton
+          onTextExtracted={handleFileTextExtracted}
+          maxChars={CHARACTER_LIMIT}
+          disabled={isHumanizing}
+          userPlan={userPlan}
+          className="mb-3"
+        />
+
         <div className="flex flex-col" style={{flexGrow: 1}}>
           <textarea
             id="humanizador-textarea"
@@ -266,6 +311,16 @@ export default function HumanizadorMain() {
                 setAnalyzedTextLength(0);
               }
             }}
+            onDragOver={(e) => {
+              e.preventDefault();
+              if (userPlan === 'premium') {
+                e.currentTarget.classList.add('border-violet-400', 'bg-violet-50');
+              }
+            }}
+            onDragLeave={(e) => {
+              e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
+            }}
+            onDrop={handleDrop}
             aria-label="Texto a humanizar"
           />
         </div>
