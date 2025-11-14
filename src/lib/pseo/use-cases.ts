@@ -515,5 +515,211 @@ export const useCases: UseCasePage[] = [
       text: 'Verificar tesis gratis',
       url: '/detector?ref=para-tesis'
     }
+  },
+
+  {
+    slug: 'detector-de-ia-para-ensayos',
+    audience: 'Estudiantes y Profesores',
+    keywords: [
+      'detector de ia para ensayos',
+      'detectar ensayo escrito con chatgpt',
+      'verificar ensayo ia',
+      'detector ia ensayos argumentativos',
+      'como saber si un ensayo es de ia'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Ensayos: Verifica Ensayos Argumentativos 2025',
+    description: 'Detecta si un ensayo fue escrito con IA (ChatGPT, Claude). Gratis, preciso y optimizado para español. Ideal para ensayos argumentativos, críticos y académicos.',
+    h1: 'Detector de IA para Ensayos: Argumentativos, Críticos y Académicos',
+
+    // Content
+    intro: 'Los ensayos son el tipo de trabajo más común que estudiantes generan con IA. DetectorDeIA te ayuda a verificar si un ensayo argumentativo, crítico o académico fue escrito genuinamente o con ChatGPT, Claude u otras herramientas. Optimizado para español con precisión del 95%, detecta patrones típicos de IA en ensayos.',
+
+    benefits: [
+      {
+        icon: '✍️',
+        title: 'Especializado en estructura de ensayo',
+        description: 'Detecta patrones de IA en introducción, desarrollo argumentativo, conclusión. Identifica cuando la estructura es demasiado "perfecta" o mecánica.'
+      },
+      {
+        icon: '🎯',
+        title: 'Identifica clichés de IA',
+        description: 'Detecta frases típicas de ChatGPT: "cabe destacar que", "es importante mencionar", "en conclusión se puede afirmar". Estos conectores delatan texto de IA.'
+      },
+      {
+        icon: '⚡',
+        title: 'Resultados inmediatos',
+        description: 'Análisis en menos de 5 segundos. Perfecto para profesores que revisan muchos ensayos o estudiantes verificando antes de entregar.'
+      },
+      {
+        icon: '📊',
+        title: 'Análisis de argumentación',
+        description: 'Evalúa si los argumentos tienen profundidad genuina o son genéricos típicos de IA. La IA genera argumentos superficiales y predecibles.'
+      },
+      {
+        icon: '💡',
+        title: 'Mejora tu redacción',
+        description: 'Estudiantes: usá el detector para ver qué frases suenan "robóticas" y aprender a escribir con más voz personal y menos clichés.'
+      },
+      {
+        icon: '🔒',
+        title: '100% confidencial',
+        description: 'Tu ensayo no se guarda ni comparte. Privacidad total. Sin bases de datos. Perfecto para ensayos sensibles o trabajos finales.'
+      }
+    ],
+
+    howItWorks: [
+      'Copiá el texto del ensayo completo (introducción + desarrollo + conclusión)',
+      'El sistema analiza estructura argumentativa, conectores, vocabulario y patrones de IA',
+      'Obtenés porcentaje de probabilidad de IA y frases específicas sospechosas',
+      'Si sos estudiante: reescribí las frases marcadas para que suenen más naturales',
+      'Si sos profesor: usá el reporte para conversar con el estudiante sobre el ensayo'
+    ],
+
+    testimonial: {
+      quote: 'Mis alumnos de bachillerato escriben ensayos todas las semanas. Antes no tenía forma de saber si usaban ChatGPT. DetectorDeIA me muestra exactamente qué ensayos revisar en detalle. Me ahorra tiempo y me da evidencia objetiva para las conversaciones.',
+      author: 'Prof. Ana Martínez',
+      role: 'Profesora de Lengua y Literatura, Colegio San José (Madrid)'
+    },
+
+    faqs: [
+      {
+        question: '¿Qué tipos de ensayos puede detectar?',
+        answer: 'DetectorDeIA funciona con cualquier tipo de ensayo: argumentativo, expositivo, crítico, narrativo, académico, ensayo de opinión, ensayo comparativo. Si está en español y tiene estructura de ensayo (intro-desarrollo-conclusión), lo detectamos. Funciona tanto con ensayos de secundaria como universitarios.'
+      },
+      {
+        question: '¿Por qué los ensayos son tan fáciles de generar con IA?',
+        answer: 'Los ensayos tienen estructura predecible (introducción, 3 párrafos de desarrollo, conclusión) que ChatGPT domina perfectamente. La IA genera conectores formales, argumentos genéricos y conclusiones obvias. DetectorDeIA identifica exactamente estos patrones: conectores cliché repetitivos, argumentos superficiales sin ejemplos concretos, vocabulario formal pero genérico.'
+      },
+      {
+        question: '¿Puede un estudiante escribir bien y NO marcar como IA?',
+        answer: 'Absolutamente. DetectorDeIA NO marca como IA solo porque el ensayo está bien escrito. Un ensayo genuino bien escrito tiene: voz personal, ejemplos concretos específicos, opiniones subjetivas, alguna "imperfección" natural, conectores variados (no siempre los mismos clichés). Un ensayo de IA tiene: voz genérica, ejemplos obvios, opiniones predecibles, perfección mecánica, conectores cliché.'
+      },
+      {
+        question: '¿Qué frases delatan que un ensayo es de ChatGPT?',
+        answer: 'Frases típicas de ChatGPT en ensayos: "Cabe destacar que...", "Es importante mencionar que...", "En este sentido, se puede afirmar...", "A lo largo de este ensayo se ha demostrado...", "En conclusión, es fundamental...", "No obstante, es necesario considerar...". Si un ensayo tiene 5+ de estas frases, alta probabilidad de IA.'
+      },
+      {
+        question: '¿Puedo verificar mi propio ensayo antes de entregarlo?',
+        answer: 'Sí, muchos estudiantes lo hacen. Si escribiste tu ensayo pero usaste lenguaje muy formal, el detector te ayuda a ver qué partes suenan "robóticas". Reescribí esas partes con lenguaje más natural, agregá ejemplos personales concretos, usá conectores variados. Volvé a analizar hasta que marque bajo (<30%).'
+      },
+      {
+        question: '¿Detecta ensayos traducidos del inglés?',
+        answer: 'Parcialmente. Si un estudiante generó el ensayo en inglés con ChatGPT y lo tradujo al español con DeepL, DetectorDeIA puede identificar estructura sintáctica inglesa traducida literalmente y vocabulario poco natural. Pero es más difícil de detectar que un ensayo generado directamente en español con ChatGPT.'
+      },
+      {
+        question: '¿Qué porcentaje indica que el ensayo es de IA?',
+        answer: 'Para ensayos: 0-25% = muy probablemente humano, 25-50% = sospechoso (revisar), 50-75% = probablemente IA con ediciones menores, 75-100% = casi seguro IA directo de ChatGPT. Ensayos de IA pura suelen marcar 80-95%. Siempre revisar las frases específicas marcadas, no solo el número.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar ensayo gratis',
+      url: '/detector?ref=para-ensayos'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-para-tareas',
+    audience: 'Profesores y Padres',
+    keywords: [
+      'detector de ia para tareas',
+      'detectar si tarea es de chatgpt',
+      'verificar tarea escolar ia',
+      'como saber si mi hijo uso ia',
+      'detector ia deberes escolares'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Tareas Escolares: Verifica Deberes y Trabajos 2025',
+    description: 'Detecta si una tarea escolar fue hecha con IA (ChatGPT). Gratis, fácil de usar, optimizado para español. Ideal para profesores de primaria, secundaria y bachillerato.',
+    h1: 'Detector de IA para Tareas Escolares: Deberes, Trabajos y Actividades',
+
+    // Content
+    intro: 'Estudiantes de todas las edades (desde primaria hasta bachillerato) están usando ChatGPT para hacer tareas escolares. DetectorDeIA ayuda a profesores y padres a verificar si una tarea fue hecha genuinamente o con IA. Gratis, fácil de usar y optimizado para español escolar de España y LATAM.',
+
+    benefits: [
+      {
+        icon: '🏫',
+        title: 'Para todos los niveles escolares',
+        description: 'Funciona con tareas de primaria, secundaria, bachillerato. Desde resúmenes simples hasta trabajos complejos de historia, ciencias, literatura.'
+      },
+      {
+        icon: '👨‍🏫',
+        title: 'Fácil para profesores',
+        description: 'No necesitas ser experto en tecnología. Copiás la tarea del alumno, hacés clic y obtenés el resultado en 5 segundos. Simple y rápido.'
+      },
+      {
+        icon: '📚',
+        title: 'Detecta todo tipo de tareas',
+        description: 'Resúmenes, redacciones, análisis de texto, trabajos de investigación, respuestas a preguntas, informes, comentarios de texto.'
+      },
+      {
+        icon: '💰',
+        title: 'Gratis para profesores',
+        description: 'Plan FREE con 10 análisis diarios sin registro. Suficiente para revisar las tareas sospechosas de tu clase cada día. Plan PRO a solo $10/mes para análisis ilimitados.'
+      },
+      {
+        icon: '🎯',
+        title: 'Identifica patrones escolares de IA',
+        description: 'ChatGPT tiene patrones específicos cuando estudiantes le piden "haz mi tarea de historia/ciencias". DetectorDeIA los identifica perfectamente.'
+      },
+      {
+        icon: '👪',
+        title: 'Útil para padres',
+        description: 'Padres pueden verificar si sus hijos realmente hicieron la tarea o usaron ChatGPT. Herramienta educativa para conversar sobre integridad académica.'
+      }
+    ],
+
+    howItWorks: [
+      'Copiá el texto de la tarea del estudiante (resumen, redacción, trabajo, etc.)',
+      'Hacé clic en "Analizar" y esperá 5 segundos mientras el sistema revisa patrones de IA',
+      'Obtenés porcentaje de probabilidad de IA y frases específicas sospechosas',
+      'Si marca alto (+70%): conversá con el estudiante y pedile que explique el contenido',
+      'Usá el detector como herramienta educativa, no como castigo automático'
+    },
+
+    testimonial: {
+      quote: 'Enseño Historia en secundaria y muchos alumnos empezaron a entregar tareas perfectas de la noche a la mañana. DetectorDeIA me confirmó que usaban ChatGPT. Ahora lo uso para todas las tareas escritas. Me ayuda a educar sobre integridad académica.',
+      author: 'Prof. Roberto Díaz',
+      role: 'Profesor de Historia, IES Miguel de Cervantes (Barcelona)'
+    },
+
+    faqs: [
+      {
+        question: '¿Funciona con tareas de niños pequeños (primaria)?',
+        answer: 'Sí, pero con precaución. Niños de primaria escriben con errores ortográficos, gramática imperfecta y lenguaje simple. Si una tarea de un niño de 10 años tiene gramática perfecta, vocabulario avanzado y cero errores, es sospechoso. DetectorDeIA identificará ese contraste. Pero siempre conversar con el niño antes de acusar.'
+      },
+      {
+        question: '¿Qué tipos de tareas escolares detecta?',
+        answer: 'Cualquier tarea escrita en español: resúmenes de libros, redacciones, trabajos de investigación, análisis de poemas, respuestas a preguntas de ciencias/historia, informes de laboratorio, comentarios de texto, reseñas. Si es texto escrito para la escuela, lo detectamos.'
+      },
+      {
+        question: '¿Cómo sé si mi hijo/alumno usó ChatGPT para la tarea?',
+        answer: 'Señales clave: (1) Tarea perfecta pero el alumno escribe mal normalmente, (2) Vocabulario muy avanzado para su edad, (3) Cero errores ortográficos (niños SIEMPRE tienen algún error), (4) Estructura muy formal y perfecta, (5) Frases cliché como "cabe destacar que" (niños no hablan así). DetectorDeIA identifica todos estos patrones.'
+      },
+      {
+        question: '¿Puede haber falsos positivos con alumnos que escriben muy bien?',
+        answer: 'Sí, especialmente con estudiantes de bachillerato avanzados. Un alumno brillante que lee mucho puede escribir excelente y marcar 30-40% (no alto). Si marca +75%, es sospechoso. Siempre pedile al alumno que explique el contenido. Si lo escribió genuinamente, podrá explicarlo sin problemas.'
+      },
+      {
+        question: '¿Qué hago si la tarea marca alto pero mi hijo dice que la hizo?',
+        answer: 'Conversá con calma. Pedile que explique el contenido con sus propias palabras. Preguntale cómo llegó a ciertas conclusiones. Mirá si tiene borradores o apuntes. Si genuinamente la hizo, podrá explicar todo. Si usó ChatGPT, tendrá dificultad para explicar detalles. Usá el detector como inicio de conversación, no como acusación.'
+      },
+      {
+        question: '¿Los padres pueden usar esto en casa?',
+        answer: 'Absolutamente. Padres pueden verificar las tareas de sus hijos ANTES de que las entreguen, para asegurarse de que las hicieron genuinamente. Es una herramienta educativa para enseñar sobre integridad académica y responsabilidad. El plan FREE (10 análisis diarios) es suficiente para la mayoría de familias.'
+      },
+      {
+        question: '¿Cuántas tareas puedo analizar por día?',
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para tareas escolares normales). Plan PRO: análisis ilimitados (15,000 caracteres cada uno). Si sos profesor con muchos alumnos, plan PRO a $10/mes te permite revisar todas las tareas que necesites.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar tarea gratis',
+      url: '/detector?ref=para-tareas'
+    }
   }
 ];
