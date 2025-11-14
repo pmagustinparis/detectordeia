@@ -1033,5 +1033,357 @@ export const guides: GuidePage[] = [
       text: 'Parafrasear textos correctamente',
       url: '/parafrasear-sin-plagio?ref=guia-parafrasear'
     }
+  },
+
+  {
+    slug: 'como-hacer-bibliografia-apa',
+    title: 'Cómo Hacer Bibliografía en Formato APA 7',
+    keywords: [
+      'como hacer bibliografia apa',
+      'bibliografia formato apa 7',
+      'referencias apa ejemplo',
+      'como citar en apa',
+      'lista referencias apa'
+    ],
+    metaTitle: 'Cómo Hacer Bibliografía APA 7: Guía Completa con Ejemplos 2025',
+    metaDescription: 'Aprende a hacer bibliografía en formato APA 7. Ejemplos de libros, artículos, sitios web, más. Guía paso a paso para estudiantes.',
+    h1: 'Cómo Hacer Bibliografía en Formato APA 7: Guía Completa',
+    intro: 'Formato APA 7 (American Psychological Association, 7ª edición) es estándar de citación más usado en ciencias sociales, educación, psicología, negocios. Bibliografía correcta (llamada "Referencias" en APA) NO es simplemente lista de fuentes - tiene formato específico que incluye autores, año, título, fuente, DOI/URL. Errores de formato pueden resultar en pérdida de puntos o acusaciones de plagio. Esta guía paso a paso enseña proceso completo para crear lista de Referencias en APA 7, formatos para tipos de fuentes más comunes, herramientas útiles, y errores frecuentes a evitar.',
+    overview: 'Esta guía cubre: (1) Configuración básica de página Referencias, (2) Formato para artículos de journals, (3) Formato para libros, (4) Formato para sitios web, (5) Casos especiales y herramientas.',
+    steps: [
+      {
+        number: 1,
+        title: 'Configura Página "Referencias" Correctamente',
+        description: 'TÍTULO: Nueva página con título "Referencias" centrado, en negrita, en parte superior. NO uses "Bibliografía" (término incorrecto en APA). FORMATO PÁGINA: (1) Márgenes de 1 pulgada (2.54 cm) en todos lados, (2) Fuente Times New Roman 12pt o Arial 11pt, (3) Doble espacio en TODO (incluyendo entre entradas), (4) Sangría francesa (hanging indent): primera línea al margen, líneas subsiguientes con sangría de 0.5 pulgadas. ORDEN: Alfabético por apellido de primer autor (si no hay autor, usa primera palabra significativa del título, ignorando "El", "La", "Un").',
+        tips: [
+          'En Word: Sangría francesa = selecciona texto → Párrafo → Sangría especial → Francesa → 1.27 cm',
+          'Referencias aparece en nueva página después del texto del ensayo',
+          'Si tienes 1 fuente, título sigue siendo "Referencias" (plural), no "Referencia"'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Formato para Artículos de Journals Académicos',
+        description: 'FORMATO BÁSICO: Apellido, Inicial(es). (Año). Título del artículo. Título del Journal, Volumen(Número), páginas. DOI o URL. EJEMPLO: García, M. & López, A. (2024). Inteligencia artificial en educación superior: Desafíos éticos. Revista de Educación Digital, 15(3), 234-251. https://doi.org/10.1234/red.2024.001. DETALLES: (1) Título del artículo: Solo primera palabra y nombres propios en mayúscula. (2) Título del Journal: En Cursiva, Todas las Palabras Principales en Mayúscula. (3) Volumen en cursiva, número entre paréntesis sin cursiva. (4) DOI preferido sobre URL. Formato: https://doi.org/XX no "DOI:" antes.',
+        tips: [
+          'Si artículo tiene DOI, NO agregues URL adicional - DOI es suficiente',
+          'Incluye número de issue entre paréntesis si cada número empieza paginación en 1',
+          'Hasta 20 autores: Nombra todos. 21+: Primeros 19, "...", último autor'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Formato para Libros (Impreso y Electrónico)',
+        description: 'LIBRO IMPRESO: Apellido, Inicial(es). (Año). Título del libro en cursiva. Editorial. EJEMPLO: García, M. (2024). Ética de inteligencia artificial. Penguin Random House. LIBRO ELECTRÓNICO: Agrega DOI o URL al final. EJEMPLO: García, M. (2024). Ética de inteligencia artificial. Penguin Random House. https://doi.org/10.1234/libro. CAPÍTULO DE LIBRO: Apellido, Inicial(es). (Año). Título del capítulo. En Inicial(es). Apellido (Ed.), Título del libro en cursiva (pp. XX-XX). Editorial. DETALLES: (1) Título del libro: Primera palabra y nombres propios en mayúscula, todo en cursiva. (2) NO incluyas ciudad de publicación (cambio de APA 6 a APA 7).',
+        tips: [
+          'Si libro tiene editores en lugar de autores, pon "(Ed.)" o "(Eds.)" después de nombres',
+          'Para e-books de Kindle sin DOI, omite URL si versión impresa existe (cita versión impresa)',
+          'Edición: Si no es primera, especifica: (3ª ed.) después del título'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Formato para Sitios Web y Páginas Online',
+        description: 'PÁGINA WEB CON AUTOR: Apellido, Inicial(es). (Año, Mes Día). Título de la página. Nombre del Sitio. URL. EJEMPLO: García, M. (2024, enero 15). Cómo usar IA éticamente. DetectorDeIA. https://detectordeia.com/guia-etica. PÁGINA WEB SIN AUTOR: Título de la página. (Año, Mes Día). Nombre del Sitio. URL. EJEMPLO: Cómo usar IA éticamente. (2024, enero 15). DetectorDeIA. https://detectordeia.com/guia-etica. SIN FECHA: Usa (s.f.) en lugar de año. NOTA: Título de página en fuente normal (no cursiva), Nombre del Sitio en cursiva si es diferente del autor.',
+        tips: [
+          'NO pongas "Recuperado de" antes de URL (cambio de APA 6 a 7) - solo URL directamente',
+          'Si URL es muy larga (40+ caracteres), está OK, NO la acortes',
+          'Omite URLs que requieren login o son temporales (Ej: URLs de búsqueda en bases de datos)'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Formato para Artículos de Periódicos y Revistas',
+        description: 'PERIÓDICO ONLINE: Apellido, Inicial(es). (Año, Mes Día). Título del artículo. Nombre del Periódico. URL. EJEMPLO: García, M. (2024, marzo 10). Universidades adoptan IA con precaución. El País. https://elpais.com/articulo. REVISTA POPULAR (no académica): Apellido, Inicial(es). (Año, Mes). Título del artículo. Título de la Revista, Volumen(Número), páginas. URL. EJEMPLO: López, A. (2024, febrero). El futuro de la educación. Forbes España, 25(2), 45-48. DIFERENCIA: Periódico incluye fecha completa (Mes Día), revista solo mes. Título de periódico/revista en cursiva.',
+        tips: [
+          'Periódico sin autor: Empieza con título del artículo (sin cursiva)',
+          'Si periódico tiene múltiples ediciones (ej: edición nacional vs local), especifica entre paréntesis',
+          'Artículos de blogs siguen mismo formato que páginas web'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Cita Fuentes con Múltiples Autores Correctamente',
+        description: 'UN AUTOR: Apellido, Inicial. (Año). DOS AUTORES: Apellido1, Inicial. & Apellido2, Inicial. (Año). (nota: & en vez de "y"). TRES O MÁS (hasta 20): Lista todos separados por comas, & antes del último. EJEMPLO: García, M., López, A., Martínez, P., & Smith, J. (2024). 21+ AUTORES: Primeros 19 autores, "...", último autor. EJEMPLO: García, M., López, A., Martínez, P., ... & Zhong, Y. (2024). IMPORTANTE: En citas en el texto, 3+ autores se abrevia "García et al. (2024)" pero en Referencias se listan todos (hasta 20).',
+        tips: [
+          'Usa "&" (ampersand) en Referencias, pero "y" en texto del ensayo',
+          'No pongas punto después de iniciales intermedias si hay más de una: García, M. A. ✓, no García, M.A.',
+          'Si dos autores tienen mismo apellido e inicial, agrega más iniciales para distinguir'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Casos Especiales: Videos, Podcasts, Redes Sociales',
+        description: 'VIDEO DE YOUTUBE: Apellido, Inicial. [@nombreusuario]. (Año, Mes Día). Título del video [Video]. YouTube. URL. EJEMPLO: García, M. [@profgarcia]. (2024, enero 20). Cómo estudiar efectivamente [Video]. YouTube. https://youtu.be/xxxx. PODCAST: Apellido, Inicial. (Presentador). (Año, Mes Día). Título del episodio (No. #) [Audio podcast]. En Nombre del Podcast. Plataforma. URL. TWEET/POST X: Apellido, Inicial. [@usuario]. (Año, Mes Día). Primeras 20 palabras del post [Tweet]. X. URL. NOTA: Incluye tipo de medio entre corchetes después del título.',
+        tips: [
+          'Para videos sin autor claro, usa nombre del canal como autor',
+          'TikTok, Instagram siguen formato similar a X/Twitter',
+          'Si post no tiene título formal, usa primeras 20 palabras del contenido (sin cursiva)'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Usa Gestores de Referencias para Automatizar',
+        description: 'HERRAMIENTAS GRATUITAS: (1) ZOTERO (open source, más flexible), (2) MENDELEY (integrado con Elsevier), (3) ENDNOTE BASIC (gratuito con limitaciones). PROCESO: (1) Instala extensión de browser, (2) Navegas a artículo/libro, click en extensión, (3) Zotero guarda metadatos automáticamente, (4) Al escribir, insertas cita con plugin de Word/Google Docs, (5) Al final, generas Referencias con 1 click (formato APA 7 automático). BENEFICIO: Ahorra horas de formateo manual, previene errores, sincroniza entre dispositivos. ADVERTENCIA: Siempre verifica output - herramientas cometen errores (especialmente con sitios web).',
+        tips: [
+          'Zotero: Mejor para estudiantes (gratis sin límites, plugins abundantes)',
+          'Importa PDFs a Zotero - extrae metadatos automáticamente de DOI',
+          'Crea carpetas/etiquetas en gestor para organizar fuentes por proyecto/tema'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Verifica Errores Comunes Antes de Entregar',
+        description: 'CHECKLIST: (1) ¿Sangría francesa en TODAS las entradas? (2) ¿Doble espacio entre TODAS las líneas? (3) ¿Orden alfabético correcto? (4) ¿Todos los autores tienen formato: Apellido, Inicial.? (5) ¿Títulos de journals/libros en cursiva? (6) ¿Títulos de artículos SIN cursiva? (7) ¿DOIs en formato https://doi.org/XX (no "DOI:" antes)? (8) ¿URLs funcionales (no rotas)? (9) ¿Todas las fuentes citadas en texto están en Referencias? (10) ¿Todas las fuentes en Referencias fueron citadas en texto? ERROR FATAL: Fuente en Referencias pero NUNCA citada en texto = punto en contra.',
+        tips: [
+          'Verifica URLs clickeando cada una - enlaces rotos son error grave',
+          'Compara lista de Referencias con citas en texto - deben coincidir exactamente',
+          'Usa verificador de formato APA online como complemento (pero no confíes 100%)'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Casos Complicados y Dónde Buscar Ayuda',
+        description: 'FUENTES COMPLICADAS: (1) Informes gubernamentales, (2) Tesis no publicadas, (3) Presentaciones de conferencias, (4) Datasets, (5) Software. RECURSO OFICIAL: Manual APA 7ª edición (libro completo con cientos de ejemplos). ONLINE: APA Style Blog (blog.apastyle.org) con actualizaciones y casos especiales. UNIVERSIDAD: Centro de escritura universitario (tutores capacitados en APA). CUANDO EN DUDA: (1) Busca ejemplo similar en manual APA, (2) Adapta siguiendo principios generales (autor, año, título, fuente), (3) Sé consistente en formato que elijas.',
+        tips: [
+          'Blog oficial APA responde preguntas comunes sobre casos especiales',
+          'Purdue OWL (owl.purdue.edu) tiene guía APA gratuita muy completa',
+          'Si dos fuentes contradicen: Manual oficial APA > cualquier otra fuente'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Usar "Bibliografía" como título en lugar de "Referencias"',
+        solution: 'APA 7 usa "Referencias" (no Bibliografía). Referencias incluye SOLO fuentes citadas en texto. Bibliografía incluiría fuentes consultadas pero no citadas (no se usa en APA).'
+      },
+      {
+        mistake: 'Olvidar sangría francesa (hanging indent) en entradas',
+        solution: 'Sangría francesa es OBLIGATORIA en APA. Primera línea al margen, líneas subsiguientes con sangría de 0.5 pulgadas. En Word: Párrafo → Sangría especial → Francesa.'
+      },
+      {
+        mistake: 'Poner DOI como "DOI: 10.xxxx" en lugar de URL completa',
+        solution: 'APA 7 formato: https://doi.org/10.xxxx (URL completa clickeable). NO uses "DOI:" antes del número. Cambio de APA 6 → 7.'
+      },
+      {
+        mistake: 'Incluir ciudad de publicación para libros',
+        solution: 'APA 7 ELIMINÓ ciudad de publicación. Solo incluye: Editorial. (cambio de APA 6). Ciudad ya NO se incluye.'
+      },
+      {
+        mistake: 'Usar cursiva en título de artículo (debe ir en título de journal)',
+        solution: 'Título de artículo: Sin cursiva, solo primera palabra en mayúscula. Título de Journal: En Cursiva, Palabras Principales en Mayúscula. No confundas.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Qué diferencia hay entre citas en el texto y Referencias?',
+        answer: 'CITAS EN EL TEXTO: Mencionan fuente brevemente donde usas idea. Formato: (Apellido, Año) o (Apellido, Año, p. XX). Van DENTRO del ensayo. REFERENCIAS: Lista completa al final con información detallada de cada fuente (autor, año, título, editorial/journal, DOI/URL). RELACIÓN: Cada cita en texto debe tener entrada correspondiente en Referencias, y viceversa. EJEMPLO: Texto: "García (2024) argumenta que..." → Referencias: García, M. (2024). Ética de inteligencia artificial. Penguin.'
+      },
+      {
+        question: '¿Tengo que incluir número de página en Referencias?',
+        answer: 'DEPENDE del tipo de fuente. INCLUYE páginas para: (1) Artículos de journal: páginas completas (234-251), (2) Capítulo de libro: páginas del capítulo (pp. 45-67). NO incluye páginas para: (1) Libros completos, (2) Sitios web (no tienen paginación tradicional), (3) Videos/podcasts. NOTA: En citas en el texto, página es OPCIONAL para paráfrasis, OBLIGATORIA para citas textuales.'
+      },
+      {
+        question: '¿Cómo cito algo que no tiene autor (sitio web, artículo)?',
+        answer: 'SIN AUTOR: Empieza entrada con título. EJEMPLO: Cómo usar IA éticamente. (2024, enero 15). DetectorDeIA. https://detectordeia.com/guia. EN TEXTO: Usa primeras palabras del título entre comillas: ("Cómo usar IA", 2024). ORDEN ALFABÉTICO: Usa primera palabra significativa del título (ignora "El", "La", "Un"). NO uses "Anónimo" a menos que literalmente diga "por Anónimo".'
+      },
+      {
+        question: '¿Qué hago si fuente no tiene fecha de publicación?',
+        answer: 'USA (s.f.) que significa "sin fecha". EJEMPLO: García, M. (s.f.). Título del artículo. Nombre del Sitio. URL. EN TEXTO: (García, s.f.) o García (s.f.). INTENTA PRIMERO: Busca fecha en página "Acerca de", metadata del sitio, copyright al final. Algunos sitios ocultan fecha pero existe. Si genuinamente no existe, usa s.f.'
+      },
+      {
+        question: '¿Puedo usar Wikipedia en Referencias?',
+        answer: 'TÉCNICAMENTE PUEDES, pero NO DEBERÍAS en trabajos universitarios. PROBLEMA: Wikipedia no es fuente académica revisada por pares, contenido puede cambiar. MEJOR PRÁCTICA: (1) Usa Wikipedia para ENTENDER tema, (2) Ve a sección "Referencias" de Wikipedia, (3) Busca y LEE fuentes originales citadas, (4) Cita fuentes originales académicas, NO Wikipedia. EXCEPCIÓN: Si profesor permite explícitamente. FORMATO si debes usarla: Título del artículo. (s.f.). En Wikipedia. URL'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Citar Fuentes en Formato APA al Parafrasear', slug: 'como-citar-fuentes-apa-parafraseo' },
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Parafrasear Correctamente', slug: 'como-parafrasear-correctamente' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-bibliografia-apa' },
+      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-bibliografia-apa' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de trabajo',
+      url: '/?ref=guia-bibliografia-apa'
+    }
+  },
+
+  {
+    slug: 'como-estructurar-ensayo-argumentativo',
+    title: 'Cómo Estructurar un Ensayo Argumentativo',
+    keywords: [
+      'como estructurar ensayo argumentativo',
+      'estructura ensayo argumentativo',
+      'como escribir ensayo argumentativo',
+      'partes ensayo argumentativo',
+      'ensayo argumentativo ejemplo'
+    ],
+    metaTitle: 'Cómo Estructurar Ensayo Argumentativo: Guía Completa 2025',
+    metaDescription: 'Aprende a estructurar ensayo argumentativo efectivo. Introducción, desarrollo, conclusión. Guía paso a paso con ejemplos para estudiantes.',
+    h1: 'Cómo Estructurar un Ensayo Argumentativo: Guía Paso a Paso',
+    intro: 'Ensayo argumentativo es tipo de escritura académica donde defiendes posición específica usando evidencia y razonamiento lógico. Diferencia con ensayo expositivo (solo informa) o narrativo (cuenta historia): ensayo argumentativo PERSUADE al lector de que tu posición es válida. Estructura correcta es crítica - incluso argumentos brillantes fallan si presentación es desorganizada. Esta guía paso a paso enseña estructura clásica de ensayo argumentativo (introducción con tesis, párrafos de cuerpo con argumentos, contraargumentos, conclusión), cómo desarrollar cada sección, transiciones efectivas, y errores comunes a evitar.',
+    overview: 'Esta guía cubre: (1) Estructura general del ensayo argumentativo, (2) Cómo escribir introducción con gancho y tesis, (3) Desarrollo de párrafos de argumentación, (4) Contraargumentos efectivos, (5) Conclusión persuasiva.',
+    steps: [
+      {
+        number: 1,
+        title: 'Entiende Estructura de 5 Párrafos (o Expandida)',
+        description: 'ESTRUCTURA BÁSICA (5 párrafos): (1) INTRODUCCIÓN: Gancho + contexto + tesis. (2-4) CUERPO: 3 párrafos, cada uno con argumento diferente que apoya tesis. (5) CONCLUSIÓN: Resumen + reformulación de tesis + cierre. ESTRUCTURA EXPANDIDA (ensayos largos): (1) Introducción, (2-5+) Múltiples argumentos (un párrafo por argumento), (6) Contraargumentos + refutación, (7) Conclusión. PRINCIPIO: Cada párrafo = una idea. No mezcles múltiples argumentos en un párrafo. FLEXIBILIDAD: 5 párrafos es plantilla, pero puedes tener 4 argumentos, 6 argumentos, etc. según complejidad del tema.',
+        tips: [
+          'Ensayos de 500-800 palabras: 5 párrafos funciona bien',
+          'Ensayos de 1500+ palabras: Estructura expandida con 5-7 argumentos + contraargumentos',
+          'Cada argumento debe ser igualmente fuerte - no pongas argumento débil solo para llenar estructura'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Escribe Introducción con Gancho, Contexto, y Tesis',
+        description: 'ESTRUCTURA DE INTRO (3 partes): (1) GANCHO (1-2 oraciones): Captura atención. Opciones: pregunta provocativa, estadística sorprendente, anécdota breve, cita relevante. (2) CONTEXTO (2-4 oraciones): Información de fondo necesaria, define términos clave, explica por qué tema importa. (3) TESIS (1-2 oraciones): Tu posición específica + preview de argumentos principales. EJEMPLO: [GANCHO] "85% de universidades ahora permiten uso de IA, pero ¿a qué costo? [CONTEXTO] Mientras herramientas de IA ofrecen beneficios de eficiencia, su adopción sin regulación plantea preguntas sobre integridad académica. [TESIS] Universidades deben implementar políticas de IA estrictas porque: (1) preservan pensamiento crítico, (2) mantienen equidad, (3) preparan estudiantes para ética profesional."',
+        tips: [
+          'Gancho NO debe ser cliché ("Desde tiempos inmemoriales...") - sé específico y relevante',
+          'Tesis debe estar al FINAL de introducción (última oración o dos)',
+          'Preview de argumentos en tesis es opcional pero ayuda a lector seguir estructura'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Desarrolla Párrafos de Cuerpo con Estructura TREE',
+        description: 'TREE = Topic sentence-Reasoning-Evidence-Explanation. ESTRUCTURA: (1) TOPIC SENTENCE (oración temática): Anuncia argumento del párrafo, conecta con tesis. (2) REASONING (razonamiento): Explica LÓGICA de por qué este argumento apoya tu tesis (2-3 oraciones). (3) EVIDENCE (evidencia): Cita, paráfrasis, estadística, ejemplo que apoya argumento (1-2 oraciones). (4) EXPLANATION (explicación): TU análisis de por qué evidencia valida tu argumento, cómo se conecta con punto mayor (3-4 oraciones). EJEMPLO: [T] "Políticas estrictas de IA preservan desarrollo de pensamiento crítico." [R] "Cuando estudiantes dependen de IA para tareas fundamentales..." [E] "García (2024) encontró que 67% de estudiantes..." [E] "Estos datos demuestran que..."',
+        tips: [
+          'Topic sentence es como mini-tesis del párrafo - debe ser clara y específica',
+          'Reasoning viene ANTES de evidence - explica tu lógica primero',
+          'Explanation debe ser sección más larga (40-50% del párrafo) - es TU análisis'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Ordena Argumentos Estratégicamente (Más Fuerte Primero y Último)',
+        description: 'ORDEN ÓPTIMO: Argumento más fuerte PRIMERO, argumentos moderados en medio, segundo más fuerte AL FINAL. RAZÓN: (1) Argumento fuerte al inicio captura atención, establece credibilidad. (2) Argumento fuerte al final queda en memoria del lector (efecto recencia). EVITA: Orden cronológico o aleatorio si no refuerza tu argumento. EVALUACIÓN: ¿Cuál argumento tiene mejor evidencia? ¿Cuál es más difícil de refutar? Esos son tus "argumentos más fuertes". ALTERNATIVA: Si argumento se construye sobre otro, usa orden lógico (incluso si no es el más fuerte primero).',
+        tips: [
+          'Pregúntate: "Si lector solo lee UN párrafo de cuerpo, ¿cuál querría que sea?" - ponlo primero',
+          'Argumentos más débiles van en medio (lector los nota menos)',
+          'Transiciones entre argumentos: "Además", "Igualmente importante", "Finalmente"'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Incluye y Refuta Contraargumentos (Muestra Pensamiento Crítico)',
+        description: 'UBICACIÓN: Párrafo separado ANTES de conclusión (después de tus argumentos principales). ESTRUCTURA: (1) RECONOCE contraargumento honestamente: "Críticos argumentan que..." (2-3 oraciones). (2) CONCEDE punto válido SI existe: "Es cierto que X..." (1 oración, opcional). (3) REFUTA explicando por qué limitación/insuficiente: "Sin embargo, este argumento no considera Y..." (3-4 oraciones). BENEFICIO: Demuestra que consideraste múltiples perspectivas, fortalece tu posición al desarmar objeciones previsibles. NO hagas: Strawman (distorsionar contraargumento para facilitar refutación) - usa versión más fuerte de contraargumento.',
+        tips: [
+          'Identifica contraargumento: ¿Qué diría alguien que NO está de acuerdo contigo?',
+          'No dediques demasiado espacio a contraargumento - 1 párrafo de 5-8 oraciones es suficiente',
+          'Transición: "Aunque algunos argumentan que X, este análisis pasa por alto..."'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Usa Transiciones Efectivas Entre Secciones',
+        description: 'ENTRE INTRODUCCIÓN Y CUERPO: "Primero", "Para comenzar", "El argumento principal". ENTRE ARGUMENTOS DEL CUERPO: "Además", "Asimismo", "De igual importancia", "Más aún". PARA CONTRAARGUMENTOS: "Algunos podrían argumentar", "Sin embargo", "Por otro lado", "A pesar de". HACIA CONCLUSIÓN: "En conclusión", "En definitiva", "Por lo tanto", "Dados estos argumentos". PROPÓSITO: Transiciones guían al lector a través de tu lógica, muestran cómo ideas se conectan. SIN transiciones, ensayo parece lista desconectada. CON transiciones, ensayo fluye como argumento cohesivo.',
+        tips: [
+          'No uses misma transición repetidamente - varía: "Además" → "Igualmente" → "Más aún"',
+          'Transiciones pueden ser frases completas: "Este análisis revela necesidad de examinar segundo factor..."',
+          'Lee ensayo en voz alta - si hay saltos abruptos, necesitas transición'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Escribe Conclusión Que Cierra con Impacto',
+        description: 'ESTRUCTURA DE CONCLUSIÓN (3 partes): (1) REFORMULA TESIS (2-3 oraciones): Di misma idea con palabras diferentes, NO copies-pegues tesis original. (2) SINTETIZA ARGUMENTOS (2-3 oraciones): Resume brevemente cómo tus argumentos apoyan tesis (NO repitas detalles, solo esencia). (3) CIERRE PODEROSO (2-3 oraciones): Call-to-action, implicación más amplia, pregunta para reflexión, o conexión con gancho inicial. EVITA: Nueva evidencia (va en cuerpo), disculpas ("este ensayo no es perfecto"), afirmaciones grandiosas no respaldadas ("esto solucionará todos los problemas").',
+        tips: [
+          'Longitud: Conclusión típicamente 10-15% del ensayo total',
+          'Cierre fuerte regresa a gancho inicial - crea sensación de círculo completo',
+          'Test: ¿Conclusión responde "Y entonces qué?" / "Por qué importa?" Si no, fortalécela'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Mantén Tono Objetivo y Académico',
+        description: 'CARACTERÍSTICAS DE TONO ACADÉMICO: (1) OBJETIVO: Basado en evidencia, no emoción. "Estudios demuestran" vs "Obviamente todos saben". (2) FORMAL: Sin jerga coloquial, contracciones mínimas. (3) PRECISO: Palabras específicas, no vagas ("algunos" → "37%"). (4) EQUILIBRADO: Reconoce complejidad, evita absolutos ("siempre", "nunca"). PRIMERA PERSONA: Disciplinas humanísticas frecuentemente permiten "yo argumento", ciencias sociales/STEM prefieren tercera persona - verifica con profesor. EVITA: Lenguaje emotivo excesivo ("horrible", "maravilloso"), ataques personales, sarcasmo.',
+        tips: [
+          'Reemplaza "Yo creo/pienso" con "Este análisis sugiere" o "Evidencia demuestra"',
+          'Test: ¿Usarías este lenguaje en conversación casual? Si sí, probablemente es muy informal',
+          'Pasión está bien (muestra interés en tema), pero debe estar respaldada por evidencia, no solo emoción'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Revisa Específicamente Para Lógica y Coherencia',
+        description: 'REVISIÓN DE ARGUMENTACIÓN (no solo gramática): (1) ¿TESIS es clara y argumentable? (2) ¿Cada párrafo de cuerpo APOYA tesis directamente? (3) ¿Evidencia RESPALDA cada argumento? (4) ¿Tu ANÁLISIS conecta evidencia con argumento? (5) ¿TRANSICIONES muestran conexiones lógicas? (6) ¿CONTRAARGUMENTO está refutado efectivamente? (7) ¿CONCLUSIÓN refleja contenido del ensayo? TÉCNICA: Lee solo topic sentences de todos los párrafos - deberían formar outline lógico y coherente. Si outline no tiene sentido, estructura necesita revisión.',
+        tips: [
+          'Pide a alguien leer solo tu introducción y conclusión - ¿Entienden tu argumento? Si no, revisa',
+          'Verifica causalidad: ¿Asumes conexión causa-efecto sin probarla? Demuéstrala',
+          'Busca falacias lógicas: ad hominem, falsa dicotomía, generalización, pendiente resbaladiza'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Verifica Que Evidencia Es Creíble y Relevante',
+        description: 'EVALUACIÓN DE FUENTES: (1) AUTORIDAD: ¿Autor tiene credenciales en el tema? ¿Publicado en journal revisado por pares? (2) ACTUALIDAD: ¿Cuán reciente? (Para temas que cambian rápido, prefiere últimos 3-5 años). (3) OBJETIVIDAD: ¿Fuente tiene agenda obvia/bias? (4) RELEVANCIA: ¿Evidencia apoya directamente TU punto específico? CITAS: Cada argumento principal necesita evidencia. NO bases argumento solo en opinión personal. BALANCE: Prefiere fuentes académicas (journals, libros universitarios) sobre blogs, Wikipedia, medios populares. MÍNIMO: Ensayo de 5 páginas típicamente necesita 5-7 fuentes diferentes.',
+        tips: [
+          'Usa Google Scholar para encontrar fuentes académicas, no solo Google regular',
+          'Verifica credenciales de autor: ¿PhD en campo relevante? ¿Afiliación universitaria?',
+          'Si evidencia contradice tu argumento, NO la ignores - ajusta tu argumento o explica la discrepancia'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Tesis vaga que no toma posición clara ("IA tiene pros y contras")',
+        solution: 'Tesis debe argumentar posición específica: "Aunque IA ofrece beneficios, universidades deben regular su uso debido a X, Y, Z." Lector debe saber exactamente qué argumentas.'
+      },
+      {
+        mistake: 'Párrafos de cuerpo que solo presentan evidencia sin análisis propio',
+        solution: 'Después de CADA cita/estadística, agrega 2-3 oraciones de TU análisis explicando POR QUÉ esa evidencia apoya tu argumento. Análisis debe ser 50%+ del párrafo.'
+      },
+      {
+        mistake: 'Ignorar contraargumentos completamente',
+        solution: 'Incluye 1 párrafo que reconoce objeción principal a tu argumento, luego refútala. Demuestra pensamiento crítico y fortalece tu posición al abordar preocupaciones previsibles.'
+      },
+      {
+        mistake: 'Conclusión que solo copia-pega tesis e introducción',
+        solution: 'Reformula tesis con palabras diferentes, sintetiza (no repite) argumentos, agrega cierre poderoso que responde "¿Por qué importa?" o propone acción/reflexión.'
+      },
+      {
+        mistake: 'Usar lenguaje absoluto ("siempre", "nunca", "todos") sin matices',
+        solution: 'Académicos evitan absolutos. Usa: "frecuentemente", "en muchos casos", "la mayoría". Reconoce excepciones cuando existen - muestra pensamiento sofisticado.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cuánto debe medir cada sección del ensayo argumentativo?',
+        answer: 'PROPORCIONES APROXIMADAS (para ensayo de 1000 palabras): INTRODUCCIÓN: 100-150 palabras (10-15%). CADA PÁRRAFO DE CUERPO: 150-200 palabras. Si tienes 3 argumentos = 450-600 palabras total cuerpo (60-70%). CONTRAARGUMENTOS: 100-150 palabras (10%). CONCLUSIÓN: 100-150 palabras (10-15%). PRINCIPIO: Cuerpo debe ser sección más larga (mayoría del ensayo). Intro y conclusión son importantes pero relativamente breves. FLEXIBILIDAD: Estas son guías, no reglas absolutas.'
+      },
+      {
+        question: '¿Puedo usar "yo" en ensayo argumentativo?',
+        answer: 'DEPENDE de disciplina y preferencia del profesor. HUMANIDADES/CIENCIAS SOCIALES: Frecuentemente permiten primera persona ("yo argumento", "mi análisis"). STEM/NEGOCIOS: Generalmente prefieren tercera persona ("este análisis sugiere", "la evidencia demuestra"). PREGUNTA A TU PROFESOR o revisa rúbrica/syllabus. SI USAS PRIMERA PERSONA: Hazlo con propósito, no excesivamente ("yo pienso" cada oración es débil). ALTERNATIVA: "Este ensayo argumenta", "El análisis presentado demuestra".'
+      },
+      {
+        question: '¿Dónde van los contraargumentos - antes o después de mis argumentos?',
+        answer: 'DOS OPCIONES VÁLIDAS: OPCIÓN A (más común): DESPUÉS de tus argumentos, ANTES de conclusión. Estableces tu caso primero, luego abordas objeciones. OPCIÓN B: Presenta contraargumento TEMPRANO (después de intro), luego construyes tu caso refutándolo progresivamente. Útil si contraargumento es muy conocido. EVITA: Contraargumento en conclusión (deja impresión negativa) o ignorar contraargumentos completamente. LONGITUD: 1 párrafo típicamente suficiente, máximo 2 para contraargumentos muy complejos.'
+      },
+      {
+        question: '¿Qué diferencia hay entre ensayo argumentativo y ensayo persuasivo?',
+        answer: 'TÉRMINOS FRECUENTEMENTE INTERCAMBIABLES en contexto académico, pero diferencia sutil: ENSAYO ARGUMENTATIVO: Énfasis en lógica, evidencia objetiva, razonamiento. Apela a intelecto del lector. Tono académico, formal. ENSAYO PERSUASIVO: Puede usar emoción, narrativas personales, apelaciones éticas (además de lógica). Apela a múltiples dimensiones. Puede ser más creativo. EN UNIVERSIDAD: Mayoría de profesores usan términos intercambiablemente y esperan ensayo argumentativo académico (basado en evidencia, lógica). Verifica con tu profesor si hay distinción específica que quieren.'
+      },
+      {
+        question: '¿Cuántas fuentes necesito para ensayo argumentativo?',
+        answer: 'REGLA APROXIMADA: 1-2 fuentes por página escrita. EJEMPLOS: Ensayo de 3-5 páginas: 5-7 fuentes. Ensayo de 8-10 páginas: 10-15 fuentes. CALIDAD > CANTIDAD: Mejor tener 5 fuentes excelentes (journals académicos, libros universitarios) que 15 fuentes débiles (blogs, Wikipedia). TIPOS: Mezcla tipos de evidencia - estudios empíricos, análisis teóricos, datos estadísticos, expertos reconocidos. VERIFICACIÓN: ¿Cada argumento principal tiene al menos 1 fuente respaldándolo? Si no, necesitas más investigación o argumento es solo opinión.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Escribir Ensayos Originales', slug: 'como-escribir-ensayos-originales' },
+      { title: 'Cómo Mejorar Escritura Académica', slug: 'como-mejorar-escritura-academica' },
+      { title: 'Cómo Hacer Bibliografía en Formato APA', slug: 'como-hacer-bibliografia-apa' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-ensayo-argumentativo' },
+      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-ensayo-argumentativo' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de ensayo',
+      url: '/?ref=guia-ensayo-argumentativo'
+    }
   }
 ];
