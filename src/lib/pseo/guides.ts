@@ -681,5 +681,357 @@ export const guides: GuidePage[] = [
       text: 'Verificar originalidad de ensayo',
       url: '/?ref=guia-ensayos-originales'
     }
+  },
+
+  {
+    slug: 'como-mejorar-escritura-academica',
+    title: 'Cómo Mejorar Escritura Académica',
+    keywords: [
+      'como mejorar escritura academica',
+      'mejorar redaccion universitaria',
+      'escritura academica efectiva',
+      'como escribir mejor academicamente',
+      'tecnicas escritura academica'
+    ],
+    metaTitle: 'Cómo Mejorar Escritura Académica: 10 Técnicas Efectivas 2025',
+    metaDescription: 'Aprende a mejorar tu escritura académica. 10 técnicas probadas, estructura clara, estilo profesional. Para estudiantes universitarios.',
+    h1: 'Cómo Mejorar Escritura Académica: Guía Completa',
+    intro: 'Escritura académica efectiva NO es habilidad innata - se desarrolla con práctica deliberada y técnicas específicas. Diferencia entre estudiantes con notas altas vs bajas frecuentemente NO es inteligencia, sino claridad y organización de escritura. Esta guía paso a paso enseña 10 técnicas concretas para mejorar escritura académica: estructura de argumentos, claridad de oraciones, uso de evidencia, transiciones efectivas, revisión estratégica. Aplicable a ensayos, reportes de laboratorio, tesis, papers de investigación.',
+    overview: 'Esta guía cubre: (1) Estructura clara de argumentos, (2) Escritura de oraciones concisas, (3) Uso efectivo de evidencia, (4) Transiciones lógicas, (5) Proceso de revisión riguroso.',
+    steps: [
+      {
+        number: 1,
+        title: 'Escribe Oraciones Temáticas Claras para Cada Párrafo',
+        description: 'ORACIÓN TEMÁTICA: Primera oración del párrafo que anuncia idea principal del párrafo. FUNCIÓN: Lector debe saber de qué trata párrafo leyendo solo primera oración. FORMATO: "Punto principal específico que este párrafo argumentará." MALA ORACIÓN TEMÁTICA: "Hay muchas cosas que considerar." (vaga). BUENA ORACIÓN TEMÁTICA: "Adopción de IA en universidades sin regulación ética amenaza desarrollo de pensamiento crítico en tres formas." (específica, promete desarrollo). VERIFICACIÓN: Lee solo primeras oraciones de todos tus párrafos - deberían formar outline coherente de tu argumento.',
+        tips: [
+          'Oración temática debe conectar con tesis - lector ve cómo párrafo apoya argumento general',
+          'Evita iniciar párrafos con citas/ejemplos - empieza con TU punto, LUEGO evidencia',
+          'Test: ¿Esta oración responde a pregunta "De qué trata este párrafo?" claramente?'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Usa Estructura PEEL para Cada Párrafo',
+        description: 'PEEL = Point-Evidence-Explanation-Link. ESTRUCTURA: (1) POINT (2-3 oraciones): Tu argumento/afirmación principal del párrafo. (2) EVIDENCE (2-3 oraciones): Citas, paráfrasis, datos, ejemplos que apoyan tu punto. (3) EXPLANATION (4-5 oraciones): TU análisis detallado - por qué evidencia apoya tu punto, qué significa, implicaciones. (4) LINK (1 oración): Conecta párrafo con tesis general o transición a siguiente punto. RATIO: Explanation debe ser sección más larga (50%+ del párrafo). ERROR COMÚN: Párrafos con solo P+E sin Explanation = resumen, no análisis.',
+        tips: [
+          'Color-codifica tu borrador: P en verde, E en azul, Ex en amarillo, L en naranja - verifica balance visual',
+          'Si párrafo tiene más E que Ex, necesitas agregar más de TU análisis',
+          'Link puede anticipar siguiente punto: "Esta limitación revela necesidad de examinar X..."'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Elimina "Muletillas Académicas" Innecesarias',
+        description: 'MULETILLAS: Frases que ocupan espacio sin agregar significado. ELIMINA: "Es importante notar que", "Cabe mencionar que", "En mi opinión personal", "Básicamente", "Realmente", "Muy", "Un poco". EJEMPLO DÉBIL: "Es importante mencionar que la IA realmente está transformando la educación de una manera muy significativa." (18 palabras). EJEMPLO FUERTE: "IA transforma la educación significativamente." (5 palabras, mismo significado). REGLA: Cada palabra debe ganar su lugar - si puedes eliminar palabra sin cambiar significado, elimínala.',
+        tips: [
+          'Busca en tu documento: Ctrl+F "es importante", "cabe mencionar", "realmente" - elimina',
+          'Elimina "muy", "bastante", "algo" - reemplaza con palabra más precisa',
+          'Antes: "muy grande" → Después: "masivo". Antes: "muy pequeño" → Después: "minúsculo"'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Convierte Oraciones Pasivas en Activas (Cuando Apropiado)',
+        description: 'VOZ PASIVA: "La encuesta fue conducida por los investigadores." (acción antes de actor). VOZ ACTIVA: "Los investigadores condujeron la encuesta." (actor antes de acción - más directa, clara). BENEFICIO VOZ ACTIVA: Más concisa, más clara, más dinámica. CUÁNDO USAR PASIVA: (1) Actor es desconocido/irrelevante: "Se observó un aumento de temperatura", (2) Quieres enfatizar acción/objeto: "Los datos fueron analizados con SPSS." VERIFICACIÓN: Busca "fue", "fueron", "es", "son" + participio - considera si activa es más clara.',
+        tips: [
+          'Test: ¿Quién hace la acción? Si es importante, ponlo al inicio (activa)',
+          'Ciencias naturales frecuentemente usan pasiva ("Se midió X") - verifica normas de tu disciplina',
+          'Balance: No 100% activa ni 100% pasiva - variedad según énfasis'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Usa Conectores y Transiciones Efectivas',
+        description: 'TRANSICIONES: Palabras/frases que conectan ideas entre oraciones y entre párrafos. FUNCIONES: (1) AGREGAR: "Además", "Asimismo", "Por otra parte". (2) CONTRASTAR: "Sin embargo", "No obstante", "Por el contrario". (3) CAUSA/EFECTO: "Por lo tanto", "Como resultado", "Consecuentemente". (4) SECUENCIA: "Primero", "Posteriormente", "Finalmente". (5) EJEMPLO: "Por ejemplo", "Específicamente", "Para ilustrar". SIN TRANSICIONES: Ensayo suena como lista desconectada. CON TRANSICIONES: Argumento fluye lógicamente de idea a idea.',
+        tips: [
+          'Lee ensayo - ¿Saltos abruptos entre ideas? Agrega transiciones',
+          'Varía conectores - no uses "además" 10 veces, alterna: "asimismo", "igualmente"',
+          'Transiciones entre párrafos: Última oración de párrafo puede anticipar siguiente tema'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Integra Evidencia con Verbos de Señalización Variados',
+        description: 'VERBOS DE SEÑALIZACIÓN: Introducen citas/paráfrasis. DÉBIL: "García dice que..." (repetido 10 veces). FUERTE: Varía verbos según función. PARA AFIRMAR: "argumenta", "sostiene", "afirma", "demuestra". PARA SUGERIR: "sugiere", "propone", "plantea", "indica". PARA CUESTIONAR: "cuestiona", "refuta", "critica", "desafía". PARA EVIDENCIA: "documenta", "observa", "reporta", "encuentra". TIEMPO VERBAL: APA 7 recomienda pasado para estudios específicos ("García encontró"), presente para consenso ("Investigadores argumentan").',
+        tips: [
+          'Lista de verbos útiles: argumenta, demuestra, sugiere, plantea, cuestiona, refuta, observa, analiza, examina, revela, señala, sostiene',
+          'No uses "menciona" o "habla sobre" - muy débiles, no muestran tipo de argumento',
+          'Verbo debe reflejar precisamente lo que autor hace - "refuta" si refuta, "sugiere" si sugiere'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Escribe Párrafos con Longitud Apropiada (5-8 Oraciones)',
+        description: 'PÁRRAFO MUY CORTO (1-2 oraciones): No desarrolla idea completamente, parece lista. PÁRRAFO MUY LARGO (15+ oraciones): Lector se pierde, probablemente contiene múltiples ideas que deberían ser párrafos separados. LONGITUD IDEAL: 5-8 oraciones, 100-200 palabras. ESTRUCTURA: Oración temática + evidencia + análisis extenso + conclusión/transición. VERIFICACIÓN: Si párrafo tiene más de 10 oraciones, busca dónde puedes dividir (probablemente introduces segunda idea a mitad del párrafo).',
+        tips: [
+          'Divide párrafos largos buscando palabras como "además", "asimismo" - frecuentemente señalan inicio de nueva idea',
+          'Combina párrafos muy cortos si desarrollan misma idea',
+          'Variación visual ayuda: Alterna párrafos de 5-6 oraciones con alguno de 8-9'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Revisa Específicamente para Claridad (No Solo Gramática)',
+        description: 'PROCESO DE REVISIÓN EN CAPAS: (1) RONDA 1 - ARGUMENTOS: ¿Lógica es clara? ¿Evidencia apoya puntos? (2) RONDA 2 - PÁRRAFOS: ¿Cada párrafo tiene oración temática clara + estructura PEEL? (3) RONDA 3 - ORACIONES: ¿Cada oración es clara? Elimina palabras innecesarias. (4) RONDA 4 - GRAMÁTICA: Typos, puntuación, formato. TÉCNICA: Lee cada oración aislada (cubre oraciones antes/después) - ¿Oración es clara por sí sola? CLARIDAD TEST: ¿Amigo no especialista puede entender tu argumento general?',
+        tips: [
+          'Deja 24-48 horas entre escritura y revisión - detectas más problemas con mente fresca',
+          'Lee en voz alta - tropiezos al leer = oraciones que necesitan re-escribirse',
+          'Imprime y revisa en papel - detectas diferentes errores que en pantalla'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Usa Ejemplos Específicos en Lugar de Generalizaciones',
+        description: 'GENERALIZACIÓN DÉBIL: "La tecnología afecta a la sociedad de muchas formas." (vaga, sin substancia). EJEMPLO ESPECÍFICO FUERTE: "Adopción de smartphones transformó comunicación interpersonal: 85% de conversaciones entre amigos jóvenes ahora ocurren vía mensajes de texto en lugar de llamadas (García, 2024)." (concreto, dato preciso, citado). BENEFICIO: Ejemplos específicos son más persuasivos, memorables, demuestran investigación profunda. TIPOS DE EJEMPLOS: Estudios de caso, estadísticas precisas, citas expertas, eventos históricos concretos.',
+        tips: [
+          'Reemplaza "muchos", "varios", "algunos" con números precisos cuando posible',
+          'En lugar de "países europeos", especifica "Alemania, Francia, y Países Bajos"',
+          'Test: ¿Puedes visualizar lo que describes? Si no, es muy vago - agrega detalles'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Pide Feedback y Revisa Basándote en Comentarios',
+        description: 'FUENTES DE FEEDBACK: (1) CENTRO DE ESCRITURA universitario (gratis, capacitados), (2) Profesor (office hours o borrador preliminar), (3) Compañeros de clase (intercambio de borradores), (4) Herramientas digitales (Grammarly para gramática, pero NO para contenido). CÓMO USAR FEEDBACK: (1) No te defiendas - escucha/lee con mente abierta, (2) Busca patrones: Si 3 personas señalan misma debilidad, es real, (3) Prioriza feedback sobre claridad/argumentos > gramática. PREGUNTAS ESPECÍFICAS: "¿Mi argumento es claro?", "¿Qué sección es confusa?", "¿Necesito más evidencia en algún punto?"',
+        tips: [
+          'Pide feedback cuando tienes borrador completo, no outline - revisor necesita ver argumentos desarrollados',
+          'Centro de escritura se llena rápido - agenda cita 1-2 semanas antes de deadline',
+          'Agradece feedback honesto - crítica constructiva mejora tu escritura más que elogios'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Escribir oraciones extremadamente largas (25+ palabras) intentando sonar académico',
+        solution: 'Claridad > complejidad. Divide oraciones largas en 2-3 oraciones cortas. Longitud ideal: 15-20 palabras por oración. Varía longitudes para ritmo.'
+      },
+      {
+        mistake: 'Usar thesaurus para reemplazar cada palabra simple con sinónimo complejo',
+        solution: 'Vocabulario rebuscado oscurece significado. Usa palabra más precisa y clara, NO más compleja. "Usar" es mejor que "utilizar" si comunica igual.'
+      },
+      {
+        mistake: 'Iniciar demasiadas oraciones con "Esto", "Eso", "Esto demuestra" sin referente claro',
+        solution: 'Especifica a qué te refieres: "Esta limitación", "Este hallazgo", "Esta tendencia". Lector no debe adivinar qué significa "esto".'
+      },
+      {
+        mistake: 'Escribir intro y conclusión genéricas que funcionan para cualquier ensayo',
+        solution: 'Intro/conclusión deben ser específicas a TU argumento. Test: ¿Otra persona podría usar tu intro/conclusión para ensayo diferente? Si sí, es muy genérica.'
+      },
+      {
+        mistake: 'No leer trabajo en voz alta antes de entregar',
+        solution: 'Leer en voz alta detecta: oraciones confusas, palabras faltantes, repeticiones, ritmo monótono. Tropiezos al leer = áreas a revisar.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cuánto tiempo debo dedicar a revisar vs escribir?',
+        answer: 'RATIO RECOMENDADO: 60% escritura, 40% revisión. DESGLOSE: Primer borrador (40%), Segunda versión con revisiones mayores (25%), Revisión detallada de claridad (20%), Edición final de gramática (15%). ERROR COMÚN: Estudiantes dedican 90% a escribir, 10% a revisar = ensayo con buenas ideas pero mal ejecutadas. Revisión rigurosa distingue ensayos excelentes de promedio. CRONOGRAMA: Si tienes 2 semanas, 8 días escribir borrador, 6 días revisar.'
+      },
+      {
+        question: '¿Mi escritura debe sonar "formal" o puede ser más conversacional?',
+        answer: 'DEPENDE de disciplina y audiencia. HUMANIDADES/CIENCIAS SOCIALES: Permiten tono más personal, uso de "yo", ejemplos personales. STEM: Generalmente más formal, tercera persona, enfoque en datos. REGLA GENERAL: Profesional pero accesible. EVITA: Jerga coloquial ("súper cool"), contracciones en exceso, lenguaje demasiado casual. ESTÁ BIEN: Claridad, concisión, voz activa, cierta personalidad. VERIFICA: Lee trabajos publicados en tu campo (journals académicos) - ese es el tono estándar.'
+      },
+      {
+        question: '¿Cómo desarrollo vocabulario académico sin sonar pretencioso?',
+        answer: 'ESTRATEGIAS: (1) LEE AMPLIAMENTE en tu disciplina - absorbes vocabulario contextualizadamente. (2) Haz lista de términos técnicos clave de tu campo (cada disciplina tiene vocabulario específico). (3) Aprende CUÁNDO usar término técnico: Si existe palabra precisa para concepto específico, úsala (ej: "fotosíntesis" en biología). Si palabra simple es igualmente precisa, úsala. (4) EVITA: Usar palabra compleja cuando simple funciona igual ("utilizar" vs "usar"). BALANCE: Vocabulario disciplinario apropiado + claridad general.'
+      },
+      {
+        question: '¿Puedo usar IA (ChatGPT, Claude) para mejorar mi escritura?',
+        answer: 'DEPENDE de cómo y política de profesor. USOS ÉTICOS (si permitido): (1) Pedir feedback: "¿Este argumento es claro?", (2) Solicitar sugerencias: "¿Cómo puedo mejorar esta oración?" LUEGO TÚ decides si implementar, (3) Identificar áreas débiles. USOS PROHIBIDOS: (1) IA escribe secciones completas que copias, (2) Parafraseas output de IA sin citarlo. DECLARACIÓN: Si usas IA para feedback, decláralo en nota: "Usé Claude para feedback sobre claridad de argumentos." MEJOR: Desarrolla habilidad propia - IA es herramienta temporal, escritura es habilidad permanente.'
+      },
+      {
+        question: '¿Qué hago si profesor marca mi escritura como "poco clara" pero yo entiendo perfectamente?',
+        answer: 'PROBLEMA: "Maldición del conocimiento" - TÚ conoces tu argumento íntimamente, entonces conexiones obvias para ti no son obvias para lector. SOLUCIÓN: (1) Pide a profesor señalar qué secciones específicas son confusas, (2) Lee esas secciones imaginando que NO conoces el tema - ¿Saltas pasos lógicos? (3) Agrega oraciones de transición explicando CÓMO ideas se conectan, (4) Pide a amigo NO especialista leer - si no entienden, claridad es problema. TÉCNICA: Lee cada párrafo preguntándote "¿Por qué esto conecta con lo anterior?" Si no puedes explicarlo, lector tampoco.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Escribir Ensayos Originales', slug: 'como-escribir-ensayos-originales' },
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Parafrasear Correctamente', slug: 'como-parafrasear-correctamente' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-mejorar-escritura' },
+      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-mejorar-escritura' }
+    ],
+    cta: {
+      text: 'Mejorar calidad de textos',
+      url: '/parafrasear-textos-online-gratis?ref=guia-mejorar-escritura'
+    }
+  },
+
+  {
+    slug: 'como-parafrasear-correctamente',
+    title: 'Cómo Parafrasear Correctamente Sin Plagiar',
+    keywords: [
+      'como parafrasear correctamente',
+      'parafrasear sin plagiar',
+      'tecnicas parafraseo academico',
+      'parafrasear textos academicos',
+      'como parafrasear bien'
+    ],
+    metaTitle: 'Cómo Parafrasear Correctamente Sin Plagiar: Guía 2025',
+    metaDescription: 'Aprende a parafrasear correctamente sin plagiar. Técnicas efectivas, errores comunes, ejemplos. Guía paso a paso para estudiantes.',
+    h1: 'Cómo Parafrasear Correctamente: Guía Completa',
+    intro: 'Parafrasear correctamente es habilidad académica esencial, pero mayoría de estudiantes lo hacen incorrectamente. "Patchwriting" (cambiar solo palabras sueltas manteniendo estructura original) es forma de plagio, aunque sea no intencional. Paráfrasis correcta requiere: (1) Comprensión profunda de idea original, (2) Re-expresión completa con tus palabras Y estructura diferente, (3) Citación apropiada de fuente. Esta guía paso a paso enseña técnicas específicas para parafrasear efectivamente, cómo evitar patchwriting, cuándo parafrasear vs citar textualmente, y cómo integrar paráfrasis en tu escritura académica.',
+    overview: 'Esta guía cubre: (1) Qué es paráfrasis legítima vs patchwriting, (2) Proceso paso a paso para parafrasear, (3) Técnicas específicas de transformación, (4) Cuándo parafrasear vs citar, (5) Cómo citar paráfrasis correctamente.',
+    steps: [
+      {
+        number: 1,
+        title: 'Entiende Diferencia: Paráfrasis Correcta vs Patchwriting (Plagio)',
+        description: 'PATCHWRITING (plagio): Cambias palabras sueltas con sinónimos pero mantienes estructura de oraciones original. ORIGINAL: "Inteligencia artificial está transformando radicalmente la educación superior mediante personalización del aprendizaje." PATCHWRITING (PLAGIO): "IA está cambiando drásticamente educación universitaria a través de customización del aprendizaje." (misma estructura, solo sinónimos). PARÁFRASIS CORRECTA: "Universidades adaptan pedagogía usando herramientas de IA que ajustan contenido a necesidades individuales de cada estudiante (García, 2024)." (estructura diferente, palabras propias, idea preservada). CLAVE: Longitud, orden de ideas, estructura gramatical deben ser DIFERENTES.',
+        tips: [
+          'Test: Pon original y tu paráfrasis lado a lado - ¿Longitud similar? ¿Orden de palabras paralelo? Si sí, es patchwriting',
+          'Patchwriting incluye cambiar solo 40-50% de palabras - necesitas transformación completa',
+          'Profesores y detectores de plagio identifican patchwriting fácilmente'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Lee y Comprende Completamente ANTES de Parafrasear',
+        description: 'ERROR #1: Intentar parafrasear mientras lees por primera vez = copias estructura porque no entiendes profundamente. PROCESO CORRECTO: (1) Lee pasaje 2-3 veces completo, (2) Identifica idea central: ¿Cuál es EL punto principal? (3) Identifica ideas secundarias que apoyan el punto, (4) Si hay términos que no entiendes, búscalos, (5) Explícate idea en voz alta a ti mismo sin ver texto, (6) SOLO ENTONCES intenta parafrasear. ANALOGÍA: No puedes traducir texto a otro idioma si no entiendes el original - parafrasear requiere comprensión igual de profunda.',
+        tips: [
+          'Si no puedes explicar idea sin ver texto, no la entiendes suficiente para parafrasear',
+          'Busca definiciones de términos técnicos - no uses sinónimo si no entiendes concepto',
+          'Para textos complejos, haz resumen mental de cada oración antes de parafrasear pasaje completo'
+        ]
+      },
+      {
+        number: 3,
+        title: 'CIERRA la Fuente Mientras Parafraseas (Técnica "Memoria")',
+        description: 'TÉCNICA ANTI-PLAGIO MÁS EFECTIVA: No puedes copiar estructura si no la estás viendo. PROCESO: (1) Lee y comprende pasaje, (2) Cierra libro/PDF o voltea página, (3) Espera 30-60 segundos (toma café, respira), (4) Escribe idea con TUS palabras sin ver original, (5) Compara con original solo DESPUÉS de escribir tu versión, (6) Verifica: ¿Idea es precisa? ¿Estructura es diferente? BENEFICIO: Imposible hacer patchwriting si no ves fuente. Resultado natural es tu estructura, tu vocabulario, tu forma de expresar.',
+        tips: [
+          'Si no puedes recordar idea sin ver fuente, léela nuevamente hasta internalizarla',
+          'Usa timer - obliga 60 segundos sin ver fuente antes de escribir',
+          'Si te encuentras tratando de "recordar palabras exactas", estás haciendo mal - recuerda IDEA'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Usa Técnicas Específicas de Transformación Lingüística',
+        description: 'TÉCNICAS para cambiar estructura: (1) CAMBIA VOZ: Activa↔Pasiva. Original: "Investigadores condujeron estudio." → Paráfrasis: "Estudio fue realizado." (2) CAMBIA ORDEN: Original: "A causa B." → Paráfrasis: "B es resultado de A." (3) DIVIDE/COMBINA: 1 oración larga → 2 cortas. O 2 cortas → 1 larga. (4) CAMBIA CATEGORÍA GRAMATICAL: Sustantivo→Verbo. Original: "Transformación de educación." → Paráfrasis: "Educación se transforma." (5) USA SINÓNIMOS (pero no solo eso). (6) CAMBIA ESTRUCTURA: Original: "Debido a X, ocurre Y." → Paráfrasis: "Y sucede. Factor causal es X."',
+        tips: [
+          'Aplica mínimo 3 técnicas simultáneamente - solo sinónimos NO es paráfrasis',
+          'Reordena ideas: Si original menciona A→B→C, parafrasea como C→A→B (si lógico)',
+          'Cambia conectores: "debido a" → "como resultado de", "sin embargo" → "no obstante"'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Escribe Como Si le Explicaras a un Amigo',
+        description: 'MENTALIDAD: Imagina que amigo te pregunta "¿Qué dice ese artículo?" - le explicas con TUS palabras naturales, no recitas texto. PROCESO: Después de leer y cerrar fuente, pregúntate: "¿Cómo le explicaría esta idea a alguien que no ha leído esto?" Escribe esa explicación. BENEFICIO: Tu forma natural de hablar es inherentemente diferente de estructura del autor original = paráfrasis genuina. AJUSTE: Después de escribir versión "conversacional", ajusta tono a académico apropiado (elimina coloquialismos pero mantén tu estructura).',
+        tips: [
+          'Habla en voz alta explicando idea antes de escribirla - captura tu forma natural',
+          'Pregúntate: "¿Qué palabras usaría YO para expresar esto?" vs "¿Qué palabras usó el autor?"',
+          'Tu paráfrasis puede ser más simple/directa que original - claridad es virtud, no defecto'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Verifica Precisión: ¿Tu Paráfrasis Conserva Idea Original?',
+        description: 'RIESGO: Al parafrasear extensivamente, puedes distorsionar idea original. VERIFICACIÓN: (1) Compara tu paráfrasis con original lado a lado, (2) Verifica que significado esencial es idéntico, (3) No agregues interpretaciones que no están en original, (4) No omitas calificadores importantes ("puede", "algunos", "frecuentemente"). EJEMPLO DISTORSIÓN: Original: "Algunos estudios sugieren posible conexión." → Paráfrasis incorrecta: "Investigación confirma conexión definitiva." (exagera certeza). BALANCE: Cambiar estructura/palabras SIN cambiar significado.',
+        tips: [
+          'Presta atención a intensidad: "algunos" ≠ "muchos", "sugiere" ≠ "demuestra"',
+          'Conserva limitaciones mencionadas por autor original',
+          'Si original dice "X en contexto Y", tu paráfrasis debe mencionar contexto Y'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Decide: ¿Parafrasear o Citar Textualmente?',
+        description: 'USA CITA TEXTUAL (comillas) cuando: (1) Redacción es poderosa/memorable, (2) Definición técnica precisa, (3) Quieres analizar lenguaje específico del autor, (4) Parafrasear requeriría mismas palabras (ej: términos técnicos únicos). USA PARÁFRASIS cuando: (1) Idea es importante pero redacción no es especial, (2) Quieres integrar múltiples fuentes fluidamente, (3) Texto original es muy técnico y quieres simplificar. REGLA: Si puedes parafrasear legitimamente, prefiere paráfrasis (muestra comprensión). Si paráfrasis sería forzada/artificial, usa cita textual.',
+        tips: [
+          'Test: ¿Por qué quiero incluir esto? Si respuesta es "la idea", parafrasea. Si es "cómo lo dijo", cita',
+          'Balance en ensayo: ~10% citas textuales, ~30% paráfrasis, ~60% tu análisis original',
+          'Evita ensayos con 40%+ citas textuales - demuestra poca síntesis propia'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Cita Tu Paráfrasis Correctamente (Formato APA 7)',
+        description: 'IMPORTANTE: Parafrasear sin citar = PLAGIO. Aunque uses tus palabras, idea vino de fuente → DEBES citar. FORMATO APA BÁSICO: "Idea parafraseada (Apellido, Año)." o "Apellido (Año) argumenta que idea parafraseada." MÚLTIPLES ORACIONES: Si todo un párrafo parafrasea misma fuente, cita al inicio: "Según García (2024), idea 1. Además, idea 2. Finalmente, idea 3." DIFERENCIA CON CITA TEXTUAL: Paráfrasis no usa comillas, pero SÍ requiere (Apellido, Año). Número de página es opcional para paráfrasis, pero recomendado.',
+        tips: [
+          'Paráfrasis de múltiples oraciones: Cita al inicio del párrafo y al final para claridad',
+          'Si parafraseas múltiples fuentes en mismo párrafo, cita cada una claramente',
+          'Lista de Referencias al final debe incluir TODAS las fuentes parafraseadas (igual que citas textuales)'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Practica con Pasajes Cortos Primero',
+        description: 'NO intentes parafrasear párrafos completos inmediatamente. PROGRESIÓN: (1) SEMANA 1: Parafrasea oraciones individuales simples. (2) SEMANA 2: Parafrasea 2-3 oraciones relacionadas. (3) SEMANA 3: Parafrasea párrafos completos. EJERCICIO: Toma artículo académico, selecciona 5 oraciones, parafrasea cada una sin ver original, compara. Pide a profesor/tutor feedback: "¿Mi paráfrasis es legítima?" DESARROLLO: Como cualquier habilidad, parafrasear mejora con práctica deliberada. Primeras veces son difíciles/lentas, con tiempo se vuelve natural.',
+        tips: [
+          'Practica con fuentes que entiendes muy bien primero - más fácil parafrasear',
+          'Compara tus paráfrasis con ejemplos de libros de estilo (APA manual tiene ejemplos)',
+          'Pide feedback específico: "¿Esto es patchwriting o paráfrasis legítima?"'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Usa Herramientas para Verificar (Pero No Para Generar)',
+        description: 'HERRAMIENTAS DE VERIFICACIÓN: (1) DETECTORES DE PLAGIO: DetectorDeIA.com, Turnitin, Quetext - verifican si tu paráfrasis es muy similar a original. (2) RETROALIMENTACIÓN HUMANA: Centro de escritura, profesores. USO ÉTICO: Usa herramientas para VERIFICAR tu paráfrasis después de escribirla, NO para generar paráfrasis. HERRAMIENTAS PROHIBIDAS: Parafrasear con IA (ChatGPT, QuillBot) y copiar output = plagio (no es TU paráfrasis). PROCESO: Parafraseas manualmente → Verificas con detector → Si marca similar, re-parafraseas con más transformación.',
+        tips: [
+          'Si detector marca tu paráfrasis como 60%+ similar, es patchwriting - re-escribe completamente',
+          'Detectores no son perfectos: 30-40% similitud puede ser OK si son términos técnicos inevitables',
+          'No intentes "engañar" detectores cambiando letras por símbolos - enfócate en parafrasear genuinamente'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Usar herramienta de parafraseo automática (QuillBot, IA) sin hacer trabajo propio',
+        solution: 'Output de herramientas automáticas frecuentemente es patchwriting. Si usas herramienta: (1) Genera sugerencia, (2) RE-ESCRIBE completamente con tus palabras (no copies output), (3) Verifica que resultado es diferente de ambas (original Y output de herramienta).'
+      },
+      {
+        mistake: 'Pensar que cambiar 50% de palabras es suficiente',
+        solution: 'Paráfrasis NO es porcentaje de palabras cambiadas. Necesitas transformar ESTRUCTURA completa. Puedes usar algunas palabras del original (términos técnicos) si estructura es totalmente diferente.'
+      },
+      {
+        mistake: 'Parafrasear oración por oración manteniendo orden original',
+        solution: 'Parafrasear cada oración individualmente pero en mismo orden = patchwriting de párrafo completo. Reorganiza ideas: combina oraciones, divide otras, cambia secuencia si lógico.'
+      },
+      {
+        mistake: 'Omitir citación porque "usé mis propias palabras"',
+        solution: 'TUS PALABRAS para expresar IDEAS DE OTRO = paráfrasis que REQUIERE citación. SIEMPRE cita paráfrasis: (Apellido, Año). Única excepción: conocimiento verdaderamente común.'
+      },
+      {
+        mistake: 'Traducir de otro idioma pensando que eso es parafrasear',
+        solution: 'Traducir texto = transferir estructura/ideas del original. Para parafrasear texto en otro idioma: (1) Traduce mentalmente, (2) LUEGO parafrasea aplicando técnicas de transformación, (3) Cita fuente original.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cuántas palabras tengo que cambiar para que sea paráfrasis legítima?',
+        answer: 'ERROR: Paráfrasis NO se trata de porcentaje de palabras cambiadas. CORRECTA PREGUNTA: "¿Transformé la estructura suficientemente?" VERIFICACIÓN: (1) ¿Longitud de oraciones es diferente? (2) ¿Orden de ideas es diferente? (3) ¿Estructura gramatical es diferente? (4) ¿Conectores son diferentes? (5) ¿Usé mis palabras naturales? Si 4-5 respuestas son "sí", probablemente es paráfrasis legítima. ESTÁ OK: Usar términos técnicos idénticos (no hay sinónimo para "fotosíntesis"), palabras comunes ("el", "la", "es"), nombres propios.'
+      },
+      {
+        question: '¿Tengo que parafrasear todo o puedo mezclar paráfrasis con citas textuales?',
+        answer: 'MEJOR PRÁCTICA: Mezcla según función. TÉCNICA: Parafrasea idea general, cita textualmente frase clave. EJEMPLO: "García (2024) argumenta que adopción de IA en educación requiere regulación ética. Específicamente, advierte que "uso sin límites amenaza desarrollo de pensamiento crítico" (p. 45)." BENEFICIO: Muestra que entiendes idea amplia (paráfrasis) + preservas lenguaje poderoso (cita). BALANCE: En un párrafo típico, puedes tener 3-4 oraciones de paráfrasis + 1 cita textual corta.'
+      },
+      {
+        question: '¿Qué hago si idea requiere vocabulario técnico específico que no puedo cambiar?',
+        answer: 'TÉRMINOS TÉCNICOS: Úsalos directamente - no hay sinónimo válido. EJEMPLOS: "fotosíntesis", "inteligencia artificial", "método científico", "estudio doble ciego". SOLUCIÓN: Cambia todo LO DEMÁS alrededor del término. EJEMPLO ORIGINAL: "La fotosíntesis es proceso mediante cual plantas convierten luz solar en energía química." PARÁFRASIS OK: "Plantas generan energía química a partir de luz solar mediante fotosíntesis (García, 2024)." (estructura diferente aunque "fotosíntesis" es idéntico). CLAVE: Transformación de estructura compensa términos técnicos inevitables.'
+      },
+      {
+        question: '¿Cuánto tiempo debe tomar parafrasear un párrafo?',
+        answer: 'TIEMPO ESTIMADO: Para estudiantes que están aprendiendo, 10-15 minutos por párrafo (leer→comprender→cerrar fuente→parafrasear→verificar). Con práctica, reduce a 5-7 minutos. COMPARACIÓN: Copiar con patchwriting toma 2 minutos pero arriesgas plagio. Parafrasear correctamente toma más tiempo inicialmente pero: (1) Evitas plagio, (2) Aprendes mejor (procesas profundamente), (3) Desarrollas habilidad valiosa. EFICIENCIA: Mejora con práctica - inversión de tiempo se reduce significativamente después de 4-5 semanas.'
+      },
+      {
+        question: '¿Puedo parafrasear una paráfrasis (fuente secundaria)?',
+        answer: 'MEJOR PRÁCTICA: NO. Busca y lee fuente ORIGINAL, parafrasea/cita de allí. PROBLEMA: Parafrasear paráfrasis = teléfono descompuesto, distorsionas idea original. CUANDO NO HAY OPCIÓN (fuente original inaccesible): Usa citación secundaria. FORMATO APA: "García (como se citó en Smith, 2024) argumenta que..." SOLO en Referencias: Smith, A. (2024)... (No incluyes García que no leíste). ADVERTENCIA: Profesores prefieren fuentes primarias - usa secundarias solo cuando primaria es genuinamente inaccesible.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Citar Fuentes en Formato APA', slug: 'como-citar-fuentes-apa-parafraseo' },
+      { title: 'Cómo Mejorar Escritura Académica', slug: 'como-mejorar-escritura-academica' }
+    ],
+    relatedTools: [
+      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=guia-parafrasear' },
+      { name: 'Detector de IA y Plagio', url: '/?ref=guia-parafrasear' }
+    ],
+    cta: {
+      text: 'Parafrasear textos correctamente',
+      url: '/parafrasear-sin-plagio?ref=guia-parafrasear'
+    }
   }
 ];
