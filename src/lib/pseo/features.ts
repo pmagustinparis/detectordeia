@@ -530,5 +530,219 @@ export const features: FeaturePage[] = [
       text: 'Detectar Gemini gratis ahora',
       url: '/detector?ref=gemini-gratis'
     }
+  },
+
+  {
+    slug: 'como-detectar-si-un-texto-es-de-ia',
+    featureName: 'Cómo Detectar si un Texto es de IA',
+    keywords: [
+      'como detectar si un texto es de ia',
+      'como saber si un texto es de chatgpt',
+      'detectar texto ia gratis',
+      'como identificar texto ia',
+      'saber si un texto es de inteligencia artificial'
+    ],
+
+    // SEO
+    title: 'Cómo Detectar si un Texto es de IA: Guía Completa 2025 | Gratis',
+    description: 'Aprende cómo detectar si un texto fue escrito por IA (ChatGPT, Claude, Gemini). Guía práctica con señales, patrones y herramientas gratis. Detección en 5 segundos.',
+    h1: 'Cómo Detectar si un Texto es de IA: Guía Completa y Práctica',
+
+    // Content
+    intro: '¿Cómo saber si un texto fue escrito por inteligencia artificial? Esta guía completa te enseña a identificar contenido generado por ChatGPT, Claude, Gemini y otros LLMs. Aprenderás señales clave, patrones característicos y cómo usar herramientas de detección gratuitas. Perfecto para profesores, editores, periodistas y cualquiera que necesite verificar autenticidad de textos.',
+
+    benefits: [
+      {
+        icon: '📚',
+        title: 'Guía Práctica Completa',
+        description: 'Método paso a paso para detectar IA manualmente: señales lingüísticas, patrones estructurales, frases cliché típicas de LLMs. Aprende a identificar sin herramientas.'
+      },
+      {
+        icon: '🎯',
+        title: '12 Señales Clave de Texto IA',
+        description: 'Redundancia excesiva, conectores formales repetitivos, neutralidad forzada, estructura predecible, explicaciones innecesarias, falta de experiencias personales. Aprende a detectarlas.'
+      },
+      {
+        icon: '🤖',
+        title: 'Diferencias ChatGPT vs Claude vs Gemini',
+        description: 'Cada LLM tiene "firma" única. ChatGPT: redundante y neutral. Claude: conversacional con listas. Gemini: técnico con disclaimers. Aprende a distinguirlos.'
+      },
+      {
+        icon: '🔍',
+        title: 'Herramienta Gratis Incluida',
+        description: 'Acceso directo a nuestro detector de IA gratis. Análisis en 5 segundos con porcentaje + frases sospechosas específicas. Complementa tu análisis manual.'
+      },
+      {
+        icon: '🎓',
+        title: 'Para Educadores y Profesionales',
+        description: 'Estrategias para profesores (detectar trabajos de estudiantes), editores (verificar artículos), periodistas (fact-checking). Casos prácticos incluidos.'
+      },
+      {
+        icon: '⚠️',
+        title: 'Limitaciones y Falsos Positivos',
+        description: 'Aprende cuándo los detectores fallan: textos formales humanos, escritores técnicos, traducciones. Evita acusaciones injustas entendiendo las limitaciones.'
+      }
+    ],
+
+    howToUse: [
+      'Lee el texto completo buscando patrones típicos de IA (redundancia, formalidad excesiva, neutralidad)',
+      'Identifica frases cliché de LLMs: "cabe destacar", "es importante mencionar", "en resumen", "como modelo de lenguaje"',
+      'Analiza la estructura: ¿Es muy predecible? (introducción-desarrollo-conclusión rígida)',
+      'Busca falta de detalles personales, experiencias específicas o anécdotas únicas',
+      'Si sospechás IA, usa nuestro detector gratis para confirmar con análisis automatizado',
+      'Compara porcentaje del detector con tu análisis manual para decisión final',
+      'Si marca zona gris (50-70%), conversá con el autor antes de concluir'
+    ],
+
+    faqs: [
+      {
+        question: '¿Cuáles son las señales más obvias de que un texto es de IA?',
+        answer: 'Las 5 señales MÁS obvias: (1) Redundancia excesiva - repite ideas con palabras diferentes sin aportar nuevo valor, (2) Conectores formales repetitivos - "sin embargo", "no obstante", "asimismo", "por consiguiente" cada 2 frases, (3) Estructura muy predecible - siempre introducción + 3 párrafos de desarrollo + conclusión, (4) Neutralidad forzada - evita opiniones fuertes, todo es "puede ser", "depende del contexto", (5) Explicaciones innecesarias - define términos obvios que el público objetivo ya conoce.'
+      },
+      {
+        question: '¿Cómo saber si un estudiante usó ChatGPT en su trabajo?',
+        answer: 'Estrategia de 4 pasos: (1) Lee el trabajo buscando estilo diferente al habitual del estudiante (si siempre escribió informal y ahora es súper formal, sospechoso). (2) Busca frases típicas GPT: "cabe destacar", "es fundamental comprender", "en conclusión podemos afirmar". (3) Analiza con detector gratis - si marca +70% probabilidad IA, investiga más. (4) CLAVE: Conversá con el estudiante, pedile que explique el contenido con sus palabras. Si usó IA, no podrá explicar profundamente. NUNCA acuses sin diálogo.'
+      },
+      {
+        question: '¿Los textos de Claude y Gemini se detectan igual que ChatGPT?',
+        answer: 'NO, cada LLM tiene "firma" diferente. ChatGPT (OpenAI): muy redundante, neutral, conectores excesivos. Claude (Anthropic): conversacional, amigable, usa listas numeradas/viñetas, menos redundante. Gemini (Google): técnico, menciona "como modelo de lenguaje", organizado con subtítulos implícitos. Nuestro detector identifica estas diferencias. Detectores generales funcionan bien (~85-90% precisión) pero detectores especializados por modelo son más precisos.'
+      },
+      {
+        question: '¿Puede un texto humano marcar como IA por error?',
+        answer: 'SÍ, falsos positivos ocurren. Casos comunes: (1) Escritores muy formales (académicos, abogados) que escriben estructurado y neutral, (2) Traducciones del inglés que suenan robóticas, (3) Textos técnicos con vocabulario especializado, (4) Personas que escriben siguiendo plantillas rígidas (ej: reportes empresariales). Si un detector marca 50-70% → ZONA GRIS, no concluyas automáticamente. Si marca 85%+ → muy probable IA, pero conversá con el autor antes de acusar.'
+      },
+      {
+        question: '¿Qué frases son típicas de ChatGPT específicamente?',
+        answer: 'Frases cliché de ChatGPT: "Cabe destacar que...", "Es importante mencionar que...", "En este sentido...", "Asimismo, es fundamental...", "Por consiguiente...", "No obstante...", "En resumen, podemos afirmar que...", "Es crucial comprender que...", "Desde esta perspectiva...". Si ves 3+ de estas frases en un texto corto (500 palabras), alta probabilidad ChatGPT.'
+      },
+      {
+        question: '¿Cómo detectar IA si el estudiante usó un "humanizador"?',
+        answer: 'Los humanizadores reducen señales obvias pero NO eliminan todos los patrones. Estrategia: (1) Humanizadores reducen redundancia pero mantienen estructura predecible - analiza la organización del texto. (2) Busca inconsistencias de estilo (algunas partes muy formales, otras casuales - señal de humanización parcial). (3) Usa detectores avanzados que analizan patrones profundos (perplejidad, burstiness, distribución léxica). (4) MEJOR MÉTODO: Conversá con el autor sobre el contenido. Si humanizó IA pero no entiende el tema, se nota en el diálogo.'
+      },
+      {
+        question: '¿Existe un método 100% infalible para detectar IA?',
+        answer: 'NO. Ningún método es 100% infalible. Los LLMs mejoran constantemente y generan texto cada vez más natural. Los detectores tienen ~85-92% precisión en promedio, pero no son perfectos. MEJOR ENFOQUE: Combina análisis manual (señales lingüísticas) + detector automatizado (patrones profundos) + diálogo con el autor (verificación de comprensión). Trata detección de IA como evidencia probabilística, no como veredicto absoluto.'
+      },
+      {
+        question: '¿Puedo detectar IA leyendo el texto sin herramientas?',
+        answer: 'SÍ, parcialmente. Humanos entrenados pueden detectar IA manualmente con ~70-75% precisión buscando: redundancia, conectores formales repetitivos, neutralidad, estructura predecible, falta de experiencias personales. PERO: textos de IA bien editados o humanizados son difíciles de detectar manualmente. Las herramientas automatizadas analizan 50+ patrones estadísticos que humanos no percibimos. RECOMENDACIÓN: Combina análisis manual + herramienta gratis para mayor precisión.'
+      },
+      {
+        question: '¿Qué hago si detecto que un trabajo académico es IA?',
+        answer: 'Protocolo ético: (1) NO acuses públicamente sin investigar. (2) Usa detector para obtener porcentaje + frases sospechosas específicas. (3) Conversá privadamente con el estudiante: "Noté ciertas características en tu trabajo que me gustaría discutir. ¿Podés explicarme tu proceso de escritura?". (4) Pedile que explique el contenido con sus palabras. (5) Mostrá evidencia del detector si es necesario. (6) Aplica política de tu institución con empatía - muchos estudiantes usan IA sin entender que es trampa. (7) Usa como oportunidad educativa sobre integridad académica.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar detector de IA gratis ahora',
+      url: '/detector?ref=como-detectar'
+    }
+  },
+
+  {
+    slug: 'humanizar-chatgpt-gratis',
+    featureName: 'Humanizar ChatGPT Gratis',
+    keywords: [
+      'humanizar chatgpt gratis',
+      'humanizar texto chatgpt',
+      'hacer chatgpt mas humano',
+      'evitar deteccion chatgpt',
+      'humanizador chatgpt español gratis'
+    ],
+
+    // SEO
+    title: 'Humanizar ChatGPT Gratis en Español 2025 | Sin Registro',
+    description: 'Humaniza textos de ChatGPT gratis en español. Transforma contenido robótico en natural. Sin registro, 15 usos diarios. Evita detección de IA. 100% gratis.',
+    h1: 'Humanizar ChatGPT Gratis: Transforma Texto Robótico en Natural',
+
+    // Content
+    intro: '¿Tu texto de ChatGPT suena demasiado robótico o formal? Nuestro humanizador gratuito especializado en ChatGPT transforma contenido generado por GPT-3.5, GPT-4 y GPT-4o en texto natural que suena humano. Elimina redundancia, conectores excesivos y neutralidad forzada. Optimizado para español de España y LATAM. 100% gratis, sin registro, 15 usos diarios.',
+
+    benefits: [
+      {
+        icon: '🤖',
+        title: 'Especializado en ChatGPT',
+        description: 'Diseñado específicamente para eliminar patrones de ChatGPT: redundancia ("cabe destacar"), conectores excesivos ("sin embargo", "no obstante"), neutralidad forzada, estructura predecible.'
+      },
+      {
+        icon: '💸',
+        title: '100% Gratis - 15 Usos Diarios',
+        description: 'Plan FREE: 15 humanizaciones diarias sin tarjeta de crédito. Registrate gratis en 30 segundos. 600 caracteres por uso. Sin registro: 3 usos diarios.'
+      },
+      {
+        icon: '✨',
+        title: 'Transforma Robótico en Natural',
+        description: 'Elimina frases cliché de ChatGPT, reduce redundancia, agrega variación natural, ajusta tono para sonar más humano y menos artificial.'
+      },
+      {
+        icon: '🌎',
+        title: 'Español Nativo LATAM y España',
+        description: 'No es traducción del inglés. Humanizador entrenado con español argentino, mexicano, colombiano, chileno, español de España. Mantiene modismos regionales.'
+      },
+      {
+        icon: '🎯',
+        title: 'Reduce Detección de IA',
+        description: 'Aumenta significativamente las chances de que tu texto NO sea detectado como IA. Transforma patrones típicos de GPT en escritura más humana y natural.'
+      },
+      {
+        icon: '🚀',
+        title: '5 Modos PRO + Modo Estándar FREE',
+        description: 'Plan FREE: Modo Estándar (muy efectivo). Plan PRO ($10/mes): Formal, Creativo, Simplificado, Académico + 15,000 caracteres, usos ilimitados.'
+      }
+    ],
+
+    howToUse: [
+      'Genera tu texto en ChatGPT (GPT-3.5, GPT-4, GPT-4o)',
+      'Copia el texto que suena robótico o muy formal',
+      'Pega el texto en el Humanizador de DetectorDeIA',
+      'Selecciona Modo Estándar (FREE) o modos PRO (Formal/Creativo/Simplificado/Académico)',
+      'Haz clic en "Humanizar" y espera 5 segundos',
+      'Obtén tu texto humanizado que suena natural y humano',
+      'Verifica con nuestro Detector de IA si aún marca alto, humaniza de nuevo si es necesario'
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué diferencia hay entre humanizar ChatGPT y otros LLMs?',
+        answer: 'ChatGPT tiene patrones únicos que requieren humanización específica: (1) Redundancia excesiva ("es importante destacar que", "cabe mencionar que") - nuestro humanizador las elimina. (2) Conectores formales repetitivos ("sin embargo", "asimismo", "por consiguiente") - los reemplazamos con variación natural. (3) Neutralidad forzada - agregamos tono más directo. (4) Estructura predecible - variamos la organización. Humanizador general funciona, pero especializado en ChatGPT es más efectivo.'
+      },
+      {
+        question: '¿El texto humanizado pasará los detectores de IA?',
+        answer: 'AUMENTA significativamente las chances pero NO garantiza 100% invisibilidad. Nuestro humanizador reduce patrones detectables de ChatGPT en ~70-85%. Estrategia recomendada: (1) Humaniza el texto, (2) Analiza con nuestro Detector de IA, (3) Si marca alto (+70%), humaniza de nuevo con modo diferente o edita manualmente partes específicas sospechosas. Combinar humanización + edición manual = mejor resultado.'
+      },
+      {
+        question: '¿Es realmente gratis humanizar ChatGPT?',
+        answer: 'SÍ. Plan FREE: 15 humanizaciones diarias (con registro gratuito), 600 caracteres por uso, Modo Estándar. Sin registro: 3 humanizaciones diarias. Plan PRO ($10/mes): humanizaciones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. Puedes usar FREE para siempre sin pagar.'
+      },
+      {
+        question: '¿El humanizador cambia el significado del texto de ChatGPT?',
+        answer: 'NO. El humanizador mantiene el significado, ideas, argumentos y mensaje de tu texto original de ChatGPT. Solo transforma la FORMA en que está escrito: elimina redundancia, reemplaza conectores excesivos, reduce neutralidad forzada, agrega variación natural. El contenido esencial permanece intacto. Siempre revisa el resultado para confirmar.'
+      },
+      {
+        question: '¿Funciona con GPT-3.5, GPT-4 y GPT-4o?',
+        answer: 'SÍ. Funciona con TODAS las versiones de ChatGPT: GPT-3.5 (ChatGPT gratis), GPT-4 (ChatGPT Plus), GPT-4o (GPT-4 Optimized), GPT-4 Turbo. Todas las versiones GPT comparten patrones estructurales similares (redundancia, conectores, neutralidad) que nuestro humanizador transforma efectivamente.'
+      },
+      {
+        question: '¿Cuánto tarda en humanizar texto de ChatGPT?',
+        answer: 'Entre 3-8 segundos dependiendo del largo del texto y modo seleccionado. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. Plan PRO (Modos avanzados): ~5-8 segundos para textos más largos. Mucho más rápido que editar manualmente para eliminar patrones de ChatGPT.'
+      },
+      {
+        question: '¿Puedo usar texto humanizado para trabajos académicos?',
+        answer: 'DEPENDE de la política de tu institución. Si tu profesor permite IA como herramienta de ayuda inicial (brainstorming, borradores), y humanizas para edición/mejora, puede ser aceptable. Si tu profesor prohíbe IA completamente, NO uses ChatGPT ni humanizador punto. Usa el humanizador éticamente. Respetar integridad académica. DetectorDeIA no se responsabiliza por mal uso.'
+      },
+      {
+        question: '¿Qué modo de humanización es mejor para ChatGPT?',
+        answer: 'Depende del objetivo: Modo ESTÁNDAR (FREE): Elimina patrones ChatGPT básicos, efectivo para la mayoría de casos. Modo FORMAL (PRO): Mantiene tono profesional pero reduce redundancia GPT, ideal para contenido empresarial. Modo CREATIVO (PRO): Cambios profundos, agrega personalidad, mejor para blogs/marketing. Modo SIMPLIFICADO (PRO): Lenguaje más fácil, menos formal. Modo ACADÉMICO (PRO): Estilo universitario pero sin redundancia típica de ChatGPT. Prueba Estándar primero.'
+      },
+      {
+        question: '¿El humanizador funciona con Claude y Gemini también?',
+        answer: 'SÍ, pero está OPTIMIZADO para ChatGPT. Claude y Gemini tienen patrones diferentes (Claude: conversacional con listas, Gemini: técnico con disclaimers). El humanizador funciona con ellos (~75-80% efectividad) pero no tan bien como con ChatGPT (~85-90% efectividad). Si usas mucho Claude, considera nuestro humanizador general que cubre todos los LLMs.'
+      }
+    ],
+
+    cta: {
+      text: 'Humanizar ChatGPT gratis ahora',
+      url: '/humanizador?ref=humanizar-chatgpt'
+    }
   }
 ];
