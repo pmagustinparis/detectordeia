@@ -657,5 +657,214 @@ export const glossary: GlossaryPage[] = [
       text: 'Verificar originalidad de texto',
       url: '/?ref=glosario-patchwriting'
     }
+  },
+
+  {
+    slug: 'que-es-turnitin',
+    term: 'Turnitin',
+    keywords: [
+      'que es turnitin',
+      'turnitin detector plagio',
+      'como funciona turnitin',
+      'turnitin porcentaje similitud',
+      'pasar turnitin'
+    ],
+    title: '¿Qué es Turnitin? Cómo Funciona el Detector de Plagio 2025',
+    description: 'Descubre qué es Turnitin, cómo funciona, qué porcentaje de similitud es aceptable, limitaciones, y cómo interpretar reportes. Guía completa para estudiantes.',
+    h1: '¿Qué es Turnitin? Guía Completa del Detector de Plagio',
+    intro: 'Turnitin es el software de detección de plagio más usado en universidades del mundo. Compara trabajos estudiantiles con billones de documentos (páginas web, artículos académicos, trabajos previos) para identificar texto copiado. 15,000+ instituciones educativas lo usan para verificar originalidad. Esta guía explica qué es Turnitin, cómo funciona, qué significa el "porcentaje de similitud", limitaciones del sistema, y cómo interpretar correctamente los reportes.',
+    definition: 'Turnitin es software anti-plagio desarrollado por empresa estadounidense (fundada 1998) que detecta similitud textual entre documento del estudiante y base de datos masiva. Funcionalidades principales: (1) Similarity Report: compara texto con 70+ billones de páginas web, 200+ millones de trabajos estudiantiles, 170+ millones de artículos académicos. (2) AI Detection: detecta texto generado por IA (ChatGPT, etc.). (3) Feedback Studio: herramientas para profesores comentar trabajos.',
+    characteristics: [
+      {
+        icon: '🔍',
+        title: 'Base de Datos Masiva',
+        description: 'Turnitin compara tu trabajo con: 70+ billones de páginas web actuales y archivadas, 200+ millones de trabajos estudiantiles previos enviados a Turnitin, 170+ millones de artículos académicos de journals, libros, publicaciones. Base de datos crece constantemente.'
+      },
+      {
+        icon: '📊',
+        title: 'Porcentaje de Similitud (No es % de Plagio)',
+        description: 'Turnitin genera "Similarity Index" (% de texto que coincide con fuentes). CRÍTICO: Similitud NO = plagio. 30% similitud puede ser legítimo (muchas citas correctas). 5% similitud puede ser plagio (copiaste 1 párrafo sin citar). Profesores interpretan contexto.'
+      },
+      {
+        icon: '🤖',
+        title: 'Detección de IA (AI Writing Detection)',
+        description: 'Turnitin agregó detector de IA en 2023 para identificar texto de ChatGPT/Claude. Precisión declarada: ~98% (estudios independientes sugieren 85-90%). Genera falsos positivos (marca texto humano como IA), especialmente con escritores no-nativos de inglés.'
+      },
+      {
+        icon: '📝',
+        title: 'Almacena Trabajos Permanentemente',
+        description: 'Cuando envías trabajo a Turnitin, se almacena permanentemente en base de datos. Trabajos futuros de otros estudiantes se comparan con el tuyo. CONTROVERSIA: Algunos argumentan que Turnitin "roba" propiedad intelectual sin compensación.'
+      },
+      {
+        icon: '⚖️',
+        title: 'Limitaciones Importantes',
+        description: 'Turnitin NO detecta: (1) Plagio de libros físicos no digitalizados, (2) Paráfrasis (patchwriting con palabras cambiadas), (3) Plagio de contenido detrás de paywalls, (4) Trabajos comprados de sitios que no están en su base de datos. NO es infalible.'
+      },
+      {
+        icon: '🎓',
+        title: 'Uso en Universidades',
+        description: 'Mayoría de universidades requieren enviar trabajos a Turnitin. Profesores revisan Similarity Report para decidir si hay plagio. Estudiantes generalmente pueden ver su reporte antes de entrega final (depende de configuración del profesor).'
+      }
+    ],
+    examples: [
+      '**Similitud alta legítima:** Tu ensayo tiene 35% similitud porque incluyes 10 citas textuales correctamente entrecomilladas y citadas = NO es plagio, Turnitin solo resalta coincidencias.',
+      '**Similitud baja con plagio:** Tu ensayo tiene 8% similitud pero ese 8% es 1 párrafo completo copiado de Wikipedia sin citar = ES plagio aunque porcentaje sea bajo.',
+      '**Falso positivo común:** Tu introducción usa frases estándar ("Este ensayo analiza...", "El objetivo es...") = Turnitin lo marca como similar a miles de ensayos, pero son frases comunes, no plagio.',
+      '**Auto-plagio detectado:** Entregas mismo ensayo en dos clases. Turnitin lo detecta porque trabajo anterior está en base de datos. Muestra 100% similitud con "trabajo previo de mismo autor".',
+      '**Detección de IA:** Usaste ChatGPT para escribir. Turnitin marca secciones como "AI: 95% probability". Profesor investiga y confirma uso de IA no declarado.',
+      '**Patchwriting no detectado:** Copiaste estructura de paper pero cambiaste todas las palabras. Turnitin muestra 0% similitud, pero profesor compara manualmente y detecta patchwriting = plagio.'
+    ],
+    faqs: [
+      {
+        question: '¿Qué porcentaje de similitud en Turnitin es aceptable?',
+        answer: 'NO existe regla universal. Depende de: (1) DISCIPLINA: Humanidades (muchas citas) pueden tener 20-30% legítimo. STEM (menos citas) esperan <10%. (2) TIPO DE TRABAJO: Ensayos con bibliografía extensa tendrán mayor %. (3) POLÍTICA DEL PROFESOR: Algunos aceptan hasta 25%, otros investigan cualquier cosa >15%. REGLA GENERAL: <15% raramente es problema SI similitudes son citas correctas. >25% requiere revisión cuidadosa. >40% es sospechoso. IMPORTANTE: % NO es lo único - profesores revisan QUÉ texto está marcado (citas vs contenido original).'
+      },
+      {
+        question: '¿Cómo funciona técnicamente Turnitin?',
+        answer: 'PROCESO: (1) FRAGMENTACIÓN: Turnitin divide tu documento en "strings" (secuencias de 8+ palabras consecutivas). (2) COMPARACIÓN: Compara cada string con billones de documentos en su base de datos usando algoritmos de coincidencia de texto. (3) IDENTIFICACIÓN: Marca coincidencias de 8+ palabras idénticas consecutivas (o similares con variaciones menores). (4) REPORTE: Genera mapa de calor mostrando qué texto coincide con qué fuentes, asigna % de similitud. (5) REVISIÓN HUMANA: Profesor interpreta reporte - Turnitin solo detecta similitud, humano decide si es plagio.'
+      },
+      {
+        question: '¿Turnitin detecta texto traducido de otro idioma?',
+        answer: 'PARCIALMENTE. Turnitin NO detecta traducciones directamente (traducir paper de inglés a español generalmente pasa Turnitin). PERO: (1) Turnitin tiene bases de datos en múltiples idiomas, (2) Si traduces de fuente en español que ya está en Turnitin, lo detectará, (3) Versiones recientes usan IA para detectar patrones de traducción automática, (4) Google Translate deja patrones reconocibles. CONSECUENCIA: Traducir sin citar SIGUE SIENDO PLAGIO aunque Turnitin no lo detecte (es plagio de ideas/estructura).'
+      },
+      {
+        question: '¿Puedo ver mi reporte de Turnitin antes de entregarlo al profesor?',
+        answer: 'DEPENDE de configuración del profesor. Opciones: (1) ACCESO INMEDIATO: Profesor permite que veas reporte apenas lo envías, puedes reenviar versión corregida (límite de reenvíos varía, típicamente 3-5 intentos). (2) ACCESO DESPUÉS DE FECHA LÍMITE: Solo ves reporte después de que todos entregaron (previene que "optimices" trabajo para engañar Turnitin). (3) SIN ACCESO: Solo profesor ve reporte. RECOMENDACIÓN: Si tienes acceso previo, úsalo para verificar que citas estén correctas, no para eliminar marcas legítimas.'
+      },
+      {
+        question: '¿Cómo reducir el porcentaje de similitud en Turnitin éticamente?',
+        answer: 'MÉTODOS ÉTICOS: (1) VERIFICA CITAS: Asegura que todas las citas textuales tengan comillas (Turnitin excluye texto entrecomillado si activas esa opción). (2) PARAFRASEA CORRECTAMENTE: Re-escribe con TUS palabras (no solo cambies sinónimos), SIEMPRE cita fuente. (3) REDUCE CITAS TEXTUALES: Pregúntate si realmente necesitas citar textualmente o puedes parafrasear. (4) EXCLUYE BIBLIOGRAFÍA: Configuración de Turnitin permite excluir referencias (pide a profesor). MÉTODOS NO ÉTICOS (NO USES): Cambiar letras por caracteres especiales, insertar caracteres blancos, usar imágenes de texto = profesores lo detectan fácilmente, resulta en sanciones graves.'
+      },
+      {
+        question: '¿Qué significa cada color en el reporte de Turnitin?',
+        answer: 'CÓDIGO DE COLORES del Similarity Index: AZUL (0%): Sin similitudes detectadas. VERDE (1-24%): Similitud baja, generalmente aceptable. AMARILLO (25-49%): Similitud media, requiere revisión. NARANJA (50-74%): Similitud alta, sospechoso. ROJO (75-100%): Similitud muy alta, probable plagio. IMPORTANTE: Color es solo indicador inicial. Debes ABRIR el reporte y revisar QUÉ texto está marcado. Verde puede incluir plagio (si el poco texto marcado es copia sin citar). Rojo puede ser legítimo (si es todo bibliografía o citas correctas).'
+      },
+      {
+        question: '¿Turnitin guarda mi trabajo para siempre?',
+        answer: 'SÍ, permanentemente. Cuando envías trabajo a Turnitin, aceptas (generalmente en términos de servicio de tu universidad) que: (1) Tu trabajo se almacena en base de datos de Turnitin indefinidamente, (2) Se usa para comparar con trabajos futuros de otros estudiantes, (3) Turnitin NO publica tu trabajo (solo almacena), (4) NO puedes pedir que lo eliminen (es parte del acuerdo institucional). CONTROVERSIA: Estudiantes demandaron a Turnitin argumentando violación de copyright. Cortes fallaron a favor de Turnitin (uso educativo = "fair use").'
+      },
+      {
+        question: '¿Cómo interpretar el AI Writing Detection de Turnitin?',
+        answer: 'Turnitin muestra porcentaje de probabilidad de IA: 0-20%: Bajo, probablemente humano. 21-80%: Medio, mixto o incierto. 81-100%: Alto, probablemente IA. CRÍTICO: NO es evidencia definitiva. FALSOS POSITIVOS comunes: (1) Escritores no-nativos de inglés, (2) Escritura formal/académica (sigue patrones estructurados), (3) Textos sobre temas técnicos. RECOMENDACIÓN: Detector de IA es herramienta auxiliar, NO prueba absoluta. Si te acusan falsamente, pide segunda opinión con DetectorDeIA.com u otros detectores, muestra borradores/notas.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'Plagio Académico', slug: 'que-es-plagio-academico' },
+      { term: 'Patchwriting', slug: 'que-es-patchwriting' },
+      { term: 'Detector de IA', slug: 'que-es-detector-de-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-turnitin' },
+      { name: 'Pasar Detector Turnitin', url: '/pasar-detector-turnitin?ref=glosario-turnitin' }
+    ],
+    cta: {
+      text: 'Verificar texto antes de Turnitin',
+      url: '/?ref=glosario-turnitin'
+    }
+  },
+
+  {
+    slug: 'que-es-detector-de-ia',
+    term: 'Detector de IA',
+    keywords: [
+      'que es detector de ia',
+      'detector chatgpt',
+      'como funciona detector ia',
+      'detector de inteligencia artificial',
+      'precisión detector ia'
+    ],
+    title: '¿Qué es un Detector de IA? Cómo Funciona y Precisión 2025',
+    description: 'Descubre qué es un detector de IA, cómo identifica texto de ChatGPT/Claude, precisión real, limitaciones, falsos positivos. Guía completa para estudiantes.',
+    h1: '¿Qué es un Detector de IA? Guía Completa para Estudiantes',
+    intro: 'Detector de IA es software que analiza texto para determinar si fue generado por inteligencia artificial (ChatGPT, Claude, Gemini) o escrito por humanos. Con explosión de IA generativa en educación (2022-2025), universidades adoptaron detectores para identificar uso no autorizado de IA. Esta guía explica cómo funcionan técnicamente los detectores, qué precisión tienen realmente, diferencia entre detectores (GPTZero, Turnitin, DetectorDeIA.com), y por qué falsos positivos son problema grave.',
+    definition: 'Detector de IA es herramienta que usa modelos de machine learning para analizar patrones estadísticos de texto y predecir probabilidad de que sea generado por IA. Analiza: perplexidad (predictibilidad del texto), burstiness (variación en longitud de oraciones), vocabulario (distribución de palabras), coherencia estructural, transiciones entre ideas. Resultado: porcentaje de probabilidad (ej: "85% IA, 15% humano").',
+    characteristics: [
+      {
+        icon: '📊',
+        title: 'Análisis de Perplexidad (Predictibilidad)',
+        description: 'PERPLEXIDAD mide qué tan predecible es el texto. IA generativa predice palabra siguiente más probable → texto con baja perplexidad (muy predecible). Humanos usan giros inesperados, vocabulario variado → alta perplexidad. Detectores analizan perplexidad de cada oración para identificar patrones de IA.'
+      },
+      {
+        icon: '📈',
+        title: 'Análisis de Burstiness (Variación)',
+        description: 'BURSTINESS mide variación en longitud/complejidad de oraciones. Humanos alternan oraciones cortas y largas naturalmente. IA tiende a uniformidad (oraciones de longitud similar, complejidad constante). Alta uniformidad = sospecha de IA.'
+      },
+      {
+        icon: '🎯',
+        title: 'Precisión Real: 85-95% (No 100%)',
+        description: 'Detectores modernos (GPTZero, Turnitin, DetectorDeIA.com) tienen ~85-95% precisión según estudios independientes. SIGNIFICA: 5-15% de clasificaciones son ERRÓNEAS. Pueden generar falsos positivos (marcan humano como IA) y falsos negativos (no detectan IA editada).'
+      },
+      {
+        icon: '⚠️',
+        title: 'Falsos Positivos Comunes',
+        description: 'Detectores marcan texto HUMANO como IA cuando: (1) Escritor no-nativo de inglés (usa construcciones simples/predecibles), (2) Escritura formal/académica (sigue estructuras estándar), (3) Temas técnicos (vocabulario especializado limitado), (4) Estudiantes con escritura "pulida". PROBLEMA: Acusaciones injustas.'
+      },
+      {
+        icon: '🔍',
+        title: 'Tipos de Detectores',
+        description: 'DETECTORES ESPECIALIZADOS: GPTZero (educación), DetectorDeIA.com (español + LATAM), Originality.AI (contenido web). DETECTORES INTEGRADOS: Turnitin AI Detection (universidades), Copyleaks. GRATUITOS vs PAGOS: Gratuitos tienen límites (caracteres, usos diarios), pagos ofrecen análisis detallado + reportes.'
+      },
+      {
+        icon: '🧠',
+        title: 'Limitaciones Técnicas',
+        description: 'Detectores NO pueden identificar con certeza: (1) Texto de IA + edición humana significativa, (2) IA con instrucciones de "escribir como humano", (3) Mezcla de texto humano + IA (párrafos alternados), (4) Nuevos modelos de IA no incluidos en entrenamiento del detector. NO son prueba definitiva de plagio.'
+      }
+    ],
+    examples: [
+      '**Detección correcta de IA:** Texto tiene vocabulario uniformemente sofisticado, oraciones de longitud similar, transiciones formulaicas ("es importante destacar", "cabe mencionar") → Detector: "95% IA".',
+      '**Falso positivo:** Estudiante internacional escribe ensayo en inglés con estructuras simples y vocabulario básico → Detector marca "80% IA" aunque sea 100% escrito por humano.',
+      '**Detección fallida (falso negativo):** Estudiante usa ChatGPT pero edita manualmente, cambia estructuras, agrega anécdotas personales → Detector: "20% IA" aunque base sea generada por IA.',
+      '**Texto mixto:** Estudiante escribe introducción y conclusión, ChatGPT escribe cuerpo. Detector muestra "60% IA" (detecta secciones de IA pero no todas).',
+      '**Texto académico legítimo:** Estudiante escribe paper con estructura estándar de papers académicos (intro-método-resultados-discusión) → Detector marca "40% IA" por formalidad estructurada = falso positivo.'
+    ],
+    faqs: [
+      {
+        question: '¿Cómo funcionan técnicamente los detectores de IA?',
+        answer: 'PROCESO: (1) ENTRENAMIENTO: Detector entrena con millones de textos etiquetados (humanos vs IA) para aprender patrones. (2) ANÁLISIS: Cuando analizas texto, detector calcula múltiples métricas: perplexidad (predictibilidad), burstiness (variación de oraciones), distribución de palabras, coherencia, n-gramas (secuencias de palabras comunes en IA). (3) CLASIFICACIÓN: Modelo de ML combina métricas y genera probabilidad (ej: "85% IA"). (4) REPORTE: Muestra % general + análisis por oración/párrafo (algunos detectores). LIMITACIÓN: Es predicción estadística, NO prueba definitiva.'
+      },
+      {
+        question: '¿Cuál es el mejor detector de IA en 2025?',
+        answer: 'DEPENDE del idioma y uso: INGLÉS: GPTZero (educación, ~90% precisión, usado por universidades), Originality.AI (content creators, detección + plagio). ESPAÑOL/LATAM: DetectorDeIA.com (optimizado para español, dialectos LATAM, 15 usos gratis diarios). INTEGRADO: Turnitin AI Detection (si tu universidad usa Turnitin). GRATUITO CON LÍMITES: GPTZero (10,000 palabras/mes gratis), DetectorDeIA.com (15 usos diarios gratis). RECOMENDACIÓN: Usa 2-3 detectores diferentes para comparar resultados (si todos coinciden, más confiable).'
+      },
+      {
+        question: '¿Por qué los detectores de IA generan falsos positivos?',
+        answer: 'CAUSAS de falsos positivos: (1) ESCRITURA PREDECIBLE: Texto humano que sigue patrones estructurados (papers académicos, ensayos formales) se parece estadísticamente a IA. (2) VOCABULARIO LIMITADO: Temas técnicos tienen vocabulario especializado repetitivo que IA también usa. (3) NO-NATIVOS: Estudiantes internacionales usan inglés más simple/predecible (similar a output de IA). (4) SESGO DEL DETECTOR: Entrenado principalmente con inglés nativo, no reconoce variaciones legítimas. FRECUENCIA: Estudios muestran 5-15% de textos humanos marcados como IA.'
+      },
+      {
+        question: '¿Los detectores de IA son evidencia legal de plagio?',
+        answer: 'NO, generalmente NO son evidencia suficiente por sí solos. RAZONES: (1) TASA DE ERROR: 5-15% falsos positivos = razonable duda. (2) POLÍTICAS UNIVERSITARIAS: Mayoría de universidades requieren evidencia adicional (entrevista con estudiante, revisar borradores, análisis de estilo vs trabajos previos). (3) CASOS LEGALES: Estudiantes han apelado acusaciones basadas solo en detectores, ganando cuando prueban falso positivo. USO CORRECTO: Detectores son herramienta de screening inicial, NO prueba definitiva. Profesor debe investigar más antes de acusar plagio.'
+      },
+      {
+        question: '¿Cómo evitar falsos positivos en detectores de IA?',
+        answer: 'ESTRATEGIAS si escribes texto humano pero detector lo marca como IA: (1) USA VARIEDAD: Alterna oraciones cortas y largas, vocabulario diverso, evita estructuras repetitivas. (2) AGREGA PERSONALIZACIÓN: Incluye anécdotas personales, opiniones, ejemplos específicos (IA generaliza). (3) EVITA FRASES FORMULAICAS: "Es importante destacar", "cabe mencionar", "en conclusión" son banderas rojas (IA las usa mucho). (4) MUESTRA PROCESO: Guarda borradores, notas, outline para demostrar proceso de escritura. (5) PIDE SEGUNDA OPINIÓN: Usa 2-3 detectores diferentes; si solo uno marca como IA, probablemente es falso positivo.'
+      },
+      {
+        question: '¿Pueden detectores identificar IA "humanizada"?',
+        answer: 'DEPENDE del grado de humanización. EDICIÓN SUPERFICIAL (cambiar palabras, añadir frases): Detectores modernos aún identifican ~70-80%. EDICIÓN PROFUNDA (re-estructurar párrafos, cambiar orden de ideas, agregar contenido original): Detectores fallan frecuentemente, marcan como humano. HERRAMIENTAS DE HUMANIZACIÓN (Undetectable.ai, etc.): Efectividad varía (30-70% pasan detectores según herramienta). TENDENCIA: Carrera armamentística - detectores mejoran, humanizadores mejoran, ciclo continúa. ÉTICA: Usar humanizadores para engañar detectores = violación de integridad académica en mayoría de universidades.'
+      },
+      {
+        question: '¿Qué hacer si un detector marca mi trabajo humano como IA?',
+        answer: 'PASOS si te acusan falsamente: (1) MANTÉN CALMA: Falsos positivos son comunes, tienes derecho a apelar. (2) USA OTROS DETECTORES: Prueba tu texto en 2-3 detectores diferentes (GPTZero, DetectorDeIA.com, Originality.AI) - si resultados varían, refuerza argumento de falso positivo. (3) MUESTRA EVIDENCIA: Borradores, notas, outline, historial de ediciones (Google Docs muestra historial), emails con profesor discutiendo ideas. (4) SOLICITA ENTREVISTA: Demuestra conocimiento profundo del tema que escribiste. (5) CONSULTA POLÍTICAS: Revisa si tu universidad permite acusaciones basadas solo en detectores. (6) APELA FORMALMENTE: Si necesario, usa proceso de apelación académica.'
+      },
+      {
+        question: '¿Los detectores de IA violan privacidad?',
+        answer: 'DEPENDE del detector. PRIVACIDAD: (1) ALGUNOS ALMACENAN TEXTO: Turnitin, Copyleaks almacenan texto analizado en sus bases de datos. (2) OTROS NO ALMACENAN: GPTZero, DetectorDeIA.com declaran que no guardan texto después de análisis (verifica políticas de privacidad). (3) DATOS DE ENTRENAMIENTO: Algunos detectores entrenan modelos con textos analizados (anonimizados). RECOMENDACIÓN: Si texto contiene información sensible/privada, usa detectores que declaren "no almacenamiento" o elimina información identificable antes de analizar.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Claude AI', slug: 'que-es-claude-ai' },
+      { term: 'Turnitin', slug: 'que-es-turnitin' },
+      { term: 'Inteligencia Artificial Generativa', slug: 'que-es-inteligencia-artificial-generativa' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-detector-ia' },
+      { name: 'Detector de ChatGPT', url: '/detector-de-chatgpt-gratis?ref=glosario-detector-ia' },
+      { name: 'Humanizador de IA Gratis', url: '/humanizador-de-ia-gratis?ref=glosario-detector-ia' }
+    ],
+    cta: {
+      text: 'Analizar texto con detector de IA',
+      url: '/?ref=glosario-detector-ia'
+    }
   }
 ];
