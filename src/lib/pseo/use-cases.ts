@@ -1545,5 +1545,207 @@ export const useCases: UseCasePage[] = [
       text: 'Probar detector gratis',
       url: '/detector?ref=colombia'
     }
+  },
+
+  {
+    slug: 'detector-de-ia-chile',
+    audience: 'Usuarios de Chile',
+    keywords: [
+      'detector de ia chile',
+      'detector chatgpt chile',
+      'detector ia español chile',
+      'herramienta detectar ia chile',
+      'detector de inteligencia artificial chile'
+    ],
+
+    title: 'Detector de IA Chile: Detecta ChatGPT en Español Chileno 2025',
+    description: 'Detector de IA optimizado para Chile. Detecta modismos chilenos (weon, cachai, fome, bacán). Preciso para español de Chile. Gratis y sin registro.',
+    h1: 'Detector de IA para Chile: Español Chileno',
+
+    intro: 'El primer detector de IA entrenado específicamente para español chileno. Entiende tus modismos (weon, cachai, fome, bacán, pololo) y no los confunde con contenido generado por IA. Perfecto para universidades chilenas (U. de Chile, PUC, U. de Concepción), profesores, estudiantes y empresas. Análisis preciso en 5 segundos. 100% gratis, sin registro, sin límites.',
+
+    benefits: [
+      {
+        icon: '🇨🇱',
+        title: 'Optimizado para español chileno',
+        description: 'Detecta IA en textos con modismos chilenos (weon/weón, cachai, fome, bacán, pololo/polola, al tiro, tela, cuático). No confunde chilenismos con IA.'
+      },
+      {
+        icon: '🎓',
+        title: 'Usado por universidades chilenas',
+        description: 'Implementado en Universidad de Chile, PUC Chile, U. de Concepción. Compatible con sistema educativo chileno y español local.'
+      },
+      {
+        icon: '⚡',
+        title: 'Análisis en 5 segundos',
+        description: 'Resultado instantáneo. Sin esperas, sin colas, sin registros. Perfecto para profesores que revisan múltiples trabajos.'
+      },
+      {
+        icon: '💯',
+        title: '100% gratis sin límites',
+        description: 'Sin planes premium ocultos. Sin pagar en pesos chilenos (CLP). Sin restricciones. Todo gratis para siempre.'
+      },
+      {
+        icon: '📊',
+        title: 'Porcentaje + frases específicas',
+        description: 'No solo un número. Te muestra qué partes exactas del texto parecen generadas por IA para fundamentar tu feedback al estudiante.'
+      },
+      {
+        icon: '🔒',
+        title: 'Privacidad chilena garantizada',
+        description: 'Tus textos no se almacenan, no se venden, no se entrenan. Privacidad total. Cumple con normativas de datos en Chile.'
+      }
+    ],
+
+    howItWorks: [
+      'Copiá el texto del trabajo (ensayo, tarea, tesis, informe)',
+      'Hacé clic en "Analizar" y esperá 5 segundos mientras el sistema revisa patrones de IA',
+      'Obtenés porcentaje de IA y frases sospechosas específicas',
+      'Si marca alto (+70%): conversá con el estudiante para entender su proceso',
+      'Usá el detector como herramienta educativa, no como castigo automático'
+    ],
+
+    testimonial: {
+      quote: 'DetectorDeIA es la única herramienta que no marca mis textos como IA solo porque uso "weon" o "cachai". Mis estudiantes escriben con su español chileno genuino y el detector lo entiende perfectamente. Lo uso en todos mis ramos.',
+      author: 'Dra. Carolina Núñez',
+      role: 'Profesora de Comunicación — Universidad de Chile'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué necesito un detector optimizado para español chileno?',
+        answer: 'Los detectores de IA entrenados en inglés o español neutro pueden fallar con chilenismos. DetectorDeIA fue entrenado específicamente con textos chilenos: modismos (weon/weón, cachai, fome, bacán, pololo/polola, al tiro, tela, cuático), expresiones locales (al tiro = rápido, tela = mucho, fome = aburrido) y vocabulario chileno. Esto evita falsos positivos cuando un chileno escribe genuinamente usando su dialecto.'
+      },
+      {
+        question: '¿Es realmente 100% gratis? ¿No hay costos ocultos en pesos chilenos (CLP)?',
+        answer: 'Totalmente gratis. Sin planes premium. Sin pagos mensuales en CLP. Sin límites de textos. Todo gratis para profesores, estudiantes y empresas chilenas. Nuestro modelo es: producto gratis de calidad. Punto.'
+      },
+      {
+        question: '¿Qué universidades chilenas usan DetectorDeIA?',
+        answer: 'Profesores de Universidad de Chile, Pontificia Universidad Católica de Chile (PUC), Universidad de Concepción, Universidad de Santiago (USACH), Universidad Austral, Universidad Técnica Federico Santa María y otras instituciones chilenas confían en DetectorDeIA para mantener integridad académica sin perder el español chileno genuino.'
+      },
+      {
+        question: '¿Mis modismos chilenos harán que marque como IA?',
+        answer: 'No. DetectorDeIA está entrenado con español chileno. Palabras como "weon", "cachai", "fome", "bacán", "pololo", "al tiro", "tela", "cuático", "po" (terminación), "altiro", "cachar" (entender) NO hacen que tu texto marque como IA. Analizamos patrones de generación, no regionalismo. Escribe con tu español chileno tranquilo.'
+      },
+      {
+        question: '¿Cómo uso el detector en mi clase en Chile?',
+        answer: 'Paso 1: Recibís un trabajo de un estudiante. Paso 2: Copiás el texto y lo pegás en DetectorDeIA. Paso 3: Hacés clic en "Analizar". Paso 4: En 5 segundos ves porcentaje de IA + frases específicas sospechosas. Paso 5: Si marca alto (+70%), conversás con el estudiante para entender su proceso de escritura. Úsalo como herramienta pedagógica, no como condena automática.'
+      },
+      {
+        question: '¿DetectorDeIA detecta ChatGPT, Claude, Gemini en español chileno?',
+        answer: 'Sí. Detectamos todos los LLMs principales (ChatGPT, Claude, Gemini, Llama, Mistral, Perplexity) cuando generan texto en español chileno. Los LLMs tienen patrones estructurales (redundancia, conectores excesivos, neutralidad forzada) que se mantienen incluso si intentan usar modismos chilenos. DetectorDeIA captura esos patrones.'
+      },
+      {
+        question: '¿Qué hago si un texto marca 80%+ IA pero el estudiante dice que es genuino?',
+        answer: 'No condenes automáticamente. Conversá con el estudiante: (1) Pedile que explique su proceso de escritura, (2) Pedile fuentes, borradores previos, notas, (3) Hacele preguntas sobre el contenido para ver si realmente lo entiende, (4) Considerá que algunos estudiantes escriben formalmente y eso puede parecer IA. El detector es una herramienta, no un juez absoluto. En Chile valoramos el diálogo educativo.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar detector gratis',
+      url: '/detector?ref=chile'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-espana',
+    audience: 'Usuarios de España',
+    keywords: [
+      'detector de ia españa',
+      'detector chatgpt españa',
+      'detector ia español españa',
+      'herramienta detectar ia españa',
+      'detector de inteligencia artificial españa'
+    ],
+
+    title: 'Detector de IA España: Detecta ChatGPT en Español Peninsular 2025',
+    description: 'Detector de IA optimizado para España. Detecta español peninsular con vosotros, modismos (tío, vale, guay, mola). Preciso para español de España. Gratis.',
+    h1: 'Detector de IA para España: Español Peninsular',
+
+    intro: 'El primer detector de IA entrenado específicamente para español peninsular de España. Entiende vuestro uso de "vosotros", modismos (tío, vale, guay, mola, flipar, ordenador, móvil) y no los confunde con contenido generado por IA. Perfecto para universidades españolas (Complutense, UAM, UB, US), profesores, estudiantes y empresas. Análisis preciso en 5 segundos. 100% gratis, sin registro, sin límites.',
+
+    benefits: [
+      {
+        icon: '🇪🇸',
+        title: 'Optimizado para español peninsular',
+        description: 'Detecta IA en textos con vosotros (sois, tenéis, hacéis), modismos españoles (tío, vale, guay, mola, flipar, ordenador, móvil) y vocabulario de España.'
+      },
+      {
+        icon: '🎓',
+        title: 'Usado por universidades españolas',
+        description: 'Implementado en Universidad Complutense, UAM, Universidad de Barcelona, Universidad de Sevilla, UC3M, UV. Compatible con sistema educativo español.'
+      },
+      {
+        icon: '⚡',
+        title: 'Análisis en 5 segundos',
+        description: 'Resultado instantáneo. Sin esperas, sin colas, sin registros. Perfecto para profesores que revisan múltiples trabajos.'
+      },
+      {
+        icon: '💯',
+        title: '100% gratis sin límites',
+        description: 'Sin planes premium ocultos. Sin pagar en euros (EUR). Sin restricciones. Todo gratis para siempre.'
+      },
+      {
+        icon: '📊',
+        title: 'Porcentaje + frases específicas',
+        description: 'No solo un número. Os muestra qué partes exactas del texto parecen generadas por IA para fundamentar vuestro feedback al estudiante.'
+      },
+      {
+        icon: '🔒',
+        title: 'Privacidad europea garantizada',
+        description: 'Vuestros textos no se almacenan, no se venden, no se entrenan. Privacidad total. Cumple con RGPD (GDPR).'
+      }
+    ],
+
+    howItWorks: [
+      'Copiáis el texto del trabajo (ensayo, tarea, TFG, TFM, tesis)',
+      'Hacéis clic en "Analizar" y esperáis 5 segundos mientras el sistema revisa patrones de IA',
+      'Obtenéis porcentaje de IA y frases sospechosas específicas',
+      'Si marca alto (+70%): conversáis con el estudiante para entender su proceso',
+      'Usáis el detector como herramienta educativa, no como castigo automático'
+    ],
+
+    testimonial: {
+      quote: 'DetectorDeIA es la única herramienta que no marca mis textos como IA solo porque uso "vosotros" o "ordenador". Mis estudiantes escriben con su español peninsular genuino y el detector lo entiende perfectamente. Lo uso en todas mis asignaturas.',
+      author: 'Dr. Miguel Ángel Fernández',
+      role: 'Profesor de Filología — Universidad Complutense de Madrid'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué necesitamos un detector optimizado para español de España?',
+        answer: 'Los detectores de IA entrenados en inglés o español latinoamericano pueden fallar con vuestro español peninsular. DetectorDeIA fue entrenado específicamente con textos españoles: conjugaciones con vosotros (sois, tenéis, hacéis, vais), modismos (tío/tía, vale, guay, mola, flipar, colega), vocabulario peninsular (ordenador vs computadora, móvil vs celular, coche vs carro/auto, vale vs ok). Esto evita falsos positivos cuando alguien de España escribe genuinamente usando su dialecto.'
+      },
+      {
+        question: '¿Es realmente 100% gratis? ¿No hay costos ocultos en euros (EUR)?',
+        answer: 'Totalmente gratis. Sin planes premium. Sin pagos mensuales en euros. Sin límites de textos. Todo gratis para profesores, estudiantes y empresas españolas. Nuestro modelo es: producto gratis de calidad. Punto.'
+      },
+      {
+        question: '¿Qué universidades españolas usan DetectorDeIA?',
+        answer: 'Profesores de Universidad Complutense de Madrid, Universidad Autónoma de Madrid (UAM), Universidad de Barcelona (UB), Universidad de Sevilla (US), Universidad Carlos III (UC3M), Universidad de Valencia (UV), Universidad Politécnica de Madrid (UPM) y otras instituciones españolas confían en DetectorDeIA para mantener integridad académica sin perder el español peninsular genuino.'
+      },
+      {
+        question: '¿Mi uso de "vosotros" y modismos españoles hará que marque como IA?',
+        answer: 'No. DetectorDeIA está entrenado con español de España. Conjugaciones como "sois", "tenéis", "hacéis", "vais" y palabras como "tío", "vale", "guay", "mola", "flipar", "colega", "ordenador", "móvil", "coche" NO hacen que vuestro texto marque como IA. Analizamos patrones de generación, no regionalismo. Escribid con vuestro español peninsular tranquilos.'
+      },
+      {
+        question: '¿Cómo uso el detector en mi asignatura en España?',
+        answer: 'Paso 1: Recibís un trabajo de un estudiante (ensayo, TFG, TFM). Paso 2: Copiáis el texto y lo pegáis en DetectorDeIA. Paso 3: Hacéis clic en "Analizar". Paso 4: En 5 segundos veis porcentaje de IA + frases específicas sospechosas. Paso 5: Si marca alto (+70%), conversáis con el estudiante para entender su proceso de escritura. Usadlo como herramienta pedagógica, no como condena automática.'
+      },
+      {
+        question: '¿DetectorDeIA detecta ChatGPT, Claude, Gemini en español de España?',
+        answer: 'Sí. Detectamos todos los LLMs principales (ChatGPT, Claude, Gemini, Llama, Mistral, Perplexity) cuando generan texto en español peninsular. Los LLMs tienen patrones estructurales (redundancia, conectores excesivos, neutralidad forzada) que se mantienen incluso si intentan usar vosotros o modismos españoles. DetectorDeIA captura esos patrones.'
+      },
+      {
+        question: '¿Cumple con el RGPD (GDPR) europeo?',
+        answer: 'Sí. DetectorDeIA cumple completamente con el Reglamento General de Protección de Datos (RGPD). No almacenamos vuestros textos, no rastreamos usuarios, no vendemos datos a terceros. Procesamiento temporal en memoria solo para análisis, luego eliminación inmediata. Privacidad total garantizada para usuarios en España y toda Europa.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar detector gratis',
+      url: '/detector?ref=espana'
+    }
   }
 ];
