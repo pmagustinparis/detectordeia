@@ -1065,5 +1065,219 @@ export const features: FeaturePage[] = [
       text: 'Usar parafraseador gratis ahora',
       url: '/parafraseador?ref=parafrasear-sin-plagio'
     }
+  },
+
+  {
+    slug: 'reescribir-textos-academicos',
+    featureName: 'Reescribir Textos Académicos',
+    keywords: [
+      'reescribir textos academicos',
+      'reescribir ensayos universitarios',
+      'reescritura academica español',
+      'reescribir trabajos universidad',
+      'herramienta reescribir textos academicos'
+    ],
+
+    // SEO
+    title: 'Reescribir Textos Académicos en Español 2025 | Gratis y Ético',
+    description: 'Aprende a reescribir textos académicos correctamente. Herramienta gratis, técnicas de reescritura ética, cómo mejorar ensayos. Para estudiantes universitarios.',
+    h1: 'Reescribir Textos Académicos: Guía Completa y Herramienta Gratis',
+
+    // Content
+    intro: '¿Necesitás reescribir textos académicos (ensayos, trabajos, tesis) manteniendo el significado pero mejorando claridad y estilo? Esta guía completa enseña técnicas correctas de reescritura académica: cómo reformular textos propios para mejorarlos, diferencia entre reescribir vs plagiar, cuándo citar fuentes, y herramientas gratuitas. Perfecto para estudiantes universitarios que quieren mejorar su escritura académica de forma ética.',
+
+    benefits: [
+      {
+        icon: '📝',
+        title: 'Reescritura de Textos Propios',
+        description: 'Aprende a reescribir TUS PROPIOS textos para mejorar claridad, coherencia, fluidez. Transforma borradores iniciales en trabajos pulidos y profesionales.'
+      },
+      {
+        icon: '🎯',
+        title: 'Técnicas de Mejora Académica',
+        description: 'Elimina redundancia, mejora conectores lógicos, fortalece argumentos, ajusta tono académico formal, restructura párrafos para mejor fluidez.'
+      },
+      {
+        icon: '⚖️',
+        title: 'Reescribir Éticamente vs Plagiar',
+        description: 'CRÍTICO: Reescribir textos AJENOS sin citar es plagio. Reescribir tus PROPIOS textos es legítimo. Aprende la diferencia y cuándo DEBES citar fuentes.'
+      },
+      {
+        icon: '✍️',
+        title: 'Herramienta de Reescritura Gratis',
+        description: 'Acceso a nuestro reescritor de textos gratis. 15 usos diarios, 600 caracteres por uso. Perfecto para pulir borradores, mejorar redacción, ajustar estilo.'
+      },
+      {
+        icon: '🎓',
+        title: 'Estilo Académico Universitario',
+        description: 'Aprende a escribir con estilo académico apropiado: formal pero claro, objetivo pero argumentativo, técnico pero accesible. Perfecto para ensayos y tesis.'
+      },
+      {
+        icon: '🔍',
+        title: 'Verificación Anti-Plagio',
+        description: 'Usa detectores de plagio para verificar que tu reescritura no sea inadvertidamente similar a fuentes existentes. Protege tu integridad académica.'
+      }
+    ],
+
+    howToUse: [
+      'Escribe tu borrador inicial completo (no copies de otros, escribe TUS ideas)',
+      'Identifica secciones que necesitan mejora: párrafos confusos, argumentos débiles, redundancia',
+      'Reescribe esas secciones mejorando claridad, fluidez, argumentación',
+      'Usa herramienta de reescritura para generar alternativas y ver opciones de mejora',
+      'Revisa el resultado y ajusta manualmente para mantener tu voz y estilo',
+      'Si reescribiste ideas de FUENTES AJENAS: CITA las fuentes (APA, MLA, etc.)',
+      'Verifica con detector de plagio que tu texto final no sea similar a fuentes existentes'
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué significa reescribir textos académicos?',
+        answer: 'Reescribir textos académicos significa reformular/mejorar textos para mayor claridad, coherencia y calidad sin cambiar el significado esencial. Dos casos: (1) Reescribir TUS PROPIOS textos: Legítimo y recomendado. Mejoras tus borradores para hacerlos más claros y profesionales. (2) Reescribir textos AJENOS: SOLO legítimo si citas las fuentes. Si no citas, es plagio incluso si cambias palabras. CLAVE: Reescritura ética es mejorar tu trabajo, no copiar trabajo ajeno.'
+      },
+      {
+        question: '¿Puedo usar herramientas para reescribir mis trabajos académicos?',
+        answer: 'SÍ, si son TUS textos. Usar herramientas para reescribir/mejorar tus PROPIOS borradores es legítimo y útil. Proceso correcto: (1) Escribe tu borrador inicial con tus ideas, (2) Usa reescritor para generar versiones mejoradas, (3) Revisa y ajusta para mantener tu voz, (4) Si usaste ideas de fuentes externas, CITA esas fuentes. NO legítimo: Copiar texto ajeno, reescribirlo con herramienta, y presentarlo como tuyo sin citar. Eso es plagio.'
+      },
+      {
+        question: '¿Cuál es la diferencia entre reescribir y parafrasear?',
+        answer: 'REESCRIBIR: Reformular TUS PROPIOS textos para mejorarlos (claridad, estilo, fluidez). No necesitas citarte a ti mismo. PARAFRASEAR: Reformular textos AJENOS con tus palabras. SIEMPRE debes citar la fuente original. Ejemplo: Reescribir (OK sin citar): Mejoras tu borrador de ensayo → versión final pulida. Parafrasear (DEBES citar): Tomas idea de paper científico → la reescribes con tus palabras → CITAS el paper. Ambos implican reformulación, pero parafrasear siempre requiere citación.'
+      },
+      {
+        question: '¿Cómo mejorar la calidad de mis textos académicos al reescribir?',
+        answer: 'Técnicas de reescritura académica: (1) CLARIDAD: Elimina oraciones confusas, divide párrafos largos, usa términos precisos. (2) COHERENCIA: Mejora conectores lógicos (por tanto, sin embargo, además), asegura flujo de ideas. (3) CONCISIÓN: Elimina redundancia ("En mi opinión personal" → "Considero"), reduce palabrería. (4) ARGUMENTACIÓN: Fortalece evidencia, agrega ejemplos específicos, desarrolla mejor tus puntos. (5) TONO: Ajusta formalidad (elimina "creo que", usa voz activa estratégicamente). (6) ESTRUCTURA: Reorganiza ideas para mejor impacto (punto fuerte al final).'
+      },
+      {
+        question: '¿Es plagio reescribir trabajos de otros estudiantes?',
+        answer: 'SÍ, es plagio grave. Reescribir/parafrasear trabajo de otro estudiante (con o sin herramientas) y presentarlo como tuyo es PLAGIO. Incluso si cambias todas las palabras. Estás usando las ideas, argumentos, estructura de otra persona sin permiso ni atribución. Consecuencias: Reprobar, expulsión, anotación permanente en expediente. NUNCA: Copies/reescribas trabajos de compañeros, trabajos comprados online, trabajos de años anteriores. SIEMPRE: Escribe tu propio trabajo original basado en tu comprensión y análisis.'
+      },
+      {
+        question: '¿Puedo reescribir mi propio trabajo anterior y entregarlo de nuevo?',
+        answer: 'Generalmente NO sin permiso. Esto se llama "auto-plagio" o "reciclaje de trabajos". Políticas varían: Algunas universidades prohíben entregar el mismo trabajo en 2 cursos diferentes (incluso reescrito). Otras permiten si declaras que es extensión de trabajo previo. MEJOR PRÁCTICA: (1) Pregunta a tu profesor ANTES de reusar trabajo anterior. (2) Si permite, declara que expandes/reescribes trabajo previo. (3) Cita tu trabajo anterior si es necesario. (4) Desarrolla significativamente el contenido (no solo reescritura superficial). Nunca asumas que puedes reusar sin permiso.'
+      },
+      {
+        question: '¿Las herramientas de reescritura automática mejoran la calidad académica?',
+        answer: 'PARCIALMENTE. Herramientas ayudan pero no reemplazan pensamiento crítico. Ventajas: (1) Sugieren formulaciones alternativas, (2) Mejoran variedad léxica, (3) Identifican redundancia. Limitaciones: (1) No mejoran argumentos débiles, (2) No agregan evidencia faltante, (3) Pueden cambiar significado inadvertidamente, (4) Estilo puede sonar artificial. USO CORRECTO: (1) Usa herramienta para generar opciones, (2) Selecciona/adapta lo que funciona, (3) Revisa críticamente cada cambio, (4) Mantén tu voz y argumentación. Herramienta = ayuda, no sustituto de tu trabajo intelectual.'
+      },
+      {
+        question: '¿Cómo verifico que mi texto reescrito no es plagio accidental?',
+        answer: 'Pasos de verificación anti-plagio: (1) Usa detector de plagio (Turnitin si tu universidad lo ofrece, o herramientas gratuitas online). (2) Revisa coincidencias detectadas: ¿Son citas correctamente atribuidas? ¿Son frases comunes inevitables? ¿Necesitas parafrasear más? (3) Verifica TODAS tus citas: cada idea/dato de fuente externa debe estar citado. (4) Revisa bibliografía: todas las fuentes citadas en texto deben estar en referencias. (5) Si detecta similitud alta (>15-20%): reescribe más esas secciones o convierte en citas directas. Prevención mejor que corrección.'
+      },
+      {
+        question: '¿Qué herramientas gratis puedo usar para reescribir textos académicos?',
+        answer: 'Herramientas gratuitas recomendadas: (1) DetectorDeIA Parafraseador: 15 usos diarios gratis, optimizado para español, mantiene significado académico. (2) QuillBot (inglés): parafraseo, límite caracteres en versión free. (3) Grammarly (inglés): corrección gramática + sugerencias de reescritura. (4) Hemingway Editor: identifica oraciones complejas que necesitan simplificación. (5) LanguageTool: corrección multiidioma incluye español. IMPORTANTE: Todas son AYUDAS. Debes revisar y adaptar sugerencias. Ninguna garantiza calidad académica automáticamente. Tu juicio crítico es esencial.'
+      }
+    ],
+
+    cta: {
+      text: 'Reescribir textos gratis ahora',
+      url: '/parafraseador?ref=reescribir-academicos'
+    }
+  },
+
+  {
+    slug: 'sinonimos-de-textos-online',
+    featureName: 'Sinónimos de Textos Online',
+    keywords: [
+      'sinonimos de textos online',
+      'cambiar palabras por sinonimos',
+      'sinonimos online español gratis',
+      'herramienta sinonimos textos',
+      'reemplazar palabras sinonimos'
+    ],
+
+    // SEO
+    title: 'Sinónimos de Textos Online Gratis en Español 2025',
+    description: 'Cambia palabras por sinónimos online gratis en español. Herramienta para reemplazar palabras, mejorar vocabulario, evitar repeticiones. Sin registro.',
+    h1: 'Sinónimos de Textos Online: Mejora Tu Vocabulario Gratis',
+
+    // Content
+    intro: '¿Necesitás cambiar palabras por sinónimos para mejorar tu texto? Nuestra herramienta gratuita de sinónimos online en español ayuda a enriquecer vocabulario, eliminar repeticiones y mejorar fluidez de textos. Perfecto para estudiantes, escritores y profesionales que quieren diversificar su lenguaje. 100% gratis, optimizado para español de España y LATAM.',
+
+    benefits: [
+      {
+        icon: '📖',
+        title: 'Banco de Sinónimos en Español',
+        description: 'Accede a miles de sinónimos contextuales en español. No solo sinónimos básicos, sino alternativas apropiadas según contexto académico, formal o casual.'
+      },
+      {
+        icon: '✨',
+        title: 'Elimina Repeticiones de Palabras',
+        description: 'Identifica palabras repetidas en tu texto y sugerimos sinónimos variados. Mejora fluidez y profesionalismo eliminando redundancia léxica.'
+      },
+      {
+        icon: '🎯',
+        title: 'Sinónimos Contextuales Apropiados',
+        description: 'No todos los sinónimos son intercambiables. Sugerimos sinónimos apropiados según contexto: académico vs casual, formal vs coloquial, técnico vs general.'
+      },
+      {
+        icon: '💸',
+        title: '100% Gratis - Sin Límites',
+        description: 'Usa nuestra herramienta de sinónimos ilimitadamente gratis. Sin restricciones, sin registros obligatorios, sin planes premium ocultos.'
+      },
+      {
+        icon: '🌎',
+        title: 'Español LATAM y España',
+        description: 'Sinónimos optimizados para español argentino, mexicano, colombiano, chileno, peruano, español peninsular. Reconoce variantes regionales.'
+      },
+      {
+        icon: '⚠️',
+        title: 'Advertencia: No Evita Plagio',
+        description: 'CRÍTICO: Cambiar palabras por sinónimos NO evita plagio. Si cambias palabras de texto ajeno sin citar la fuente, ES PLAGIO. Usa sinónimos para mejorar TUS textos.'
+      }
+    ],
+
+    howToUse: [
+      'Copia tu texto que quieres mejorar con sinónimos',
+      'Pega el texto en nuestra herramienta de sinónimos',
+      'La herramienta identifica palabras repetidas y sugiere sinónimos',
+      'Revisa sugerencias y selecciona sinónimos apropiados según tu contexto',
+      'Verifica que el significado se mantiene (no todos los sinónimos son exactos)',
+      'Usa sinónimos para enriquecer TU vocabulario, no para copiar textos ajenos',
+      'Si usaste ideas de fuentes externas: CITA las fuentes (cambiar palabras no evita plagio)'
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué es una herramienta de sinónimos de textos?',
+        answer: 'Una herramienta de sinónimos de textos analiza tu escrito e identifica: (1) Palabras repetidas excesivamente, (2) Términos básicos que podrías mejorar, (3) Vocabulario monótono. Luego sugiere sinónimos contextuales apropiados para enriquecer tu lenguaje. Objetivo: Mejorar variedad léxica, profesionalismo, fluidez. NO es herramienta de plagio (cambiar palabras de texto ajeno sin citar sigue siendo plagio).'
+      },
+      {
+        question: '¿Cambiar palabras por sinónimos evita el plagio?',
+        answer: 'NO. Este es un error grave y común. Cambiar palabras de texto ajeno por sinónimos sin citar la fuente ES PLAGIO (llamado "plagio mosaico" o "patchwriting"). Ejemplo: Original ajeno: "La IA transforma la educación". Con sinónimos (SIGUE SIENDO PLAGIO): "La inteligencia artificial revoluciona la enseñanza". LEGÍTIMO: (1) Usar sinónimos para mejorar TUS textos (eliminar repeticiones), (2) Parafrasear texto ajeno + CITAR la fuente. Sinónimos solos nunca evitan necesidad de citación.'
+      },
+      {
+        question: '¿Cómo elegir el sinónimo correcto?',
+        answer: 'Criterios para seleccionar sinónimos apropiados: (1) SIGNIFICADO: ¿El sinónimo tiene exactamente el mismo significado? (usar/utilizar = sí, usar/emplear = casi, usar/abusar = no). (2) CONNOTACIÓN: ¿Tiene mismo tono? (casa/hogar/vivienda/domicilio tienen connotaciones diferentes). (3) REGISTRO: ¿Es apropiado para tu contexto? (niño = neutral, chico = casual, infante = formal). (4) COLOCACIÓN: ¿Se combina naturalmente con palabras cercanas? (hacer una pregunta = sí, efectuar una pregunta = raro). REGLA: Si dudas, consulta diccionario o mantén palabra original.'
+      },
+      {
+        question: '¿Cuándo debo usar sinónimos en textos académicos?',
+        answer: 'Usa sinónimos en textos académicos para: (1) Evitar repetición excesiva de términos clave (si "estudiante" aparece 20 veces, alterna con "alumno", "educando"). (2) Mejorar precisión (cambiar verbo genérico "hacer" por específico "implementar", "diseñar", "ejecutar"). (3) Ajustar registro formal (cambiar "muy grande" por "considerable", "significativo"). NO uses sinónimos: (1) Para términos técnicos específicos (mantén consistencia), (2) Solo por variedad si oscurece significado, (3) Para evitar plagio (no funciona sin citación). Prioridad: Claridad > Variedad.'
+      },
+      {
+        question: '¿Qué herramientas de sinónimos en español son mejores?',
+        answer: 'Herramientas recomendadas para español: (1) DetectorDeIA Parafraseador: Contexto académico, 15 usos diarios gratis, español LATAM/España. (2) WordReference.com: Diccionario completo con sinónimos, foros para contexto. (3) Sinónimos.com: Base de datos extensa español peninsular. (4) Real Academia Española (RAE): Diccionario oficial para verificar uso correcto. (5) SpanishDict: Sinónimos + ejemplos de uso. IMPORTANTE: Herramientas sugieren opciones, TÚ decides cuál es apropiado según contexto. Siempre verifica significado antes de usar sinónimo.'
+      },
+      {
+        question: '¿Puedo usar sinónimos para hacer mi texto más largo?',
+        answer: 'NO recomendable. Agregar sinónimos innecesarios para inflar longitud es mala práctica académica. Problemas: (1) Reduce claridad (más palabras ≠ mejor texto), (2) Crea redundancia molesta, (3) Profesores detectan "relleno", (4) Baja calidad percibida. MEJOR para aumentar longitud: (1) Desarrolla argumentos más profundamente, (2) Agrega ejemplos específicos y evidencia, (3) Analiza implicaciones de tus puntos, (4) Responde contraargumentos potenciales. Calidad académica = profundidad de análisis, no cantidad de palabras.'
+      },
+      {
+        question: '¿Los sinónimos automáticos siempre mantienen el significado?',
+        answer: 'NO. Herramientas automáticas cometen errores. Problemas comunes: (1) Sinónimos parciales: "grande" → "enorme" cambia intensidad. (2) Sinónimos incorrectos: "banco" (institución) → "orilla" (contexto equivocado). (3) Registro inapropiado: "problema" → "inconveniente" en contexto serio. (4) Colocaciones raras: "tomar una decisión" → "agarrar una decisión" (incorrecto). SIEMPRE revisa manualmente sugerencias automáticas. Lee oración completa con sinónimo para verificar naturalidad. Herramienta = sugerencia, no autoridad.'
+      },
+      {
+        question: '¿Necesito citar fuentes si uso sinónimos de un texto?',
+        answer: 'SÍ, ABSOLUTAMENTE. Cambiar palabras por sinónimos NO elimina la obligación de citar. Si tomas IDEAS, ARGUMENTOS, INFORMACIÓN o ESTRUCTURA de una fuente y solo cambias palabras, DEBES citar la fuente original. Plagio no es solo copiar palabras exactas, es también copiar ideas sin atribuir. Proceso correcto: (1) Lee fuente, (2) Entiende la idea, (3) Escribe con tus palabras + tu análisis, (4) CITA la fuente. Sinónimos sin citación = plagio de ideas.'
+      },
+      {
+        question: '¿Cómo evito que mi texto suene artificial con muchos sinónimos?',
+        answer: 'Consejos para uso natural de sinónimos: (1) Prioriza CLARIDAD sobre variedad (palabra simple clara > sinónimo complejo oscuro). (2) Mantén tu VOZ natural (no uses palabras que nunca dirías). (3) Usa sinónimos estratégicamente (solo donde repetición molesta realmente). (4) Varía estructura de oraciones además de vocabulario (no solo cambies palabras). (5) Lee en voz alta después de cambios (si suena raro, probablemente está mal). (6) Consistencia con términos técnicos (no alternes "fotosíntesis"/"proceso de conversión lumínica"). Naturalidad > Sofisticación forzada.'
+      }
+    ],
+
+    cta: {
+      text: 'Encontrar sinónimos gratis ahora',
+      url: '/parafraseador?ref=sinonimos-textos'
+    }
   }
 ];
