@@ -721,5 +721,314 @@ export const useCases: UseCasePage[] = [
       text: 'Verificar tarea gratis',
       url: '/detector?ref=para-tareas'
     }
+  },
+
+  {
+    slug: 'detector-de-ia-para-empresas',
+    audience: 'Empresas y Equipos de Marketing',
+    keywords: [
+      'detector de ia para empresas',
+      'verificar contenido empresarial ia',
+      'detector ia copywriting',
+      'control calidad contenido ia',
+      'detector chatgpt empresas'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Empresas: Verifica Contenido y Copywriting 2025',
+    description: 'Detector de IA para empresas. Verifica contenido de marketing, copywriting, emails y comunicaciones. Asegura calidad y autenticidad en español.',
+    h1: 'Detector de IA para Empresas: Control de Calidad de Contenido',
+
+    // Content
+    intro: 'Las empresas necesitan verificar que el contenido creado por equipos internos o freelancers no sea 100% generado con IA sin revisión humana. DetectorDeIA ayuda a equipos de marketing, comunicación y contenido a mantener estándares de calidad, asegurando que el contenido tenga voz de marca auténtica, no genérica de ChatGPT.',
+
+    benefits: [
+      {
+        icon: '🎯',
+        title: 'Mantiene voz de marca auténtica',
+        description: 'Asegura que el contenido tenga personalidad de tu marca, no voz genérica de IA. Los clientes detectan cuando un texto es robótico y pierden confianza.'
+      },
+      {
+        icon: '✅',
+        title: 'Control de calidad de freelancers',
+        description: 'Verifica que copywriters/redactores freelancers no entreguen texto 100% de ChatGPT sin editar. Protege la inversión en contenido.'
+      },
+      {
+        icon: '📊',
+        title: 'Análisis antes de publicar',
+        description: 'Revisa artículos de blog, emails, landing pages antes de publicar. Evita contenido genérico que no convierte ni genera engagement.'
+      },
+      {
+        icon: '🚀',
+        title: 'Optimización SEO real',
+        description: 'Google penaliza contenido 100% IA sin valor agregado. Asegura que tu contenido tenga insights únicos, no solo texto generado automáticamente.'
+      },
+      {
+        icon: '💰',
+        title: 'ROI de contenido',
+        description: 'Contenido genérico de IA no convierte. Asegura que el contenido publicado tenga la calidad necesaria para generar leads y ventas.'
+      },
+      {
+        icon: '🔒',
+        title: 'Confidencialidad empresarial',
+        description: 'Tu contenido no se guarda ni comparte. Privacidad total para información sensible de producto, estrategia o comunicaciones internas.'
+      }
+    ],
+
+    howItWorks: [
+      'Tu equipo crea contenido (artículos, emails, copy de landing pages, comunicados)',
+      'Antes de publicar, analizas el contenido en DetectorDeIA para verificar nivel de IA',
+      'Obtenés porcentaje de IA y frases específicas que suenan genéricas/robóticas',
+      'Si marca alto (+60%): pedí al creador que agregue voz de marca, ejemplos específicos, insights únicos',
+      'Reanaliza hasta que el contenido tenga autenticidad y personalidad de marca'
+    ],
+
+    testimonial: {
+      quote: 'Contratamos redactores freelance para nuestro blog corporativo. Algunos entregaban textos que sonaban genéricos. DetectorDeIA nos ayudó a identificar cuáles eran 100% ChatGPT y ahora exigimos que todo marque menos de 40%. La calidad mejoró notablemente.',
+      author: 'Laura Sánchez',
+      role: 'Head of Content, SaaS empresa B2B (España)'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué las empresas necesitan detectar IA en su contenido?',
+        answer: 'Tres razones: (1) Voz de marca: contenido genérico de IA no refleja tu marca, suena igual que tu competencia, (2) SEO: Google penaliza contenido 100% IA sin valor agregado, tu ranking baja, (3) Conversión: contenido robótico no genera confianza ni engagement. Los clientes notan la diferencia entre contenido genuino y IA genérica. Inviertes en contenido para diferenciarte, no para sonar como todos.'
+      },
+      {
+        question: '¿Cómo detectar si un freelancer entregó contenido 100% ChatGPT?',
+        answer: 'Señales: (1) Texto perfecto pero genérico sin insights específicos de tu industria, (2) Frases cliché ("cabe destacar que", "es importante mencionar"), (3) Estructura mecánica perfecta (intro-3 puntos-conclusión), (4) Falta de voz de marca o personalidad, (5) Ejemplos obvios sin profundidad. DetectorDeIA identifica todos estos patrones y muestra porcentaje exacto de IA.'
+      },
+      {
+        question: '¿Está mal usar IA para crear contenido empresarial?',
+        answer: 'NO está mal usar IA como herramienta inicial. Está mal publicar contenido 100% IA sin editar ni agregar valor humano. Uso recomendado: (1) IA genera borrador inicial, (2) Humano agrega insights específicos, casos de uso reales, voz de marca, ejemplos concretos, (3) Resultado final marca <40% en detector. IA es asistente, no reemplazo de estrategia de contenido.'
+      },
+      {
+        question: '¿Qué tipos de contenido empresarial puedo analizar?',
+        answer: 'Cualquier contenido escrito en español: artículos de blog corporativo, copy de landing pages, emails de marketing, newsletters, comunicados de prensa, descripciones de producto, casos de estudio, whitepapers, scripts de video, posts de redes sociales. Si es contenido que representa tu marca, debería ser verificado.'
+      },
+      {
+        question: '¿Cuánto contenido puedo analizar por mes?',
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para equipos: plan PRO individual $10/mes (análisis ilimitados, 15,000 caracteres). Si tu equipo analiza mucho contenido diariamente, varios miembros pueden tener cuentas PRO. No hay planes empresariales especiales por ahora, pero puedes contactarnos para volúmenes grandes.'
+      },
+      {
+        question: '¿El detector ayuda a mejorar el contenido?',
+        answer: 'Sí, indirectamente. DetectorDeIA muestra exactamente qué frases suenan genéricas/robóticas. Esto ayuda a tu equipo a: (1) Identificar qué secciones necesitan más personalidad de marca, (2) Evitar clichés típicos de IA, (3) Agregar ejemplos específicos donde falta profundidad. Úsalo como checklist de calidad antes de publicar.'
+      },
+      {
+        question: '¿Qué porcentaje de IA es aceptable para contenido empresarial?',
+        answer: 'Depende del objetivo: Blog corporativo de liderazgo de pensamiento: <30% (necesita insights únicos), Descripciones de producto: <40% (necesita diferenciación), Emails de marketing: <35% (necesita personalización), Comunicados de prensa: <25% (necesita autenticidad). Contenido genérico no genera engagement ni conversiones. Apunta a que tu contenido suene humano y específico.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar contenido empresarial',
+      url: '/detector?ref=para-empresas'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-para-contenido-web',
+    audience: 'Creadores de Contenido y SEO',
+    keywords: [
+      'detector de ia para contenido web',
+      'verificar articulos seo ia',
+      'detector ia contenido online',
+      'control calidad articulos web',
+      'detector chatgpt seo'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Contenido Web: Verifica Artículos SEO 2025',
+    description: 'Detector de IA para contenido web y artículos SEO. Evita penalizaciones de Google. Asegura calidad y valor agregado en español.',
+    h1: 'Detector de IA para Contenido Web: Artículos SEO y Páginas',
+
+    // Content
+    intro: 'Google penaliza contenido 100% generado con IA que no aporta valor único. Si publicas artículos SEO, guías o páginas web creadas con ChatGPT sin edición humana, tu ranking caerá. DetectorDeIA te ayuda a verificar que tu contenido web tenga el nivel de calidad necesario para posicionar y aportar valor real a usuarios.',
+
+    benefits: [
+      {
+        icon: '🔍',
+        title: 'Evita penalizaciones de Google',
+        description: 'Google detecta contenido 100% IA sin valor agregado y lo penaliza. Verifica que tu contenido web tenga suficiente edición humana e insights únicos.'
+      },
+      {
+        icon: '📈',
+        title: 'Mejora posicionamiento SEO',
+        description: 'Contenido con análisis profundo, ejemplos específicos y voz única posiciona mejor. Detecta qué artículos necesitan más profundidad antes de publicar.'
+      },
+      {
+        icon: '✍️',
+        title: 'Optimiza artículos antes de publicar',
+        description: 'Analiza artículos SEO, guías, tutoriales antes de publicar. Identifica secciones genéricas que necesitan más información específica o ejemplos reales.'
+      },
+      {
+        icon: '🎯',
+        title: 'Diferenciación de competencia',
+        description: 'Tu competencia también usa IA. Si publicas contenido genérico idéntico al resto, no rankeas. Asegura que tu contenido tenga ángulo único.'
+      },
+      {
+        icon: '⚡',
+        title: 'Análisis rápido de múltiples artículos',
+        description: 'Revisa decenas de artículos en minutos. Perfecto para editores SEO que gestionan múltiples redactores o contenido generado a escala.'
+      },
+      {
+        icon: '💡',
+        title: 'Guía de mejora de contenido',
+        description: 'El detector muestra exactamente qué frases suenan genéricas. Usalo como checklist para agregar profundidad, datos específicos y voz propia.'
+      }
+    ],
+
+    howItWorks: [
+      'Crea tu artículo web/SEO (con IA como borrador inicial o escrito desde cero)',
+      'Antes de publicar, analiza el contenido completo en DetectorDeIA',
+      'Revisa el porcentaje de IA y las frases específicas marcadas como genéricas',
+      'Agrega profundidad a secciones genéricas: datos específicos, ejemplos reales, casos de uso, opiniones basadas en experiencia',
+      'Reanaliza hasta que marque <30% (ideal para contenido SEO de calidad)'
+    ],
+
+    testimonial: {
+      quote: 'Manejo 15 sitios de nicho con contenido SEO. Antes publicaba artículos de ChatGPT con ediciones mínimas. Google me penalizó. Ahora uso DetectorDeIA para asegurarme de que todo marque menos de 30%. Mi tráfico orgánico se recuperó en 3 meses.',
+      author: 'Carlos Ruiz',
+      role: 'SEO Specialist & Publisher de Contenido (México)'
+    },
+
+    faqs: [
+      {
+        question: '¿Google realmente penaliza contenido generado con IA?',
+        answer: 'Google no penaliza contenido solo porque fue creado con IA. Penaliza contenido de baja calidad sin valor agregado, sea IA o humano. Pero contenido 100% IA tiende a ser genérico, superficial, sin insights únicos = baja calidad. Google lo detecta (no directamente con detectores, sino por señales de calidad: tiempo en página bajo, sin backlinks, sin engagement). Si tu contenido IA aporta valor real, está bien. Si es genérico, te penaliza.'
+      },
+      {
+        question: '¿Qué porcentaje de IA es seguro para SEO?',
+        answer: 'Para contenido SEO que quieres que rankee: menos de 30% es ideal. 30-50% es zona gris (puede funcionar si el contenido tiene valor único). Más de 60% es riesgoso (probablemente muy genérico). La clave no es el porcentaje, sino el valor: ¿tu artículo tiene información que no está en otros 100 artículos sobre el tema? ¿Tiene datos específicos, casos reales, opiniones expertas? Si solo repite lo que todos dicen, Google no lo va a rankear.'
+      },
+      {
+        question: '¿Cómo mejorar un artículo que marca alto en IA?',
+        answer: 'Estrategia probada: (1) Identifica las secciones que DetectorDeIA marca como genéricas, (2) Agrega datos específicos con fuentes (estadísticas, estudios, casos reales), (3) Incluye ejemplos concretos basados en experiencia o investigación original, (4) Agrega tu opinión/análisis (qué significa esto para el lector, por qué importa), (5) Usa lenguaje conversacional, no formal cliché, (6) Reanaliza hasta <30%. El contenido ahora tiene profundidad real.'
+      },
+      {
+        question: '¿Funciona para detectar contenido de otros idiomas traducido?',
+        answer: 'Parcialmente. Si alguien genera contenido en inglés con ChatGPT y lo traduce al español con DeepL, DetectorDeIA puede identificar estructura sintáctica inglesa traducida literalmente y vocabulario poco natural. Pero es más difícil de detectar que contenido generado directamente en español. Si sospechas que un redactor hace esto, el detector te dará señales (estructura mecánica, frases poco naturales en español).'
+      },
+      {
+        question: '¿Puedo usar IA para escribir artículos SEO?',
+        answer: 'Sí, pero con estrategia correcta: (1) Usa IA para borrador inicial y research, (2) Agrega tu investigación original, datos específicos, ejemplos reales, (3) Inyecta tu voz y perspectiva única, (4) Edita para que fluya natural, no robótico, (5) Resultado final debe marcar <30% en detector. IA es herramienta de productividad, no atajo para contenido de baja calidad. Los sitios que solo publican IA sin editar están muriendo en rankings.'
+      },
+      {
+        question: '¿Cuántos artículos puedo analizar?',
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para artículos largos (2,000+ palabras), plan PRO a $10/mes permite hasta 15,000 caracteres por análisis + análisis ilimitados. Si publicas contenido a escala (10+ artículos semanales), plan PRO es esencial. Puedes analizar por secciones si el artículo es muy largo.'
+      },
+      {
+        question: '¿El detector reemplaza herramientas SEO como Surfer o Clearscope?',
+        answer: 'No, son complementarias. Surfer/Clearscope optimizan para palabras clave y estructura SEO. DetectorDeIA verifica calidad y autenticidad del contenido. Workflow ideal: (1) Usa Surfer para keywords/estructura, (2) Escribe contenido con IA + edición humana, (3) Usa DetectorDeIA para verificar que no sea genérico, (4) Publica con confianza. Todas son herramientas para contenido SEO ganador.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar artículo web gratis',
+      url: '/detector?ref=contenido-web'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-para-blogs',
+    audience: 'Bloggers y Creadores de Contenido',
+    keywords: [
+      'detector de ia para blogs',
+      'verificar articulos blog ia',
+      'detector chatgpt blog',
+      'como saber si un blog es ia',
+      'detector ia posts blog'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Blogs: Verifica Artículos y Posts 2025',
+    description: 'Detector de IA para blogs y artículos. Mantén autenticidad y voz personal. Evita contenido genérico. Ideal para bloggers en español.',
+    h1: 'Detector de IA para Blogs: Mantén tu Voz Auténtica',
+
+    // Content
+    intro: 'Los blogs exitosos tienen voz personal auténtica que conecta con lectores. Si publicas artículos 100% generados con ChatGPT, tu blog sonará genérico como miles de otros. DetectorDeIA ayuda a bloggers a verificar que su contenido mantenga personalidad única, no voz robótica de IA que aleja a la audiencia.',
+
+    benefits: [
+      {
+        icon: '🎨',
+        title: 'Mantiene tu voz personal',
+        description: 'Tu blog crece por tu perspectiva única, no por contenido genérico. Asegura que cada artículo tenga tu estilo, opiniones y experiencias personales.'
+      },
+      {
+        icon: '🤝',
+        title: 'Conecta con tu audiencia',
+        description: 'Lectores siguen blogs por la personalidad del autor. Contenido genérico de IA no genera lealtad ni comunidad. Verifica que tu contenido sea auténtico.'
+      },
+      {
+        icon: '📊',
+        title: 'Mejora engagement y retención',
+        description: 'Artículos con historias personales, opiniones genuinas y ejemplos reales generan más comentarios, shares y lectores recurrentes que IA genérica.'
+      },
+      {
+        icon: '🔥',
+        title: 'Diferenciación en tu nicho',
+        description: 'Tu competencia también usa IA. Si publicas lo mismo que todos, no destacas. Asegura que tu blog tenga ángulo único y voz reconocible.'
+      },
+      {
+        icon: '💰',
+        title: 'Monetización sostenible',
+        description: 'Blogs genéricos no generan ingresos a largo plazo (AdSense, afiliados, productos). Audiencia leal paga. Audiencia que detecta IA se va.'
+      },
+      {
+        icon: '✅',
+        title: 'Control de calidad de colaboradores',
+        description: 'Si tienes guest writers o redactores freelance, verifica que no entreguen contenido 100% ChatGPT que daña la reputación de tu blog.'
+      }
+    ],
+
+    howItWorks: [
+      'Escribe tu artículo de blog (puedes usar IA como borrador inicial para investigación)',
+      'Antes de publicar, analiza el artículo completo en DetectorDeIA',
+      'Revisa el porcentaje de IA y las secciones marcadas como genéricas/robóticas',
+      'Agrega tu voz personal: anécdotas, opiniones, ejemplos de tu experiencia, humor, estilo conversacional',
+      'Reanaliza hasta que marque <25% (blogs personales deben sonar humanos)'
+    ],
+
+    testimonial: {
+      quote: 'Tengo un blog de viajes que monetizo con afiliados. Cuando empecé a usar ChatGPT para escribir más rápido, mi tasa de rebote subió y comentarios bajaron. Los lectores notaban que perdí mi voz. DetectorDeIA me ayuda a mantener mi estilo mientras uso IA para research inicial.',
+      author: 'Sofía Méndez',
+      role: 'Travel Blogger (Argentina) - @ViajesSofi'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué mi blog necesita voz auténtica y no puedo usar IA directamente?',
+        answer: 'Los blogs exitosos crecen por conexión personal, no solo por información. Razones: (1) Diferenciación: hay mil blogs en tu nicho, tu voz única es tu ventaja competitiva, (2) Lealtad: lectores siguen personas, no contenido genérico intercambiable, (3) Engagement: historias personales generan comentarios/shares, IA genérica no, (4) Monetización: marcas pagan por influencia auténtica, no por contenido robótico, (5) SEO: Google premia contenido único con engagement alto. IA es herramienta, no reemplazo de tu voz.'
+      },
+      {
+        question: '¿Qué porcentaje de IA es aceptable para artículos de blog?',
+        answer: 'Para blogs personales: <25% es ideal (tu voz debe dominar). 25-40% es aceptable si agregaste suficientes anécdotas/opiniones personales. Más de 50% es riesgoso (probablemente suena genérico). Para blogs informativos/educativos: <35% está bien si el contenido tiene insights únicos. La clave: ¿tu artículo suena como TÚ escribiendo, o como cualquier blog genérico del internet?'
+      },
+      {
+        question: '¿Cómo agregar voz personal a un borrador de ChatGPT?',
+        answer: 'Estrategia probada para bloggers: (1) Usa ChatGPT para estructura inicial y research, (2) Reescribe la intro con tu historia personal relacionada al tema, (3) Agrega anécdotas tuyas en cada sección (qué te pasó, qué aprendiste), (4) Incluye tus opiniones honestas (incluso si son controversiales), (5) Usa tu estilo conversacional (habla como escribes a un amigo), (6) Agrega humor, sarcasmo o emoción donde corresponde, (7) Reanaliza hasta <25%. Ahora el artículo suena como tú.'
+      },
+      {
+        question: '¿Los lectores realmente notan cuando un blog usa IA?',
+        answer: 'Sí, absolutamente. Señales que delatan IA a lectores experimentados: (1) Falta de historias personales o ejemplos concretos, (2) Tono muy formal/perfecto para un blog casual, (3) Frases cliché ("cabe destacar que", "es importante mencionar"), (4) Estructura mecánica repetitiva (intro-3 puntos-conclusión idéntica en todos los posts), (5) Falta de opiniones fuertes o perspectivas únicas. Lectores lo notan inconscientemente: el blog "no conecta", "suena aburrido", "perdió su esencia". Resultado: dejan de leer.'
+      },
+      {
+        question: '¿Puedo usar IA para investigación pero escribir yo el artículo?',
+        answer: 'Absolutamente, ese es el uso ideal de IA para bloggers. Workflow recomendado: (1) Usa ChatGPT para listar puntos clave del tema, (2) Investiga facts/estadísticas con IA, (3) Escribe el artículo TÚ con tu voz, incorporando esa información, (4) Agrega tus experiencias personales y opiniones, (5) Analiza con DetectorDeIA (debería marcar <20% porque escribiste genuinamente). IA es asistente de investigación, no ghostwriter.'
+      },
+      {
+        question: '¿Qué hago si un guest writer me envía contenido 100% ChatGPT?',
+        answer: 'Protocolo recomendado: (1) Analiza todos los guest posts antes de publicar, (2) Si marca +70%, pide al writer que reescriba agregando ejemplos específicos/voz personal, (3) Establece policy clara: "Guest posts deben marcar <40% en detector de IA", (4) Si el writer no puede/quiere mejorar, rechaza el artículo. Publicar contenido genérico daña la reputación de tu blog. Es mejor menos posts pero con calidad.'
+      },
+      {
+        question: '¿Cuántos artículos de blog puedo analizar?',
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para artículos de blog estándar de 1,000-1,500 palabras). Plan PRO: $10/mes con análisis ilimitados de hasta 15,000 caracteres (artículos de 3,000-4,000 palabras). Si publicas múltiples posts semanales, plan PRO es ideal. Puedes analizar por secciones si el artículo es muy largo.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar artículo de blog gratis',
+      url: '/detector?ref=para-blogs'
+    }
   }
 ];
