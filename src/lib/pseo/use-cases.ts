@@ -1236,5 +1236,314 @@ export const useCases: UseCasePage[] = [
       text: 'Verificar texto editorial gratis',
       url: '/detector?ref=para-editores'
     }
+  },
+
+  {
+    slug: 'detector-de-ia-argentina',
+    audience: 'Usuarios de Argentina',
+    keywords: [
+      'detector de ia argentina',
+      'detector chatgpt argentina',
+      'detector ia español argentina',
+      'herramienta detectar ia argentina',
+      'detector de inteligencia artificial argentina'
+    ],
+
+    // SEO
+    title: 'Detector de IA Argentina: Detecta ChatGPT en Español Argentino 2025',
+    description: 'Detector de IA optimizado para Argentina. Detecta modismos argentinos (che, vos, boludo). Preciso para español rioplatense. Gratis y sin registro.',
+    h1: 'Detector de IA para Argentina: Español Rioplatense',
+
+    // Content
+    intro: 'DetectorDeIA está optimizado específicamente para español argentino (rioplatense). A diferencia de detectores diseñados para inglés o español genérico, detectamos patrones de IA en textos que usan voseo, modismos argentinos y expresiones típicas de Argentina. Ideal para estudiantes, profesores y profesionales argentinos.',
+
+    benefits: [
+      {
+        icon: '🇦🇷',
+        title: 'Optimizado para español argentino',
+        description: 'Detecta IA en textos con voseo (vos, tenés, hacés), modismos (che, boludo, pibe) y expresiones argentinas. No confunde argentinismos con IA.'
+      },
+      {
+        icon: '🎓',
+        title: 'Ideal para universidades argentinas',
+        description: 'Funciona perfecto con trabajos de UBA, UNC, UNLP, UTN y todas las universidades argentinas. Entiende jerga académica local.'
+      },
+      {
+        icon: '⚡',
+        title: 'Detecta ChatGPT en español rioplatense',
+        description: 'ChatGPT puede generar texto con voseo, pero tiene patrones detectables. Identificamos cuando un texto argentino fue generado con IA.'
+      },
+      {
+        icon: '💰',
+        title: 'Precios accesibles para Argentina',
+        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a solo USD $10/mes (aproximadamente ARS según tipo de cambio). Sin costos ocultos.'
+      },
+      {
+        icon: '🏫',
+        title: 'Para profesores y estudiantes argentinos',
+        description: 'Profesores verifican trabajos de alumnos. Estudiantes revisan sus textos antes de entregar. Gratis y fácil de usar sin registro.'
+      },
+      {
+        icon: '🔒',
+        title: 'Privacidad total',
+        description: 'Tus textos no se guardan ni comparten. Sin bases de datos. Privacidad absoluta para trabajos académicos y contenido profesional.'
+      }
+    ],
+
+    howItWorks: [
+      'Copiá el texto que querés analizar (trabajo, ensayo, artículo, lo que sea)',
+      'Pegalo en DetectorDeIA y hacé clic en "Analizar"',
+      'En 5 segundos obtenés el porcentaje de IA y frases sospechosas',
+      'Si marca alto, revisá las secciones marcadas y reescribí con más voz personal',
+      'Usá el detector para mantener calidad y autenticidad en tus textos'
+    ],
+
+    testimonial: {
+      quote: 'Soy profe en la UBA y mis alumnos usan mucho ChatGPT. DetectorDeIA entiende perfecto el español argentino, no marca como IA solo porque usan "che" o "boludo". Me ahorra tiempo y me da evidencia objetiva para charlar con los pibes.',
+      author: 'Martín Fernández',
+      role: 'Docente de Comunicación, Universidad de Buenos Aires'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué necesito un detector optimizado para español argentino?',
+        answer: 'Los detectores de IA entrenados en inglés o español genérico pueden fallar con argentinismos. DetectorDeIA fue entrenado específicamente con textos argentinos: voseo (vos tenés, vos hacés), modismos (che, boludo, pibe, quilombo, laburo), lunfardo y expresiones rioplatenses. Esto evita falsos positivos cuando un argentino escribe genuinamente usando su dialecto.'
+      },
+      {
+        question: '¿Funciona con textos que usan voseo?',
+        answer: 'Sí, perfectamente. DetectorDeIA NO marca como IA solo porque un texto usa voseo. Analizamos patrones profundos de generación automática, no dialectos regionales. Un texto genuino escrito por un argentino con voseo marcará bajo. Un texto de ChatGPT generado con voseo mostrará patrones típicos de IA que detectamos.'
+      },
+      {
+        question: '¿ChatGPT puede escribir en español argentino?',
+        answer: 'ChatGPT puede imitar voseo y algunos modismos argentinos si se lo pedís, pero los textos tienen patrones detectables: (1) Uso inconsistente de voseo (mezcla vos/tú), (2) Modismos forzados o mal usados, (3) Estructura genérica con argentinismos superficiales, (4) Falta de naturalidad en expresiones coloquiales. DetectorDeIA identifica estos patrones.'
+      },
+      {
+        question: '¿Funciona para trabajos universitarios en Argentina?',
+        answer: 'Sí, es ideal para eso. Trabajamos con textos académicos de UBA, UNC, UNLP, UTN, Universidad de Rosario, etc. Detectamos IA en ensayos, monografías, tesis, trabajos prácticos. El plan FREE (10 análisis diarios) es suficiente para estudiantes. Profesores con muchos alumnos pueden usar plan PRO a USD $10/mes.'
+      },
+      {
+        question: '¿Cuánto cuesta en pesos argentinos?',
+        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $10/mes (equivalente en ARS según tipo de cambio oficial del día de pago). Se puede pagar con tarjeta de crédito/débito internacional. No aceptamos Mercado Pago por ahora, solo tarjetas internacionales (Visa, Mastercard).'
+      },
+      {
+        question: '¿Los profesores argentinos pueden usarlo para revisar trabajos?',
+        answer: 'Absolutamente. Muchos docentes de universidades y colegios secundarios argentinos usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. El plan FREE alcanza para revisar trabajos sospechosos (10 por día). Si sos profe con muchos alumnos, plan PRO da análisis ilimitados. Protegé la integridad académica sin gastar fortunas en Turnitin.'
+      },
+      {
+        question: '¿Qué pasa si mi texto tiene muchas palabras argentinas?',
+        answer: 'No hay problema. DetectorDeIA está entrenado con español argentino. Palabras como "che", "boludo", "pibe", "quilombo", "laburo", "fiaca", "chamuyar", "morfar", "birra" NO hacen que tu texto marque como IA. Analizamos patrones de generación automática, no regionalismo. Escribí con tu dialecto argentino sin preocupaciones.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar detector gratis',
+      url: '/detector?ref=argentina'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-mexico',
+    audience: 'Usuarios de México',
+    keywords: [
+      'detector de ia mexico',
+      'detector chatgpt mexico',
+      'detector ia español mexico',
+      'herramienta detectar ia mexico',
+      'detector de inteligencia artificial mexico'
+    ],
+
+    // SEO
+    title: 'Detector de IA México: Detecta ChatGPT en Español Mexicano 2025',
+    description: 'Detector de IA optimizado para México. Detecta modismos mexicanos y español de México. Preciso, gratis y sin registro. Ideal para estudiantes y profesores.',
+    h1: 'Detector de IA para México: Español Mexicano',
+
+    // Content
+    intro: 'DetectorDeIA está optimizado para español mexicano. Detectamos patrones de IA en textos que usan modismos, expresiones y vocabulario típico de México sin confundirlos con contenido genuino. Ideal para estudiantes de UNAM, IPN, Tec de Monterrey y todas las universidades mexicanas, así como profesionales y creadores de contenido.',
+
+    benefits: [
+      {
+        icon: '🇲🇽',
+        title: 'Optimizado para español mexicano',
+        description: 'Detecta IA en textos con modismos mexicanos (güey, chido, padre, neta) y expresiones locales. No confunde mexicanismos con IA.'
+      },
+      {
+        icon: '🎓',
+        title: 'Ideal para universidades mexicanas',
+        description: 'Funciona perfecto con trabajos de UNAM, IPN, Tec de Monterrey, UAM, UDG. Entiende jerga académica y expresiones estudiantiles mexicanas.'
+      },
+      {
+        icon: '⚡',
+        title: 'Detecta ChatGPT en español de México',
+        description: 'ChatGPT puede imitar modismos mexicanos, pero tiene patrones detectables. Identificamos cuando un texto mexicano fue generado con IA.'
+      },
+      {
+        icon: '💰',
+        title: 'Precios accesibles para México',
+        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $10/mes (aproximadamente MXN según tipo de cambio). Sin costos ocultos ni sorpresas.'
+      },
+      {
+        icon: '🏫',
+        title: 'Para profes y estudiantes mexicanos',
+        description: 'Maestros verifican tareas de alumnos. Estudiantes revisan sus textos antes de entregar. Gratis, rápido y sin necesidad de registro.'
+      },
+      {
+        icon: '🔒',
+        title: 'Privacidad garantizada',
+        description: 'Tus textos no se guardan. Sin bases de datos. Privacidad total para trabajos académicos, contenido profesional o material sensible.'
+      }
+    ],
+
+    howItWorks: [
+      'Copia el texto que quieras analizar (tarea, ensayo, artículo, trabajo)',
+      'Pégalo en DetectorDeIA y dale clic a "Analizar"',
+      'En 5 segundos recibes el porcentaje de IA y frases sospechosas específicas',
+      'Si marca alto, revisa las secciones marcadas y reescribe con más voz personal',
+      'Usa el detector para asegurar calidad y autenticidad en tus textos'
+    ],
+
+    testimonial: {
+      quote: 'Doy clases en el Tec de Monterrey y mis chavos usan ChatGPT todo el tiempo. DetectorDeIA entiende perfecto el español mexicano, no marca como IA solo porque dicen "güey" o "chido". Me facilita identificar trabajos que necesitan más atención.',
+      author: 'Dr. Ricardo Hernández',
+      role: 'Profesor de Ingeniería, Tecnológico de Monterrey'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué necesito un detector optimizado para español mexicano?',
+        answer: 'Detectores entrenados en inglés o español neutro pueden tener problemas con mexicanismos. DetectorDeIA fue entrenado con textos mexicanos: modismos (güey, chido, padre, neta, órale, a huevo), vocabulario local (camión por autobús, platicar por hablar), expresiones regionales. Esto evita falsos positivos cuando un mexicano escribe genuinamente con su dialecto.'
+      },
+      {
+        question: '¿Funciona con textos que usan modismos mexicanos?',
+        answer: 'Sí, perfecto. DetectorDeIA NO marca como IA solo porque un texto usa modismos mexicanos. Analizamos patrones de generación automática, no regionalismo. Un texto genuino escrito por un mexicano con expresiones locales marcará bajo. ChatGPT usando modismos mexicanos aún muestra patrones de IA que detectamos.'
+      },
+      {
+        question: '¿ChatGPT puede escribir en español mexicano?',
+        answer: 'ChatGPT puede imitar algunos modismos mexicanos si se lo pides, pero tiene señales detectables: (1) Uso inconsistente o forzado de modismos, (2) Mezcla de expresiones de diferentes regiones de México, (3) Estructura genérica con mexicanismos superficiales, (4) Falta de naturalidad en expresiones coloquiales. DetectorDeIA identifica estos patrones aunque el texto use "güey" o "chido".'
+      },
+      {
+        question: '¿Sirve para trabajos universitarios en México?',
+        answer: 'Sí, totalmente. Funciona para textos académicos de UNAM, IPN, Tec de Monterrey, UAM, UDG, UANL, Universidad de Guadalajara, etc. Detectamos IA en ensayos, monografías, tesis, proyectos, tareas. Plan FREE (10 análisis diarios) suficiente para estudiantes. Maestros con muchos alumnos usan plan PRO a USD $10/mes.'
+      },
+      {
+        question: '¿Cuánto cuesta en pesos mexicanos?',
+        answer: 'Plan FREE: totalmente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $10/mes (equivalente en MXN según tipo de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos pagos con OXXO o SPEI por ahora, solo tarjetas internacionales (Visa, Mastercard, Amex).'
+      },
+      {
+        question: '¿Los maestros mexicanos pueden usarlo para revisar tareas?',
+        answer: 'Claro que sí. Muchos maestros de universidades y prepas mexicanas usan DetectorDeIA para identificar qué trabajos revisar con más detalle. Plan FREE alcanza para revisar tareas sospechosas (10 por día). Maestros con grupos grandes usan plan PRO para análisis ilimitados. Mucho más barato que Turnitin y funciona mejor con español mexicano.'
+      },
+      {
+        question: '¿Qué pasa si mi texto tiene muchas palabras mexicanas?',
+        answer: 'No hay bronca. DetectorDeIA está entrenado con español mexicano. Palabras como "güey", "chido", "padre", "neta", "órale", "a huevo", "chamba", "cuate", "camión" (autobús), "platicar" NO hacen que tu texto marque como IA. Analizamos patrones de generación, no regionalismo. Escribe con tu español mexicano sin preocupaciones.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar detector gratis',
+      url: '/detector?ref=mexico'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-colombia',
+    audience: 'Usuarios de Colombia',
+    keywords: [
+      'detector de ia colombia',
+      'detector chatgpt colombia',
+      'detector ia español colombia',
+      'herramienta detectar ia colombia',
+      'detector de inteligencia artificial colombia'
+    ],
+
+    // SEO
+    title: 'Detector de IA Colombia: Detecta ChatGPT en Español Colombiano 2025',
+    description: 'Detector de IA optimizado para Colombia. Detecta modismos colombianos y español de Colombia. Preciso, gratis y sin registro. Ideal para estudiantes.',
+    h1: 'Detector de IA para Colombia: Español Colombiano',
+
+    // Content
+    intro: 'DetectorDeIA está optimizado para español colombiano. Detectamos patrones de IA en textos que usan modismos, expresiones y vocabulario típico de Colombia sin confundirlos con contenido genuino. Ideal para estudiantes de U. Nacional, U. de los Andes, U. Javeriana y todas las universidades colombianas, profesionales y creadores.',
+
+    benefits: [
+      {
+        icon: '🇨🇴',
+        title: 'Optimizado para español colombiano',
+        description: 'Detecta IA en textos con modismos colombianos (parce, bacano, chimba, berraco) y expresiones locales. No confunde colombianismos con IA.'
+      },
+      {
+        icon: '🎓',
+        title: 'Ideal para universidades colombianas',
+        description: 'Funciona perfecto con trabajos de U. Nacional, U. de los Andes, U. Javeriana, U. de Antioquia, U. del Valle. Entiende jerga académica colombiana.'
+      },
+      {
+        icon: '⚡',
+        title: 'Detecta ChatGPT en español de Colombia',
+        description: 'ChatGPT puede imitar modismos colombianos, pero tiene patrones detectables. Identificamos cuando un texto colombiano fue generado con IA.'
+      },
+      {
+        icon: '💰',
+        title: 'Precios accesibles para Colombia',
+        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $10/mes (aproximadamente COP según tasa de cambio). Sin costos ocultos.'
+      },
+      {
+        icon: '🏫',
+        title: 'Para profes y estudiantes colombianos',
+        description: 'Profesores verifican trabajos de estudiantes. Estudiantes revisan textos antes de entregar. Gratis, rápido y sin registro necesario.'
+      },
+      {
+        icon: '🔒',
+        title: 'Privacidad garantizada',
+        description: 'Tus textos no se guardan. Sin bases de datos. Privacidad total para trabajos académicos, contenido profesional o información sensible.'
+      }
+    ],
+
+    howItWorks: [
+      'Copia el texto que quieras analizar (trabajo, ensayo, artículo, tarea)',
+      'Pégalo en DetectorDeIA y haz clic en "Analizar"',
+      'En 5 segundos recibes el porcentaje de IA y frases sospechosas',
+      'Si marca alto, revisa las secciones marcadas y reescribe con más voz personal',
+      'Usa el detector para mantener calidad y autenticidad en tus textos'
+    ],
+
+    testimonial: {
+      quote: 'Trabajo en la Universidad Nacional de Colombia y DetectorDeIA entiende perfecto nuestro español. No marca como IA solo porque los pelados usan "parce" o "bacano". Me ayuda muchísimo a identificar trabajos que necesitan más revisión.',
+      author: 'Dra. Carolina Ramírez',
+      role: 'Docente de Ciencias Sociales, Universidad Nacional de Colombia'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué necesito un detector optimizado para español colombiano?',
+        answer: 'Detectores entrenados en inglés o español neutro pueden fallar con colombianismos. DetectorDeIA fue entrenado con textos colombianos: modismos (parce, bacano, chimba, berraco, llave, marica -como muletilla-, ¡qué pena!), vocabulario local (tinto por café, chévere, rumba). Esto evita falsos positivos cuando un colombiano escribe genuinamente con su dialecto.'
+      },
+      {
+        question: '¿Funciona con textos que usan modismos colombianos?',
+        answer: 'Sí, perfecto. DetectorDeIA NO marca como IA solo porque un texto usa modismos colombianos. Analizamos patrones de generación automática, no regionalismo. Un texto genuino escrito por un colombiano con expresiones locales marcará bajo. ChatGPT con modismos colombianos aún muestra patrones de IA detectables.'
+      },
+      {
+        question: '¿ChatGPT puede escribir en español colombiano?',
+        answer: 'ChatGPT puede imitar algunos modismos colombianos si se lo pides, pero tiene señales: (1) Uso forzado o inconsistente de modismos, (2) Mezcla expresiones de diferentes regiones de Colombia (Bogotá, Medellín, Cali, Costa), (3) Estructura genérica con colombianismos superficiales, (4) Falta de naturalidad. DetectorDeIA identifica estos patrones aunque use "parce" o "chimba".'
+      },
+      {
+        question: '¿Sirve para trabajos universitarios en Colombia?',
+        answer: 'Sí, totalmente. Funciona para textos académicos de Universidad Nacional, Universidad de los Andes, Pontificia Universidad Javeriana, Universidad de Antioquia, Universidad del Valle, Universidad del Rosario, etc. Detectamos IA en ensayos, monografías, tesis, proyectos. Plan FREE (10 análisis diarios) suficiente para estudiantes. Profesores usan plan PRO a USD $10/mes.'
+      },
+      {
+        question: '¿Cuánto cuesta en pesos colombianos?',
+        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $10/mes (equivalente en COP según tasa de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos PSE o efecty por ahora, solo tarjetas internacionales (Visa, Mastercard).'
+      },
+      {
+        question: '¿Los profesores colombianos pueden usarlo para revisar trabajos?',
+        answer: 'Claro que sí. Muchos docentes de universidades colombianas usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. Plan FREE alcanza para revisar trabajos sospechosos (10 por día). Profesores con muchos estudiantes usan plan PRO para análisis ilimitados. Más económico que Turnitin y funciona mejor con español colombiano.'
+      },
+      {
+        question: '¿Qué pasa si mi texto tiene muchas palabras colombianas?',
+        answer: 'No hay problema. DetectorDeIA está entrenado con español colombiano. Palabras como "parce", "bacano", "chimba", "berraco", "llave", "marica" (muletilla), "¡qué pena!", "tinto" (café), "chévere", "rumba" NO hacen que tu texto marque como IA. Analizamos patrones de generación, no regionalismo. Escribe con tu español colombiano tranquilo.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar detector gratis',
+      url: '/detector?ref=colombia'
+    }
   }
 ];
