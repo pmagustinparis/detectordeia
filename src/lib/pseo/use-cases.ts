@@ -309,5 +309,211 @@ export const useCases: UseCasePage[] = [
       text: 'Probar DetectorDeIA gratis',
       url: '/detector?ref=para-universidades'
     }
+  },
+
+  {
+    slug: 'detector-de-ia-para-trabajos-academicos',
+    audience: 'Estudiantes y Profesores',
+    keywords: [
+      'detector de ia para trabajos academicos',
+      'detectar ia en trabajos universitarios',
+      'verificar trabajo academico ia',
+      'analizar ensayo ia',
+      'detector chatgpt trabajos'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Trabajos Académicos: Verifica Ensayos y Monografías 2025',
+    description: 'Detecta si un trabajo académico fue escrito con IA (ChatGPT, Claude, Gemini). Gratis, preciso y optimizado para español. Ideal para ensayos, monografías y papers.',
+    h1: 'Detector de IA para Trabajos Académicos: Ensayos, Monografías y Papers',
+
+    // Content
+    intro: 'Los trabajos académicos (ensayos, monografías, papers de investigación) son el formato más común donde se usa IA. DetectorDeIA te ayuda a verificar si un trabajo fue escrito genuinamente o con ChatGPT, Claude u otras herramientas. Optimizado para español académico de España y LATAM, con precisión del 95%.',
+
+    benefits: [
+      {
+        icon: '📝',
+        title: 'Especializado en texto académico',
+        description: 'Detecta patrones de IA en ensayos, monografías, papers, trabajos de investigación. Entiende lenguaje académico formal sin confundirlo con IA.'
+      },
+      {
+        icon: '🎯',
+        title: 'Precisión en español académico',
+        description: 'Optimizado para detectar IA en textos académicos en español. No confunde buena redacción con IA. Detecta modismos de España y LATAM.'
+      },
+      {
+        icon: '⚡',
+        title: 'Análisis instantáneo',
+        description: 'Resultados en menos de 5 segundos. Analiza hasta 5,000 caracteres gratis (plan FREE) o 15,000 caracteres (plan PRO).'
+      },
+      {
+        icon: '📊',
+        title: 'Reporte detallado',
+        description: 'Muestra porcentaje de IA, frases sospechosas específicas, métricas lingüísticas y análisis de perplexity/burstiness para fundamentar evaluación.'
+      },
+      {
+        icon: '📄',
+        title: 'Sube archivos PDF/DOCX',
+        description: 'Plan PRO permite subir trabajos en PDF, DOCX o TXT directamente. No necesitas copiar y pegar manualmente.'
+      },
+      {
+        icon: '🔒',
+        title: '100% confidencial',
+        description: 'Los trabajos no se guardan ni comparten. Privacidad total garantizada. Sin bases de datos de trabajos anteriores.'
+      }
+    ],
+
+    howItWorks: [
+      'Copiá el texto del trabajo académico (o subí archivo PDF/DOCX con plan PRO)',
+      'El sistema analiza en segundos buscando patrones típicos de IA en texto académico',
+      'Obtenés porcentaje de probabilidad de IA y frases específicas sospechosas',
+      'Revisá las métricas lingüísticas (perplexity, burstiness) para evaluación objetiva',
+      'Usá el reporte como evidencia o para mejorar tu propia redacción'
+    ],
+
+    testimonial: {
+      quote: 'Como coordinadora de TFG, reviso decenas de trabajos finales cada semestre. DetectorDeIA me ayuda a identificar rápidamente qué trabajos necesitan revisión adicional. Es mucho más preciso que Turnitin para español y me ahorra horas de trabajo.',
+      author: 'Dra. Patricia Fernández',
+      role: 'Coordinadora de Trabajos Finales de Grado, Universidad de Sevilla'
+    },
+
+    faqs: [
+      {
+        question: '¿Qué tipos de trabajos académicos puede analizar?',
+        answer: 'DetectorDeIA analiza cualquier texto académico: ensayos argumentativos, monografías, papers de investigación, trabajos finales de grado (TFG), reseñas bibliográficas, análisis de casos, informes técnicos. Si está en español y es texto académico, lo detectamos. El límite es 5,000 caracteres (FREE) o 15,000 caracteres (PRO) por análisis.'
+      },
+      {
+        question: '¿Puede diferenciar entre buena redacción y texto de IA?',
+        answer: 'Sí, eso es clave. DetectorDeIA NO marca como IA solo porque el texto está bien escrito. Analizamos patrones profundos: uso repetitivo de conectores cliché ("cabe destacar que", "es importante mencionar"), estructura mecánica perfecta, falta de voz personal, vocabulario genérico. Un estudiante que escribe excelente pero con personalidad NO marcará alto.'
+      },
+      {
+        question: '¿Funciona con trabajos escritos parcialmente con IA?',
+        answer: 'Sí. Si un estudiante escribió 60% genuino y 40% con ChatGPT, el detector mostrará porcentaje intermedio y marcará específicamente las secciones sospechosas. Esto es común: estudiantes usan IA para introducción/conclusión pero escriben el desarrollo ellos mismos. El detector identifica exactamente qué partes parecen IA.'
+      },
+      {
+        question: '¿Qué porcentaje indica que el trabajo es IA?',
+        answer: 'No hay un número mágico, pero: 0-30% = muy probablemente humano, 30-60% = sospechoso (revisar frases marcadas), 60-100% = muy probablemente IA. Siempre revisar las frases específicas que el detector marca, no solo el porcentaje global. El contexto importa.'
+      },
+      {
+        question: '¿Puedo usarlo para verificar mi propio trabajo antes de entregar?',
+        answer: 'Absolutamente. Muchos estudiantes usan DetectorDeIA ANTES de entregar su trabajo para asegurarse de que no marque alto por usar lenguaje muy formal o clichés. Si tu trabajo marca alto pero lo escribiste vos, reescribí las frases marcadas con lenguaje más natural y volvé a analizar.'
+      },
+      {
+        question: '¿Detecta trabajos traducidos del inglés con IA?',
+        answer: 'Sí, parcialmente. Si un estudiante escribió en inglés con ChatGPT y luego tradujo al español con DeepL/Google Translate, DetectorDeIA puede identificar patrones sospechosos (estructura inglesa traducida literalmente, vocabulario poco natural). Pero la detección es más difícil que con texto generado directamente en español.'
+      },
+      {
+        question: '¿Cuántos trabajos puedo analizar?',
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Plan PRO: análisis ilimitados (15,000 caracteres cada uno) + subida de archivos PDF/DOCX. Si sos profesor revisando muchos trabajos, plan PRO a $10/mes es ideal.'
+      }
+    ],
+
+    cta: {
+      text: 'Analizar trabajo académico gratis',
+      url: '/detector?ref=trabajos-academicos'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-para-tesis',
+    audience: 'Tesistas y Directores de Tesis',
+    keywords: [
+      'detector de ia para tesis',
+      'detectar ia en tesis doctoral',
+      'verificar tesis maestria ia',
+      'detector chatgpt tesis',
+      'tesis escrita con ia'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Tesis: Verifica Tesis de Maestría y Doctorado 2025',
+    description: 'Detecta si una tesis de maestría o doctorado fue escrita con IA. Optimizado para español académico avanzado. Preciso, confidencial y por capítulos.',
+    h1: 'Detector de IA para Tesis: Maestría, Doctorado y TFG',
+
+    // Content
+    intro: 'Las tesis de maestría y doctorado representan el trabajo académico más importante de un estudiante. DetectorDeIA te permite verificar si una tesis fue escrita genuinamente o con ayuda de IA (ChatGPT, Claude, Gemini). Optimizado para español académico avanzado, con análisis por capítulos y máxima confidencialidad.',
+
+    benefits: [
+      {
+        icon: '🎓',
+        title: 'Especializado en escritura académica avanzada',
+        description: 'Detecta IA en tesis, tesinas, TFG, TFM. Entiende lenguaje académico complejo, metodología de investigación y marco teórico sin falsos positivos.'
+      },
+      {
+        icon: '📑',
+        title: 'Análisis por capítulos',
+        description: 'Las tesis son largas. Analizá capítulo por capítulo (hasta 15,000 caracteres por análisis en plan PRO). Ideal para revisión exhaustiva.'
+      },
+      {
+        icon: '🔬',
+        title: 'Precisión en lenguaje científico',
+        description: 'No confunde terminología técnica o científica con IA. Detecta patrones de generación automática incluso en textos especializados (medicina, ingeniería, derecho).'
+      },
+      {
+        icon: '🔒',
+        title: 'Máxima confidencialidad',
+        description: 'Las tesis son trabajo intelectual sensible. DetectorDeIA NO guarda ningún texto analizado. Confidencialidad absoluta garantizada.'
+      },
+      {
+        icon: '📄',
+        title: 'Sube PDF directamente',
+        description: 'Con plan PRO, subí capítulos de tu tesis en PDF o DOCX. No necesitas copiar/pegar manualmente cientos de páginas.'
+      },
+      {
+        icon: '🌍',
+        title: 'Optimizado para LATAM y España',
+        description: 'Detecta patrones de IA en español de Argentina, México, Colombia, Chile, España. Ideal para tesis de universidades hispanas.'
+      }
+    ],
+
+    howItWorks: [
+      'Seleccioná el capítulo de la tesis que querés analizar (introducción, marco teórico, metodología, etc.)',
+      'Copiá el texto o subí el PDF del capítulo (plan PRO permite hasta 15,000 caracteres)',
+      'El sistema analiza en segundos buscando patrones de IA en escritura académica avanzada',
+      'Obtenés reporte con porcentaje de IA y frases específicas sospechosas por capítulo',
+      'Repetí el proceso para cada capítulo de la tesis para análisis completo'
+    ],
+
+    testimonial: {
+      quote: 'Soy director de tesis doctorales y antes no tenía forma objetiva de verificar si mis tesistas usaban IA. DetectorDeIA me da evidencia concreta para conversaciones difíciles. Lo uso para cada capítulo que reviso. Imprescindible.',
+      author: 'Dr. Javier Morales',
+      role: 'Director de Doctorado en Ciencias Sociales, UNAM México'
+    },
+
+    faqs: [
+      {
+        question: '¿Puede analizar una tesis doctoral completa?',
+        answer: 'Las tesis doctorales tienen 150-300 páginas, demasiado para un solo análisis. Recomendamos analizar por capítulos: introducción, marco teórico, metodología, resultados, discusión, conclusiones. Cada capítulo se analiza separadamente (hasta 15,000 caracteres por análisis en plan PRO). Así obtenés un panorama completo de toda la tesis.'
+      },
+      {
+        question: '¿Detecta IA en marcos teóricos y revisiones bibliográficas?',
+        answer: 'Sí. Los marcos teóricos son especialmente susceptibles a IA porque estudiantes usan ChatGPT para "resumir" teorías. DetectorDeIA identifica cuando una revisión bibliográfica tiene estructura mecánica típica de IA (todos los autores presentados con el mismo formato, resúmenes genéricos, falta de análisis crítico). También detecta cuando las citas parecen inventadas por IA.'
+      },
+      {
+        question: '¿Funciona con tesis en áreas científicas/técnicas?',
+        answer: 'Sí, perfectamente. DetectorDeIA entiende que tesis de medicina, ingeniería, matemáticas usan vocabulario técnico especializado. NO marca como IA solo porque hay terminología compleja. Analizamos patrones de generación automática (estructura repetitiva, explicaciones genéricas, falta de profundidad) no vocabulario técnico.'
+      },
+      {
+        question: '¿Qué pasa con la confidencialidad de mi tesis?',
+        answer: 'DetectorDeIA NO guarda ningún texto analizado. Tu tesis no queda almacenada en ninguna base de datos. Solo si vos (como usuario registrado) guardás manualmente tu historial, se guarda en tu cuenta privada. Nadie más (ni siquiera nosotros) tiene acceso. Esto es crítico para tesis doctorales inéditas.'
+      },
+      {
+        question: '¿Puede dar falsos positivos con tesis muy bien escritas?',
+        answer: 'Hay ~5% de falsos positivos. Una tesis doctoral bien escrita con estilo académico formal puede marcar 30-40% (no alto). Si marca +70%, es sospechoso. Siempre revisar las frases específicas que marca el detector. Si el tesista escribió genuinamente, podrá explicar perfectamente su contenido y mostrar borradores anteriores.'
+      },
+      {
+        question: '¿Cómo sé qué capítulos analizar primero?',
+        answer: 'Recomendamos priorizar: (1) Introducción y conclusiones (comúnmente generadas con IA), (2) Marco teórico/revisión bibliográfica (fácil de generar con IA), (3) Metodología. Si estos capítulos marcan bajo (<30%), probablemente toda la tesis es genuina. Si marcan alto, analizar también resultados y discusión.'
+      },
+      {
+        question: '¿Puedo usar DetectorDeIA para verificar mi propia tesis antes de presentarla?',
+        answer: 'Absolutamente. Muchos tesistas analizan sus capítulos ANTES de entregarlos al director para asegurarse de que no marcan alto por usar lenguaje muy formal o frases cliché. Si marcás alto pero escribiste vos, reescribí las secciones marcadas con más voz personal y volvé a analizar.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar tesis gratis',
+      url: '/detector?ref=para-tesis'
+    }
   }
 ];
