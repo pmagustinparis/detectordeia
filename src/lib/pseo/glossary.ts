@@ -866,5 +866,215 @@ export const glossary: GlossaryPage[] = [
       text: 'Analizar texto con detector de IA',
       url: '/?ref=glosario-detector-ia'
     }
+  },
+
+  {
+    slug: 'que-es-un-prompt',
+    term: 'Prompt (Ingeniería de Prompts)',
+    keywords: [
+      'que es un prompt',
+      'prompt ia',
+      'ingenieria de prompts',
+      'como escribir prompts',
+      'prompt engineering'
+    ],
+    title: '¿Qué es un Prompt? Guía de Ingeniería de Prompts 2025',
+    description: 'Descubre qué es un prompt, cómo escribir prompts efectivos para ChatGPT/Claude, técnicas de prompt engineering. Guía completa con ejemplos.',
+    h1: '¿Qué es un Prompt? Guía Completa de Ingeniería de Prompts',
+    intro: 'Prompt es instrucción o pregunta que das a modelo de IA (ChatGPT, Claude, Gemini) para obtener respuesta específica. Calidad del prompt determina calidad de respuesta: prompt vago genera respuesta genérica, prompt detallado genera respuesta útil y específica. Ingeniería de prompts (prompt engineering) es disciplina emergente que estudia cómo escribir prompts efectivos para maximizar utilidad de IA. Esta guía explica qué son prompts, tipos, técnicas avanzadas, y mejores prácticas para estudiantes.',
+    definition: 'Prompt es texto que envías a modelo de lenguaje de IA para generar respuesta. Puede ser: pregunta ("¿Qué es fotosíntesis?"), instrucción ("Explica fotosíntesis en 100 palabras"), solicitud compleja ("Analiza este ensayo y dame feedback sobre argumentación"). Ingeniería de prompts es práctica de diseñar prompts optimizados para obtener mejores resultados de IA, usando técnicas específicas como few-shot learning, chain-of-thought, role prompting.',
+    characteristics: [
+      {
+        icon: '💬',
+        title: 'Tipos de Prompts',
+        description: 'PREGUNTA SIMPLE: "¿Qué es X?" INSTRUCCIÓN: "Explica X paso a paso." ROLE PROMPT: "Eres profesor de física. Explica X a estudiante de secundaria." CONTEXTO + TAREA: "Dado este contexto [contexto], realiza [tarea]." CHAIN-OF-THOUGHT: "Explica tu razonamiento paso a paso antes de dar respuesta final." FEW-SHOT: "Aquí hay 3 ejemplos [ejemplos]. Ahora haz esto [tarea]."'
+      },
+      {
+        icon: '🎯',
+        title: 'Especificidad = Mejor Resultado',
+        description: 'Prompt vago: "Ayúdame con ensayo" → IA no sabe qué hacer. Prompt específico: "Revisa este ensayo de 500 palabras sobre cambio climático. Dame feedback sobre: (1) claridad de tesis, (2) solidez de argumentos, (3) gramática" → IA sabe exactamente qué analizar.'
+      },
+      {
+        icon: '🧠',
+        title: 'Chain-of-Thought (Cadena de Pensamiento)',
+        description: 'Técnica donde pides a IA "pensar en voz alta" antes de responder. Ejemplo: "Resuelve este problema. Primero, explica tu razonamiento paso a paso. Luego, da respuesta final." Resultado: Respuestas más precisas, especialmente en matemáticas/lógica.'
+      },
+      {
+        icon: '🎭',
+        title: 'Role Prompting (Asignar Rol)',
+        description: 'Das a IA un "rol" para obtener respuestas especializadas. Ejemplo: "Eres tutor universitario experto en biología. Explica mitosis a estudiante que no entiende concepto después de leer libro de texto. Usa analogías simples." IA adapta tono y complejidad.'
+      },
+      {
+        icon: '📚',
+        title: 'Few-Shot Learning (Aprendizaje con Ejemplos)',
+        description: 'Proporcionas 2-3 ejemplos de lo que quieres, luego pides a IA hacer similar. Ejemplo: "Resume en 1 oración: [Paper 1] → [Resumen 1]. [Paper 2] → [Resumen 2]. Ahora resume: [Tu paper]." IA aprende formato deseado de ejemplos.'
+      },
+      {
+        icon: '⚙️',
+        title: 'Parámetros de Control',
+        description: 'Instrucciones que controlan output: longitud ("en 100 palabras"), formato ("en lista con bullets"), tono ("tono formal académico"), nivel ("para estudiante de secundaria"), restricciones ("sin usar jerga técnica"). Guían cómo IA estructura respuesta.'
+      }
+    ],
+    examples: [
+      '**Prompt básico:** "Explica cambio climático" → Respuesta genérica de 3 párrafos.',
+      '**Prompt mejorado:** "Explica cambio climático a estudiante de 15 años que nunca estudió ciencia. Usa 3 analogías simples. Máximo 200 palabras." → Respuesta específica, apropiada para audiencia.',
+      '**Role prompt:** "Eres profesor de historia especializado en América Latina. Explica Revolución Mexicana enfocándote en causas económicas. Audiencia: universitarios de primer año." → Respuesta especializada.',
+      '**Chain-of-thought:** "Problema: Juan tiene 3 manzanas, María tiene el doble. ¿Cuántas tienen juntos? IMPORTANTE: Primero explica paso a paso tu razonamiento, luego da respuesta." → IA muestra trabajo.',
+      '**Few-shot:** "Transforma a pregunta: Afirmación: El cielo es azul. Pregunta: ¿De qué color es el cielo? Ahora: Afirmación: ChatGPT fue lanzado en 2022. Pregunta:" → IA aprende patrón de ejemplos.',
+      '**Prompt para uso académico ético:** "Tengo dificultad entendiendo [concepto]. NO escribas mi ensayo. En cambio: (1) Explica concepto con ejemplos, (2) Sugiere estructura para organizar ideas, (3) Recomienda fuentes académicas." → Ayuda sin plagio.'
+    ],
+    faqs: [
+      {
+        question: '¿Qué hace un buen prompt?',
+        answer: 'Un buen prompt tiene: (1) CLARIDAD: Instrucción específica y sin ambigüedad. (2) CONTEXTO: Información necesaria para respuesta relevante. (3) CONSTRAINTS: Limitaciones (longitud, formato, tono). (4) AUDIENCIA: Para quién es la respuesta. (5) FORMATO DESEADO: Cómo estructurar output (lista, párrafos, tabla). EJEMPLO COMPLETO: "Contexto: Soy estudiante de biología estudiando ecosistemas. Tarea: Explica sucesión ecológica. Formato: 3 párrafos (primario, secundario, clímax). Audiencia: compañero de clase. Tono: informal pero preciso. Usa ejemplo concreto de bosque después de incendio."'
+      },
+      {
+        question: '¿Qué es ingeniería de prompts (prompt engineering)?',
+        answer: 'Ingeniería de prompts es disciplina que estudia cómo diseñar prompts optimizados para obtener mejores respuestas de modelos de IA. Incluye técnicas como: few-shot learning (aprender de ejemplos), chain-of-thought (razonamiento paso a paso), role prompting (asignar roles), prompt chaining (secuencia de prompts), retrieval-augmented generation (prompts con documentos externos). APLICACIONES: Empresas contratan "prompt engineers" para optimizar uso de IA. EDUCACIÓN: Estudiantes que dominan prompting obtienen mejores resultados de ChatGPT/Claude.'
+      },
+      {
+        question: '¿Cómo escribir prompts para ChatGPT/Claude sin plagiar?',
+        answer: 'PROMPTS ÉTICOS para uso académico: (1) PIDE EXPLICACIONES, NO TRABAJOS COMPLETOS: "Explícame [concepto] con ejemplos" NO "Escribe mi ensayo sobre [tema]". (2) SOLICITA GUÍA DE ESTRUCTURA: "Sugiere outline para ensayo sobre X" NO "Genera ensayo completo". (3) PIDE FEEDBACK: "Revisa mi borrador y sugiere mejoras" NO "Re-escribe mi trabajo". (4) SOLICITA FUENTES: "Recomienda 5 fuentes académicas sobre X" NO "Escribe bibliografía ficticia". (5) PIDE IDEAS, TÚ DESARROLLAS: "Dame 3 argumentos sobre X" luego TÚ los desarrollas con tus palabras. REGLA: IA como tutor, no ghostwriter.'
+      },
+      {
+        question: '¿Cuál es la diferencia entre prompt simple y prompt avanzado?',
+        answer: 'PROMPT SIMPLE: Pregunta directa sin contexto. "Explica fotosíntesis." Resultado: Respuesta genérica de Wikipedia-style. PROMPT AVANZADO: Incluye contexto, rol, formato, audiencia. "Eres tutor de biología. Estudiante de 16 años no entendió fotosíntesis después de leer libro. Explica usando: (1) analogía con cocina, (2) diagrama verbal paso a paso, (3) ejemplo con planta específica (no rosa genérica). Máximo 250 palabras. Termina con 2 preguntas para verificar comprensión." Resultado: Respuesta personalizada, específica, útil. DIFERENCIA: Especificidad + estructura = mejor output.'
+      },
+      {
+        question: '¿Qué es "temperatura" en prompts?',
+        answer: 'TEMPERATURA es parámetro (0.0-1.0) que controla "creatividad" vs "predictibilidad" de respuestas de IA. BAJA TEMPERATURA (0.0-0.3): Respuestas predecibles, consistentes, conservadoras. Útil para: tareas factuales, matemáticas, código. MEDIA TEMPERATURA (0.4-0.7): Balance creatividad-precisión (default en ChatGPT). ALTA TEMPERATURA (0.8-1.0): Respuestas creativas, variadas, "arriesgadas". Útil para: brainstorming, escritura creativa, ideas originales. EN PROMPTS: Algunos sistemas permiten especificar "Usa temperatura baja para precisión" aunque mayoría de interfaces (ChatGPT, Claude) no exponen este control directamente.'
+      },
+      {
+        question: '¿Cómo usar prompts para aprender (no para hacer trampa)?',
+        answer: 'USO LEGÍTIMO DE PROMPTS en educación: (1) TUTOR PERSONAL: "Explícame [concepto difícil] con múltiples analogías hasta que entienda." (2) FEEDBACK ITERATIVO: "Revisa mi argumento: [argumento]. ¿Tiene huecos lógicos?" (3) PREGUNTAS SOCRÁTICAS: "No me des respuesta. Hazme preguntas que me guíen a descubrir solución de [problema]." (4) PRÁCTICA: "Dame 5 problemas de práctica sobre [tema] con dificultad creciente. NO des respuestas aún." (5) VERIFICACIÓN: "Resolví [problema]. Mi respuesta: [respuesta]. ¿Es correcta? Si no, explica mi error." CLAVE: Usas IA para ENTENDER, no para COPIAR.'
+      },
+      {
+        question: '¿Los profesores pueden detectar que usaste prompts?',
+        answer: 'SÍ, indirectamente. Profesores detectan: (1) TRABAJO INCONSISTENTE: Si tu ensayo tiene nivel de vocabulario/complejidad que no coincide con trabajos previos. (2) FALTA DE PERSONALIZACIÓN: Respuestas genéricas sin ejemplos personales/específicos del curso. (3) PATRONES DE IA: Frases formulaicas, estructura predecible típica de ChatGPT. (4) ERRORES TÍPICOS DE IA: Inventa citas, confunde fechas/nombres. (5) ENTREVISTAS: Profesor pregunta sobre tu trabajo; si no puedes explicar ideas = sospecha. PREVENCIÓN: Si usas IA éticamente (para entender, no copiar), puedes explicar perfectamente tu trabajo porque realmente aprendiste.'
+      },
+      {
+        question: '¿Debo citar a ChatGPT si usé prompts para generar ideas?',
+        answer: 'DEPENDE de política de tu universidad y cómo usaste IA: DEBES CITAR si: (1) Copiaste texto generado (aunque sea reformulado), (2) Usaste ideas/argumentos específicos generados por IA, (3) IA generó estructura/outline que seguiste. NO NECESITAS CITAR si: (1) Solo usaste IA para entender concepto (como usar libro de texto), (2) IA te dio feedback sobre tu propio borrador. REGLA SEGURA: Cuando dudes, CITA. Formato APA: (OpenAI, 2024) o declara en nota al pie: "Usé ChatGPT para [propósito específico: generar ideas iniciales, feedback sobre borrador, etc.]". MEJOR: Verifica política específica de tu institución.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Claude AI', slug: 'que-es-claude-ai' },
+      { term: 'Inteligencia Artificial Generativa', slug: 'que-es-inteligencia-artificial-generativa' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-prompt' },
+      { name: 'Humanizador de IA Gratis', url: '/humanizador-de-ia-gratis?ref=glosario-prompt' }
+    ],
+    cta: {
+      text: 'Verificar si texto es de IA',
+      url: '/?ref=glosario-prompt'
+    }
+  },
+
+  {
+    slug: 'diferencia-entre-ia-y-texto-humano',
+    term: 'Diferencia entre IA y Texto Humano',
+    keywords: [
+      'diferencia ia texto humano',
+      'como distinguir ia de humano',
+      'texto ia vs humano',
+      'identificar texto ia',
+      'patrones texto ia'
+    ],
+    title: 'Diferencia entre IA y Texto Humano: Cómo Distinguirlos 2025',
+    description: 'Aprende las diferencias clave entre texto de IA (ChatGPT, Claude) y texto humano. Patrones detectables, señales lingüísticas, cómo identificar contenido generado por IA.',
+    h1: 'Diferencia entre IA y Texto Humano: Guía Completa',
+    intro: 'Texto generado por IA (ChatGPT, Claude, Gemini) tiene patrones distintivos que lo diferencian de escritura humana, aunque IA mejora constantemente en imitar estilo humano. Diferencias clave incluyen: uniformidad en vocabulario, estructura predecible, falta de experiencias personales auténticas, uso excesivo de transiciones formulaicas. Esta guía explica cómo profesores, detectores, y lectores entrenados identifican texto de IA, qué señales buscar, y por qué distinción es importante en contexto académico.',
+    definition: 'Texto de IA es generado por modelos de lenguaje que predicen palabra siguiente más probable basándose en patrones de billones de textos. Resultado: escritura estadísticamente "perfecta" pero carente de elementos humanos auténticos (experiencias personales únicas, voz individual consistente, imperfecciones naturales). Texto humano incluye variabilidad natural, giros inesperados, anécdotas específicas, errores ocasionales, estilo personal reconocible. Detectores usan estas diferencias para clasificar texto.',
+    characteristics: [
+      {
+        icon: '📊',
+        title: 'Uniformidad vs Variabilidad',
+        description: 'IA: Vocabulario uniformemente sofisticado, oraciones de longitud similar, complejidad constante. Humano: Vocabulario varía (palabras simples + complejas), oraciones cortas y largas alternadas, niveles de complejidad fluctúan. IA es "demasiado consistente" - humanos tienen más variación natural (burstiness).'
+      },
+      {
+        icon: '🎭',
+        title: 'Genericidad vs Especificidad',
+        description: 'IA: Ejemplos genéricos ("Por ejemplo, en muchos casos..."), afirmaciones amplias, citas comunes. Humano: Ejemplos específicos concretos ("En mi clase de física el martes pasado..."), detalles únicos, referencias personales. IA generaliza porque no tiene experiencias reales.'
+      },
+      {
+        icon: '🔄',
+        title: 'Patrones Estructurales Predecibles',
+        description: 'IA: Estructura formulaica (intro estándar, 3 párrafos de cuerpo balanceados, conclusión que resume). Transiciones mecánicas ("En primer lugar...", "Por otro lado...", "En conclusión..."). Humano: Estructura más orgánica, transiciones variadas, párrafos de longitud irregular, tangentes ocasionales.'
+      },
+      {
+        icon: '💬',
+        title: 'Frases Formulaicas (Banderas Rojas)',
+        description: 'IA usa frecuentemente: "Es importante destacar", "Cabe mencionar", "Vale la pena señalar", "En el contexto de", "A lo largo de la historia", "En el ámbito de", "Resulta fundamental". Humanos usan estas frases ocasionalmente, IA las usa excesivamente porque son "seguras" estadísticamente.'
+      },
+      {
+        icon: '🧠',
+        title: 'Coherencia Perfecta vs Imperfecciones Naturales',
+        description: 'IA: Coherencia impecable, sin contradicciones, flujo lógico perfecto, gramática perfecta. Humano: Ocasionales inconsistencias, divagaciones, errores tipográficos/gramática, pensamiento que evoluciona durante escritura. Perfección sostenida es sospechosa.'
+      },
+      {
+        icon: '❤️',
+        title: 'Ausencia vs Presencia de Voz Personal',
+        description: 'IA: Voz neutral, objetiva, sin personalidad distintiva. No toma posiciones fuertes, evita controversia. Humano: Voz única, opiniones matizadas, humor personal, frustración/entusiasmo visible, estilo reconocible. IA suena como "comité escribiendo documento corporativo".'
+      }
+    ],
+    examples: [
+      '**IA:** "La inteligencia artificial ha revolucionado diversos sectores de la sociedad. Es importante destacar que su implementación presenta tanto beneficios como desafíos. En primer lugar, cabe mencionar que la automatización..." → Genérico, frases formulaicas.',
+      '**Humano:** "Cuando usé ChatGPT por primera vez en octubre, me sorprendió. Pero después de una semana noté algo raro: todos mis ensayos sonaban igual. Mi profesora también lo notó..." → Específico, experiencia personal, fecha concreta.',
+      '**IA detectando IA:** "El texto presenta perplexidad baja (oraciones muy predecibles), burstiness bajo (poca variación en longitud de oraciones), y vocabulario uniformemente avanzado. Probabilidad IA: 92%."',
+      '**Patrón de IA:** Ensayo de 1000 palabras con 5 párrafos exactos de ~200 palabras cada uno, cada párrafo con estructura idéntica (afirmación + elaboración + ejemplo + conclusión). Demasiado balanceado = sospechoso.',
+      '**Patrón humano:** Ensayo de 980 palabras con 7 párrafos irregulares (120, 200, 95, 250, 180, 85, 50 palabras). Introducción más larga que conclusión. Un párrafo es tangente sobre anécdota personal. Más natural.',
+      '**Mezcla IA + Humano:** Introducción genérica (IA), cuerpo con ejemplos específicos de clase (humano), conclusión formulaica (IA). Detectores muestran "60% IA" - detectan secciones generadas.'
+    ],
+    faqs: [
+      {
+        question: '¿Cuáles son las señales más obvias de texto de IA?',
+        answer: 'TOP 10 SEÑALES de texto generado por IA: (1) Frases "es importante destacar", "cabe mencionar", "vale la pena señalar" usadas 3+ veces. (2) Estructura perfectamente balanceada (3-5 párrafos de igual longitud). (3) Vocabulario uniformemente sofisticado (sin palabras simples/coloquiales). (4) Ejemplos genéricos sin detalles específicos. (5) Ausencia total de experiencias/opiniones personales. (6) Transiciones mecánicas ("En primer lugar", "Por otro lado", "En conclusión"). (7) Sin errores tipográficos/gramática (perfección sospechosa). (8) Lista de 3-5 puntos para cada tema. (9) Evita tomar posiciones controversiales. (10) Conclusión que repite introducción casi literalmente.'
+      },
+      {
+        question: '¿Por qué el texto de IA es tan "perfecto"?',
+        answer: 'IA genera texto "perfecto" porque: (1) PREDICCIÓN ESTADÍSTICA: Selecciona palabras/estructuras más probables (evita riesgos). (2) ENTRENAMIENTO CON TEXTO EDITADO: Aprende de contenido publicado/editado (no borradores con errores). (3) NO HAY FATIGA: No comete errores de cansancio/distracción que humanos hacen. (4) OPTIMIZACIÓN: Entrenada para coherencia, claridad, gramática correcta. IRONÍA: Perfección sostenida es antinatural - humanos cometen errores ocasionales incluso cuando escriben bien. Ensayo de 2000 palabras sin UN SOLO error es sospechoso.'
+      },
+      {
+        question: '¿Puede IA escribir con estilo "humano" imperfecto?',
+        answer: 'SÍ, si se lo instruyes con prompts específicos. PROMPTS HUMANIZADORES: "Escribe como estudiante universitario real, incluye: (1) Variación en longitud de oraciones, (2) 1-2 errores menores gramática, (3) Tangente personal breve, (4) Evita frases formulaicas, (5) Usa palabras simples ocasionalmente." IA puede imitar imperfecciones. PERO: (1) Difícil lograr autenticidad completa, (2) "Errores" de IA suenan artificiales, (3) Falta experiencias personales reales verificables. TENDENCIA: Carrera armamentística - IA mejora imitando humanos, detectores mejoran identificando IA humanizada.'
+      },
+      {
+        question: '¿Cómo distinguen los profesores texto de IA vs humano?',
+        answer: 'MÉTODOS DE PROFESORES: (1) COMPARACIÓN CON TRABAJOS PREVIOS: Cambio drástico en estilo/nivel = sospecha. (2) BÚSQUEDA DE ESPECIFICIDAD: Marcan afirmaciones genéricas, piden ejemplos concretos. (3) ENTREVISTA ORAL: Preguntan sobre argumentos del ensayo - si estudiante no puede explicar = sospecha. (4) FRASES BANDERAS ROJAS: "Es importante destacar" 5+ veces = probable IA. (5) VERIFICACIÓN DE CITAS: IA inventa estudios/citas - profesor verifica que existan. (6) ANÁLISIS DE ESTRUCTURA: Párrafos perfectamente balanceados = sospecha. (7) DETECTORES: Usan GPTZero, Turnitin AI como herramienta auxiliar.'
+      },
+      {
+        question: '¿Qué es "perplexidad" y cómo identifica IA?',
+        answer: 'PERPLEXIDAD mide predictibilidad del texto. ALTA PERPLEXIDAD (humano): Elecciones de palabras sorprendentes, giros inesperados, vocabulario variado. Ejemplo: "Pensé que entendía IA. Spoiler: no entendía nada. La realidad es más rara." BAJA PERPLEXIDAD (IA): Elecciones de palabras predecibles, flujo esperado. Ejemplo: "La inteligencia artificial es un campo importante de estudio. Presenta numerosas aplicaciones en diversos sectores." IA predice palabra siguiente más probable → genera texto con baja perplexidad. DETECTORES: Calculan perplexidad de cada oración; perplexidad consistentemente baja en todo texto = probable IA.'
+      },
+      {
+        question: '¿Por qué IA no incluye experiencias personales auténticas?',
+        answer: 'IA NO tiene experiencias personales porque: (1) NO TIENE CONSCIENCIA: Es modelo estadístico, no ser consciente con memoria episódica. (2) NO VIVE EVENTOS: No asiste a clases, no tiene conversaciones reales, no experimenta emociones. (3) GENERALIZA DE DATOS: Cuando genera "anécdota personal" sintetiza patrones de millones de anécdotas (resulta genérico). EJEMPLO IA: "Como muchos estudiantes, enfrenté desafíos al estudiar este tema." (vago). EJEMPLO HUMANO: "El martes en laboratorio de química, mezclé reactivos en orden incorrecto. Mi compañera Sara me detuvo segundos antes de crear reacción peligrosa." (específico, verificable, memorable).'
+      },
+      {
+        question: '¿Texto mixto (IA + edición humana) es detectable?',
+        answer: 'DEPENDE del grado de edición. EDICIÓN SUPERFICIAL (cambiar palabras, añadir frases): Detectores identifican ~70-80%. EDICIÓN PROFUNDA (re-estructurar, agregar anécdotas personales, variar estilo): Detectores fallan frecuentemente. TEXTO MIXTO COMÚN: Estudiante usa ChatGPT para cuerpo, escribe intro/conclusión propio. Detectores muestran "60% IA". Profesores detectan inconsistencia de estilo entre secciones. DIFICULTAD: Diferencia entre (1) usar IA como herramienta legítima (feedback, ideas) vs (2) usar IA para generar sustancia del trabajo. Línea puede ser borrosa.'
+      },
+      {
+        question: '¿Por qué importa distinguir IA de humano en educación?',
+        answer: 'IMPORTANCIA de distinción: (1) EVALUACIÓN DE APRENDIZAJE: Profesores evalúan comprensión del estudiante, no capacidad de usar ChatGPT. (2) DESARROLLO DE HABILIDADES: Escritura desarrolla pensamiento crítico - copiar de IA previene desarrollo. (3) INTEGRIDAD ACADÉMICA: Presentar trabajo ajeno (incluido IA) como propio = plagio. (4) EQUIDAD: Si algunos usan IA sin declarar, tienen ventaja injusta sobre quienes no usan. (5) PREPARACIÓN PROFESIONAL: Habilidades de escritura/pensamiento son esenciales en carreras - saltarlas con IA perjudica futuro. NO es "IA vs humanos", es garantizar que educación cumpla su propósito: desarrollar capacidades.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Detector de IA', slug: 'que-es-detector-de-ia' },
+      { term: 'Inteligencia Artificial Generativa', slug: 'que-es-inteligencia-artificial-generativa' },
+      { term: 'Prompt', slug: 'que-es-un-prompt' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-diferencia-ia-humano' },
+      { name: 'Detector de ChatGPT', url: '/detector-de-chatgpt-gratis?ref=glosario-diferencia-ia-humano' },
+      { name: 'Humanizador de IA Gratis', url: '/humanizador-de-ia-gratis?ref=glosario-diferencia-ia-humano' }
+    ],
+    cta: {
+      text: 'Analizar texto con detector de IA',
+      url: '/?ref=glosario-diferencia-ia-humano'
+    }
   }
 ];
