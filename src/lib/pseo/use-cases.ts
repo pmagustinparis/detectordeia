@@ -678,7 +678,7 @@ export const useCases: UseCasePage[] = [
       'Obtenés porcentaje de probabilidad de IA y frases específicas sospechosas',
       'Si marca alto (+70%): conversá con el estudiante y pedile que explique el contenido',
       'Usá el detector como herramienta educativa, no como castigo automático'
-    },
+    ],
 
     testimonial: {
       quote: 'Enseño Historia en secundaria y muchos alumnos empezaron a entregar tareas perfectas de la noche a la mañana. DetectorDeIA me confirmó que usaban ChatGPT. Ahora lo uso para todas las tareas escritas. Me ayuda a educar sobre integridad académica.',
