@@ -344,5 +344,318 @@ export const glossary: GlossaryPage[] = [
       text: 'Detectar contenido generado por IA',
       url: '/?ref=glosario-ia-generativa'
     }
+  },
+
+  {
+    slug: 'que-es-plagio-academico',
+    term: 'Plagio Académico',
+    keywords: [
+      'que es plagio academico',
+      'plagio universidad',
+      'tipos de plagio',
+      'consecuencias plagio academico',
+      'como evitar plagio'
+    ],
+    title: '¿Qué es Plagio Académico? Tipos, Consecuencias y Cómo Evitarlo 2025',
+    description: 'Descubre qué es plagio académico, tipos (textual, paráfrasis, mosaico), consecuencias legales y académicas, cómo evitarlo. Guía completa para estudiantes.',
+    h1: '¿Qué es Plagio Académico? Guía Completa para Estudiantes',
+    intro: 'Plagio académico es apropiarse de ideas, palabras, o trabajo de otros sin dar crédito adecuado. Es la falta académica más grave en universidades, con consecuencias que van desde reprobar trabajos hasta expulsión permanente. Con la explosión de IA generativa (ChatGPT, Claude), el plagio evolucionó: ahora incluye copiar texto de IA sin citar. Esta guía explica qué es plagio, tipos, consecuencias, diferencia entre plagio intencional vs accidental, y cómo evitarlo.',
+    definition: 'Plagio académico es presentar trabajo, ideas, palabras, datos, o creaciones de otros como propias sin atribución adecuada. Incluye: copiar texto sin comillas/citas, parafrasear sin citar fuente, comprar ensayos, usar IA sin declarar, auto-plagio (reutilizar trabajo propio sin permiso). Es violación de integridad académica y, en muchos casos, violación de derechos de autor (delito legal).',
+    characteristics: [
+      {
+        icon: '📝',
+        title: 'Plagio Textual (Copiar Directamente)',
+        description: 'Copiar texto palabra por palabra sin comillas ni cita. Ejemplo: Copias párrafo de Wikipedia, lo pegas en tu ensayo sin citar. SOLUCIÓN: Usa comillas + cita: "Texto copiado" (Autor, Año, p. X). Regla: 3+ palabras consecutivas de fuente = requiere comillas.'
+      },
+      {
+        icon: '🔄',
+        title: 'Plagio de Paráfrasis (Sin Citar)',
+        description: 'Cambias palabras de texto ajeno pero NO citas la fuente original. Ejemplo: Original: "La IA transforma educación." Tú: "La inteligencia artificial revoluciona la enseñanza" SIN citar = PLAGIO. SOLUCIÓN: Parafrasea + SIEMPRE cita fuente.'
+      },
+      {
+        icon: '🧩',
+        title: 'Plagio Mosaico (Patchwriting)',
+        description: 'Combinas frases de múltiples fuentes cambiando palabras, sin citar. Parece original pero es collage de fuentes ajenas. Detectores de similitud (Turnitin) NO lo detectan siempre, pero ES plagio. SOLUCIÓN: Sintetiza ideas con TUS palabras + cita todas las fuentes.'
+      },
+      {
+        icon: '🤖',
+        title: 'Plagio de IA (ChatGPT/Claude sin Citar)',
+        description: 'Usas ChatGPT/Claude para generar ensayo, copias sin declarar uso de IA = PLAGIO en mayoría de universidades. Políticas varían: algunas prohíben IA completamente, otras permiten si citas. SOLUCIÓN: Verifica política de tu institución, SIEMPRE declara uso de IA.'
+      },
+      {
+        icon: '♻️',
+        title: 'Auto-plagio (Reutilizar Trabajo Propio)',
+        description: 'Entregas mismo trabajo en dos clases diferentes sin permiso. Aunque es TU trabajo, es falta académica (no demuestras aprendizaje nuevo). SOLUCIÓN: Pide permiso al profesor antes de reutilizar trabajo, o cita tu trabajo previo.'
+      },
+      {
+        icon: '⚖️',
+        title: 'Consecuencias Graves',
+        description: 'ACADÉMICAS: Reprobar trabajo (0 puntos), reprobar curso, suspensión temporal, expulsión permanente, revocación de título. LEGALES: Violación de derechos de autor (multas, demandas). PROFESIONALES: Récord permanente, daño a reputación, imposibilidad de ingresar a posgrados.'
+      }
+    ],
+    examples: [
+      '**Plagio textual:** Copias 2 párrafos de paper sin comillas ni cita = PLAGIO GRAVE.',
+      '**Plagio de paráfrasis:** Lees artículo, reformulas con tus palabras, NO citas fuente = PLAGIO (error común).',
+      '**Plagio mosaico:** Combinas frases de 5 fuentes diferentes cambiando palabras, no citas ninguna = PLAGIO.',
+      '**Plagio de IA:** ChatGPT genera tu ensayo completo, lo entregas sin declarar = PLAGIO en mayoría de universidades.',
+      '**NO es plagio:** Lees 10 fuentes, sintetizas ideas con TUS palabras, citas todas las fuentes = TRABAJO LEGÍTIMO.',
+      '**Auto-plagio:** Entregas ensayo de clase A en clase B sin permiso = FALTA ACADÉMICA.'
+    ],
+    faqs: [
+      {
+        question: '¿Parafrasear sin citar es plagio?',
+        answer: 'SÍ, ES PLAGIO. Este es el error más común de estudiantes. Paráfrasis significa reformular ideas AJENAS con tus palabras, pero las ideas siguen siendo AJENAS. Si no citas la fuente original, estás apropiándote de ideas de otros. REGLA DE ORO: Si la idea no es tuya (la aprendiste de una fuente), CITA aunque uses tus propias palabras. Formato APA: (Autor, Año). Único caso que no requiere cita: conocimiento común (ej: "La Tierra es redonda").'
+      },
+      {
+        question: '¿Usar ChatGPT es plagio?',
+        answer: 'DEPENDE de la política de tu universidad y cómo lo uses. ESCENARIOS: (1) Generas ensayo con ChatGPT, copias sin declarar = PLAGIO en mayoría de instituciones. (2) Usas ChatGPT para explicaciones, escribes con tus palabras, declaras uso = GENERALMENTE PERMITIDO (verifica política). (3) Universidad prohíbe IA completamente = cualquier uso es violación. SOLUCIÓN: (a) Lee política de IA de tu institución, (b) Si usas IA, SIEMPRE declara cómo la usaste, (c) Cita a ChatGPT si usas sus ideas.'
+      },
+      {
+        question: '¿Cuáles son las consecuencias del plagio en la universidad?',
+        answer: 'Consecuencias varían según gravedad y universidad: PRIMER INCIDENTE MENOR: Reprobar trabajo (0 puntos) + advertencia. PLAGIO SUSTANCIAL: Reprobar curso completo + registro en expediente académico. PLAGIO GRAVE/REPETIDO: Suspensión temporal (1-2 semestres), expulsión permanente, revocación de título si se descubre después. CONSECUENCIAS LEGALES: Si plagias obra protegida por copyright (libro, artículo publicado), autor puede demandarte (multas, daños). CONSECUENCIAS PROFESIONALES: Récord permanente impide ingreso a posgrados, empleadores pueden verificar historial.'
+      },
+      {
+        question: '¿Cómo detectan plagio los profesores?',
+        answer: 'Métodos de detección: (1) SOFTWARE: Turnitin, SafeAssign, Unicheck comparan tu trabajo con billones de documentos, detectan texto copiado. (2) DETECTORES DE IA: DetectorDeIA.com, GPTZero identifican patrones de ChatGPT/Claude. (3) CAMBIOS DE ESTILO: Profesores notan si tu ensayo tiene estilo diferente a trabajos previos (vocabulario más sofisticado, estructura diferente). (4) BÚSQUEDA MANUAL: Copian frases sospechosas en Google, encuentran fuente original. (5) CONOCIMIENTO DEL TEMA: Profesores expertos detectan errores factuales típicos de IA.'
+      },
+      {
+        question: '¿Qué es plagio accidental y cómo evitarlo?',
+        answer: 'Plagio accidental = plagias sin intención por desconocimiento de normas de citación. CAUSAS COMUNES: (1) No sabías que parafrasear requiere cita, (2) Olvidaste citar una fuente, (3) Citaste incorrectamente (formato erróneo), (4) No pusiste comillas en cita textual. CONSECUENCIAS: Universidades generalmente NO excusan plagio accidental (ignorancia no es defensa), pero pueden ser más indulgentes en primera vez. PREVENCIÓN: (a) Aprende formato APA/MLA, (b) Cita MIENTRAS investigas (no al final), (c) Usa gestores de referencias (Zotero, Mendeley), (d) Cuando dudes, CITA (mejor citar de más que de menos).'
+      },
+      {
+        question: '¿Cuántas palabras puedo copiar sin que sea plagio?',
+        answer: 'NO existe número mágico "seguro". REGLA GENERAL: 3+ palabras consecutivas idénticas a fuente = requiere comillas + cita. PERO: Incluso 1 oración copiada sin comillas es plagio. Incluso cambiar 1-2 palabras sin citar es plagio. PRINCIPIO: No importa CUÁNTO copias, sino que SIEMPRE des crédito. FORMATO CORRECTO: Si copias 1 frase: "Texto copiado" (Autor, Año). Si parafraseas: Texto parafraseado (Autor, Año). Si copias >40 palabras (APA): Bloque de cita indentado sin comillas + cita.'
+      },
+      {
+        question: '¿Auto-plagio es realmente plagio?',
+        answer: 'SÍ, en contexto académico. Auto-plagio es reutilizar tu propio trabajo previo sin declararlo. EJEMPLOS: (1) Entregas mismo ensayo en dos clases, (2) Reciclas párrafos de trabajo previo sin citar tu trabajo anterior. POR QUÉ ES FALTA: (1) No demuestras nuevo aprendizaje, (2) Incumples contrato implícito de originalidad de cada tarea, (3) Es deshonesto (profesor asume trabajo es nuevo). SOLUCIÓN: Pide permiso explícito al profesor antes de reutilizar trabajo. Si reutilizas ideas propias, cita tu trabajo previo como fuente.'
+      },
+      {
+        question: '¿Cómo citar correctamente para evitar plagio?',
+        answer: 'FORMATO APA 7 (más común en universidades): CITA TEXTUAL: "Texto copiado exactamente" (Apellido, Año, p. X). PARÁFRASIS: Texto parafraseado con tus palabras (Apellido, Año). MÚLTIPLES AUTORES: (Apellido1 & Apellido2, Año). WEB SIN AUTOR: ("Título artículo", Año). IA: (OpenAI, 2024) para ChatGPT, (Anthropic, 2024) para Claude. REFERENCIAS: Lista alfabética al final con información completa. HERRAMIENTAS: Usa Zotero, Mendeley, CitationMachine para generar citas automáticamente. REGLA: Si dudas si citar, CITA.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'Parafrasear', slug: 'que-es-parafrasear' },
+      { term: 'Patchwriting (Plagio Mosaico)', slug: 'que-es-patchwriting' },
+      { term: 'Turnitin', slug: 'que-es-turnitin' },
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-plagio' },
+      { name: 'Parafrasear Textos Sin Plagio', url: '/parafrasear-sin-plagio?ref=glosario-plagio' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de texto',
+      url: '/?ref=glosario-plagio'
+    }
+  },
+
+  {
+    slug: 'que-es-parafrasear',
+    term: 'Parafrasear',
+    keywords: [
+      'que es parafrasear',
+      'como parafrasear correctamente',
+      'parafrasear sin plagiar',
+      'parafrasear apa',
+      'diferencia parafrasear resumir'
+    ],
+    title: '¿Qué es Parafrasear? Guía Completa y Técnicas Correctas 2025',
+    description: 'Aprende qué es parafrasear, cómo hacerlo correctamente sin plagiar, diferencia con resumir, formato APA. Guía completa con ejemplos para estudiantes.',
+    h1: '¿Qué es Parafrasear? Técnicas y Ejemplos para Estudiantes',
+    intro: 'Parafrasear es reformular ideas de otros autores usando tus propias palabras y estructura, manteniendo el significado original. Es habilidad esencial en escritura académica: permite integrar fuentes sin copiar textualmente. CRÍTICO: Parafrasear sin citar la fuente = PLAGIO. Esta guía explica qué es parafrasear, diferencia con resumir/citar, cómo parafrasear correctamente, errores comunes, y formato APA para paráfrasis.',
+    definition: 'Parafrasear (del griego "para" = al lado de, "phrasis" = expresión) es reformular ideas de un texto fuente usando vocabulario y estructura sintáctica diferentes, manteniendo el mismo significado. Requiere: (1) Comprender profundamente el texto original, (2) Expresar ideas con TUS palabras (no solo cambiar sinónimos), (3) SIEMPRE citar la fuente original (aunque cambies todas las palabras). NO es copiar + cambiar palabras, es re-conceptualizar ideas.',
+    characteristics: [
+      {
+        icon: '🔄',
+        title: 'Reformulación Total, No Solo Sinónimos',
+        description: 'Parafrasear NO es cambiar "grande" por "enorme". Requiere re-estructurar completamente: cambiar orden de ideas, usar voz activa/pasiva diferente, dividir/combinar oraciones. Debes procesar la idea y expresarla como TÚ la explicarías.'
+      },
+      {
+        icon: '📏',
+        title: 'Longitud Similar al Original',
+        description: 'Paráfrasis mantiene extensión similar al texto original (condensar significativamente = resumen, no paráfrasis). Si original tiene 100 palabras, paráfrasis tendrá ~80-120 palabras. Captura TODA la idea, no solo puntos principales.'
+      },
+      {
+        icon: '✅',
+        title: 'Siempre Requiere Citación',
+        description: 'REGLA DE ORO: Parafrasear NO elimina necesidad de citar. Aunque uses 100% tus palabras, las IDEAS son ajenas. Formato APA: Paráfrasis (Autor, Año). Sin cita = plagio de paráfrasis (falta grave).'
+      },
+      {
+        icon: '🎯',
+        title: 'Mantiene Significado Original',
+        description: 'Paráfrasis debe ser fiel al significado original. NO agregues interpretaciones, opiniones, o información extra. NO omitas puntos importantes. Si cambias el significado = distorsión de fuente (también es falta académica).'
+      },
+      {
+        icon: '🧠',
+        title: 'Requiere Comprensión Profunda',
+        description: 'No puedes parafrasear texto que no entiendes. Proceso: (1) Lee varias veces hasta entender completamente, (2) Cierra el texto fuente, (3) Escribe la idea como se la explicarías a un amigo, (4) Verifica que mantienes significado original.'
+      },
+      {
+        icon: '📚',
+        title: 'Usos en Escritura Académica',
+        description: 'Parafraseas cuando: (1) Idea de fuente es importante pero redacción original no es memorable, (2) Quieres integrar múltiples fuentes fluidamente, (3) Necesitas adaptar nivel técnico para tu audiencia. NO parafrasees: definiciones clave, datos específicos, frases memorables (usa citas textuales).'
+      }
+    ],
+    examples: [
+      '**Original:** "La inteligencia artificial generativa revolucionó la educación superior, permitiendo a estudiantes generar ensayos completos en minutos, lo que plantea desafíos éticos sin precedentes." (García, 2024)',
+      '**PARÁFRASIS CORRECTA:** García (2024) señala que la IA generativa transformó las universidades al facilitar la creación rápida de trabajos académicos, generando dilemas morales nunca antes vistos.',
+      '**PARÁFRASIS INCORRECTA (solo sinónimos):** "La IA generativa revolucionó la educación universitaria, habilitando a alumnos generar trabajos completos en minutos, planteando retos éticos inéditos." → Estructura idéntica, solo cambió palabras = PLAGIO.',
+      '**ERROR COMÚN (sin cita):** "La IA generativa transformó las universidades facilitando creación rápida de trabajos." → Aunque cambió palabras, NO citó = PLAGIO.',
+      '**Diferencia con RESUMEN:** Resumen condensa: "Según García (2024), la IA generativa genera desafíos éticos en educación." (De 30 palabras a 12).',
+      '**Diferencia con CITA TEXTUAL:** "La inteligencia artificial generativa revolucionó la educación superior" (García, 2024, p. 45) → Usa comillas, copia exactamente.'
+    ],
+    faqs: [
+      {
+        question: '¿Cuál es la diferencia entre parafrasear y resumir?',
+        answer: 'PARAFRASEAR: Reformulas idea completa con tus palabras, mantienes extensión similar, capturas TODA la información. RESUMIR: Condensas idea a puntos principales, reduces significativamente extensión, omites detalles. EJEMPLO: Original (50 palabras) → Paráfrasis (45-55 palabras, todos los detalles) vs Resumen (15 palabras, solo idea principal). CUÁNDO USAR: Parafrasea si todos los detalles son importantes. Resume si solo necesitas idea general. Ambos requieren cita.'
+      },
+      {
+        question: '¿Cómo parafrasear correctamente sin plagiar?',
+        answer: 'MÉTODO DE 5 PASOS: (1) LEE texto original varias veces hasta entender completamente. (2) CIERRA el texto (no lo veas mientras parafraseas). (3) ESCRIBE la idea como se la explicarías a un amigo (usa TUS palabras naturales). (4) COMPARA con original: ¿Cambiaste estructura, no solo palabras? ¿Mantuviste significado? (5) AGREGA CITA: (Autor, Año). VERIFICACIÓN: Si >3 palabras consecutivas son idénticas al original, re-escribe o usa comillas.'
+      },
+      {
+        question: '¿Necesito citar si parafraseo con mis propias palabras?',
+        answer: 'SÍ, SIEMPRE. Este es el error #1 de estudiantes. Parafrasear significa usar TUS palabras para expresar IDEAS AJENAS. Las ideas siguen siendo ajenas aunque cambies todas las palabras. No citar paráfrasis = plagio de paráfrasis (falta grave). FORMATO APA: Texto parafraseado (Autor, Año). EXCEPCIÓN: Conocimiento común (ej: "La Tierra gira alrededor del Sol") no requiere cita, pero si lo aprendiste de una fuente específica, cita.'
+      },
+      {
+        question: '¿Cambiar palabras por sinónimos es parafrasear?',
+        answer: 'NO. Cambiar solo sinónimos manteniendo estructura original es "patchwriting" (plagio mosaico), NO paráfrasis legítima. EJEMPLO INCORRECTO: Original: "Los estudiantes usan IA frecuentemente." → "Los alumnos utilizan inteligencia artificial seguido." (Solo cambió sinónimos = PLAGIO). PARÁFRASIS CORRECTA: "El uso de IA es común entre universitarios." (Cambió estructura completa). REGLA: Si alguien compara tu paráfrasis con original línea por línea y estructuras coinciden, es plagio aunque palabras sean diferentes.'
+      },
+      {
+        question: '¿Puedo usar herramientas de parafraseo automático?',
+        answer: 'SÍ, PERO CON PRECAUCIONES: (1) Herramientas automáticas (Quillbot, ChatGPT, etc.) generalmente hacen "patchwriting" (cambio de sinónimos, no paráfrasis real). (2) Muchas universidades consideran paráfrasis automática sin edición humana = plagio. (3) Herramientas pueden cambiar significado original. USO CORRECTO: Usa herramienta para generar borrador → EDITA manualmente para re-estructurar completamente → VERIFICA que mantiene significado → CITA la fuente. Nunca copies paráfrasis automática directamente.'
+      },
+      {
+        question: '¿Cómo citar paráfrasis en formato APA?',
+        answer: 'FORMATO APA 7: Texto parafraseado con tus palabras (Apellido, Año). VARIACIONES: Varios autores: (Apellido1 & Apellido2, Año). Tres+ autores: (Apellido1 et al., Año). Sin autor: ("Título", Año). PÁGINA OPCIONAL: (Autor, Año, p. X) si quieres ayudar a lectores localizar info. INTEGRACIÓN EN TEXTO: "Según García (2024), [paráfrasis]" o "[Paráfrasis] (García, 2024)". REFERENCIAS: Agrega entrada completa en lista de Referencias al final.'
+      },
+      {
+        question: '¿Cuándo debo parafrasear vs citar textualmente?',
+        answer: 'USA CITA TEXTUAL cuando: (1) Redacción original es memorable/poderosa, (2) Definición técnica precisa, (3) Frase de autoridad reconocida, (4) Datos/estadísticas específicas, (5) Lenguaje único que no puedes mejorar. USA PARÁFRASIS cuando: (1) Idea es importante pero redacción no es especial, (2) Quieres integrar múltiples fuentes fluidamente, (3) Necesitas adaptar nivel técnico, (4) Evitar ensayo lleno de comillas. BALANCE: Ensayo académico típico ~10-15% citas textuales, 30-40% paráfrasis, 50-60% análisis propio.'
+      },
+      {
+        question: '¿Qué es paráfrasis inaceptable (patchwriting)?',
+        answer: 'Patchwriting (también "plagio mosaico") es paráfrasis deficiente que cambia palabras pero mantiene estructura original. EJEMPLO: Original: "La IA generativa (ChatGPT, Claude) revolucionó educación porque facilita generar ensayos rápidamente." Patchwriting: "La inteligencia artificial generativa (ChatGPT, Claude) transformó la educación porque permite crear trabajos velozmente." → Estructura idéntica, solo cambió sinónimos = PLAGIO. CAUSA: Estudiante mira texto original mientras parafrasea. SOLUCIÓN: Cierra texto fuente, escribe de memoria con tus palabras.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'Plagio Académico', slug: 'que-es-plagio-academico' },
+      { term: 'Patchwriting', slug: 'que-es-patchwriting' },
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' }
+    ],
+    relatedTools: [
+      { name: 'Parafrasear Textos Online Gratis', url: '/parafrasear-textos-online-gratis?ref=glosario-parafrasear' },
+      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=glosario-parafrasear' },
+      { name: 'Detector de IA', url: '/?ref=glosario-parafrasear' }
+    ],
+    cta: {
+      text: 'Parafrasear textos gratis',
+      url: '/parafrasear-textos-online-gratis?ref=glosario-parafrasear'
+    }
+  },
+
+  {
+    slug: 'que-es-patchwriting',
+    term: 'Patchwriting (Plagio Mosaico)',
+    keywords: [
+      'que es patchwriting',
+      'plagio mosaico',
+      'patchwriting plagio',
+      'parafrasear incorrectamente',
+      'plagio patchwriting'
+    ],
+    title: '¿Qué es Patchwriting? Plagio Mosaico Explicado 2025',
+    description: 'Descubre qué es patchwriting (plagio mosaico), por qué es plagio académico, ejemplos, cómo evitarlo. Guía completa para estudiantes universitarios.',
+    h1: '¿Qué es Patchwriting? Guía del Plagio Mosaico',
+    intro: 'Patchwriting (también llamado "plagio mosaico" o "plagio de paráfrasis") es forma común de plagio donde estudiantes copian estructura de texto fuente pero cambian palabras por sinónimos. Es error frecuente porque estudiantes creen que cambiar palabras = parafrasear correctamente. En realidad, es plagio académico que detectores de similitud a veces NO identifican. Esta guía explica qué es patchwriting, por qué es problemático, diferencia con paráfrasis legítima, y cómo evitarlo.',
+    definition: 'Patchwriting es tipo de plagio donde estudiante copia estructura sintáctica y secuencia de ideas de texto fuente, pero reemplaza palabras con sinónimos. Resultado: "mosaico" de palabras propias en estructura ajena. Término acuñado por Rebecca Moore Howard (1992). Ejemplo: Original "La IA revoluciona educación" → Patchwriting "La inteligencia artificial transforma la enseñanza" (misma estructura, sinónimos). Es plagio porque apropiación intelectual no es solo palabras, sino organización de ideas.',
+    characteristics: [
+      {
+        icon: '🧩',
+        title: 'Copia Estructura, Cambia Palabras',
+        description: 'Característica definitoria: Mantiene esqueleto sintáctico del original (sujeto-verbo-objeto, orden de ideas, longitud de oraciones) pero sustituye palabras clave por sinónimos. Estudiante "calca" estructura del texto fuente.'
+      },
+      {
+        icon: '🔍',
+        title: 'Difícil de Detectar Automáticamente',
+        description: 'Turnitin y detectores de similitud comparan palabras, no estructuras. Patchwriting puede pasar detectores (0% similitud) porque palabras son diferentes, PERO sigue siendo plagio. Profesores entrenados lo detectan comparando estructuras lado a lado.'
+      },
+      {
+        icon: '📖',
+        title: 'Ocurre Cuando Miras el Original',
+        description: 'Causa principal: Estudiante mira texto fuente MIENTRAS escribe paráfrasis. Inconscientemente copia estructura aunque cambie palabras. Solución: Cierra texto fuente, escribe de memoria con TUS palabras naturales.'
+      },
+      {
+        icon: '⚠️',
+        title: 'Es Plagio Académico',
+        description: 'Aunque estudiantes lo hacen sin intención maliciosa (creen estar parafraseando), patchwriting es plagio según políticas universitarias. Puede resultar en reprobar trabajo, curso, o sanciones más graves. Ignorancia no es defensa.'
+      },
+      {
+        icon: '🎓',
+        title: 'Señal de Comprensión Superficial',
+        description: 'Patchwriting indica que estudiante NO entendió profundamente el texto (si entendieras, podrías explicarlo con tus palabras). Es "imitación" de paráfrasis real. Profesores lo ven como falta de procesamiento crítico.'
+      },
+      {
+        icon: '🔗',
+        title: 'Frecuente en Estudiantes Novatos',
+        description: 'Común en primeros años de universidad cuando estudiantes aún no dominan escritura académica. Transición difícil de secundaria (donde copiar+cambiar palabras era aceptable) a universidad (donde requiere re-conceptualización completa).'
+      }
+    ],
+    examples: [
+      '**TEXTO ORIGINAL:** "La inteligencia artificial generativa, como ChatGPT, ha revolucionado la educación superior al permitir a los estudiantes generar ensayos completos en cuestión de minutos." (Martínez, 2024)',
+      '**PATCHWRITING (PLAGIO MOSAICO):** "La IA generativa, como ChatGPT, ha transformado la enseñanza universitaria al habilitar a los alumnos crear trabajos completos en solo minutos." → Estructura idéntica, solo cambió sinónimos = PLAGIO.',
+      '**PARÁFRASIS LEGÍTIMA:** "Martínez (2024) observa que herramientas como ChatGPT facilitaron a universitarios producir trabajos académicos con velocidad sin precedentes, transformando dinámicas educativas." → Estructura completamente diferente.',
+      '**OTRO EJEMPLO DE PATCHWRITING:** Original: "Los detectores de IA analizan patrones estadísticos del texto." → Patchwriting: "Las herramientas de detección de IA examinan los patrones estadísticos del contenido." (Orden idéntico, sinónimos).',
+      '**PARÁFRASIS CORRECTA:** "Software especializado identifica texto generado por IA mediante análisis de características estadísticas." (Re-estructurado completamente).'
+    ],
+    faqs: [
+      {
+        question: '¿Por qué patchwriting es considerado plagio?',
+        answer: 'Patchwriting es plagio porque: (1) APROPIACIÓN INTELECTUAL: Copias organización de ideas, estructura argumentativa, y flujo lógico del autor original (no solo palabras). (2) FALTA DE PROCESAMIENTO: No demuestras comprensión propia - solo imitas superficie del texto. (3) DESHONESTIDAD: Presentas estructura ajena como tuya. (4) POLÍTICAS ACADÉMICAS: Mayoría de universidades lo definen explícitamente como plagio. Analogía: Si copias arquitectura de casa pero cambias colores de pintura, sigue siendo copia de diseño ajeno.'
+      },
+      {
+        question: '¿Cómo detectan patchwriting los profesores?',
+        answer: 'Métodos de detección: (1) COMPARACIÓN LADO A LADO: Ponen tu texto y fuente original juntos, observan si estructuras coinciden (mismo orden de ideas, longitud similar de oraciones, paralelos sintácticos). (2) TURNITIN AVANZADO: Versiones recientes detectan similitud estructural, no solo textual. (3) CAMBIOS DE ESTILO: Patchwriting produce estilo inconsistente (partes suenan como tú, partes como fuente). (4) VOCABULARIO: Uso de sinónimos sofisticados que no usas normalmente. (5) EXPERIENCIA: Profesores veteranos reconocen patrones de patchwriting.'
+      },
+      {
+        question: '¿Cuál es la diferencia entre patchwriting y paráfrasis legítima?',
+        answer: 'PATCHWRITING: (1) Miras texto original mientras escribes, (2) Copias estructura/orden de ideas, (3) Cambias solo palabras por sinónimos, (4) Resultado suena forzado/poco natural. PARÁFRASIS LEGÍTIMA: (1) Cierras texto original, escribes de memoria, (2) Re-estructuras completamente (cambias orden, combinas/divides ideas), (3) Usas TUS palabras naturales, (4) Resultado suena como tu estilo de escritura. TEST: Si alguien compara tu texto con original frase por frase y estructuras son paralelas, es patchwriting.'
+      },
+      {
+        question: '¿Cómo evitar patchwriting?',
+        answer: 'MÉTODO ANTI-PATCHWRITING: (1) LEE texto fuente varias veces hasta entender completamente. (2) CIERRA el texto (no lo veas). (3) ESPERA 5-10 minutos (toma café, camina). (4) ESCRIBE la idea como se la explicarías a un amigo sin conocimiento del tema (usa tus palabras más simples y naturales). (5) COMPARA con original: ¿Estructuras son diferentes? ¿Orden de ideas cambió? (6) Si estructuras son paralelas, RE-ESCRIBE sin mirar original. (7) AGREGA CITA. CLAVE: Nunca mires texto original mientras parafraseas.'
+      },
+      {
+        question: '¿Las herramientas de parafraseo automático generan patchwriting?',
+        answer: 'SÍ, FRECUENTEMENTE. Herramientas como Quillbot, Spinbot, parafrasers básicos funcionan principalmente cambiando palabras por sinónimos (definición de patchwriting). Resultado: mantienen estructura original pero con vocabulario diferente = plagio mosaico. ADEMÁS: (1) Muchas universidades consideran uso de parafrasers automáticos = plagio independientemente de resultado. (2) ChatGPT/Claude también pueden hacer patchwriting si les pides parafrasear. USO SEGURO: Usa herramienta solo como punto de partida → Re-escribe completamente manualmente → Verifica estructura es diferente → Cita fuente.'
+      },
+      {
+        question: '¿Turnitin detecta patchwriting?',
+        answer: 'DEPENDE. Turnitin tradicional detecta similitud TEXTUAL (palabras idénticas). Patchwriting bien hecho puede mostrar 0% similitud en Turnitin porque TODAS las palabras son diferentes. PERO: (1) Turnitin reciente incluye "Similarity 2.0" que detecta similitud estructural. (2) Profesores pueden activar "detect text manipulation" que identifica uso de parafrasers. (3) Profesores experimentados comparan manualmente tu texto con fuentes sospechosas. NO CONFÍES EN: "Si Turnitin no lo detecta, no es plagio" - patchwriting es plagio independientemente de lo que diga Turnitin.'
+      },
+      {
+        question: '¿Patchwriting siempre es intencional?',
+        answer: 'NO, generalmente es accidental. Mayoría de estudiantes hacen patchwriting sin intención de plagiar - creen estar parafraseando correctamente. CAUSAS: (1) EDUCACIÓN INSUFICIENTE: En secundaria, cambiar palabras era aceptable. Universidad requiere re-conceptualización completa. (2) COMPRENSIÓN SUPERFICIAL: Si no entiendes profundamente, solo puedes imitar estructura. (3) PRESIÓN DE TIEMPO: Patchwriting es más rápido que paráfrasis real. CONSECUENCIAS: Aunque sea accidental, sigue siendo plagio con mismas sanciones (universidades no excusan ignorancia).'
+      },
+      {
+        question: '¿Es patchwriting si cito la fuente?',
+        answer: 'SÍ, SIGUE SIENDO PROBLEMÁTICO. Citar fuente es necesario PERO no suficiente. Patchwriting con cita muestra: (1) Falta de procesamiento crítico (solo imitas, no sintetizas), (2) Habilidad de escritura deficiente, (3) Posible incomprensión del material. ADEMÁS: Algunos profesores consideran patchwriting citado = plagio de todas formas (políticas varían). SOLUCIÓN: Si no puedes parafrasear sin copiar estructura, usa CITA TEXTUAL con comillas: "Texto original exacto" (Autor, Año, p. X). Demuestra honestidad y evita patchwriting.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'Plagio Académico', slug: 'que-es-plagio-academico' },
+      { term: 'Parafrasear', slug: 'que-es-parafrasear' },
+      { term: 'Turnitin', slug: 'que-es-turnitin' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-patchwriting' },
+      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=glosario-patchwriting' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de texto',
+      url: '/?ref=glosario-patchwriting'
+    }
   }
 ];
