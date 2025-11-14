@@ -329,5 +329,357 @@ export const guides: GuidePage[] = [
       text: 'Parafrasear textos correctamente',
       url: '/parafrasear-textos-online-gratis?ref=guia-citar-apa'
     }
+  },
+
+  {
+    slug: 'como-evitar-plagio-academico',
+    title: 'Cómo Evitar Plagio Académico',
+    keywords: [
+      'como evitar plagio academico',
+      'evitar plagio universidad',
+      'prevenir plagio academico',
+      'como no plagiar',
+      'estrategias evitar plagio'
+    ],
+    metaTitle: 'Cómo Evitar Plagio Académico: 10 Estrategias Efectivas 2025',
+    metaDescription: 'Guía completa con 10 estrategias para evitar plagio académico. Prevención, mejores prácticas, herramientas. Para estudiantes universitarios.',
+    h1: 'Cómo Evitar Plagio Académico: Guía Completa y Estrategias',
+    intro: 'Plagio académico es la falta más grave en universidades, con consecuencias que van desde reprobar trabajos hasta expulsión permanente. Mayoría de estudiantes que plagian NO lo hacen intencionalmente - simplemente desconocen normas de citación o cometen errores de gestión de fuentes. Esta guía paso a paso enseña 10 estrategias concretas para prevenir plagio (intencional o accidental), mejores prácticas de investigación, herramientas útiles, y cómo gestionar fuentes correctamente desde inicio del proceso de escritura.',
+    overview: 'Esta guía cubre: (1) Planificación desde inicio para evitar plagio, (2) Toma de notas correcta, (3) Gestión de fuentes, (4) Cuándo parafrasear vs citar textualmente, (5) Herramientas de verificación.',
+    steps: [
+      {
+        number: 1,
+        title: 'Planifica con Tiempo Suficiente',
+        description: 'PROBLEMA RAÍZ: Mayoría de plagio ocurre por presión de tiempo. Estudiante espera hasta último momento, entra en pánico, copia para cumplir deadline. SOLUCIÓN: Inicia trabajo 2-3 semanas antes de fecha límite. CRONOGRAMA SUGERIDO: Semana 1: Investigación + outline (30%), Semana 2: Primer borrador completo (60%), Semana 3: Revisión + edición + verificación (100%). Con tiempo suficiente, puedes investigar correctamente, tomar notas organizadas, escribir sin presión. BENEFICIO ADICIONAL: Mejor calidad de trabajo, menos estrés, tiempo para pedir feedback.',
+        tips: [
+          'Crea calendario inverso: fecha límite → trabaja hacia atrás asignando tareas',
+          'Buffer de 2 días antes de deadline para imprevistos',
+          'Divide trabajo en tareas pequeñas diarias (más manejable)'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Toma Notas Distinguiendo Tus Ideas vs Ideas de Fuentes',
+        description: 'ERROR COMÚN: Copias párrafos de fuentes en tus notas sin marcar que son citas. Días después, no recuerdas qué es tuyo vs qué copiaste → copias "tus notas" al ensayo → plagio accidental. SISTEMA DE 3 COLORES: (1) NEGRO: Citas textuales con comillas + fuente, (2) AZUL: Paráfrasis con fuente, (3) VERDE: Tus ideas/análisis. ALTERNATIVA: Usa símbolos consistentes. [CITA] para textual, [PARA] para paráfrasis, [MIO] para tus ideas. CLAVE: NUNCA copies texto sin marcarlo inmediatamente como cita.',
+        tips: [
+          'Software: Evernote, Notion, OneNote permiten tags/colores para organizar notas',
+          'Anota SIEMPRE fuente completa inmediatamente (no "buscar después")',
+          'Si copias oración textual para recordarla, pon comillas INMEDIATAMENTE'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Usa Gestor de Referencias desde el Inicio',
+        description: 'HERRAMIENTAS: Zotero (gratis, open source), Mendeley (gratis), EndNote (pago, institucional). BENEFICIOS: (1) Guarda info completa de cada fuente automáticamente, (2) Genera citas/bibliografía en formato APA/MLA con 1 click, (3) Organiza PDFs + notas, (4) Previene error de olvidar fuente. FLUJO DE TRABAJO: Encuentras artículo útil → Agregas a Zotero (extensión browser) → Zotero guarda TODO (autores, año, DOI, PDF) → Al escribir, insertas cita con plugin → Al final, generas Referencias automáticamente. TIEMPO AHORRADO: Horas de formatear citas manualmente.',
+        tips: [
+          'Instala extensión browser de Zotero - agrega fuentes con 1 click',
+          'Agrega fuentes MIENTRAS investigas, no al final',
+          'Sincroniza entre dispositivos para acceder desde cualquier lugar'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Escribe Borrador Inicial Sin Ver Fuentes',
+        description: 'TÉCNICA ANTI-PLAGIO: Después de investigar, CIERRA todas las fuentes. Escribe borrador usando solo: (1) Tu outline, (2) Tus notas organizadas, (3) Tu memoria de lo que aprendiste. Escribe con TUS palabras naturales como se lo explicarías a amigo. LUEGO, en segunda pasada, agregas citas específicas consultando fuentes. BENEFICIO: Imposible copiar accidentalmente estructura/frases de fuentes si no las estás viendo. Resultado es genuinamente tu voz, tu estructura, tus palabras. EXCEPCIÓN: Está bien consultar fuente para verificar dato específico o agregar cita textual.',
+        tips: [
+          'Usa placeholder para citas: "Según [AUTOR], IA transforma educación" - llenas después',
+          'Si necesitas dato específico, búscalo, úsalo, cierra fuente inmediatamente',
+          'Este método también mejora retención - escribir de memoria refuerza aprendizaje'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Aprende Cuándo Parafrasear vs Citar Textualmente',
+        description: 'USA CITA TEXTUAL (comillas) cuando: (1) Definición técnica precisa, (2) Frase memorable/poderosa del autor, (3) Autoridad reconocida haciendo afirmación importante, (4) Quieres analizar lenguaje específico del autor. USA PARÁFRASIS cuando: (1) Idea es importante pero redacción no es especial, (2) Quieres integrar múltiples fuentes fluidamente, (3) Necesitas simplificar/adaptar nivel técnico. EVITA: Ensayo lleno de citas textuales (40%+ del texto) - demuestra poca síntesis propia. BALANCE IDEAL: 10-15% citas textuales, 25-35% paráfrasis, 50-60% tu análisis/argumento original.',
+        tips: [
+          'Test: Si redacción original es lo importante, cita textual; si idea es lo importante, parafrasea',
+          'Máximo 2-3 citas textuales por página de ensayo',
+          'Después de cada cita/paráfrasis, agrega TU análisis - no dejes cita sola'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Parafrasea Correctamente (No Solo Cambies Sinónimos)',
+        description: 'PLAGIO COMÚN: "Paráfrasis" que solo cambia palabras pero copia estructura = patchwriting = plagio. MÉTODO CORRECTO DE PARÁFRASIS: (1) Lee fuente 2-3 veces hasta entender completamente, (2) CIERRA la fuente (no la veas), (3) Espera 5 minutos (toma café, camina), (4) Escribe idea con TUS palabras como se la explicarías a amigo, (5) Compara con original - ¿estructura es diferente? (6) Si estructuras son paralelas, re-escribe sin ver original, (7) Agrega cita: (Autor, Año). VERIFICACIÓN: Lee tu paráfrasis y original lado a lado - si orden de ideas/longitud de oraciones son idénticos, es plagio.',
+        tips: [
+          'Nunca mires fuente MIENTRAS parafraseas - solo antes y después',
+          'Cambia voz activa/pasiva, divide/combina oraciones, reordena ideas',
+          'Test: ¿Suena como TU forma de hablar? Si suena formal/artificial, probablemente copiaste estructura'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Cita MIENTRAS Escribes (No al Final)',
+        description: 'ERROR FATAL: Escribir todo el ensayo, LUEGO intentar recordar qué ideas vinieron de dónde → olvidas citar fuentes → plagio accidental. MÉTODO CORRECTO: Inserta citas INMEDIATAMENTE cuando usas idea de fuente. Flujo: Escribes oración basada en fuente → Inmediatamente agregas (Autor, Año) → Continúas escribiendo. Si usas gestor referencias (Zotero), insertas cita con plugin mientras escribes. BENEFICIO: Imposible olvidar citar, proceso más rápido (no revisa todo al final), menos estrés. PLACEHOLDER: Si no recuerdas autor exacto, usa [CITA PENDIENTE] y búscalo inmediatamente después.',
+        tips: [
+          'Nunca digas "agregaré citas al final" - agrégalas AHORA',
+          'Si usas idea de fuente sin citar inmediatamente, resalta en amarillo hasta que agregues cita',
+          'Revisa que cada párrafo con ideas de fuentes tiene al menos 1 cita'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Usa Detectores de Plagio ANTES de Entregar',
+        description: 'HERRAMIENTAS GRATUITAS: DetectorDeIA.com (detecta IA + plagio), Turnitin (si tu universidad da acceso previo), Duplichecker, Quetext (límites gratuitos). PROCESO: (1) Copia tu ensayo final, (2) Pega en detector, (3) Revisa qué partes marca como similares, (4) Verifica que similitudes son: citas correctas con comillas, terminología técnica estándar, tu bibliografía. (5) Si detector marca paráfrasis como similar, re-escribe con más variación. ADVERTENCIA: Detectores NO son perfectos - úsalos como verificación adicional, no única defensa.',
+        tips: [
+          'Usa 2-3 detectores diferentes - si todos muestran problemas, definitivamente revisa',
+          'No intentes "engañar" detector cambiando letras por caracteres - profesores lo detectan',
+          'Si detector marca citas correctas, no te preocupes - profesor verá que están citadas'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Pide Feedback de Compañero o Centro de Escritura',
+        description: 'OJOS FRESCOS: Otra persona puede detectar problemas que tú no ves. OPCIONES: (1) CENTRO DE ESCRITURA: Mayoría de universidades tienen tutores gratis que revisan borradores, señalan áreas con citación insuficiente. (2) COMPAÑERO DE CLASE: Intercambian borradores, revisan mutuamente. (3) PROFESOR: Muchos profesores permiten enviar borrador para feedback preliminar. QUÉ PEDIR: "¿Hay secciones donde no queda claro si idea es mía o de fuente? ¿Necesito más citas?" BENEFICIO: Detectar plagio accidental ANTES de entrega = sin consecuencias.',
+        tips: [
+          'Centro de escritura NO escribirá tu ensayo, pero señalarán problemas de citación',
+          'Al intercambiar con compañero, ambos aprenden de errores del otro',
+          'Programa cita con centro escritura 1 semana antes de deadline (se llenan rápido)'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Cuando Dudes, CITA (Mejor Sobre-Citar que Sub-Citar)',
+        description: 'REGLA DE ORO: Si tienes CUALQUIER duda sobre si necesitas citar, CITA. Sobre-citación NO es problema (muestra rigurosidad), sub-citación = plagio. CASOS DE DUDA COMUNES: (1) Idea muy básica pero la aprendiste de fuente específica → CITA, (2) Paráfrasis de oración simple → CITA, (3) Dato que parece común pero no estás seguro → CITA, (4) Idea que combina múltiples fuentes → CITA TODAS. EXCEPCIÓN: Conocimiento verdaderamente común (ej: "La Tierra es redonda") no requiere cita, pero si lo viste en fuente específica, cita.',
+        tips: [
+          'Profesores NUNCA penalizan por citar demasiado (muestra honestidad)',
+          'Profesores SÍ penalizan duramente por citar muy poco',
+          'Test: Si no sabías esto antes de investigar, probablemente necesitas citar'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Copiar "solo un párrafo" de fuente sin citar pensando que es poco',
+        solution: 'Incluso 1 oración copiada sin citar es plagio. No existe "cantidad mínima segura". SIEMPRE cita cualquier texto/idea de fuente.'
+      },
+      {
+        mistake: 'Poner bibliografía al final pero no citar en el texto',
+        solution: 'Bibliografía sola NO previene plagio. Necesitas citas EN EL TEXTO (Autor, Año) para cada idea de fuente + bibliografía completa al final.'
+      },
+      {
+        mistake: 'Usar traductor para "parafrasear" texto de otro idioma',
+        solution: 'Traducir texto ajeno sin citar = plagio (plagias ideas/estructura). Si traduces, debes: (1) Parafrasear correctamente DESPUÉS de traducir, (2) Citar fuente original.'
+      },
+      {
+        mistake: 'Confiar 100% en detector de plagio ("0% similitud = no hay plagio")',
+        solution: 'Detectores NO detectan todo (especialmente patchwriting, plagio de libros físicos). 0% similitud NO garantiza ausencia de plagio. Usa detectores como herramienta auxiliar, no única verificación.'
+      },
+      {
+        mistake: 'Reutilizar trabajo propio de otra clase sin permiso (auto-plagio)',
+        solution: 'Entregar mismo trabajo en dos clases = auto-plagio (falta académica). Si quieres reutilizar ideas previas: (1) Pide permiso a ambos profesores, (2) Cita tu trabajo previo como fuente.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Qué hago si accidentalmente plagié en trabajo ya entregado?',
+        answer: 'ACCIÓN INMEDIATA: (1) Evalúa gravedad: ¿Olvidaste citar 1 fuente o copiaste secciones grandes? (2) SI ES MENOR (1-2 fuentes olvidadas): Email a profesor: "Revisando mi trabajo noté que omití citar [fuente]. Adjunto versión corregida con cita. Fue error no intencional." (3) SI ES GRAVE: Consulta con asesor académico antes de contactar profesor. (4) SÉ HONESTO: Admitir error es mejor que profesor descubra después. PREVENCIÓN: Siempre revisa con detectores ANTES de entregar.'
+      },
+      {
+        question: '¿Tengo que citar información que encontré en Wikipedia?',
+        answer: 'IMPORTANTE: NO uses Wikipedia como fuente directa en trabajos universitarios (no es fuente académica revisada por pares). PROCESO CORRECTO: (1) Lee Wikipedia para entender tema básico, (2) Ve a sección "Referencias" de Wikipedia, (3) Busca fuentes originales citadas en Wikipedia, (4) Lee fuentes originales (journals, libros), (5) Cita fuentes originales, NO Wikipedia. EXCEPCIÓN: Si profesor permite Wikipedia explícitamente, cítala: ("Título artículo", s.f.) y en Referencias: Título artículo. (s.f.). En Wikipedia. URL'
+      },
+      {
+        question: '¿Está bien parafrasear múltiples fuentes en el mismo párrafo?',
+        answer: 'SÍ, es síntesis (habilidad académica valiosa). CLAVE: Debes citar TODAS las fuentes. FORMATO: (1) OPCIÓN A: Cita cada idea por separado: "Idea 1 (García, 2024). Idea 2 (Smith, 2023)." (2) OPCIÓN B: Lista autores al final si todas apoyan misma idea: "Esta idea está bien documentada (García, 2024; Smith, 2023; Jones, 2022)." (3) AGREGA TU ANÁLISIS: No solo lista ideas de otros, sintetiza + agrega tu perspectiva.'
+      },
+      {
+        question: '¿Puedo usar frases comunes sin citar (ej: "estudios muestran", "es importante")?',
+        answer: 'FRASES GENERALES sin contenido específico NO requieren cita: "estudios muestran", "es importante", "en conclusión". PERO: Si dices "estudios muestran que 85% de universidades...", necesitas citar los estudios específicos. REGLA: Frases estructurales/transicionales = OK sin cita. Afirmaciones factuales/ideas = requieren cita. EJEMPLO SIN CITA: "Es importante considerar múltiples perspectivas." EJEMPLO CON CITA: "Es importante considerar múltiples perspectivas (García, 2024 argumenta esto)."'
+      },
+      {
+        question: '¿Qué pasa si dos fuentes dicen lo mismo? ¿Cito ambas?',
+        answer: 'OPCIONES: (1) CITA AMBAS si ambas son importantes para tu argumento: "IA transforma educación (García, 2024; Smith, 2023)." (2) CITA SOLO MÁS RELEVANTE/RECIENTE si no hay diferencia significativa entre fuentes. (3) SINTETIZA: "Múltiples estudios documentan transformación de educación por IA (García, 2024; Smith, 2023; Jones, 2022)." BENEFICIO de citar múltiples: Demuestra que leíste ampliamente, refuerza tu argumento (consenso académico).'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Cómo Citar Fuentes en Formato APA al Parafrasear', slug: 'como-citar-fuentes-apa-parafraseo' },
+      { title: 'Cómo Escribir Ensayos Originales', slug: 'como-escribir-ensayos-originales' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-evitar-plagio' },
+      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=guia-evitar-plagio' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de texto',
+      url: '/?ref=guia-evitar-plagio'
+    }
+  },
+
+  {
+    slug: 'como-escribir-ensayos-originales',
+    title: 'Cómo Escribir Ensayos Originales',
+    keywords: [
+      'como escribir ensayos originales',
+      'escribir ensayos sin plagiar',
+      'originalidad ensayos academicos',
+      'como escribir original',
+      'tecnicas escritura original'
+    ],
+    metaTitle: 'Cómo Escribir Ensayos Originales Sin Plagiar: Guía 2025',
+    metaDescription: 'Aprende a escribir ensayos 100% originales. Proceso paso a paso, técnicas de investigación, desarrollo de voz propia. Para estudiantes universitarios.',
+    h1: 'Cómo Escribir Ensayos Originales: Guía Paso a Paso',
+    intro: 'Escribir ensayo verdaderamente original NO significa inventar ideas de la nada (investigación académica se construye sobre trabajo previo). Significa: (1) Sintetizar fuentes de forma única, (2) Agregar tu análisis/perspectiva distintiva, (3) Desarrollar tu voz académica, (4) Citar correctamente todas las fuentes. Esta guía paso a paso enseña proceso completo desde brainstorming hasta ensayo final original, técnicas para desarrollar ideas propias, cómo integrar fuentes sin copiar, y métodos para encontrar tu voz académica única.',
+    overview: 'Esta guía cubre: (1) Brainstorming y desarrollo de tesis original, (2) Investigación estratégica, (3) Outline que prioriza tu análisis, (4) Escritura con voz propia, (5) Integración ética de fuentes.',
+    steps: [
+      {
+        number: 1,
+        title: 'Genera Ideas Propias ANTES de Investigar en Profundidad',
+        description: 'PROCESO: (1) Lee prompt/pregunta del ensayo, (2) ANTES de investigar exhaustivamente, escribe 10-15 minutos de brainstorming: ¿Qué SÉ ya sobre este tema? ¿Qué PIENSO? ¿Qué preguntas TENGO? (3) Desarrolla tesis preliminar basada en tu pensamiento inicial, (4) LUEGO investiga para: refinar tu argumento, encontrar evidencia que apoye/desafíe tus ideas, descubrir perspectivas que no consideraste. BENEFICIO: Empezar con TUS ideas previene que simplemente regurgites lo que leyste. Tu ensayo tiene dirección propia desde inicio.',
+        tips: [
+          'Técnica: Freewriting - escribe sin parar 10 min sobre el tema sin auto-censura',
+          'Pregúntate: "Si tuviera que argumentar posición sobre X sin leer nada, ¿qué diría?"',
+          'Guarda este brainstorming inicial - compáralo con ensayo final para ver tu crecimiento'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Desarrolla Tesis Específica y Argumentable',
+        description: 'TESIS DÉBIL (genérica): "La IA tiene impacto en educación." TESIS FUERTE (específica, argumentable): "Aunque IA ofrece beneficios de personalización, su adopción sin regulación ética en universidades amenaza desarrollo de pensamiento crítico en estudiantes." CARACTERÍSTICAS DE BUENA TESIS: (1) ESPECÍFICA: No vaga, hace afirmación concreta. (2) ARGUMENTABLE: Alguien podría estar en desacuerdo razonablemente. (3) RESPONDE "¿Y QUÉ?": Explica por qué tu argumento importa. (4) GUÍA TODO EL ENSAYO: Cada párrafo apoya tu tesis. DESARROLLO: Escribe 3-5 versiones de tesis, refina hasta que sea clara y específica.',
+        tips: [
+          'Test: ¿Alguien podría argumentar lo opuesto? Si no, tu tesis es hecho, no argumento',
+          'Evita: "En este ensayo discutiré..." - no anuncies, simplemente argumenta',
+          'Tesis puede evolucionar mientras escribes - ajústala según tu pensamiento se desarrolla'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Crea Outline que Prioriza TU Análisis, No Resumen de Fuentes',
+        description: 'ESTRUCTURA DÉBIL: Párrafo 1: García dice X. Párrafo 2: Smith dice Y. Párrafo 3: Jones dice Z. = Resumen de fuentes, no TU ensayo. ESTRUCTURA FUERTE: Cada párrafo desarrolla UN punto de TU argumento, usa fuentes como EVIDENCIA. FORMATO: Punto principal (tu idea) → Evidencia de fuente 1 (cita/paráfrasis) → TU análisis de por qué esa evidencia apoya tu punto → Evidencia de fuente 2 → TU análisis conectando ambas evidencias → TU conclusión del punto. RATIO: Por cada oración de fuente, 2-3 oraciones de TU análisis.',
+        tips: [
+          'Outline: No pongas "García argumenta X", pon "Mi punto 1: X [apoyo: García]"',
+          'Test: ¿Puedes eliminar nombres de autores y ensayo sigue siendo coherente? Si sí, es TU argumento',
+          'Después de cada cita/paráfrasis pregúntate: "¿Por qué incluyo esto? ¿Qué demuestra?"'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Escribe en Bloques Enfocándote en TUS Ideas Primero',
+        description: 'MÉTODO: En lugar de escribir lineal (intro→cuerpo→conclusión), escribe en bloques: (1) Escribe párrafos de CUERPO primero (tu argumentación principal), (2) Para cada párrafo: Escribe TU punto en tus palabras naturales ANTES de consultar fuentes, (3) LUEGO agrega evidencia de fuentes que apoya tu punto, (4) Escribe intro y conclusión AL FINAL (cuando sabes exactamente qué argumentaste). BENEFICIO: Ensayo se construye alrededor de TUS ideas, fuentes sirven a TU argumento (no al revés). Resultado es genuinamente original.',
+        tips: [
+          'Trabaja en documento separado para cada sección mayor - combinas al final',
+          'Si te atascas en una sección, sáltala - escribe otra sección primero',
+          'Primer borrador: Enfócate en desarrollar ideas, no en gramática perfecta'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Desarrolla Tu Voz Académica Distintiva',
+        description: 'VOZ ACADÉMICA NO significa "sonar inteligente" con palabras complejas. Significa: claridad, precisión, confianza en tus argumentos. COMPONENTES: (1) USA "YO" CUANDO APROPIADO: "Argumento que...", "Mi análisis sugiere..." (algunas disciplinas prefieren tercera persona - verifica). (2) SÉ DIRECTO: "X ocurre porque Y" en lugar de "Parece posible que X podría potencialmente ocurrir debido a Y". (3) TOMA POSICIÓN: "Esta evidencia demuestra X" en lugar de "Esta evidencia quizás sugiere X". (4) USA EJEMPLOS ESPECÍFICOS: Casos concretos en lugar de generalizaciones vagas.',
+        tips: [
+          'Lee tu ensayo en voz alta - si suena natural (como TÚ hablando), es tu voz',
+          'Evita: "Es importante destacar", "Cabe mencionar" (suenan como IA/escritura artificial)',
+          'Vocabulario: Usa palabra más simple que comunique idea claramente (no la más compleja)'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Integra Fuentes Como Conversación, No Lista',
+        description: 'INTEGRACIÓN DÉBIL: "García dice X. Pero Smith dice Y. Y Jones dice Z." INTEGRACIÓN FUERTE: "García (2024) argumenta X. Sin embargo, esta perspectiva no considera Y [tu punto], como demuestra Smith (2023). Además, análisis de Jones (2022) revela que ambas posiciones comparten Z [tu síntesis]." TÉCNICAS: (1) USA VERBOS VARIADOS: "argumenta", "demuestra", "sugiere", "cuestiona", "refuta". (2) SINTETIZA: Conecta fuentes entre sí, no las presentes aisladas. (3) CRÍTICA: No todas las fuentes son perfectas - señala limitaciones cuando relevante.',
+        tips: [
+          'Después de mencionar fuente, SIEMPRE agrega tu interpretación/análisis',
+          'Conecta fuentes: "Mientras García argumenta X, Smith sugiere Y alternativo..."',
+          'No uses fuente para decir algo obvio - usa fuentes para reforzar puntos complejos/controvertidos'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Agrega Ejemplos Personales o Experiencias (Cuando Apropiado)',
+        description: 'APLICABILIDAD: Depende de disciplina. Humanidades, educación, ciencias sociales frecuentemente permiten ejemplos personales. STEM generalmente no. CÓMO USAR: (1) Como ILUSTRACIÓN de punto teórico: "Este fenómeno se observa incluso en contextos cotidianos. En mi clase de X, noté Y..." (2) Como MOTIVACIÓN en intro: "Mi experiencia con Z motivó esta investigación." (3) NO como EVIDENCIA PRINCIPAL: Anécdotas complementan argumentos basados en fuentes, no los reemplazan. BENEFICIO: Ejemplos personales son inherentemente originales, agregan autenticidad.',
+        tips: [
+          'Pregunta a profesor si ejemplos personales son apropiados para tu disciplina',
+          'Balance: Máximo 1-2 anécdotas breves en ensayo típico (no dominen el texto)',
+          'Conecta experiencia personal con literatura: "Mi observación refleja hallazgos de García (2024)"'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Revisa Priorizando Fortaleza de Argumentos, No Solo Gramática',
+        description: 'RONDAS DE REVISIÓN MÚLTIPLES: (1) RONDA 1 - ARGUMENTOS: ¿Cada párrafo apoya tesis? ¿Transiciones lógicas? ¿Evidencia suficiente? ¿Tu análisis es claro? (2) RONDA 2 - ORIGINALIDAD: ¿Suena como TU voz? ¿Ratio fuentes:análisis es 1:2 o mejor? ¿Evitaste resumen vs análisis? (3) RONDA 3 - CLARIDAD: ¿Cada oración es clara? ¿Eliminar jerga innecesaria? (4) RONDA 4 - GRAMÁTICA: Errores, typos, formato. DESCANSO: Deja ensayo 1-2 días entre escritura y revisión - ves errores con ojos frescos.',
+        tips: [
+          'Imprime ensayo y revisa en papel - detectas más errores que en pantalla',
+          'Lee en voz alta - tropiezos al leer = oraciones poco claras',
+          'Pide a amigo leer solo tu tesis + conclusiones - ¿Coinciden? Si no, desalineamiento'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Verifica Que Cada Párrafo Tiene "PIE" (Punto-Info-Evaluación)',
+        description: 'ESTRUCTURA PIE PARA ORIGINALIDAD: (1) P - PUNTO: Tu afirmación/argumento (oración temática). (2) I - INFORMACIÓN: Evidencia de fuentes que apoya tu punto (citas/paráfrasis). (3) E - EVALUACIÓN: TU análisis de por qué esa evidencia importa, qué demuestra, cómo se conecta con tesis. VERIFICACIÓN: Lee cada párrafo - si solo tiene P+I sin E, agregas E. Si solo tiene I (resumen de fuentes) sin P ni E, re-escribe para centrar en tu argumento. E debe ser 50%+ del párrafo.',
+        tips: [
+          'Color-codifica: P en verde, I en azul, E en amarillo - visualmente verificas balance',
+          'E común: "Esto sugiere que...", "Por lo tanto...", "Esta evidencia demuestra..."',
+          'Test: Elimina todas las I (fuentes) - ¿Argumento sigue siendo coherente? Si sí, es TU ensayo'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Escribe Conclusión Que Muestra Por Qué Tu Análisis Importa',
+        description: 'CONCLUSIÓN DÉBIL: Resumen de lo que ya dijiste. "En este ensayo discutí X, Y, Z." CONCLUSIÓN FUERTE: (1) Reafirma tesis (pero con palabras diferentes, no copia-pega), (2) Sintetiza cómo tus puntos se conectan, (3) Responde "¿Y QUÉ?": ¿Por qué tu argumento importa? ¿Qué implica para campo/sociedad? (4) Deja lector con idea para considerar (pregunta abierta, implicación futura). NO INCLUYAS: Nueva evidencia/citas (van en cuerpo), disculpas ("este ensayo no es perfecto..."), afirmaciones grandiosas no respaldadas.',
+        tips: [
+          'Conclusión es tu última oportunidad de persuadir - hazla memorable',
+          'Técnica: Vuelve a ejemplo/pregunta de intro - cierra el círculo',
+          'Longitud: Típicamente 1 párrafo, máximo 10% del ensayo total'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Investigar excesivamente antes de desarrollar tus propias ideas',
+        solution: 'Invertir el proceso: Desarrolla tus ideas primero (brainstorming, tesis preliminar), LUEGO investiga para refinar/apoyar tus argumentos. Previene que solo regurgites lo que leíste.'
+      },
+      {
+        mistake: 'Estructurar ensayo como "reporte de libro" (resumen de cada fuente)',
+        solution: 'Estructura alrededor de TUS argumentos. Cada párrafo = un punto TUYO, fuentes son evidencia que apoyan TU punto. Ratio: 1 parte fuentes, 2 partes tu análisis.'
+      },
+      {
+        mistake: 'Usar vocabulario complejo innecesariamente para "sonar académico"',
+        solution: 'Claridad > complejidad. Usa palabra más simple que comunica idea efectivamente. Vocabulario rebuscado oscurece argumentos, no los fortalece.'
+      },
+      {
+        mistake: 'Terminar cada párrafo con cita de fuente',
+        solution: 'SIEMPRE termina párrafo con TU análisis/conclusión del punto. Cita/paráfrasis van en MEDIO del párrafo, tu interpretación cierra el párrafo.'
+      },
+      {
+        mistake: 'Escribir intro y conclusión primero',
+        solution: 'Escribe cuerpo primero (tu argumentación), intro y conclusión AL FINAL cuando sabes exactamente qué argumentaste. Intro/conclusión más precisas y coherentes.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cómo sé si mi ensayo es "suficientemente original"?',
+        answer: 'TESTS DE ORIGINALIDAD: (1) TEST ELIMINACIÓN: Elimina nombres de autores/citas - ¿Argumento sigue siendo coherente? Si sí, es original (tu argumento no depende de solo repetir fuentes). (2) TEST RATIO: Cuenta oraciones con ideas de fuentes vs tu análisis. Ratio debe ser mínimo 1:2 (1 fuente, 2 tuyas). (3) TEST VOZ: Lee en voz alta - ¿Suena como TÚ hablando? Si suena artificial/genérico, necesitas más tu voz. (4) TEST PREGUNTA: ¿Dices algo que NO está en tus fuentes? Tu síntesis/conclusiones deben ir más allá de lo que cualquier fuente individual dice.'
+      },
+      {
+        question: '¿Es posible escribir ensayo 100% original sin usar fuentes?',
+        answer: 'EN UNIVERSIDAD: NO. Escritura académica requiere investigación - construyes sobre conocimiento existente. PERO: Tu CONTRIBUCIÓN debe ser original: (1) Tu TESIS específica, (2) Tu SÍNTESIS de múltiples fuentes, (3) Tu ANÁLISIS de evidencia, (4) Tus CONEXIONES entre ideas. ANALOGÍA: Construyes casa (original) con ladrillos existentes (fuentes). Casa es tuya aunque ladrillos no lo sean. EXCEPCIÓN: Ensayos reflexivos/personales pueden ser 100% tu experiencia, pero incluso estos frecuentemente incluyen alguna referencia teórica.'
+      },
+      {
+        question: '¿Qué hago si todas mis fuentes dicen lo mismo?',
+        answer: 'SEÑAL DE PROBLEMA: Investigación muy limitada o tema demasiado consensuado. SOLUCIONES: (1) BUSCA PERSPECTIVAS CONTRARIAS: Usa términos como "[tema] criticisms", "[tema] limitations", "[tema] counterarguments". (2) EXPANDE BÚSQUEDA: Diferentes disciplinas (ej: perspectiva psicológica vs sociológica del mismo tema). (3) ANALIZA POR QUÉ HAY CONSENSO: "Mientras todos los autores concuerdan en X, ninguno considera implicación Y [tu contribución]". (4) APLICA A CONTEXTO NUEVO: "Aunque literatura establece X en contexto A, aplicación a contexto B revela Z [tu análisis]".'
+      },
+      {
+        question: '¿Puedo usar IA (ChatGPT) para ayudar a generar ideas originales?',
+        answer: 'DEPENDE de política de tu profesor. SI ESTÁ PERMITIDO: USA IA PARA BRAINSTORMING INICIAL, no para escribir ensayo. PROCESO ÉTICO: (1) Pide a IA generar 10 ángulos sobre tema, (2) TÚ seleccionas 2-3 más interesantes, (3) TÚ desarrollas esos ángulos completamente con tus palabras, (4) Declaras uso de IA en nota. ADVERTENCIA: Ideas de IA son genéricas - úsalas como punto de partida, no como tu argumento. MEJOR: Genera ideas tú mismo primero, LUEGO usa IA para ver qué ángulos no consideraste.'
+      },
+      {
+        question: '¿Cómo desarrollo mi "voz académica" si soy estudiante de primer año?',
+        answer: 'DESARROLLO DE VOZ (requiere práctica): (1) LEE MUCHO en tu disciplina - absorbes patrones de escritura académica. (2) IMITA CONSCIENTEMENTE: Encuentra artículo bien escrito, analiza cómo estructura argumentos, luego aplica esa estructura (NO palabras) a tu tema. (3) ESCRIBE REGULARMENTE: Más escribes, más natural se vuelve tu voz. (4) PIDE FEEDBACK: Pregunta a profesor "¿Mi voz es apropiadamente académica?" (5) ACEPTA EVOLUCIÓN: Voz de primer año es diferente de tercer año - normal que cambie. NO HAGAS: Usar thesaurus para complicar cada palabra - claridad > complejidad.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Mejorar Escritura Académica', slug: 'como-mejorar-escritura-academica' },
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-ensayos-originales' },
+      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-ensayos-originales' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de ensayo',
+      url: '/?ref=guia-ensayos-originales'
+    }
   }
 ];
