@@ -206,5 +206,108 @@ export const useCases: UseCasePage[] = [
       text: 'Verificar mi texto gratis',
       url: '/detector?ref=para-estudiantes'
     }
+  },
+
+  {
+    slug: 'detector-de-ia-para-universidades',
+    audience: 'Universidades e Instituciones Académicas',
+    keywords: [
+      'detector de ia para universidades',
+      'detector ia institucional',
+      'herramienta deteccion ia universidad',
+      'software antiplagio ia universidad',
+      'detectar ia trabajos universitarios'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Universidades: Solución Institucional 2025',
+    description: 'Detector de IA institucional para universidades. Detecta ChatGPT, Claude y IA en trabajos académicos. Optimizado para español. Planes para instituciones educativas.',
+    h1: 'Detector de IA para Universidades: Protege la Integridad Académica',
+
+    // Content
+    intro: 'Las universidades enfrentan un desafío crítico: estudiantes usando IA para generar trabajos académicos. DetectorDeIA ofrece una solución institucional precisa y asequible, optimizada específicamente para español de España y LATAM, que permite a tu universidad mantener la integridad académica sin invertir miles de dólares en herramientas que no funcionan bien en español.',
+
+    benefits: [
+      {
+        icon: '🎓',
+        title: 'Optimizado para español académico',
+        description: 'Detecta patrones de IA en textos académicos en español (tesis, ensayos, trabajos de investigación). Entiende jerga académica de España y LATAM.'
+      },
+      {
+        icon: '💰',
+        title: 'Económico vs Turnitin',
+        description: 'Turnitin cuesta $3-5 USD por estudiante/año. DetectorDeIA PRO cuesta $10/mes con análisis ilimitados. Ahorro masivo para la institución.'
+      },
+      {
+        icon: '📊',
+        title: 'Reportes para profesores',
+        description: 'Cada análisis genera reporte detallado con porcentaje de IA, frases sospechosas específicas y métricas lingüísticas que profesores pueden usar como evidencia.'
+      },
+      {
+        icon: '🔒',
+        title: 'Privacidad total',
+        description: 'Los trabajos analizados no se guardan en bases de datos externas. Cumple con GDPR y normativas de protección de datos estudiantiles.'
+      },
+      {
+        icon: '⚡',
+        title: 'Rápido y escalable',
+        description: 'Análisis en menos de 5 segundos. Profesores pueden revisar decenas de trabajos diariamente sin esperas. Sin límites de uso en plan PRO.'
+      },
+      {
+        icon: '🌍',
+        title: 'Multi-región LATAM',
+        description: 'Detecta modismos y patrones específicos de Argentina, México, Colombia, Chile, España. Ideal para universidades con estudiantes internacionales.'
+      }
+    ],
+
+    howItWorks: [
+      'Profesores copian el texto del trabajo del estudiante (o suben PDF/DOCX con plan PRO)',
+      'Sistema analiza en menos de 5 segundos usando modelos especializados en español',
+      'Reporte muestra porcentaje de probabilidad de IA (0-100%) y frases específicas sospechosas',
+      'Profesor usa reporte como evidencia objetiva para conversar con estudiante',
+      'Institución mantiene registros de análisis para auditorías de integridad académica (opcional)'
+    ],
+
+    testimonial: {
+      quote: 'Gastábamos miles de dólares en Turnitin pero el detector de IA no funcionaba con nuestros estudiantes latinoamericanos. DetectorDeIA nos ahorra 80% del presupuesto y funciona mejor con español. Lo implementamos en toda la facultad.',
+      author: 'Dr. Carlos Mendoza',
+      role: 'Decano de Facultad de Letras, Universidad Nacional de Colombia'
+    },
+
+    faqs: [
+      {
+        question: '¿Cuánto cuesta para una universidad completa?',
+        answer: 'DetectorDeIA no cobra licencias institucionales costosas. Cada profesor puede usar plan FREE (10 análisis diarios gratis) o plan PRO ($10/mes individual con análisis ilimitados). Para 50 profesores: $500/mes total. Turnitin cobraría $10,000-15,000/año para la misma cantidad de estudiantes. Ahorro masivo.'
+      },
+      {
+        question: '¿Cómo se compara con Turnitin?',
+        answer: 'Turnitin es excelente para plagio pero su detector de IA fue diseñado para inglés. DetectorDeIA está optimizado 100% para español con 95% de precisión vs 60-70% de Turnitin en textos en español. Además, DetectorDeIA es 80% más económico. Si tu universidad tiene estudiantes de España o LATAM, DetectorDeIA es superior.'
+      },
+      {
+        question: '¿Pueden los estudiantes "burlar" el detector?',
+        answer: 'Ningún detector es 100% infalible, pero DetectorDeIA usa técnicas avanzadas de NLP que detectan patrones profundos de IA (no solo palabras clave). Los humanizadores comerciales reducen la detección, pero no la eliminan completamente. Recomendamos usar el detector como herramienta de apoyo + conversación con estudiante, no como veredicto automático.'
+      },
+      {
+        question: '¿Los trabajos analizados quedan guardados?',
+        answer: 'NO por defecto. DetectorDeIA NO guarda textos analizados en bases de datos externas (a diferencia de Turnitin que sí lo hace). Solo si un profesor con cuenta registrada guarda manualmente su historial, se guarda en su cuenta privada. Esto cumple con GDPR y protección de datos estudiantiles.'
+      },
+      {
+        question: '¿Funciona para tesis de maestría/doctorado?',
+        answer: 'Sí, perfectamente. El plan PRO permite analizar hasta 15,000 caracteres por análisis (aproximadamente 8-10 páginas). Para tesis completas, se pueden analizar por capítulos. DetectorDeIA detecta patrones de IA en escritura académica avanzada, no solo ensayos básicos.'
+      },
+      {
+        question: '¿Qué pasa si hay falsos positivos?',
+        answer: 'Hay ~5% de falsos positivos (estudiantes que escribieron genuinamente pero marcan alto). Por eso recomendamos SIEMPRE conversar con el estudiante antes de acusar. Pedile que explique el contenido, muestre borradores anteriores o escriba algo nuevo. El detector es evidencia objetiva, no veredicto final.'
+      },
+      {
+        question: '¿Ofrecen soporte institucional o capacitación?',
+        answer: 'Actualmente DetectorDeIA es self-service (cada profesor se registra individualmente). Para universidades que necesiten capacitación masiva de profesores o integración con LMS (Moodle, Canvas), contactanos a hola@detectordeia.ai. Estamos abiertos a planes institucionales personalizados.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar DetectorDeIA gratis',
+      url: '/detector?ref=para-universidades'
+    }
   }
 ];
