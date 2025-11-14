@@ -1030,5 +1030,211 @@ export const useCases: UseCasePage[] = [
       text: 'Verificar artículo de blog gratis',
       url: '/detector?ref=para-blogs'
     }
+  },
+
+  {
+    slug: 'detector-de-ia-para-periodistas',
+    audience: 'Periodistas y Medios de Comunicación',
+    keywords: [
+      'detector de ia para periodistas',
+      'verificar articulos periodisticos ia',
+      'detector chatgpt periodismo',
+      'integridad periodistica ia',
+      'detector ia noticias'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Periodistas: Verifica Artículos y Noticias 2025',
+    description: 'Detector de IA para periodistas y medios. Mantén integridad periodística. Verifica que reportajes tengan investigación genuina. Optimizado para español.',
+    h1: 'Detector de IA para Periodistas: Integridad y Credibilidad',
+
+    // Content
+    intro: 'La credibilidad periodística depende de investigación genuina, no de contenido generado automáticamente. DetectorDeIA ayuda a periodistas y medios de comunicación a verificar que sus artículos, reportajes y noticias tengan trabajo periodístico real, no texto genérico de ChatGPT que daña la confianza del público.',
+
+    benefits: [
+      {
+        icon: '📰',
+        title: 'Protege credibilidad periodística',
+        description: 'Lectores detectan cuando un artículo es genérico sin investigación real. Asegura que tus piezas tengan reporteo genuino, fuentes verificadas y análisis propio.'
+      },
+      {
+        icon: '🔍',
+        title: 'Verifica trabajo de redactores',
+        description: 'Si gestionas equipo de redacción, verifica que artículos tengan investigación real. Evita que redactores entreguen texto 100% ChatGPT sin reporteo.'
+      },
+      {
+        icon: '⚡',
+        title: 'Control de calidad editorial',
+        description: 'Analiza artículos antes de publicar. Identifica piezas que necesitan más fuentes, contexto o investigación original antes de que salgan al aire.'
+      },
+      {
+        icon: '🎯',
+        title: 'Mantiene estándares éticos',
+        description: 'El periodismo requiere verificación de hechos y reporteo original. IA genera contenido sin verificar fuentes ni investigar. Asegura integridad editorial.'
+      },
+      {
+        icon: '💼',
+        title: 'Reputación del medio',
+        description: 'Medios que publican contenido genérico pierden audiencia y credibilidad. Protege la reputación de tu publicación con control de calidad riguroso.'
+      },
+      {
+        icon: '🔒',
+        title: 'Confidencialidad de investigaciones',
+        description: 'Tus artículos e investigaciones no se guardan. Privacidad total para reportajes sensibles, investigaciones en curso o contenido embargado.'
+      }
+    ],
+
+    howItWorks: [
+      'Redactas tu artículo periodístico con investigación, entrevistas y fuentes verificadas',
+      'Antes de publicar, analizas el artículo en DetectorDeIA',
+      'Obtenés porcentaje de IA y verificas que el texto no sea genérico sin reporteo',
+      'Si marca alto (+50%): agregá más citas directas, contexto original, análisis propio basado en investigación',
+      'Publicás con confianza sabiendo que el artículo tiene trabajo periodístico genuino'
+    ],
+
+    testimonial: {
+      quote: 'Dirijo la redacción digital de un diario regional. Algunos redactores jóvenes empezaron a usar ChatGPT para "agilizar" notas. DetectorDeIA nos ayuda a identificar qué artículos necesitan más reporteo antes de publicar. Protege nuestra credibilidad.',
+      author: 'Miguel Ángel Torres',
+      role: 'Editor Jefe, Diario El Observador (Uruguay)'
+    },
+
+    faqs: [
+      {
+        question: '¿Los periodistas pueden usar IA para escribir artículos?',
+        answer: 'IA puede ayudar con ESTRUCTURA y RESEARCH inicial, pero el reporteo debe ser humano. Uso ético: (1) IA sugiere ángulos/estructura, (2) Periodista hace investigación real (entrevistas, verificación de fuentes, análisis), (3) Periodista escribe con su voz integrando reporteo, (4) Resultado final marca <30% (mayoría es reporteo original). NUNCA usar IA para generar quotes falsas, inventar fuentes o reemplazar investigación. Eso viola ética periodística.'
+      },
+      {
+        question: '¿Qué porcentaje de IA es aceptable en periodismo?',
+        answer: 'Depende del tipo de pieza: Reportajes de investigación: <20% (requiere trabajo periodístico profundo), Noticias de último momento: <35% (contexto rápido pero verificado), Artículos de opinión: <30% (análisis personal basado en hechos), Notas informativas: <40% (datos + contexto). Piezas genéricas sin fuentes verificadas o investigación original NO son periodismo, son content mill. El detector ayuda a mantener estándares.'
+      },
+      {
+        question: '¿Cómo distinguir entre artículo periodístico genuino y IA genérica?',
+        answer: 'Artículo periodístico genuino tiene: (1) Citas directas de fuentes identificables, (2) Datos específicos con contexto verificable, (3) Múltiples fuentes/perspectivas, (4) Análisis basado en investigación (no opinión genérica), (5) Detalles concretos (lugares, fechas, nombres). IA genérica tiene: frases vagas, "expertos dicen" sin nombres, generalizaciones sin datos, estructura predecible, falta de contexto específico. DetectorDeIA identifica estos patrones.'
+      },
+      {
+        question: '¿El detector ayuda a verificar noticias falsas generadas con IA?',
+        answer: 'Parcialmente. DetectorDeIA identifica si un texto fue generado con IA, pero NO verifica si los hechos son verdaderos. Para verificación de hechos, necesitas fact-checking tradicional (verificar fuentes, contrastar datos, buscar evidencia). El detector ayuda a identificar artículos sospechosos que NO tienen reporteo genuino, pero no reemplaza verificación periodística de contenido.'
+      },
+      {
+        question: '¿Qué hacer si un redactor entrega artículo 100% ChatGPT?',
+        answer: 'Protocolo editorial recomendado: (1) Rechazar el artículo, (2) Explicar que periodismo requiere investigación real, no texto generado, (3) Dar oportunidad de rehacer con reporteo genuino (entrevistas, fuentes, verificación), (4) Si es reincidente, considerar medidas disciplinarias. Publicar contenido sin reporteo daña credibilidad del medio. Estándares éticos no son negociables.'
+      },
+      {
+        question: '¿Los lectores confían menos en medios que usan IA?',
+        answer: 'Sí, según estudios recientes. Lectores valoran investigación periodística genuina. Si detectan que un medio publica contenido genérico sin reporteo, pierden confianza y migran a medios con estándares más altos. Transparencia es clave: si usas IA para research, divúlgalo. Si el artículo tiene reporteo original, los lectores lo notan y valoran. Credibilidad es tu activo más importante.'
+      },
+      {
+        question: '¿Cuántos artículos puedo analizar?',
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, artículos cortos). Para redacciones: plan PRO a $10/mes individual (análisis ilimitados, 15,000 caracteres). Si tu medio publica volumen alto diariamente, varios editores pueden tener cuentas PRO. Para redacciones grandes que necesiten plan institucional, contactanos a hola@detectordeia.ai.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar artículo periodístico',
+      url: '/detector?ref=para-periodistas'
+    }
+  },
+
+  {
+    slug: 'detector-de-ia-para-editores',
+    audience: 'Editores y Correctores de Texto',
+    keywords: [
+      'detector de ia para editores',
+      'verificar textos editoriales ia',
+      'control calidad editorial ia',
+      'detector chatgpt edicion',
+      'detector ia manuscritos'
+    ],
+
+    // SEO
+    title: 'Detector de IA para Editores: Verifica Manuscritos y Textos 2025',
+    description: 'Detector de IA para editores y correctores. Verifica autenticidad de manuscritos, artículos y contenido editorial. Control de calidad en español.',
+    h1: 'Detector de IA para Editores: Control de Calidad Editorial',
+
+    // Content
+    intro: 'Los editores necesitan verificar que el contenido que publican tenga voz auténtica del autor, no sea texto genérico de IA. DetectorDeIA ayuda a editores editoriales, correctores y gestores de contenido a mantener estándares de calidad, identificando textos que necesitan más trabajo humano antes de publicación.',
+
+    benefits: [
+      {
+        icon: '📚',
+        title: 'Verifica autenticidad de manuscritos',
+        description: 'Identifica si un autor envió manuscrito generado con IA sin edición. Protege la calidad editorial de tu catálogo o publicación.'
+      },
+      {
+        icon: '✍️',
+        title: 'Control de calidad de autores',
+        description: 'Si trabajas con múltiples autores/colaboradores, verifica que cada texto tenga voz genuina del autor, no contenido genérico intercambiable.'
+      },
+      {
+        icon: '🎯',
+        title: 'Identifica textos que necesitan reescritura',
+        description: 'El detector muestra exactamente qué secciones suenan genéricas. Usalo para dar feedback específico a autores sobre qué mejorar.'
+      },
+      {
+        icon: '📊',
+        title: 'Mantiene estándares editoriales',
+        description: 'Asegura que todo contenido publicado cumpla con estándares de calidad. Contenido genérico daña reputación editorial a largo plazo.'
+      },
+      {
+        icon: '💡',
+        title: 'Guía para autores',
+        description: 'Usa el detector como herramienta educativa. Muestra a autores qué partes necesitan más profundidad, voz personal o desarrollo editorial.'
+      },
+      {
+        icon: '🔒',
+        title: 'Confidencialidad de manuscritos',
+        description: 'Manuscritos y textos en revisión no se guardan. Privacidad total para contenido inédito, propuestas editoriales o material sensible.'
+      }
+    ],
+
+    howItWorks: [
+      'Recibes manuscrito, artículo o texto de autor/colaborador',
+      'Analizas el contenido en DetectorDeIA antes de proceso editorial',
+      'Revisas porcentaje de IA y secciones específicas marcadas como genéricas',
+      'Das feedback al autor: "Secciones X, Y, Z necesitan más voz personal/profundidad"',
+      'Autor reescribe, reenvía, reanaliza hasta que el texto tenga calidad editorial requerida'
+    ],
+
+    testimonial: {
+      quote: 'Soy editora de una revista literaria digital. Recibimos muchas colaboraciones y algunas eran claramente ChatGPT. DetectorDeIA nos permite identificarlas rápido y pedir reescrituras. Mantenemos la calidad editorial sin ofender a autores genuinos.',
+      author: 'Elena Vargas',
+      role: 'Editora Jefe, Revista Literaria Palabras (Chile)'
+    },
+
+    faqs: [
+      {
+        question: '¿Qué tipos de textos editoriales puedo analizar?',
+        answer: 'Cualquier contenido editorial en español: manuscritos de libros, artículos para revistas, ensayos, columnas de opinión, relatos, crónicas, contenido de blogs editoriales, newsletters, guías editoriales, whitepapers. Si es texto que va a publicarse bajo estándares editoriales, deberías verificarlo.'
+      },
+      {
+        question: '¿Cómo dar feedback a un autor sin ofenderlo?',
+        answer: 'Enfoque constructivo: "Hemos revisado tu texto con nuestras herramientas de control de calidad. Algunas secciones (X, Y, Z) suenan muy genéricas/formales y necesitan más de tu voz personal y ejemplos específicos. ¿Podrías desarrollar esas partes con más profundidad?" No menciones "IA" directamente si no estás seguro. Enfoca en calidad editorial, no en acusación.'
+      },
+      {
+        question: '¿El detector reemplaza el trabajo editorial tradicional?',
+        answer: 'NO. El detector es una HERRAMIENTA adicional, no reemplazo de edición. Workflow recomendado: (1) Análisis inicial con detector para identificar textos problemáticos, (2) Edición tradicional (estructura, estilo, coherencia), (3) Corrección (gramática, ortografía), (4) Reanálisis si hubo reescrituras. El detector complementa tu criterio editorial, no lo reemplaza.'
+      },
+      {
+        question: '¿Qué porcentaje de IA es aceptable en contenido editorial?',
+        answer: 'Depende del tipo: Ensayos/artículos de opinión: <25% (requiere voz personal fuerte), Ficción literaria: <15% (voz del autor es esencial), Artículos informativos: <35% (insights originales requeridos), Contenido corporativo/institucional: <40% (voz de marca necesaria). Textos editoriales genéricos sin personalidad NO cumplen estándares de calidad.'
+      },
+      {
+        question: '¿Puedo usar el detector para evaluar colaboradores freelance?',
+        answer: 'Sí, es un uso común. Workflow: (1) Establece estándares claros: "Todos los textos deben marcar <35% en detector de IA", (2) Analiza submissions antes de aceptarlas, (3) Si marca alto, da oportunidad de reescritura, (4) Si colaborador entrega consistentemente textos genéricos, considera terminar relación. Protege calidad editorial de tu publicación.'
+      },
+      {
+        question: '¿El detector funciona con textos literarios/creativos?',
+        answer: 'Sí, pero interpretar resultados requiere criterio. Textos literarios genuinos pueden marcar 20-30% si el autor usa lenguaje muy pulido. Señales clave para ficción generada con IA: (1) Diálogos genéricos sin personalidad de personajes, (2) Descripciones cliché sin detalles sensoriales únicos, (3) Tramas predecibles sin giros creativos, (4) Falta de voz narrativa distintiva. El detector + tu criterio editorial = evaluación completa.'
+      },
+      {
+        question: '¿Cuántos textos puedo analizar?',
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, capítulos cortos/artículos). Plan PRO: $10/mes con análisis ilimitados (15,000 caracteres, capítulos largos). Para editoriales/publicaciones que procesan volumen alto, múltiples editores pueden tener cuentas PRO. Puedes analizar manuscritos largos por capítulos/secciones.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar texto editorial gratis',
+      url: '/detector?ref=para-editores'
+    }
   }
 ];
