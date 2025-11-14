@@ -1385,5 +1385,357 @@ export const guides: GuidePage[] = [
       text: 'Verificar originalidad de ensayo',
       url: '/?ref=guia-ensayo-argumentativo'
     }
+  },
+
+  {
+    slug: 'como-investigar-fuentes-academicas',
+    title: 'Cómo Investigar y Encontrar Fuentes Académicas Confiables',
+    keywords: [
+      'como investigar fuentes academicas',
+      'encontrar fuentes confiables',
+      'buscar articulos academicos',
+      'fuentes academicas confiables',
+      'como investigar para ensayos'
+    ],
+    metaTitle: 'Cómo Investigar Fuentes Académicas Confiables: Guía 2025',
+    metaDescription: 'Aprende a investigar y encontrar fuentes académicas confiables. Google Scholar, bases de datos, evaluación de credibilidad. Guía para estudiantes.',
+    h1: 'Cómo Investigar y Encontrar Fuentes Académicas Confiables',
+    intro: 'Investigación efectiva NO es simplemente "googlear" tema y usar primeros resultados. Fuentes académicas confiables (journals revisados por pares, libros universitarios, estudios empíricos) son fundamentales para ensayos de calidad. Diferencia entre usar Wikipedia/blogs vs journals académicos puede significar diferencia entre nota aprobatoria y excelente. Esta guía paso a paso enseña dónde buscar fuentes académicas (Google Scholar, bases de datos universitarias), cómo evaluar credibilidad de fuentes, estrategias de búsqueda efectivas, cómo acceder a artículos detrás de paywalls, y cómo organizar investigación eficientemente.',
+    overview: 'Esta guía cubre: (1) Dónde buscar fuentes académicas, (2) Cómo usar Google Scholar efectivamente, (3) Evaluación de credibilidad de fuentes, (4) Estrategias de búsqueda avanzada, (5) Organización de investigación.',
+    steps: [
+      {
+        number: 1,
+        title: 'Empieza con Google Scholar (No Google Regular)',
+        description: 'GOOGLE SCHOLAR (scholar.google.com): Motor de búsqueda ESPECÍFICO para literatura académica. Indexa journals, libros académicos, tesis, conferencias. BENEFICIOS vs Google regular: (1) Solo fuentes académicas (filtra blogs, Wikipedia, contenido comercial), (2) Muestra citaciones (cuántas veces artículo fue citado = indicador de influencia), (3) Enlaces a PDFs gratuitos cuando disponibles, (4) "Cited by" permite seguir cadena de investigación. CÓMO USAR: Busca término clave → Resultados muestran artículos más relevantes/citados primero → Click "[PDF]" si disponible o "All X versions" para encontrar versión accesible.',
+        tips: [
+          'Configura Google Scholar con tu universidad: Settings → Library links → Agrega tu universidad (acceso a suscripciones)',
+          'Usa filtro de fecha: Tools → Desde 2020 (para investigación actual)',
+          'Busca "Cited by" para encontrar investigación más reciente que cita el artículo original'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Usa Bases de Datos Especializadas de Tu Universidad',
+        description: 'BASES DE DATOS PRINCIPALES: (1) JSTOR (humanidades, ciencias sociales), (2) PubMed (medicina, ciencias de la salud), (3) IEEE Xplore (ingeniería, tecnología), (4) PsycINFO (psicología), (5) EBSCOhost (multidisciplinario), (6) ProQuest (tesis, disertaciones). ACCESO: Biblioteca universitaria → Bases de datos → Busca por disciplina o nombre. VENTAJA vs Google Scholar: Artículos completos disponibles (universidad paga suscripciones), búsqueda más refinada por disciplina, menos "ruido" (solo contenido académico de calidad).',
+        tips: [
+          'Pregunta a bibliotecario cuáles bases de datos son mejores para tu disciplina específica',
+          'Acceso remoto: Usa VPN universitaria o proxy para acceder desde casa',
+          'Muchas bases permiten crear alertas - te notifican cuando se publica nuevo contenido sobre tu tema'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Aprende Búsqueda Avanzada con Operadores Booleanos',
+        description: 'OPERADORES BOOLEANOS: Refinan búsquedas para resultados precisos. (1) AND: Ambos términos deben aparecer. "inteligencia artificial" AND "educación superior" = solo artículos que mencionan AMBOS. (2) OR: Cualquiera de los términos. "universidad" OR "college" = artículos con cualquier término. (3) NOT: Excluye término. "IA" NOT "medicina" = IA pero no en contexto médico. (4) Comillas "": Frase exacta. "pensamiento crítico" = esas palabras juntas, en ese orden. (5) Asterisco *: Comodín. "educat*" = education, educational, educator. COMBINACIONES: ("inteligencia artificial" OR "IA") AND (universidad* OR college*) AND ética.',
+        tips: [
+          'Paréntesis agrupan operadores: (A OR B) AND C es diferente de A OR B AND C',
+          'Prueba múltiples combinaciones - primera búsqueda rara vez es óptima',
+          'Si obtienes demasiados resultados (1000+), agrega más términos específicos con AND'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Evalúa Credibilidad con Criterio CRAAP',
+        description: 'CRITERIO CRAAP (Currency-Relevance-Authority-Accuracy-Purpose): (1) CURRENCY (Actualidad): ¿Cuán reciente? Para tecnología/ciencia: últimos 3-5 años. Para historia/filosofía: más flexible. (2) RELEVANCE (Relevancia): ¿Apoya directamente tu argumento? ¿Nivel apropiado (no muy técnico ni muy simple)? (3) AUTHORITY (Autoridad): ¿Autor tiene credenciales (PhD, afiliación universitaria)? ¿Publicado en journal revisado por pares? (4) ACCURACY (Precisión): ¿Cita fuentes? ¿Metodología clara? ¿Revisado por pares? (5) PURPOSE (Propósito): ¿Objetivo es informar/educar? ¿O vender/persuadir con agenda obvia? VERIFICACIÓN: Fuente debe pasar 4-5/5 criterios para ser confiable.',
+        tips: [
+          'Verifica autor en Google - ¿Tiene otros artículos académicos? ¿Afiliación universitaria?',
+          'Journal revisado por pares > libro académico > capítulo editado > blog de experto > sitio web general',
+          'Si fuente tiene agenda política/comercial obvia, úsala con precaución o busca fuente más neutral'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Identifica Journals Revisados Por Pares (Peer-Reviewed)',
+        description: 'PEER-REVIEWED (revisión por pares): Artículos evaluados por expertos en el campo ANTES de publicación = garantía de calidad. CÓMO IDENTIFICAR: (1) Búsqueda en Ulrichsweb (ulrichsweb.com) - indica si journal es peer-reviewed, (2) Página del journal dice "peer-reviewed" o "refereed", (3) Google Scholar filtra por tipo (en Settings → Advanced search → Return articles authored by), (4) Base de datos universitaria frecuentemente tiene filtro "peer-reviewed". SEÑALES: Artículos largos (8+ páginas), referencias extensas, metodología detallada, lenguaje técnico. NO PEER-REVIEWED: Revistas populares (Time, Forbes), blogs, Wikipedia, sitios de noticias.',
+        tips: [
+          'No todos los artículos en journal peer-reviewed son peer-reviewed (editoriales, cartas no lo son)',
+          'Pregunta a profesor: "¿Necesito solo fuentes peer-reviewed?" - algunos permiten mezcla',
+          'Para proyectos avanzados (tesis, capstone), prefiere journals con alto "impact factor"'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Accede a Artículos Detrás de Paywalls Legalmente',
+        description: 'MÉTODOS LEGALES: (1) ACCESO UNIVERSITARIO: Usa proxy/VPN de universidad - mayoría de journals están incluidos en suscripción. (2) GOOGLE SCHOLAR: Click "All versions" - frecuentemente encuentra PDF en repositorio universitario del autor (legal). (3) RESEARCHGATE / ACADEMIA.EDU: Autores suben sus artículos (legal si autor lo comparte). (4) EMAIL AL AUTOR: Busca email del autor, pide copia - mayoría responden positivamente. (5) INTERLIBRARY LOAN: Biblioteca solicita artículo de otra biblioteca. (6) OPEN ACCESS JOURNALS: Muchos journals son gratis (PLOS ONE, arXiv). EVITA: Sci-Hub (ilegal en muchos países, violaciones de copyright).',
+        tips: [
+          'Email a autor: "Estimado Dr. García, soy estudiante trabajando en X. ¿Podría compartir su artículo Y?" - tasa de respuesta alta',
+          'Browser extension "Unpaywall" automáticamente busca versiones legales gratuitas',
+          'Muchas universidades pagan por "instant article delivery" - artículo llega en 24-48 horas'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Usa "Snowballing" Para Encontrar Más Fuentes',
+        description: 'SNOWBALLING (bola de nieve): Técnica para expandir investigación usando fuentes existentes. DOS DIRECCIONES: (1) BACKWARD SNOWBALLING: Lee Referencias de artículo útil → Busca fuentes citadas más relevantes → Léelas → Repite. (2) FORWARD SNOWBALLING: En Google Scholar, click "Cited by X" en artículo útil → Ve artículos MÁS RECIENTES que citan este → Encuentra investigación actual. BENEFICIO: Encuentras fuentes que autores expertos consideran importantes = mayor probabilidad de ser relevantes/confiables. PROCESO: 1 artículo clave → 10 fuentes en Referencias → 5 relevantes → 20 fuentes adicionales → Repite.',
+        tips: [
+          'Empieza con 2-3 artículos clave muy relevantes - snowballing desde ahí',
+          'Review articles (artículos de revisión) son GOLD - resumen campo completo, citan 50-100+ fuentes',
+          'Sigue cadena de citación 2-3 niveles profundo, no más (puedes perderte en tangentes)'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Organiza Investigación con Gestor de Referencias',
+        description: 'HERRAMIENTAS: (1) ZOTERO (recomendado para estudiantes - gratis, open source), (2) MENDELEY (gratis), (3) ENDNOTE (pago, institucional). PROCESO: (1) Instala extensión browser, (2) Al encontrar artículo útil, click en extensión → Guarda automáticamente en biblioteca, (3) Agrega notas, tags, organiza en carpetas por tema/proyecto, (4) Cuando escribes ensayo, insertas citas con plugin → Genera bibliografía automáticamente. BENEFICIO: Nunca pierdes track de fuentes, ahorras horas formateando referencias, acceso a PDFs desde un lugar, sincroniza entre dispositivos.',
+        tips: [
+          'Agrega notas MIENTRAS lees artículo: "Argumento principal: X", "Útil para sección Y de mi ensayo"',
+          'Usa tags/etiquetas para categorizar: #metodología, #contraargumento, #estadísticas-clave',
+          'Backup regular - exporta biblioteca como archivo (en caso de que pierdas acceso a cuenta)'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Lee Estratégicamente (No Necesitas Leer Todo Completo)',
+        description: 'LECTURA ESTRATÉGICA: Artículos académicos son densos - no necesitas leer palabra por palabra. PROCESO: (1) ABSTRACT (resumen): 2 min - ¿Es relevante? (2) INTRODUCCIÓN + CONCLUSIÓN: 5 min - ¿Argumento principal apoya tu punto? (3) METHODOLOGY: Solo si es estudio empírico - ¿Metodología es sólida? (4) FIGURAS/TABLAS: Frecuentemente muestran hallazgos clave visualmente. (5) LECTURA PROFUNDA: Solo secciones directamente relevantes. SEÑALES DE IRRELEVANCIA: Si después de abstract + intro no ves conexión clara con tu tema, descarta y busca siguiente. OBJETIVO: Identificar 5-7 fuentes REALMENTE útiles, no acumular 30 que no leerás.',
+        tips: [
+          'Ctrl+F términos clave en PDF - encuentra secciones relevantes rápidamente',
+          'Lee "Discussion" section de estudios empíricos - autores interpretan hallazgos (útil para entender implicaciones)',
+          'Si artículo es muy técnico, busca "review article" sobre mismo tema (más accesible)'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Verifica Que Tienes Balance y Diversidad de Fuentes',
+        description: 'BALANCE: Ensayo fuerte usa MEZCLA de tipos de evidencia. TIPOS: (1) ESTUDIOS EMPÍRICOS: Investigación con datos/experimentos (muy fuerte). (2) TEORÍA/ANÁLISIS: Argumentos conceptuales de expertos. (3) REVISIONES SISTEMÁTICAS: Resumen múltiples estudios (muy útiles para overview). (4) DATOS ESTADÍSTICOS: Census, informes gubernamentales, organizaciones internacionales. DIVERSIDAD: No uses solo 1 autor o 1 journal - muestra que investigaste ampliamente. VERIFICACIÓN: ¿Todas tus fuentes apoyan tu argumento? Si sí, busca perspectivas contrarias (contraargumentos) - fortalece credibilidad.',
+        tips: [
+          'Regla 50-70-100: Mínimo 50% estudios empíricos, 70% últimos 5 años, 100% académicos',
+          'Si encuentras 10 estudios que dicen lo mismo, no cites todos - cita 2-3 mejores',
+          'Incluye 1-2 fuentes que NO están completamente de acuerdo contigo - úsalas para contraargumento'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Usar solo Google regular y confiar en Wikipedia/blogs como fuentes principales',
+        solution: 'USA Google Scholar y bases de datos universitarias. Wikipedia OK para entender básicos, pero cita fuentes ACADÉMICAS (journals, libros universitarios) en ensayo.'
+      },
+      {
+        mistake: 'Tomar primer 5 resultados de búsqueda sin evaluar credibilidad',
+        solution: 'Aplica criterio CRAAP a cada fuente: ¿Autor tiene credenciales? ¿Publicado en journal peer-reviewed? ¿Reciente? ¿Relevante? Descarta fuentes débiles.'
+      },
+      {
+        mistake: 'Intentar leer cada artículo completo palabra por palabra',
+        solution: 'Lee estratégicamente: Abstract + Intro + Conclusión primero. Lee profundo solo secciones directamente relevantes. Objetivo es encontrar información útil, no leer todo.'
+      },
+      {
+        mistake: 'No organizar fuentes - perder track de dónde encontraste qué',
+        solution: 'Usa gestor de referencias (Zotero) desde INICIO de investigación. Agrega notas sobre por qué cada fuente es útil mientras investigas.'
+      },
+      {
+        mistake: 'Usar solo fuentes que apoyan tu argumento, ignorar evidencia contraria',
+        solution: 'Busca activamente perspectivas contrarias - fortalece ensayo al mostrar que consideraste múltiples ángulos. Usa evidencia contraria para contraargumento.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cuántas fuentes necesito para mi ensayo?',
+        answer: 'REGLA APROXIMADA: 1-2 fuentes por página escrita. EJEMPLOS: Ensayo 3-5 páginas: 5-7 fuentes. Ensayo 8-10 páginas: 10-15 fuentes. PERO: Calidad > cantidad. Mejor 5 fuentes excelentes (journals peer-reviewed, estudios empíricos recientes) que 15 fuentes débiles. TIPOS: Mezcla tipos - no uses 10 artículos del mismo journal o mismo autor. VERIFICACIÓN: ¿Cada argumento principal tiene al menos 1-2 fuentes respaldándolo? Si no, necesitas más investigación.'
+      },
+      {
+        question: '¿Puedo usar fuentes que tienen más de 10 años?',
+        answer: 'DEPENDE de disciplina y tema. TEMAS QUE CAMBIAN RÁPIDO (tecnología, medicina, ciencias sociales): Prefiere últimos 3-5 años. TEMAS ESTABLES (historia, filosofía, teoría clásica): Fuentes más antiguas OK. FUENTES SEMINALES: Estudios clásicos/fundacionales pueden ser antiguos pero siguen siendo relevantes (ej: teorías de Piaget en psicología). BALANCE: Mayoría de fuentes recientes (70%+), algunas clásicas/históricas si relevantes (30%). VERIFICA: Si usas fuente de 2010, ¿hay investigación más reciente que la actualiza/refuta?'
+      },
+      {
+        question: '¿Cómo sé si journal es confiable o "predatorio"?',
+        answer: 'JOURNALS PREDATORIOS: Publican cualquier cosa sin revisión por pares real (cobran a autores por publicar). SEÑALES DE ALARMA: (1) Email spam invitándote a publicar, (2) Prometen publicación rápida (días/semanas), (3) Nombre genérico similar a journal legítimo, (4) No aparece en bases de datos reconocidas (JSTOR, PubMed), (5) No lista proceso de peer review. VERIFICACIÓN: Busca journal en Ulrichsweb o Directory of Open Access Journals (DOAJ). PREGUNTA: A bibliotecario o profesor "¿Conoces este journal?" CONSEJO: Si duda, usa journal establecido con años de historia y alto impact factor.'
+      },
+      {
+        question: '¿Qué hago si no encuentro fuentes sobre mi tema específico?',
+        answer: 'ESTRATEGIAS: (1) AMPLÍA búsqueda: Términos más generales. Ej: "IA en universidades argentinas" → "IA en educación superior latinoamericana". (2) BUSCA temas RELACIONADOS: Investigación sobre tema similar puede aplicar. (3) USA SINÓNIMOS: "inteligencia artificial", "IA", "machine learning", "aprendizaje automatizado". (4) CAMBIA idioma búsqueda: Busca en inglés (más investigación disponible). (5) CONTACTA EXPERTO: Profesor o investigador en campo puede sugerir fuentes. (6) CONSIDERA ajustar tema: Si genuinamente no hay investigación, quizás tema es demasiado específico o nuevo.'
+      },
+      {
+        question: '¿Puedo usar videos de YouTube, podcasts, o TikTok como fuentes?',
+        answer: 'DEPENDE de contenido y política del profesor. VIDEOS ACADÉMICOS (conferencias TED, charlas universitarias, documentales educativos): Frecuentemente OK como fuente COMPLEMENTARIA. VIDEOS CASUALES/OPINIÓN: Generalmente NO para ensayos académicos. CÓMO USAR: (1) Verifica si creador tiene credenciales (profesor, experto reconocido), (2) Úsalos como fuentes SECUNDARIAS (no principales), (3) Balance: Máximo 10-20% de tus fuentes deben ser multimedia. (4) CITA correctamente en APA 7 (incluye [Video], [Podcast], etc.). PREGUNTA primero: ¿Profesor permite fuentes multimedia? Algunos solo permiten texto académico tradicional.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Hacer Bibliografía en Formato APA', slug: 'como-hacer-bibliografia-apa' },
+      { title: 'Cómo Escribir Ensayos Originales', slug: 'como-escribir-ensayos-originales' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-investigar-fuentes' },
+      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-investigar-fuentes' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de investigación',
+      url: '/?ref=guia-investigar-fuentes'
+    }
+  },
+
+  {
+    slug: 'como-gestionar-tiempo-proyectos-academicos',
+    title: 'Cómo Gestionar Tiempo y Proyectos Académicos',
+    keywords: [
+      'como gestionar tiempo universidad',
+      'gestion tiempo estudiantes',
+      'organizar proyectos academicos',
+      'como organizarse en universidad',
+      'productividad academica'
+    ],
+    metaTitle: 'Cómo Gestionar Tiempo y Proyectos Académicos: Guía 2025',
+    metaDescription: 'Aprende a gestionar tiempo y proyectos académicos efectivamente. Planificación, priorización, técnicas de productividad. Guía para estudiantes.',
+    h1: 'Cómo Gestionar Tiempo y Proyectos Académicos: Guía Completa',
+    intro: 'Gestión de tiempo efectiva NO es cuestión de trabajar más horas - es trabajar más inteligentemente. Estudiantes frecuentemente sienten abrumados por múltiples deadlines, pero problema rara vez es falta de tiempo sino falta de planificación y priorización. Diferencia entre estudiante estresado que entrega trabajos de última hora vs estudiante organizado que trabaja sin pánico es sistema de gestión, no inteligencia o capacidad. Esta guía paso a paso enseña técnicas probadas de gestión de tiempo: planificación inversa desde deadlines, matriz de priorización, técnica Pomodoro, prevención de procrastinación, balance entre múltiples proyectos.',
+    overview: 'Esta guía cubre: (1) Planificación de proyectos académicos, (2) Priorización de tareas, (3) Técnicas de productividad, (4) Prevención de procrastinación, (5) Balance y evitar burnout.',
+    steps: [
+      {
+        number: 1,
+        title: 'Planifica Desde Deadline Hacia Atrás (Backward Planning)',
+        description: 'BACKWARD PLANNING: Empieza con fecha límite, trabaja hacia atrás asignando tareas. PROCESO: (1) Identifica deadline (ej: Ensayo due 15 de marzo), (2) Resta 2-3 días buffer (fecha real: 12 de marzo), (3) Divide proyecto en fases: Investigación (3 días), Outline (1 día), Primer borrador (3 días), Revisión (2 días), Edición final (1 día) = 10 días total, (4) Cuenta hacia atrás: Inicio debe ser 2 de marzo. CALENDARIO: Marca cada fase en calendario. BENEFICIO: Visualizas exactamente cuánto tiempo necesitas, previene pánico de última hora, crea accountability.',
+        tips: [
+          'Buffer de 2-3 días es CRÍTICO - siempre surgen imprevistos (enfermarte, problema técnico)',
+          'Divide tareas grandes en subtareas diarias manejables: "Investigar" → "Encontrar 5 fuentes día 1, Leer día 2"',
+          'Usa calendario digital (Google Calendar) con recordatorios - notificación 1 día antes de cada fase'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Prioriza con Matriz de Eisenhower (Urgente vs Importante)',
+        description: 'MATRIZ 2x2: Clasifica tareas en 4 cuadrantes. CUADRANTE 1 (Urgente + Importante): Hacer AHORA. Ej: Ensayo due mañana, examen en 2 días. CUADRANTE 2 (No urgente + Importante): PLANIFICAR/PROGRAMAR. Ej: Ensayo due en 3 semanas, estudiar para examen del mes próximo. ESTE es más importante - trabajo aquí previene crisis. CUADRANTE 3 (Urgente + No importante): DELEGAR o minimizar. Ej: Emails, reuniones opcionales. CUADRANTE 4 (No urgente + No importante): ELIMINAR. Ej: Redes sociales, Netflix. OBJETIVO: Pasar máximo tiempo en Cuadrante 2 (planificación proactiva), mínimo en Cuadrante 1 (apagar fuegos).',
+        tips: [
+          'Revisa matriz cada domingo - planifica semana priorizando tareas Cuadrante 2',
+          'Si mayoría de tiempo está en Cuadrante 1, estás en modo reactivo - necesitas más planificación anticipada',
+          'Test: Pregúntate "Si no hago esto, ¿qué consecuencia?" Si consecuencia es seria, es importante'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Usa Técnica Pomodoro Para Trabajo Enfocado',
+        description: 'TÉCNICA POMODORO: Trabajo en bloques de 25 min + 5 min descanso. PROCESO: (1) Elige tarea específica (ej: "Escribir introducción de ensayo"), (2) Configura timer 25 min, (3) Trabaja SIN distracciones (cierra redes sociales, notificaciones, WhatsApp), (4) Timer suena → Descanso 5 min (levántate, estira, camina), (5) Repite. Después de 4 pomodoros, descanso largo (15-30 min). BENEFICIO: 25 min es manejable (menos tentación de procrastinar), descansos previenen fatiga mental, crea urgencia artificial (timer motiva), trackea productividad (completé 6 pomodoros hoy).',
+        tips: [
+          'Apps: Forest (gamifica focus), Pomofocus (web gratis), Focus To-Do (integra pomodoro + lista tareas)',
+          'Ajusta según capacidad: Algunos prefieren 50 min + 10 min descanso (técnica 52/17)',
+          'Durante pomodoro: Si idea no relacionada surge, anótala en papel y retoma DESPUÉS del pomodoro'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Crea "Time Blocking" en Tu Calendario Semanal',
+        description: 'TIME BLOCKING: Asigna bloques específicos de tiempo a tipos de tareas. EJEMPLO DE SEMANA: Lunes 9-11am: Clases. 11am-1pm: Bloque de escritura (trabajos). 2-4pm: Lectura/investigación. 4-5pm: Admin (emails, organizar). Martes 9-12pm: Clases. 1-3pm: Estudio individual. 3-5pm: Proyecto X. BENEFICIO: Elimina decisión diaria "¿qué hago ahora?" (ya está decidido), crea rutina, protege tiempo para trabajo profundo. TIPOS DE BLOQUES: (1) Bloques de trabajo profundo (sin distracciones, tareas complejas), (2) Bloques de admin (emails, organizar, tareas mecánicas), (3) Bloques de descanso (ejercicio, socializar, hobbies).',
+        tips: [
+          'Respeta bloques como compromisos reales - no canceles "bloque de escritura" por Netflix',
+          'Bloquea trabajo profundo en TUS horas más productivas (mañana vs noche - depende de ti)',
+          'Deja 20-30% de semana sin bloquear - para imprevistos, flexibilidad'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Previene Procrastinación con "Regla de 2 Minutos"',
+        description: 'REGLA DE 2 MINUTOS: Si tarea toma <2 minutos, hazla INMEDIATAMENTE. No postergues. Ej: Responder email simple, agregar fecha a calendario, guardar lectura en Zotero. BENEFICIO: Previene acumulación de microtareas que generan estrés mental. PARA TAREAS GRANDES: Aplica variación - "empieza por 2 minutos". Ej: No quieres empezar ensayo → "Solo abriré documento y escribiré título" (2 min). Frecuentemente, empezar es parte más difícil - después de 2 min, momentum hace que continúes. TRUCO: Rompe inercia inicial con tarea ridículamente pequeña (abrir archivo = éxito).',
+        tips: [
+          'Identifica tu patrón de procrastinación: ¿Pospones tareas aburridas? ¿Difíciles? ¿Vagas? Adapta estrategia',
+          'Usa "productive procrastination": Si no quieres hacer tarea A, haz tarea B (ambas productivas)',
+          'Elimina fricción: Si procrastinas estudiar porque buscar materiales es tedioso, prepara materiales ANTES'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Establece "Deadline Personales" Antes de Deadlines Reales',
+        description: 'DEADLINE PERSONAL: Fecha límite propia 2-3 días antes de deadline real. EJEMPLO: Ensayo due viernes 11:59pm → Tu deadline personal: miércoles 11:59pm. BENEFICIO: (1) Buffer para imprevistos (enfermarte, problema técnico, fecha que olvidaste), (2) Tiempo para revisión calmada (vs editar frenéticamente 1 hora antes), (3) Opción de pedir feedback preliminar a profesor/compañero, (4) Reduces estrés - trabajas sin pánico. IMPLEMENTACIÓN: En calendario, marca deadline personal en ROJO, deadline real en amarillo. Trata deadline personal como si fuera real.',
+        tips: [
+          'Comunica deadline personal a amigo/compañero - accountability externo aumenta cumplimiento',
+          'Si consistentemente cumples deadlines personales, acorta buffer (3 días → 2 días)',
+          'Para proyectos grupales, propón deadline de grupo 3-4 días antes de real (compensa retrasos)'
+        ]
+      },
+      {
+        number: 7,
+        title: 'Gestiona Energía, No Solo Tiempo (Match Tasks to Energy)',
+        description: 'PRINCIPIO: No todas las horas son iguales - productividad depende de nivel de energía. ALTA ENERGÍA (típicamente mañana para mayoría): Tareas complejas que requieren pensamiento profundo - escribir secciones clave de ensayo, resolver problemas difíciles, aprender conceptos nuevos. ENERGÍA MEDIA (típicamente tarde): Tareas moderadas - investigar, leer artículos, revisar notas. BAJA ENERGÍA (típicamente noche): Tareas mecánicas - formatear bibliografía, organizar archivos, responder emails simples. ESTRATEGIA: Track tu energía por 1 semana - identifica patrones - programa tareas según nivel de energía.',
+        tips: [
+          'No fuerces trabajo creativo/complejo cuando energía está baja - resultados son pobres',
+          'Triggers de energía: Ejercicio, luz natural, descanso adecuado, hidratación, comida balanceada',
+          'Si energía cae a media tarde, toma "power nap" (20 min) o camina 10 min - recarga significativa'
+        ]
+      },
+      {
+        number: 8,
+        title: 'Usa Sistema de Listas: Master List + Lista Diaria',
+        description: 'DOS LISTAS: (1) MASTER LIST: Todo lo que necesitas hacer eventualmente (ensayos, proyectos, lecturas, admin). Vive en app/cuaderno, actualizas constantemente. (2) LISTA DIARIA: 3-5 tareas específicas para HOY (extraídas de master list). PROCESO DIARIO: Cada mañana (o noche anterior), revisa master list → Elige 3-5 tareas más importantes/urgentes → Crea lista diaria → Enfócate SOLO en esas tareas. BENEFICIO: Master list previene olvidos, lista diaria previene overwhelm (no ves 50 tareas pendientes, solo 3-5 de hoy). SATISFACCIÓN: Completar lista diaria genera sensación de logro.',
+        tips: [
+          'Formato lista diaria: #1 Most Important Task (MIT) - si solo completas 1, debe ser esta',
+          'Apps: Todoist, Microsoft To Do, Things, o simple papel y lápiz (satisfacción de tachar)',
+          'No agregues tareas a lista diaria durante el día - si surge algo urgente, reemplaza (no agregues indefinidamente)'
+        ]
+      },
+      {
+        number: 9,
+        title: 'Programa Descansos y Tiempo Libre Explícitamente',
+        description: 'ERROR COMÚN: Trabajar "hasta terminar", sin descansos programados → Agotamiento, productividad cae, burnout. SOLUCIÓN: PROGRAMA descansos como programas trabajo. DESCANSOS CORTOS: Cada 1-2 horas, 10-15 min (camina, estira, snack). DESCANSOS LARGOS: Almuerzo 30-60 min lejos de escritorio. DÍA LIBRE: Mínimo 1 día completo/semana SIN trabajo académico (recarga mental). ACTIVIDADES DE RECARGA: Ejercicio, socializar, hobbies, dormir adecuado (7-9 horas). PRINCIPIO: Descanso NO es pérdida de tiempo - es inversión en productividad futura.',
+        tips: [
+          'Marca día libre en calendario como "compromiso" - no lo canceles por trabajo académico',
+          'Señal de burnout: Constantemente cansado, motivación baja, trabajo toma 2x más tiempo. Solución: Descanso, no más trabajo',
+          'Balance: Semester tiene ritmo - semanas de exámenes requieren más trabajo, pero DESPUÉS descansa'
+        ]
+      },
+      {
+        number: 10,
+        title: 'Revisa y Ajusta Sistema Semanalmente (Weekly Review)',
+        description: 'WEEKLY REVIEW: Cada domingo (o viernes), 30-60 min para revisar semana pasada y planificar próxima. PROCESO: (1) REVISAR: ¿Qué completé esta semana? ¿Qué quedó pendiente? ¿Por qué? (2) REFLEXIONAR: ¿Qué funcionó bien? ¿Qué puedo mejorar? ¿Subestimé tiempo para alguna tarea? (3) PLANIFICAR: Próxima semana - ¿Qué deadlines? ¿Qué tareas priorizar? Calendario de time blocking. (4) ACTUALIZAR: Master list, calendario, metas. BENEFICIO: Visibilidad de progreso (motivador), ajustes constantes previenen problemas grandes, sensación de control.',
+        tips: [
+          'Usa misma hora/lugar cada semana - crea ritual (ej: domingo 6pm con café)',
+          'Celebra logros - no solo focuses en lo que falta. "Completé ensayo" = éxito, no solo "falta revisar"',
+          'Pregunta clave: "Si repitiera esta semana, ¿qué haría diferente?" - aprende de experiencia'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Empezar proyectos demasiado cerca del deadline (1-2 días antes)',
+        solution: 'Usa backward planning - empieza proyectos 2-3 semanas antes de deadline. Divide en fases diarias. Buffer de 2-3 días previene pánico si surgen problemas.'
+      },
+      {
+        mistake: 'Trabajar sin descansos hasta estar exhausto',
+        solution: 'Programa descansos cada 1-2 horas (técnica Pomodoro). Productividad cae dramáticamente después de 2 horas sin descanso. Descanso = inversión, no pérdida de tiempo.'
+      },
+      {
+        mistake: 'Intentar hacer multitasking (estudiar + Netflix + chat simultáneamente)',
+        solution: 'Multitasking reduce productividad 40%. Focus en UNA tarea a la vez (técnica Pomodoro, time blocking). Terminas más rápido con mejor calidad.'
+      },
+      {
+        mistake: 'No tener sistema de organización - depender de memoria',
+        solution: 'Usa sistema externo: Master list + lista diaria + calendario. Cerebro es malo recordando deadlines - calendario digital con recordatorios es confiable.'
+      },
+      {
+        mistake: 'Decir "sí" a todo - sobrecomprometerse',
+        solution: 'Aprende a decir "no" o "déjame verificar mi calendario". Cada "sí" a algo nuevo es "no" a otra cosa (posiblemente más importante). Prioriza.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cuántas horas debo estudiar por día en universidad?',
+        answer: 'REGLA GENERAL: 2-3 horas de estudio FUERA de clase por cada hora EN clase. EJEMPLO: 15 horas de clase/semana → 30-45 horas estudio/semana = 4-6 horas/día (7 días) o 6-9 horas/día (5 días). PERO: Varía según dificultad de materias, tus habilidades, calidad de estudio (1 hora enfocada > 3 horas distraído). MEJOR MÉTRICA: ¿Entiendes material? ¿Completas trabajo a tiempo sin pánico? Si sí, tiempo es suficiente. Si no, aumenta. CALIDAD > CANTIDAD: 3 horas enfocadas (técnica Pomodoro) > 6 horas con distracciones.'
+      },
+      {
+        question: '¿Cómo manejo múltiples deadlines en misma semana?',
+        answer: 'ESTRATEGIA: (1) LISTA TODO: Escribe cada deadline con fecha exacta. (2) PRIORIZA: ¿Cuál vale más % de nota? ¿Cuál necesita más tiempo? (3) BACKWARD PLANNING: Para cada uno, trabaja hacia atrás asignando tiempo necesario. (4) TIME BLOCKING: Asigna bloques específicos a cada proyecto. Ej: Lunes AM: Proyecto A, Lunes PM: Proyecto B. (5) EMPIEZA temprano: 2-3 semanas antes, no 2-3 días. (6) COMUNICA: Si genuinamente imposible (3 exámenes + 2 ensayos mismo día), habla con profesores - algunos dan extensión.'
+      },
+      {
+        question: '¿Qué hago si constantemente subestimo cuánto tiempo necesito?',
+        answer: 'SOLUCIÓN: TRACK tiempo por 2 semanas. Anota tiempo estimado vs tiempo real para cada tarea. PATRÓN COMÚN: Estudiantes subestiman 50-100% (piensan 2 horas, toma 4). AJUSTE: Multiplica tu estimado x 2 (si pensabas 3 horas, programa 6). CAUSAS de subestimación: (1) Olvidas incluir tiempo de setup/distracción, (2) No considerás interrupciones, (3) Optimismo excesivo. MEJORA: Con experiencia, estimados mejoran. Data histórica ("último ensayo tomó 15 horas") es mejor que guess.'
+      },
+      {
+        question: '¿Cómo evito burnout durante época de exámenes?',
+        answer: 'PREVENCIÓN (mejor que cura): (1) EMPIEZA temprano: Estudia consistentemente durante semester, no cramming última semana. (2) DUERME 7-9 horas: Privación de sueño empeora memoria, enfoque. (3) EJERCICIO: 20-30 min/día reduce estrés significativamente. (4) COME BIEN: Comida rápida/azúcar causa crashes de energía. (5) DESCANSOS: Técnica Pomodoro, no maratones de 8 horas seguidas. SI YA ESTÁS EN BURNOUT: (1) Toma 1 día completo OFF (contraintuitivo pero recarga), (2) Pide ayuda (amigos, familia, counselor universitario), (3) Prioriza: ¿Qué puedes postponer/reducir? No todo es igualmente importante.'
+      },
+      {
+        question: '¿Cuál es mejor app/herramienta para gestión de tiempo?',
+        answer: 'NO HAY "mejor" universal - depende de tu estilo. MINIMALISTA: Papel + lápiz (bullet journal). BÁSICO DIGITAL: Google Calendar + Google Tasks (gratis, simple). AVANZADO: Notion (todo-en-uno), Todoist (listas sofisticadas), Trello (visual/kanban). ACADÉMICO: MyStudyLife (diseñado para estudiantes, track classes + tareas + exámenes). ENFOQUE: Forest, Focus@Will. PRINCIPIO: Herramienta no importa tanto como CONSISTENCIA de uso. Usa sistema que realmente usarás, no más complejo/fancy que abandones en 1 semana. PRUEBA 2-3 semanas antes de decidir.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Investigar Fuentes Académicas', slug: 'como-investigar-fuentes-academicas' },
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-gestion-tiempo' },
+      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-gestion-tiempo' }
+    ],
+    cta: {
+      text: 'Verificar calidad de trabajos',
+      url: '/?ref=guia-gestion-tiempo'
+    }
   }
 ];
