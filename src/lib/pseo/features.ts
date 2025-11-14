@@ -744,5 +744,219 @@ export const features: FeaturePage[] = [
       text: 'Humanizar ChatGPT gratis ahora',
       url: '/humanizador?ref=humanizar-chatgpt'
     }
+  },
+
+  {
+    slug: 'convertir-ia-a-humano-gratis',
+    featureName: 'Convertir IA a Humano Gratis',
+    keywords: [
+      'convertir ia a humano gratis',
+      'convertir texto ia a humano',
+      'transformar ia en humano',
+      'convertidor ia a humano español',
+      'pasar texto ia a humano gratis'
+    ],
+
+    // SEO
+    title: 'Convertir IA a Humano Gratis en Español 2025 | Sin Registro',
+    description: 'Convierte texto de IA a humano gratis en español. Transforma ChatGPT, Claude, Gemini en contenido natural. 15 usos diarios, sin registro. 100% gratis.',
+    h1: 'Convertir IA a Humano Gratis: Transforma Texto de IA en Natural',
+
+    // Content
+    intro: '¿Necesitás convertir texto generado por IA (ChatGPT, Claude, Gemini) en contenido que suene humano? Nuestro conversor gratuito transforma textos de inteligencia artificial en escritura natural, eliminando patrones robóticos, redundancia y formalidad excesiva. Optimizado para español de España y LATAM. 100% gratis, 15 usos diarios, sin registro obligatorio.',
+
+    benefits: [
+      {
+        icon: '🔄',
+        title: 'Convierte Cualquier LLM',
+        description: 'Funciona con texto de ChatGPT, Claude, Gemini, Llama, Mistral, Perplexity y cualquier modelo de IA. Transforma todo tipo de contenido generado automáticamente.'
+      },
+      {
+        icon: '💸',
+        title: '100% Gratis - 15 Conversiones Diarias',
+        description: 'Plan FREE: 15 conversiones diarias sin tarjeta de crédito. Registrate gratis y empieza. 600 caracteres por conversión. Sin registro: 3 conversiones diarias.'
+      },
+      {
+        icon: '✨',
+        title: 'Escritura Natural Humana',
+        description: 'Elimina redundancia, conectores robóticos, neutralidad forzada. Agrega variación natural, tono personal, fluidez humana. El resultado suena genuinamente humano.'
+      },
+      {
+        icon: '🌎',
+        title: 'Español Nativo LATAM y España',
+        description: 'No es traducción del inglés. Conversión optimizada para español argentino, mexicano, colombiano, chileno, peruano, español peninsular. Mantiene modismos.'
+      },
+      {
+        icon: '🎯',
+        title: 'Reduce Detección de IA Significativamente',
+        description: 'Aumenta drásticamente las chances de que tu texto NO sea detectado como IA. Transforma patrones detectables en escritura más humana.'
+      },
+      {
+        icon: '🚀',
+        title: '5 Modos de Conversión',
+        description: 'Plan FREE: Modo Estándar. Plan PRO ($10/mes): Formal (profesional), Creativo (personalidad), Simplificado (fácil), Académico (universitario) + 15,000 caracteres.'
+      }
+    ],
+
+    howToUse: [
+      'Genera o copia tu texto de IA (ChatGPT, Claude, Gemini, etc.)',
+      'Pega el texto en el conversor de DetectorDeIA',
+      'Selecciona Modo Estándar (FREE) o modos PRO si necesitas estilo específico',
+      'Haz clic en "Convertir a Humano" y espera 5 segundos',
+      'Obtén tu texto convertido que suena natural y humano',
+      'Verifica con nuestro Detector de IA - si marca alto, convierte nuevamente',
+      'Edita manualmente detalles específicos si es necesario para perfeccionar'
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué significa "convertir IA a humano"?',
+        answer: 'Convertir IA a humano significa transformar texto generado por inteligencia artificial (ChatGPT, Claude, Gemini) en contenido que suena como si lo hubiera escrito una persona real. El proceso elimina: (1) Redundancia excesiva típica de LLMs, (2) Conectores formales robóticos ("sin embargo", "no obstante"), (3) Neutralidad forzada sin opinión, (4) Estructura predecible, (5) Frases cliché de IA. El resultado es texto natural, fluido, con personalidad humana.'
+      },
+      {
+        question: '¿Funciona con ChatGPT, Claude, Gemini y otros LLMs?',
+        answer: 'SÍ. Nuestro conversor funciona con TODOS los LLMs principales: ChatGPT (GPT-3.5, GPT-4, GPT-4o), Claude (Claude 3, Claude 2), Google Gemini (Pro, Ultra, Flash), Llama, Mistral, Perplexity, DeepSeek, Copilot, Jasper, Copy.ai. Cada LLM tiene patrones únicos, pero nuestro sistema reconoce y transforma todos efectivamente (~80-90% éxito).'
+      },
+      {
+        question: '¿Es realmente gratis convertir texto de IA a humano?',
+        answer: 'SÍ. Plan FREE: 15 conversiones diarias (con registro gratuito), 600 caracteres por conversión, Modo Estándar (muy efectivo). Sin registro: 3 conversiones diarias. Plan PRO ($10/mes): conversiones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. FREE es suficiente para la mayoría de usuarios.'
+      },
+      {
+        question: '¿El texto convertido pasará los detectores de IA?',
+        answer: 'AUMENTA significativamente las chances pero NO garantiza 100% invisibilidad (ninguna herramienta puede garantizarlo). Nuestro conversor reduce patrones detectables de IA en ~75-85%. MEJOR ESTRATEGIA: (1) Convierte tu texto IA a humano, (2) Analiza con nuestro Detector de IA, (3) Si marca alto (+70%), convierte de nuevo con modo diferente, (4) Edita manualmente frases específicas sospechosas. Combinación conversión + edición manual = mejor resultado.'
+      },
+      {
+        question: '¿El conversor cambia el significado del texto original?',
+        answer: 'NO. El conversor mantiene el significado, ideas, argumentos, datos y mensaje de tu texto original de IA. Solo transforma la FORMA de escritura: elimina redundancia, reemplaza conectores robóticos, reduce neutralidad, agrega variación. El contenido esencial permanece intacto. Siempre revisa el resultado para confirmar precisión.'
+      },
+      {
+        question: '¿Cuánto tarda en convertir texto de IA a humano?',
+        answer: 'Entre 3-8 segundos dependiendo del largo y modo. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. Plan PRO (Modos avanzados): ~5-8 segundos para textos largos (hasta 15,000 caracteres). Mucho más rápido que reescribir manualmente eliminando patrones de IA.'
+      },
+      {
+        question: '¿Puedo usar texto convertido para trabajos académicos?',
+        answer: 'DEPENDE de la política de tu institución. Si tu profesor permite IA como herramienta de ayuda inicial (brainstorming, borradores) y editas/personalizas después, puede ser aceptable. Si prohíbe IA completamente, NO uses IA ni conversores. Usa la herramienta ÉTICAMENTE. Respeta integridad académica. Si dudas, pregunta a tu profesor directamente. DetectorDeIA no se responsabiliza por uso inadecuado.'
+      },
+      {
+        question: '¿Cuál es la diferencia entre "convertir IA a humano" y "humanizar"?',
+        answer: 'Son términos intercambiables. "Convertir IA a humano", "humanizar IA", "transformar IA en texto humano" significan lo mismo: tomar texto generado por IA y modificarlo para que suene natural/humano. Nuestro conversor hace ambos. Algunos usuarios prefieren "convertir" (implica transformación completa), otros "humanizar" (implica agregar cualidades humanas). Mismo proceso, misma herramienta.'
+      },
+      {
+        question: '¿Qué modo de conversión es mejor: Estándar, Formal, Creativo?',
+        answer: 'Depende del uso: Modo ESTÁNDAR (FREE): Elimina patrones IA básicos, equilibrado, efectivo para mayoría de casos. Modo FORMAL (PRO): Tono profesional/empresarial, elimina informalidad, ideal para reportes/emails corporativos. Modo CREATIVO (PRO): Agrega personalidad/estilo único, mejor para blogs/redes sociales/marketing. Modo SIMPLIFICADO (PRO): Lenguaje más fácil/accesible, ideal para audiencia general. Modo ACADÉMICO (PRO): Estilo universitario formal pero sin redundancia típica de IA. Empieza con Estándar.'
+      }
+    ],
+
+    cta: {
+      text: 'Convertir IA a Humano gratis ahora',
+      url: '/humanizador?ref=convertir-ia-humano'
+    }
+  },
+
+  {
+    slug: 'pasar-detector-turnitin',
+    featureName: 'Cómo Pasar Detector Turnitin',
+    keywords: [
+      'como pasar turnitin',
+      'pasar detector turnitin',
+      'evitar turnitin ia',
+      'turnitin detector ia',
+      'como burlar turnitin chatgpt'
+    ],
+
+    // SEO
+    title: 'Cómo Pasar el Detector de Turnitin IA 2025 | Guía Completa',
+    description: 'Aprende cómo pasar el detector de IA de Turnitin. Guía práctica con estrategias, limitaciones y herramientas. Usa ChatGPT éticamente sin ser detectado.',
+    h1: 'Cómo Pasar el Detector de IA de Turnitin: Guía Completa',
+
+    // Content
+    intro: 'Turnitin implementó detector de IA en 2023 para identificar textos de ChatGPT, Claude y otros LLMs. Esta guía completa explica cómo funciona Turnitin IA, sus limitaciones, estrategias para reducir detección (uso ético), y alternativas. Incluye información sobre precisión, falsos positivos, y cómo usar IA responsablemente en contextos académicos sin violar políticas universitarias.',
+
+    benefits: [
+      {
+        icon: '📚',
+        title: 'Cómo Funciona Turnitin IA',
+        description: 'Explicación técnica del detector de Turnitin: qué patrones busca, qué modelos detecta (ChatGPT, Claude, Gemini), cómo calcula porcentaje de IA, limitaciones conocidas.'
+      },
+      {
+        icon: '⚠️',
+        title: 'Limitaciones y Falsos Positivos',
+        description: 'Turnitin tiene ~8-12% de falsos positivos. Escritores formales humanos marcan como IA. Aprende cuándo Turnitin falla y cómo apelar detecciones incorrectas.'
+      },
+      {
+        icon: '🎯',
+        title: 'Estrategias Éticas para Reducir Detección',
+        description: 'Métodos legítimos para usar IA como herramienta de ayuda (brainstorming, borradores) y personalizar suficiente para que el trabajo sea genuinamente tuyo.'
+      },
+      {
+        icon: '✍️',
+        title: 'Edición Manual Efectiva',
+        description: 'Técnicas para reescribir texto de IA manualmente: agregar experiencias personales, cambiar estructura, usar tu voz única, añadir ejemplos específicos.'
+      },
+      {
+        icon: '🔍',
+        title: 'Herramienta de Pre-Verificación Gratis',
+        description: 'Usa nuestro detector de IA gratis ANTES de entregar tu trabajo. Si nuestro detector marca alto, Turnitin probablemente también. Ajusta antes de enviar.'
+      },
+      {
+        icon: '⚖️',
+        title: 'Uso Ético y Legal de IA Académica',
+        description: 'Guía sobre políticas universitarias, cuándo es aceptable usar IA, cómo citar IA correctamente, consecuencias de plagio con IA, integridad académica.'
+      }
+    ],
+
+    howToUse: [
+      'ANTES de escribir: Verifica la política de IA de tu profesor/universidad',
+      'Si permite IA como ayuda: Usa ChatGPT para brainstorming e ideas iniciales',
+      'Escribe tu propio borrador basado en ideas, NO copies texto de IA directamente',
+      'Si usaste texto de IA: Reescríbelo completamente con tus palabras, agrega experiencias personales',
+      'Verifica tu trabajo con nuestro Detector de IA gratis antes de enviarlo',
+      'Si marca alto (+60%): Edita más. Si marca bajo (-30%): Probablemente pasará Turnitin',
+      'Cita fuentes correctamente y asegúrate de que el trabajo refleje tu comprensión real'
+    ],
+
+    faqs: [
+      {
+        question: '¿Turnitin detecta ChatGPT, Claude y Gemini?',
+        answer: 'SÍ. El detector de IA de Turnitin (lanzado abril 2023) fue entrenado para detectar ChatGPT (GPT-3.5, GPT-4), Claude, Gemini, Bard, y otros LLMs principales. Turnitin analiza ~40 patrones de IA: redundancia, conectores formales, neutralidad forzada, perplejidad baja, falta de variación. Según Turnitin, tienen ~98% precisión con textos 100% IA, pero ~8-12% falsos positivos con humanos (problemático).'
+      },
+      {
+        question: '¿Cómo pasar el detector de IA de Turnitin?',
+        answer: 'MÉTODO ÉTICO: (1) Usa IA solo para brainstorming/ideas, NO para escribir directamente. (2) Escribe tu propio borrador basado en comprensión personal. (3) Si usaste texto IA, reescríbelo COMPLETAMENTE con tus palabras. (4) Agrega experiencias personales, ejemplos específicos, tu voz única. (5) Verifica con detector gratuito (nuestro) antes de enviar. (6) Si marca alto, edita más. IMPORTANTE: No intentes "burlar" Turnitin si tu profesor prohíbe IA. Eso es trampa y tiene consecuencias graves (reprobar, expulsión).'
+      },
+      {
+        question: '¿Los humanizadores de IA funcionan contra Turnitin?',
+        answer: 'PARCIALMENTE. Humanizadores avanzados pueden reducir detección de Turnitin en ~50-70%, pero NO garantizan invisibilidad total. Turnitin actualiza constantemente su detector para identificar textos humanizados. PROBLEMA ÉTICO: Si tu profesor prohíbe IA completamente, usar humanizadores es trampa académica. MEJOR ENFOQUE: Si tu profesor permite IA como ayuda, úsala para ideas y escribe tú mismo. Si prohíbe IA, no la uses punto.'
+      },
+      {
+        question: '¿Turnitin tiene falsos positivos? ¿Puede marcar texto humano como IA?',
+        answer: 'SÍ, Turnitin tiene falsos positivos significativos (~8-12% según estudios independientes). Casos comunes: (1) Estudiantes ESL (inglés como segunda lengua) que escriben formalmente. (2) Escritores muy estructurados/formales. (3) Textos técnicos con vocabulario especializado. (4) Estudiantes que siguen plantillas rígidas de ensayos. Si Turnitin marca tu trabajo genuino como IA: (1) NO entres en pánico, (2) Explica tu proceso de escritura al profesor, (3) Muestra borradores/notas, (4) Pide revisión del texto, (5) Apela la decisión si es necesario.'
+      },
+      {
+        question: '¿Qué porcentaje de IA en Turnitin es problemático?',
+        answer: 'Depende de la política del profesor, pero generalmente: 0-20% IA = Verde (probablemente OK, puede ser falso positivo). 20-50% IA = Amarillo (sospechoso, profesor revisará manualmente). 50-80% IA = Naranja (alta probabilidad IA, requiere explicación). 80-100% IA = Rojo (casi certeza de IA, problema grave). IMPORTANTE: Cada profesor interpreta diferente. Algunos tienen tolerancia 0% (cualquier IA = trampa), otros permiten hasta 30% si fue IA para ayuda inicial.'
+      },
+      {
+        question: '¿Puedo usar ChatGPT si mi universidad usa Turnitin?',
+        answer: 'DEPENDE de la política específica de tu profesor/universidad. Escenario 1: Profesor PERMITE IA como herramienta de ayuda → SÍ, úsala para brainstorming, pero escribe tú mismo y cita que usaste IA. Escenario 2: Profesor PROHÍBE IA completamente → NO, no uses ChatGPT para nada relacionado con el trabajo. Escenario 3: Política AMBIGUA → PREGUNTA al profesor directamente antes de usar. No asumas. Las consecuencias de violar política de IA son graves (reprobar curso, expulsión). Verifica siempre.'
+      },
+      {
+        question: '¿Turnitin guarda mi trabajo en su base de datos?',
+        answer: 'SÍ, por defecto. Cuando envías un trabajo a Turnitin, se almacena en su base de datos global y se usa para comparar contra futuros envíos (detección de plagio entre estudiantes). PERO: Turnitin NO usa tus trabajos para entrenar su detector de IA (según sus políticas). Algunos profesores configuran Turnitin para NO almacenar trabajos (opción "no guardar en repositorio"). Pregunta a tu profesor si te preocupa privacidad.'
+      },
+      {
+        question: '¿Escribir con errores intencionales evita detección de Turnitin?',
+        answer: 'NO es efectivo y es MALA estrategia. Algunos estudiantes agregan errores ortográficos/gramaticales intencionales pensando que "parece más humano". Problemas: (1) Turnitin analiza patrones profundos (perplejidad, distribución léxica, estructura), no solo errores. (2) Errores obvios alertan al profesor de trampa. (3) Reduces tu nota por mala calidad. (4) No funciona contra detectores modernos. MEJOR: Escribe genuinamente tu trabajo sin intentar engañar el sistema.'
+      },
+      {
+        question: '¿Qué pasa si Turnitin detecta mi trabajo como IA pero yo lo escribí?',
+        answer: 'Protocolo si eres acusado injustamente: (1) Mantén la calma, los falsos positivos ocurren. (2) Reúne evidencia: borradores previos, notas, historial de escritura, capturas de pantalla. (3) Explica tu proceso de escritura al profesor detalladamente. (4) Ofrece reescribir secciones sospechosas en presencia del profesor. (5) Pide revisión manual (humana) del texto. (6) Si el profesor no acepta, apela al departamento/decano. (7) Considera consultar con servicios estudiantiles. No aceptes acusación falsa sin defenderte con evidencia.'
+      }
+    ],
+
+    cta: {
+      text: 'Verificar texto con detector IA gratis',
+      url: '/detector?ref=turnitin'
+    }
   }
 ];
