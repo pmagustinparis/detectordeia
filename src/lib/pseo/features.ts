@@ -958,5 +958,112 @@ export const features: FeaturePage[] = [
       text: 'Verificar texto con detector IA gratis',
       url: '/detector?ref=turnitin'
     }
+  },
+
+  {
+    slug: 'parafrasear-sin-plagio',
+    featureName: 'Parafrasear Sin Plagio',
+    keywords: [
+      'parafrasear sin plagio',
+      'parafrasear textos sin plagio',
+      'como parafrasear sin copiar',
+      'parafraseo academico sin plagio',
+      'parafrasear evitando plagio'
+    ],
+
+    // SEO
+    title: 'Parafrasear Sin Plagio en Español 2025 | Gratis y Ético',
+    description: 'Aprende a parafrasear sin plagio correctamente. Guía con técnicas, herramientas gratis y cómo citar fuentes. Parafraseo académico ético en español.',
+    h1: 'Parafrasear Sin Plagio: Guía Completa y Ética',
+
+    // Content
+    intro: '¿Necesitás parafrasear textos sin cometer plagio? Esta guía completa enseña técnicas correctas de parafraseo académico: cómo reescribir con tus palabras, cuándo citar fuentes, diferencia entre parafrasear y plagiar, y herramientas gratuitas. Perfecto para estudiantes universitarios, investigadores y profesionales que quieren usar información de fuentes sin copiar. Incluye normas APA, MLA, Chicago.',
+
+    benefits: [
+      {
+        icon: '📚',
+        title: 'Técnicas de Parafraseo Correcto',
+        description: 'Aprende métodos académicos legítimos: cambiar estructura oracional, usar sinónimos contextuales, reorganizar ideas, agregar tu análisis. Parafraseo genuino, no simple cambio de palabras.'
+      },
+      {
+        icon: '⚠️',
+        title: 'Diferencia Entre Parafrasear y Plagiar',
+        description: 'Entiende qué es plagio de ideas vs plagio textual. Parafrasear sin citar también es plagio. Aprende cuándo DEBES citar fuentes incluso si parafraseas.'
+      },
+      {
+        icon: '✍️',
+        title: 'Cómo Citar Fuentes Correctamente',
+        description: 'Guía práctica para citar fuentes parafraseadas según normas APA 7, MLA 9, Chicago, Vancouver, IEEE. Ejemplos concretos de citas en texto y referencias.'
+      },
+      {
+        icon: '🎯',
+        title: 'Evita Patchwriting (Plagio Mosaico)',
+        description: 'Patchwriting es parafraseo superficial (cambiar pocas palabras pero mantener estructura). Es plagio. Aprende a evitarlo haciendo parafraseo profundo genuino.'
+      },
+      {
+        icon: '🔍',
+        title: 'Herramienta de Parafraseo Gratis',
+        description: 'Acceso a nuestro parafraseador gratuito en español. 15 usos diarios, reescribe textos con sinónimos y reestructuración. Úsalo ÉTICAMENTE (siempre cita fuentes).'
+      },
+      {
+        icon: '⚖️',
+        title: 'Uso Ético y Consecuencias del Plagio',
+        description: 'Aprende qué constituye plagio académico, consecuencias (reprobar, expulsión), cómo verificar tu trabajo con detectores de plagio, integridad académica.'
+      }
+    ],
+
+    howToUse: [
+      'Lee el texto original completo y entiende la idea principal',
+      'Cierra el texto original y escribe la idea con TUS PROPIAS PALABRAS basado en tu comprensión',
+      'Cambia estructura oracional, usa sinónimos contextuales, reorganiza ideas',
+      'Agrega tu análisis o interpretación personal para hacer el parafraseo más profundo',
+      'SIEMPRE cita la fuente original según normas académicas (APA, MLA, etc.)',
+      'Verifica con detector de plagio que tu paráfrasis es suficientemente diferente del original',
+      'Si el texto es muy técnico o único, considera usar cita directa en lugar de parafrasear'
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué significa parafrasear sin plagio?',
+        answer: 'Parafrasear sin plagio significa: (1) Reescribir ideas de otros con TUS PROPIAS PALABRAS genuinamente (no solo cambiar palabras sueltas), (2) Cambiar la ESTRUCTURA de las oraciones (no mantener la misma organización), (3) Demostrar COMPRENSIÓN del concepto (no copia mecánica), (4) SIEMPRE CITAR la fuente original aunque parafrasees. CRÍTICO: Parafrasear sin citar la fuente ES PLAGIO de ideas. Debes citar incluso si no copias textualmente.'
+      },
+      {
+        question: '¿Debo citar fuentes cuando parafraseo?',
+        answer: 'SÍ, SIEMPRE. Este es el error más común: estudiantes piensan que si parafrasean no necesitan citar. FALSO. Parafrasear sin citar es PLAGIO DE IDEAS. Debes citar: (1) Cuando usas información/datos de una fuente, (2) Cuando presentas ideas/teorías de otros autores, (3) Cuando reescribes argumentos ajenos. NO necesitas citar: (1) Conocimiento general/común, (2) Tus propias ideas originales, (3) Tus propias experiencias personales. En duda → CITA.'
+      },
+      {
+        question: '¿Qué es patchwriting y por qué es plagio?',
+        answer: 'Patchwriting (plagio mosaico) es parafraseo superficial: cambiar pocas palabras pero mantener estructura/organización del original. Ejemplo: Original: "La inteligencia artificial transforma radicalmente la educación moderna". Patchwriting (PLAGIO): "La IA cambia completamente la enseñanza contemporánea". Parafraseo correcto (OK): "Los sistemas de IA están revolucionando métodos pedagógicos actuales mediante personalización del aprendizaje y automatización de tareas administrativas". Patchwriting ES plagio porque no demuestra comprensión genuina ni reformulación profunda.'
+      },
+      {
+        question: '¿Cómo parafrasear correctamente según normas académicas?',
+        answer: 'Método de 5 pasos: (1) Lee el texto original varias veces hasta entender profundamente. (2) Cierra/esconde el texto original. (3) Escribe la idea con tus palabras basándote en tu comprensión (no mirando el original). (4) Cambia estructura: si original usa voz activa → usa pasiva, si empieza con sujeto → empieza con contexto, si tiene 2 oraciones → combínalas o sepáralas diferente. (5) Agrega tu análisis/interpretación para demostrar pensamiento crítico. (6) Cita la fuente con formato correcto (APA/MLA/Chicago).'
+      },
+      {
+        question: '¿Cómo citar fuentes parafraseadas en formato APA?',
+        answer: 'Formato APA 7 para paráfrasis: (1) Cita en texto: (Apellido, Año). Ejemplo: "La IA revoluciona la educación mediante personalización (Smith, 2023)". (2) Si mencionas autor en oración: Smith (2023) argumenta que la IA revoluciona la educación. (3) Referencia bibliográfica completa al final: Smith, J. (2023). Artificial Intelligence in Education. Editorial. IMPORTANTE: Cada paráfrasis necesita cita, no solo una vez por párrafo. Si usas múltiples ideas de una fuente, cita cada idea.'
+      },
+      {
+        question: '¿Las herramientas de parafraseo automático evitan el plagio?',
+        answer: 'NO automáticamente. Herramientas de parafraseo (como nuestro parafraseador) son AYUDAS, no soluciones mágicas. Problemas: (1) Parafraseo automático puede ser superficial (patchwriting), (2) No agregan tu comprensión/análisis personal, (3) Si no citas la fuente, sigue siendo plagio. USO CORRECTO: (1) Usa parafraseador para generar versión inicial, (2) Reescribe TÚ esa versión con tu comprensión, (3) Agrega tu análisis, (4) CITA la fuente original, (5) Verifica con detector de plagio. Herramienta + esfuerzo humano + citación = OK.'
+      },
+      {
+        question: '¿Cuándo debo usar cita directa en lugar de parafrasear?',
+        answer: 'Usa cita directa (entre comillas) cuando: (1) Lenguaje original es único/memorable/poderoso, (2) Definiciones técnicas precisas, (3) Declaraciones controvertidas que necesitas citar textualmente, (4) Textos legales/políticas oficiales, (5) Cuando parafrasear distorsionaría el significado. Parafrasea cuando: (1) Ideas generales/conceptos, (2) Explicaciones que puedes expresar más claro con tus palabras, (3) Combinas información de múltiples fuentes. REGLA: No más de 10-15% de tu trabajo debe ser citas directas.'
+      },
+      {
+        question: '¿Qué pasa si me acusan de plagio por parafrasear mal?',
+        answer: 'Consecuencias del plagio académico (incluso parafraseo sin citar): (1) Reprobar el trabajo/examen (calificación 0), (2) Reprobar el curso completo, (3) Anotación en expediente académico, (4) Suspensión temporal o expulsión definitiva, (5) Pérdida de becas, (6) Problemas legales en casos extremos. Defensa si fue error honesto: (1) Muestra tus notas/borradores, (2) Explica tu proceso de investigación, (3) Demuestra que no fue intencional, (4) Ofrece rehacer el trabajo correctamente. PREVENCIÓN: Aprende a citar correctamente desde el principio.'
+      },
+      {
+        question: '¿Puedo parafrasear de ChatGPT o IA sin citar?',
+        answer: 'NO, debes citar IA como fuente. Aunque ChatGPT/IA no son autores tradicionales, debes indicar que usaste IA según políticas de tu institución. Formato APA 7 para IA: En texto: (OpenAI, 2024). Referencia: OpenAI. (2024). ChatGPT (Versión GPT-4) [Large language model]. https://chat.openai.com. PERO: Muchas universidades prohíben usar IA completamente. Verifica política de tu profesor ANTES. Si está prohibida, no uses IA punto, ni siquiera citada.'
+      }
+    ],
+
+    cta: {
+      text: 'Usar parafraseador gratis ahora',
+      url: '/parafraseador?ref=parafrasear-sin-plagio'
+    }
   }
 ];
