@@ -133,7 +133,7 @@ export async function GET(request: NextRequest) {
     // Usuarios que intentaron features bloqueadas
     const { data: blockedEvents } = await supabase
       .from('analytics_events')
-      .select('user_id, event_type')
+      .select('user_id, event_type, metadata')
       .gte('created_at', startDate.toISOString())
       .in('event_type', ['file_upload_blocked', 'premium_mode_blocked']);
 
