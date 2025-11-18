@@ -9,6 +9,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 
+// Usuarios internos/de prueba que se excluyen de métricas de MRR y conversión
+const INTERNAL_TEST_EMAILS = [
+  'parisagustin@gmail.com',
+  'latamify@gmail.com',
+];
+
 export async function GET(request: NextRequest) {
   try {
     // Verificar autenticación simple
@@ -195,16 +201,19 @@ export async function GET(request: NextRequest) {
     const { data: opportunityUsers } = await supabase
       .from('users')
       .select('id, email, plan_type')
-      .in('id', opportunityUserIds);
+      .in('id', opportunityUserIds)
+      .not('email', 'in', `(${INTERNAL_TEST_EMAILS.map(e => `"${e}"`).join(',')})`);
 
-    const opportunities = conversionOpportunities.map(opp => {
-      const userData = opportunityUsers?.find(u => u.id === opp.userId);
-      return {
-        ...opp,
-        email: userData?.email || opp.userId === 'anonymous' ? 'Usuario anónimo' : 'Unknown',
-        plan: userData?.plan_type || 'free',
-      };
-    });
+    const opportunities = conversionOpportunities
+      .map(opp => {
+        const userData = opportunityUsers?.find(u => u.id === opp.userId);
+        return {
+          ...opp,
+          email: userData?.email || opp.userId === 'anonymous' ? 'Usuario anónimo' : 'Unknown',
+          plan: userData?.plan_type || 'free',
+        };
+      })
+      .filter(opp => opp.email !== 'Unknown'); // Filtrar usuarios de prueba que no tienen userData
 
     // ============================================
     // 5. ANÁLISIS DETALLADO DE FRICCIÓN
@@ -386,11 +395,13 @@ export async function GET(request: NextRequest) {
     const checkoutStarts = registeredCheckoutStarts + anonymousCheckoutStarts;
 
     // Conversiones completadas (usuarios que pasaron de free a premium en el período)
+    // Excluyendo usuarios de prueba internos
     const { data: conversions } = await supabase
       .from('users')
-      .select('plan_type, created_at')
+      .select('plan_type, created_at, email')
       .eq('plan_type', 'premium')
-      .gte('created_at', startDate.toISOString());
+      .gte('created_at', startDate.toISOString())
+      .not('email', 'in', `(${INTERNAL_TEST_EMAILS.map(e => `"${e}"`).join(',')})`);
 
     const totalConversions = conversions?.length || 0;
 
@@ -460,11 +471,12 @@ export async function GET(request: NextRequest) {
     const MONTHLY_PRICE = 9.99; // Precio mensual
     const ANNUAL_PRICE_MONTHLY = 7.99; // Precio anual dividido por 12
 
-    // Contar usuarios premium
+    // Contar usuarios premium (excluyendo usuarios de prueba internos)
     const { count: premiumUsersCount } = await supabase
       .from('users')
       .select('*', { count: 'exact', head: true })
-      .eq('plan_type', 'premium');
+      .eq('plan_type', 'premium')
+      .not('email', 'in', `(${INTERNAL_TEST_EMAILS.map(e => `"${e}"`).join(',')})`);
 
     const estimatedMRR = ((premiumUsersCount || 0) * MONTHLY_PRICE).toFixed(2);
 
@@ -483,7 +495,8 @@ export async function GET(request: NextRequest) {
     const { data: allPremiumUsers } = await supabase
       .from('users')
       .select('id')
-      .eq('plan_type', 'premium');
+      .eq('plan_type', 'premium')
+      .not('email', 'in', `(${INTERNAL_TEST_EMAILS.map(e => `"${e}"`).join(',')})`);
 
     const churnRisk = allPremiumUsers?.filter(u => !activePremiumUsers.has(u.id)).length || 0;
 
@@ -664,12 +677,13 @@ export async function GET(request: NextRequest) {
       ])
     ];
 
-    // Obtener info de estos usuarios
+    // Obtener info de estos usuarios (excluyendo usuarios de prueba internos)
     const { data: hotLeadUsers } = hotLeadIds.length > 0
       ? await supabase
           .from('users')
           .select('id, email, plan_type')
           .in('id', hotLeadIds)
+          .not('email', 'in', `(${INTERNAL_TEST_EMAILS.map(e => `"${e}"`).join(',')})`)
       : { data: [] };
 
     const hotLeads = hotLeadUsers?.map(user => {
