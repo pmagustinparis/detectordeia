@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { createClient } from "@/lib/supabase/client";
+import { trackEvent } from "@/lib/analytics/client";
 
 const PRICES = {
   free: { monthly: 0, annual: 0 },
@@ -24,6 +25,18 @@ export default function PricingPageClient() {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
   const [loadingPlan, setLoadingPlan] = useState(true);
+
+  // Track pricing page visit
+  useEffect(() => {
+    trackEvent({
+      eventType: 'pricing_page_visited',
+      metadata: {
+        referrer: document.referrer || 'direct',
+        is_authenticated: isAuthenticated,
+        current_plan: userPlan,
+      }
+    });
+  }, []); // Solo al montar
 
   // Fetch user plan when authenticated
   useEffect(() => {
@@ -87,6 +100,18 @@ export default function PricingPageClient() {
   };
 
   const handleCheckout = async (planInterval: 'month' | 'year') => {
+    // Track checkout initiation
+    trackEvent({
+      eventType: 'checkout_started',
+      metadata: {
+        plan_interval: planInterval,
+        plan_type: 'pro',
+        price: planInterval === 'month' ? PRICES.pro.monthly : PRICES.pro.annual,
+        is_authenticated: isAuthenticated,
+        current_plan: userPlan,
+      }
+    });
+
     try {
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',

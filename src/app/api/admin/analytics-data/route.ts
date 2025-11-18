@@ -342,6 +342,53 @@ export async function GET(request: NextRequest) {
       .map(([source, count]) => ({ source, count }));
 
     // ============================================
+    // 7. EMBUDO DE CONVERSIÓN
+    // ============================================
+
+    // Contar eventos del embudo
+    const { data: funnelEvents } = await supabase
+      .from('analytics_events')
+      .select('event_type, user_id, anonymous_id, metadata')
+      .gte('created_at', startDate.toISOString())
+      .in('event_type', ['pricing_page_visited', 'checkout_started']);
+
+    const pricingVisits = funnelEvents?.filter(e => e.event_type === 'pricing_page_visited').length || 0;
+    const checkoutStarts = funnelEvents?.filter(e => e.event_type === 'checkout_started').length || 0;
+
+    // Conversiones completadas (usuarios que pasaron de free a premium en el período)
+    const { data: conversions } = await supabase
+      .from('users')
+      .select('plan_type, created_at')
+      .eq('plan_type', 'premium')
+      .gte('created_at', startDate.toISOString());
+
+    const totalConversions = conversions?.length || 0;
+
+    // Calcular tasas de conversión
+    const visitToCheckoutRate = pricingVisits > 0 ? ((checkoutStarts / pricingVisits) * 100).toFixed(1) : '0.0';
+    const checkoutToConversionRate = checkoutStarts > 0 ? ((totalConversions / checkoutStarts) * 100).toFixed(1) : '0.0';
+    const overallConversionRate = pricingVisits > 0 ? ((totalConversions / pricingVisits) * 100).toFixed(1) : '0.0';
+
+    // Desglose de eventos por tipo
+    const eventBreakdown = {
+      success: {
+        completed_analysis: allEvents?.filter(e => e.event_type === 'completed_analysis').length || 0,
+        completed_humanization: allEvents?.filter(e => e.event_type === 'completed_humanization').length || 0,
+        completed_paraphrase: allEvents?.filter(e => e.event_type === 'completed_paraphrase').length || 0,
+      },
+      friction: {
+        hit_character_limit: allEvents?.filter(e => e.event_type === 'hit_character_limit').length || 0,
+        hit_daily_limit: allEvents?.filter(e => e.event_type === 'hit_daily_limit').length || 0,
+        file_upload_blocked: allEvents?.filter(e => e.event_type === 'file_upload_blocked').length || 0,
+        premium_mode_blocked: allEvents?.filter(e => e.event_type === 'premium_mode_blocked').length || 0,
+      },
+      conversion: {
+        pricing_page_visited: pricingVisits,
+        checkout_started: checkoutStarts,
+      },
+    };
+
+    // ============================================
     // RESPUESTA FINAL
     // ============================================
 
@@ -370,6 +417,20 @@ export async function GET(request: NextRequest) {
         topPrimaryUses,
         topDiscoverySources,
       },
+      conversionFunnel: {
+        steps: {
+          activeUsers: uniqueActiveUsers,
+          pricingVisits,
+          checkoutStarts,
+          conversions: totalConversions,
+        },
+        rates: {
+          visitToCheckout: visitToCheckoutRate,
+          checkoutToConversion: checkoutToConversionRate,
+          overall: overallConversionRate,
+        },
+      },
+      eventBreakdown,
     });
 
   } catch (error) {

@@ -59,6 +59,36 @@ interface AnalyticsData {
     topPrimaryUses: Array<{ use: string; count: number }>;
     topDiscoverySources: Array<{ source: string; count: number }>;
   };
+  conversionFunnel: {
+    steps: {
+      activeUsers: number;
+      pricingVisits: number;
+      checkoutStarts: number;
+      conversions: number;
+    };
+    rates: {
+      visitToCheckout: string;
+      checkoutToConversion: string;
+      overall: string;
+    };
+  };
+  eventBreakdown: {
+    success: {
+      completed_analysis: number;
+      completed_humanization: number;
+      completed_paraphrase: number;
+    };
+    friction: {
+      hit_character_limit: number;
+      hit_daily_limit: number;
+      file_upload_blocked: number;
+      premium_mode_blocked: number;
+    };
+    conversion: {
+      pricing_page_visited: number;
+      checkout_started: number;
+    };
+  };
 }
 
 export default function AnalyticsDashboard() {
@@ -305,6 +335,150 @@ export default function AnalyticsDashboard() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+
+            {/* ============================================ */}
+            {/* EMBUDO DE CONVERSIÓN */}
+            {/* ============================================ */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg border-2 border-green-200 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                    🎯 Embudo de Conversión
+                  </h2>
+                  <p className="text-sm text-gray-600 mt-1">
+                    De usuarios activos a clientes premium
+                  </p>
+                </div>
+              </div>
+
+              {/* Funnel Steps */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div className="bg-white rounded-xl p-4 border-2 border-blue-200">
+                  <div className="text-xs text-blue-600 font-medium mb-1">Paso 1: Usuarios Activos</div>
+                  <div className="text-3xl font-bold text-gray-800">{data.conversionFunnel.steps.activeUsers}</div>
+                  <div className="text-xs text-gray-500 mt-1">Usaron las herramientas</div>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 border-2 border-violet-200 relative">
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 text-2xl">→</div>
+                  <div className="text-xs text-violet-600 font-medium mb-1">Paso 2: Vieron Pricing</div>
+                  <div className="text-3xl font-bold text-gray-800">{data.conversionFunnel.steps.pricingVisits}</div>
+                  <div className="text-xs text-green-600 font-semibold mt-1">
+                    {data.conversionFunnel.steps.activeUsers > 0
+                      ? ((data.conversionFunnel.steps.pricingVisits / data.conversionFunnel.steps.activeUsers) * 100).toFixed(1)
+                      : '0.0'}% de activos
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 border-2 border-orange-200 relative">
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 text-2xl">→</div>
+                  <div className="text-xs text-orange-600 font-medium mb-1">Paso 3: Iniciaron Checkout</div>
+                  <div className="text-3xl font-bold text-gray-800">{data.conversionFunnel.steps.checkoutStarts}</div>
+                  <div className="text-xs text-green-600 font-semibold mt-1">
+                    {data.conversionFunnel.rates.visitToCheckout}% de visitas
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl p-4 border-2 border-green-300 relative">
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 text-2xl">→</div>
+                  <div className="text-xs text-green-700 font-medium mb-1">✓ Paso 4: Convirtieron</div>
+                  <div className="text-3xl font-bold text-green-600">{data.conversionFunnel.steps.conversions}</div>
+                  <div className="text-xs text-green-700 font-semibold mt-1">
+                    {data.conversionFunnel.rates.overall}% conversión total
+                  </div>
+                </div>
+              </div>
+
+              {/* Conversion Rates Summary */}
+              <div className="bg-white rounded-xl p-4 border border-gray-200">
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">Pricing → Checkout</div>
+                    <div className="text-2xl font-bold text-violet-600">{data.conversionFunnel.rates.visitToCheckout}%</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">Checkout → Premium</div>
+                    <div className="text-2xl font-bold text-orange-600">{data.conversionFunnel.rates.checkoutToConversion}%</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">Conversión Global</div>
+                    <div className="text-2xl font-bold text-green-600">{data.conversionFunnel.rates.overall}%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ============================================ */}
+            {/* DESGLOSE DE EVENTOS */}
+            {/* ============================================ */}
+            <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
+              <h3 className="text-lg font-bold text-gray-800 mb-4">📊 Desglose de Eventos</h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Éxitos */}
+                <div>
+                  <h4 className="text-sm font-semibold text-green-700 mb-3 flex items-center gap-2">
+                    ✅ Éxitos ({Object.values(data.eventBreakdown.success).reduce((a, b) => a + b, 0)})
+                  </h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">🤖 Análisis</span>
+                      <span className="font-semibold text-green-600">{data.eventBreakdown.success.completed_analysis}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">👤 Humanizaciones</span>
+                      <span className="font-semibold text-green-600">{data.eventBreakdown.success.completed_humanization}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">🔄 Parafraseos</span>
+                      <span className="font-semibold text-green-600">{data.eventBreakdown.success.completed_paraphrase}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Fricción */}
+                <div>
+                  <h4 className="text-sm font-semibold text-red-700 mb-3 flex items-center gap-2">
+                    ⚠️ Fricción ({Object.values(data.eventBreakdown.friction).reduce((a, b) => a + b, 0)})
+                  </h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">🔤 Límite caracteres</span>
+                      <span className="font-semibold text-red-600">{data.eventBreakdown.friction.hit_character_limit}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">📊 Límite diario</span>
+                      <span className="font-semibold text-red-600">{data.eventBreakdown.friction.hit_daily_limit}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">📎 Archivo bloqueado</span>
+                      <span className="font-semibold text-red-600">{data.eventBreakdown.friction.file_upload_blocked}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">💎 Modo premium</span>
+                      <span className="font-semibold text-red-600">{data.eventBreakdown.friction.premium_mode_blocked}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Conversión */}
+                <div>
+                  <h4 className="text-sm font-semibold text-violet-700 mb-3 flex items-center gap-2">
+                    💰 Conversión ({Object.values(data.eventBreakdown.conversion).reduce((a, b) => a + b, 0)})
+                  </h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">👁️ Vieron pricing</span>
+                      <span className="font-semibold text-violet-600">{data.eventBreakdown.conversion.pricing_page_visited}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-700">🛒 Iniciaron checkout</span>
+                      <span className="font-semibold text-violet-600">{data.eventBreakdown.conversion.checkout_started}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
