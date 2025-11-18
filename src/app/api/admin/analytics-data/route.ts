@@ -296,6 +296,52 @@ export async function GET(request: NextRequest) {
       .map(([mode, count]) => ({ mode, count }));
 
     // ============================================
+    // 6. ANÁLISIS DE PERFILES DE USUARIO
+    // ============================================
+
+    // Total de perfiles completados
+    const { count: totalProfiles } = await supabase
+      .from('user_profiles')
+      .select('*', { count: 'exact', head: true });
+
+    // Distribución por rol
+    const { data: profilesData } = await supabase
+      .from('user_profiles')
+      .select('role, primary_use, discovery_source');
+
+    const roleDistribution: Record<string, number> = {};
+    const primaryUseDistribution: Record<string, number> = {};
+    const discoverySourceDistribution: Record<string, number> = {};
+
+    profilesData?.forEach((profile) => {
+      if (profile.role) {
+        roleDistribution[profile.role] = (roleDistribution[profile.role] || 0) + 1;
+      }
+      if (profile.primary_use) {
+        primaryUseDistribution[profile.primary_use] = (primaryUseDistribution[profile.primary_use] || 0) + 1;
+      }
+      if (profile.discovery_source) {
+        discoverySourceDistribution[profile.discovery_source] = (discoverySourceDistribution[profile.discovery_source] || 0) + 1;
+      }
+    });
+
+    // Top 5 de cada categoría
+    const topRoles = Object.entries(roleDistribution)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([role, count]) => ({ role, count }));
+
+    const topPrimaryUses = Object.entries(primaryUseDistribution)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([use, count]) => ({ use, count }));
+
+    const topDiscoverySources = Object.entries(discoverySourceDistribution)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([source, count]) => ({ source, count }));
+
+    // ============================================
     // RESPUESTA FINAL
     // ============================================
 
@@ -317,6 +363,13 @@ export async function GET(request: NextRequest) {
         topPremiumModes,
       },
       opportunities,
+      profiles: {
+        totalProfiles: totalProfiles || 0,
+        completionRate: totalUsers > 0 ? ((totalProfiles || 0) / totalUsers * 100).toFixed(1) : '0.0',
+        topRoles,
+        topPrimaryUses,
+        topDiscoverySources,
+      },
     });
 
   } catch (error) {

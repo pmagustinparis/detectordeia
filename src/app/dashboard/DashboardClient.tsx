@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { User } from '@supabase/supabase-js';
 import type { UsageStats } from '@/lib/queries/usageStats';
+import { useUserProfile } from '@/lib/hooks/useUserProfile';
+import UserProfileModal from '@/app/components/UserProfileModal';
 
 interface DashboardClientProps {
   user: User;
@@ -22,6 +24,18 @@ export default function DashboardClient({ user, usageStats, history, planType, h
     }
     return false;
   });
+
+  // User profile onboarding
+  const { hasProfile, loading: profileLoading, refreshProfile } = useUserProfile();
+  const [showProfileModal, setShowProfileModal] = useState(false);
+
+  // Mostrar modal de perfil si el usuario no lo completó
+  useEffect(() => {
+    if (!profileLoading && hasProfile === false) {
+      // Pequeño delay para mejor UX
+      setTimeout(() => setShowProfileModal(true), 500);
+    }
+  }, [profileLoading, hasProfile]);
 
   // Tool name mapping
   const toolNames: Record<string, string> = {
@@ -473,6 +487,16 @@ export default function DashboardClient({ user, usageStats, history, planType, h
           </div>
         </>
       )}
+
+      {/* User Profile Onboarding Modal */}
+      <UserProfileModal
+        isOpen={showProfileModal}
+        onClose={() => setShowProfileModal(false)}
+        onComplete={() => {
+          refreshProfile();
+          setShowProfileModal(false);
+        }}
+      />
     </div>
   );
 }

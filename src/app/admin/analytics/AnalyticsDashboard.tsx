@@ -52,6 +52,13 @@ interface AnalyticsData {
     reason: string;
     priority: string;
   }>;
+  profiles: {
+    totalProfiles: number;
+    completionRate: string;
+    topRoles: Array<{ role: string; count: number }>;
+    topPrimaryUses: Array<{ use: string; count: number }>;
+    topDiscoverySources: Array<{ source: string; count: number }>;
+  };
 }
 
 export default function AnalyticsDashboard() {
@@ -545,6 +552,107 @@ export default function AnalyticsDashboard() {
                   No hay datos para mostrar
                 </div>
               )}
+            </div>
+
+            {/* Perfiles de Usuario */}
+            <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
+                    👥 Perfiles de Usuario
+                  </h3>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Quiénes son tus usuarios y cómo nos encontraron
+                  </p>
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-violet-600">{data.profiles.totalProfiles}</div>
+                  <div className="text-xs text-gray-600">perfiles completados</div>
+                  <div className="text-xs text-gray-500">({data.profiles.completionRate}% de usuarios)</div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Roles */}
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-2">🎓 Roles principales</h4>
+                  {data.profiles.topRoles.length > 0 ? (
+                    <div className="space-y-2">
+                      {data.profiles.topRoles.map((item) => {
+                        const roleLabels: Record<string, string> = {
+                          student: 'Estudiante',
+                          teacher: 'Profesor',
+                          writer: 'Escritor',
+                          journalist: 'Periodista',
+                          professional: 'Profesional',
+                          other: 'Otro',
+                        };
+                        return (
+                          <div key={item.role} className="flex items-center justify-between text-sm">
+                            <span className="text-gray-700">{roleLabels[item.role] || item.role}</span>
+                            <span className="font-semibold text-violet-600">{item.count}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-xs text-gray-500">Sin datos</div>
+                  )}
+                </div>
+
+                {/* Uso principal */}
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-2">🎯 Uso principal</h4>
+                  {data.profiles.topPrimaryUses.length > 0 ? (
+                    <div className="space-y-2">
+                      {data.profiles.topPrimaryUses.map((item) => {
+                        const useLabels: Record<string, string> = {
+                          detect_ai: 'Detectar IA',
+                          humanize: 'Humanizar',
+                          paraphrase: 'Parafrasear',
+                          review_work: 'Revisar trabajos',
+                          other: 'Otro',
+                        };
+                        return (
+                          <div key={item.use} className="flex items-center justify-between text-sm">
+                            <span className="text-gray-700">{useLabels[item.use] || item.use}</span>
+                            <span className="font-semibold text-violet-600">{item.count}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-xs text-gray-500">Sin datos</div>
+                  )}
+                </div>
+
+                {/* Fuente de descubrimiento */}
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-2">📍 Cómo nos encontraron</h4>
+                  {data.profiles.topDiscoverySources.length > 0 ? (
+                    <div className="space-y-2">
+                      {data.profiles.topDiscoverySources.map((item) => {
+                        const sourceLabels: Record<string, string> = {
+                          google: 'Google',
+                          social_media: 'Redes sociales',
+                          recommendation: 'Recomendación',
+                          youtube: 'YouTube',
+                          other_website: 'Otro sitio',
+                          other: 'Otro',
+                        };
+                        return (
+                          <div key={item.source} className="flex items-center justify-between text-sm">
+                            <span className="text-gray-700">{sourceLabels[item.source] || item.source}</span>
+                            <span className="font-semibold text-violet-600">{item.count}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-xs text-gray-500">Sin datos</div>
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* Top Usuarios (colapsado) */}
