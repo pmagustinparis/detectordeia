@@ -365,7 +365,7 @@ export async function GET(request: NextRequest) {
       opportunities,
       profiles: {
         totalProfiles: totalProfiles || 0,
-        completionRate: totalUsers > 0 ? ((totalProfiles || 0) / totalUsers * 100).toFixed(1) : '0.0',
+        completionRate: (totalUsers || 0) > 0 ? ((totalProfiles || 0) / (totalUsers || 0) * 100).toFixed(1) : '0.0',
         topRoles,
         topPrimaryUses,
         topDiscoverySources,
