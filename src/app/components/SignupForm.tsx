@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { getAnonymousId } from '@/lib/analytics/trackEvent';
 
 interface SignupFormProps {
   onSuccess?: () => void;
@@ -93,8 +94,31 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
         return;
       }
 
-      // Éxito
+      // Éxito - Trackear evento de signup
       setSuccess(true);
+
+      // Trackear signup event para analytics
+      if (data.user) {
+        try {
+          await fetch('/api/analytics/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventType: 'signup',
+              userId: data.user.id,
+              anonymousId: getAnonymousId(), // Vincular con actividad anónima previa
+              metadata: {
+                email: formData.email,
+                name: formData.name,
+              },
+            }),
+          });
+        } catch (trackError) {
+          // No romper el flujo si falla el tracking
+          console.error('Error tracking signup:', trackError);
+        }
+      }
+
       if (onSuccess) {
         onSuccess();
       }
