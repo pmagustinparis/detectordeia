@@ -352,8 +352,28 @@ export async function GET(request: NextRequest) {
       .gte('created_at', startDate.toISOString())
       .in('event_type', ['pricing_page_visited', 'checkout_started']);
 
-    const pricingVisits = funnelEvents?.filter(e => e.event_type === 'pricing_page_visited').length || 0;
-    const checkoutStarts = funnelEvents?.filter(e => e.event_type === 'checkout_started').length || 0;
+    // SEPARAR EVENTOS POR TIPO DE USUARIO
+    // Registrados: tienen user_id
+    const registeredPricingVisits = funnelEvents?.filter(e =>
+      e.event_type === 'pricing_page_visited' && e.user_id
+    ).length || 0;
+
+    const registeredCheckoutStarts = funnelEvents?.filter(e =>
+      e.event_type === 'checkout_started' && e.user_id
+    ).length || 0;
+
+    // Anónimos: tienen anonymous_id pero NO user_id
+    const anonymousPricingVisits = funnelEvents?.filter(e =>
+      e.event_type === 'pricing_page_visited' && !e.user_id && e.anonymous_id
+    ).length || 0;
+
+    const anonymousCheckoutStarts = funnelEvents?.filter(e =>
+      e.event_type === 'checkout_started' && !e.user_id && e.anonymous_id
+    ).length || 0;
+
+    // Total (para mantener compatibilidad con código existente)
+    const pricingVisits = registeredPricingVisits + anonymousPricingVisits;
+    const checkoutStarts = registeredCheckoutStarts + anonymousCheckoutStarts;
 
     // Conversiones completadas (usuarios que pasaron de free a premium en el período)
     const { data: conversions } = await supabase
@@ -364,7 +384,38 @@ export async function GET(request: NextRequest) {
 
     const totalConversions = conversions?.length || 0;
 
-    // Calcular tasas de conversión
+    // Usuarios anónimos que se registraron (conversión para anónimos)
+    const { data: newRegistrations } = await supabase
+      .from('analytics_events')
+      .select('user_id, created_at')
+      .eq('event_type', 'signup')
+      .gte('created_at', startDate.toISOString());
+
+    const totalSignups = newRegistrations?.length || 0;
+
+    // Calcular tasas de conversión - REGISTRADOS
+    const registeredVisitToCheckout = registeredPricingVisits > 0
+      ? ((registeredCheckoutStarts / registeredPricingVisits) * 100).toFixed(1)
+      : '0.0';
+    const registeredCheckoutToConversion = registeredCheckoutStarts > 0
+      ? ((totalConversions / registeredCheckoutStarts) * 100).toFixed(1)
+      : '0.0';
+    const registeredOverall = registeredPricingVisits > 0
+      ? ((totalConversions / registeredPricingVisits) * 100).toFixed(1)
+      : '0.0';
+
+    // Calcular tasas de conversión - ANÓNIMOS
+    const anonymousVisitToCheckout = anonymousPricingVisits > 0
+      ? ((anonymousCheckoutStarts / anonymousPricingVisits) * 100).toFixed(1)
+      : '0.0';
+    const anonymousCheckoutToSignup = anonymousCheckoutStarts > 0
+      ? ((totalSignups / anonymousCheckoutStarts) * 100).toFixed(1)
+      : '0.0';
+    const anonymousOverall = anonymousPricingVisits > 0
+      ? ((totalSignups / anonymousPricingVisits) * 100).toFixed(1)
+      : '0.0';
+
+    // Calcular tasas de conversión - TOTALES (para compatibilidad)
     const visitToCheckoutRate = pricingVisits > 0 ? ((checkoutStarts / pricingVisits) * 100).toFixed(1) : '0.0';
     const checkoutToConversionRate = checkoutStarts > 0 ? ((totalConversions / checkoutStarts) * 100).toFixed(1) : '0.0';
     const overallConversionRate = pricingVisits > 0 ? ((totalConversions / pricingVisits) * 100).toFixed(1) : '0.0';
@@ -418,6 +469,35 @@ export async function GET(request: NextRequest) {
         topDiscoverySources,
       },
       conversionFunnel: {
+        // Embudo para usuarios REGISTRADOS
+        registered: {
+          steps: {
+            activeUsers: uniqueActiveUsers,
+            pricingVisits: registeredPricingVisits,
+            checkoutStarts: registeredCheckoutStarts,
+            conversions: totalConversions,
+          },
+          rates: {
+            visitToCheckout: registeredVisitToCheckout,
+            checkoutToConversion: registeredCheckoutToConversion,
+            overall: registeredOverall,
+          },
+        },
+        // Embudo para usuarios ANÓNIMOS
+        anonymous: {
+          steps: {
+            visitors: anonymousPricingVisits + anonymousCheckoutStarts, // Total de visitantes anónimos
+            pricingVisits: anonymousPricingVisits,
+            checkoutStarts: anonymousCheckoutStarts,
+            signups: totalSignups,
+          },
+          rates: {
+            visitToCheckout: anonymousVisitToCheckout,
+            checkoutToSignup: anonymousCheckoutToSignup,
+            overall: anonymousOverall,
+          },
+        },
+        // Legacy (mantener para compatibilidad)
         steps: {
           activeUsers: uniqueActiveUsers,
           pricingVisits,

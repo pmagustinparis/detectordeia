@@ -60,6 +60,32 @@ interface AnalyticsData {
     topDiscoverySources: Array<{ source: string; count: number }>;
   };
   conversionFunnel: {
+    registered: {
+      steps: {
+        activeUsers: number;
+        pricingVisits: number;
+        checkoutStarts: number;
+        conversions: number;
+      };
+      rates: {
+        visitToCheckout: string;
+        checkoutToConversion: string;
+        overall: string;
+      };
+    };
+    anonymous: {
+      steps: {
+        visitors: number;
+        pricingVisits: number;
+        checkoutStarts: number;
+        signups: number;
+      };
+      rates: {
+        visitToCheckout: string;
+        checkoutToSignup: string;
+        overall: string;
+      };
+    };
     steps: {
       activeUsers: number;
       pricingVisits: number;
@@ -292,8 +318,8 @@ export default function AnalyticsDashboard() {
 
               <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg p-5 text-white">
                 <div className="text-xs font-medium mb-1 opacity-90">💰 Tasa Conversión</div>
-                <div className="text-3xl font-bold">{data.conversionFunnel.rates.overall}%</div>
-                <div className="text-xs mt-1 opacity-75">{data.conversionFunnel.steps.conversions} conversiones</div>
+                <div className="text-3xl font-bold">{data.conversionFunnel.registered.rates.overall}%</div>
+                <div className="text-xs mt-1 opacity-75">{data.conversionFunnel.registered.steps.conversions} conversiones (registrados)</div>
               </div>
 
               <div className="bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl shadow-lg p-5 text-white">
@@ -318,75 +344,149 @@ export default function AnalyticsDashboard() {
               </div>
 
               <div className="space-y-6">
-                {/* Embudo de Conversión */}
+                {/* Embudos de Conversión - Lado a Lado */}
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg border-2 border-green-200 p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                    🎯 Embudo de Conversión
-                  </h2>
-                  <p className="text-sm text-gray-600 mt-1">
-                    De usuarios activos a clientes premium
-                  </p>
-                </div>
-              </div>
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                      🎯 Embudos de Conversión
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Comparación entre usuarios registrados y visitantes anónimos
+                    </p>
+                  </div>
 
-              {/* Funnel Steps */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-white rounded-xl p-4 border-2 border-blue-200">
-                  <div className="text-xs text-blue-600 font-medium mb-1">Paso 1: Usuarios Activos</div>
-                  <div className="text-3xl font-bold text-gray-800">{data.conversionFunnel.steps.activeUsers}</div>
-                  <div className="text-xs text-gray-500 mt-1">Usaron las herramientas</div>
-                </div>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* EMBUDO 1: USUARIOS REGISTRADOS */}
+                    <div className="bg-white rounded-xl p-5 shadow">
+                      <div className="text-center mb-4">
+                        <h4 className="text-lg font-bold text-blue-600 flex items-center justify-center gap-2">
+                          👤 Usuarios Registrados
+                        </h4>
+                        <p className="text-xs text-gray-600 mt-1">De uso activo a conversión premium</p>
+                      </div>
 
-                <div className="bg-white rounded-xl p-4 border-2 border-violet-200 relative">
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 text-2xl">→</div>
-                  <div className="text-xs text-violet-600 font-medium mb-1">Paso 2: Vieron Pricing</div>
-                  <div className="text-3xl font-bold text-gray-800">{data.conversionFunnel.steps.pricingVisits}</div>
-                  <div className="text-xs text-green-600 font-semibold mt-1">
-                    {data.conversionFunnel.steps.activeUsers > 0
-                      ? ((data.conversionFunnel.steps.pricingVisits / data.conversionFunnel.steps.activeUsers) * 100).toFixed(1)
-                      : '0.0'}% de activos
-                  </div>
-                </div>
+                      {/* Funnel Visual */}
+                      <div className="space-y-3">
+                        {/* Nivel 1: Usuarios Activos */}
+                        <div className="relative">
+                          <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">Usuarios Activos</div>
+                            <div className="text-3xl font-bold">{data.conversionFunnel.registered.steps.activeUsers}</div>
+                          </div>
+                          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-2xl">↓</div>
+                        </div>
 
-                <div className="bg-white rounded-xl p-4 border-2 border-orange-200 relative">
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 text-2xl">→</div>
-                  <div className="text-xs text-orange-600 font-medium mb-1">Paso 3: Iniciaron Checkout</div>
-                  <div className="text-3xl font-bold text-gray-800">{data.conversionFunnel.steps.checkoutStarts}</div>
-                  <div className="text-xs text-green-600 font-semibold mt-1">
-                    {data.conversionFunnel.rates.visitToCheckout}% de visitas
-                  </div>
-                </div>
+                        {/* Nivel 2: Vieron Pricing */}
+                        <div className="relative mx-4">
+                          <div className="bg-gradient-to-r from-violet-500 to-violet-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">Visitaron Pricing</div>
+                            <div className="text-2xl font-bold">{data.conversionFunnel.registered.steps.pricingVisits}</div>
+                            <div className="text-xs mt-1 font-semibold bg-white/20 inline-block px-2 py-0.5 rounded">
+                              {data.conversionFunnel.registered.steps.activeUsers > 0
+                                ? ((data.conversionFunnel.registered.steps.pricingVisits / data.conversionFunnel.registered.steps.activeUsers) * 100).toFixed(1)
+                                : '0.0'}%
+                            </div>
+                          </div>
+                          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-2xl">↓</div>
+                        </div>
 
-                <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl p-4 border-2 border-green-300 relative">
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 text-2xl">→</div>
-                  <div className="text-xs text-green-700 font-medium mb-1">✓ Paso 4: Convirtieron</div>
-                  <div className="text-3xl font-bold text-green-600">{data.conversionFunnel.steps.conversions}</div>
-                  <div className="text-xs text-green-700 font-semibold mt-1">
-                    {data.conversionFunnel.rates.overall}% conversión total
-                  </div>
-                </div>
-              </div>
+                        {/* Nivel 3: Iniciaron Checkout */}
+                        <div className="relative mx-8">
+                          <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">Iniciaron Checkout</div>
+                            <div className="text-xl font-bold">{data.conversionFunnel.registered.steps.checkoutStarts}</div>
+                            <div className="text-xs mt-1 font-semibold bg-white/20 inline-block px-2 py-0.5 rounded">
+                              {data.conversionFunnel.registered.rates.visitToCheckout}%
+                            </div>
+                          </div>
+                          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-2xl">↓</div>
+                        </div>
 
-              {/* Conversion Rates Summary */}
-              <div className="bg-white rounded-xl p-4 border border-gray-200">
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-xs text-gray-600 mb-1">Pricing → Checkout</div>
-                    <div className="text-2xl font-bold text-violet-600">{data.conversionFunnel.rates.visitToCheckout}%</div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-600 mb-1">Checkout → Premium</div>
-                    <div className="text-2xl font-bold text-orange-600">{data.conversionFunnel.rates.checkoutToConversion}%</div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-600 mb-1">Conversión Global</div>
-                    <div className="text-2xl font-bold text-green-600">{data.conversionFunnel.rates.overall}%</div>
+                        {/* Nivel 4: Conversión Premium */}
+                        <div className="mx-12">
+                          <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">✓ Convirtieron a Premium</div>
+                            <div className="text-2xl font-bold">{data.conversionFunnel.registered.steps.conversions}</div>
+                            <div className="text-xs mt-1 font-semibold bg-white/20 inline-block px-2 py-0.5 rounded">
+                              {data.conversionFunnel.registered.rates.checkoutToConversion}%
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Tasa Global */}
+                        <div className="bg-gradient-to-r from-gray-100 to-gray-200 p-3 rounded-lg text-center border-2 border-green-400 mt-4">
+                          <div className="text-xs text-gray-600 font-semibold">CONVERSIÓN TOTAL</div>
+                          <div className="text-3xl font-bold text-green-600">{data.conversionFunnel.registered.rates.overall}%</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* EMBUDO 2: USUARIOS ANÓNIMOS */}
+                    <div className="bg-white rounded-xl p-5 shadow">
+                      <div className="text-center mb-4">
+                        <h4 className="text-lg font-bold text-purple-600 flex items-center justify-center gap-2">
+                          🌐 Visitantes Anónimos
+                        </h4>
+                        <p className="text-xs text-gray-600 mt-1">De visita a registro/conversión</p>
+                      </div>
+
+                      {/* Funnel Visual */}
+                      <div className="space-y-3">
+                        {/* Nivel 1: Visitantes Totales */}
+                        <div className="relative">
+                          <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">Visitantes Totales</div>
+                            <div className="text-3xl font-bold">{data.conversionFunnel.anonymous.steps.visitors}</div>
+                          </div>
+                          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-2xl">↓</div>
+                        </div>
+
+                        {/* Nivel 2: Vieron Pricing */}
+                        <div className="relative mx-4">
+                          <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">Visitaron Pricing</div>
+                            <div className="text-2xl font-bold">{data.conversionFunnel.anonymous.steps.pricingVisits}</div>
+                            <div className="text-xs mt-1 font-semibold bg-white/20 inline-block px-2 py-0.5 rounded">
+                              {data.conversionFunnel.anonymous.steps.visitors > 0
+                                ? ((data.conversionFunnel.anonymous.steps.pricingVisits / data.conversionFunnel.anonymous.steps.visitors) * 100).toFixed(1)
+                                : '0.0'}%
+                            </div>
+                          </div>
+                          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-2xl">↓</div>
+                        </div>
+
+                        {/* Nivel 3: Iniciaron Checkout */}
+                        <div className="relative mx-8">
+                          <div className="bg-gradient-to-r from-amber-500 to-amber-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">Iniciaron Checkout</div>
+                            <div className="text-xl font-bold">{data.conversionFunnel.anonymous.steps.checkoutStarts}</div>
+                            <div className="text-xs mt-1 font-semibold bg-white/20 inline-block px-2 py-0.5 rounded">
+                              {data.conversionFunnel.anonymous.rates.visitToCheckout}%
+                            </div>
+                          </div>
+                          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-2xl">↓</div>
+                        </div>
+
+                        {/* Nivel 4: Se Registraron */}
+                        <div className="mx-12">
+                          <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white p-4 rounded-lg text-center">
+                            <div className="text-xs font-semibold opacity-90">✓ Se Registraron</div>
+                            <div className="text-2xl font-bold">{data.conversionFunnel.anonymous.steps.signups}</div>
+                            <div className="text-xs mt-1 font-semibold bg-white/20 inline-block px-2 py-0.5 rounded">
+                              {data.conversionFunnel.anonymous.rates.checkoutToSignup}%
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Tasa Global */}
+                        <div className="bg-gradient-to-r from-gray-100 to-gray-200 p-3 rounded-lg text-center border-2 border-cyan-400 mt-4">
+                          <div className="text-xs text-gray-600 font-semibold">CONVERSIÓN TOTAL</div>
+                          <div className="text-3xl font-bold text-cyan-600">{data.conversionFunnel.anonymous.rates.overall}%</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
                 {/* Desglose de Eventos de Conversión */}
                 <div className="bg-white rounded-xl shadow border border-green-100 p-5">
