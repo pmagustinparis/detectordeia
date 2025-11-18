@@ -255,10 +255,10 @@ export async function GET(request: NextRequest) {
       .select('tool_type, event_type')
       .gte('created_at', startDate.toISOString());
 
-    const toolAnalysis: Record<string, { total: number; friction: number }> = {
-      detector: { total: 0, friction: 0 },
-      humanizador: { total: 0, friction: 0 },
-      parafraseador: { total: 0, friction: 0 },
+    const toolAnalysis: Record<string, { total: number; friction: number; completedUses: number }> = {
+      detector: { total: 0, friction: 0, completedUses: 0 },
+      humanizador: { total: 0, friction: 0, completedUses: 0 },
+      parafraseador: { total: 0, friction: 0, completedUses: 0 },
     };
 
     allEvents?.forEach(event => {
@@ -268,6 +268,11 @@ export async function GET(request: NextRequest) {
         // Contar eventos de fricción
         if (['hit_daily_limit', 'hit_character_limit', 'file_upload_blocked', 'premium_mode_blocked'].includes(event.event_type)) {
           toolAnalysis[event.tool_type].friction++;
+        }
+
+        // Contar usos completados (análisis exitosos)
+        if (['completed_analysis', 'completed_humanization', 'completed_paraphrase'].includes(event.event_type)) {
+          toolAnalysis[event.tool_type].completedUses++;
         }
       }
     });
