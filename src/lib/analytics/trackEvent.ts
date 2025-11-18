@@ -25,6 +25,8 @@ export type AnalyticsEventType =
   | 'viewed_pricing'
   | 'clicked_upgrade'
   | 'clicked_pricing_cta'
+  | 'pricing_page_visited' // Usuario entra a /pricing
+  | 'checkout_started' // Usuario hace click en un plan (antes de ir a Stripe)
 
   // Uso exitoso
   | 'completed_analysis'
