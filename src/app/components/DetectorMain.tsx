@@ -7,6 +7,7 @@ import FeedbackBlock from './FeedbackBlock';
 import FileUploadButton from './FileUploadButton';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { extractTextFromFile } from '@/lib/fileParser';
+import { trackEvent } from '@/lib/analytics/client';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -181,6 +182,18 @@ export default function DetectorMain({
         });
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
+
+        // Track límite de caracteres excedido
+        trackEvent({
+          eventType: 'hit_character_limit',
+          toolType: 'detector',
+          metadata: {
+            text_length: text.length,
+            limit: CHARACTER_LIMIT,
+            plan: userPlan,
+            is_authenticated: isAuthenticated,
+          }
+        });
       } else {
         // Análisis normal
         const response = await fetch('/api/analyze', {
@@ -205,6 +218,17 @@ export default function DetectorMain({
           setUsageCount(newCount);
           localStorage.setItem('detector_usage_count', newCount.toString());
         }
+
+        // Track análisis exitoso
+        trackEvent({
+          eventType: 'completed_analysis',
+          toolType: 'detector',
+          metadata: {
+            text_length: text.length,
+            plan: userPlan,
+            probability: data.probability,
+          }
+        });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
@@ -238,6 +262,16 @@ export default function DetectorMain({
     e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
 
     if (userPlan !== 'premium') {
+      // Track intento de subir archivo bloqueado
+      trackEvent({
+        eventType: 'file_upload_blocked',
+        toolType: 'detector',
+        metadata: {
+          plan: userPlan,
+          is_authenticated: isAuthenticated,
+        }
+      });
+
       window.location.href = '/pricing';
       return;
     }

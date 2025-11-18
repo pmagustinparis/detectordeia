@@ -9,6 +9,7 @@ import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
 import { extractTextFromFile } from '@/lib/fileParser';
+import { trackEvent } from '@/lib/analytics/client';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -129,12 +130,36 @@ export default function HumanizadorMain() {
           resetAt: new Date(data.resetAt),
         });
         setIsLimitReached(true);
+
+        // Track límite diario alcanzado
+        trackEvent({
+          eventType: 'hit_daily_limit',
+          toolType: 'humanizador',
+          metadata: {
+            user_type: data.userType || 'anonymous',
+            limit: data.limit || 10,
+            plan: userPlan,
+          }
+        });
+
         return;
       }
 
       // 🔒 MODO PREMIUM REQUERIDO (403)
       if (response.status === 403 && data.requiresPremium) {
         setError(data.message || 'Este modo requiere Plan Pro');
+
+        // Track modo premium bloqueado
+        trackEvent({
+          eventType: 'premium_mode_blocked',
+          toolType: 'humanizador',
+          metadata: {
+            mode: selectedMode,
+            plan: userPlan,
+            is_authenticated: isAuthenticated,
+          }
+        });
+
         return;
       }
 
@@ -153,6 +178,18 @@ export default function HumanizadorMain() {
         setUsageCount(newCount);
         localStorage.setItem('humanizador_usage_count', newCount.toString());
       }
+
+      // Track humanización exitosa
+      trackEvent({
+        eventType: 'completed_humanization',
+        toolType: 'humanizador',
+        metadata: {
+          text_length: text.length,
+          mode: selectedMode,
+          plan: userPlan,
+          exceeded_limit: exceededLimit,
+        }
+      });
 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al humanizar el texto');
@@ -206,6 +243,16 @@ export default function HumanizadorMain() {
     e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
 
     if (userPlan !== 'premium') {
+      // Track intento de subir archivo bloqueado
+      trackEvent({
+        eventType: 'file_upload_blocked',
+        toolType: 'humanizador',
+        metadata: {
+          plan: userPlan,
+          is_authenticated: isAuthenticated,
+        }
+      });
+
       window.location.href = '/pricing';
       return;
     }
