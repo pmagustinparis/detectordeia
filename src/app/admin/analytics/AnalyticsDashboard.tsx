@@ -5,6 +5,36 @@ import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, Cart
 
 interface AnalyticsData {
   timeframe: string;
+  // NUEVAS MÉTRICAS - INDIE HACKER VIEW
+  healthMetrics: {
+    estimatedMRR: string;
+    premiumUsers: number;
+    churnRisk: number;
+    conversionRate: string;
+  };
+  journeyInsights: {
+    signupPaths: {
+      fromAnonymous: number;
+      direct: number;
+      totalSignups: number;
+    };
+    avgEngagementBeforeSignup: string;
+    pathWinner: 'anonymous' | 'direct';
+  };
+  criticalDropoffs: {
+    hitLimitNoPricing: number;
+    sawPricingNoCheckout: number;
+    checkoutNoConversion: number;
+    activeNeverSawPricing: number;
+  };
+  hotLeads: Array<{
+    userId: string;
+    email: string;
+    plan: string;
+    reason: string;
+    priority: 'high' | 'medium';
+  }>;
+  // DATOS LEGACY
   summary: {
     totalUsers: number;
     activeUsers: number;
@@ -298,60 +328,270 @@ export default function AnalyticsDashboard() {
         {!loading && data && (
           <div className="space-y-8">
             {/* ============================================ */}
-            {/* EXECUTIVE SUMMARY - KPIs Críticos */}
+            {/* 💰 HEALTH CHECK - Lo más importante primero */}
             {/* ============================================ */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl shadow-lg p-5 text-white">
-                <div className="text-xs font-medium mb-1 opacity-90">👥 Usuarios Registrados</div>
-                <div className="text-3xl font-bold">{data.summary.totalUsers}</div>
-                <div className="text-xs mt-1 opacity-75">Base total de usuarios</div>
-              </div>
-
-              <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-5 text-white">
-                <div className="text-xs font-medium mb-1 opacity-90">⚡ Usuarios Activos</div>
-                <div className="text-3xl font-bold">{data.summary.activeUsers}</div>
-                <div className="text-xs mt-1 opacity-90 font-semibold">
-                  {data.summary.totalUsers > 0
-                    ? Math.round((data.summary.activeUsers / data.summary.totalUsers) * 100)
-                    : 0}% engagement
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                  💰
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-800">Health Check</h2>
+                  <p className="text-sm text-gray-600">El estado de tu negocio en 4 números</p>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg p-5 text-white">
-                <div className="text-xs font-medium mb-1 opacity-90">💰 Tasa Conversión</div>
-                <div className="text-3xl font-bold">{data.conversionFunnel.registered.rates.overall}%</div>
-                <div className="text-xs mt-1 opacity-75">{data.conversionFunnel.registered.steps.conversions} conversiones (registrados)</div>
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-5 text-white">
+                  <div className="text-xs font-medium mb-1 opacity-90">💵 MRR Estimado</div>
+                  <div className="text-3xl font-bold">${data.healthMetrics.estimatedMRR}</div>
+                  <div className="text-xs mt-1 opacity-75">{data.healthMetrics.premiumUsers} usuarios premium</div>
+                </div>
 
-              <div className="bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl shadow-lg p-5 text-white">
-                <div className="text-xs font-medium mb-1 opacity-90">🎯 Oportunidades</div>
-                <div className="text-3xl font-bold">{data.opportunities.length}</div>
-                <div className="text-xs mt-1 opacity-75">Usuarios listos para convertir</div>
+                <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl shadow-lg p-5 text-white">
+                  <div className="text-xs font-medium mb-1 opacity-90">📈 Tasa Conversión</div>
+                  <div className="text-3xl font-bold">{data.healthMetrics.conversionRate}%</div>
+                  <div className="text-xs mt-1 opacity-75">{data.conversionFunnel.registered.steps.conversions} conversiones en {data.timeframe}</div>
+                </div>
+
+                <div className={`bg-gradient-to-br ${data.healthMetrics.churnRisk > 0 ? 'from-red-500 to-orange-600' : 'from-blue-500 to-cyan-600'} rounded-xl shadow-lg p-5 text-white`}>
+                  <div className="text-xs font-medium mb-1 opacity-90">⚠️ Riesgo de Churn</div>
+                  <div className="text-3xl font-bold">{data.healthMetrics.churnRisk}</div>
+                  <div className="text-xs mt-1 opacity-75">
+                    {data.healthMetrics.churnRisk > 0 ? 'Premium sin actividad (7d)' : 'Todos activos 🎉'}
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl shadow-lg p-5 text-white">
+                  <div className="text-xs font-medium mb-1 opacity-90">🔥 Hot Leads</div>
+                  <div className="text-3xl font-bold">{data.hotLeads.length}</div>
+                  <div className="text-xs mt-1 opacity-75">Contactar HOY (últimas 24h)</div>
+                </div>
               </div>
             </div>
 
             {/* ============================================ */}
-            {/* SECCIÓN 1: MONETIZACIÓN (Prioridad Máxima) */}
+            {/* 🎯 JOURNEY INSIGHTS */}
             {/* ============================================ */}
-            <div className="border-t-4 border-green-500 pt-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-2xl">
-                  💰
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                  🎯
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800">Monetización</h2>
-                  <p className="text-sm text-gray-600">Métricas clave de conversión y oportunidades de venta</p>
+                  <h2 className="text-3xl font-bold text-gray-800">Customer Journey</h2>
+                  <p className="text-sm text-gray-600">Cómo los usuarios descubren y adoptan el producto</p>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                {/* Embudos de Conversión - Lado a Lado */}
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg border-2 border-green-200 p-6">
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                      🎯 Embudos de Conversión
-                    </h3>
-                    <p className="text-sm text-gray-600 mt-1">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Signup Paths */}
+                <div className="bg-white rounded-xl shadow-lg border-2 border-blue-200 p-5">
+                  <div className="text-sm font-semibold text-blue-700 mb-3">📊 Rutas de Registro</div>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-gray-600">Desde anónimo:</span>
+                      <span className="text-lg font-bold text-blue-600">{data.journeyInsights.signupPaths.fromAnonymous}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-gray-600">Registro directo:</span>
+                      <span className="text-lg font-bold text-violet-600">{data.journeyInsights.signupPaths.direct}</span>
+                    </div>
+                    <div className="pt-2 border-t border-gray-200 flex items-center justify-between">
+                      <span className="text-xs font-semibold text-gray-700">Total registros:</span>
+                      <span className="text-xl font-bold text-gray-800">{data.journeyInsights.signupPaths.totalSignups}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Engagement before signup */}
+                <div className="bg-white rounded-xl shadow-lg border-2 border-violet-200 p-5">
+                  <div className="text-sm font-semibold text-violet-700 mb-3">💪 Engagement Pre-Registro</div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-violet-600 mb-2">{data.journeyInsights.avgEngagementBeforeSignup}</div>
+                    <div className="text-xs text-gray-600">eventos promedio antes de registrarse</div>
+                    <div className="mt-3 text-xs text-gray-500">
+                      (usuarios que probaron anónimo primero)
+                    </div>
+                  </div>
+                </div>
+
+                {/* Path Winner */}
+                <div className={`rounded-xl shadow-lg border-2 p-5 ${
+                  data.journeyInsights.pathWinner === 'anonymous'
+                    ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-300'
+                    : 'bg-gradient-to-br from-purple-50 to-pink-50 border-purple-300'
+                }`}>
+                  <div className="text-sm font-semibold text-gray-700 mb-3">🏆 Mejor Ruta</div>
+                  <div className="text-center">
+                    <div className="text-3xl mb-2">
+                      {data.journeyInsights.pathWinner === 'anonymous' ? '🌐' : '✍️'}
+                    </div>
+                    <div className="text-lg font-bold text-gray-800 mb-1">
+                      {data.journeyInsights.pathWinner === 'anonymous' ? 'Anónimo → Registro' : 'Registro Directo'}
+                    </div>
+                    <div className="text-xs text-gray-600">
+                      {data.journeyInsights.pathWinner === 'anonymous'
+                        ? 'La mayoría prueba antes de registrarse'
+                        : 'La mayoría se registra directamente'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ============================================ */}
+            {/* 🚨 CRITICAL DROP-OFFS */}
+            {/* ============================================ */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                  🚨
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-800">Critical Drop-Offs</h2>
+                  <p className="text-sm text-gray-600">Dónde exactamente estás perdiendo dinero</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white rounded-xl shadow-lg border-l-4 border-red-500 p-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-semibold text-gray-700">⛔ Tocaron límite → NO vieron pricing</span>
+                    <span className="text-3xl font-bold text-red-600">{data.criticalDropoffs.hitLimitNoPricing}</span>
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    Usuarios frustrados que NO llegaron a ver los planes
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-xl shadow-lg border-l-4 border-orange-500 p-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-semibold text-gray-700">👀 Vieron pricing → NO hicieron checkout</span>
+                    <span className="text-3xl font-bold text-orange-600">{data.criticalDropoffs.sawPricingNoCheckout}</span>
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    Vieron precios pero no avanzaron (revisar propuesta de valor)
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-xl shadow-lg border-l-4 border-amber-500 p-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-semibold text-gray-700">🛒 Checkout → NO convirtieron</span>
+                    <span className="text-3xl font-bold text-amber-600">{data.criticalDropoffs.checkoutNoConversion}</span>
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    Abandonaron en el último paso (revisar proceso de pago)
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-xl shadow-lg border-l-4 border-yellow-500 p-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-semibold text-gray-700">😴 Activos que NUNCA vieron pricing</span>
+                    <span className="text-3xl font-bold text-yellow-600">{data.criticalDropoffs.activeNeverSawPricing}</span>
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    Usuarios comprometidos que no conocen tu oferta premium
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ============================================ */}
+            {/* 🔥 HOT LEADS - Accionables HOY */}
+            {/* ============================================ */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                  🔥
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-800">Hot Leads (últimas 24h)</h2>
+                  <p className="text-sm text-gray-600">Usuarios para contactar HOY - ventana de oportunidad</p>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl shadow-lg border-2 border-yellow-300 p-6">
+                {data.hotLeads.length > 0 ? (
+                  <>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="text-lg font-bold text-gray-800">
+                        {data.hotLeads.length} lead{data.hotLeads.length !== 1 ? 's' : ''} caliente{data.hotLeads.length !== 1 ? 's' : ''}
+                      </div>
+                      <button
+                        onClick={() => {
+                          const emails = data.hotLeads.map(lead => lead.email).join(', ');
+                          navigator.clipboard.writeText(emails);
+                          alert('¡Emails copiados al portapapeles!');
+                        }}
+                        className="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg transition-colors text-sm shadow"
+                      >
+                        📋 Copiar Emails
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {data.hotLeads.map((lead, index) => (
+                        <div
+                          key={lead.userId + index}
+                          className={`p-4 rounded-lg border-2 ${
+                            lead.priority === 'high'
+                              ? 'bg-white border-red-400 shadow-md'
+                              : 'bg-white border-yellow-400'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span className={`text-xs px-2 py-1 rounded font-bold ${
+                              lead.priority === 'high'
+                                ? 'bg-red-600 text-white'
+                                : 'bg-yellow-600 text-white'
+                            }`}>
+                              {lead.priority === 'high' ? '🔥 URGENTE' : '⚡ PRIORIDAD'}
+                            </span>
+                            <span className="text-xs bg-gray-100 px-2 py-1 rounded font-medium text-gray-700">
+                              {lead.plan}
+                            </span>
+                          </div>
+                          <div className="font-semibold text-sm text-gray-800 mb-1 break-all">{lead.email}</div>
+                          <div className="text-xs text-gray-600">{lead.reason}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center py-8">
+                    <div className="text-4xl mb-2">✨</div>
+                    <div className="text-gray-700 font-semibold">No hay hot leads en las últimas 24h</div>
+                    <div className="text-xs text-gray-600 mt-1">Revisa los Critical Drop-Offs para oportunidades a mediano plazo</div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* ============================================ */}
+            {/* 📊 DEEP DIVE - Análisis Detallado */}
+            {/* ============================================ */}
+            <div className="border-t-4 border-gray-300 pt-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-gray-500 to-slate-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+                  📊
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-800">Deep Dive</h2>
+                  <p className="text-sm text-gray-600">Análisis detallado de conversión, engagement y fricción</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {/* Embudos de Conversión - COLAPSABLE */}
+                <details className="bg-white rounded-xl shadow border border-gray-200" open>
+                  <summary className="p-5 cursor-pointer font-bold text-gray-800 hover:bg-gray-50 text-lg">
+                    🎯 Embudos de Conversión Detallados
+                  </summary>
+                  <div className="px-5 pb-5">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5">
+                  <div className="mb-4">
+                    <p className="text-sm text-gray-600">
                       Comparación entre usuarios registrados y visitantes anónimos
                     </p>
                   </div>
@@ -487,8 +727,8 @@ export default function AnalyticsDashboard() {
                   </div>
                 </div>
 
-                {/* Desglose de Eventos de Conversión */}
-                <div className="bg-white rounded-xl shadow border border-green-100 p-5">
+                {/* Desglose de Eventos */}
+                <div className="bg-white rounded-xl border border-gray-200 p-5 mt-4">
               <h3 className="text-lg font-bold text-gray-800 mb-4">📊 Desglose de Eventos</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -556,9 +796,16 @@ export default function AnalyticsDashboard() {
                 </div>
               </div>
             </div>
+                  </div>
+                </details>
 
-                {/* Oportunidades de Conversión */}
-                <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl shadow border border-yellow-200 p-5">
+                {/* Oportunidades Legacy - COLAPSABLE */}
+                <details className="bg-white rounded-xl shadow border border-gray-200">
+                  <summary className="p-5 cursor-pointer font-bold text-gray-800 hover:bg-gray-50 text-lg">
+                    🎯 Oportunidades (Vista Legacy)
+                  </summary>
+                  <div className="px-5 pb-5">
+                <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl p-5">
                   <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
                     🎯 Oportunidades de Conversión
                     <span className="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded font-bold">{data.opportunities.length}</span>
@@ -597,24 +844,16 @@ export default function AnalyticsDashboard() {
                     </div>
                   )}
                 </div>
-              </div>
-            </div>
+                  </div>
+                </details>
 
-            {/* ============================================ */}
-            {/* SECCIÓN 2: ENGAGEMENT (Uso del Producto) */}
-            {/* ============================================ */}
-            <div className="border-t-4 border-blue-500 pt-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center text-2xl">
-                  📈
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-800">Engagement</h2>
-                  <p className="text-sm text-gray-600">Uso y actividad en las herramientas</p>
-                </div>
-              </div>
-
-              <div className="space-y-6">
+                {/* Engagement - COLAPSABLE */}
+                <details className="bg-white rounded-xl shadow border border-gray-200">
+                  <summary className="p-5 cursor-pointer font-bold text-gray-800 hover:bg-gray-50 text-lg">
+                    📈 Engagement y Uso del Producto
+                  </summary>
+                  <div className="px-5 pb-5">
+              <div className="space-y-4">
                 {/* Usos por Herramienta */}
                 <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl shadow-lg border-2 border-violet-200 p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -689,26 +928,18 @@ export default function AnalyticsDashboard() {
                   )}
                 </div>
               </div>
-            </div>
+                  </div>
+                </details>
 
-            {/* ============================================ */}
-            {/* SECCIÓN 3: ANÁLISIS DE FRICCIÓN */}
-            {/* ============================================ */}
-            <div className="border-t-4 border-red-500 pt-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl flex items-center justify-center text-2xl">
-                  ⚠️
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-800">Análisis de Fricción</h2>
-                  <p className="text-sm text-gray-600">Dónde y cuándo los usuarios encuentran límites</p>
-                </div>
-              </div>
-
-            {/* ============================================ */}
+                {/* Análisis de Fricción - COLAPSABLE */}
+                <details className="bg-white rounded-xl shadow border border-gray-200">
+                  <summary className="p-5 cursor-pointer font-bold text-gray-800 hover:bg-gray-50 text-lg">
+                    ⚠️ Análisis de Fricción Detallado
+                  </summary>
+                  <div className="px-5 pb-5">
+            <div className="space-y-4">
             {/* GRID 2 COLUMNAS - Desglose y Análisis */}
-            {/* ============================================ */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
               {/* Desglose de Límites */}
               <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
@@ -883,23 +1114,18 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
             </div>
+                  </div>
+                </details>
 
-            {/* ============================================ */}
-            {/* SECCIÓN 4: INSIGHTS DE USUARIOS */}
-            {/* ============================================ */}
-            <div className="border-t-4 border-violet-500 pt-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center text-2xl">
-                  👥
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-800">Insights de Usuarios</h2>
-                  <p className="text-sm text-gray-600">Quiénes son y cómo usan el producto</p>
-                </div>
-              </div>
-
+                {/* Insights de Usuarios - COLAPSABLE */}
+                <details className="bg-white rounded-xl shadow border border-gray-200">
+                  <summary className="p-5 cursor-pointer font-bold text-gray-800 hover:bg-gray-50 text-lg">
+                    👥 Insights de Usuarios y Perfiles
+                  </summary>
+                  <div className="px-5 pb-5">
+            <div className="space-y-4">
             {/* Perfiles de Usuario */}
-            <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
+            <div className="bg-white rounded-xl border border-violet-100 p-5">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
@@ -1035,6 +1261,10 @@ export default function AnalyticsDashboard() {
                 )}
               </div>
             </details>
+            </div>
+                  </div>
+                </details>
+              </div>
             </div>
 
             {/* Footer */}

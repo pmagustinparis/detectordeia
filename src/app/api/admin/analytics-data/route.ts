@@ -453,11 +453,275 @@ export async function GET(request: NextRequest) {
     };
 
     // ============================================
+    // 8. HEALTH METRICS (Indie Hacker View)
+    // ============================================
+
+    // MRR Estimado (asumiendo precio promedio)
+    const MONTHLY_PRICE = 9.99; // Precio mensual
+    const ANNUAL_PRICE_MONTHLY = 7.99; // Precio anual dividido por 12
+
+    // Contar usuarios premium
+    const { count: premiumUsersCount } = await supabase
+      .from('users')
+      .select('*', { count: 'exact', head: true })
+      .eq('plan_type', 'premium');
+
+    const estimatedMRR = ((premiumUsersCount || 0) * MONTHLY_PRICE).toFixed(2);
+
+    // Churn Risk: usuarios premium que no han tenido actividad en los últimos 7 días
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    const { data: recentPremiumActivity } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .gte('created_at', sevenDaysAgo.toISOString())
+      .not('user_id', 'is', null);
+
+    const activePremiumUsers = new Set(recentPremiumActivity?.map(e => e.user_id) || []);
+
+    const { data: allPremiumUsers } = await supabase
+      .from('users')
+      .select('id')
+      .eq('plan_type', 'premium');
+
+    const churnRisk = allPremiumUsers?.filter(u => !activePremiumUsers.has(u.id)).length || 0;
+
+    // ============================================
+    // 9. JOURNEY INSIGHTS
+    // ============================================
+
+    // Usuarios que empezaron anónimos y luego se registraron
+    const { data: signupEvents } = await supabase
+      .from('analytics_events')
+      .select('user_id, anonymous_id, created_at')
+      .eq('event_type', 'signup')
+      .gte('created_at', startDate.toISOString())
+      .not('user_id', 'is', null);
+
+    let signupsWithPriorAnonymousActivity = 0;
+    let totalEngagementBeforeSignup = 0;
+
+    if (signupEvents && signupEvents.length > 0) {
+      for (const signup of signupEvents) {
+        if (signup.anonymous_id) {
+          // Buscar actividad anónima previa
+          const { data: priorActivity } = await supabase
+            .from('analytics_events')
+            .select('event_type')
+            .eq('anonymous_id', signup.anonymous_id)
+            .is('user_id', null)
+            .lt('created_at', signup.created_at);
+
+          if (priorActivity && priorActivity.length > 0) {
+            signupsWithPriorAnonymousActivity++;
+            totalEngagementBeforeSignup += priorActivity.length;
+          }
+        }
+      }
+    }
+
+    const avgEngagementBeforeSignup = signupsWithPriorAnonymousActivity > 0
+      ? (totalEngagementBeforeSignup / signupsWithPriorAnonymousActivity).toFixed(1)
+      : '0.0';
+
+    const signupPathBreakdown = {
+      fromAnonymous: signupsWithPriorAnonymousActivity,
+      direct: totalSignups - signupsWithPriorAnonymousActivity,
+      totalSignups,
+    };
+
+    // ============================================
+    // 10. DROP-OFFS CRÍTICOS
+    // ============================================
+
+    // 1. Tocaron límite pero NO vieron pricing
+    const { data: limitUsers } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .in('event_type', ['hit_character_limit', 'hit_daily_limit'])
+      .gte('created_at', startDate.toISOString())
+      .not('user_id', 'is', null);
+
+    const usersHitLimitSet = new Set(limitUsers?.map(e => e.user_id) || []);
+
+    const { data: pricingUsers } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .eq('event_type', 'pricing_page_visited')
+      .gte('created_at', startDate.toISOString())
+      .not('user_id', 'is', null);
+
+    const usersSawPricingSet = new Set(pricingUsers?.map(e => e.user_id) || []);
+
+    const hitLimitNoPrice = Array.from(usersHitLimitSet).filter(
+      uid => !usersSawPricingSet.has(uid)
+    ).length;
+
+    // 2. Vieron pricing pero NO hicieron checkout
+    const { data: checkoutUsers } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .eq('event_type', 'checkout_started')
+      .gte('created_at', startDate.toISOString())
+      .not('user_id', 'is', null);
+
+    const usersStartedCheckoutSet = new Set(checkoutUsers?.map(e => e.user_id) || []);
+
+    const sawPricingNoCheckout = Array.from(usersSawPricingSet).filter(
+      uid => !usersStartedCheckoutSet.has(uid)
+    ).length;
+
+    // 3. Iniciaron checkout pero NO convirtieron
+    const { data: convertedUsers } = await supabase
+      .from('users')
+      .select('id')
+      .eq('plan_type', 'premium')
+      .gte('created_at', startDate.toISOString());
+
+    const convertedUsersSet = new Set(convertedUsers?.map(u => u.id) || []);
+
+    const checkoutNoConversion = Array.from(usersStartedCheckoutSet).filter(
+      uid => !convertedUsersSet.has(uid)
+    ).length;
+
+    // 4. Activos que NUNCA vieron pricing
+    const { data: activeUsersAll } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .gte('created_at', startDate.toISOString())
+      .not('user_id', 'is', null);
+
+    const allActiveUsersSet = new Set(activeUsersAll?.map(e => e.user_id) || []);
+
+    const activeNeverSawPricing = Array.from(allActiveUsersSet).filter(
+      uid => !usersSawPricingSet.has(uid)
+    ).length;
+
+    const criticalDropoffs = {
+      hitLimitNoPricing: hitLimitNoPrice,
+      sawPricingNoCheckout,
+      checkoutNoConversion,
+      activeNeverSawPricing,
+    };
+
+    // ============================================
+    // 11. HOT LEADS (Accionables de HOY)
+    // ============================================
+
+    const twentyFourHoursAgo = new Date();
+    twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
+
+    // Usuarios que tocaron límite 3+ veces en últimas 24h
+    const { data: recentLimitEvents } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .in('event_type', ['hit_character_limit', 'hit_daily_limit'])
+      .gte('created_at', twentyFourHoursAgo.toISOString())
+      .not('user_id', 'is', null);
+
+    const recentLimitCounts: Record<string, number> = {};
+    recentLimitEvents?.forEach(e => {
+      recentLimitCounts[e.user_id] = (recentLimitCounts[e.user_id] || 0) + 1;
+    });
+
+    const heavyLimitHitters = Object.entries(recentLimitCounts)
+      .filter(([_, count]) => count >= 3)
+      .map(([uid]) => uid);
+
+    // Vieron pricing pero no checkout (últimas 24h)
+    const { data: recentPricingViews } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .eq('event_type', 'pricing_page_visited')
+      .gte('created_at', twentyFourHoursAgo.toISOString())
+      .not('user_id', 'is', null);
+
+    const { data: recentCheckouts } = await supabase
+      .from('analytics_events')
+      .select('user_id')
+      .eq('event_type', 'checkout_started')
+      .gte('created_at', twentyFourHoursAgo.toISOString())
+      .not('user_id', 'is', null);
+
+    const recentPricingSet = new Set(recentPricingViews?.map(e => e.user_id) || []);
+    const recentCheckoutSet = new Set(recentCheckouts?.map(e => e.user_id) || []);
+
+    const sawPricingRecentlyNoCheckout = Array.from(recentPricingSet).filter(
+      uid => !recentCheckoutSet.has(uid)
+    );
+
+    // Checkout abandonado (últimas 24h)
+    const checkoutAbandonedRecently = Array.from(recentCheckoutSet).filter(
+      uid => !convertedUsersSet.has(uid)
+    );
+
+    const hotLeadIds = [
+      ...new Set([
+        ...heavyLimitHitters,
+        ...sawPricingRecentlyNoCheckout,
+        ...checkoutAbandonedRecently,
+      ])
+    ];
+
+    // Obtener info de estos usuarios
+    const { data: hotLeadUsers } = hotLeadIds.length > 0
+      ? await supabase
+          .from('users')
+          .select('id, email, plan_type')
+          .in('id', hotLeadIds)
+      : { data: [] };
+
+    const hotLeads = hotLeadUsers?.map(user => {
+      let reason = '';
+      let priority: 'high' | 'medium' = 'medium';
+
+      if (checkoutAbandonedRecently.includes(user.id)) {
+        reason = 'Abandonó checkout en las últimas 24h';
+        priority = 'high';
+      } else if (heavyLimitHitters.includes(user.id)) {
+        reason = `Tocó límite ${recentLimitCounts[user.id]} veces (24h)`;
+        priority = 'high';
+      } else if (sawPricingRecentlyNoCheckout.includes(user.id)) {
+        reason = 'Vio pricing pero no hizo checkout (24h)';
+        priority = 'medium';
+      }
+
+      return {
+        userId: user.id,
+        email: user.email,
+        plan: user.plan_type,
+        reason,
+        priority,
+      };
+    }) || [];
+
+    // ============================================
     // RESPUESTA FINAL
     // ============================================
 
     return NextResponse.json({
       timeframe: `${days} días`,
+      // HEALTH CHECK - Lo más importante primero
+      healthMetrics: {
+        estimatedMRR,
+        premiumUsers: premiumUsersCount || 0,
+        churnRisk,
+        conversionRate: registeredOverall,
+      },
+      // JOURNEY INSIGHTS
+      journeyInsights: {
+        signupPaths: signupPathBreakdown,
+        avgEngagementBeforeSignup,
+        pathWinner: signupPathBreakdown.fromAnonymous > signupPathBreakdown.direct
+          ? 'anonymous'
+          : 'direct',
+      },
+      // DROP-OFFS CRÍTICOS
+      criticalDropoffs,
+      // HOT LEADS (últimas 24h)
+      hotLeads,
+      // Datos legacy (mantener compatibilidad)
       summary: {
         totalUsers: totalUsers || 0,
         activeUsers: uniqueActiveUsers,
