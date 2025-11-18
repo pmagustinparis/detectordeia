@@ -188,10 +188,14 @@ export default function DetectorMain({
           eventType: 'hit_character_limit',
           toolType: 'detector',
           metadata: {
+            limit_type: 'characters',
             text_length: text.length,
-            limit: CHARACTER_LIMIT,
+            character_limit: CHARACTER_LIMIT,
+            exceeded_by: text.length - CHARACTER_LIMIT,
             plan: userPlan,
             is_authenticated: isAuthenticated,
+            hour_of_day: new Date().getHours(),
+            day_of_week: new Date().getDay(), // 0=domingo, 1=lunes, etc
           }
         });
       } else {
@@ -226,7 +230,12 @@ export default function DetectorMain({
           metadata: {
             text_length: text.length,
             plan: userPlan,
+            is_authenticated: isAuthenticated,
             probability: data.probability,
+            confidence_level: data.confidenceLevel,
+            hour_of_day: new Date().getHours(),
+            day_of_week: new Date().getDay(),
+            usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
           }
         });
       }

@@ -136,9 +136,14 @@ export default function HumanizadorMain() {
           eventType: 'hit_daily_limit',
           toolType: 'humanizador',
           metadata: {
+            limit_type: 'daily_uses',
             user_type: data.userType || 'anonymous',
             limit: data.limit || 10,
             plan: userPlan,
+            is_authenticated: isAuthenticated,
+            hour_of_day: new Date().getHours(),
+            day_of_week: new Date().getDay(), // 0=domingo, 1=lunes, etc
+            usage_count: isAuthenticated ? undefined : usageCount,
           }
         });
 
@@ -157,6 +162,9 @@ export default function HumanizadorMain() {
             mode: selectedMode,
             plan: userPlan,
             is_authenticated: isAuthenticated,
+            hour_of_day: new Date().getHours(),
+            day_of_week: new Date().getDay(),
+            usage_count: isAuthenticated ? undefined : usageCount,
           }
         });
 
@@ -187,7 +195,11 @@ export default function HumanizadorMain() {
           text_length: text.length,
           mode: selectedMode,
           plan: userPlan,
+          is_authenticated: isAuthenticated,
           exceeded_limit: exceededLimit,
+          hour_of_day: new Date().getHours(),
+          day_of_week: new Date().getDay(),
+          usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
         }
       });
 
@@ -250,6 +262,8 @@ export default function HumanizadorMain() {
         metadata: {
           plan: userPlan,
           is_authenticated: isAuthenticated,
+          hour_of_day: new Date().getHours(),
+          day_of_week: new Date().getDay(),
         }
       });
 
