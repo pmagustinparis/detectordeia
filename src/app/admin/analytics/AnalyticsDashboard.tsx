@@ -232,8 +232,8 @@ export default function AnalyticsDashboard() {
           </button>
         </div>
 
-        {/* Timeframe Selector */}
-        <div className="mb-6 flex gap-2">
+        {/* Timeframe Selector + Refresh Button */}
+        <div className="mb-6 flex gap-2 items-center">
           {['7d', '14d', '30d'].map((tf) => (
             <button
               key={tf}
@@ -247,6 +247,18 @@ export default function AnalyticsDashboard() {
               Últimos {tf.replace('d', ' días')}
             </button>
           ))}
+
+          <div className="flex-1"></div>
+
+          <button
+            onClick={() => fetchData(timeframe)}
+            disabled={loading}
+            className="px-4 py-2 rounded-lg font-medium transition-all bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            title="Actualizar datos"
+          >
+            <span className={loading ? 'animate-spin' : ''}>🔄</span>
+            <span className="hidden sm:inline">{loading ? 'Actualizando...' : 'Actualizar'}</span>
+          </button>
         </div>
 
         {loading && (
@@ -257,91 +269,57 @@ export default function AnalyticsDashboard() {
         )}
 
         {!loading && data && (
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* ============================================ */}
-            {/* KPIs PRINCIPALES - Compactos */}
+            {/* EXECUTIVE SUMMARY - KPIs Críticos */}
             {/* ============================================ */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="bg-white rounded-xl shadow border border-violet-100 p-4">
-                <div className="text-xs text-violet-600 font-medium mb-1">Usuarios Registrados</div>
-                <div className="text-2xl font-bold text-gray-800">{data.summary.totalUsers}</div>
+              <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl shadow-lg p-5 text-white">
+                <div className="text-xs font-medium mb-1 opacity-90">👥 Usuarios Registrados</div>
+                <div className="text-3xl font-bold">{data.summary.totalUsers}</div>
+                <div className="text-xs mt-1 opacity-75">Base total de usuarios</div>
               </div>
 
-              <div className="bg-white rounded-xl shadow border border-green-100 p-4">
-                <div className="text-xs text-green-600 font-medium mb-1">Usuarios Activos</div>
-                <div className="text-2xl font-bold text-gray-800">{data.summary.activeUsers}</div>
-                <div className="text-xs text-gray-500">
+              <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-5 text-white">
+                <div className="text-xs font-medium mb-1 opacity-90">⚡ Usuarios Activos</div>
+                <div className="text-3xl font-bold">{data.summary.activeUsers}</div>
+                <div className="text-xs mt-1 opacity-90 font-semibold">
                   {data.summary.totalUsers > 0
                     ? Math.round((data.summary.activeUsers / data.summary.totalUsers) * 100)
-                    : 0}% del total
+                    : 0}% engagement
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow border border-cyan-100 p-4">
-                <div className="text-xs text-cyan-600 font-medium mb-1">Eventos Totales</div>
-                <div className="text-2xl font-bold text-gray-800">{data.summary.totalEvents}</div>
+              <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg p-5 text-white">
+                <div className="text-xs font-medium mb-1 opacity-90">💰 Tasa Conversión</div>
+                <div className="text-3xl font-bold">{data.conversionFunnel.rates.overall}%</div>
+                <div className="text-xs mt-1 opacity-75">{data.conversionFunnel.steps.conversions} conversiones</div>
               </div>
 
-              <div className="bg-white rounded-xl shadow border border-red-100 p-4">
-                <div className="text-xs text-red-600 font-medium mb-1">Usuarios con Fricción</div>
-                <div className="text-2xl font-bold text-gray-800">{data.friction.usersAffected}</div>
+              <div className="bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl shadow-lg p-5 text-white">
+                <div className="text-xs font-medium mb-1 opacity-90">🎯 Oportunidades</div>
+                <div className="text-3xl font-bold">{data.opportunities.length}</div>
+                <div className="text-xs mt-1 opacity-75">Usuarios listos para convertir</div>
               </div>
             </div>
 
             {/* ============================================ */}
-            {/* USOS POR HERRAMIENTA - DESTACADO */}
+            {/* SECCIÓN 1: MONETIZACIÓN (Prioridad Máxima) */}
             {/* ============================================ */}
-            <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl shadow-lg border-2 border-violet-200 p-6">
-              <div className="flex items-center justify-between mb-4">
+            <div className="border-t-4 border-green-500 pt-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-2xl">
+                  💰
+                </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                    🎯 Usos por Herramienta
-                  </h2>
-                  <p className="text-sm text-gray-600 mt-1">
-                    Cuántas veces los usuarios completaron análisis en cada herramienta
-                  </p>
+                  <h2 className="text-2xl font-bold text-gray-800">Monetización</h2>
+                  <p className="text-sm text-gray-600">Métricas clave de conversión y oportunidades de venta</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {Object.entries(data.friction.toolAnalysis).map(([tool, stats]) => {
-                  const toolConfig: Record<string, { name: string; icon: string; color: string; bgColor: string }> = {
-                    detector: { name: 'Detector de IA', icon: '🤖', color: 'text-violet-600', bgColor: 'from-violet-100 to-violet-50' },
-                    humanizador: { name: 'Humanizador', icon: '👤', color: 'text-emerald-600', bgColor: 'from-emerald-100 to-emerald-50' },
-                    parafraseador: { name: 'Parafraseador', icon: '🔄', color: 'text-cyan-600', bgColor: 'from-cyan-100 to-cyan-50' },
-                  };
-
-                  const config = toolConfig[tool] || { name: tool, icon: '🛠️', color: 'text-gray-600', bgColor: 'from-gray-100 to-gray-50' };
-
-                  return (
-                    <div key={tool} className={`bg-gradient-to-br ${config.bgColor} rounded-xl p-5 border border-gray-200`}>
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-2xl">{config.icon}</span>
-                        <div className="font-semibold text-gray-800 text-sm">{config.name}</div>
-                      </div>
-
-                      <div className={`text-4xl font-bold ${config.color} mb-2`}>
-                        {stats.completedUses}
-                      </div>
-
-                      <div className="text-xs text-gray-600">
-                        Usos completados
-                      </div>
-
-                      <div className="mt-3 pt-3 border-t border-gray-300 flex justify-between text-xs">
-                        <span className="text-gray-600">Total eventos:</span>
-                        <span className="font-semibold">{stats.total}</span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* ============================================ */}
-            {/* EMBUDO DE CONVERSIÓN */}
-            {/* ============================================ */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg border-2 border-green-200 p-6">
+              <div className="space-y-6">
+                {/* Embudo de Conversión */}
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg border-2 border-green-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
@@ -410,10 +388,8 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
 
-            {/* ============================================ */}
-            {/* DESGLOSE DE EVENTOS */}
-            {/* ============================================ */}
-            <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
+                {/* Desglose de Eventos de Conversión */}
+                <div className="bg-white rounded-xl shadow border border-green-100 p-5">
               <h3 className="text-lg font-bold text-gray-800 mb-4">📊 Desglose de Eventos</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -482,6 +458,154 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
 
+                {/* Oportunidades de Conversión */}
+                <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl shadow border border-yellow-200 p-5">
+                  <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    🎯 Oportunidades de Conversión
+                    <span className="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded font-bold">{data.opportunities.length}</span>
+                  </h3>
+                  <p className="text-xs text-gray-600 mb-4">Usuarios prioritarios para contactar y convertir a Premium</p>
+
+                  {data.opportunities.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {data.opportunities.slice(0, 6).map((opp, index) => (
+                        <div
+                          key={opp.userId + index}
+                          className={`p-3 rounded-lg border-2 ${
+                            opp.priority === 'high'
+                              ? 'bg-white border-red-300 shadow-md'
+                              : 'bg-white border-yellow-300'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span className={`text-xs px-2 py-1 rounded font-bold ${
+                              opp.priority === 'high'
+                                ? 'bg-red-600 text-white'
+                                : 'bg-yellow-600 text-white'
+                            }`}>
+                              {opp.priority === 'high' ? '🔥 ALTA PRIORIDAD' : '⚡ Media Prioridad'}
+                            </span>
+                            <span className="text-xs bg-gray-100 px-2 py-1 rounded font-medium text-gray-700">{opp.plan}</span>
+                          </div>
+                          <div className="font-semibold text-sm text-gray-800 mb-1">{opp.email}</div>
+                          <div className="text-xs text-gray-600">{opp.reason}</div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-6 text-gray-500 text-sm bg-white rounded-lg">
+                      No hay oportunidades detectadas
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* ============================================ */}
+            {/* SECCIÓN 2: ENGAGEMENT (Uso del Producto) */}
+            {/* ============================================ */}
+            <div className="border-t-4 border-blue-500 pt-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center text-2xl">
+                  📈
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800">Engagement</h2>
+                  <p className="text-sm text-gray-600">Uso y actividad en las herramientas</p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                {/* Usos por Herramienta */}
+                <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl shadow-lg border-2 border-violet-200 p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                        🎯 Usos por Herramienta
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Cuántas veces los usuarios completaron análisis en cada herramienta
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {Object.entries(data.friction.toolAnalysis).map(([tool, stats]) => {
+                      const toolConfig: Record<string, { name: string; icon: string; color: string; bgColor: string }> = {
+                        detector: { name: 'Detector de IA', icon: '🤖', color: 'text-violet-600', bgColor: 'from-violet-100 to-violet-50' },
+                        humanizador: { name: 'Humanizador', icon: '👤', color: 'text-emerald-600', bgColor: 'from-emerald-100 to-emerald-50' },
+                        parafraseador: { name: 'Parafraseador', icon: '🔄', color: 'text-cyan-600', bgColor: 'from-cyan-100 to-cyan-50' },
+                      };
+
+                      const config = toolConfig[tool] || { name: tool, icon: '🛠️', color: 'text-gray-600', bgColor: 'from-gray-100 to-gray-50' };
+
+                      return (
+                        <div key={tool} className={`bg-gradient-to-br ${config.bgColor} rounded-xl p-5 border border-gray-200`}>
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className="text-2xl">{config.icon}</span>
+                            <div className="font-semibold text-gray-800 text-sm">{config.name}</div>
+                          </div>
+
+                          <div className={`text-4xl font-bold ${config.color} mb-2`}>
+                            {stats.completedUses}
+                          </div>
+
+                          <div className="text-xs text-gray-600">
+                            Usos completados
+                          </div>
+
+                          <div className="mt-3 pt-3 border-t border-gray-300 flex justify-between text-xs">
+                            <span className="text-gray-600">Total eventos:</span>
+                            <span className="font-semibold">{stats.total}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Actividad Diaria */}
+                <div className="bg-white rounded-xl shadow border border-blue-100 p-5">
+                  <h3 className="text-lg font-bold text-gray-800 mb-3">📊 Actividad Diaria</h3>
+                  <p className="text-xs text-gray-600 mb-4">Eventos y uso del producto a lo largo del tiempo</p>
+
+                  {data.summary.dailyChart.length > 0 ? (
+                    <ResponsiveContainer width="100%" height={250}>
+                      <LineChart data={data.summary.dailyChart}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis
+                          dataKey="date"
+                          tickFormatter={(date) => new Date(date).toLocaleDateString('es-AR', { month: 'short', day: 'numeric' })}
+                        />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="count" stroke="#3b82f6" strokeWidth={3} name="Eventos" />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <div className="text-center py-6 text-gray-500 text-sm">
+                      No hay datos para mostrar
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* ============================================ */}
+            {/* SECCIÓN 3: ANÁLISIS DE FRICCIÓN */}
+            {/* ============================================ */}
+            <div className="border-t-4 border-red-500 pt-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl flex items-center justify-center text-2xl">
+                  ⚠️
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800">Análisis de Fricción</h2>
+                  <p className="text-sm text-gray-600">Dónde y cuándo los usuarios encuentran límites</p>
+                </div>
+              </div>
+
             {/* ============================================ */}
             {/* GRID 2 COLUMNAS - Desglose y Análisis */}
             {/* ============================================ */}
@@ -547,49 +671,6 @@ export default function AnalyticsDashboard() {
                   })}
                 </div>
               </div>
-            </div>
-
-            {/* ============================================ */}
-            {/* OPORTUNIDADES DE CONVERSIÓN */}
-            {/* ============================================ */}
-            <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
-              <h3 className="text-lg font-bold text-gray-800 mb-3">💰 Oportunidades de Conversión</h3>
-
-              {data.opportunities.length > 0 ? (
-                <div className="space-y-2">
-                  {data.opportunities.slice(0, 5).map((opp, index) => (
-                    <div
-                      key={opp.userId + index}
-                      className={`p-3 rounded-lg border ${
-                        opp.priority === 'high'
-                          ? 'bg-red-50 border-red-200'
-                          : 'bg-yellow-50 border-yellow-200'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className={`text-xs px-2 py-0.5 rounded font-bold ${
-                              opp.priority === 'high'
-                                ? 'bg-red-600 text-white'
-                                : 'bg-yellow-600 text-white'
-                            }`}>
-                              {opp.priority === 'high' ? '🔥 Alta' : '⚡ Media'}
-                            </span>
-                            <span className="text-xs text-gray-600">{opp.plan}</span>
-                          </div>
-                          <div className="font-semibold text-sm text-gray-800 mt-1">{opp.email}</div>
-                          <div className="text-xs text-gray-600">{opp.reason}</div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-6 text-gray-500 text-sm">
-                  No hay oportunidades detectadas
-                </div>
-              )}
             </div>
 
             {/* ============================================ */}
@@ -703,30 +784,22 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
 
-            {/* Actividad Diaria */}
-            <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
-              <h3 className="text-lg font-bold text-gray-800 mb-3">📊 Actividad Diaria</h3>
-
-              {data.summary.dailyChart.length > 0 ? (
-                <ResponsiveContainer width="100%" height={250}>
-                  <LineChart data={data.summary.dailyChart}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                      dataKey="date"
-                      tickFormatter={(date) => new Date(date).toLocaleDateString('es-AR', { month: 'short', day: 'numeric' })}
-                    />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="count" stroke="#8b5cf6" strokeWidth={2} name="Eventos" />
-                  </LineChart>
-                </ResponsiveContainer>
-              ) : (
-                <div className="text-center py-6 text-gray-500 text-sm">
-                  No hay datos para mostrar
-                </div>
-              )}
+              </div>
             </div>
+
+            {/* ============================================ */}
+            {/* SECCIÓN 4: INSIGHTS DE USUARIOS */}
+            {/* ============================================ */}
+            <div className="border-t-4 border-violet-500 pt-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center text-2xl">
+                  👥
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800">Insights de Usuarios</h2>
+                  <p className="text-sm text-gray-600">Quiénes son y cómo usan el producto</p>
+                </div>
+              </div>
 
             {/* Perfiles de Usuario */}
             <div className="bg-white rounded-xl shadow border border-violet-100 p-5">
@@ -865,9 +938,10 @@ export default function AnalyticsDashboard() {
                 )}
               </div>
             </details>
+            </div>
 
             {/* Footer */}
-            <div className="text-center text-xs text-gray-500 pt-2">
+            <div className="text-center text-xs text-gray-500 pt-6 border-t border-gray-200">
               Datos actualizados en tiempo real • {data.timeframe}
             </div>
           </div>
