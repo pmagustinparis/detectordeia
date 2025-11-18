@@ -51,6 +51,16 @@ export async function GET(request: NextRequest) {
 
     const uniqueActiveUsers = new Set(activeUsersData?.map(e => e.user_id) || []).size;
 
+    // Usuarios anónimos activos (con eventos en el período)
+    const { data: anonymousUsersData } = await supabase
+      .from('analytics_events')
+      .select('anonymous_id')
+      .gte('created_at', startDate.toISOString())
+      .not('anonymous_id', 'is', null)
+      .is('user_id', null); // Solo anónimos (sin user_id)
+
+    const uniqueAnonymousUsers = new Set(anonymousUsersData?.map(e => e.anonymous_id) || []).size;
+
     // Actividad diaria (últimos N días)
     const { data: dailyActivity } = await supabase
       .from('analytics_events')
@@ -405,14 +415,17 @@ export async function GET(request: NextRequest) {
       : '0.0';
 
     // Calcular tasas de conversión - ANÓNIMOS
+    const anonymousVisitorToPricing = uniqueAnonymousUsers > 0
+      ? ((anonymousPricingVisits / uniqueAnonymousUsers) * 100).toFixed(1)
+      : '0.0';
     const anonymousVisitToCheckout = anonymousPricingVisits > 0
       ? ((anonymousCheckoutStarts / anonymousPricingVisits) * 100).toFixed(1)
       : '0.0';
     const anonymousCheckoutToSignup = anonymousCheckoutStarts > 0
       ? ((totalSignups / anonymousCheckoutStarts) * 100).toFixed(1)
       : '0.0';
-    const anonymousOverall = anonymousPricingVisits > 0
-      ? ((totalSignups / anonymousPricingVisits) * 100).toFixed(1)
+    const anonymousOverall = uniqueAnonymousUsers > 0
+      ? ((totalSignups / uniqueAnonymousUsers) * 100).toFixed(1)
       : '0.0';
 
     // Calcular tasas de conversión - TOTALES (para compatibilidad)
@@ -486,12 +499,13 @@ export async function GET(request: NextRequest) {
         // Embudo para usuarios ANÓNIMOS
         anonymous: {
           steps: {
-            visitors: anonymousPricingVisits + anonymousCheckoutStarts, // Total de visitantes anónimos
+            visitors: uniqueAnonymousUsers, // Total de visitantes anónimos activos
             pricingVisits: anonymousPricingVisits,
             checkoutStarts: anonymousCheckoutStarts,
             signups: totalSignups,
           },
           rates: {
+            visitorToPricing: anonymousVisitorToPricing,
             visitToCheckout: anonymousVisitToCheckout,
             checkoutToSignup: anonymousCheckoutToSignup,
             overall: anonymousOverall,

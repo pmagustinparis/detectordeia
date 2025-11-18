@@ -81,6 +81,7 @@ interface AnalyticsData {
         signups: number;
       };
       rates: {
+        visitorToPricing: string;
         visitToCheckout: string;
         checkoutToSignup: string;
         overall: string;
@@ -447,9 +448,7 @@ export default function AnalyticsDashboard() {
                             <div className="text-xs font-semibold opacity-90">Visitaron Pricing</div>
                             <div className="text-2xl font-bold">{data.conversionFunnel.anonymous.steps.pricingVisits}</div>
                             <div className="text-xs mt-1 font-semibold bg-white/20 inline-block px-2 py-0.5 rounded">
-                              {data.conversionFunnel.anonymous.steps.visitors > 0
-                                ? ((data.conversionFunnel.anonymous.steps.pricingVisits / data.conversionFunnel.anonymous.steps.visitors) * 100).toFixed(1)
-                                : '0.0'}%
+                              {data.conversionFunnel.anonymous.rates.visitorToPricing}%
                             </div>
                           </div>
                           <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-2xl">↓</div>
