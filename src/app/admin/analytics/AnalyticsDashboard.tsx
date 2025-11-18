@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface AnalyticsData {
   timeframe: string;
@@ -26,6 +26,23 @@ interface AnalyticsData {
       premiumModeBlocked: number;
     };
     usersAffected: number;
+    limitBreakdown: {
+      hitCharacterLimit: number;
+      hitDailyLimit: number;
+    };
+    heatmapData: Array<{
+      day: number;
+      hour: number;
+      count: number;
+    }>;
+    toolAnalysis: Record<string, {
+      total: number;
+      friction: number;
+    }>;
+    topPremiumModes: Array<{
+      mode: string;
+      count: number;
+    }>;
   };
   opportunities: Array<{
     userId: string;
@@ -435,6 +452,269 @@ export default function AnalyticsDashboard() {
               ) : (
                 <div className="text-center py-8 text-gray-500">
                   No hay oportunidades de conversión detectadas en este período
+                </div>
+              )}
+            </div>
+
+            {/* ============================================ */}
+            {/* 5. ANÁLISIS DETALLADO DE FRICCIÓN */}
+            {/* ============================================ */}
+
+            {/* 5.1 Desglose de Límites */}
+            <div className="bg-white rounded-2xl shadow-lg border border-violet-100 p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                🎯 Desglose de Límites
+              </h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Entender QUÉ límite tocan los usuarios te ayuda a priorizar mejoras
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Gráfico de pie */}
+                <div>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <PieChart>
+                      <Pie
+                        data={[
+                          { name: 'Límite de caracteres', value: data.friction.limitBreakdown.hitCharacterLimit, color: '#f59e0b' },
+                          { name: 'Límite diario de usos', value: data.friction.limitBreakdown.hitDailyLimit, color: '#8b5cf6' },
+                        ]}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                      >
+                        <Cell fill="#f59e0b" />
+                        <Cell fill="#8b5cf6" />
+                      </Pie>
+                      <Tooltip />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+
+                {/* Stats Cards */}
+                <div className="space-y-3">
+                  <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-4 rounded-xl border border-amber-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-sm text-amber-700 font-medium">
+                          🔤 Límite de caracteres
+                        </div>
+                        <div className="text-2xl font-bold text-gray-800 mt-1">
+                          {data.friction.limitBreakdown.hitCharacterLimit}
+                        </div>
+                      </div>
+                      <div className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded-full font-medium" title="El usuario escribió más caracteres de los permitidos en su plan">
+                        ❓ Info
+                      </div>
+                    </div>
+                    <div className="text-xs text-amber-600 mt-2">
+                      Usuarios que excedieron el límite de texto
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-violet-50 to-purple-50 p-4 rounded-xl border border-violet-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-sm text-violet-700 font-medium">
+                          📊 Límite diario de usos
+                        </div>
+                        <div className="text-2xl font-bold text-gray-800 mt-1">
+                          {data.friction.limitBreakdown.hitDailyLimit}
+                        </div>
+                      </div>
+                      <div className="text-xs bg-violet-100 text-violet-700 px-2 py-1 rounded-full font-medium" title="El usuario alcanzó su límite diario de usos de herramientas">
+                        ❓ Info
+                      </div>
+                    </div>
+                    <div className="text-xs text-violet-600 mt-2">
+                      Usuarios que agotaron sus usos diarios
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 5.2 Análisis por Herramienta */}
+            <div className="bg-white rounded-2xl shadow-lg border border-violet-100 p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                🛠️ Análisis por Herramienta
+              </h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Cuál herramienta genera más fricción y en qué proporción
+              </p>
+
+              <div className="space-y-4">
+                {Object.entries(data.friction.toolAnalysis).map(([tool, stats]) => {
+                  const frictionRate = stats.total > 0 ? (stats.friction / stats.total * 100).toFixed(1) : '0.0';
+                  const toolNames: Record<string, string> = {
+                    detector: '🤖 Detector de IA',
+                    humanizador: '👤 Humanizador',
+                    parafraseador: '🔄 Parafraseador',
+                  };
+
+                  return (
+                    <div key={tool} className="bg-gradient-to-r from-gray-50 to-slate-50 p-4 rounded-xl border border-gray-200">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="font-semibold text-gray-800">
+                          {toolNames[tool] || tool}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          {stats.total} eventos totales
+                        </div>
+                      </div>
+
+                      {/* Barra de progreso */}
+                      <div className="relative w-full h-6 bg-gray-200 rounded-full overflow-hidden">
+                        <div
+                          className="absolute top-0 left-0 h-full bg-gradient-to-r from-red-500 to-orange-500 transition-all duration-300"
+                          style={{ width: `${frictionRate}%` }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-gray-700">
+                          {frictionRate}% fricción ({stats.friction} eventos)
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 5.3 Heatmap de Fricción */}
+            <div className="bg-white rounded-2xl shadow-lg border border-violet-100 p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                🔥 Heatmap: Cuándo tocan límites
+              </h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Día de la semana y hora del día cuando los usuarios encuentran fricción
+              </p>
+
+              {data.friction.heatmapData.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr>
+                        <th className="p-2 text-xs font-medium text-gray-600 text-left">Día/Hora</th>
+                        {Array.from({ length: 24 }, (_, i) => (
+                          <th key={i} className="p-1 text-xs font-medium text-gray-600 text-center">
+                            {i}h
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map((dayName, dayIndex) => (
+                        <tr key={dayIndex}>
+                          <td className="p-2 text-xs font-medium text-gray-700">
+                            {dayName}
+                          </td>
+                          {Array.from({ length: 24 }, (_, hourIndex) => {
+                            const dataPoint = data.friction.heatmapData.find(
+                              (d) => d.day === dayIndex && d.hour === hourIndex
+                            );
+                            const count = dataPoint?.count || 0;
+
+                            // Escala de color basada en intensidad
+                            let bgColor = 'bg-gray-100';
+                            if (count > 0 && count <= 2) bgColor = 'bg-yellow-100';
+                            else if (count > 2 && count <= 5) bgColor = 'bg-orange-200';
+                            else if (count > 5 && count <= 10) bgColor = 'bg-red-300';
+                            else if (count > 10) bgColor = 'bg-red-500';
+
+                            return (
+                              <td
+                                key={hourIndex}
+                                className={`p-1 text-center ${bgColor} transition-all hover:opacity-75`}
+                                title={count > 0 ? `${count} eventos` : 'Sin eventos'}
+                              >
+                                <div className="text-xs font-medium">
+                                  {count > 0 ? count : '·'}
+                                </div>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+
+                  {/* Leyenda */}
+                  <div className="flex items-center gap-4 mt-4 justify-center text-xs">
+                    <div className="flex items-center gap-1">
+                      <div className="w-4 h-4 bg-gray-100 rounded"></div>
+                      <span className="text-gray-600">Sin datos</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-4 h-4 bg-yellow-100 rounded"></div>
+                      <span className="text-gray-600">1-2 eventos</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-4 h-4 bg-orange-200 rounded"></div>
+                      <span className="text-gray-600">3-5 eventos</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-4 h-4 bg-red-300 rounded"></div>
+                      <span className="text-gray-600">6-10 eventos</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-4 h-4 bg-red-500 rounded"></div>
+                      <span className="text-gray-600">+10 eventos</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  No hay datos suficientes para el heatmap en este período
+                </div>
+              )}
+            </div>
+
+            {/* 5.4 Top Modos Premium Solicitados */}
+            <div className="bg-white rounded-2xl shadow-lg border border-violet-100 p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                💎 Modos Premium Más Solicitados
+              </h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Qué features premium intentaron usar los usuarios free/anónimos
+              </p>
+
+              {data.friction.topPremiumModes.length > 0 ? (
+                <div className="space-y-3">
+                  {data.friction.topPremiumModes.map((mode, index) => (
+                    <div
+                      key={mode.mode}
+                      className="bg-gradient-to-r from-violet-50 to-purple-50 p-4 rounded-xl border border-violet-200 flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-violet-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                          {index + 1}
+                        </div>
+                        <div>
+                          <div className="font-semibold text-gray-800 capitalize">
+                            {mode.mode.replace('_', ' ')}
+                          </div>
+                          <div className="text-xs text-gray-600">
+                            Modo premium bloqueado
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-bold text-violet-600">
+                          {mode.count}
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          intentos
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  No hay datos de modos premium solicitados en este período
                 </div>
               )}
             </div>
