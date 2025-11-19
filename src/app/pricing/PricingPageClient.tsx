@@ -356,7 +356,7 @@ export default function PricingPageClient() {
               </button>
             ) : (
               <a
-                href="/"
+                href="/auth/signup"
                 className="w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all"
               >
                 Empezar Gratis
