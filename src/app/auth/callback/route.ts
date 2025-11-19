@@ -11,9 +11,41 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient();
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    const { data: sessionData, error } = await supabase.auth.exchangeCodeForSession(code);
 
-    if (!error) {
+    if (!error && sessionData?.user) {
+      const user = sessionData.user;
+
+      // Verificar si es un nuevo usuario (primer login via OAuth)
+      // Si el usuario se creó hace menos de 10 segundos, es un signup nuevo
+      const createdAt = new Date(user.created_at);
+      const now = new Date();
+      const secondsSinceCreation = (now.getTime() - createdAt.getTime()) / 1000;
+      const isNewUser = secondsSinceCreation < 10;
+
+      // Si es nuevo usuario, trackear evento signup
+      if (isNewUser) {
+        try {
+          await fetch(`${requestUrl.origin}/api/analytics/track`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventType: 'signup',
+              userId: user.id,
+              anonymousId: null, // OAuth no tiene anonymousId previo
+              metadata: {
+                email: user.email,
+                provider: 'google',
+                name: user.user_metadata?.full_name || user.user_metadata?.name,
+              },
+            }),
+          });
+        } catch (trackError) {
+          console.error('Error tracking OAuth signup:', trackError);
+          // No bloquear el flujo por error en tracking
+        }
+      }
+
       // Construir URL de redirect correcta
       const forwardedHost = request.headers.get('x-forwarded-host');
       const protocol = request.headers.get('x-forwarded-proto') || 'https';
