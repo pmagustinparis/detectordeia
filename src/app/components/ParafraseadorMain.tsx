@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
-import CharacterLimitModal from './CharacterLimitModal';
 import FileUploadButton from './FileUploadButton';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
@@ -593,6 +592,162 @@ export default function ParafraseadorMain() {
                   </div>
                 )}
               </div>
+
+              {/* Overlay inline cuando se excede el límite */}
+              {isLimitExceeded && userPlan !== 'premium' && (
+                <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none z-10">
+                  <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto animate-scale-in">
+                    {/* Icon */}
+                    <div className="flex justify-center mb-4">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center">
+                        <span className="text-4xl">📏</span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h2 className="text-xl font-extrabold text-center text-gray-900 mb-2">
+                      Texto Demasiado Largo
+                    </h2>
+
+                    {/* Current usage */}
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                      <span className="text-sm font-medium text-gray-600">Caracteres:</span>
+                      <span className="text-lg font-bold text-red-600">{analyzedTextLength.toLocaleString()}</span>
+                      <span className="text-sm text-gray-400">/</span>
+                      <span className="text-sm text-gray-500">{CHARACTER_LIMIT.toLocaleString()}</span>
+                      <span className="text-xs px-2 py-1 bg-red-100 text-red-700 rounded-full font-medium">
+                        +{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} extra
+                      </span>
+                    </div>
+
+                    {/* Copy dinámico según tipo de usuario */}
+                    {!isAuthenticated ? (
+                      <>
+                        <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
+                          Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
+                          Sin registro podés procesar hasta <strong>{CHARACTER_LIMIT.toLocaleString()} caracteres</strong> por vez.
+                        </p>
+
+                        {/* Free Benefits */}
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-4 mb-3">
+                          <p className="text-sm font-bold text-green-900 mb-2">
+                            🎁 Registrándote GRATIS obtenés:
+                          </p>
+                          <ul className="space-y-1.5 text-xs text-green-800">
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>Hasta {CHARACTER_LIMITS.free.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.free / CHARACTER_LIMIT)}x más)</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>Historial</strong> de tus análisis</span>
+                            </li>
+                          </ul>
+                        </div>
+
+                        {/* Pro Benefits */}
+                        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
+                          <p className="text-sm font-bold text-violet-900 mb-2">
+                            🚀 Con Plan Pro obtenés:
+                          </p>
+                          <ul className="space-y-1.5 text-xs text-violet-800">
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>Usos ilimitados</strong></span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>5 modos premium</strong> + archivos</span>
+                            </li>
+                          </ul>
+                          <p className="text-xs text-violet-700 mt-2 font-medium">
+                            Desde $10/mes • Ahorra 20% anual
+                          </p>
+                        </div>
+
+                        {/* CTA - Registro gratis primero */}
+                        <a
+                          href="/auth/signup"
+                          className="block w-full text-center bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                        >
+                          Registrarme Gratis
+                        </a>
+
+                        {/* Secondary CTA - Ver Pro */}
+                        <a
+                          href="/pricing"
+                          className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm"
+                        >
+                          O ver Plan Pro →
+                        </a>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
+                          Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
+                          Con el Plan Free podés procesar hasta <strong>{CHARACTER_LIMIT.toLocaleString()} caracteres</strong> por vez.
+                        </p>
+
+                        {/* Premium Benefits */}
+                        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
+                          <p className="text-sm font-bold text-violet-900 mb-2">
+                            🚀 Con Plan Pro obtenés:
+                          </p>
+                          <ul className="space-y-1.5 text-xs text-violet-800">
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>Usos ilimitados</strong></span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>5 modos premium</strong> + archivos</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 font-bold">✓</span>
+                              <span><strong>Historial completo</strong></span>
+                            </li>
+                          </ul>
+                          <p className="text-xs text-violet-700 mt-2 font-medium">
+                            Desde $10/mes • Ahorra 20% anual
+                          </p>
+                        </div>
+
+                        {/* CTA - Upgrade to Pro */}
+                        <a
+                          href="/pricing"
+                          className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                        >
+                          Ver Planes y Precios
+                        </a>
+                      </>
+                    )}
+
+                    {/* Close button */}
+                    <button
+                      onClick={() => {
+                        setIsLimitExceeded(false);
+                        setResult(null);
+                      }}
+                      className="w-full text-center text-gray-600 hover:text-gray-800 font-medium py-2 transition-colors text-sm"
+                    >
+                      Volver y reducir mi texto
+                    </button>
+                  </div>
+                </div>
+              )}
+
             </div>
           ) : (
             <>
@@ -657,21 +812,6 @@ export default function ParafraseadorMain() {
           toolName="Parafraseador"
         />
       )}
-
-      {/* Character Limit Modal */}
-      <CharacterLimitModal
-        isOpen={isLimitExceeded && userPlan !== 'premium'}
-        onClose={() => {
-          setIsLimitExceeded(false);
-          setResult(null);
-        }}
-        toolName="Parafraseador"
-        currentChars={analyzedTextLength}
-        maxChars={CHARACTER_LIMIT}
-        premiumMaxChars={CHARACTER_LIMITS.premium}
-        userType={!isAuthenticated ? 'anonymous' : userPlan === 'premium' ? 'premium' : 'free'}
-        freeMaxChars={CHARACTER_LIMITS.free}
-      />
 
     </div>
   );
