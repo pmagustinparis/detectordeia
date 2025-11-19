@@ -146,6 +146,14 @@ interface AnalyticsData {
       checkout_started: number;
     };
   };
+  registeredUsers: Array<{
+    id: string;
+    email: string;
+    name: string;
+    plan: string;
+    createdAt: string;
+    isTestUser: boolean;
+  }>;
 }
 
 export default function AnalyticsDashboard() {
@@ -1257,6 +1265,92 @@ export default function AnalyticsDashboard() {
                 ) : (
                   <div className="text-center py-6 text-gray-500 text-sm">
                     No hay datos
+                  </div>
+                )}
+              </div>
+            </details>
+
+            {/* Lista de Usuarios Registrados */}
+            <details className="bg-white rounded-xl shadow border border-violet-100">
+              <summary className="p-5 cursor-pointer font-bold text-gray-800 hover:bg-gray-50 flex items-center justify-between">
+                <span>📋 Todos los Usuarios Registrados ({data.registeredUsers.length})</span>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const allEmails = data.registeredUsers
+                      .filter(u => !u.isTestUser)
+                      .map(u => u.email)
+                      .join(', ');
+                    navigator.clipboard.writeText(allEmails);
+                    alert(`${data.registeredUsers.filter(u => !u.isTestUser).length} emails copiados al portapapeles`);
+                  }}
+                  className="px-3 py-1.5 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors shadow"
+                >
+                  📋 Copiar Todos los Emails
+                </button>
+              </summary>
+              <div className="px-5 pb-5">
+                {data.registeredUsers.length > 0 ? (
+                  <div className="space-y-2">
+                    {data.registeredUsers.map((user, index) => (
+                      <div
+                        key={user.id}
+                        className={`flex items-center justify-between p-3 rounded-lg border-2 ${
+                          user.isTestUser
+                            ? 'bg-yellow-50 border-yellow-300'
+                            : 'bg-gray-50 border-gray-200'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3 flex-1">
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${
+                            user.plan === 'premium'
+                              ? 'bg-gradient-to-br from-yellow-400 to-orange-500 text-white'
+                              : 'bg-gray-300 text-gray-700'
+                          }`}>
+                            {user.plan === 'premium' ? '⭐' : (index + 1)}
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <div className="font-semibold text-sm text-gray-800">{user.name}</div>
+                              {user.isTestUser && (
+                                <span className="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded font-bold">
+                                  TEST
+                                </span>
+                              )}
+                              <span className={`text-xs px-2 py-0.5 rounded font-semibold ${
+                                user.plan === 'premium'
+                                  ? 'bg-yellow-100 text-yellow-700'
+                                  : 'bg-gray-200 text-gray-700'
+                              }`}>
+                                {user.plan.toUpperCase()}
+                              </span>
+                            </div>
+                            <div className="text-xs text-gray-600 mt-0.5">{user.email}</div>
+                            <div className="text-xs text-gray-500 mt-0.5">
+                              Registrado: {new Date(user.createdAt).toLocaleDateString('es-AR', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric',
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(user.email);
+                            alert(`Email copiado: ${user.email}`);
+                          }}
+                          className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg transition-colors shadow ml-2"
+                        >
+                          📋 Copiar
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-6 text-gray-500 text-sm">
+                    No hay usuarios registrados
                   </div>
                 )}
               </div>

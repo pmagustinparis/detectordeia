@@ -711,6 +711,25 @@ export async function GET(request: NextRequest) {
     }) || [];
 
     // ============================================
+    // 12. LISTA DE USUARIOS REGISTRADOS
+    // ============================================
+
+    // Obtener todos los usuarios con sus datos básicos
+    const { data: allRegisteredUsers } = await supabase
+      .from('users')
+      .select('id, email, name, plan_type, created_at')
+      .order('created_at', { ascending: false });
+
+    const registeredUsersList = allRegisteredUsers?.map(user => ({
+      id: user.id,
+      email: user.email || 'Sin email',
+      name: user.name || 'Sin nombre',
+      plan: user.plan_type || 'free',
+      createdAt: user.created_at,
+      isTestUser: INTERNAL_TEST_EMAILS.includes(user.email || ''),
+    })) || [];
+
+    // ============================================
     // RESPUESTA FINAL
     // ============================================
 
@@ -803,6 +822,7 @@ export async function GET(request: NextRequest) {
         },
       },
       eventBreakdown,
+      registeredUsers: registeredUsersList,
     });
 
   } catch (error) {
