@@ -715,15 +715,21 @@ export async function GET(request: NextRequest) {
     // ============================================
 
     // Obtener todos los usuarios con sus datos básicos
-    const { data: allRegisteredUsers } = await supabase
+    const { data: allRegisteredUsers, error: usersError } = await supabase
       .from('users')
-      .select('id, email, name, plan_type, created_at')
+      .select('id, email, plan_type, created_at')
       .order('created_at', { ascending: false });
+
+    if (usersError) {
+      console.error('Error fetching registered users:', usersError);
+    }
+
+    console.log(`[Analytics API] Found ${allRegisteredUsers?.length || 0} registered users`);
 
     const registeredUsersList = allRegisteredUsers?.map(user => ({
       id: user.id,
       email: user.email || 'Sin email',
-      name: user.name || 'Sin nombre',
+      name: user.email?.split('@')[0] || 'Usuario', // Usar primera parte del email como nombre
       plan: user.plan_type || 'free',
       createdAt: user.created_at,
       isTestUser: INTERNAL_TEST_EMAILS.includes(user.email || ''),
