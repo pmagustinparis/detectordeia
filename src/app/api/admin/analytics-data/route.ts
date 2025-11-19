@@ -717,7 +717,7 @@ export async function GET(request: NextRequest) {
     // Obtener todos los usuarios con sus datos básicos
     const { data: allRegisteredUsers, error: usersError } = await supabase
       .from('users')
-      .select('id, email, plan_type, created_at')
+      .select('id, email, full_name, plan_type, created_at')
       .order('created_at', { ascending: false });
 
     if (usersError) {
@@ -729,7 +729,7 @@ export async function GET(request: NextRequest) {
     const registeredUsersList = allRegisteredUsers?.map(user => ({
       id: user.id,
       email: user.email || 'Sin email',
-      name: user.email?.split('@')[0] || 'Usuario', // Usar primera parte del email como nombre
+      name: user.full_name || user.email?.split('@')[0] || 'Usuario',
       plan: user.plan_type || 'free',
       createdAt: user.created_at,
       isTestUser: INTERNAL_TEST_EMAILS.includes(user.email || ''),
