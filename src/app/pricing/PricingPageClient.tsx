@@ -169,18 +169,12 @@ export default function PricingPageClient() {
     }
 
     if (!isAuthenticated) {
-      // Save the plan selection and trigger login
+      // Save the plan selection and redirect to signup
       const planInterval = billing === 'monthly' ? 'month' : 'year';
       localStorage.setItem('pending_plan_checkout', planInterval);
 
-      // Trigger Google OAuth login
-      const supabase = createClient();
-      await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/pricing`,
-        },
-      });
+      // Redirect to signup page
+      window.location.href = '/auth/signup';
     } else {
       // User is authenticated, proceed to checkout
       const planInterval = billing === 'monthly' ? 'month' : 'year';
