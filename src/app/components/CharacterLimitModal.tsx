@@ -1,8 +1,8 @@
 /**
  * CharacterLimitModal Component
  *
- * Modal que aparece cuando un usuario Free excede el límite de 600 caracteres.
- * Muestra los beneficios de actualizar a Plan Pro con copy persuasivo.
+ * Modal que aparece cuando un usuario excede el límite de caracteres.
+ * Muestra copy dinámico según el tipo de usuario (anonymous, free, premium).
  */
 
 'use client';
@@ -16,6 +16,8 @@ interface CharacterLimitModalProps {
   currentChars: number;
   maxChars: number;
   premiumMaxChars: number;
+  userType: 'anonymous' | 'free' | 'premium'; // Tipo de usuario
+  freeMaxChars?: number; // Límite del plan free (para calcular multiplicador en anónimos)
 }
 
 export default function CharacterLimitModal({
@@ -25,6 +27,8 @@ export default function CharacterLimitModal({
   currentChars,
   maxChars,
   premiumMaxChars,
+  userType,
+  freeMaxChars = 1200, // Default para Detector
 }: CharacterLimitModalProps) {
   // Cerrar con ESC
   useEffect(() => {
@@ -52,6 +56,10 @@ export default function CharacterLimitModal({
   if (!isOpen) return null;
 
   const excessChars = currentChars - maxChars;
+
+  // Calcular multiplicadores
+  const freeMultiplier = userType === 'anonymous' ? Math.round(freeMaxChars / maxChars) : 0;
+  const proMultiplier = Math.round(premiumMaxChars / maxChars);
 
   return (
     <>
@@ -90,46 +98,125 @@ export default function CharacterLimitModal({
             </span>
           </div>
 
-          <p className="text-center text-gray-700 mb-6 leading-relaxed">
-            Tu texto tiene <strong>{excessChars.toLocaleString()} caracteres de más</strong>.
-            Con el Plan Free solo podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
-          </p>
+          {/* Copy dinámico según tipo de usuario */}
+          {userType === 'anonymous' && (
+            <>
+              <p className="text-center text-gray-700 mb-6 leading-relaxed">
+                Tu texto tiene <strong>{excessChars.toLocaleString()} caracteres de más</strong>.
+                Sin registro podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
+              </p>
 
-          {/* Premium Benefits */}
-          <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
-            <p className="text-sm font-bold text-violet-900 mb-3">
-              🚀 Con Plan Pro obtenés:
-            </p>
-            <ul className="space-y-2 text-sm text-violet-800">
-              <li className="flex items-start gap-2">
-                <span className="text-green-600 font-bold text-base">✓</span>
-                <span><strong>Hasta {premiumMaxChars.toLocaleString()} caracteres</strong> por análisis (25x más)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600 font-bold text-base">✓</span>
-                <span><strong>Usos ilimitados</strong> todos los días</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600 font-bold text-base">✓</span>
-                <span><strong>5 modos premium</strong> en Humanizador y Parafraseador</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-green-600 font-bold text-base">✓</span>
-                <span><strong>Historial completo</strong> de tus análisis</span>
-              </li>
-            </ul>
-            <p className="text-xs text-violet-700 mt-3 font-medium">
-              Desde $10/mes • Ahorra 20% con plan anual
-            </p>
-          </div>
+              {/* Free Benefits */}
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-5 mb-4">
+                <p className="text-sm font-bold text-green-900 mb-3">
+                  🎁 Registrándote GRATIS obtenés:
+                </p>
+                <ul className="space-y-2 text-sm text-green-800">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Hasta {freeMaxChars.toLocaleString()} caracteres</strong> ({freeMultiplier}x más)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Historial</strong> de tus últimos análisis</span>
+                  </li>
+                </ul>
+              </div>
 
-          {/* CTA - Upgrade to Pro */}
-          <a
-            href="/pricing"
-            className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
-          >
-            Ver Planes y Precios
-          </a>
+              {/* Pro Benefits */}
+              <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
+                <p className="text-sm font-bold text-violet-900 mb-3">
+                  🚀 Con Plan Pro obtenés:
+                </p>
+                <ul className="space-y-2 text-sm text-violet-800">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Hasta {premiumMaxChars.toLocaleString()} caracteres</strong> ({proMultiplier}x más que ahora)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Usos ilimitados</strong> todos los días</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>5 modos premium</strong> + subida de archivos</span>
+                  </li>
+                </ul>
+                <p className="text-xs text-violet-700 mt-3 font-medium">
+                  Desde $10/mes • Ahorra 20% con plan anual
+                </p>
+              </div>
+
+              {/* CTA - Registro gratis primero */}
+              <a
+                href="/auth/signup"
+                className="block w-full text-center bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+              >
+                Registrarme Gratis en 10 segundos
+              </a>
+
+              {/* Secondary CTA - Ver Pro */}
+              <a
+                href="/pricing"
+                className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm mb-3"
+              >
+                O ver Plan Pro →
+              </a>
+            </>
+          )}
+
+          {userType === 'free' && (
+            <>
+              <p className="text-center text-gray-700 mb-6 leading-relaxed">
+                Tu texto tiene <strong>{excessChars.toLocaleString()} caracteres de más</strong>.
+                Con el Plan Free podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
+              </p>
+
+              {/* Premium Benefits */}
+              <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
+                <p className="text-sm font-bold text-violet-900 mb-3">
+                  🚀 Con Plan Pro obtenés:
+                </p>
+                <ul className="space-y-2 text-sm text-violet-800">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Hasta {premiumMaxChars.toLocaleString()} caracteres</strong> ({proMultiplier}x más)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Usos ilimitados</strong> todos los días</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>5 modos premium</strong> en Humanizador y Parafraseador</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Subida de archivos</strong> (PDF, DOCX, TXT)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 font-bold text-base">✓</span>
+                    <span><strong>Historial completo</strong> de todos tus análisis</span>
+                  </li>
+                </ul>
+                <p className="text-xs text-violet-700 mt-3 font-medium">
+                  Desde $10/mes • Ahorra 20% con plan anual
+                </p>
+              </div>
+
+              {/* CTA - Upgrade to Pro */}
+              <a
+                href="/pricing"
+                className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
+              >
+                Ver Planes y Precios
+              </a>
+            </>
+          )}
 
           {/* Alternative: Close and trim */}
           <button

@@ -5,6 +5,7 @@ import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
 import FeedbackBlock from './FeedbackBlock';
 import FileUploadButton from './FileUploadButton';
+import CharacterLimitModal from './CharacterLimitModal';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
@@ -727,28 +728,6 @@ export default function DetectorMain({
                 )}
               </div>
 
-              {/* Overlay premium cuando se excede el límite */}
-              {isLimitExceeded && (
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white/90 flex items-center justify-center p-6 pointer-events-none">
-                  <div className="text-center max-w-sm bg-white rounded-2xl shadow-xl p-6 pointer-events-auto">
-                    <p className="text-red-600 font-bold mb-2 text-sm flex items-center justify-center gap-2">
-                      ⚠️ {analyzedTextLength}/{CHARACTER_LIMIT} caracteres. Límite superado.
-                    </p>
-                    <p className="text-gray-700 mb-4 text-sm">
-                      Para ver tu análisis completo y analizar sin límites, actualiza a Premium.
-                    </p>
-                    <a
-                      href="/pricing"
-                      className="block w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all mb-2"
-                    >
-                      🔓 Actualizar ahora
-                    </a>
-                    <p className="text-xs text-gray-500">
-                      📝 Te avisaremos cuando los planes estén disponibles
-                    </p>
-                  </div>
-                </div>
-              )}
               </div>
             ) : (
               <>
@@ -828,6 +807,21 @@ export default function DetectorMain({
           </div>
         </div>
       )}
+
+      {/* Character Limit Modal */}
+      <CharacterLimitModal
+        isOpen={isLimitExceeded && userPlan !== 'premium'}
+        onClose={() => {
+          setIsLimitExceeded(false);
+          setResult(null);
+        }}
+        toolName="Detector"
+        currentChars={analyzedTextLength}
+        maxChars={CHARACTER_LIMIT}
+        premiumMaxChars={CHARACTER_LIMITS.premium}
+        userType={!isAuthenticated ? 'anonymous' : userPlan === 'premium' ? 'premium' : 'free'}
+        freeMaxChars={CHARACTER_LIMITS.free}
+      />
     </section>
   );
 } 

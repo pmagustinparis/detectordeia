@@ -669,6 +669,8 @@ export default function ParafraseadorMain() {
         currentChars={analyzedTextLength}
         maxChars={CHARACTER_LIMIT}
         premiumMaxChars={CHARACTER_LIMITS.premium}
+        userType={!isAuthenticated ? 'anonymous' : userPlan === 'premium' ? 'premium' : 'free'}
+        freeMaxChars={CHARACTER_LIMITS.free}
       />
 
     </div>
