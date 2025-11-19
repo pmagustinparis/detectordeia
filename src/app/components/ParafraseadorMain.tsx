@@ -103,104 +103,128 @@ export default function ParafraseadorMain() {
     setError(null);
 
     try {
-      // Obtener anonymousId para usuarios no autenticados
-      const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
+      if (exceededLimit) {
+        // Mostrar resultado simulado cuando se excede el límite
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
+        setResult("Este es un ejemplo de texto parafraseado. Actualiza a Premium para procesar textos de hasta 15,000 caracteres y acceder a todos los modos de parafraseo.");
+        setAnalyzedTextLength(text.length);
+        setIsLimitExceeded(true);
 
-      // Llamada a API de parafraseo (SIEMPRE se ejecuta, aunque exceda el límite)
-      const response = await fetch('/api/paraphrase', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          text: text,
-          mode: selectedMode,
-          anonymousId,
-        }),
-      });
-
-      const data = await response.json();
-
-      // 🚨 RATE LIMIT REACHED (429)
-      if (response.status === 429) {
-        setRateLimitInfo({
-          userType: data.userType || 'anonymous',
-          limit: data.limit || 10,
-          resetAt: new Date(data.resetAt),
-        });
-        setIsLimitReached(true);
-
-        // Track límite diario alcanzado
+        // Track límite de caracteres excedido
         trackEvent({
-          eventType: 'hit_daily_limit',
+          eventType: 'hit_character_limit',
           toolType: 'parafraseador',
           metadata: {
-            limit_type: 'daily_uses',
-            user_type: data.userType || 'anonymous',
-            limit: data.limit || 10,
-            plan: userPlan,
-            is_authenticated: isAuthenticated,
-            hour_of_day: new Date().getHours(),
-            day_of_week: new Date().getDay(), // 0=domingo, 1=lunes, etc
-            usage_count: isAuthenticated ? undefined : usageCount,
-          }
-        });
-
-        return;
-      }
-
-      // 🔒 MODO PREMIUM REQUERIDO (403)
-      if (response.status === 403 && data.requiresPremium) {
-        setError(data.message || 'Este modo requiere Plan Pro');
-
-        // Track modo premium bloqueado
-        trackEvent({
-          eventType: 'premium_mode_blocked',
-          toolType: 'parafraseador',
-          metadata: {
-            mode: selectedMode,
+            limit_type: 'characters',
+            text_length: text.length,
+            character_limit: CHARACTER_LIMIT,
+            exceeded_by: text.length - CHARACTER_LIMIT,
             plan: userPlan,
             is_authenticated: isAuthenticated,
             hour_of_day: new Date().getHours(),
             day_of_week: new Date().getDay(),
-            usage_count: isAuthenticated ? undefined : usageCount,
           }
         });
+      } else {
+        // Obtener anonymousId para usuarios no autenticados
+        const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
 
-        return;
-      }
+        // Llamada a API de parafraseo
+        const response = await fetch('/api/paraphrase', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            text: text,
+            mode: selectedMode,
+            anonymousId,
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Error al parafrasear el texto');
-      }
+        const data = await response.json();
 
-      // Mostrar resultado parafraseado
-      setResult(data.paraphrasedText);
-      setAnalyzedTextLength(text.length);
-      setIsLimitExceeded(exceededLimit);
+        // 🚨 RATE LIMIT REACHED (429)
+        if (response.status === 429) {
+          setRateLimitInfo({
+            userType: data.userType || 'anonymous',
+            limit: data.limit || 10,
+            resetAt: new Date(data.resetAt),
+          });
+          setIsLimitReached(true);
 
-      // Incrementar contador de uso para usuarios anónimos
-      if (!isAuthenticated) {
-        const newCount = usageCount + 1;
-        setUsageCount(newCount);
-        localStorage.setItem('parafraseador_usage_count', newCount.toString());
-      }
+          // Track límite diario alcanzado
+          trackEvent({
+            eventType: 'hit_daily_limit',
+            toolType: 'parafraseador',
+            metadata: {
+              limit_type: 'daily_uses',
+              user_type: data.userType || 'anonymous',
+              limit: data.limit || 10,
+              plan: userPlan,
+              is_authenticated: isAuthenticated,
+              hour_of_day: new Date().getHours(),
+              day_of_week: new Date().getDay(), // 0=domingo, 1=lunes, etc
+              usage_count: isAuthenticated ? undefined : usageCount,
+            }
+          });
 
-      // Track parafraseo exitoso
-      trackEvent({
-        eventType: 'completed_paraphrase',
-        toolType: 'parafraseador',
-        metadata: {
-          text_length: text.length,
-          mode: selectedMode,
-          plan: userPlan,
-          is_authenticated: isAuthenticated,
-          exceeded_limit: exceededLimit,
-          hour_of_day: new Date().getHours(),
-          day_of_week: new Date().getDay(),
-          usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
+          return;
         }
-      });
+
+        // 🔒 MODO PREMIUM REQUERIDO (403)
+        if (response.status === 403 && data.requiresPremium) {
+          setError(data.message || 'Este modo requiere Plan Pro');
+
+          // Track modo premium bloqueado
+          trackEvent({
+            eventType: 'premium_mode_blocked',
+            toolType: 'parafraseador',
+            metadata: {
+              mode: selectedMode,
+              plan: userPlan,
+              is_authenticated: isAuthenticated,
+              hour_of_day: new Date().getHours(),
+              day_of_week: new Date().getDay(),
+              usage_count: isAuthenticated ? undefined : usageCount,
+            }
+          });
+
+          return;
+        }
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Error al parafrasear el texto');
+        }
+
+        // Mostrar resultado parafraseado
+        setResult(data.paraphrasedText);
+        setAnalyzedTextLength(text.length);
+        setIsLimitExceeded(false);
+
+        // Incrementar contador de uso para usuarios anónimos
+        if (!isAuthenticated) {
+          const newCount = usageCount + 1;
+          setUsageCount(newCount);
+          localStorage.setItem('parafraseador_usage_count', newCount.toString());
+        }
+
+        // Track parafraseo exitoso
+        trackEvent({
+          eventType: 'completed_paraphrase',
+          toolType: 'parafraseador',
+          metadata: {
+            text_length: text.length,
+            mode: selectedMode,
+            plan: userPlan,
+            is_authenticated: isAuthenticated,
+            exceeded_limit: false,
+            hour_of_day: new Date().getHours(),
+            day_of_week: new Date().getDay(),
+            usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
+          }
+        });
+      }
 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al parafrasear el texto');
