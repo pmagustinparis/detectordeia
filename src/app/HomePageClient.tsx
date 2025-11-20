@@ -5,7 +5,7 @@ import HumanizadorPromoBanner from './components/HumanizadorPromoBanner';
 
 export default function HomePageClient() {
   return (
-    <div className="min-h-screen pb-10 px-2">
+    <div className="min-h-screen bg-gray-100 pb-10 px-2">
       {/* Banner Promocional - Lanzamiento Humanizador */}
       <HumanizadorPromoBanner />
 
