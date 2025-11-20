@@ -630,8 +630,8 @@ export default function HumanizadorMain() {
           {result ? (
             <div className="relative" style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
               <div className={isLimitExceeded ? "filter blur-sm" : ""} style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
-                {/* Área de resultado */}
-                <div className="w-full border-2 border-emerald-200 rounded-2xl bg-emerald-50/30 p-4 text-base text-gray-800 mb-3 whitespace-pre-wrap leading-relaxed overflow-y-auto" style={{minHeight: '280px', maxHeight: '320px'}}>
+                {/* Área de resultado mejorada */}
+                <div className="w-full border-2 border-emerald-300 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 p-5 text-base text-gray-800 mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm animate-fade-in" style={{minHeight: '280px', maxHeight: '320px'}}>
                   {result}
                 </div>
 
@@ -656,46 +656,46 @@ export default function HumanizadorMain() {
 
                 {/* VALIDACIÓN AUTOMÁTICA - Resultados con datos reales del detector (Fase 3) */}
                 {isValidating ? (
-                  <div className="mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
+                  <div className="mb-4 p-5 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 justify-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                      <p className="text-sm font-semibold text-blue-900">Validando con el detector...</p>
+                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                      <p className="text-base font-semibold text-blue-900">Validando con el detector...</p>
                     </div>
                   </div>
                 ) : validationError ? (
-                  <div className="mb-3 p-4 bg-yellow-50 border-2 border-yellow-200 rounded-xl">
-                    <p className="text-xs text-yellow-800 text-center">
-                      <Icon icon={ProductIcons.Warning} size="xs" className="inline" /> {validationError}
+                  <div className="mb-4 p-5 bg-yellow-50 border-2 border-yellow-200 rounded-xl shadow-sm">
+                    <p className="text-sm text-yellow-800 text-center font-medium">
+                      <Icon icon={ProductIcons.Warning} size="sm" className="inline" /> {validationError}
                     </p>
                   </div>
                 ) : originalScore !== null && humanizedScore !== null ? (
-                  <div className="mb-3 p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Icon icon={ProductIcons.Detector} size="md" className="text-green-700" />
-                      <h3 className="text-sm font-bold text-green-900">Validación con nuestro detector</h3>
+                  <div className="mb-5 p-5 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-md animate-fade-in" style={{animationDelay: '0.2s'}}>
+                    <div className="flex items-center gap-2 mb-4">
+                      <Icon icon={ProductIcons.Detector} size="lg" className="text-green-700" />
+                      <h3 className="text-base font-bold text-green-900">Validación con nuestro detector</h3>
                     </div>
 
-                    {/* Comparación de scores REALES */}
-                    <div className="grid grid-cols-2 gap-3 mb-3">
+                    {/* Comparación de scores REALES mejorada */}
+                    <div className="grid grid-cols-2 gap-4 mb-4">
                       {/* ANTES */}
-                      <div className="text-center bg-red-50 p-3 rounded-lg border-2 border-red-200">
-                        <p className="text-xs text-gray-600 mb-1 font-medium">Texto Original</p>
-                        <p className="text-3xl font-extrabold text-red-600 mb-1">{originalScore}%</p>
-                        <p className="text-xs text-red-700 font-semibold">
-                          <Icon icon={ProductIcons.AI} size="xs" className="inline text-red-600" /> Detectado como IA
+                      <div className="text-center bg-red-50 p-4 rounded-xl border-2 border-red-200 shadow-sm">
+                        <p className="text-xs text-gray-600 mb-2 font-semibold uppercase tracking-wide">Texto Original</p>
+                        <p className="text-5xl font-black text-red-600 mb-2">{originalScore}%</p>
+                        <p className="text-xs text-red-700 font-bold">
+                          <Icon icon={ProductIcons.AI} size="sm" className="inline text-red-600" /> Detectado como IA
                         </p>
                       </div>
 
                       {/* DESPUÉS */}
-                      <div className={`text-center p-3 rounded-lg border-2 ${
+                      <div className={`text-center p-4 rounded-xl border-2 shadow-sm ${
                         humanizedScore < 30
                           ? 'bg-green-100 border-green-300'
                           : humanizedScore < 70
                           ? 'bg-yellow-100 border-yellow-300'
                           : 'bg-red-100 border-red-300'
                       }`}>
-                        <p className="text-xs text-gray-600 mb-1 font-medium">Texto Humanizado</p>
-                        <p className={`text-3xl font-extrabold mb-1 ${
+                        <p className="text-xs text-gray-600 mb-2 font-semibold uppercase tracking-wide">Texto Humanizado</p>
+                        <p className={`text-5xl font-black mb-2 ${
                           humanizedScore < 30 ? 'text-green-600' : humanizedScore < 70 ? 'text-yellow-600' : 'text-red-600'
                         }`}>{humanizedScore}%</p>
                         <p className={`text-xs font-semibold ${
