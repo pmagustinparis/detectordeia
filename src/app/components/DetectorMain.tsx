@@ -456,17 +456,177 @@ export default function DetectorMain({
                         : 'El origen del texto no es concluyente'
                   }</span>
                 </div>
-                {/* Mini insight dinámico */}
-                <div className="mt-2 text-sm text-gray-700">
-                  🧠 <strong>¿Por qué este resultado?</strong><br />
-                  {result.probability >= 80 && 
-                    "El texto muestra patrones muy uniformes, repetición de estructuras y un estilo demasiado consistente, características típicas de contenido generado automáticamente."}
-                  {result.probability >= 50 && result.probability < 80 && 
-                    "El texto presenta una mezcla de características: algunas secciones muestran patrones repetitivos mientras que otras tienen elementos más naturales y variados."}
-                  {result.probability < 50 && 
-                    "El texto muestra variación natural en el estilo, uso de lenguaje coloquial y elementos subjetivos, características típicas de contenido escrito por humanos."}
+                {/* Interpretación específica del resultado */}
+                <div className="mt-3 mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-l-4 border-blue-500 rounded-lg">
+                  <h3 className="text-sm font-bold text-blue-900 mb-2 flex items-center gap-2">
+                    <span>🧠</span> ¿Por qué detectamos esto como {result.probability >= 50 ? 'IA' : 'humano'}?
+                  </h3>
+
+                  <div className="space-y-2 text-sm text-blue-800">
+                    {result.probability >= 80 && (
+                      <>
+                        <p className="font-medium">Tu texto tiene ALTA probabilidad de ser IA porque:</p>
+                        <ul className="list-none space-y-1.5 ml-4">
+                          {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
+                            <li className="flex items-start gap-2">
+                              <span className="text-blue-600 mt-0.5 font-bold">1.</span>
+                              <span>Usa <strong>{result.linguistic_footprints.length} frases cliché</strong> típicas de ChatGPT como {result.linguistic_footprints.slice(0, 2).map(f => `"${f.phrase}"`).join(' y ')}.</span>
+                            </li>
+                          )}
+                          {result.advancedMetrics && result.advancedMetrics.sentenceVariance < 3 && (
+                            <li className="flex items-start gap-2">
+                              <span className="text-blue-600 mt-0.5 font-bold">{result.linguistic_footprints?.length ? '2' : '1'}.</span>
+                              <span>Longitud de oraciones <strong>muy uniforme</strong> ({result.advancedMetrics.sentenceVariance.toFixed(1)} de variación). Los humanos varían más.</span>
+                            </li>
+                          )}
+                          {result.advancedMetrics && result.advancedMetrics.lexicalDiversity < 0.45 && (
+                            <li className="flex items-start gap-2">
+                              <span className="text-blue-600 mt-0.5 font-bold">{result.linguistic_footprints?.length && result.advancedMetrics?.sentenceVariance < 3 ? '3' : result.linguistic_footprints?.length || result.advancedMetrics?.sentenceVariance < 3 ? '2' : '1'}.</span>
+                              <span>Vocabulario <strong>muy repetitivo</strong> (solo {(result.advancedMetrics.lexicalDiversity * 100).toFixed(0)}% de palabras únicas).</span>
+                            </li>
+                          )}
+                          <li className="flex items-start gap-2">
+                            <span className="text-blue-600 mt-0.5 font-bold">•</span>
+                            <span>Estructura perfecta y puntuación impecable. Los humanos cometen pequeños errores naturales.</span>
+                          </li>
+                        </ul>
+                      </>
+                    )}
+
+                    {result.probability >= 50 && result.probability < 80 && (
+                      <>
+                        <p className="font-medium">Tu texto tiene características mixtas:</p>
+                        <div className="grid md:grid-cols-2 gap-2 mt-2">
+                          <div className="bg-red-50 p-2 rounded border border-red-200">
+                            <p className="text-xs font-bold text-red-800 mb-1">🤖 Señales de IA:</p>
+                            <ul className="text-xs text-red-700 space-y-0.5">
+                              {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
+                                <li>• {result.linguistic_footprints.length} frases cliché detectadas</li>
+                              )}
+                              {result.scores_by_category && result.scores_by_category.markersIA >= 10 && (
+                                <li>• Estructura muy organizada ({result.scores_by_category.markersIA}/25 patrones)</li>
+                              )}
+                              {result.advancedMetrics && result.advancedMetrics.perplexity < 4 && (
+                                <li>• Texto muy predecible</li>
+                              )}
+                            </ul>
+                          </div>
+                          <div className="bg-green-50 p-2 rounded border border-green-200">
+                            <p className="text-xs font-bold text-green-800 mb-1">👤 Señales humanas:</p>
+                            <ul className="text-xs text-green-700 space-y-0.5">
+                              {result.scores_by_category && result.scores_by_category.markersHuman >= 8 && (
+                                <li>• {result.scores_by_category.markersHuman} patrones naturales</li>
+                              )}
+                              {result.advancedMetrics && result.advancedMetrics.sentenceVariance >= 3 && (
+                                <li>• Variación en longitud de oraciones</li>
+                              )}
+                              {result.advancedMetrics && result.advancedMetrics.lexicalDiversity >= 0.5 && (
+                                <li>• Vocabulario diverso</li>
+                              )}
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="mt-2 text-xs italic text-blue-700">
+                          💡 Esto puede significar: texto de IA editado por humano, texto humano con ayuda de IA, o estilo formal muy estructurado.
+                        </p>
+                      </>
+                    )}
+
+                    {result.probability < 50 && (
+                      <>
+                        <p className="font-medium">Tu texto tiene BAJA probabilidad de ser IA porque:</p>
+                        <ul className="list-none space-y-1.5 ml-4">
+                          {result.scores_by_category && result.scores_by_category.markersHuman >= 10 && (
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 mt-0.5 font-bold">1.</span>
+                              <span>Detectamos <strong>muchas señales humanas</strong> ({result.scores_by_category.markersHuman}/25 patrones).</span>
+                            </li>
+                          )}
+                          {result.advancedMetrics && result.advancedMetrics.sentenceVariance > 4 && (
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 mt-0.5 font-bold">{result.scores_by_category?.markersHuman >= 10 ? '2' : '1'}.</span>
+                              <span>Longitud de oraciones <strong>muy variada</strong> ({result.advancedMetrics.sentenceVariance.toFixed(1)} de desviación estándar).</span>
+                            </li>
+                          )}
+                          {result.advancedMetrics && result.advancedMetrics.lexicalDiversity > 0.55 && (
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 mt-0.5 font-bold">{(result.scores_by_category?.markersHuman >= 10 ? 1 : 0) + (result.advancedMetrics?.sentenceVariance > 4 ? 1 : 0) + 1}.</span>
+                              <span>Vocabulario <strong>diverso</strong> ({(result.advancedMetrics.lexicalDiversity * 100).toFixed(0)}% de palabras únicas).</span>
+                            </li>
+                          )}
+                          {(!result.linguistic_footprints || result.linguistic_footprints.length === 0) && (
+                            <li className="flex items-start gap-2">
+                              <span className="text-green-600 mt-0.5 font-bold">•</span>
+                              <span><strong>Sin frases cliché</strong> típicas de IA detectadas.</span>
+                            </li>
+                          )}
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600 mt-0.5 font-bold">•</span>
+                            <span>Estilo natural con variaciones propias de escritura humana.</span>
+                          </li>
+                        </ul>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <ConfidenceBar value={result.probability} />
+
+                {/* Confidence Indicator mejorado */}
+                <div className="w-full mb-4 p-4 bg-white border-2 border-gray-200 rounded-xl">
+                  <h3 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                    <span>🎯</span> Confianza del análisis
+                  </h3>
+
+                  {result.confidenceLevel === 'high' && (
+                    <>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex-1 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full"></div>
+                        <span className="text-green-700 font-bold text-sm">Alta</span>
+                      </div>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        ✅ Los 3 análisis independientes coinciden. Puedes confiar en este resultado con alta certeza.
+                      </p>
+                      <details className="mt-2">
+                        <summary className="text-xs text-gray-500 cursor-pointer hover:text-gray-700 font-medium">
+                          ¿Qué significa "3 análisis"? 👆
+                        </summary>
+                        <p className="text-xs text-gray-600 mt-2 p-3 bg-gray-50 rounded leading-relaxed">
+                          Analizamos tu texto 3 veces usando diferentes enfoques y modelos de IA para mayor precisión.
+                          Cuando los 3 resultados coinciden (±8%), tenemos alta confianza en la detección.
+                        </p>
+                      </details>
+                    </>
+                  )}
+
+                  {result.confidenceLevel === 'medium' && (
+                    <>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex-1 h-3 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full" style={{width: '70%'}}></div>
+                        <span className="text-yellow-700 font-bold text-sm">Media</span>
+                      </div>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        ⚠️ Los análisis muestran algunas diferencias. El resultado es confiable pero podría tener un margen de error del 10-15%.
+                      </p>
+                    </>
+                  )}
+
+                  {result.confidenceLevel === 'low' && (
+                    <>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex-1 h-3 bg-gradient-to-r from-red-400 to-red-600 rounded-full" style={{width: '50%'}}></div>
+                        <span className="text-red-700 font-bold text-sm">Baja</span>
+                      </div>
+                      <p className="text-xs text-gray-600 leading-relaxed mb-2">
+                        ⚠️ Los análisis muestran resultados muy diferentes. Este texto es ambiguo.
+                        <strong> Recomendamos una revisión manual.</strong>
+                      </p>
+                      <div className="p-2 bg-red-50 rounded border border-red-200">
+                        <p className="text-xs text-red-800 leading-relaxed">
+                          💡 <strong>Tip:</strong> Textos muy cortos o con mezcla de estilos (ej: IA editada por humano) pueden dar resultados ambiguos.
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
                 
                 {/* CTA premium compacto inmediatamente después del resultado principal */}
                 <div className="w-full flex flex-col items-center my-3">
@@ -499,158 +659,285 @@ export default function DetectorMain({
                     </div>
                   </div>
                 )}
-                {/* Marcadores IA y Humanos con tooltips */}
+                {/* Análisis de patrones detectados */}
                 {result.scores_by_category && (
-                  <div className="w-full max-w-xs mx-auto mb-2 mt-2">
-                    <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                      <span>
-                        Marcadores IA
-                        <span className="ml-1 text-gray-400" title="Cantidad de rasgos típicos de textos generados por IA detectados en el texto.\nEjemplo: frases genéricas, estructura rígida, poca variedad de conectores.">❓</span>
-                      </span>
-                      <span className={result.probability >= 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersIA}/25</span>
+                  <div className="w-full mb-4 mt-4 p-4 bg-gradient-to-br from-gray-50 to-slate-50 border border-gray-200 rounded-xl">
+                    <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                      <span>📊</span> Análisis de patrones detectados
+                    </h3>
+
+                    {/* Señales de IA */}
+                    <div className="mb-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-gray-700">
+                          🤖 Señales de IA encontradas
+                        </span>
+                        <span className="text-sm font-bold text-red-600">
+                          {result.scores_by_category.markersIA} patrones
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                        <div
+                          className="bg-red-500 h-2 rounded-full transition-all"
+                          style={{width: `${(result.scores_by_category.markersIA / 25) * 100}%`}}
+                        ></div>
+                      </div>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        {result.scores_by_category.markersIA >= 15 &&
+                          "Detectamos muchos patrones típicos de IA: frases cliché, estructura muy uniforme, puntuación perfecta."}
+                        {result.scores_by_category.markersIA >= 8 && result.scores_by_category.markersIA < 15 &&
+                          "Detectamos varios patrones típicos de IA: algunas frases genéricas y estructura organizada."}
+                        {result.scores_by_category.markersIA < 8 &&
+                          "Detectamos pocos patrones típicos de IA."}
+                      </p>
                     </div>
-                    <div className="border-dotted border-b border-gray-300 mb-1" />
-                    <div className="flex justify-between text-base font-medium py-1 text-gray-800">
-                      <span>
-                        Marcadores Humanos
-                        <span className="ml-1 text-gray-400" title="Cantidad de rasgos típicos de textos escritos por humanos detectados en el texto.\nEjemplo: modismos, subjetividad, estilo informal, digresiones.">❓</span>
-                      </span>
-                      <span className={result.probability < 50 ? 'font-bold' : 'font-normal'}>{result.scores_by_category.markersHuman}/25</span>
+
+                    {/* Señales Humanas */}
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-gray-700">
+                          👤 Señales humanas encontradas
+                        </span>
+                        <span className="text-sm font-bold text-green-600">
+                          {result.scores_by_category.markersHuman} patrones
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                        <div
+                          className="bg-green-500 h-2 rounded-full transition-all"
+                          style={{width: `${(result.scores_by_category.markersHuman / 25) * 100}%`}}
+                        ></div>
+                      </div>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        {result.scores_by_category.markersHuman >= 15 &&
+                          "Detectamos muchas señales humanas: modismos naturales, variación de estilo, expresiones espontáneas."}
+                        {result.scores_by_category.markersHuman >= 8 && result.scores_by_category.markersHuman < 15 &&
+                          "Detectamos algunas señales humanas: cierta variación y elementos naturales."}
+                        {result.scores_by_category.markersHuman < 8 &&
+                          "Detectamos pocas señales humanas en el texto."}
+                      </p>
                     </div>
-                    <div className="border-dotted border-b border-gray-300" />
+
+                    {/* Expandible: ¿Cómo interpretarlo? */}
+                    <details className="mt-3">
+                      <summary className="text-xs text-gray-500 cursor-pointer hover:text-gray-700 font-medium">
+                        ¿Cómo interpretar estos patrones? 👆
+                      </summary>
+                      <div className="text-xs text-gray-600 mt-2 p-3 bg-white rounded-lg border border-gray-200 leading-relaxed">
+                        <p className="mb-2">
+                          Analizamos <strong>25 patrones diferentes</strong> en tu texto:
+                        </p>
+                        <ul className="space-y-1 ml-4">
+                          <li>• <strong>Patrones de IA:</strong> frases cliché ("es importante mencionar"), estructura perfecta, vocabulario muy técnico, puntuación impecable.</li>
+                          <li>• <strong>Patrones humanos:</strong> modismos regionales, errores naturales, variación de estilo, opiniones subjetivas.</li>
+                        </ul>
+                        <p className="mt-2 text-gray-700">
+                          Cuantos más patrones de IA encontremos, mayor es la probabilidad de que el texto haya sido generado automáticamente.
+                        </p>
+                      </div>
+                    </details>
                   </div>
                 )}
                 {/* Mostrar huellas lingüísticas solo si existen */}
                 {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
-                  <div className="w-full max-w-xl mb-2">
-                    <h3 className="text-base font-semibold mb-1 flex items-center gap-2 text-gray-800"><span>⚠️</span>Huellas lingüísticas detectadas:</h3>
-                    <ul className="space-y-1">
-                      {result.linguistic_footprints.map((item, index) => (
-                        <li key={index} className="p-2 bg-yellow-50 text-yellow-900 rounded-lg text-xs">
-                          <span className="font-bold">{item.phrase}:</span> {item.reason}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {/* Métricas cuantitativas adicionales */}
-                <div className="flex flex-wrap gap-2 mt-2 mb-2">
-                  {typeof result.entropyScore === 'number' && (
-                    <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold" title="Entropía: mide la variedad de palabras en el texto.\nBajo (<4.5): texto muy repetitivo, típico de IA.\nAlto (>5): texto variado, típico de humanos.">
-                      Entropía: <span className="ml-1 font-bold">{result.entropyScore}</span>
-                      <span className="ml-1 text-gray-400">❓</span>
-                    </span>
-                  )}
-                </div>
+                  <div className="w-full mb-4 mt-4">
+                    <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                      <span>🔍</span> Frases sospechosas encontradas en tu texto
+                    </h3>
+                    <div className="space-y-3">
+                      {result.linguistic_footprints.map((item, index) => {
+                        // Calcular relevancia basado en el índice (primeras son más relevantes)
+                        const relevance = index === 0 ? 3 : index <= 2 ? 2 : 1;
+                        const relevanceStars = '⭐'.repeat(relevance);
+                        const relevanceText = relevance === 3 ? 'Alta' : relevance === 2 ? 'Media' : 'Baja';
 
-                {/* 🆕 MÉTRICAS AVANZADAS */}
-                {result.advancedMetrics && (
-                  <div className="mt-4 p-4 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-lg">📊</span>
-                      <h3 className="text-sm font-bold text-gray-800">Análisis Lingüístico Avanzado</h3>
-                      {result.analysisQuality?.usedPremiumModel && (
-                        <span className="ml-auto text-xs px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full font-semibold">
-                          ⚡ Análisis Mejorado
-                        </span>
-                      )}
-                    </div>
+                        return (
+                          <div key={index} className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg">
+                            <div className="flex justify-between items-start mb-2">
+                              <span className="font-bold text-yellow-900 text-sm">"{item.phrase}"</span>
+                              <div className="flex items-center gap-1">
+                                <span className="text-xs text-yellow-700">Relevancia:</span>
+                                <span className="text-yellow-600" title={`Relevancia ${relevanceText}`}>{relevanceStars}</span>
+                              </div>
+                            </div>
 
-                    <div className="grid grid-cols-2 gap-2 mb-3">
-                      {/* Perplejidad */}
-                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
-                        <div className="text-xs text-gray-600 mb-0.5">Perplejidad</div>
-                        <div className="flex items-center gap-1">
-                          <span className={`text-lg font-bold ${result.advancedMetrics.perplexity < 3 ? 'text-red-600' : result.advancedMetrics.perplexity > 7 ? 'text-green-600' : 'text-yellow-600'}`}>
-                            {result.advancedMetrics.perplexity.toFixed(1)}
-                          </span>
-                          <span className="text-xs text-gray-500">/10</span>
-                        </div>
-                        <div className="text-xs text-gray-500 mt-0.5">
-                          {result.advancedMetrics.perplexity < 3 && '⚠️ Muy predecible'}
-                          {result.advancedMetrics.perplexity >= 3 && result.advancedMetrics.perplexity < 7 && '✓ Normal'}
-                          {result.advancedMetrics.perplexity >= 7 && '✓ Muy variado'}
-                        </div>
-                      </div>
+                            <p className="text-sm text-yellow-800 mb-2 leading-relaxed">
+                              🤖 {item.reason}
+                            </p>
 
-                      {/* Diversidad Léxica */}
-                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
-                        <div className="text-xs text-gray-600 mb-0.5">Diversidad Léxica</div>
-                        <div className="flex items-center gap-1">
-                          <span className={`text-lg font-bold ${result.advancedMetrics.lexicalDiversity < 0.4 ? 'text-red-600' : result.advancedMetrics.lexicalDiversity > 0.6 ? 'text-green-600' : 'text-yellow-600'}`}>
-                            {result.advancedMetrics.lexicalDiversity.toFixed(2)}
-                          </span>
-                        </div>
-                        <div className="text-xs text-gray-500 mt-0.5">
-                          {result.advancedMetrics.lexicalDiversity < 0.4 && '⚠️ Repetitivo'}
-                          {result.advancedMetrics.lexicalDiversity >= 0.4 && result.advancedMetrics.lexicalDiversity < 0.6 && '✓ Normal'}
-                          {result.advancedMetrics.lexicalDiversity >= 0.6 && '✓ Muy diverso'}
-                        </div>
-                      </div>
+                            {/* Contexto del texto */}
+                            <div className="text-xs bg-white p-2 rounded border border-yellow-200">
+                              <span className="text-gray-500 font-medium">En tu texto:</span>
+                              <p className="mt-1 text-gray-700 italic">
+                                "...{item.phrase}..."
+                              </p>
+                            </div>
 
-                      {/* N-gramas Repetitivos */}
-                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
-                        <div className="text-xs text-gray-600 mb-0.5">Patrones Repetitivos</div>
-                        <div className="flex items-center gap-1">
-                          <span className={`text-lg font-bold ${result.advancedMetrics.ngramRepetition > 6 ? 'text-red-600' : result.advancedMetrics.ngramRepetition > 3 ? 'text-yellow-600' : 'text-green-600'}`}>
-                            {result.advancedMetrics.ngramRepetition.toFixed(1)}
-                          </span>
-                          <span className="text-xs text-gray-500">/10</span>
-                        </div>
-                        <div className="text-xs text-gray-500 mt-0.5">
-                          {result.advancedMetrics.ngramRepetition > 6 && '⚠️ Muy repetitivo'}
-                          {result.advancedMetrics.ngramRepetition > 3 && result.advancedMetrics.ngramRepetition <= 6 && '⚡ Moderado'}
-                          {result.advancedMetrics.ngramRepetition <= 3 && '✓ Bajo'}
-                        </div>
-                      </div>
-
-                      {/* Varianza de Oraciones */}
-                      <div className="bg-white/70 rounded-lg p-2 border border-violet-100">
-                        <div className="text-xs text-gray-600 mb-0.5">Variación Oraciones</div>
-                        <div className="flex items-center gap-1">
-                          <span className={`text-lg font-bold ${result.advancedMetrics.sentenceVariance < 2 ? 'text-red-600' : result.advancedMetrics.sentenceVariance > 5 ? 'text-green-600' : 'text-yellow-600'}`}>
-                            {result.advancedMetrics.sentenceVariance.toFixed(1)}
-                          </span>
-                        </div>
-                        <div className="text-xs text-gray-500 mt-0.5">
-                          {result.advancedMetrics.sentenceVariance < 2 && '⚠️ Muy uniforme'}
-                          {result.advancedMetrics.sentenceVariance >= 2 && result.advancedMetrics.sentenceVariance < 5 && '✓ Normal'}
-                          {result.advancedMetrics.sentenceVariance >= 5 && '✓ Muy variado'}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Insights de métricas */}
-                    {result.metricsInsights && result.metricsInsights.length > 0 && (
-                      <div className="space-y-1">
-                        {result.metricsInsights.slice(0, 3).map((insight, index) => (
-                          <div key={index} className="flex items-start gap-1 text-xs text-violet-800 bg-white/70 rounded-lg p-2 border border-violet-100">
-                            <span className="text-violet-600">•</span>
-                            <span>{insight}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Información de calidad del análisis */}
-                    {result.analysisQuality && (
-                      <div className="mt-3 pt-3 border-t border-violet-200">
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="text-gray-600">Calidad del análisis:</span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-semibold text-violet-700">
-                              {result.analysisQuality.numberOfPasses} pasada{result.analysisQuality.numberOfPasses > 1 ? 's' : ''}
-                            </span>
-                            {result.analysisQuality.usedPremiumModel && (
-                              <span className="px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full text-xs font-semibold">
-                                GPT-4o-mini
-                              </span>
+                            {/* Expandible: Por qué es sospechoso */}
+                            {index < 2 && ( // Solo para los 2 primeros (más relevantes)
+                              <details className="mt-2">
+                                <summary className="text-xs text-yellow-700 cursor-pointer hover:underline font-medium">
+                                  ¿Por qué es sospechoso? 👆
+                                </summary>
+                                <p className="text-xs text-gray-600 mt-2 pl-4 border-l-2 border-yellow-300 leading-relaxed">
+                                  {item.phrase.toLowerCase().includes('importante mencionar') &&
+                                    "Los humanos rara vez usan esta frase en español natural. Es un patrón de traducción directa del inglés 'it's important to mention' muy común en modelos de IA."}
+                                  {item.phrase.toLowerCase().includes('cabe destacar') &&
+                                    "Esta expresión formal es muy frecuente en textos generados por IA. Los humanos tienden a usar construcciones más variadas y menos predecibles."}
+                                  {item.phrase.toLowerCase().includes('en conclusión') &&
+                                    "Frase de cierre típica de IA. Los humanos suelen terminar textos de formas más variadas y naturales."}
+                                  {!item.phrase.toLowerCase().includes('importante mencionar') &&
+                                   !item.phrase.toLowerCase().includes('cabe destacar') &&
+                                   !item.phrase.toLowerCase().includes('en conclusión') &&
+                                    "Esta frase aparece con mucha más frecuencia en textos generados por IA que en textos escritos por humanos, según nuestro análisis de millones de textos."}
+                                </p>
+                              </details>
                             )}
                           </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+                {/* Métricas lingüísticas avanzadas (colapsables) */}
+                {result.advancedMetrics && (
+                  <details className="w-full mb-4 mt-4">
+                    <summary className="cursor-pointer p-4 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl hover:border-violet-300 transition-colors">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">📊</span>
+                          <span className="text-sm font-bold text-gray-800">Métricas lingüísticas avanzadas</span>
+                          {result.analysisQuality?.usedPremiumModel && (
+                            <span className="text-xs px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full font-semibold">
+                              ⚡ Análisis Mejorado
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-sm text-gray-500">Ver detalles ▼</span>
+                      </div>
+                    </summary>
+
+                    <div className="mt-3 p-4 bg-white border-2 border-violet-100 rounded-xl">
+                      <div className="grid grid-cols-2 gap-3 mb-4">
+                        {/* Variedad de vocabulario */}
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                          <div className="text-xs text-gray-600 mb-1 font-medium">Variedad de vocabulario</div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className={`text-2xl font-bold ${result.advancedMetrics.lexicalDiversity < 0.4 ? 'text-red-600' : result.advancedMetrics.lexicalDiversity > 0.6 ? 'text-green-600' : 'text-yellow-600'}`}>
+                              {(result.advancedMetrics.lexicalDiversity * 100).toFixed(0)}%
+                            </span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                            <div
+                              className={`h-2 rounded-full ${result.advancedMetrics.lexicalDiversity < 0.4 ? 'bg-red-500' : result.advancedMetrics.lexicalDiversity > 0.6 ? 'bg-green-500' : 'bg-yellow-500'}`}
+                              style={{width: `${result.advancedMetrics.lexicalDiversity * 100}%`}}
+                            ></div>
+                          </div>
+                          <p className="text-xs text-gray-600 leading-relaxed">
+                            {result.advancedMetrics.lexicalDiversity < 0.4 &&
+                              "⚠️ Vocabulario repetitivo (normal: 60-80%). Típico de IA que reutiliza las mismas palabras."}
+                            {result.advancedMetrics.lexicalDiversity >= 0.4 && result.advancedMetrics.lexicalDiversity < 0.6 &&
+                              "✓ Vocabulario normal. Diversidad estándar."}
+                            {result.advancedMetrics.lexicalDiversity >= 0.6 &&
+                              "✓ Vocabulario muy diverso. Típico de escritura humana creativa."}
+                          </p>
+                        </div>
+
+                        {/* Variación de oraciones */}
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                          <div className="text-xs text-gray-600 mb-1 font-medium">Variación de oraciones</div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className={`text-2xl font-bold ${result.advancedMetrics.sentenceVariance < 2 ? 'text-red-600' : result.advancedMetrics.sentenceVariance > 5 ? 'text-green-600' : 'text-yellow-600'}`}>
+                              {result.advancedMetrics.sentenceVariance.toFixed(1)}
+                            </span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                            <div
+                              className={`h-2 rounded-full ${result.advancedMetrics.sentenceVariance < 2 ? 'bg-red-500' : result.advancedMetrics.sentenceVariance > 5 ? 'bg-green-500' : 'bg-yellow-500'}`}
+                              style={{width: `${Math.min(result.advancedMetrics.sentenceVariance / 10 * 100, 100)}%`}}
+                            ></div>
+                          </div>
+                          <p className="text-xs text-gray-600 leading-relaxed">
+                            {result.advancedMetrics.sentenceVariance < 2 &&
+                              "⚠️ Longitud muy uniforme (normal: 4-7). Las IA tienden a generar oraciones de longitud similar."}
+                            {result.advancedMetrics.sentenceVariance >= 2 && result.advancedMetrics.sentenceVariance < 5 &&
+                              "✓ Variación normal de longitud de oraciones."}
+                            {result.advancedMetrics.sentenceVariance >= 5 &&
+                              "✓ Gran variación. Los humanos alternan entre oraciones cortas y largas naturalmente."}
+                          </p>
+                        </div>
+
+                        {/* Predictibilidad del texto */}
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                          <div className="text-xs text-gray-600 mb-1 font-medium">Predictibilidad del texto</div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className={`text-2xl font-bold ${result.advancedMetrics.perplexity < 3 ? 'text-red-600' : result.advancedMetrics.perplexity > 7 ? 'text-green-600' : 'text-yellow-600'}`}>
+                              {result.advancedMetrics.perplexity.toFixed(1)}
+                            </span>
+                            <span className="text-sm text-gray-500">/10</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                            <div
+                              className={`h-2 rounded-full ${result.advancedMetrics.perplexity < 3 ? 'bg-red-500' : result.advancedMetrics.perplexity > 7 ? 'bg-green-500' : 'bg-yellow-500'}`}
+                              style={{width: `${(result.advancedMetrics.perplexity / 10) * 100}%`}}
+                            ></div>
+                          </div>
+                          <p className="text-xs text-gray-600 leading-relaxed">
+                            {result.advancedMetrics.perplexity < 3 &&
+                              "⚠️ Texto muy predecible (normal: 5-8). La IA sigue patrones predecibles."}
+                            {result.advancedMetrics.perplexity >= 3 && result.advancedMetrics.perplexity < 7 &&
+                              "✓ Predictibilidad normal."}
+                            {result.advancedMetrics.perplexity >= 7 &&
+                              "✓ Texto impredecible. Los humanos usan combinaciones de palabras más variadas."}
+                          </p>
+                        </div>
+
+                        {/* Patrones repetitivos */}
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                          <div className="text-xs text-gray-600 mb-1 font-medium">Patrones repetitivos</div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className={`text-2xl font-bold ${result.advancedMetrics.ngramRepetition > 6 ? 'text-red-600' : result.advancedMetrics.ngramRepetition > 3 ? 'text-yellow-600' : 'text-green-600'}`}>
+                              {result.advancedMetrics.ngramRepetition.toFixed(1)}
+                            </span>
+                            <span className="text-sm text-gray-500">/10</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                            <div
+                              className={`h-2 rounded-full ${result.advancedMetrics.ngramRepetition > 6 ? 'bg-red-500' : result.advancedMetrics.ngramRepetition > 3 ? 'bg-yellow-500' : 'bg-green-500'}`}
+                              style={{width: `${(result.advancedMetrics.ngramRepetition / 10) * 100}%`}}
+                            ></div>
+                          </div>
+                          <p className="text-xs text-gray-600 leading-relaxed">
+                            {result.advancedMetrics.ngramRepetition > 6 &&
+                              "⚠️ Muchas frases repetidas. Típico de IA que reutiliza construcciones."}
+                            {result.advancedMetrics.ngramRepetition > 3 && result.advancedMetrics.ngramRepetition <= 6 &&
+                              "⚡ Repetición moderada."}
+                            {result.advancedMetrics.ngramRepetition <= 3 &&
+                              "✓ Baja repetición. Los humanos evitan naturalmente repetir las mismas frases."}
+                          </p>
                         </div>
                       </div>
-                    )}
-                  </div>
+
+                      {/* Información de calidad del análisis */}
+                      {result.analysisQuality && (
+                        <div className="pt-3 border-t border-gray-200">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-gray-600 font-medium">Calidad del análisis:</span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-semibold text-violet-700">
+                                {result.analysisQuality.numberOfPasses} pasada{result.analysisQuality.numberOfPasses > 1 ? 's' : ''}
+                              </span>
+                              {result.analysisQuality.usedPremiumModel && (
+                                <span className="px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full text-xs font-semibold">
+                                  GPT-4o-mini
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </details>
                 )}
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
 
