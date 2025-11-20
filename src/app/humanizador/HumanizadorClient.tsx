@@ -137,7 +137,7 @@ export default function HumanizadorClient() {
           {/* Beneficio 2 */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6 card-elevated">
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Lock} size="2xl" className="text-cyan-600" />
+              <Icon icon={ProductIcons.Locked} size="2xl" className="text-cyan-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">100% Privado</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
