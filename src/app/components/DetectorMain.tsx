@@ -636,7 +636,7 @@ export default function DetectorMain({
                   >
                     🔓 Desbloquear análisis avanzado
                   </a>
-                  <p className="text-xs text-gray-500 mt-1">Incluye explicaciones por frase, análisis por estilo y acceso a la API</p>
+                  <p className="text-xs text-gray-500 mt-1">Usos ilimitados + hasta 15,000 caracteres + subida de archivos</p>
                 </div>
                 
                 {/* Interpretación explicativa */}
@@ -817,10 +817,10 @@ export default function DetectorMain({
                       </div>
                     </summary>
 
-                    <div className="mt-3 p-4 bg-white border-2 border-violet-100 rounded-xl">
-                      <div className="grid grid-cols-2 gap-3 mb-4">
+                    <div className="mt-3 p-3 bg-white border-2 border-violet-100 rounded-xl">
+                      <div className="grid grid-cols-2 gap-2.5">
                         {/* Variedad de vocabulario */}
-                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-2.5 border border-gray-200">
                           <div className="text-xs text-gray-600 mb-1 font-medium">Variedad de vocabulario</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.lexicalDiversity < 0.4 ? 'text-red-600' : result.advancedMetrics.lexicalDiversity > 0.6 ? 'text-green-600' : 'text-yellow-600'}`}>
@@ -838,13 +838,15 @@ export default function DetectorMain({
                               "⚠️ Vocabulario repetitivo (normal: 60-80%). Típico de IA que reutiliza las mismas palabras."}
                             {result.advancedMetrics.lexicalDiversity >= 0.4 && result.advancedMetrics.lexicalDiversity < 0.6 &&
                               "✓ Vocabulario normal. Diversidad estándar."}
-                            {result.advancedMetrics.lexicalDiversity >= 0.6 &&
+                            {result.advancedMetrics.lexicalDiversity >= 0.6 && result.probability >= 60 &&
+                              "⚡ Vocabulario diverso. Sin embargo, otras señales (frases cliché, estructura) indican IA."}
+                            {result.advancedMetrics.lexicalDiversity >= 0.6 && result.probability < 60 &&
                               "✓ Vocabulario muy diverso. Típico de escritura humana creativa."}
                           </p>
                         </div>
 
                         {/* Variación de oraciones */}
-                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-2.5 border border-gray-200">
                           <div className="text-xs text-gray-600 mb-1 font-medium">Variación de oraciones</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.sentenceVariance < 2 ? 'text-red-600' : result.advancedMetrics.sentenceVariance > 5 ? 'text-green-600' : 'text-yellow-600'}`}>
@@ -862,13 +864,15 @@ export default function DetectorMain({
                               "⚠️ Longitud muy uniforme (normal: 4-7). Las IA tienden a generar oraciones de longitud similar."}
                             {result.advancedMetrics.sentenceVariance >= 2 && result.advancedMetrics.sentenceVariance < 5 &&
                               "✓ Variación normal de longitud de oraciones."}
-                            {result.advancedMetrics.sentenceVariance >= 5 &&
+                            {result.advancedMetrics.sentenceVariance >= 5 && result.probability >= 60 &&
+                              "⚡ Buena variación de oraciones. Aun así, el contenido y las frases sugieren IA."}
+                            {result.advancedMetrics.sentenceVariance >= 5 && result.probability < 60 &&
                               "✓ Gran variación. Los humanos alternan entre oraciones cortas y largas naturalmente."}
                           </p>
                         </div>
 
                         {/* Predictibilidad del texto */}
-                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-2.5 border border-gray-200">
                           <div className="text-xs text-gray-600 mb-1 font-medium">Predictibilidad del texto</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.perplexity < 3 ? 'text-red-600' : result.advancedMetrics.perplexity > 7 ? 'text-green-600' : 'text-yellow-600'}`}>
@@ -887,13 +891,15 @@ export default function DetectorMain({
                               "⚠️ Texto muy predecible (normal: 5-8). La IA sigue patrones predecibles."}
                             {result.advancedMetrics.perplexity >= 3 && result.advancedMetrics.perplexity < 7 &&
                               "✓ Predictibilidad normal."}
-                            {result.advancedMetrics.perplexity >= 7 &&
+                            {result.advancedMetrics.perplexity >= 7 && result.probability >= 60 &&
+                              "⚡ Combinaciones de palabras variadas. Sin embargo, el análisis general indica IA."}
+                            {result.advancedMetrics.perplexity >= 7 && result.probability < 60 &&
                               "✓ Texto impredecible. Los humanos usan combinaciones de palabras más variadas."}
                           </p>
                         </div>
 
                         {/* Patrones repetitivos */}
-                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border border-gray-200">
+                        <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-2.5 border border-gray-200">
                           <div className="text-xs text-gray-600 mb-1 font-medium">Patrones repetitivos</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.ngramRepetition > 6 ? 'text-red-600' : result.advancedMetrics.ngramRepetition > 3 ? 'text-yellow-600' : 'text-green-600'}`}>
@@ -920,7 +926,7 @@ export default function DetectorMain({
 
                       {/* Información de calidad del análisis */}
                       {result.analysisQuality && (
-                        <div className="pt-3 border-t border-gray-200">
+                        <div className="pt-2.5 mt-2.5 border-t border-gray-200">
                           <div className="flex items-center justify-between text-xs">
                             <span className="text-gray-600 font-medium">Calidad del análisis:</span>
                             <div className="flex items-center gap-2">
