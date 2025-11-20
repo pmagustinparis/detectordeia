@@ -452,30 +452,54 @@ export default function DetectorMain({
             {result ? (
               <div className="relative" style={{maxHeight: '500px', overflow: 'hidden'}}>
               <div className={isLimitExceeded ? "filter blur-sm overflow-y-auto" : "overflow-y-auto"} style={{maxHeight: '500px'}}>
-                <div className="flex items-end gap-3 mb-1">
-                  <span className={`text-4xl font-extrabold leading-none ${getResultColor(result.probability)}`}>{result.probability > 50 ? result.probability : 100 - result.probability}%</span>
-                  {/* Badge semántico */}
-                  {result.probability >= 80 && (
-                    <span className="ml-2 text-xs px-2 py-1 bg-red-100 text-red-800 rounded-full">Muy probable que sea IA</span>
-                  )}
-                  {result.probability >= 50 && result.probability < 80 && (
-                    <span className="ml-2 text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full">Posible mezcla</span>
-                  )}
-                  {result.probability < 50 && (
-                    <span className="ml-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Probablemente humano</span>
-                  )}
-                  <span className={`text-base font-bold ${getResultColor(result.probability)}`}>{
-                    result.probability > 50
-                      ? 'Texto generado por IA'
-                      : result.probability < 50
-                        ? 'Texto escrito por humano'
-                        : 'El origen del texto no es concluyente'
-                  }</span>
+                {/* HERO CARD - Score Principal con diseño mejorado */}
+                <div className="mb-6 p-6 bg-gradient-to-br from-white via-gray-50 to-slate-50 rounded-2xl border-2 border-violet-200 shadow-xl animate-fade-in">
+                  {/* Score gigante centrado */}
+                  <div className="text-center mb-4">
+                    <div className={`text-7xl md:text-8xl font-black leading-none mb-3 ${getResultColor(result.probability)} animate-scale-in`}>
+                      {result.probability > 50 ? result.probability : 100 - result.probability}%
+                    </div>
+
+                    {/* Badge semántico más grande */}
+                    {result.probability >= 80 && (
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-bold mb-2">
+                        <Icon icon={ProductIcons.AI} size="sm" className="text-red-600" />
+                        Muy probable que sea IA
+                      </div>
+                    )}
+                    {result.probability >= 50 && result.probability < 80 && (
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm font-bold mb-2">
+                        <Icon icon={ProductIcons.Warning} size="sm" className="text-yellow-600" />
+                        Posible mezcla
+                      </div>
+                    )}
+                    {result.probability < 50 && (
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-bold mb-2">
+                        <Icon icon={ProductIcons.Human} size="sm" className="text-green-600" />
+                        Probablemente humano
+                      </div>
+                    )}
+
+                    {/* Título descriptivo */}
+                    <p className={`text-xl md:text-2xl font-bold ${getResultColor(result.probability)} mt-2`}>
+                      {result.probability > 50
+                        ? 'Texto generado por IA'
+                        : result.probability < 50
+                          ? 'Texto escrito por humano'
+                          : 'El origen del texto no es concluyente'
+                      }
+                    </p>
+                  </div>
+
+                  {/* Barra de confianza mejorada */}
+                  <div className="mt-4">
+                    <ConfidenceBar value={result.probability} />
+                  </div>
                 </div>
                 {/* Interpretación específica del resultado */}
-                <div className="mt-3 mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-l-4 border-blue-500 rounded-lg">
-                  <h3 className="text-sm font-bold text-blue-900 mb-2 flex items-center gap-2">
-                    <Icon icon={ProductIcons.Brain} size="md" className="text-blue-700" />
+                <div className="mb-6 p-5 bg-gradient-to-br from-blue-50 to-cyan-50 border-l-4 border-blue-500 rounded-xl shadow-sm animate-fade-in" style={{animationDelay: '0.1s'}}>
+                  <h3 className="text-base font-bold text-blue-900 mb-3 flex items-center gap-2">
+                    <Icon icon={ProductIcons.Brain} size="lg" className="text-blue-700" />
                     ¿Por qué detectamos esto como {result.probability >= 50 ? 'IA' : 'humano'}?
                   </h3>
 
@@ -588,9 +612,9 @@ export default function DetectorMain({
                 </div>
 
                 {/* Confidence Indicator mejorado */}
-                <div className="w-full mb-4 p-4 bg-white border-2 border-gray-200 rounded-xl">
-                  <h3 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-                    <Icon icon={ProductIcons.Confidence} size="md" className="text-gray-700" /> Confianza del análisis
+                <div className="w-full mb-6 p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  <h3 className="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <Icon icon={ProductIcons.Confidence} size="lg" className="text-gray-700" /> Confianza del análisis
                   </h3>
 
                   {result.confidenceLevel === 'high' && (
@@ -678,9 +702,9 @@ export default function DetectorMain({
                 )}
                 {/* Análisis de patrones detectados */}
                 {result.scores_by_category && (
-                  <div className="w-full mb-4 mt-4 p-4 bg-gradient-to-br from-gray-50 to-slate-50 border border-gray-200 rounded-xl">
-                    <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <Icon icon={ProductIcons.Analytics} size="md" className="text-gray-700" /> Análisis de patrones detectados
+                  <div className="w-full mb-6 p-5 bg-gradient-to-br from-gray-50 to-slate-50 border-2 border-gray-200 rounded-xl shadow-sm animate-fade-in" style={{animationDelay: '0.3s'}}>
+                    <h3 className="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                      <Icon icon={ProductIcons.Analytics} size="lg" className="text-gray-700" /> Análisis de patrones detectados
                     </h3>
 
                     {/* Señales de IA */}
@@ -757,9 +781,9 @@ export default function DetectorMain({
                 )}
                 {/* Mostrar huellas lingüísticas solo si existen */}
                 {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
-                  <div className="w-full mb-4 mt-4">
-                    <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <Icon icon={ProductIcons.Detector} size="md" className="text-gray-700" /> Frases sospechosas encontradas en tu texto
+                  <div className="w-full mb-6 animate-fade-in" style={{animationDelay: '0.4s'}}>
+                    <h3 className="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                      <Icon icon={ProductIcons.Detector} size="lg" className="text-gray-700" /> Frases sospechosas encontradas en tu texto
                     </h3>
                     <div className="space-y-3">
                       {result.linguistic_footprints.map((item, index) => {
