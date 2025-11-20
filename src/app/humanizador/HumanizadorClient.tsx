@@ -41,7 +41,7 @@ export default function HumanizadorClient() {
   };
 
   return (
-    <div className="min-h-screen pb-10 px-2">
+    <div className="min-h-screen bg-gray-100 pb-10 px-2">
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
         {/* Elementos decorativos de fondo */}
