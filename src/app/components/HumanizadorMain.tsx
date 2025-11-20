@@ -5,6 +5,7 @@ import { ProductIcons, Icon } from '@/lib/icons';
 import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
 import FileUploadButton from './FileUploadButton';
+import LoadingSteps from './LoadingSteps';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
@@ -23,6 +24,7 @@ export default function HumanizadorMain() {
   const { isAuthenticated, loading, user } = useAuth();
   const [text, setText] = useState('');
   const [isHumanizing, setIsHumanizing] = useState(false);
+  const [loadingStep, setLoadingStep] = useState(0);
   const [result, setResult] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLimitExceeded, setIsLimitExceeded] = useState(false);
@@ -107,10 +109,15 @@ export default function HumanizadorMain() {
     const exceededLimit = text.length > CHARACTER_LIMIT;
 
     setIsHumanizing(true);
+    setLoadingStep(1); // Step 1: Análisis
     setError(null);
 
     try {
       if (exceededLimit) {
+        // Progresión de steps durante análisis simulado
+        setTimeout(() => setLoadingStep(2), 500);
+        setTimeout(() => setLoadingStep(3), 1000);
+
         // Mostrar resultado simulado cuando se excede el límite
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
         setResult("Este es un ejemplo de texto humanizado. Actualiza a Premium para procesar textos de hasta 15,000 caracteres y acceder a todos los modos de humanización.");
@@ -136,6 +143,9 @@ export default function HumanizadorMain() {
         // Obtener anonymousId para usuarios no autenticados
         const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
 
+        // Step 2: Humanización (after 1 second)
+        setTimeout(() => setLoadingStep(2), 1000);
+
         // Llamada a API de humanización
         const response = await fetch('/api/humanize', {
           method: 'POST',
@@ -148,6 +158,9 @@ export default function HumanizadorMain() {
             anonymousId,
           }),
         });
+
+        // Step 3: Validación (when API responds)
+        setLoadingStep(3);
 
         const data = await response.json();
 
@@ -241,6 +254,7 @@ export default function HumanizadorMain() {
       setError(err instanceof Error ? err.message : 'Error al humanizar el texto');
     } finally {
       setIsHumanizing(false);
+      setLoadingStep(0);
     }
   };
 
@@ -1040,6 +1054,18 @@ export default function HumanizadorMain() {
               )}
 
             </div>
+          ) : isHumanizing ? (
+            // Show loading steps when humanizing
+            <LoadingSteps
+              steps={[
+                { id: 1, label: 'Análisis de texto', icon: ProductIcons.Brain },
+                { id: 2, label: 'Humanización', icon: ProductIcons.Humanizer },
+                { id: 3, label: 'Validación automática', icon: ProductIcons.Detector }
+              ]}
+              currentStep={loadingStep}
+              title="Humanizando tu texto..."
+              estimatedTime={15}
+            />
           ) : (
             <>
               {/* Estado vacío mejorado */}
