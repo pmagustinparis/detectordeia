@@ -197,31 +197,34 @@ async function analyzeWithGPT4oMini(prompt: string): Promise<AnalysisResult> {
 }
 
 /**
- * Combina múltiples análisis con pesos inteligentes
+ * Combina múltiples análisis con pesos inteligentes (FASE 2 - actualizado para 4 passes)
  */
 function combineAnalysisResults(
   analysis1: AnalysisResult,
   analysis2: AnalysisResult,
-  analysis3: AnalysisResult | null,
+  analysis3: AnalysisResult,
+  analysis4: AnalysisResult | null,
   metricsAdjustment: number
 ): {
   probability: number;
   confidenceLevel: 'low' | 'medium' | 'high';
   usedModels: string[];
 } {
-  const results = [analysis1, analysis2];
-  if (analysis3) results.push(analysis3);
+  const results = [analysis1, analysis2, analysis3];
+  if (analysis4) results.push(analysis4);
 
   // Calcular probabilidad promedio con pesos
   let totalWeight = 0;
   let weightedSum = 0;
 
   results.forEach((result, index) => {
-    // GPT-4o-mini tiene más peso que GPT-3.5
-    const weight = result.model === 'gpt-4o-mini' ? 1.5 : 1.0;
-    // Primera análisis tiene ligeramente más peso
-    const indexWeight = index === 0 ? 1.1 : 1.0;
-    const finalWeight = weight * indexWeight;
+    // FASE 2: Todos son GPT-4o-mini ahora, peso base igual
+    const baseWeight = 1.0;
+    // Primera análisis tiene ligeramente más peso (prompt principal)
+    const indexWeight = index === 0 ? 1.2 : 1.0;
+    // Cuarto análisis (desempate) tiene peso extra
+    const tiebreakWeight = index === 3 ? 1.3 : 1.0;
+    const finalWeight = baseWeight * indexWeight * tiebreakWeight;
 
     weightedSum += result.probability * finalWeight;
     totalWeight += finalWeight;
@@ -257,10 +260,11 @@ function combineAnalysisResults(
 }
 
 /**
- * Sistema de análisis mejorado FREE
- * - Doble validación con GPT-3.5
- * - GPT-4o-mini selectivo para casos ambiguos
+ * Sistema de análisis mejorado FREE (FASE 2)
+ * - Triple validación con GPT-4o-mini SIEMPRE (100% de análisis)
+ * - 4to pass automático si divergencia > 25 puntos
  * - Métricas avanzadas
+ * - Scoring ponderado por importancia de footprints
  */
 export async function improvedFreeAnalysis(
   text: string,
@@ -280,49 +284,47 @@ export async function improvedFreeAnalysis(
   analysisDetails: {
     pass1Probability: number;
     pass2Probability: number;
-    pass3Probability?: number;
+    pass3Probability: number;
+    pass4Probability?: number;
     metricsAdjustment: number;
   };
 }> {
-  // PASO 1: Análisis principal con GPT-3.5
+  // PASO 1: Análisis principal con GPT-4o-mini (MEJORADO - antes GPT-3.5)
   const mainPrompt = getMainAnalysisPrompt(text);
-  const analysis1 = await analyzeWithGPT35(mainPrompt);
+  const analysis1 = await analyzeWithGPT4oMini(mainPrompt);
 
-  // PASO 2: Validación cruzada con GPT-3.5 (prompt diferente)
+  // PASO 2: Validación cruzada con GPT-4o-mini (MEJORADO - antes GPT-3.5)
   const validationPrompt = getValidationPrompt(text);
-  const analysis2 = await analyzeWithGPT35(validationPrompt);
+  const analysis2 = await analyzeWithGPT4oMini(validationPrompt);
 
-  // PASO 3: Calcular métricas avanzadas
+  // PASO 3: Tercer análisis SIEMPRE con GPT-4o-mini (MEJORADO - antes condicional)
+  const analysis3 = await analyzeWithGPT4oMini(mainPrompt);
+
+  // PASO 4: Calcular métricas avanzadas
   const advancedMetrics = calculateAdvancedMetrics(text);
   const metricsAdjustment = getMetricsAdjustment(advancedMetrics);
   const metricsInsights = interpretMetrics(advancedMetrics);
 
-  // PASO 4: Decidir si usar GPT-4o-mini
-  const averageProbability = (analysis1.probability + analysis2.probability) / 2;
-  const isAmbiguous = averageProbability >= 40 && averageProbability <= 70;
-  const isLongText = text.length > 800;
-  const divergence = Math.abs(analysis1.probability - analysis2.probability);
-  const highDivergence = divergence > 20;
+  // PASO 5: Verificar si necesitamos 4to pass por alta divergencia
+  const probabilities = [analysis1.probability, analysis2.probability, analysis3.probability];
+  const maxProb = Math.max(...probabilities);
+  const minProb = Math.min(...probabilities);
+  const divergence = maxProb - minProb;
 
-  let analysis3: AnalysisResult | null = null;
+  let analysis4: AnalysisResult | null = null;
 
-  // Usar GPT-4o-mini si:
-  // - Resultado ambiguo (40-70%)
-  // - Texto largo (>800 chars) Y usuario registrado
-  // - Alta divergencia entre los dos análisis (>20 puntos)
-  const useGPT4oMini = isAmbiguous || (isLongText && isRegisteredUser) || highDivergence;
-
-  if (useGPT4oMini) {
-    // Usar el prompt principal con GPT-4o-mini para mejor precisión
-    analysis3 = await analyzeWithGPT4oMini(mainPrompt);
+  // NUEVO: 4to pass de desempate si divergencia > 25 puntos
+  if (divergence > 25) {
+    // Usar prompt de validación para tener perspectiva diferente
+    analysis4 = await analyzeWithGPT4oMini(validationPrompt);
   }
 
-  // PASO 5: Combinar resultados
-  const combined = combineAnalysisResults(analysis1, analysis2, analysis3, metricsAdjustment);
+  // PASO 6: Combinar resultados
+  const combined = combineAnalysisResults(analysis1, analysis2, analysis3, analysis4, metricsAdjustment);
 
-  // PASO 6: Combinar scores y footprints
-  const allResults = [analysis1, analysis2];
-  if (analysis3) allResults.push(analysis3);
+  // PASO 7: Combinar scores y footprints (ACTUALIZADO para incluir 4to pass)
+  const allResults = [analysis1, analysis2, analysis3];
+  if (analysis4) allResults.push(analysis4);
 
   const avgMarkersIA = Math.round(
     allResults.reduce((sum, r) => sum + r.scores_by_category.markersIA, 0) / allResults.length
@@ -331,15 +333,54 @@ export async function improvedFreeAnalysis(
     allResults.reduce((sum, r) => sum + r.scores_by_category.markersHuman, 0) / allResults.length
   );
 
-  // Combinar footprints únicos
-  const allFootprints = allResults.flatMap(r => r.linguistic_footprints);
-  const uniqueFootprints = allFootprints.filter(
-    (fp, index, self) => index === self.findIndex(t => t.phrase === fp.phrase)
-  );
+  // FASE 2: Combinar footprints con SCORING PONDERADO por importancia
+  interface WeightedFootprint {
+    phrase: string;
+    reason: string;
+    weight: number;
+    occurrences: number;
+  }
+
+  const footprintMap = new Map<string, WeightedFootprint>();
+
+  allResults.forEach((result, analysisIndex) => {
+    result.linguistic_footprints.forEach((fp, fpIndex) => {
+      const existing = footprintMap.get(fp.phrase);
+
+      // Calcular peso basado en:
+      // 1. Posición en la lista (primeros son más relevantes): peso 3.0 a 1.0
+      const positionWeight = fpIndex === 0 ? 3.0 : fpIndex === 1 ? 2.5 : fpIndex === 2 ? 2.0 : 1.5;
+
+      // 2. Número de análisis que lo detectaron (consenso): +0.5 por cada aparición adicional
+      const occurrenceBonus = existing ? 0.5 : 0;
+
+      // 3. Análisis principal tiene más peso: 1.2x
+      const analysisWeight = analysisIndex === 0 ? 1.2 : 1.0;
+
+      const totalWeight = (positionWeight + occurrenceBonus) * analysisWeight;
+
+      if (existing) {
+        // Ya existe, incrementar occurrences y actualizar peso si es mayor
+        existing.occurrences += 1;
+        existing.weight = Math.max(existing.weight, totalWeight);
+      } else {
+        // Nuevo footprint
+        footprintMap.set(fp.phrase, {
+          phrase: fp.phrase,
+          reason: fp.reason,
+          weight: totalWeight,
+          occurrences: 1,
+        });
+      }
+    });
+  });
+
+  // Convertir a array y ordenar por peso (más peso = más importante)
+  const weightedFootprints = Array.from(footprintMap.values()).sort((a, b) => b.weight - a.weight);
 
   // 🚨 VALIDACIÓN CRÍTICA: Filtrar footprints que NO aparecen en el texto original
   // Esto previene alucinaciones donde GPT inventa frases o incluye contenido del prompt
-  const validatedFootprints = uniqueFootprints.filter(fp => {
+  const validatedFootprints = weightedFootprints.filter(fp => {
     if (!fp.phrase || fp.phrase.trim().length === 0) {
       return false; // Eliminar frases vacías
     }
@@ -359,6 +400,12 @@ export async function improvedFreeAnalysis(
     return existsInText;
   });
 
+  // Convertir de vuelta al formato esperado (sin el peso)
+  const finalFootprints = validatedFootprints.slice(0, 8).map(wf => ({
+    phrase: wf.phrase,
+    reason: wf.reason,
+  }));
+
   return {
     probability: combined.probability,
     confidenceLevel: combined.confidenceLevel,
@@ -366,14 +413,15 @@ export async function improvedFreeAnalysis(
       markersIA: avgMarkersIA,
       markersHuman: avgMarkersHuman,
     },
-    linguistic_footprints: validatedFootprints.slice(0, 8), // Limitar a 8 más relevantes
+    linguistic_footprints: finalFootprints, // Ahora ordenados por importancia ponderada
     advancedMetrics,
     metricsInsights,
     usedModels: combined.usedModels,
     analysisDetails: {
       pass1Probability: analysis1.probability,
       pass2Probability: analysis2.probability,
-      pass3Probability: analysis3?.probability,
+      pass3Probability: analysis3.probability,
+      pass4Probability: analysis4?.probability,
       metricsAdjustment,
     },
   };
