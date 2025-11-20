@@ -624,8 +624,8 @@ export default function ParafraseadorMain() {
           {result ? (
             <div className="relative" style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
               <div className={isLimitExceeded ? "filter blur-sm" : ""} style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
-                {/* Área de resultado */}
-                <div className="w-full border-2 border-emerald-200 rounded-2xl bg-emerald-50/30 p-4 text-base text-gray-800 mb-3 whitespace-pre-wrap leading-relaxed overflow-y-auto" style={{minHeight: '280px', maxHeight: '320px'}}>
+                {/* Área de resultado mejorada */}
+                <div className="w-full border-2 border-emerald-300 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 p-5 text-base text-gray-800 mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm animate-fade-in" style={{minHeight: '280px', maxHeight: '320px'}}>
                   {result}
                 </div>
 
@@ -650,38 +650,38 @@ export default function ParafraseadorMain() {
 
                 {/* VALIDACIÓN DE SIMILITUD - Datos reales (Fase 4) */}
                 {isCalculatingSimilarity ? (
-                  <div className="mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
+                  <div className="mb-4 p-5 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 justify-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                      <p className="text-sm font-semibold text-blue-900">Calculando similitud...</p>
+                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                      <p className="text-base font-semibold text-blue-900">Calculando similitud...</p>
                     </div>
                   </div>
                 ) : changePercentage !== null && similarityScore !== null ? (
-                  <div className="mb-3 p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Icon icon={ProductIcons.Analytics} size="md" className="text-green-700" />
-                      <h3 className="text-sm font-bold text-green-900">Análisis de similitud</h3>
+                  <div className="mb-5 p-5 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-md animate-fade-in" style={{animationDelay: '0.2s'}}>
+                    <div className="flex items-center gap-2 mb-4">
+                      <Icon icon={ProductIcons.Analytics} size="lg" className="text-green-700" />
+                      <h3 className="text-base font-bold text-green-900">Análisis de similitud</h3>
                     </div>
 
-                    {/* Métricas REALES de similitud */}
-                    <div className="grid grid-cols-2 gap-3 mb-3">
+                    {/* Métricas REALES de similitud mejoradas */}
+                    <div className="grid grid-cols-2 gap-4 mb-4">
                       {/* SIMILITUD */}
-                      <div className="text-center bg-blue-50 p-3 rounded-lg border-2 border-blue-200">
-                        <p className="text-xs text-gray-600 mb-1 font-medium">Similitud</p>
-                        <p className="text-3xl font-extrabold text-blue-600 mb-1">{similarityScore}%</p>
-                        <p className="text-xs text-blue-700 font-semibold">Palabras en común</p>
+                      <div className="text-center bg-blue-50 p-4 rounded-xl border-2 border-blue-200 shadow-sm">
+                        <p className="text-xs text-gray-600 mb-2 font-semibold uppercase tracking-wide">Similitud</p>
+                        <p className="text-5xl font-black text-blue-600 mb-2">{similarityScore}%</p>
+                        <p className="text-xs text-blue-700 font-bold">Palabras en común</p>
                       </div>
 
                       {/* CAMBIO */}
-                      <div className={`text-center p-3 rounded-lg border-2 ${
+                      <div className={`text-center p-4 rounded-xl border-2 shadow-sm ${
                         changePercentage >= 60
                           ? 'bg-green-100 border-green-300'
                           : changePercentage >= 40
                           ? 'bg-yellow-100 border-yellow-300'
                           : 'bg-red-100 border-red-300'
                       }`}>
-                        <p className="text-xs text-gray-600 mb-1 font-medium">Cambio</p>
-                        <p className={`text-3xl font-extrabold mb-1 ${
+                        <p className="text-xs text-gray-600 mb-2 font-semibold uppercase tracking-wide">Cambio</p>
+                        <p className={`text-5xl font-black mb-2 ${
                           changePercentage >= 60 ? 'text-green-600' : changePercentage >= 40 ? 'text-yellow-600' : 'text-red-600'
                         }`}>{changePercentage}%</p>
                         <p className={`text-xs font-semibold ${
