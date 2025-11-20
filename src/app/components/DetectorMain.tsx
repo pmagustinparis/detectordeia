@@ -6,6 +6,7 @@ import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
 import FeedbackBlock from './FeedbackBlock';
 import FileUploadButton from './FileUploadButton';
+import LoadingSteps from './LoadingSteps';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
@@ -75,6 +76,7 @@ export default function DetectorMain({
   const { isAuthenticated, user } = useAuth();
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [loadingStep, setLoadingStep] = useState(0);
   const [result, setResult] = useState<{
     probability: number;
     confidenceLevel: 'low' | 'medium' | 'high';
@@ -162,10 +164,15 @@ export default function DetectorMain({
     const exceededLimit = text.length > CHARACTER_LIMIT;
 
     setIsAnalyzing(true);
+    setLoadingStep(1); // Step 1: Análisis lingüístico
     setError(null);
 
     try {
       if (exceededLimit) {
+        // Progresión de steps durante análisis simulado
+        setTimeout(() => setLoadingStep(2), 500);
+        setTimeout(() => setLoadingStep(3), 1000);
+
         // Mostrar resultado simulado cuando se excede el límite
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
         setResult({
@@ -201,6 +208,9 @@ export default function DetectorMain({
         });
       } else {
         // Análisis normal
+        // Step 2: Detección de patrones (after 2 seconds)
+        setTimeout(() => setLoadingStep(2), 2000);
+
         const response = await fetch('/api/analyze', {
           method: 'POST',
           headers: {
@@ -208,6 +218,10 @@ export default function DetectorMain({
           },
           body: JSON.stringify({ text, textType }),
         });
+
+        // Step 3: Validación final (when API responds)
+        setLoadingStep(3);
+
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.error || 'Error al analizar el texto');
@@ -244,6 +258,7 @@ export default function DetectorMain({
       setError(err instanceof Error ? err.message : 'Error al analizar el texto');
     } finally {
       setIsAnalyzing(false);
+      setLoadingStep(0);
     }
   };
 
@@ -1275,6 +1290,18 @@ export default function DetectorMain({
               )}
 
               </div>
+            ) : isAnalyzing ? (
+              // Show loading steps when analyzing
+              <LoadingSteps
+                steps={[
+                  { id: 1, label: 'Análisis lingüístico', icon: ProductIcons.Brain },
+                  { id: 2, label: 'Detección de patrones', icon: ProductIcons.Analytics },
+                  { id: 3, label: 'Validación final', icon: ProductIcons.Success }
+                ]}
+                currentStep={loadingStep}
+                title="Analizando tu texto..."
+                estimatedTime={10}
+              />
             ) : (
               <>
                 <div className="flex items-end gap-3 mb-1">
