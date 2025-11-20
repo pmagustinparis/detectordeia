@@ -802,7 +802,7 @@ export default function DetectorMain({
                 {/* Métricas lingüísticas avanzadas (colapsables) */}
                 {result.advancedMetrics && (
                   <details className="w-full mb-4 mt-4">
-                    <summary className="cursor-pointer p-4 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl hover:border-violet-300 transition-colors">
+                    <summary className="cursor-pointer px-4 py-3 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl hover:border-violet-300 transition-colors">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <span className="text-lg">📊</span>
