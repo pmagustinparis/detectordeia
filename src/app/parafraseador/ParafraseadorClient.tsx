@@ -126,7 +126,7 @@ export default function ParafraseadorClient() {
           {/* Beneficio 1 */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6 card-elevated">
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Target} size="2xl" className="text-violet-600" />
+              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-violet-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Sin plagio garantizado</h3>
             <p className="text-gray-600 text-sm leading-relaxed">

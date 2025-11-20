@@ -20,7 +20,7 @@ export default function HomePageClient() {
       <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8 animate-slide-in-bottom">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Target} size="2xl" className="text-violet-600" />
+            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-violet-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Precisión en español</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Optimizado para textos de España y LATAM. Resultados confiables y explicados.</p>
