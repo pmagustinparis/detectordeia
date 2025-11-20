@@ -256,38 +256,41 @@ export default function HumanizadorMain() {
     setValidationError(null);
   };
 
-  // Función de validación automática (Fase 3)
+  // Función de validación automática (Fase 3) - OPTIMIZADA CON PARALELO
   const validateHumanizedText = async (originalText: string, humanizedText: string) => {
     setIsValidating(true);
     setValidationError(null);
 
     try {
-      // Validar texto original
-      const originalResponse = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: originalText, textType: 'default' }),
-      });
+      // Ejecutar ambas validaciones EN PARALELO para reducir tiempo a la mitad
+      const [originalResponse, humanizedResponse] = await Promise.all([
+        fetch('/api/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: originalText, textType: 'default' }),
+        }),
+        fetch('/api/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: humanizedText, textType: 'default' }),
+        }),
+      ]);
 
       if (!originalResponse.ok) {
         throw new Error('Error al validar texto original');
       }
 
-      const originalData = await originalResponse.json();
-      setOriginalScore(originalData.probability);
-
-      // Validar texto humanizado
-      const humanizedResponse = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: humanizedText, textType: 'default' }),
-      });
-
       if (!humanizedResponse.ok) {
         throw new Error('Error al validar texto humanizado');
       }
 
-      const humanizedData = await humanizedResponse.json();
+      // Parsear ambas respuestas en paralelo
+      const [originalData, humanizedData] = await Promise.all([
+        originalResponse.json(),
+        humanizedResponse.json(),
+      ]);
+
+      setOriginalScore(originalData.probability);
       setHumanizedScore(humanizedData.probability);
 
       // Track validación exitosa
