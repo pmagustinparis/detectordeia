@@ -84,6 +84,14 @@ export const ProductIcons = {
   Writer: PenTool,
   Company: Building2,
   Document: FileText,
+
+  // Aliases para compatibilidad directa con nombres de Lucide
+  GraduationCap: GraduationCap,
+  Briefcase: Briefcase,
+  Users: Users,
+  PenTool: PenTool,
+  Building2: Building2,
+  FileText: FileText,
 } as const;
 
 // Componente wrapper para iconos con props consistentes
