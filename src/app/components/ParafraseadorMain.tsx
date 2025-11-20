@@ -33,6 +33,11 @@ export default function ParafraseadorMain() {
   const [selectedMode, setSelectedMode] = useState<ParaphraserMode>('standard');
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
 
+  // Validation state (Fase 4: Validación de similitud post-parafraseo)
+  const [similarityScore, setSimilarityScore] = useState<number | null>(null);
+  const [changePercentage, setChangePercentage] = useState<number | null>(null);
+  const [isCalculatingSimilarity, setIsCalculatingSimilarity] = useState(false);
+
   // Límite de caracteres dinámico basado en autenticación y plan
   const CHARACTER_LIMIT = !isAuthenticated
     ? CHARACTER_LIMITS.anonymous
@@ -225,6 +230,9 @@ export default function ParafraseadorMain() {
             usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
           }
         });
+
+        // Calcular similitud automáticamente (Fase 4)
+        calculateSimilarity(text, data.paraphrasedText);
       }
 
     } catch (err) {
@@ -240,6 +248,62 @@ export default function ParafraseadorMain() {
     setError(null);
     setIsLimitExceeded(false);
     setAnalyzedTextLength(0);
+    // Limpiar validación
+    setSimilarityScore(null);
+    setChangePercentage(null);
+  };
+
+  // Función para calcular similitud y % de cambio (Fase 4)
+  const calculateSimilarity = (originalText: string, paraphrasedText: string) => {
+    setIsCalculatingSimilarity(true);
+
+    try {
+      // Normalizar textos: minúsculas, sin puntuación, palabras únicas
+      const normalize = (text: string): Set<string> => {
+        return new Set(
+          text
+            .toLowerCase()
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()¿?¡!"""'']/g, ' ')
+            .split(/\s+/)
+            .filter(word => word.length > 2) // Filtrar palabras muy cortas
+        );
+      };
+
+      const originalWords = normalize(originalText);
+      const paraphrasedWords = normalize(paraphrasedText);
+
+      // Calcular intersección (palabras comunes)
+      const commonWords = new Set(
+        [...originalWords].filter(word => paraphrasedWords.has(word))
+      );
+
+      // Calcular similitud (Jaccard similarity)
+      const allWords = new Set([...originalWords, ...paraphrasedWords]);
+      const similarity = (commonWords.size / allWords.size) * 100;
+      const change = 100 - similarity;
+
+      setSimilarityScore(Math.round(similarity));
+      setChangePercentage(Math.round(change));
+
+      // Track validación de similitud
+      trackEvent({
+        eventType: 'validation_completed',
+        toolType: 'parafraseador',
+        metadata: {
+          similarity_score: Math.round(similarity),
+          change_percentage: Math.round(change),
+          passed_threshold: change >= 60,
+          mode: selectedMode,
+          plan: userPlan,
+          is_authenticated: isAuthenticated,
+        }
+      });
+
+    } catch (err) {
+      console.error('Error calculando similitud:', err);
+    } finally {
+      setIsCalculatingSimilarity(false);
+    }
   };
 
   const handleCopy = async () => {
@@ -570,67 +634,94 @@ export default function ParafraseadorMain() {
                   </button>
                 </div>
 
-                {/* Estadísticas del parafraseo */}
-                <div className="mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xl"><Icon icon={ProductIcons.Analytics} size="sm" className="inline" /></span>
-                    <h3 className="text-sm font-bold text-blue-900">Análisis del parafraseo</h3>
-                  </div>
-
-                  {/* Métricas visuales */}
-                  <div className="space-y-3 mb-3">
-                    {/* Cambio de palabras estimado */}
-                    <div>
-                      <div className="flex justify-between text-xs text-gray-600 mb-1">
-                        <span className="font-medium">Palabras cambiadas (estimado)</span>
-                        <span className="font-bold text-blue-700">60-70%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-blue-500 h-2 rounded-full" style={{width: '65%'}}></div>
-                      </div>
-                      <p className="text-xs text-gray-600 mt-1">La mayoría de las palabras fueron reemplazadas por sinónimos</p>
-                    </div>
-
-                    {/* Similitud de significado */}
-                    <div>
-                      <div className="flex justify-between text-xs text-gray-600 mb-1">
-                        <span className="font-medium">Similitud de significado</span>
-                        <span className="font-bold text-green-700">95%+</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-green-500 h-2 rounded-full" style={{width: '95%'}}></div>
-                      </div>
-                      <p className="text-xs text-gray-600 mt-1"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /> Significado preservado perfectamente</p>
+                {/* VALIDACIÓN DE SIMILITUD - Datos reales (Fase 4) */}
+                {isCalculatingSimilarity ? (
+                  <div className="mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
+                    <div className="flex items-center gap-2 justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+                      <p className="text-sm font-semibold text-blue-900">Calculando similitud...</p>
                     </div>
                   </div>
+                ) : changePercentage !== null && similarityScore !== null ? (
+                  <div className="mb-3 p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Icon icon={ProductIcons.Analytics} size="md" className="text-green-700" />
+                      <h3 className="text-sm font-bold text-green-900">Análisis de similitud</h3>
+                    </div>
 
-                  {/* Resumen de cambios */}
-                  <div className="bg-white p-3 rounded-lg border border-blue-200">
-                    <p className="text-xs font-bold text-blue-900 mb-2">Resumen:</p>
-                    <ul className="text-xs text-gray-700 space-y-1">
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Estructura reorganizada</strong> completamente</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Vocabulario renovado</strong> con sinónimos precisos</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Mensaje idéntico</strong> al original</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Listo para usar</strong> sin riesgo de plagio</span>
-                      </li>
-                    </ul>
+                    {/* Métricas REALES de similitud */}
+                    <div className="grid grid-cols-2 gap-3 mb-3">
+                      {/* SIMILITUD */}
+                      <div className="text-center bg-blue-50 p-3 rounded-lg border-2 border-blue-200">
+                        <p className="text-xs text-gray-600 mb-1 font-medium">Similitud</p>
+                        <p className="text-3xl font-extrabold text-blue-600 mb-1">{similarityScore}%</p>
+                        <p className="text-xs text-blue-700 font-semibold">Palabras en común</p>
+                      </div>
+
+                      {/* CAMBIO */}
+                      <div className={`text-center p-3 rounded-lg border-2 ${
+                        changePercentage >= 60
+                          ? 'bg-green-100 border-green-300'
+                          : changePercentage >= 40
+                          ? 'bg-yellow-100 border-yellow-300'
+                          : 'bg-red-100 border-red-300'
+                      }`}>
+                        <p className="text-xs text-gray-600 mb-1 font-medium">Cambio</p>
+                        <p className={`text-3xl font-extrabold mb-1 ${
+                          changePercentage >= 60 ? 'text-green-600' : changePercentage >= 40 ? 'text-yellow-600' : 'text-red-600'
+                        }`}>{changePercentage}%</p>
+                        <p className={`text-xs font-semibold ${
+                          changePercentage >= 60 ? 'text-green-700' : changePercentage >= 40 ? 'text-yellow-700' : 'text-red-700'
+                        }`}>
+                          {changePercentage >= 60 ? (
+                            <><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /> Muy diferente</>
+                          ) : changePercentage >= 40 ? (
+                            <><Icon icon={ProductIcons.Warning} size="xs" className="inline text-yellow-600" /> Moderado</>
+                          ) : (
+                            <><Icon icon={ProductIcons.Warning} size="xs" className="inline text-red-600" /> Muy similar</>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Badge de resultado principal */}
+                    {changePercentage >= 60 ? (
+                      <div className="bg-green-600 text-white p-3 rounded-xl text-center mb-2">
+                        <p className="text-sm font-bold mb-1">
+                          <Icon icon={ProductIcons.Success} size="md" className="inline" /> ¡Sin riesgo de plagio!
+                        </p>
+                        <p className="text-xs">
+                          Tu texto cambió <strong>{changePercentage}%</strong> del original.
+                          Es lo suficientemente diferente para usarlo sin problemas.
+                        </p>
+                      </div>
+                    ) : changePercentage >= 40 ? (
+                      <div className="bg-yellow-600 text-white p-3 rounded-xl text-center mb-2">
+                        <p className="text-sm font-bold mb-1">
+                          <Icon icon={ProductIcons.Warning} size="md" className="inline" /> Cambio moderado
+                        </p>
+                        <p className="text-xs">
+                          Tu texto cambió <strong>{changePercentage}%</strong>.
+                          {userPlan !== 'premium' ? ' Probá un modo premium para más cambios.' : ' Intenta parafrasear nuevamente.'}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="bg-orange-600 text-white p-3 rounded-xl text-center mb-2">
+                        <p className="text-sm font-bold mb-1">
+                          <Icon icon={ProductIcons.Warning} size="md" className="inline" /> Muy similar al original
+                        </p>
+                        <p className="text-xs">
+                          Solo cambió <strong>{changePercentage}%</strong>. Riesgo de plagio.
+                          {userPlan !== 'premium' ? ' Probá modos premium para mejores resultados.' : ' Intenta parafrasear nuevamente.'}
+                        </p>
+                      </div>
+                    )}
+
+                    <p className="text-xs text-gray-600 text-center italic">
+                      <Icon icon={ProductIcons.Info} size="xs" className="inline" /> Análisis basado en comparación de vocabulario único
+                    </p>
                   </div>
-
-                  <p className="text-xs text-gray-600 mt-2 text-center italic">
-                    <Icon icon={ProductIcons.Info} size="xs" className="inline" /> El parafraseo es diferente del original pero conserva el sentido
-                  </p>
-                </div>
+                ) : null}
 
                 {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
                 {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
