@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { ProductIcons, Icon } from '@/lib/icons';
 import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
 import FeedbackBlock from './FeedbackBlock';
@@ -416,7 +417,7 @@ export default function DetectorMain({
             className={`mt-2 w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isAnalyzing ? 'animate-pulse-glow' : ''}`}
             aria-label="Detectar contenido de IA"
           >
-            <span className="text-xl">🤖</span>
+            <Icon icon={ProductIcons.Detector} size="lg" className="text-white" />
             {isAnalyzing ? 'Analizando...' : 'Analizar texto'}
           </button>
           <p className="text-center text-sm text-gray-600 mt-2 font-medium">Sin registro. 100% privado. Precisión líder en español.</p>
@@ -459,7 +460,8 @@ export default function DetectorMain({
                 {/* Interpretación específica del resultado */}
                 <div className="mt-3 mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-l-4 border-blue-500 rounded-lg">
                   <h3 className="text-sm font-bold text-blue-900 mb-2 flex items-center gap-2">
-                    <span>🧠</span> ¿Por qué detectamos esto como {result.probability >= 50 ? 'IA' : 'humano'}?
+                    <Icon icon={ProductIcons.Brain} size="md" className="text-blue-700" />
+                    ¿Por qué detectamos esto como {result.probability >= 50 ? 'IA' : 'humano'}?
                   </h3>
 
                   <div className="space-y-2 text-sm text-blue-800">
@@ -498,7 +500,7 @@ export default function DetectorMain({
                         <p className="font-medium">Tu texto tiene características mixtas:</p>
                         <div className="grid md:grid-cols-2 gap-2 mt-2">
                           <div className="bg-red-50 p-2 rounded border border-red-200">
-                            <p className="text-xs font-bold text-red-800 mb-1">🤖 Señales de IA:</p>
+                            <p className="text-xs font-bold text-red-800 mb-1"><span className="flex items-center gap-1"><Icon icon={ProductIcons.AI} size="xs" />Señales de IA:</span></p>
                             <ul className="text-xs text-red-700 space-y-0.5">
                               {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                                 <li>• {result.linguistic_footprints.length} frases cliché detectadas</li>
@@ -512,7 +514,7 @@ export default function DetectorMain({
                             </ul>
                           </div>
                           <div className="bg-green-50 p-2 rounded border border-green-200">
-                            <p className="text-xs font-bold text-green-800 mb-1">👤 Señales humanas:</p>
+                            <p className="text-xs font-bold text-green-800 mb-1"><span className="flex items-center gap-1"><Icon icon={ProductIcons.Human} size="xs" />Señales humanas:</span></p>
                             <ul className="text-xs text-green-700 space-y-0.5">
                               {result.scores_by_category && result.scores_by_category.markersHuman >= 8 && (
                                 <li>• {result.scores_by_category.markersHuman} patrones naturales</li>
@@ -527,7 +529,7 @@ export default function DetectorMain({
                           </div>
                         </div>
                         <p className="mt-2 text-xs italic text-blue-700">
-                          💡 Esto puede significar: texto de IA editado por humano, texto humano con ayuda de IA, o estilo formal muy estructurado.
+                          Esto puede significar: texto de IA editado por humano, texto humano con ayuda de IA, o estilo formal muy estructurado.
                         </p>
                       </>
                     )}
@@ -573,7 +575,7 @@ export default function DetectorMain({
                 {/* Confidence Indicator mejorado */}
                 <div className="w-full mb-4 p-4 bg-white border-2 border-gray-200 rounded-xl">
                   <h3 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-                    <span>🎯</span> Confianza del análisis
+                    <Icon icon={ProductIcons.Confidence} size="md" className="text-gray-700" /> Confianza del análisis
                   </h3>
 
                   {result.confidenceLevel === 'high' && (
@@ -621,7 +623,7 @@ export default function DetectorMain({
                       </p>
                       <div className="p-2 bg-red-50 rounded border border-red-200">
                         <p className="text-xs text-red-800 leading-relaxed">
-                          💡 <strong>Tip:</strong> Textos muy cortos o con mezcla de estilos (ej: IA editada por humano) pueden dar resultados ambiguos.
+                          <strong>Tip:</strong> Textos muy cortos o con mezcla de estilos (ej: IA editada por humano) pueden dar resultados ambiguos.
                         </p>
                       </div>
                     </>
@@ -634,7 +636,7 @@ export default function DetectorMain({
                     href="/pricing"
                     className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
                   >
-                    🔓 Desbloquear análisis avanzado
+                    <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Desbloquear análisis avanzado</span>
                   </a>
                   <p className="text-xs text-gray-500 mt-1">Usos ilimitados + hasta 15,000 caracteres + subida de archivos</p>
                 </div>
@@ -663,14 +665,14 @@ export default function DetectorMain({
                 {result.scores_by_category && (
                   <div className="w-full mb-4 mt-4 p-4 bg-gradient-to-br from-gray-50 to-slate-50 border border-gray-200 rounded-xl">
                     <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <span>📊</span> Análisis de patrones detectados
+                      <Icon icon={ProductIcons.Analytics} size="md" className="text-gray-700" /> Análisis de patrones detectados
                     </h3>
 
                     {/* Señales de IA */}
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-semibold text-gray-700">
-                          🤖 Señales de IA encontradas
+                          <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.AI} size="sm" className="text-red-600" />Señales de IA encontradas</span>
                         </span>
                         <span className="text-sm font-bold text-red-600">
                           {result.scores_by_category.markersIA} patrones
@@ -696,7 +698,7 @@ export default function DetectorMain({
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-semibold text-gray-700">
-                          👤 Señales humanas encontradas
+                          <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Human} size="sm" className="text-green-600" />Señales humanas encontradas</span>
                         </span>
                         <span className="text-sm font-bold text-green-600">
                           {result.scores_by_category.markersHuman} patrones
@@ -742,13 +744,13 @@ export default function DetectorMain({
                 {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                   <div className="w-full mb-4 mt-4">
                     <h3 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <span>🔍</span> Frases sospechosas encontradas en tu texto
+                      <Icon icon={ProductIcons.Detector} size="md" className="text-gray-700" /> Frases sospechosas encontradas en tu texto
                     </h3>
                     <div className="space-y-3">
                       {result.linguistic_footprints.map((item, index) => {
                         // Calcular relevancia basado en el índice (primeras son más relevantes)
                         const relevance = index === 0 ? 3 : index <= 2 ? 2 : 1;
-                        const relevanceStars = '⭐'.repeat(relevance);
+                        // Stars now rendered with Icon component
                         const relevanceText = relevance === 3 ? 'Alta' : relevance === 2 ? 'Media' : 'Baja';
 
                         return (
@@ -757,12 +759,12 @@ export default function DetectorMain({
                               <span className="font-bold text-yellow-900 text-sm">"{item.phrase}"</span>
                               <div className="flex items-center gap-1">
                                 <span className="text-xs text-yellow-700">Relevancia:</span>
-                                <span className="text-yellow-600" title={`Relevancia ${relevanceText}`}>{relevanceStars}</span>
+                                <div className="flex">{Array.from({ length: relevance }).map((_, i) => <Icon key={i} icon={ProductIcons.Star} size="xs" className="text-yellow-500 fill-yellow-500" />)}</div>
                               </div>
                             </div>
 
                             <p className="text-sm text-yellow-800 mb-2 leading-relaxed">
-                              🤖 {item.reason}
+                              <span className="flex items-center gap-1"><Icon icon={ProductIcons.AI} size="xs" className="text-yellow-800" />{item.reason}</span>
                             </p>
 
                             {/* Contexto del texto */}
@@ -806,11 +808,11 @@ export default function DetectorMain({
                       <div className="p-4 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl hover:border-violet-300 transition-colors">
                         <div className="flex items-center justify-between">
                           <h3 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                            <span>📊</span>
+                            <Icon icon={ProductIcons.Analytics} size="md" className="text-gray-700" />
                             <span>Métricas lingüísticas avanzadas</span>
                             {result.analysisQuality?.usedPremiumModel && (
                               <span className="text-xs px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full font-semibold">
-                                ⚡ Análisis Mejorado
+                                <span className="flex items-center gap-1"><Icon icon={ProductIcons.Fast} size="xs" />Análisis Mejorado</span>
                               </span>
                             )}
                           </h3>
@@ -841,7 +843,7 @@ export default function DetectorMain({
                             {result.advancedMetrics.lexicalDiversity >= 0.4 && result.advancedMetrics.lexicalDiversity < 0.6 &&
                               "✓ Vocabulario normal. Diversidad estándar."}
                             {result.advancedMetrics.lexicalDiversity >= 0.6 && result.probability >= 60 &&
-                              "⚡ Vocabulario diverso. Sin embargo, otras señales (frases cliché, estructura) indican IA."}
+                              "Vocabulario diverso. Sin embargo, otras señales (frases cliché, estructura) indican IA."}
                             {result.advancedMetrics.lexicalDiversity >= 0.6 && result.probability < 60 &&
                               "✓ Vocabulario muy diverso. Típico de escritura humana creativa."}
                           </p>
@@ -867,7 +869,7 @@ export default function DetectorMain({
                             {result.advancedMetrics.sentenceVariance >= 2 && result.advancedMetrics.sentenceVariance < 5 &&
                               "✓ Variación normal de longitud de oraciones."}
                             {result.advancedMetrics.sentenceVariance >= 5 && result.probability >= 60 &&
-                              "⚡ Buena variación de oraciones. Aun así, el contenido y las frases sugieren IA."}
+                              "Buena variación de oraciones. Aun así, el contenido y las frases sugieren IA."}
                             {result.advancedMetrics.sentenceVariance >= 5 && result.probability < 60 &&
                               "✓ Gran variación. Los humanos alternan entre oraciones cortas y largas naturalmente."}
                           </p>
@@ -894,7 +896,7 @@ export default function DetectorMain({
                             {result.advancedMetrics.perplexity >= 3 && result.advancedMetrics.perplexity < 7 &&
                               "✓ Predictibilidad normal."}
                             {result.advancedMetrics.perplexity >= 7 && result.probability >= 60 &&
-                              "⚡ Combinaciones de palabras variadas. Sin embargo, el análisis general indica IA."}
+                              "Combinaciones de palabras variadas. Sin embargo, el análisis general indica IA."}
                             {result.advancedMetrics.perplexity >= 7 && result.probability < 60 &&
                               "✓ Texto impredecible. Los humanos usan combinaciones de palabras más variadas."}
                           </p>
@@ -919,7 +921,7 @@ export default function DetectorMain({
                             {result.advancedMetrics.ngramRepetition > 6 &&
                               "⚠️ Muchas frases repetidas. Típico de IA que reutiliza construcciones."}
                             {result.advancedMetrics.ngramRepetition > 3 && result.advancedMetrics.ngramRepetition <= 6 &&
-                              "⚡ Repetición moderada."}
+                              "Repetición moderada."}
                             {result.advancedMetrics.ngramRepetition <= 3 &&
                               "✓ Baja repetición. Los humanos evitan naturalmente repetir las mismas frases."}
                           </p>
@@ -953,7 +955,7 @@ export default function DetectorMain({
                 {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="mt-4 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
                     <p className="text-sm font-semibold text-violet-800 mb-1">
-                      💡 ¿Usás seguido las herramientas?
+                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Info} size="sm" className="text-violet-600" />¿Usás seguido las herramientas?</span>
                     </p>
                     <p className="text-xs text-violet-700 mb-2">
                       Registrándote gratis podés guardar tu historial y acceder a todos tus análisis desde cualquier dispositivo.
@@ -971,7 +973,7 @@ export default function DetectorMain({
                 {!isAuthenticated && usageCount >= 5 && (
                   <div className="mt-4 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
                     <p className="text-sm font-bold text-cyan-900 mb-2">
-                      🚀 ¡Ya usaste el Detector {usageCount} veces!
+                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-cyan-700" />¡Ya usaste el Detector {usageCount} veces!
                     </p>
                     <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
                       Registrándote gratis obtenés:<br/>
@@ -991,7 +993,7 @@ export default function DetectorMain({
                 {/* Bloque premium compacto al final cuando hay resultado */}
                 <div className="mt-6 mb-2 bg-white border border-[#e9d5ff] rounded-xl shadow p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xl text-[#a259f7]">🔒</span>
+                    <Icon icon={ProductIcons.Locked} size="xl" className="text-[#a259f7]" />
                     <span className="font-bold text-base text-gray-800">¿Querés análisis premium?</span>
                   </div>
                   <div className="text-xs text-gray-700 mb-2">
@@ -1008,7 +1010,7 @@ export default function DetectorMain({
                     href="/pricing"
                     className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
                   >
-                    🔓 Ver Planes y Precios
+                    <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Ver Planes y Precios</span>
                   </a>
                   <p className="text-xs text-gray-500">Soporte prioritario vía email incluido</p>
                 </div>
@@ -1081,7 +1083,7 @@ export default function DetectorMain({
                         {/* Pro Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            🚀 Con Plan Pro obtenés:
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-orange-700" />Con Plan Pro obtenés:</span>
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
@@ -1128,7 +1130,7 @@ export default function DetectorMain({
                         {/* Premium Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            🚀 Con Plan Pro obtenés:
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-orange-700" />Con Plan Pro obtenés:</span>
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
@@ -1240,7 +1242,7 @@ export default function DetectorMain({
                   </div>
                 </div>
                 <p className="text-xs text-gray-600 mb-4">
-                  🔒 100% gratis · Sin tarjeta · Registro en 30 segundos
+                  <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Secure} size="sm" className="text-gray-600" />100% gratis · Sin tarjeta · Registro en 30 segundos
                 </p>
                 <a
                   href="/auth/signup"

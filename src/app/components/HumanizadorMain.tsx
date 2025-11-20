@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { ProductIcons, Icon } from '@/lib/icons';
 import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
 import FileUploadButton from './FileUploadButton';
@@ -172,7 +173,7 @@ export default function HumanizadorMain() {
           return;
         }
 
-        // 🔒 MODO PREMIUM REQUERIDO (403)
+        // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
           setError(data.message || 'Este modo requiere Plan Pro');
 
@@ -477,7 +478,7 @@ export default function HumanizadorMain() {
                   {isLocked && (
                     <div className="absolute left-0 right-0 top-full mt-2 bg-gradient-to-br from-violet-600 to-purple-600 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border-2 border-violet-400">
                       <div className="flex items-start gap-2 mb-2">
-                        <span className="text-xl">🔒</span>
+                        <span className="text-xl"><Icon icon={ProductIcons.Locked} size="sm" className="inline" /></span>
                         <div>
                           <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
                           <p className="text-violet-100 leading-relaxed">
@@ -513,7 +514,7 @@ export default function HumanizadorMain() {
           className={`mt-2 w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isHumanizing ? 'animate-pulse-glow' : ''}`}
           aria-label="Humanizar texto"
         >
-          <span className="text-xl">🤖→👤</span>
+          <span className="text-xl"><Icon icon={ProductIcons.AI} size="sm" className="inline text-red-600" />→<Icon icon={ProductIcons.Human} size="sm" className="inline text-green-600" /></span>
           {isHumanizing ? 'Humanizando...' : 'Humanizar Texto'}
         </button>
 
@@ -530,7 +531,7 @@ export default function HumanizadorMain() {
           {/* Header con icono */}
           <div className="flex items-center gap-2 mb-3">
             <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 shadow-md">
-              <span className="text-white text-lg">✨</span>
+              <span className="text-white text-lg"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-gray-800 text-base">Texto humanizado</span>
@@ -568,7 +569,7 @@ export default function HumanizadorMain() {
                 {/* Mejoras realizadas (preview visual) */}
                 <div className="mb-3 p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xl">✨</span>
+                    <span className="text-xl"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
                     <h3 className="text-sm font-bold text-green-900">Texto humanizado exitosamente</h3>
                   </div>
 
@@ -577,19 +578,19 @@ export default function HumanizadorMain() {
                     <p className="text-xs font-bold text-green-900 mb-2">Mejoras aplicadas:</p>
                     <ul className="text-xs text-gray-700 space-y-1.5">
                       <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Eliminadas frases cliché</strong> típicas de IA</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Variada la longitud</strong> de oraciones para mayor naturalidad</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Añadidas contracciones</strong> y expresiones naturales</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Mejorado el flujo</strong> del texto sin cambiar el significado</span>
                       </li>
                     </ul>
@@ -599,18 +600,18 @@ export default function HumanizadorMain() {
                   <div className="grid grid-cols-2 gap-2">
                     <div className="text-center bg-red-50 p-2 rounded border border-red-200">
                       <p className="text-xs text-gray-600 mb-1">Antes</p>
-                      <p className="text-lg font-bold text-red-600">🤖 IA</p>
+                      <p className="text-lg font-bold text-red-600"><Icon icon={ProductIcons.AI} size="sm" className="inline text-red-600" /> IA</p>
                       <p className="text-xs text-red-700">Detectableen la mayoría de detectores</p>
                     </div>
                     <div className="text-center bg-green-100 p-2 rounded border border-green-300">
                       <p className="text-xs text-gray-600 mb-1">Ahora</p>
-                      <p className="text-lg font-bold text-green-600">👤 Humano</p>
+                      <p className="text-lg font-bold text-green-600"><Icon icon={ProductIcons.Human} size="sm" className="inline text-green-600" /> Humano</p>
                       <p className="text-xs text-green-700">Pasa como texto natural</p>
                     </div>
                   </div>
 
                   <p className="text-xs text-gray-600 mt-2 text-center italic">
-                    💡 El significado de tu texto se mantuvo intacto
+                    <Icon icon={ProductIcons.Info} size="xs" className="inline" /> El significado de tu texto se mantuvo intacto
                   </p>
                 </div>
 
@@ -618,7 +619,7 @@ export default function HumanizadorMain() {
                 {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
                     <div className="flex items-start gap-2">
-                      <span className="text-lg">💡</span>
+                      <span className="text-lg"><Icon icon={ProductIcons.Info} size="xs" className="inline" /></span>
                       <div className="flex-1">
                         <p className="text-sm font-semibold text-violet-900 mb-1">
                           ¿Usás seguido las herramientas?
@@ -640,7 +641,7 @@ export default function HumanizadorMain() {
                 {!isAuthenticated && usageCount >= 5 && (
                   <div className="p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl">
                     <div className="flex items-start gap-3">
-                      <span className="text-2xl">🚀</span>
+                      <span className="text-2xl"><Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /></span>
                       <div className="flex-1">
                         <p className="text-sm font-bold text-cyan-900 mb-1">
                           ¡Ya usaste el Humanizador {usageCount} veces!
@@ -705,15 +706,15 @@ export default function HumanizadorMain() {
                           </p>
                           <ul className="space-y-1.5 text-xs text-green-800">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.free.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.free / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Historial</strong> de tus análisis</span>
                             </li>
                           </ul>
@@ -722,19 +723,19 @@ export default function HumanizadorMain() {
                         {/* Pro Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            🚀 Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Usos ilimitados</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>5 modos premium</strong> + archivos</span>
                             </li>
                           </ul>
@@ -769,23 +770,23 @@ export default function HumanizadorMain() {
                         {/* Premium Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            🚀 Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Usos ilimitados</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>5 modos premium</strong> + archivos</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Historial completo</strong></span>
                             </li>
                           </ul>
@@ -824,7 +825,7 @@ export default function HumanizadorMain() {
               {/* Estado vacío mejorado */}
               <div className="flex flex-col items-center justify-center text-center px-6 py-8" style={{flexGrow: 1}}>
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-6 shadow-lg animate-pulse">
-                  <span className="text-white text-4xl">✨</span>
+                  <span className="text-white text-4xl"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-2">
                   Esperando tu texto

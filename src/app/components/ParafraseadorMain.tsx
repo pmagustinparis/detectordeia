@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { ProductIcons, Icon } from '@/lib/icons';
 import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
 import FileUploadButton from './FileUploadButton';
@@ -172,7 +173,7 @@ export default function ParafraseadorMain() {
           return;
         }
 
-        // 🔒 MODO PREMIUM REQUERIDO (403)
+        // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
           setError(data.message || 'Este modo requiere Plan Pro');
 
@@ -481,7 +482,7 @@ export default function ParafraseadorMain() {
                   {isLocked && (
                     <div className="absolute left-0 right-0 top-full mt-2 bg-gradient-to-br from-violet-600 to-purple-600 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border-2 border-violet-400">
                       <div className="flex items-start gap-2 mb-2">
-                        <span className="text-xl">🔒</span>
+                        <span className="text-xl"><Icon icon={ProductIcons.Locked} size="sm" className="inline" /></span>
                         <div>
                           <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
                           <p className="text-violet-100 leading-relaxed">
@@ -517,7 +518,7 @@ export default function ParafraseadorMain() {
           className={`mt-2 w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isParaphrasing ? 'animate-pulse-glow' : ''}`}
           aria-label="Parafrasear texto"
         >
-          <span className="text-xl">🔄</span>
+          <span className="text-xl"><Icon icon={ProductIcons.Paraphraser} size="sm" className="inline" /></span>
           {isParaphrasing ? 'Parafraseando...' : 'Parafrasear Texto'}
         </button>
 
@@ -534,7 +535,7 @@ export default function ParafraseadorMain() {
           {/* Header con icono */}
           <div className="flex items-center gap-2 mb-3">
             <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 shadow-md">
-              <span className="text-white text-lg">✨</span>
+              <span className="text-white text-lg"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-gray-800 text-base">Texto parafraseado</span>
@@ -572,7 +573,7 @@ export default function ParafraseadorMain() {
                 {/* Estadísticas del parafraseo */}
                 <div className="mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xl">📊</span>
+                    <span className="text-xl"><Icon icon={ProductIcons.Analytics} size="sm" className="inline" /></span>
                     <h3 className="text-sm font-bold text-blue-900">Análisis del parafraseo</h3>
                   </div>
 
@@ -599,7 +600,7 @@ export default function ParafraseadorMain() {
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div className="bg-green-500 h-2 rounded-full" style={{width: '95%'}}></div>
                       </div>
-                      <p className="text-xs text-gray-600 mt-1">✓ Significado preservado perfectamente</p>
+                      <p className="text-xs text-gray-600 mt-1"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /> Significado preservado perfectamente</p>
                     </div>
                   </div>
 
@@ -608,26 +609,26 @@ export default function ParafraseadorMain() {
                     <p className="text-xs font-bold text-blue-900 mb-2">Resumen:</p>
                     <ul className="text-xs text-gray-700 space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">✓</span>
+                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Estructura reorganizada</strong> completamente</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">✓</span>
+                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Vocabulario renovado</strong> con sinónimos precisos</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">✓</span>
+                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Mensaje idéntico</strong> al original</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">✓</span>
+                        <span className="text-blue-600 mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                         <span><strong>Listo para usar</strong> sin riesgo de plagio</span>
                       </li>
                     </ul>
                   </div>
 
                   <p className="text-xs text-gray-600 mt-2 text-center italic">
-                    💡 El parafraseo es diferente del original pero conserva el sentido
+                    <Icon icon={ProductIcons.Info} size="xs" className="inline" /> El parafraseo es diferente del original pero conserva el sentido
                   </p>
                 </div>
 
@@ -635,7 +636,7 @@ export default function ParafraseadorMain() {
                 {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="mt-3 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
                     <p className="text-sm font-semibold text-violet-800 mb-1">
-                      💡 ¿Usás seguido las herramientas?
+                      <Icon icon={ProductIcons.Info} size="xs" className="inline" /> ¿Usás seguido las herramientas?
                     </p>
                     <p className="text-xs text-violet-700 mb-2">
                       Registrándote gratis podés guardar tu historial y acceder a todas tus paráfrasis desde cualquier dispositivo.
@@ -653,7 +654,7 @@ export default function ParafraseadorMain() {
                 {!isAuthenticated && usageCount >= 5 && (
                   <div className="mt-3 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
                     <p className="text-sm font-bold text-cyan-900 mb-2">
-                      🚀 ¡Ya usaste el Parafraseador {usageCount} veces!
+                      <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> ¡Ya usaste el Parafraseador {usageCount} veces!
                     </p>
                     <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
                       Registrándote gratis obtenés:<br/>
@@ -713,15 +714,15 @@ export default function ParafraseadorMain() {
                           </p>
                           <ul className="space-y-1.5 text-xs text-green-800">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.free.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.free / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Historial</strong> de tus análisis</span>
                             </li>
                           </ul>
@@ -730,19 +731,19 @@ export default function ParafraseadorMain() {
                         {/* Pro Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            🚀 Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Usos ilimitados</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>5 modos premium</strong> + archivos</span>
                             </li>
                           </ul>
@@ -777,23 +778,23 @@ export default function ParafraseadorMain() {
                         {/* Premium Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            🚀 Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Usos ilimitados</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>5 modos premium</strong> + archivos</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Historial completo</strong></span>
                             </li>
                           </ul>
@@ -832,7 +833,7 @@ export default function ParafraseadorMain() {
               {/* Estado vacío mejorado */}
               <div className="flex flex-col items-center justify-center text-center px-6 py-8" style={{flexGrow: 1}}>
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-6 shadow-lg animate-pulse">
-                  <span className="text-white text-4xl">✨</span>
+                  <span className="text-white text-4xl"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-2">
                   Esperando tu texto
