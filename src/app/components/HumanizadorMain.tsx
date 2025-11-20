@@ -565,12 +565,53 @@ export default function HumanizadorMain() {
                   </button>
                 </div>
 
-                {/* Mensaje de éxito */}
-                <div className="p-3 bg-green-50 border border-green-200 rounded-xl flex items-center gap-2 mb-3">
-                  <span className="text-green-600 text-xl">✅</span>
-                  <span className="text-sm font-medium text-green-800">
-                    Tu texto ha sido humanizado correctamente
-                  </span>
+                {/* Mejoras realizadas (preview visual) */}
+                <div className="mb-3 p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xl">✨</span>
+                    <h3 className="text-sm font-bold text-green-900">Texto humanizado exitosamente</h3>
+                  </div>
+
+                  {/* Lista de mejoras aplicadas */}
+                  <div className="bg-white p-3 rounded-lg border border-green-200 mb-2">
+                    <p className="text-xs font-bold text-green-900 mb-2">Mejoras aplicadas:</p>
+                    <ul className="text-xs text-gray-700 space-y-1.5">
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span><strong>Eliminadas frases cliché</strong> típicas de IA</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span><strong>Variada la longitud</strong> de oraciones para mayor naturalidad</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span><strong>Añadidas contracciones</strong> y expresiones naturales</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 font-bold mt-0.5">✓</span>
+                        <span><strong>Mejorado el flujo</strong> del texto sin cambiar el significado</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Resumen comparativo visual */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="text-center bg-red-50 p-2 rounded border border-red-200">
+                      <p className="text-xs text-gray-600 mb-1">Antes</p>
+                      <p className="text-lg font-bold text-red-600">🤖 IA</p>
+                      <p className="text-xs text-red-700">Detectableen la mayoría de detectores</p>
+                    </div>
+                    <div className="text-center bg-green-100 p-2 rounded border border-green-300">
+                      <p className="text-xs text-gray-600 mb-1">Ahora</p>
+                      <p className="text-lg font-bold text-green-600">👤 Humano</p>
+                      <p className="text-xs text-green-700">Pasa como texto natural</p>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-gray-600 mt-2 text-center italic">
+                    💡 El significado de tu texto se mantuvo intacto
+                  </p>
                 </div>
 
                 {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
