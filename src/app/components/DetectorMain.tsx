@@ -802,18 +802,20 @@ export default function DetectorMain({
                 {/* Métricas lingüísticas avanzadas (colapsables) */}
                 {result.advancedMetrics && (
                   <details className="w-full mb-4 mt-4">
-                    <summary className="cursor-pointer px-4 py-3 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl hover:border-violet-300 transition-colors">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <span className="text-lg">📊</span>
-                          <span className="text-sm font-bold text-gray-800">Métricas lingüísticas avanzadas</span>
-                          {result.analysisQuality?.usedPremiumModel && (
-                            <span className="text-xs px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full font-semibold">
-                              ⚡ Análisis Mejorado
-                            </span>
-                          )}
+                    <summary className="cursor-pointer list-none">
+                      <div className="p-4 bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl hover:border-violet-300 transition-colors">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <span>📊</span>
+                            <span>Métricas lingüísticas avanzadas</span>
+                            {result.analysisQuality?.usedPremiumModel && (
+                              <span className="text-xs px-2 py-0.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-full font-semibold">
+                                ⚡ Análisis Mejorado
+                              </span>
+                            )}
+                          </h3>
+                          <span className="text-sm text-gray-500">Ver detalles ▼</span>
                         </div>
-                        <span className="text-sm text-gray-500">Ver detalles ▼</span>
                       </div>
                     </summary>
 
