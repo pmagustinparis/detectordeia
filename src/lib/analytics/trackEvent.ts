@@ -32,6 +32,7 @@ export type AnalyticsEventType =
   | 'completed_analysis'
   | 'completed_humanization'
   | 'completed_paraphrase'
+  | 'validation_completed' // Validación automática post-humanización (Fase 3)
 
   // Autenticación
   | 'signup'
