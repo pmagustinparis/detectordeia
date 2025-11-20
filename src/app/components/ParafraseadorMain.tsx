@@ -723,6 +723,101 @@ export default function ParafraseadorMain() {
                   </div>
                 ) : null}
 
+                {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
+                {userPlan !== 'premium' && !isLimitExceeded && (
+                  <div className="mt-3 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
+                      <h3 className="text-sm font-bold text-purple-900">Comparación: Free vs Pro</h3>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-3 mb-3">
+                      {/* LO QUE TIENES (FREE) */}
+                      <div className="bg-white p-3 rounded-lg border-2 border-gray-200">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full font-bold">
+                            {isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
+                          </span>
+                        </div>
+                        <p className="text-xs font-bold text-gray-800 mb-2">Lo que acabas de usar:</p>
+                        <ul className="text-xs text-gray-700 space-y-1.5">
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600 font-bold">✓</span>
+                            <span>Modo Standard gratis</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600 font-bold">✓</span>
+                            <span>Hasta {isAuthenticated ? '600' : '400'} caracteres</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600 font-bold">✓</span>
+                            <span>Análisis de similitud</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-gray-400 font-bold">✗</span>
+                            <span className="text-gray-400">Sin modos premium</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-gray-400 font-bold">✗</span>
+                            <span className="text-gray-400">Sin subida de archivos</span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* LO QUE OBTENDRÍAS (PRO) */}
+                      <div className="bg-gradient-to-br from-purple-100 to-violet-100 p-3 rounded-lg border-2 border-purple-300 relative">
+                        <div className="absolute -top-2 -right-2">
+                          <span className="bg-gradient-to-r from-purple-600 to-violet-600 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
+                            PREMIUM
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Icon icon={ProductIcons.Star} size="sm" className="text-purple-600" />
+                          <span className="text-xs font-bold text-purple-900">CON PLAN PRO</span>
+                        </div>
+                        <p className="text-xs font-bold text-purple-900 mb-2">Todo lo anterior PLUS:</p>
+                        <ul className="text-xs text-purple-900 space-y-1.5">
+                          <li className="flex items-start gap-2">
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <span><strong>5 modos premium</strong> (Académico, Formal, etc.)</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <span><strong>Hasta 15,000 caracteres</strong> por texto</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <span><strong>Subida de archivos</strong> (PDF, DOCX, TXT)</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <span><strong>Usos ilimitados</strong> diarios</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <span><strong>Mayor diferencia</strong> del original</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="text-center">
+                      <a
+                        href="/pricing"
+                        onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: 'parafraseador', metadata: { source: 'free_vs_pro_comparison' }})}
+                        className="inline-block w-full bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      >
+                        <span className="flex items-center justify-center gap-2">
+                          <Icon icon={ProductIcons.Upgrade} size="md" />
+                          Ver Planes y Precios
+                        </span>
+                      </a>
+                      <p className="text-xs text-gray-600 mt-2">Desde $10/mes • Cancela cuando quieras</p>
+                    </div>
+                  </div>
+                )}
+
                 {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
                 {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="mt-3 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
