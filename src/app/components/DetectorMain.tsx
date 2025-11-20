@@ -973,7 +973,7 @@ export default function DetectorMain({
                 {!isAuthenticated && usageCount >= 5 && (
                   <div className="mt-4 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
                     <p className="text-sm font-bold text-cyan-900 mb-2">
-                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-cyan-700" />¡Ya usaste el Detector {usageCount} veces!
+                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-cyan-700" />¡Ya usaste el Detector {usageCount} veces!</span>
                     </p>
                     <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
                       Registrándote gratis obtenés:<br/>
@@ -1242,7 +1242,7 @@ export default function DetectorMain({
                   </div>
                 </div>
                 <p className="text-xs text-gray-600 mb-4">
-                  <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Secure} size="sm" className="text-gray-600" />100% gratis · Sin tarjeta · Registro en 30 segundos
+                  <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Secure} size="sm" className="text-gray-600" />100% gratis · Sin tarjeta · Registro en 30 segundos</span>
                 </p>
                 <a
                   href="/auth/signup"
