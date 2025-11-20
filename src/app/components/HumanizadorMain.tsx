@@ -33,6 +33,12 @@ export default function HumanizadorMain() {
   const [selectedMode, setSelectedMode] = useState<HumanizerMode>('standard');
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
 
+  // Validation state (Fase 3: Validación post-humanización)
+  const [originalScore, setOriginalScore] = useState<number | null>(null);
+  const [humanizedScore, setHumanizedScore] = useState<number | null>(null);
+  const [isValidating, setIsValidating] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+
   // Límite de caracteres dinámico basado en autenticación y plan
   const CHARACTER_LIMIT = !isAuthenticated
     ? CHARACTER_LIMITS.anonymous
@@ -225,6 +231,10 @@ export default function HumanizadorMain() {
             usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
           }
         });
+
+        // Validación automática del texto humanizado (Fase 3)
+        // Solo validar si es un análisis real (no límite excedido)
+        validateHumanizedText(text, data.humanizedText);
       }
 
     } catch (err) {
@@ -240,6 +250,67 @@ export default function HumanizadorMain() {
     setError(null);
     setIsLimitExceeded(false);
     setAnalyzedTextLength(0);
+    // Limpiar validación
+    setOriginalScore(null);
+    setHumanizedScore(null);
+    setValidationError(null);
+  };
+
+  // Función de validación automática (Fase 3)
+  const validateHumanizedText = async (originalText: string, humanizedText: string) => {
+    setIsValidating(true);
+    setValidationError(null);
+
+    try {
+      // Validar texto original
+      const originalResponse = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: originalText, textType: 'default' }),
+      });
+
+      if (!originalResponse.ok) {
+        throw new Error('Error al validar texto original');
+      }
+
+      const originalData = await originalResponse.json();
+      setOriginalScore(originalData.probability);
+
+      // Validar texto humanizado
+      const humanizedResponse = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: humanizedText, textType: 'default' }),
+      });
+
+      if (!humanizedResponse.ok) {
+        throw new Error('Error al validar texto humanizado');
+      }
+
+      const humanizedData = await humanizedResponse.json();
+      setHumanizedScore(humanizedData.probability);
+
+      // Track validación exitosa
+      trackEvent({
+        eventType: 'validation_completed',
+        toolType: 'humanizador',
+        metadata: {
+          original_score: originalData.probability,
+          humanized_score: humanizedData.probability,
+          improvement: originalData.probability - humanizedData.probability,
+          mode: selectedMode,
+          passed_detector: humanizedData.probability < 30,
+          plan: userPlan,
+          is_authenticated: isAuthenticated,
+        }
+      });
+
+    } catch (err) {
+      console.error('Error en validación:', err);
+      setValidationError('No se pudo validar el texto humanizado');
+    } finally {
+      setIsValidating(false);
+    }
   };
 
   const handleCopy = async () => {
@@ -566,54 +637,105 @@ export default function HumanizadorMain() {
                   </button>
                 </div>
 
-                {/* Mejoras realizadas (preview visual) */}
-                <div className="mb-3 p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xl"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
-                    <h3 className="text-sm font-bold text-green-900">Texto humanizado exitosamente</h3>
-                  </div>
-
-                  {/* Lista de mejoras aplicadas */}
-                  <div className="bg-white p-3 rounded-lg border border-green-200 mb-2">
-                    <p className="text-xs font-bold text-green-900 mb-2">Mejoras aplicadas:</p>
-                    <ul className="text-xs text-gray-700 space-y-1.5">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Eliminadas frases cliché</strong> típicas de IA</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Variada la longitud</strong> de oraciones para mayor naturalidad</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Añadidas contracciones</strong> y expresiones naturales</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold mt-0.5"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                        <span><strong>Mejorado el flujo</strong> del texto sin cambiar el significado</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Resumen comparativo visual */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="text-center bg-red-50 p-2 rounded border border-red-200">
-                      <p className="text-xs text-gray-600 mb-1">Antes</p>
-                      <p className="text-lg font-bold text-red-600"><Icon icon={ProductIcons.AI} size="sm" className="inline text-red-600" /> IA</p>
-                      <p className="text-xs text-red-700">Detectableen la mayoría de detectores</p>
-                    </div>
-                    <div className="text-center bg-green-100 p-2 rounded border border-green-300">
-                      <p className="text-xs text-gray-600 mb-1">Ahora</p>
-                      <p className="text-lg font-bold text-green-600"><Icon icon={ProductIcons.Human} size="sm" className="inline text-green-600" /> Humano</p>
-                      <p className="text-xs text-green-700">Pasa como texto natural</p>
+                {/* VALIDACIÓN AUTOMÁTICA - Resultados con datos reales del detector (Fase 3) */}
+                {isValidating ? (
+                  <div className="mb-3 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
+                    <div className="flex items-center gap-2 justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+                      <p className="text-sm font-semibold text-blue-900">Validando con el detector...</p>
                     </div>
                   </div>
+                ) : validationError ? (
+                  <div className="mb-3 p-4 bg-yellow-50 border-2 border-yellow-200 rounded-xl">
+                    <p className="text-xs text-yellow-800 text-center">
+                      <Icon icon={ProductIcons.Warning} size="xs" className="inline" /> {validationError}
+                    </p>
+                  </div>
+                ) : originalScore !== null && humanizedScore !== null ? (
+                  <div className="mb-3 p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Icon icon={ProductIcons.Detector} size="md" className="text-green-700" />
+                      <h3 className="text-sm font-bold text-green-900">Validación con nuestro detector</h3>
+                    </div>
 
-                  <p className="text-xs text-gray-600 mt-2 text-center italic">
-                    <Icon icon={ProductIcons.Info} size="xs" className="inline" /> El significado de tu texto se mantuvo intacto
-                  </p>
-                </div>
+                    {/* Comparación de scores REALES */}
+                    <div className="grid grid-cols-2 gap-3 mb-3">
+                      {/* ANTES */}
+                      <div className="text-center bg-red-50 p-3 rounded-lg border-2 border-red-200">
+                        <p className="text-xs text-gray-600 mb-1 font-medium">Texto Original</p>
+                        <p className="text-3xl font-extrabold text-red-600 mb-1">{originalScore}%</p>
+                        <p className="text-xs text-red-700 font-semibold">
+                          <Icon icon={ProductIcons.AI} size="xs" className="inline text-red-600" /> Detectado como IA
+                        </p>
+                      </div>
+
+                      {/* DESPUÉS */}
+                      <div className={`text-center p-3 rounded-lg border-2 ${
+                        humanizedScore < 30
+                          ? 'bg-green-100 border-green-300'
+                          : humanizedScore < 70
+                          ? 'bg-yellow-100 border-yellow-300'
+                          : 'bg-red-100 border-red-300'
+                      }`}>
+                        <p className="text-xs text-gray-600 mb-1 font-medium">Texto Humanizado</p>
+                        <p className={`text-3xl font-extrabold mb-1 ${
+                          humanizedScore < 30 ? 'text-green-600' : humanizedScore < 70 ? 'text-yellow-600' : 'text-red-600'
+                        }`}>{humanizedScore}%</p>
+                        <p className={`text-xs font-semibold ${
+                          humanizedScore < 30 ? 'text-green-700' : humanizedScore < 70 ? 'text-yellow-700' : 'text-red-700'
+                        }`}>
+                          {humanizedScore < 30 ? (
+                            <><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /> Pasa como humano</>
+                          ) : humanizedScore < 70 ? (
+                            <><Icon icon={ProductIcons.Warning} size="xs" className="inline text-yellow-600" /> Ambiguo</>
+                          ) : (
+                            <><Icon icon={ProductIcons.AI} size="xs" className="inline text-red-600" /> Aún detectado</>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Badge de resultado principal */}
+                    {humanizedScore < 30 ? (
+                      <div className="bg-green-600 text-white p-3 rounded-xl text-center mb-2">
+                        <p className="text-sm font-bold mb-1">
+                          <Icon icon={ProductIcons.Success} size="md" className="inline" /> ¡Texto humanizado exitosamente!
+                        </p>
+                        <p className="text-xs">
+                          Mejora de <strong>{Math.abs(originalScore - humanizedScore)} puntos</strong>.
+                          Tu texto ahora pasa como escrito por humano.
+                        </p>
+                      </div>
+                    ) : humanizedScore < 70 ? (
+                      <div className="bg-yellow-600 text-white p-3 rounded-xl text-center mb-2">
+                        <p className="text-sm font-bold mb-1">
+                          <Icon icon={ProductIcons.Warning} size="md" className="inline" /> Resultado ambiguo
+                        </p>
+                        <p className="text-xs">
+                          Mejora de <strong>{Math.abs(originalScore - humanizedScore)} puntos</strong>.
+                          {userPlan !== 'premium' ? ' Probá un modo premium para mejores resultados.' : ' Intenta humanizar nuevamente.'}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="bg-orange-600 text-white p-3 rounded-xl text-center mb-2">
+                        <p className="text-sm font-bold mb-1">
+                          <Icon icon={ProductIcons.Info} size="md" className="inline" /> Aún detectado como IA
+                        </p>
+                        <p className="text-xs">
+                          {originalScore - humanizedScore > 0
+                            ? `Mejora de ${Math.abs(originalScore - humanizedScore)} puntos, pero aún detectado. `
+                            : 'No hubo mejora. '
+                          }
+                          {userPlan !== 'premium' ? 'Probá un modo premium para mejores resultados.' : 'Intenta humanizar nuevamente o usa otro modo.'}
+                        </p>
+                      </div>
+                    )}
+
+                    <p className="text-xs text-gray-600 text-center italic">
+                      <Icon icon={ProductIcons.Info} size="xs" className="inline" /> Validación automática con nuestro detector de IA
+                    </p>
+                  </div>
+                ) : null}
 
                 {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
                 {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
