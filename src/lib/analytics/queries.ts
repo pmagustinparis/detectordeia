@@ -685,7 +685,7 @@ export async function fetchProductEngagement(
   // Feature Requests (blocked premium modes)
   const { data: blockedEvents } = await supabase
     .from('analytics_events')
-    .select('tool_type, metadata, user_id, anonymous_id')
+    .select('event_type, tool_type, metadata, user_id, anonymous_id')
     .in('event_type', ['premium_mode_blocked', 'file_upload_blocked'])
     .gte('created_at', timeframe.startDate.toISOString());
 
