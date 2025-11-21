@@ -154,7 +154,7 @@ export default function UsageLimitOverlay({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Hasta 15,000 caracteres</strong> por uso</span>
+                    <span><strong>✨ Caracteres ilimitados</strong> por uso</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
