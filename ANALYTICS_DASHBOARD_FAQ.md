@@ -41,7 +41,7 @@
 **Test users actualmente:**
 ```typescript
 TEST_USER_CONFIG = {
-  emails: ['parisagustin@gmail.com', 'latamify@gmail.com']
+  emails: ['parisagustin@gmail.com']
 }
 ```
 
