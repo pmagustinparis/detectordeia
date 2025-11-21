@@ -28,6 +28,20 @@ export default function UsageLimitOverlay({
   resetAt,
   toolName,
 }: UsageLimitOverlayProps) {
+  // Función para obtener el nombre plural correcto de cada herramienta
+  const getToolNamePlural = () => {
+    switch (toolName) {
+      case 'Detector':
+        return 'análisis';
+      case 'Humanizador':
+        return 'humanizaciones';
+      case 'Parafraseador':
+        return 'paráfrasis';
+      default:
+        return 'usos';
+    }
+  };
+
   // Cerrar con ESC
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -88,7 +102,7 @@ export default function UsageLimitOverlay({
           {userType === 'anonymous' && (
             <>
               <p className="text-center text-gray-700 mb-6 leading-relaxed">
-                Ya usaste tus <strong>{limit} {toolName.toLowerCase()}s gratis</strong> de hoy.
+                Ya usaste tus <strong>{limit} {getToolNamePlural()} gratis</strong> de hoy.
               </p>
 
               <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
@@ -132,7 +146,7 @@ export default function UsageLimitOverlay({
           {userType === 'free' && (
             <>
               <p className="text-center text-gray-700 mb-6 leading-relaxed">
-                Alcanzaste tu límite de <strong>{limit} {toolName.toLowerCase()}s diarios</strong>.
+                Alcanzaste tu límite de <strong>{limit} {getToolNamePlural()} diarios</strong>.
                 <br />
                 <span className="text-sm text-gray-600">
                   Tu límite se restablece en {hoursUntilReset} horas.

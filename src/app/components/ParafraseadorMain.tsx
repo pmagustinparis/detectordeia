@@ -459,6 +459,7 @@ export default function ParafraseadorMain() {
           maxChars={CHARACTER_LIMIT}
           disabled={isParaphrasing}
           userPlan={userPlan}
+          toolName="Parafraseador"
           className="mb-3"
         />
 

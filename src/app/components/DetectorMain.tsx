@@ -365,6 +365,7 @@ export default function DetectorMain({
             maxChars={CHARACTER_LIMIT}
             disabled={isAnalyzing}
             userPlan={userPlan}
+            toolName="Detector"
             className="mb-3"
           />
 

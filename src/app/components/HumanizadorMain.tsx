@@ -512,6 +512,7 @@ export default function HumanizadorMain() {
           maxChars={CHARACTER_LIMIT}
           disabled={isHumanizing}
           userPlan={userPlan}
+          toolName="Humanizador"
           className="mb-3"
         />
 
