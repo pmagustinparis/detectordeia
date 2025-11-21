@@ -16,7 +16,7 @@ import { trackEvent } from '@/lib/analytics/client';
 const CHARACTER_LIMITS = {
   anonymous: 400,  // Anónimos: 400 caracteres
   free: 600,  // Free: 600 caracteres
-  premium: 15000,  // Premium: 15000 caracteres
+  premium: 100000,  // Premium: ILIMITADO (100k técnicamente)
 };
 const MIN_CHARACTERS = 50;
 
@@ -120,7 +120,7 @@ export default function HumanizadorMain() {
 
         // Mostrar resultado simulado cuando se excede el límite
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
-        setResult("Este es un ejemplo de texto humanizado. Actualiza a Premium para procesar textos de hasta 15,000 caracteres y acceder a todos los modos de humanización.");
+        setResult("Este es un ejemplo de texto humanizado. Actualiza a Premium para procesar textos ilimitados y acceder a todos los modos de humanización.");
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
 
@@ -571,7 +571,7 @@ export default function HumanizadorMain() {
                           <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
                           <p className="text-violet-100 leading-relaxed">
                             Humaniza tu texto con <strong>{mode.name.toLowerCase()}</strong> profesional.
-                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + hasta <strong>15,000 caracteres</strong>.
+                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
                           </p>
                         </div>
                       </div>
@@ -814,7 +814,7 @@ export default function HumanizadorMain() {
                           </li>
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
-                            <span><strong>Hasta 15,000 caracteres</strong> por texto</span>
+                            <span><strong>✨ Caracteres ilimitados</strong> por texto</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
@@ -945,7 +945,7 @@ export default function HumanizadorMain() {
                             </li>
                             <li className="flex items-start gap-2">
                               <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                              <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
+                              <span><strong>3 usos diarios</strong> del Humanizador (vs 1 actual)</span>
                             </li>
                             <li className="flex items-start gap-2">
                               <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
@@ -1095,7 +1095,7 @@ export default function HumanizadorMain() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     <span className="font-bold text-violet-700">
-                      {isAuthenticated ? '15 usos diarios gratis' : '3 usos diarios'}
+                      {isAuthenticated ? '3 usos diarios gratis' : '1 uso diario'}
                     </span>
                   </div>
                   <p className="text-xs text-gray-600">

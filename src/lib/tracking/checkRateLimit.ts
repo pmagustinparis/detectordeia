@@ -4,10 +4,10 @@
  * Verifica si un usuario ha alcanzado su límite de usos diarios.
  *
  * Límites por herramienta:
- * - Anónimo: 3 usos/día (total entre las 3 herramientas)
+ * - Anónimo: 1 uso/día (total entre las 3 herramientas)
  * - Free:
  *   - Detector: 15 análisis/día
- *   - Humanizador: 10 usos/día
+ *   - Humanizador: 3 usos/día (REDUCIDO para impulsar conversión a PRO)
  *   - Parafraseador: 10 usos/día
  * - Premium: ilimitado
  */
@@ -18,11 +18,11 @@ import type { ToolType } from './trackUsage';
 // Límites por tipo de usuario y herramienta
 const RATE_LIMITS = {
   anonymous: {
-    total: 3, // Límite global para anónimos (entre las 3 herramientas)
+    total: 1, // Límite global para anónimos (reducido para impulsar registro)
   },
   free: {
     detector: 15,
-    humanizador: 10,
+    humanizador: 3, // REDUCIDO: impulsa conversión a PRO
     parafraseador: 10,
   },
   premium: {

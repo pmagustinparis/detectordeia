@@ -38,7 +38,7 @@ const getResultColor = (value: number) => {
 const CHARACTER_LIMITS = {
   anonymous: 800,  // Anónimos: 800 caracteres
   free: 1200,  // Free: 1200 caracteres
-  premium: 15000,  // Premium: 15000 caracteres
+  premium: 100000,  // Premium: ILIMITADO (100k técnicamente)
 };
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
@@ -47,7 +47,7 @@ const premiumTextos = {
   subtitulo: 'Incluido en Plan Pro',
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
-    'Hasta 15,000 caracteres por análisis en el Detector',
+    '✨ Caracteres ilimitados en el Detector',
     'Subida de archivos (PDF, DOCX, TXT)',
     '5 modos premium en Humanizador y Parafraseador',
     'Historial completo de todos tus análisis',
@@ -677,7 +677,7 @@ export default function DetectorMain({
                   >
                     <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Desbloquear análisis avanzado</span>
                   </a>
-                  <p className="text-xs text-gray-500 mt-1">Usos ilimitados + hasta 15,000 caracteres + subida de archivos</p>
+                  <p className="text-xs text-gray-500 mt-1">Usos ilimitados + Caracteres ilimitados + subida de archivos</p>
                 </div>
                 
                 {/* Interpretación explicativa */}
@@ -1046,7 +1046,7 @@ export default function DetectorMain({
                         <ul className="text-xs text-purple-900 space-y-1.5">
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
-                            <span><strong>Hasta 15,000 caracteres</strong> por análisis</span>
+                            <span><strong>✨ Caracteres ilimitados</strong> por análisis</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />

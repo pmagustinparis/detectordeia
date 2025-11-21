@@ -13,7 +13,7 @@ const openai = new OpenAI({
 
 const MIN_CHARACTERS = 50;
 const MAX_CHARACTERS_FREE = 600;
-const MAX_CHARACTERS_ABSOLUTE = 15000; // Límite absoluto (premium futuro)
+const MAX_CHARACTERS_ABSOLUTE = 100000; // Límite absoluto ILIMITADO para PRO
 
 export async function POST(request: Request) {
   try {

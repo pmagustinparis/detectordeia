@@ -16,7 +16,7 @@ import { trackEvent } from '@/lib/analytics/client';
 const CHARACTER_LIMITS = {
   anonymous: 400,  // Anónimos: 400 caracteres
   free: 600,  // Free: 600 caracteres
-  premium: 15000,  // Premium: 15000 caracteres
+  premium: 100000,  // Premium: ILIMITADO (100k técnicamente)
 };
 const MIN_CHARACTERS = 50;
 
@@ -119,7 +119,7 @@ export default function ParafraseadorMain() {
 
         // Mostrar resultado simulado cuando se excede el límite
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
-        setResult("Este es un ejemplo de texto parafraseado. Actualiza a Premium para procesar textos de hasta 15,000 caracteres y acceder a todos los modos de parafraseo.");
+        setResult("Este es un ejemplo de texto parafraseado. Actualiza a Premium para procesar textos ilimitados y acceder a todos los modos de parafraseo.");
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
 
@@ -565,7 +565,7 @@ export default function ParafraseadorMain() {
                           <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
                           <p className="text-violet-100 leading-relaxed">
                             Parafrasea tu texto con estilo <strong>{mode.name.toLowerCase()}</strong> profesional.
-                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + hasta <strong>15,000 caracteres</strong>.
+                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
                           </p>
                         </div>
                       </div>
@@ -797,7 +797,7 @@ export default function ParafraseadorMain() {
                           </li>
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
-                            <span><strong>Hasta 15,000 caracteres</strong> por texto</span>
+                            <span><strong>✨ Caracteres ilimitados</strong> por texto</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
