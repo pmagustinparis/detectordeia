@@ -41,7 +41,10 @@
 **Test users actualmente:**
 ```typescript
 TEST_USER_CONFIG = {
-  emails: ['parisagustin@gmail.com']
+  emails: [
+    'parisagustin@gmail.com',  // Test user free
+    'buildbyagus@gmail.com'     // Test user premium
+  ]
 }
 ```
 
