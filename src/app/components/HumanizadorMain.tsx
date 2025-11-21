@@ -56,6 +56,13 @@ export default function HumanizadorMain() {
     resetAt: Date;
   } | null>(null);
 
+  // Rate limit status (para mostrar usos restantes)
+  const [rateLimitStatus, setRateLimitStatus] = useState<{
+    remaining: number;
+    limit: number;
+    usedToday: number;
+  } | null>(null);
+
   // Track usage count for anonymous users
   useEffect(() => {
     if (!isAuthenticated) {
@@ -63,6 +70,38 @@ export default function HumanizadorMain() {
       setUsageCount(count);
     }
   }, [isAuthenticated]);
+
+  // Fetch rate limit status on mount and when auth changes
+  useEffect(() => {
+    async function fetchRateLimitStatus() {
+      try {
+        const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
+        const response = await fetch('/api/rate-limit-status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            anonymousId,
+            toolType: 'humanizador',
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setRateLimitStatus({
+            remaining: data.remaining,
+            limit: data.limit,
+            usedToday: data.usedToday,
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching rate limit status:', error);
+      }
+    }
+
+    if (!loading) {
+      fetchRateLimitStatus();
+    }
+  }, [isAuthenticated, loading]);
 
   // Obtener plan del usuario
   useEffect(() => {
@@ -221,6 +260,15 @@ export default function HumanizadorMain() {
         setResult(data.humanizedText);
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(false);
+
+        // Actualizar rate limit status con la info de la respuesta
+        if (data.rateLimit) {
+          setRateLimitStatus({
+            remaining: data.rateLimit.remaining,
+            limit: data.rateLimit.limit,
+            usedToday: data.rateLimit.limit - data.rateLimit.remaining,
+          });
+        }
 
         // Incrementar contador de uso para usuarios anónimos
         if (!isAuthenticated) {
@@ -498,11 +546,37 @@ export default function HumanizadorMain() {
           />
         </div>
 
-        {/* Contador de caracteres y botón limpiar */}
+        {/* Contador de caracteres, usos restantes y botón limpiar */}
         <div className="flex justify-between items-center text-sm text-gray-600 mt-0 mb-2 gap-2">
-          <span className={getCounterColor() + ' font-medium'}>
-            {text.length}/{CHARACTER_LIMIT}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className={getCounterColor() + ' font-medium'}>
+              {text.length}/{CHARACTER_LIMIT}
+            </span>
+            {/* Badge de usos restantes */}
+            {rateLimitStatus && userPlan !== 'premium' && (
+              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ${
+                rateLimitStatus.remaining === 0
+                  ? 'bg-red-100 text-red-700'
+                  : rateLimitStatus.remaining <= 1
+                    ? 'bg-yellow-100 text-yellow-700'
+                    : 'bg-green-100 text-green-700'
+              }`}>
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                </svg>
+                {rateLimitStatus.remaining}/{rateLimitStatus.limit} usos hoy
+              </span>
+            )}
+            {/* Badge ilimitado para PRO */}
+            {userPlan === 'premium' && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700">
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                Usos ilimitados
+              </span>
+            )}
+          </div>
           <button
             onClick={handleClear}
             className="text-violet-600 font-semibold ml-2 hover:text-violet-700 hover:underline transition-all disabled:opacity-40"
