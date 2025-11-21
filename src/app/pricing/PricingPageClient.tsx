@@ -237,7 +237,7 @@ export default function PricingPageClient() {
     },
     {
       q: "¿Hay límites de uso en el plan Pro?",
-      a: "El plan Pro incluye usos ilimitados diarios. Los únicos límites son 15,000 caracteres por análisis individual.",
+      a: "El plan Pro incluye usos ilimitados diarios y caracteres ilimitados por análisis. No hay límites en la cantidad de texto que puedes procesar.",
     },
     {
       q: "¿Qué incluye el plan Team?",
@@ -309,7 +309,7 @@ export default function PricingPageClient() {
           }`}>
             <div className="mb-6">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Free</h2>
-              <p className="text-gray-600 text-sm">Perfecto para empezar</p>
+              <p className="text-gray-600 text-sm">Prueba sin compromiso</p>
             </div>
             <div className="mb-8">
               <span className="text-5xl font-extrabold text-gray-900">$0</span>
@@ -320,7 +320,13 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">15 usos diarios</span>
+                <span className="text-gray-700"><strong>3 usos/día</strong> del Humanizador</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-700">15 análisis/día con el Detector</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -332,13 +338,7 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">Modo Estándar</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-gray-700">Gratis siempre</span>
+                <span className="text-gray-700">Solo modo Estándar</span>
               </li>
             </ul>
             {isAuthenticated && userPlan === 'premium' ? (
@@ -367,7 +367,7 @@ export default function PricingPageClient() {
               <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Pro
               </h2>
-              <p className="text-gray-700 text-sm font-medium">Para profesionales y estudiantes</p>
+              <p className="text-gray-700 text-sm font-medium">🔥 Ideal para estudiantes y profesionales</p>
             </div>
             <div className="mb-2">
               <span className="text-5xl font-extrabold text-gray-900">
@@ -386,13 +386,13 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Usos ilimitados</span>
+                <span className="text-gray-900 font-semibold">✨ Caracteres ilimitados</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Hasta 15,000 caracteres</span>
+                <span className="text-gray-900 font-semibold">Usos ilimitados diarios</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -530,8 +530,8 @@ export default function PricingPageClient() {
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Caracteres por análisis</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">1,200</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">15,000</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">15,000</td>
+                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✨ Ilimitado</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✨ Ilimitado</td>
                 </tr>
 
                 {/* Humanizador Features */}
@@ -542,7 +542,7 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">3</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
