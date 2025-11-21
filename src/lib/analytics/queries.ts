@@ -21,7 +21,7 @@ import type {
 
 // Test users to exclude from revenue metrics
 export const TEST_USER_CONFIG: TestUserConfig = {
-  emails: ['parisagustin@gmail.com', 'latamify@gmail.com'],
+  emails: ['parisagustin@gmail.com'],
 };
 
 // ============================================
