@@ -196,6 +196,7 @@ TEXTO HUMANIZADO:`;
         rateLimit: {
           remaining: rateLimit.remaining - 1, // Decrementamos porque acabamos de usar uno
           limit: rateLimit.limit,
+          usedToday: rateLimit.usedToday + 1, // Incrementamos porque acabamos de usar uno
           resetAt: rateLimit.resetAt,
         },
       },

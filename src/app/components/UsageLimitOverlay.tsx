@@ -98,7 +98,7 @@ export default function UsageLimitOverlay({
                 <ul className="space-y-2 text-sm text-violet-800">
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>50 usos diarios</strong> (5x más que ahora)</span>
+                    <span><strong>Más usos diarios</strong> en todas las herramientas</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
@@ -106,7 +106,7 @@ export default function UsageLimitOverlay({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Acceso anticipado</strong> a nuevas features</span>
+                    <span><strong>Más caracteres</strong> por análisis</span>
                   </li>
                 </ul>
               </div>
