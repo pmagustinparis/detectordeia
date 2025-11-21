@@ -1005,3 +1005,73 @@ export async function fetchUserInsights(
     recentSignups: recentSignupsData,
   };
 }
+
+// ============================================
+// 8. ALL REGISTERED USERS
+// ============================================
+
+export interface RegisteredUser {
+  id: string;
+  email: string;
+  fullName?: string;
+  planType: 'free' | 'premium';
+  createdAt: string;
+  lastActivity?: string;
+  totalUses?: number;
+  isTestUser?: boolean;
+}
+
+export async function getAllRegisteredUsers(
+  supabase: SupabaseClient
+): Promise<RegisteredUser[]> {
+  // Get all users
+  const { data: users, error } = await supabase
+    .from('users')
+    .select('id, email, full_name, plan_type, created_at')
+    .order('created_at', { ascending: false });
+
+  if (error || !users) {
+    console.error('Error fetching registered users:', error);
+    return [];
+  }
+
+  // For each user, get usage stats
+  const usersWithStats = await Promise.all(
+    users.map(async (user) => {
+      // Check if test user
+      const isTestUser = TEST_USER_CONFIG.emails.includes(user.email);
+
+      // Count total uses
+      const { count } = await supabase
+        .from('analytics_events')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', user.id)
+        .in('event_type', [
+          'completed_analysis',
+          'completed_humanization',
+          'completed_paraphrase',
+        ]);
+
+      // Get last activity
+      const { data: lastEvent } = await supabase
+        .from('analytics_events')
+        .select('created_at')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+        .limit(1);
+
+      return {
+        id: user.id,
+        email: user.email,
+        fullName: user.full_name || undefined,
+        planType: (user.plan_type as 'free' | 'premium') || 'free',
+        createdAt: user.created_at,
+        lastActivity: lastEvent?.[0]?.created_at || undefined,
+        totalUses: count || 0,
+        isTestUser,
+      };
+    })
+  );
+
+  return usersWithStats;
+}

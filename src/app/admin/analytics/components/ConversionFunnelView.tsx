@@ -77,24 +77,19 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900">
-          🔄 Conversion Funnel
-        </h2>
-        <p className="text-sm text-gray-600 mt-1">
-          Flujo de conversión de usuarios desde el primer contacto hasta Premium
-        </p>
-      </div>
+      {/* Description */}
+      <p className="text-sm text-gray-600">
+        Flujo de conversión de usuarios desde el primer contacto hasta Premium
+      </p>
 
       {/* Registered Users Funnel */}
-      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 overflow-hidden">
         <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
           <span>👤</span>
           Funnel de Usuarios Registrados
         </h3>
 
-        <div className="space-y-4">
+        <div className="space-y-4 overflow-x-auto">
           {data.registered.map((stage, index) => (
             <div key={stage.stage}>
               {renderFunnelStage(
@@ -138,13 +133,13 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
       </div>
 
       {/* Anonymous Users Funnel */}
-      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 overflow-hidden">
         <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
           <span>👻</span>
           Funnel de Usuarios Anónimos
         </h3>
 
-        <div className="space-y-4">
+        <div className="space-y-4 overflow-x-auto">
           {data.anonymous.map((stage, index) => (
             <div key={stage.stage}>
               {renderFunnelStage(
