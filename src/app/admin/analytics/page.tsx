@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
-import AnalyticsDashboard from './AnalyticsDashboard';
+import AnalyticsDashboardV2 from './AnalyticsDashboardV2';
 
 export const metadata: Metadata = {
-  title: 'Analytics Dashboard | Admin',
-  description: 'Dashboard de analytics interno',
+  title: 'Analytics Dashboard V2 | Admin',
+  description: 'Elite Analytics Dashboard - Indie Hacker View',
   robots: {
     index: false,
     follow: false,
@@ -11,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function AnalyticsPage() {
-  return <AnalyticsDashboard />;
+  return <AnalyticsDashboardV2 />;
 }
