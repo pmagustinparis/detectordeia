@@ -108,7 +108,7 @@ export async function POST(request: Request) {
     // Límites de caracteres según plan
     const CHARACTER_LIMITS = {
       free: 600,
-      premium: 15000,
+      premium: 100000, // ILIMITADO para PRO
     };
 
     const charLimit = CHARACTER_LIMITS[userPlan];
@@ -117,8 +117,8 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: userPlan === 'free'
-            ? 'El texto excede el límite de 600 caracteres del plan Free. Actualiza a Pro para humanizar hasta 15,000 caracteres.'
-            : 'El texto excede el límite de 15,000 caracteres.',
+            ? 'El texto excede el límite de 600 caracteres del plan Free. Actualiza a Pro para textos ilimitados.'
+            : 'El texto excede el límite máximo permitido.',
           charLimit,
           currentLength: text.length,
         },
