@@ -16,6 +16,8 @@ import HotLeadsPanel from './components/HotLeadsPanel';
 import ProductEngagementView from './components/ProductEngagementView';
 import CohortRetentionTable from './components/CohortRetentionTable';
 import UserInsightsView from './components/UserInsightsView';
+import RegisteredUsersList from './components/RegisteredUsersList';
+import CollapsibleSection from './components/CollapsibleSection';
 
 export default function AnalyticsDashboardV2() {
   const [data, setData] = useState<AnalyticsDashboardData | null>(null);
@@ -96,7 +98,7 @@ export default function AnalyticsDashboardV2() {
                 type="text"
                 value={authUser}
                 onChange={(e) => setAuthUser(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-violet-500 transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-violet-500 transition-colors bg-white text-gray-900"
                 placeholder="Usuario"
                 required
               />
@@ -109,7 +111,7 @@ export default function AnalyticsDashboardV2() {
                 type="password"
                 value={authPass}
                 onChange={(e) => setAuthPass(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-violet-500 transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-violet-500 transition-colors bg-white text-gray-900"
                 placeholder="Contraseña"
                 required
               />
@@ -237,24 +239,29 @@ export default function AnalyticsDashboardV2() {
         </section>
 
         {/* Section 4: Conversion Funnel */}
-        <section>
+        <CollapsibleSection title="Conversion Funnel" icon="🔄" defaultOpen={true}>
           <ConversionFunnelView data={data.conversionFunnel} />
-        </section>
+        </CollapsibleSection>
 
         {/* Section 5: Product Engagement */}
-        <section>
+        <CollapsibleSection title="Product Engagement" icon="📈" defaultOpen={true}>
           <ProductEngagementView data={data.productEngagement} />
-        </section>
+        </CollapsibleSection>
 
         {/* Section 6: Cohort Retention */}
-        <section>
+        <CollapsibleSection title="Cohort Retention" icon="📅" defaultOpen={false}>
           <CohortRetentionTable data={data.cohortAnalysis} />
-        </section>
+        </CollapsibleSection>
 
         {/* Section 7: User Insights */}
-        <section>
+        <CollapsibleSection title="User Insights" icon="🔍" defaultOpen={false}>
           <UserInsightsView data={data.userInsights} />
-        </section>
+        </CollapsibleSection>
+
+        {/* Section 8: Registered Users List */}
+        <CollapsibleSection title="Usuarios Registrados" icon="👥" defaultOpen={true}>
+          <RegisteredUsersList users={data.registeredUsers} />
+        </CollapsibleSection>
 
         {/* Footer info */}
         <footer className="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center">

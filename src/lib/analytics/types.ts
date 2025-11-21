@@ -213,6 +213,21 @@ export interface RecentSignup {
 }
 
 // ============================================
+// REGISTERED USERS LIST
+// ============================================
+
+export interface RegisteredUser {
+  id: string;
+  email: string;
+  fullName?: string;
+  planType: 'free' | 'premium';
+  createdAt: string;
+  lastActivity?: string;
+  totalUses?: number;
+  isTestUser?: boolean;
+}
+
+// ============================================
 // COMPLETE DASHBOARD DATA
 // ============================================
 
@@ -227,6 +242,7 @@ export interface AnalyticsDashboardData {
   productEngagement: ProductEngagement;
   cohortAnalysis: CohortAnalysis;
   userInsights: UserInsights;
+  registeredUsers: RegisteredUser[];
 
   // Meta info
   meta: {

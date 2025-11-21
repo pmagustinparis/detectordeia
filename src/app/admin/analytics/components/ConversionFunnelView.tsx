@@ -33,19 +33,23 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
     users: number,
     conversionFromPrevious?: number,
     dropoffFromPrevious?: number,
-    isFirst: boolean = false
+    isFirst: boolean = false,
+    maxUsers: number = 1
   ) => {
     // Calcular width del funnel basado en usuarios (máximo 100%)
-    const maxUsers = data.registered[0]?.users || 1;
-    const width = Math.max((users / maxUsers) * 100, 10); // Mínimo 10% para visibilidad
+    const widthPercent = Math.max((users / maxUsers) * 100, 15); // Mínimo 15% para visibilidad
 
     return (
       <div className="space-y-2">
         {/* Stage box */}
-        <div className="relative">
+        <div className="relative flex justify-center">
           <div
-            className="mx-auto bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg p-4 shadow-lg transition-all hover:scale-105"
-            style={{ width: `${width}%`, minWidth: '200px' }}
+            className="bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg p-4 shadow-lg transition-all hover:scale-105"
+            style={{
+              width: `${widthPercent}%`,
+              maxWidth: '100%',
+              minWidth: '150px'
+            }}
           >
             <p className="text-white font-bold text-center text-lg">
               {stage}
@@ -77,18 +81,13 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900">
-          🔄 Conversion Funnel
-        </h2>
-        <p className="text-sm text-gray-600 mt-1">
-          Flujo de conversión de usuarios desde el primer contacto hasta Premium
-        </p>
-      </div>
+      {/* Description */}
+      <p className="text-sm text-gray-600">
+        Flujo de conversión de usuarios desde el primer contacto hasta Premium
+      </p>
 
       {/* Registered Users Funnel */}
-      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 overflow-hidden">
         <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
           <span>👤</span>
           Funnel de Usuarios Registrados
@@ -102,7 +101,8 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
                 stage.users,
                 stage.conversionFromPrevious,
                 stage.dropoffFromPrevious,
-                index === 0
+                index === 0,
+                data.registered[0]?.users || 1
               )}
             </div>
           ))}
@@ -138,7 +138,7 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
       </div>
 
       {/* Anonymous Users Funnel */}
-      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 overflow-hidden">
         <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
           <span>👻</span>
           Funnel de Usuarios Anónimos
@@ -152,7 +152,8 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
                 stage.users,
                 stage.conversionFromPrevious,
                 stage.dropoffFromPrevious,
-                index === 0
+                index === 0,
+                data.anonymous[0]?.users || 1
               )}
             </div>
           ))}
