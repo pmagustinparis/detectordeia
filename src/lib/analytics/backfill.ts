@@ -101,8 +101,8 @@ export async function backfillSignupEvents(
         );
       }
 
-      const hadPriorActivity = priorEvents && priorEvents.length > 0;
-      const anonymousId = hadPriorActivity ? priorEvents[0].anonymous_id : null;
+      const hadPriorActivity = !!(priorEvents && priorEvents.length > 0);
+      const anonymousId = hadPriorActivity ? priorEvents![0].anonymous_id : null;
 
       // 4. Create signup event
       const signupEvent = {
