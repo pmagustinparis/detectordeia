@@ -66,7 +66,7 @@ export default function HumanizadorPage() {
               'Humanización de texto de IA',
               'Sin registro requerido',
               '600 caracteres gratis',
-              'Usos ilimitados',
+              '15 usos diarios',
               '100% privado',
               'Optimizado para español',
             ],
@@ -87,7 +87,7 @@ export default function HumanizadorPage() {
                 name: '¿Es gratis el humanizador de IA?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sí, puedes usar el humanizador de forma completamente gratuita sin necesidad de registro. El plan gratuito te permite humanizar hasta 600 caracteres por uso, con usos ilimitados al día.',
+                  text: 'Sí, puedes usar el humanizador de forma gratuita sin registro (3 usos diarios) o registrarte gratis para obtener 15 usos diarios. El plan gratuito te permite humanizar hasta 600 caracteres por uso.',
                 },
               },
               {
@@ -95,7 +95,7 @@ export default function HumanizadorPage() {
                 name: '¿Cuántas veces puedo usar el humanizador gratis?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: '¡Todas las veces que quieras! No hay límite diario de usos en el plan gratuito. Solo hay un límite de 600 caracteres por cada humanización.',
+                  text: 'Sin registro: 3 usos diarios totales entre las 3 herramientas. Registrándote gratis: 15 usos diarios del Humanizador. Con Plan Pro: usos ilimitados. Límite de 600 caracteres por humanización en planes gratuitos.',
                 },
               },
               {

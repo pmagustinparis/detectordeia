@@ -115,7 +115,7 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
-                  className="w-full border-2 border-violet-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-violet-300 focus:border-violet-400 transition-all"
+                  className="w-full border-2 border-violet-200 rounded-xl px-4 py-3 text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-300 focus:border-violet-400 transition-all"
                   disabled={isSubmitting}
                   required
                 />

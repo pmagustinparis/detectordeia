@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { createClient } from '@/lib/supabase/server';
+import { checkRateLimit, getRateLimitHeaders } from '@/lib/tracking/checkRateLimit';
+import { trackUsage } from '@/lib/tracking/trackUsage';
+import { saveToHistory } from '@/lib/history/saveToHistory';
+import { improvedFreeAnalysis } from '@/lib/analysis/multiPassAnalysis';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -137,7 +142,56 @@ function adjustProbabilityByTextType(
 export async function POST(request: Request) {
   console.log("Usando GPT-3.5 Turbo"); // Debug temporal
   try {
-    const { text, textType = "default" } = await request.json();
+    const { text, textType = "default", anonymousId } = await request.json();
+
+    // Obtener userId si está autenticado
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const userId = user?.id || null;
+
+    // Obtener plan del usuario
+    let userPlan: 'free' | 'premium' = 'free';
+    if (userId) {
+      const { data: userData } = await supabase
+        .from('users')
+        .select('plan_type')
+        .eq('auth_id', userId)
+        .single();
+
+      if (userData && userData.plan_type === 'premium') {
+        userPlan = 'premium';
+      }
+    }
+
+    // 🚨 RATE LIMITING CHECK
+    const rateLimit = await checkRateLimit({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'detector',
+    });
+
+    // Si alcanzó el límite, retornar 429
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: 'Límite diario alcanzado',
+          message:
+            rateLimit.userType === 'anonymous'
+              ? `Usaste tus ${rateLimit.limit} análisis gratis hoy. Regístrate para obtener más análisis diarios.`
+              : `Alcanzaste el límite de ${rateLimit.limit} análisis diarios. Vuelve mañana o actualiza a Pro para análisis ilimitados.`,
+          limit: rateLimit.limit,
+          remaining: rateLimit.remaining,
+          resetAt: rateLimit.resetAt,
+          userType: rateLimit.userType,
+        },
+        {
+          status: 429,
+          headers: getRateLimitHeaders(rateLimit),
+        }
+      );
+    }
 
     // Validate input
     if (!text || typeof text !== 'string') {
@@ -147,91 +201,112 @@ export async function POST(request: Request) {
       );
     }
 
-    if (text.length > 1200) {
+    // Límites de caracteres según plan
+    const CHARACTER_LIMITS = {
+      free: 1200,
+      premium: 100000, // ILIMITADO para PRO
+    };
+
+    const charLimit = CHARACTER_LIMITS[userPlan];
+
+    if (text.length > charLimit) {
       return NextResponse.json(
-        { error: 'El texto no puede exceder los 1200 caracteres' },
+        {
+          error: userPlan === 'free'
+            ? 'El texto excede el límite de 1,200 caracteres del plan Free. Actualiza a Pro para textos ilimitados.'
+            : 'El texto excede el límite máximo permitido.',
+          charLimit,
+          currentLength: text.length,
+        },
         { status: 400 }
       );
     }
 
-    // Nuevo prompt avanzado y preprocesamiento
-    const prompt = `Eres un detector especializado en textos en español contemporáneo (España y LATAM). Tu tarea es determinar si un texto fue generado por IA o escrito por un humano, usando criterios lingüísticos avanzados.\n\nEvalúa lo siguiente (0 a 25 puntos cada uno):\n\n1. **Marcadores de IA**:\n   - Frases genéricas como \"optimización de procesos estratégicos\"\n   - Estructura gramatical rígida o excesivamente limpia\n   - Bajo uso de conectores variados\n   - Falta de errores o ambigüedad típica del lenguaje humano\n\n2. **Marcadores Humanos**:\n   - Uso de modismos o expresiones locales (\"che\", \"re bien\", \"vos\", etc.)\n   - Subjetividad u opiniones personales\n   - Estilo informal o mezcla de registros\n   - Digresiones o estructuras parcialmente caóticas\n\n**Retorno esperado (en JSON):**\n{\n  \"probability\": number, // 0 a 100\n  \"confidenceLevel\": \"low\" | \"medium\" | \"high\",\n  \"scores_by_category\": {\n    \"markersIA\": number,\n    \"markersHuman\": number\n  },\n  \"linguistic_footprints\": [\n    { \"phrase\": string, \"reason\": string }\n  ]\n}\n\nTexto a analizar:\n\"\"\"${enhancePreprocessing(text)}\"\"\"`;
+    // 🚀 NUEVO SISTEMA: Análisis mejorado con múltiples pasadas
+    console.log('🔍 Iniciando análisis mejorado multi-pasada...');
 
-    // Call OpenAI API to analyze the text
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content: "Eres un analizador de textos que responde en formato JSON."
+    const isRegisteredUser = !!userId;
+
+    const analysis = await improvedFreeAnalysis(text, textType, isRegisteredUser);
+
+    console.log(`✅ Análisis completado usando: ${analysis.usedModels.join(', ')}`);
+    console.log(`📊 Detalles: Pass1=${analysis.analysisDetails.pass1Probability}%, Pass2=${analysis.analysisDetails.pass2Probability}%${analysis.analysisDetails.pass3Probability ? `, Pass3=${analysis.analysisDetails.pass3Probability}%` : ''}, Ajuste métricas=${analysis.analysisDetails.metricsAdjustment}`);
+
+    const adjustedProbability = analysis.probability;
+    const entropyScore = analysis.advancedMetrics.entropy || calculateEntropy(text);
+
+    // ✅ TRACK USAGE - Registrar uso exitoso
+    await trackUsage({
+      userId: userId || undefined,
+      anonymousId: anonymousId || undefined,
+      toolType: 'detector',
+      characterCount: text.length,
+      metadata: {
+        textType,
+        probability: adjustedProbability,
+        confidenceLevel: analysis.confidenceLevel,
+        entropyScore,
+      },
+    });
+
+    // 💾 SAVE TO HISTORY - Guardar en historial (solo usuarios autenticados)
+    if (userId) {
+      await saveToHistory({
+        userId,
+        toolType: 'detector',
+        inputText: text,
+        outputText: JSON.stringify({
+          probability: adjustedProbability,
+          confidenceLevel: analysis.confidenceLevel,
+          interpretation: getInterpretation(adjustedProbability, textType, entropyScore),
+        }),
+        characterCount: text.length,
+        metadata: {
+          textType,
+          probability: adjustedProbability,
+          confidenceLevel: analysis.confidenceLevel,
+          entropyScore,
+          scores_by_category: analysis.scores_by_category,
         },
-        {
-          role: "user",
-          content: prompt
-        }
-      ],
-      temperature: 0.3,
-      max_tokens: 2048,
-      response_format: { type: "json_object" }
-    });
-
-    let analysis;
-    try {
-      analysis = JSON.parse(completion.choices[0].message.content || '{}');
-    } catch (e) {
-      return NextResponse.json(
-        { error: 'La respuesta de OpenAI no es un JSON válido.' },
-        { status: 500 }
-      );
+      });
     }
 
-    // Validar estructura esperada del nuevo output
-    if (
-      typeof analysis.probability !== 'number' ||
-      !['low', 'medium', 'high'].includes(analysis.confidenceLevel) ||
-      typeof analysis.scores_by_category !== 'object' ||
-      typeof analysis.scores_by_category.markersIA !== 'number' ||
-      typeof analysis.scores_by_category.markersHuman !== 'number' ||
-      !Array.isArray(analysis.linguistic_footprints)
-    ) {
-      return NextResponse.json(
-        { error: 'La respuesta de OpenAI no tiene el formato esperado.' },
-        { status: 500 }
-      );
-    }
-
-    // Calcular entropía
-    const entropyScore = calculateEntropy(text);
-
-    // Ajuste de probabilidad según tipo de texto (lógica mejorada)
-    let adjustedProbability = analysis.probability;
-
-    // --- Validación de coherencia para evitar falsos positivos ---
-    const { markersIA, markersHuman } = analysis.scores_by_category;
-    if (markersHuman >= 15 && markersIA <= 10 && adjustedProbability > 40) {
-      adjustedProbability = 40;
-    }
-    if (markersIA >= 15 && markersHuman <= 10 && adjustedProbability < 60) {
-      adjustedProbability = 60;
-    }
-    // ------------------------------------------------------------
-
-    // Aplicar ajuste inteligente según tipo de texto
-    adjustedProbability = adjustProbabilityByTextType(
-      adjustedProbability,
-      textType,
-      analysis.scores_by_category,
-      entropyScore
+    // Retornar con headers de rate limit y nueva información
+    return NextResponse.json(
+      {
+        probability: adjustedProbability,
+        confidenceLevel: analysis.confidenceLevel,
+        scores_by_category: analysis.scores_by_category,
+        linguistic_footprints: analysis.linguistic_footprints,
+        entropyScore,
+        interpretation: getInterpretation(adjustedProbability, textType, entropyScore),
+        // 🆕 Nueva información del análisis mejorado
+        advancedMetrics: {
+          perplexity: analysis.advancedMetrics.perplexity,
+          lexicalDiversity: analysis.advancedMetrics.lexicalDiversity,
+          ngramRepetition: analysis.advancedMetrics.ngramRepetition,
+          sentenceVariance: analysis.advancedMetrics.sentenceVariance,
+          punctuationConsistency: analysis.advancedMetrics.punctuationConsistency,
+        },
+        metricsInsights: analysis.metricsInsights,
+        analysisQuality: {
+          modelsUsed: analysis.usedModels,
+          numberOfPasses: analysis.usedModels.length,
+          usedPremiumModel: analysis.usedModels.includes('gpt-4o-mini'),
+        },
+        rateLimit: {
+          remaining: rateLimit.remaining - 1,
+          limit: rateLimit.limit,
+          resetAt: rateLimit.resetAt,
+        },
+      },
+      {
+        headers: getRateLimitHeaders({
+          ...rateLimit,
+          remaining: rateLimit.remaining - 1,
+        }),
+      }
     );
-
-    return NextResponse.json({
-      probability: adjustedProbability,
-      confidenceLevel: analysis.confidenceLevel,
-      scores_by_category: analysis.scores_by_category,
-      linguistic_footprints: analysis.linguistic_footprints,
-      entropyScore,
-      interpretation: getInterpretation(adjustedProbability, textType, entropyScore)
-    });
   } catch (error) {
     console.error('Error analyzing text:', error);
     return NextResponse.json(
