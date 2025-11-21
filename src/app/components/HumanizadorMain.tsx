@@ -5,6 +5,7 @@ import { ProductIcons, Icon } from '@/lib/icons';
 import EmailCaptureModal from './EmailCaptureModal';
 import UsageLimitOverlay from './UsageLimitOverlay';
 import FileUploadButton from './FileUploadButton';
+import FileUploadUpsellModal from './FileUploadUpsellModal';
 import LoadingSteps from './LoadingSteps';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { getAnonymousId } from '@/lib/tracking/anonymousId';
@@ -62,6 +63,9 @@ export default function HumanizadorMain() {
     limit: number;
     usedToday: number;
   } | null>(null);
+
+  // File upload upsell modal state (para drag & drop)
+  const [showFileUploadModal, setShowFileUploadModal] = useState(false);
 
   // Track usage count for anonymous users
   useEffect(() => {
@@ -427,7 +431,7 @@ export default function HumanizadorMain() {
         }
       });
 
-      window.location.href = '/pricing';
+      setShowFileUploadModal(true);
       return;
     }
 
@@ -1207,6 +1211,13 @@ export default function HumanizadorMain() {
           toolName="Humanizador"
         />
       )}
+
+      {/* File Upload Upsell Modal (para drag & drop) */}
+      <FileUploadUpsellModal
+        isOpen={showFileUploadModal}
+        onClose={() => setShowFileUploadModal(false)}
+        toolName="Humanizador"
+      />
 
     </div>
   );
