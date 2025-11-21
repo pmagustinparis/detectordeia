@@ -33,19 +33,23 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
     users: number,
     conversionFromPrevious?: number,
     dropoffFromPrevious?: number,
-    isFirst: boolean = false
+    isFirst: boolean = false,
+    maxUsers: number = 1
   ) => {
     // Calcular width del funnel basado en usuarios (máximo 100%)
-    const maxUsers = data.registered[0]?.users || 1;
-    const width = Math.max((users / maxUsers) * 100, 10); // Mínimo 10% para visibilidad
+    const widthPercent = Math.max((users / maxUsers) * 100, 15); // Mínimo 15% para visibilidad
 
     return (
       <div className="space-y-2">
         {/* Stage box */}
-        <div className="relative">
+        <div className="relative flex justify-center">
           <div
-            className="mx-auto bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg p-4 shadow-lg transition-all hover:scale-105"
-            style={{ width: `${width}%`, minWidth: '200px' }}
+            className="bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg p-4 shadow-lg transition-all hover:scale-105"
+            style={{
+              width: `${widthPercent}%`,
+              maxWidth: '100%',
+              minWidth: '150px'
+            }}
           >
             <p className="text-white font-bold text-center text-lg">
               {stage}
@@ -89,7 +93,7 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
           Funnel de Usuarios Registrados
         </h3>
 
-        <div className="space-y-4 overflow-x-auto">
+        <div className="space-y-4">
           {data.registered.map((stage, index) => (
             <div key={stage.stage}>
               {renderFunnelStage(
@@ -97,7 +101,8 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
                 stage.users,
                 stage.conversionFromPrevious,
                 stage.dropoffFromPrevious,
-                index === 0
+                index === 0,
+                data.registered[0]?.users || 1
               )}
             </div>
           ))}
@@ -139,7 +144,7 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
           Funnel de Usuarios Anónimos
         </h3>
 
-        <div className="space-y-4 overflow-x-auto">
+        <div className="space-y-4">
           {data.anonymous.map((stage, index) => (
             <div key={stage.stage}>
               {renderFunnelStage(
@@ -147,7 +152,8 @@ export default function ConversionFunnelView({ data }: ConversionFunnelViewProps
                 stage.users,
                 stage.conversionFromPrevious,
                 stage.dropoffFromPrevious,
-                index === 0
+                index === 0,
+                data.anonymous[0]?.users || 1
               )}
             </div>
           ))}
