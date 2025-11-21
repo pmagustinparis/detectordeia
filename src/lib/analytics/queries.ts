@@ -21,7 +21,10 @@ import type {
 
 // Test users to exclude from revenue metrics
 export const TEST_USER_CONFIG: TestUserConfig = {
-  emails: ['parisagustin@gmail.com'],
+  emails: [
+    'parisagustin@gmail.com',  // Test user free
+    'buildbyagus@gmail.com'     // Test user premium
+  ],
 };
 
 // ============================================
