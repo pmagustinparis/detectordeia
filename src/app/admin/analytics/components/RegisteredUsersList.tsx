@@ -48,16 +48,30 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
     return matchesSearch && matchesPlan && matchesTestFilter;
   });
 
-  const handleContactUser = (email: string) => {
-    window.location.href = `mailto:${email}`;
+  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+
+  const handleCopyEmail = async (email: string) => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopiedEmail(email);
+      setTimeout(() => setCopiedEmail(null), 2000);
+    } catch (err) {
+      console.error('Error copying email:', err);
+    }
   };
 
-  const handleContactAll = () => {
+  const handleCopyAllEmails = async () => {
     const emails = filteredUsers
       .filter(u => !u.isTestUser)
       .map(u => u.email)
-      .join(',');
-    window.location.href = `mailto:?bcc=${emails}`;
+      .join(', ');
+    try {
+      await navigator.clipboard.writeText(emails);
+      setCopiedEmail('all');
+      setTimeout(() => setCopiedEmail(null), 2000);
+    } catch (err) {
+      console.error('Error copying emails:', err);
+    }
   };
 
   const formatDate = (dateString: string) => {
@@ -84,11 +98,11 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
           Total: {filteredUsers.length} de {users.length} usuarios
         </p>
         <button
-          onClick={handleContactAll}
+          onClick={handleCopyAllEmails}
           disabled={filteredUsers.filter(u => !u.isTestUser).length === 0}
           className="px-4 py-2 bg-violet-600 hover:bg-violet-700 disabled:bg-gray-400 text-white font-semibold rounded-lg transition-colors text-sm"
         >
-          📧 Contactar todos ({filteredUsers.filter(u => !u.isTestUser).length})
+          {copiedEmail === 'all' ? '✅ Copiados!' : '📋 Copiar emails'} ({filteredUsers.filter(u => !u.isTestUser).length})
         </button>
       </div>
 
@@ -206,10 +220,10 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
                     </td>
                     <td className="px-4 py-3 text-sm">
                       <button
-                        onClick={() => handleContactUser(user.email)}
+                        onClick={() => handleCopyEmail(user.email)}
                         className="text-violet-600 hover:text-violet-800 font-semibold transition-colors"
                       >
-                        📧 Contactar
+                        {copiedEmail === user.email ? '✅ Copiado' : '📋 Copiar email'}
                       </button>
                     </td>
                   </tr>

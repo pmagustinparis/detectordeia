@@ -172,8 +172,8 @@ Usuarios con alta probabilidad de conversión identificados por:
 - **Buscar:** Por email o nombre
 - **Filtrar:** Por plan (All / Free / Premium)
 - **Mostrar test users:** Toggle para incluir/excluir
-- **Contactar individual:** Click en "📧 Contactar"
-- **Contactar masivo:** Click en "📧 Contactar todos" (BCC)
+- **Copiar email individual:** Click en "📋 Copiar email" (copia al clipboard)
+- **Copiar emails masivo:** Click en "📋 Copiar emails" (copia todos separados por comas)
 
 ### **Orden:**
 Cronológico descendente (más nuevos primero)
