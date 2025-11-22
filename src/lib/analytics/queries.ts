@@ -565,6 +565,7 @@ export async function fetchConversionFunnel(
   return {
     registered: registeredFunnel,
     anonymous: anonymousFunnel,
+    byTool: {}, // TODO: Implement tool-specific funnels if needed
   };
 }
 
