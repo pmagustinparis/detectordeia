@@ -33,8 +33,11 @@ interface RegisteredUsersListProps {
 
 // Helper functions for profile labels
 const ROLE_LABELS: Record<string, { label: string; icon: string; color: string }> = {
+  // Nuevos valores
   student_university: { label: 'Est. Universitario', icon: '🎓', color: 'bg-blue-100 text-blue-800 border-blue-300' },
   student_secondary: { label: 'Est. Secundario', icon: '📚', color: 'bg-green-100 text-green-800 border-green-300' },
+  // Valores legacy (backward compatibility)
+  student: { label: 'Estudiante', icon: '🎓', color: 'bg-blue-100 text-blue-800 border-blue-300' },
   teacher: { label: 'Profesor', icon: '👨‍🏫', color: 'bg-purple-100 text-purple-800 border-purple-300' },
   writer: { label: 'Escritor', icon: '✍️', color: 'bg-orange-100 text-orange-800 border-orange-300' },
   journalist: { label: 'Periodista', icon: '📰', color: 'bg-red-100 text-red-800 border-red-300' },
@@ -44,6 +47,7 @@ const ROLE_LABELS: Record<string, { label: string; icon: string; color: string }
 };
 
 const USE_LABELS: Record<string, string> = {
+  // Valores actuales
   detect_ai: 'Detectar IA',
   humanize: 'Humanizar',
   paraphrase: 'Parafrasear',
@@ -53,6 +57,7 @@ const USE_LABELS: Record<string, string> = {
 };
 
 const SOURCE_LABELS: Record<string, string> = {
+  // Valores actuales (específicos)
   google: 'Google',
   instagram: 'Instagram',
   tiktok: 'TikTok',
@@ -61,6 +66,8 @@ const SOURCE_LABELS: Record<string, string> = {
   recommendation: 'Recomendación',
   other_website: 'Otro sitio',
   other: 'Otro',
+  // Valores legacy (backward compatibility)
+  social_media: 'Redes Sociales',
 };
 
 export default function RegisteredUsersList({ users }: RegisteredUsersListProps) {

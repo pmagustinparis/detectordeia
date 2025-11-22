@@ -17,8 +17,11 @@ interface UserInsightsViewProps {
 
 // Label mappings for better readability
 const ROLE_LABELS: Record<string, string> = {
+  // Nuevos valores
   student_university: '🎓 Estudiante Universitario',
   student_secondary: '📚 Estudiante Secundario',
+  // Valores legacy (backward compatibility)
+  student: '🎓 Estudiante',
   teacher: '👨‍🏫 Profesor/Docente',
   writer: '✍️ Escritor/Creador',
   journalist: '📰 Periodista',
@@ -28,6 +31,7 @@ const ROLE_LABELS: Record<string, string> = {
 };
 
 const USE_LABELS: Record<string, string> = {
+  // Valores actuales
   detect_ai: '🤖 Detectar IA',
   humanize: '👤 Humanizar',
   paraphrase: '🔄 Parafrasear',
@@ -37,6 +41,7 @@ const USE_LABELS: Record<string, string> = {
 };
 
 const SOURCE_LABELS: Record<string, string> = {
+  // Valores actuales (específicos)
   google: '🔍 Google/Buscador',
   instagram: '📷 Instagram',
   tiktok: '🎵 TikTok',
@@ -45,6 +50,8 @@ const SOURCE_LABELS: Record<string, string> = {
   recommendation: '👥 Recomendación',
   other_website: '🔗 Otro sitio',
   other: '🌐 Otro',
+  // Valores legacy (backward compatibility)
+  social_media: '📱 Redes Sociales',
 };
 
 export default function UserInsightsView({ data }: UserInsightsViewProps) {
