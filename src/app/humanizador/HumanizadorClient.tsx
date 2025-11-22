@@ -268,6 +268,29 @@ export default function HumanizadorClient() {
       {/* FAQ Section */}
       <FAQSection />
 
+      {/* VARIANTES DEL HUMANIZADOR - Internal Linking SEO */}
+      <section className="max-w-5xl mx-auto mb-12 px-2">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-6 text-center">
+          <p className="text-gray-700 text-sm mb-3">
+            <span className="font-semibold">También buscado como:</span>
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a
+              href="/convertidor-ia-a-humano"
+              className="px-4 py-2 bg-white hover:bg-emerald-50 text-emerald-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-emerald-200"
+            >
+              Convertidor IA a Humano
+            </a>
+            <a
+              href="/transformador-texto-ia"
+              className="px-4 py-2 bg-white hover:bg-emerald-50 text-emerald-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-emerald-200"
+            >
+              Transformador de Texto IA
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Link a otras herramientas */}
       <section className="max-w-4xl mx-auto mb-16 px-2">
         <div className="space-y-6">
