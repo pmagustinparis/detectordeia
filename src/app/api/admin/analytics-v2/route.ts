@@ -22,6 +22,10 @@ import {
 } from '@/lib/analytics/queries';
 import { AnalyticsDashboardData, TimeframeOption } from '@/lib/analytics/types';
 
+// Force dynamic rendering (disable Next.js caching)
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET(request: NextRequest) {
   try {
     // 1. Verificar autenticación
