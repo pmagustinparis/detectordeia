@@ -80,7 +80,7 @@ async function fetchAllEventsPaginated<T = any>(
     }
 
     if (data && data.length > 0) {
-      allData = [...allData, ...data];
+      allData = [...allData, ...(data as T[])];
       page++;
       hasMore = data.length === pageSize;
     } else {
@@ -88,7 +88,7 @@ async function fetchAllEventsPaginated<T = any>(
     }
   }
 
-  return allData;
+  return allData as T[];
 }
 
 // ============================================
