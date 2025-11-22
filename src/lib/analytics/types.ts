@@ -186,6 +186,11 @@ export interface UserInsights {
     byPrimaryUse: Record<string, number>;
     byDiscoverySource: Record<string, number>;
   };
+  conversionByRole: Record<string, {
+    totalUsers: number;
+    premiumUsers: number;
+    conversionRate: number;
+  }>;
   topUsers: TopUser[];
   recentSignups: RecentSignup[];
 }

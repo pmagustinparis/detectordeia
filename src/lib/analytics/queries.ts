@@ -996,6 +996,47 @@ export async function fetchUserInsights(
     });
   }
 
+  // Calculate conversion rate by role
+  const { data: usersWithProfiles } = await supabase
+    .from('users')
+    .select('id, email, plan_type');
+
+  const { data: allProfiles } = await supabase
+    .from('user_profiles')
+    .select('user_id, role');
+
+  const conversionByRole: Record<string, { totalUsers: number; premiumUsers: number; conversionRate: number }> = {};
+
+  // Create a map of user_id to role
+  const userRoleMap: Record<string, string> = {};
+  allProfiles?.forEach(p => {
+    if (p.role) {
+      userRoleMap[p.user_id] = p.role;
+    }
+  });
+
+  // Count total and premium users by role
+  usersWithProfiles?.forEach(user => {
+    const role = userRoleMap[user.id];
+    if (role && !TEST_USER_CONFIG.emails.includes(user.email)) {
+      if (!conversionByRole[role]) {
+        conversionByRole[role] = { totalUsers: 0, premiumUsers: 0, conversionRate: 0 };
+      }
+      conversionByRole[role].totalUsers += 1;
+      if (user.plan_type === 'premium') {
+        conversionByRole[role].premiumUsers += 1;
+      }
+    }
+  });
+
+  // Calculate conversion rates
+  Object.keys(conversionByRole).forEach(role => {
+    const data = conversionByRole[role];
+    data.conversionRate = data.totalUsers > 0
+      ? (data.premiumUsers / data.totalUsers) * 100
+      : 0;
+  });
+
   return {
     demographics: {
       totalProfiles,
@@ -1004,6 +1045,7 @@ export async function fetchUserInsights(
       byPrimaryUse,
       byDiscoverySource,
     },
+    conversionByRole,
     topUsers,
     recentSignups: recentSignupsData,
   };
