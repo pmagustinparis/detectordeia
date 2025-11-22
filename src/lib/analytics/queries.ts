@@ -92,7 +92,8 @@ export async function fetchNorthStarMetrics(
   const { data: activeUsersData, error: activeUsersError } = await supabase
     .from('analytics_events')
     .select('user_id, anonymous_id')
-    .gte('created_at', timeframe.startDate.toISOString());
+    .gte('created_at', timeframe.startDate.toISOString())
+    .limit(100000); // Supabase default is 1000, increase to capture all events
 
   if (activeUsersError) {
     console.error('Error fetching active users:', activeUsersError);
@@ -118,7 +119,8 @@ export async function fetchNorthStarMetrics(
     .from('analytics_events')
     .select('user_id, anonymous_id')
     .gte('created_at', timeframe.previousPeriodStart.toISOString())
-    .lt('created_at', timeframe.startDate.toISOString());
+    .lt('created_at', timeframe.startDate.toISOString())
+    .limit(100000);
 
   const previousActiveUsers =
     new Set(activeUsersPreviousData?.filter(e => e.user_id).map(e => e.user_id) || []).size +
