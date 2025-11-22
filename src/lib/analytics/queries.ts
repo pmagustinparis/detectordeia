@@ -89,20 +89,37 @@ export async function fetchNorthStarMetrics(
   // Churned MRR (simplified - would need subscription table for real churn)
   const churnedMRR = previousMRR > currentMRR ? previousMRR - currentMRR : 0;
 
-  // Active Users - CRITICAL: Must fetch ALL events, not just first 1000
+  // Active Users - CRITICAL: Fetch ALL events using pagination (Supabase ignores .limit() > 1000)
   console.log(`[Analytics Debug] Fetching active users from ${timeframe.startDate.toISOString()}`);
 
-  const { data: activeUsersData, error: activeUsersError } = await supabase
-    .from('analytics_events')
-    .select('user_id, anonymous_id')
-    .gte('created_at', timeframe.startDate.toISOString())
-    .limit(100000); // CRITICAL: Supabase defaults to 1000 rows, we need all events
+  let activeUsersData: Array<{ user_id: string | null; anonymous_id: string | null }> = [];
+  let page = 0;
+  const pageSize = 1000;
+  let hasMore = true;
 
-  if (activeUsersError) {
-    console.error('[Analytics Debug] Error fetching active users:', activeUsersError);
+  while (hasMore) {
+    const { data: pageData, error: pageError } = await supabase
+      .from('analytics_events')
+      .select('user_id, anonymous_id')
+      .gte('created_at', timeframe.startDate.toISOString())
+      .order('created_at', { ascending: true })
+      .range(page * pageSize, (page + 1) * pageSize - 1);
+
+    if (pageError) {
+      console.error(`[Analytics Debug] Error fetching active users page ${page}:`, pageError);
+      break;
+    }
+
+    if (pageData && pageData.length > 0) {
+      activeUsersData = [...activeUsersData, ...pageData];
+      page++;
+      hasMore = pageData.length === pageSize; // Continue if we got a full page
+    } else {
+      hasMore = false;
+    }
   }
 
-  console.log(`[Analytics Debug] Query returned ${activeUsersData?.length || 0} events (limit was 100000)`);
+  console.log(`[Analytics Debug] Fetched ${activeUsersData.length} events across ${page} pages`);
 
   const registeredActiveUsers = new Set(
     activeUsersData?.filter(e => e.user_id).map(e => e.user_id) || []
@@ -116,13 +133,33 @@ export async function fetchNorthStarMetrics(
 
   console.log(`[Analytics Debug] Active users - Registered: ${registeredActiveUsers}, Anonymous: ${anonymousActiveUsers}, Total: ${totalActiveUsers}`);
 
-  // Previous period active users
-  const { data: activeUsersPreviousData } = await supabase
-    .from('analytics_events')
-    .select('user_id, anonymous_id')
-    .gte('created_at', timeframe.previousPeriodStart.toISOString())
-    .lt('created_at', timeframe.startDate.toISOString())
-    .limit(100000);
+  // Previous period active users - also use pagination
+  let activeUsersPreviousData: Array<{ user_id: string | null; anonymous_id: string | null }> = [];
+  page = 0;
+  hasMore = true;
+
+  while (hasMore) {
+    const { data: pageData, error: pageError } = await supabase
+      .from('analytics_events')
+      .select('user_id, anonymous_id')
+      .gte('created_at', timeframe.previousPeriodStart.toISOString())
+      .lt('created_at', timeframe.startDate.toISOString())
+      .order('created_at', { ascending: true })
+      .range(page * pageSize, (page + 1) * pageSize - 1);
+
+    if (pageError) {
+      console.error(`[Analytics Debug] Error fetching previous period page ${page}:`, pageError);
+      break;
+    }
+
+    if (pageData && pageData.length > 0) {
+      activeUsersPreviousData = [...activeUsersPreviousData, ...pageData];
+      page++;
+      hasMore = pageData.length === pageSize;
+    } else {
+      hasMore = false;
+    }
+  }
 
   const previousActiveUsers =
     new Set(activeUsersPreviousData?.filter(e => e.user_id).map(e => e.user_id) || []).size +
