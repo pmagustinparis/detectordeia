@@ -107,7 +107,14 @@ export async function GET(request: NextRequest) {
       },
     };
 
-    return NextResponse.json(dashboardData);
+    // Return with cache-control headers to prevent browser caching
+    return NextResponse.json(dashboardData, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   } catch (error) {
     console.error('[Analytics V2] Error fetching dashboard data:', error);
     return NextResponse.json(

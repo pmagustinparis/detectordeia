@@ -89,10 +89,17 @@ export async function fetchNorthStarMetrics(
   const churnedMRR = previousMRR > currentMRR ? previousMRR - currentMRR : 0;
 
   // Active Users
-  const { data: activeUsersData } = await supabase
+  const { data: activeUsersData, error: activeUsersError } = await supabase
     .from('analytics_events')
     .select('user_id, anonymous_id')
     .gte('created_at', timeframe.startDate.toISOString());
+
+  if (activeUsersError) {
+    console.error('Error fetching active users:', activeUsersError);
+  }
+
+  console.log(`[Analytics Debug] Fetching active users from ${timeframe.startDate.toISOString()}`);
+  console.log(`[Analytics Debug] Found ${activeUsersData?.length || 0} events`);
 
   const registeredActiveUsers = new Set(
     activeUsersData?.filter(e => e.user_id).map(e => e.user_id) || []
@@ -103,6 +110,8 @@ export async function fetchNorthStarMetrics(
   ).size;
 
   const totalActiveUsers = registeredActiveUsers + anonymousActiveUsers;
+
+  console.log(`[Analytics Debug] Active users - Registered: ${registeredActiveUsers}, Anonymous: ${anonymousActiveUsers}, Total: ${totalActiveUsers}`);
 
   // Previous period active users
   const { data: activeUsersPreviousData } = await supabase
@@ -1106,11 +1115,16 @@ export async function getAllRegisteredUsers(
         .limit(1);
 
       // Get user profile data
-      const { data: profile } = await supabase
+      const { data: profile, error: profileError } = await supabase
         .from('user_profiles')
         .select('role, primary_use, discovery_source')
         .eq('user_id', user.id)
-        .single();
+        .maybeSingle();
+
+      // Log profile errors for debugging
+      if (profileError) {
+        console.error(`Error fetching profile for user ${user.email}:`, profileError);
+      }
 
       return {
         id: user.id,
