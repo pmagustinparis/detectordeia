@@ -11,8 +11,9 @@ export async function generateStaticParams() {
 }
 
 // Metadata dinámica por universidad
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const university = universities.find((uni) => uni.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const university = universities.find((uni) => uni.slug === slug);
 
   if (!university) {
     return {
@@ -69,8 +70,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function UniversityPage({ params }: { params: { slug: string } }) {
-  const university = universities.find((uni) => uni.slug === params.slug);
+export default async function UniversityPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const university = universities.find((uni) => uni.slug === slug);
 
   if (!university) {
     notFound();
