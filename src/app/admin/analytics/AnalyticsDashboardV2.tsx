@@ -196,6 +196,9 @@ export default function AnalyticsDashboardV2() {
               <p className="text-sm text-gray-600 mt-1">
                 Última actualización: {new Date(data.generatedAt).toLocaleString('es-ES')}
               </p>
+              <p className="text-xs text-red-600 font-mono mt-1">
+                DEBUG: {data.meta.totalEvents} eventos | Rango: {new Date(data.meta.dateRange.start).toLocaleDateString('es-ES')} - {new Date(data.meta.dateRange.end).toLocaleDateString('es-ES')}
+              </p>
             </div>
 
             {/* Timeframe selector */}
