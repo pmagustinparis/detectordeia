@@ -1,6 +1,7 @@
 /**
  * Analytics Queries - Elite Dashboard
  * Queries optimizadas y modulares para el nuevo dashboard
+ * UPDATED: 2025-11-22 14:30 - Fixed Supabase 1000 row limit (added .limit(100000))
  */
 
 import { SupabaseClient } from '@supabase/supabase-js';
@@ -88,19 +89,20 @@ export async function fetchNorthStarMetrics(
   // Churned MRR (simplified - would need subscription table for real churn)
   const churnedMRR = previousMRR > currentMRR ? previousMRR - currentMRR : 0;
 
-  // Active Users
+  // Active Users - CRITICAL: Must fetch ALL events, not just first 1000
+  console.log(`[Analytics Debug] Fetching active users from ${timeframe.startDate.toISOString()}`);
+
   const { data: activeUsersData, error: activeUsersError } = await supabase
     .from('analytics_events')
     .select('user_id, anonymous_id')
     .gte('created_at', timeframe.startDate.toISOString())
-    .limit(100000); // Supabase default is 1000, increase to capture all events
+    .limit(100000); // CRITICAL: Supabase defaults to 1000 rows, we need all events
 
   if (activeUsersError) {
-    console.error('Error fetching active users:', activeUsersError);
+    console.error('[Analytics Debug] Error fetching active users:', activeUsersError);
   }
 
-  console.log(`[Analytics Debug] Fetching active users from ${timeframe.startDate.toISOString()}`);
-  console.log(`[Analytics Debug] Found ${activeUsersData?.length || 0} events`);
+  console.log(`[Analytics Debug] Query returned ${activeUsersData?.length || 0} events (limit was 100000)`);
 
   const registeredActiveUsers = new Set(
     activeUsersData?.filter(e => e.user_id).map(e => e.user_id) || []
