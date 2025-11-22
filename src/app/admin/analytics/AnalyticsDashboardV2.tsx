@@ -36,10 +36,14 @@ export default function AnalyticsDashboardV2() {
 
     try {
       const credentials = btoa(`${authUser}:${authPass}`);
-      const response = await fetch(`/api/admin/analytics-v2?timeframe=${timeframe}`, {
+      // Add timestamp to prevent any caching
+      const timestamp = Date.now();
+      const response = await fetch(`/api/admin/analytics-v2?timeframe=${timeframe}&_t=${timestamp}`, {
         headers: {
           Authorization: `Basic ${credentials}`,
         },
+        cache: 'no-store',
+        next: { revalidate: 0 },
       });
 
       if (response.status === 401) {

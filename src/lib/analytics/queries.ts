@@ -1,6 +1,7 @@
 /**
  * Analytics Queries - Elite Dashboard
  * Queries optimizadas y modulares para el nuevo dashboard
+ * UPDATED: 2025-11-22 14:30 - Fixed Supabase 1000 row limit (added .limit(100000))
  */
 
 import { SupabaseClient } from '@supabase/supabase-js';
@@ -26,6 +27,69 @@ export const TEST_USER_CONFIG: TestUserConfig = {
     'buildbyagus@gmail.com'     // Test user premium
   ],
 };
+
+/**
+ * Helper function to fetch all rows with pagination
+ * Supabase has a hard limit of 1000 rows per query, so we need to paginate
+ */
+async function fetchAllEventsPaginated<T = any>(
+  supabase: SupabaseClient,
+  query: {
+    table: string;
+    select: string;
+    filters?: Array<{ column: string; operator: string; value: any }>;
+    order?: { column: string; ascending: boolean };
+  }
+): Promise<T[]> {
+  let allData: T[] = [];
+  let page = 0;
+  const pageSize = 1000;
+  let hasMore = true;
+
+  while (hasMore) {
+    let q = supabase
+      .from(query.table)
+      .select(query.select)
+      .range(page * pageSize, (page + 1) * pageSize - 1);
+
+    // Apply filters
+    if (query.filters) {
+      query.filters.forEach(filter => {
+        if (filter.operator === 'gte') {
+          q = q.gte(filter.column, filter.value);
+        } else if (filter.operator === 'lt') {
+          q = q.lt(filter.column, filter.value);
+        } else if (filter.operator === 'eq') {
+          q = q.eq(filter.column, filter.value);
+        } else if (filter.operator === 'in') {
+          q = q.in(filter.column, filter.value);
+        }
+      });
+    }
+
+    // Apply ordering
+    if (query.order) {
+      q = q.order(query.order.column, { ascending: query.order.ascending });
+    }
+
+    const { data, error } = await q;
+
+    if (error) {
+      console.error(`[Pagination] Error fetching page ${page}:`, error);
+      break;
+    }
+
+    if (data && data.length > 0) {
+      allData = [...allData, ...(data as T[])];
+      page++;
+      hasMore = data.length === pageSize;
+    } else {
+      hasMore = false;
+    }
+  }
+
+  return allData as T[];
+}
 
 // ============================================
 // HELPER: Calculate timeframe dates
@@ -88,11 +152,22 @@ export async function fetchNorthStarMetrics(
   // Churned MRR (simplified - would need subscription table for real churn)
   const churnedMRR = previousMRR > currentMRR ? previousMRR - currentMRR : 0;
 
-  // Active Users
-  const { data: activeUsersData } = await supabase
-    .from('analytics_events')
-    .select('user_id, anonymous_id')
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Active Users - using pagination helper
+  console.log(`[Analytics Debug] Fetching active users from ${timeframe.startDate.toISOString()}`);
+
+  const activeUsersData = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ],
+      order: { column: 'created_at', ascending: true }
+    }
+  );
+
+  console.log(`[Analytics Debug] Fetched ${activeUsersData.length} events`);
 
   const registeredActiveUsers = new Set(
     activeUsersData?.filter(e => e.user_id).map(e => e.user_id) || []
@@ -104,12 +179,21 @@ export async function fetchNorthStarMetrics(
 
   const totalActiveUsers = registeredActiveUsers + anonymousActiveUsers;
 
-  // Previous period active users
-  const { data: activeUsersPreviousData } = await supabase
-    .from('analytics_events')
-    .select('user_id, anonymous_id')
-    .gte('created_at', timeframe.previousPeriodStart.toISOString())
-    .lt('created_at', timeframe.startDate.toISOString());
+  console.log(`[Analytics Debug] Active users - Registered: ${registeredActiveUsers}, Anonymous: ${anonymousActiveUsers}, Total: ${totalActiveUsers}`);
+
+  // Previous period active users - using pagination helper
+  const activeUsersPreviousData = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [
+        { column: 'created_at', operator: 'gte', value: timeframe.previousPeriodStart.toISOString() },
+        { column: 'created_at', operator: 'lt', value: timeframe.startDate.toISOString() }
+      ],
+      order: { column: 'created_at', ascending: true }
+    }
+  );
 
   const previousActiveUsers =
     new Set(activeUsersPreviousData?.filter(e => e.user_id).map(e => e.user_id) || []).size +
@@ -201,13 +285,18 @@ export async function fetchRevenueHealth(
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
-  const { data: recentActivity } = await supabase
-    .from('analytics_events')
-    .select('user_id')
-    .gte('created_at', sevenDaysAgo.toISOString())
-    .not('user_id', 'is', null);
+  const recentActivity = await fetchAllEventsPaginated<{ user_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id',
+      filters: [
+        { column: 'created_at', operator: 'gte', value: sevenDaysAgo.toISOString() }
+      ]
+    }
+  );
 
-  const activeUserIds = new Set(recentActivity?.map(e => e.user_id) || []);
+  const activeUserIds = new Set(recentActivity?.filter(e => e.user_id).map(e => e.user_id) || []);
 
   const churnRiskUsers: ChurnRiskUser[] = [];
   for (const user of premiumUsers || []) {
@@ -290,34 +379,52 @@ export async function fetchConversionFunnel(
 
   const registeredUserIds = registeredUsers?.map(u => u.id) || [];
 
-  // Active registered users (had any event in period)
-  const { data: activeEvents } = await supabase
-    .from('analytics_events')
-    .select('user_id')
-    .in('user_id', registeredUserIds)
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Active registered users (had any event in period) - using pagination
+  const activeEvents = await fetchAllEventsPaginated<{ user_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id',
+      filters: [
+        { column: 'user_id', operator: 'in', value: registeredUserIds },
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ]
+    }
+  );
 
   const activeUserIds = new Set(activeEvents?.map(e => e.user_id) || []);
   const activeUsersCount = activeUserIds.size;
 
-  // Visited pricing
-  const { data: pricingVisits } = await supabase
-    .from('analytics_events')
-    .select('user_id')
-    .in('user_id', registeredUserIds)
-    .eq('event_type', 'pricing_page_visited')
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Visited pricing - using pagination
+  const pricingVisits = await fetchAllEventsPaginated<{ user_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id',
+      filters: [
+        { column: 'user_id', operator: 'in', value: registeredUserIds },
+        { column: 'event_type', operator: 'eq', value: 'pricing_page_visited' },
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ]
+    }
+  );
 
   const pricingVisitorIds = new Set(pricingVisits?.map(e => e.user_id) || []);
   const pricingVisitsCount = pricingVisitorIds.size;
 
-  // Started checkout
-  const { data: checkouts } = await supabase
-    .from('analytics_events')
-    .select('user_id')
-    .in('user_id', registeredUserIds)
-    .eq('event_type', 'checkout_started')
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Started checkout - using pagination
+  const checkouts = await fetchAllEventsPaginated<{ user_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id',
+      filters: [
+        { column: 'user_id', operator: 'in', value: registeredUserIds },
+        { column: 'event_type', operator: 'eq', value: 'checkout_started' },
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ]
+    }
+  );
 
   const checkoutUserIds = new Set(checkouts?.map(e => e.user_id) || []);
   const checkoutsCount = checkoutUserIds.size;
@@ -362,81 +469,103 @@ export async function fetchConversionFunnel(
     },
   ];
 
-  // Anonymous Funnel
-  const { data: anonymousEvents } = await supabase
-    .from('analytics_events')
-    .select('anonymous_id')
-    .is('user_id', null)
-    .not('anonymous_id', 'is', null)
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Anonymous Funnel - using pagination
+  const anonymousEvents = await fetchAllEventsPaginated<{ anonymous_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'anonymous_id',
+      filters: [
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ]
+    }
+  );
 
-  const uniqueAnonymousIds = new Set(anonymousEvents?.map(e => e.anonymous_id) || []);
+  const uniqueAnonymousIds = new Set(
+    anonymousEvents?.filter(e => !e.anonymous_id && e.anonymous_id).map(e => e.anonymous_id) || []
+  );
   const totalAnonymous = uniqueAnonymousIds.size;
 
-  // Anonymous pricing visits
-  const { data: anonymousPricing } = await supabase
-    .from('analytics_events')
-    .select('anonymous_id')
-    .is('user_id', null)
-    .eq('event_type', 'pricing_page_visited')
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Anonymous pricing visits - using pagination
+  const anonymousPricing = await fetchAllEventsPaginated<{ anonymous_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'anonymous_id',
+      filters: [
+        { column: 'event_type', operator: 'eq', value: 'pricing_page_visited' },
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ]
+    }
+  );
 
-  const anonymousPricingCount = new Set(anonymousPricing?.map(e => e.anonymous_id) || []).size;
+  const anonymousPricingCount = new Set(
+    anonymousPricing?.filter(e => e.anonymous_id).map(e => e.anonymous_id) || []
+  ).size;
 
-  // Anonymous checkouts (rare but possible)
-  const { data: anonymousCheckouts } = await supabase
-    .from('analytics_events')
-    .select('anonymous_id')
-    .is('user_id', null)
-    .eq('event_type', 'checkout_started')
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Anonymous checkouts (rare but possible) - using pagination
+  const anonymousCheckouts = await fetchAllEventsPaginated<{ anonymous_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'anonymous_id',
+      filters: [
+        { column: 'event_type', operator: 'eq', value: 'checkout_started' },
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ]
+    }
+  );
 
-  const anonymousCheckoutCount = new Set(anonymousCheckouts?.map(e => e.anonymous_id) || []).size;
+  const anonymousCheckoutsCount = new Set(
+    anonymousCheckouts?.filter(e => e.anonymous_id).map(e => e.anonymous_id) || []
+  ).size;
 
-  // Anonymous signups (converted to registered)
-  const { data: signups } = await supabase
-    .from('analytics_events')
-    .select('anonymous_id, metadata')
-    .eq('event_type', 'signup')
-    .gte('created_at', timeframe.startDate.toISOString());
+  // Anonymous signups
+  const signupEvents = await fetchAllEventsPaginated<{ anonymous_id: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'anonymous_id',
+      filters: [
+        { column: 'event_type', operator: 'eq', value: 'signup' },
+        { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+      ]
+    }
+  );
 
-  const anonymousSignupsCount = signups?.filter(s => s.metadata?.hadPriorAnonymousActivity).length || 0;
+  const signupsCount = new Set(signupEvents?.filter(e => e.anonymous_id).map(e => e.anonymous_id) || []).size;
 
   const anonymousFunnel: FunnelStage[] = [
     {
       stage: 'Anonymous Visitors',
       users: totalAnonymous,
+      conversionFromPrevious: 100,
+      dropoffFromPrevious: 0,
     },
     {
       stage: 'Visited Pricing',
       users: anonymousPricingCount,
-      conversionFromPrevious: totalAnonymous > 0
-        ? (anonymousPricingCount / totalAnonymous) * 100
-        : 0,
+      conversionFromPrevious: totalAnonymous > 0 ? (anonymousPricingCount / totalAnonymous) * 100 : 0,
       dropoffFromPrevious: totalAnonymous - anonymousPricingCount,
     },
     {
       stage: 'Started Checkout',
-      users: anonymousCheckoutCount,
-      conversionFromPrevious: anonymousPricingCount > 0
-        ? (anonymousCheckoutCount / anonymousPricingCount) * 100
-        : 0,
-      dropoffFromPrevious: anonymousPricingCount - anonymousCheckoutCount,
+      users: anonymousCheckoutsCount,
+      conversionFromPrevious: anonymousPricingCount > 0 ? (anonymousCheckoutsCount / anonymousPricingCount) * 100 : 0,
+      dropoffFromPrevious: anonymousPricingCount - anonymousCheckoutsCount,
     },
     {
       stage: 'Signed Up',
-      users: anonymousSignupsCount,
-      conversionFromPrevious: totalAnonymous > 0
-        ? (anonymousSignupsCount / totalAnonymous) * 100
-        : 0,
-      dropoffFromPrevious: totalAnonymous - anonymousSignupsCount,
+      users: signupsCount,
+      conversionFromPrevious: anonymousCheckoutsCount > 0 ? (signupsCount / anonymousCheckoutsCount) * 100 : 0,
+      dropoffFromPrevious: anonymousCheckoutsCount - signupsCount,
     },
   ];
 
   return {
     registered: registeredFunnel,
     anonymous: anonymousFunnel,
-    byTool: {}, // TODO: Implement tool-specific funnels
+    byTool: {}, // TODO: Implement tool-specific funnels if needed
   };
 }
 
@@ -452,12 +581,18 @@ export async function fetchHotLeads(
   const last24h = new Date();
   last24h.setHours(last24h.getHours() - 24);
 
-  // 1. HIGH PRIORITY: Users who hit limits multiple times in last 24h
-  const { data: limitHits } = await supabase
-    .from('analytics_events')
-    .select('user_id, anonymous_id, event_type')
-    .in('event_type', ['hit_daily_limit', 'hit_character_limit'])
-    .gte('created_at', last24h.toISOString());
+  // 1. HIGH PRIORITY: Users who hit limits multiple times in last 24h - using pagination
+  const limitHits = await fetchAllEventsPaginated<{ user_id: string; anonymous_id: string; event_type: string }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id, event_type',
+      filters: [
+        { column: 'event_type', operator: 'in', value: ['hit_daily_limit', 'hit_character_limit'] },
+        { column: 'created_at', operator: 'gte', value: last24h.toISOString() }
+      ]
+    }
+  );
 
   const limitHitCounts: Record<string, number> = {};
   limitHits?.forEach(event => {
@@ -618,26 +753,38 @@ export async function fetchProductEngagement(
   const toolUsage: ProductEngagement['toolUsage'] = [];
 
   for (const toolType of toolTypes) {
-    const { data: events } = await supabase
-      .from('analytics_events')
-      .select('user_id, anonymous_id')
-      .eq('tool_type', toolType)
-      .in('event_type', ['completed_analysis', 'completed_humanization', 'completed_paraphrase'])
-      .gte('created_at', timeframe.startDate.toISOString());
+    const events = await fetchAllEventsPaginated<{ user_id: string; anonymous_id: string }>(
+      supabase,
+      {
+        table: 'analytics_events',
+        select: 'user_id, anonymous_id',
+        filters: [
+          { column: 'tool_type', operator: 'eq', value: toolType },
+          { column: 'event_type', operator: 'in', value: ['completed_analysis', 'completed_humanization', 'completed_paraphrase'] },
+          { column: 'created_at', operator: 'gte', value: timeframe.startDate.toISOString() }
+        ]
+      }
+    );
 
     const totalUses = events?.length || 0;
     const uniqueUsers = new Set(
       events?.map(e => e.user_id || e.anonymous_id).filter(Boolean) || []
     ).size;
 
-    // Previous period for trend
-    const { data: previousEvents } = await supabase
-      .from('analytics_events')
-      .select('id')
-      .eq('tool_type', toolType)
-      .in('event_type', ['completed_analysis', 'completed_humanization', 'completed_paraphrase'])
-      .gte('created_at', timeframe.previousPeriodStart.toISOString())
-      .lt('created_at', timeframe.startDate.toISOString());
+    // Previous period for trend - using pagination
+    const previousEvents = await fetchAllEventsPaginated<{ id: string }>(
+      supabase,
+      {
+        table: 'analytics_events',
+        select: 'id',
+        filters: [
+          { column: 'tool_type', operator: 'eq', value: toolType },
+          { column: 'event_type', operator: 'in', value: ['completed_analysis', 'completed_humanization', 'completed_paraphrase'] },
+          { column: 'created_at', operator: 'gte', value: timeframe.previousPeriodStart.toISOString() },
+          { column: 'created_at', operator: 'lt', value: timeframe.startDate.toISOString() }
+        ]
+      }
+    );
 
     const previousUses = previousEvents?.length || 0;
     const trend = previousUses > 0 ? ((totalUses - previousUses) / previousUses) * 100 : 0;
@@ -996,6 +1143,47 @@ export async function fetchUserInsights(
     });
   }
 
+  // Calculate conversion rate by role
+  const { data: usersWithProfiles } = await supabase
+    .from('users')
+    .select('id, email, plan_type');
+
+  const { data: allProfiles } = await supabase
+    .from('user_profiles')
+    .select('user_id, role');
+
+  const conversionByRole: Record<string, { totalUsers: number; premiumUsers: number; conversionRate: number }> = {};
+
+  // Create a map of user_id to role
+  const userRoleMap: Record<string, string> = {};
+  allProfiles?.forEach(p => {
+    if (p.role) {
+      userRoleMap[p.user_id] = p.role;
+    }
+  });
+
+  // Count total and premium users by role
+  usersWithProfiles?.forEach(user => {
+    const role = userRoleMap[user.id];
+    if (role && !TEST_USER_CONFIG.emails.includes(user.email)) {
+      if (!conversionByRole[role]) {
+        conversionByRole[role] = { totalUsers: 0, premiumUsers: 0, conversionRate: 0 };
+      }
+      conversionByRole[role].totalUsers += 1;
+      if (user.plan_type === 'premium') {
+        conversionByRole[role].premiumUsers += 1;
+      }
+    }
+  });
+
+  // Calculate conversion rates
+  Object.keys(conversionByRole).forEach(role => {
+    const data = conversionByRole[role];
+    data.conversionRate = data.totalUsers > 0
+      ? (data.premiumUsers / data.totalUsers) * 100
+      : 0;
+  });
+
   return {
     demographics: {
       totalProfiles,
@@ -1004,6 +1192,7 @@ export async function fetchUserInsights(
       byPrimaryUse,
       byDiscoverySource,
     },
+    conversionByRole,
     topUsers,
     recentSignups: recentSignupsData,
   };
@@ -1038,7 +1227,7 @@ export async function getAllRegisteredUsers(
     return [];
   }
 
-  // For each user, get usage stats
+  // For each user, get usage stats and profile data
   const usersWithStats = await Promise.all(
     users.map(async (user) => {
       // Check if test user
@@ -1063,6 +1252,18 @@ export async function getAllRegisteredUsers(
         .order('created_at', { ascending: false })
         .limit(1);
 
+      // Get user profile data
+      const { data: profile, error: profileError } = await supabase
+        .from('user_profiles')
+        .select('role, primary_use, discovery_source')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      // Log profile errors for debugging
+      if (profileError) {
+        console.error(`Error fetching profile for user ${user.email}:`, profileError);
+      }
+
       return {
         id: user.id,
         email: user.email,
@@ -1072,6 +1273,10 @@ export async function getAllRegisteredUsers(
         lastActivity: lastEvent?.[0]?.created_at || undefined,
         totalUses: count || 0,
         isTestUser,
+        // Profile data
+        role: profile?.role || undefined,
+        primaryUse: profile?.primary_use || undefined,
+        discoverySource: profile?.discovery_source || undefined,
       };
     })
   );

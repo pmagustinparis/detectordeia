@@ -22,6 +22,10 @@ import {
 } from '@/lib/analytics/queries';
 import { AnalyticsDashboardData, TimeframeOption } from '@/lib/analytics/types';
 
+// Force dynamic rendering (disable Next.js caching)
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET(request: NextRequest) {
   try {
     // 1. Verificar autenticación
@@ -107,7 +111,14 @@ export async function GET(request: NextRequest) {
       },
     };
 
-    return NextResponse.json(dashboardData);
+    // Return with cache-control headers to prevent browser caching
+    return NextResponse.json(dashboardData, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   } catch (error) {
     console.error('[Analytics V2] Error fetching dashboard data:', error);
     return NextResponse.json(

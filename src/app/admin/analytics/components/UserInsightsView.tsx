@@ -15,6 +15,45 @@ interface UserInsightsViewProps {
   data: UserInsights;
 }
 
+// Label mappings for better readability
+const ROLE_LABELS: Record<string, string> = {
+  // Nuevos valores
+  student_university: '🎓 Estudiante Universitario',
+  student_secondary: '📚 Estudiante Secundario',
+  // Valores legacy (backward compatibility)
+  student: '🎓 Estudiante',
+  teacher: '👨‍🏫 Profesor/Docente',
+  writer: '✍️ Escritor/Creador',
+  journalist: '📰 Periodista',
+  professional: '💼 Profesional/Empresa',
+  researcher: '🔬 Investigador/Académico',
+  other: '🔍 Otro',
+};
+
+const USE_LABELS: Record<string, string> = {
+  // Valores actuales
+  detect_ai: '🤖 Detectar IA',
+  humanize: '👤 Humanizar',
+  paraphrase: '🔄 Parafrasear',
+  review_work: '📝 Revisar trabajos',
+  create_content: '✨ Crear contenido',
+  other: '🔍 Otro',
+};
+
+const SOURCE_LABELS: Record<string, string> = {
+  // Valores actuales (específicos)
+  google: '🔍 Google/Buscador',
+  instagram: '📷 Instagram',
+  tiktok: '🎵 TikTok',
+  youtube: '🎥 YouTube',
+  twitter: '🐦 Twitter/X',
+  recommendation: '👥 Recomendación',
+  other_website: '🔗 Otro sitio',
+  other: '🌐 Otro',
+  // Valores legacy (backward compatibility)
+  social_media: '📱 Redes Sociales',
+};
+
 export default function UserInsightsView({ data }: UserInsightsViewProps) {
   const formatPercentage = (value: number, total: number) => {
     if (total === 0) return '0%';
@@ -90,10 +129,10 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
                   .map(([role, count]) => (
                     <div
                       key={role}
-                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2"
+                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2 hover:bg-gray-100 transition-colors cursor-default"
                     >
                       <span className="text-sm text-gray-700 truncate flex-1">
-                        {role || 'Sin especificar'}
+                        {ROLE_LABELS[role] || role || 'Sin especificar'}
                       </span>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-gray-900">
@@ -124,10 +163,10 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
                   .map(([use, count]) => (
                     <div
                       key={use}
-                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2"
+                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2 hover:bg-gray-100 transition-colors cursor-default"
                     >
                       <span className="text-sm text-gray-700 truncate flex-1">
-                        {use || 'Sin especificar'}
+                        {USE_LABELS[use] || use || 'Sin especificar'}
                       </span>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-gray-900">
@@ -158,10 +197,10 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
                   .map(([source, count]) => (
                     <div
                       key={source}
-                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2"
+                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2 hover:bg-gray-100 transition-colors cursor-default"
                     >
                       <span className="text-sm text-gray-700 truncate flex-1">
-                        {source || 'Sin especificar'}
+                        {SOURCE_LABELS[source] || source || 'Sin especificar'}
                       </span>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-gray-900">
@@ -178,6 +217,91 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Info note */}
+        <div className="mt-4 bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+          <p className="text-sm text-blue-800">
+            💡 <strong>Tip:</strong> Para ver los usuarios específicos de cada segmento y contactarlos, ve a la sección <strong>"Usuarios Registrados"</strong> más abajo y usa los filtros por Rol.
+          </p>
+        </div>
+      </div>
+
+      {/* Conversion Rate by Role */}
+      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+        <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span>💰</span>
+          Conversión por Segmento
+          <span className="text-sm font-normal text-gray-600 ml-2">
+            (Free → Premium)
+          </span>
+        </h3>
+
+        {Object.keys(data.conversionByRole).length > 0 ? (
+          <div className="space-y-3">
+            {Object.entries(data.conversionByRole)
+              .sort(([, a], [, b]) => b.totalUsers - a.totalUsers)
+              .map(([role, metrics]) => {
+                const roleLabel = ROLE_LABELS[role] || role;
+                const conversionColor =
+                  metrics.conversionRate >= 15 ? 'text-green-700 bg-green-50' :
+                  metrics.conversionRate >= 8 ? 'text-blue-700 bg-blue-50' :
+                  metrics.conversionRate >= 4 ? 'text-orange-700 bg-orange-50' :
+                  'text-red-700 bg-red-50';
+
+                return (
+                  <div
+                    key={role}
+                    className="border-2 border-gray-200 rounded-xl p-4 hover:border-violet-300 transition-colors"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="font-bold text-gray-900">{roleLabel}</h4>
+                      <span className={`px-3 py-1 rounded-full text-lg font-extrabold ${conversionColor}`}>
+                        {metrics.conversionRate.toFixed(1)}%
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="bg-gray-50 rounded-lg p-3 text-center">
+                        <p className="text-xs text-gray-600 mb-1">Total Usuarios</p>
+                        <p className="text-2xl font-bold text-gray-900">{metrics.totalUsers}</p>
+                      </div>
+                      <div className="bg-violet-50 rounded-lg p-3 text-center border border-violet-200">
+                        <p className="text-xs text-violet-700 mb-1">💎 Premium</p>
+                        <p className="text-2xl font-bold text-violet-900">{metrics.premiumUsers}</p>
+                      </div>
+                      <div className="bg-gray-50 rounded-lg p-3 text-center">
+                        <p className="text-xs text-gray-600 mb-1">🆓 Free</p>
+                        <p className="text-2xl font-bold text-gray-700">
+                          {metrics.totalUsers - metrics.premiumUsers}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Progress bar */}
+                    <div className="mt-3">
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-gradient-to-r from-violet-600 to-purple-600 h-2 rounded-full transition-all"
+                          style={{ width: `${Math.min(metrics.conversionRate, 100)}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        ) : (
+          <p className="text-sm text-gray-500 text-center py-4">
+            No hay datos de conversión disponibles
+          </p>
+        )}
+
+        {/* Summary Note */}
+        <div className="mt-4 bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4">
+          <p className="text-sm text-yellow-800">
+            ⚡ <strong>Insight:</strong> Segmentos con conversion rate &lt;5% probablemente no sean rentables para monetizar B2C. Considerá estrategias B2B (institucional) o pivotear el producto.
+          </p>
         </div>
       </div>
 

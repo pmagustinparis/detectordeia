@@ -21,15 +21,59 @@ interface RegisteredUser {
   lastActivity?: string;
   totalUses?: number;
   isTestUser?: boolean;
+  // Profile data
+  role?: string;
+  primaryUse?: string;
+  discoverySource?: string;
 }
 
 interface RegisteredUsersListProps {
   users: RegisteredUser[];
 }
 
+// Helper functions for profile labels
+const ROLE_LABELS: Record<string, { label: string; icon: string; color: string }> = {
+  // Nuevos valores
+  student_university: { label: 'Est. Universitario', icon: '🎓', color: 'bg-blue-100 text-blue-800 border-blue-300' },
+  student_secondary: { label: 'Est. Secundario', icon: '📚', color: 'bg-green-100 text-green-800 border-green-300' },
+  // Valores legacy (backward compatibility)
+  student: { label: 'Estudiante', icon: '🎓', color: 'bg-blue-100 text-blue-800 border-blue-300' },
+  teacher: { label: 'Profesor', icon: '👨‍🏫', color: 'bg-purple-100 text-purple-800 border-purple-300' },
+  writer: { label: 'Escritor', icon: '✍️', color: 'bg-orange-100 text-orange-800 border-orange-300' },
+  journalist: { label: 'Periodista', icon: '📰', color: 'bg-red-100 text-red-800 border-red-300' },
+  professional: { label: 'Profesional', icon: '💼', color: 'bg-indigo-100 text-indigo-800 border-indigo-300' },
+  researcher: { label: 'Investigador', icon: '🔬', color: 'bg-teal-100 text-teal-800 border-teal-300' },
+  other: { label: 'Otro', icon: '🔍', color: 'bg-gray-100 text-gray-700 border-gray-300' },
+};
+
+const USE_LABELS: Record<string, string> = {
+  // Valores actuales
+  detect_ai: 'Detectar IA',
+  humanize: 'Humanizar',
+  paraphrase: 'Parafrasear',
+  review_work: 'Revisar trabajos',
+  create_content: 'Crear contenido',
+  other: 'Otro',
+};
+
+const SOURCE_LABELS: Record<string, string> = {
+  // Valores actuales (específicos)
+  google: 'Google',
+  instagram: 'Instagram',
+  tiktok: 'TikTok',
+  youtube: 'YouTube',
+  twitter: 'Twitter/X',
+  recommendation: 'Recomendación',
+  other_website: 'Otro sitio',
+  other: 'Otro',
+  // Valores legacy (backward compatibility)
+  social_media: 'Redes Sociales',
+};
+
 export default function RegisteredUsersList({ users }: RegisteredUsersListProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterPlan, setFilterPlan] = useState<'all' | 'free' | 'premium'>('all');
+  const [filterRole, setFilterRole] = useState<string>('all');
   const [showTestUsers, setShowTestUsers] = useState(false);
 
   // Filtrar usuarios
@@ -42,10 +86,13 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
     // Filtro de plan
     const matchesPlan = filterPlan === 'all' || user.planType === filterPlan;
 
+    // Filtro de rol
+    const matchesRole = filterRole === 'all' || user.role === filterRole;
+
     // Filtro de test users
     const matchesTestFilter = showTestUsers || !user.isTestUser;
 
-    return matchesSearch && matchesPlan && matchesTestFilter;
+    return matchesSearch && matchesPlan && matchesRole && matchesTestFilter;
   });
 
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
@@ -108,7 +155,7 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
 
       {/* Filters */}
       <div className="bg-white border-2 border-gray-200 rounded-xl p-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Search */}
           <div className="md:col-span-2">
             <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -136,6 +183,28 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
               <option value="all">Todos</option>
               <option value="free">Free</option>
               <option value="premium">Premium</option>
+            </select>
+          </div>
+
+          {/* Role filter */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Rol
+            </label>
+            <select
+              value={filterRole}
+              onChange={(e) => setFilterRole(e.target.value)}
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-violet-500 transition-colors cursor-pointer bg-white text-gray-900"
+            >
+              <option value="all">Todos</option>
+              <option value="student_university">🎓 Est. Universitario</option>
+              <option value="student_secondary">📚 Est. Secundario</option>
+              <option value="teacher">👨‍🏫 Profesor</option>
+              <option value="writer">✍️ Escritor</option>
+              <option value="journalist">📰 Periodista</option>
+              <option value="professional">💼 Profesional</option>
+              <option value="researcher">🔬 Investigador</option>
+              <option value="other">🔍 Otro</option>
             </select>
           </div>
         </div>
@@ -171,6 +240,9 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
                   Plan
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                  Perfil
+                </th>
+                <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                   Registrado
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
@@ -184,7 +256,7 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
             <tbody className="divide-y divide-gray-200">
               {filteredUsers.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                  <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
                     No se encontraron usuarios
                   </td>
                 </tr>
@@ -211,6 +283,28 @@ export default function RegisteredUsersList({ users }: RegisteredUsersListProps)
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${getPlanBadgeColor(user.planType)}`}>
                         {user.planType === 'premium' ? '💎 Premium' : '🆓 Free'}
                       </span>
+                    </td>
+                    <td className="px-4 py-3 text-sm">
+                      <div className="flex flex-col gap-1">
+                        {user.role && ROLE_LABELS[user.role] && (
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border ${ROLE_LABELS[user.role].color}`}>
+                            {ROLE_LABELS[user.role].icon} {ROLE_LABELS[user.role].label}
+                          </span>
+                        )}
+                        {user.primaryUse && USE_LABELS[user.primaryUse] && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs text-gray-600 bg-gray-50 border border-gray-200">
+                            {USE_LABELS[user.primaryUse]}
+                          </span>
+                        )}
+                        {user.discoverySource && SOURCE_LABELS[user.discoverySource] && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs text-gray-500 bg-gray-50">
+                            📍 {SOURCE_LABELS[user.discoverySource]}
+                          </span>
+                        )}
+                        {!user.role && !user.primaryUse && !user.discoverySource && (
+                          <span className="text-xs text-gray-400">Sin datos</span>
+                        )}
+                      </div>
                     </td>
                     <td className="px-4 py-3 text-sm text-gray-600">
                       {formatDate(user.createdAt)}

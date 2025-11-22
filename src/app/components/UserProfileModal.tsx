@@ -9,28 +9,33 @@ interface UserProfileModalProps {
 }
 
 const ROLES = [
-  { value: 'student', label: 'Estudiante', icon: '🎓' },
+  { value: 'student_university', label: 'Estudiante Universitario', icon: '🎓' },
+  { value: 'student_secondary', label: 'Estudiante Secundario/Colegio', icon: '📚' },
   { value: 'teacher', label: 'Profesor/Docente', icon: '👨‍🏫' },
-  { value: 'writer', label: 'Escritor/Creador', icon: '✍️' },
+  { value: 'writer', label: 'Escritor/Creador de Contenido', icon: '✍️' },
   { value: 'journalist', label: 'Periodista', icon: '📰' },
   { value: 'professional', label: 'Profesional/Empresa', icon: '💼' },
+  { value: 'researcher', label: 'Investigador/Académico', icon: '🔬' },
   { value: 'other', label: 'Otro', icon: '🔍' },
 ];
 
 const PRIMARY_USES = [
-  { value: 'detect_ai', label: 'Detectar si un texto es IA', icon: '🤖' },
+  { value: 'detect_ai', label: 'Detectar si un texto es generado por IA', icon: '🤖' },
   { value: 'humanize', label: 'Humanizar textos de IA', icon: '👤' },
-  { value: 'paraphrase', label: 'Parafrasear contenido', icon: '🔄' },
-  { value: 'review_work', label: 'Revisar trabajos/tareas', icon: '📝' },
+  { value: 'paraphrase', label: 'Parafrasear y reescribir contenido', icon: '🔄' },
+  { value: 'review_work', label: 'Revisar trabajos académicos', icon: '📝' },
+  { value: 'create_content', label: 'Crear contenido original', icon: '✨' },
   { value: 'other', label: 'Otro', icon: '🔍' },
 ];
 
 const DISCOVERY_SOURCES = [
   { value: 'google', label: 'Google/Buscador', icon: '🔍' },
-  { value: 'social_media', label: 'Redes sociales', icon: '📱' },
-  { value: 'recommendation', label: 'Recomendación', icon: '👥' },
+  { value: 'instagram', label: 'Instagram', icon: '📷' },
+  { value: 'tiktok', label: 'TikTok', icon: '🎵' },
   { value: 'youtube', label: 'YouTube', icon: '🎥' },
-  { value: 'other_website', label: 'Otro sitio web', icon: '🔗' },
+  { value: 'twitter', label: 'Twitter/X', icon: '🐦' },
+  { value: 'recommendation', label: 'Recomendación de amigo/colega', icon: '👥' },
+  { value: 'other_website', label: 'Otro sitio web/blog', icon: '🔗' },
   { value: 'other', label: 'Otro', icon: '🌐' },
 ];
 
@@ -74,9 +79,9 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 animate-scale-in">
-        {/* Header */}
-        <div className="text-center mb-6">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in">
+        {/* Header - Fixed */}
+        <div className="text-center p-6 pb-4 shrink-0">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-500 to-purple-500 rounded-full mb-3">
             <span className="text-3xl">👋</span>
           </div>
@@ -98,9 +103,11 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
           </div>
         </div>
 
-        {/* Step 1: Rol */}
-        {step === 1 && (
-          <div className="space-y-3">
+        {/* Scrollable Content */}
+        <div className="overflow-y-auto px-6 py-2 flex-1">
+          {/* Step 1: Rol */}
+          {step === 1 && (
+            <div className="space-y-3">
             <h3 className="text-lg font-semibold text-gray-800 mb-3">¿Cuál es tu rol?</h3>
             {ROLES.map((r) => (
               <button
@@ -164,43 +171,46 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
             ))}
           </div>
         )}
+        </div>
 
-        {/* Footer Buttons */}
-        <div className="flex gap-3 mt-6">
-          <button
-            onClick={onClose}
-            className="flex-1 px-4 py-3 text-gray-600 font-medium hover:text-gray-800 transition-colors"
-          >
-            Saltar por ahora
-          </button>
-
-          {step < 3 ? (
+        {/* Footer Buttons - Fixed */}
+        <div className="p-6 pt-4 shrink-0 border-t border-gray-100">
+          <div className="flex gap-3">
             <button
-              onClick={() => setStep(step + 1)}
-              disabled={!canContinue()}
-              className="flex-1 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:from-violet-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={onClose}
+              className="flex-1 px-4 py-3 text-gray-600 font-medium hover:text-gray-800 transition-colors"
             >
-              Siguiente
+              Saltar por ahora
             </button>
-          ) : (
+
+            {step < 3 ? (
+              <button
+                onClick={() => setStep(step + 1)}
+                disabled={!canContinue()}
+                className="flex-1 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:from-violet-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Siguiente
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmit}
+                disabled={!canContinue() || isSubmitting}
+                className="flex-1 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:from-violet-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Guardando...' : 'Completar'}
+              </button>
+            )}
+          </div>
+
+          {step > 1 && (
             <button
-              onClick={handleSubmit}
-              disabled={!canContinue() || isSubmitting}
-              className="flex-1 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:from-violet-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => setStep(step - 1)}
+              className="w-full mt-2 text-sm text-gray-500 hover:text-gray-700"
             >
-              {isSubmitting ? 'Guardando...' : 'Completar'}
+              ← Volver
             </button>
           )}
         </div>
-
-        {step > 1 && (
-          <button
-            onClick={() => setStep(step - 1)}
-            className="w-full mt-2 text-sm text-gray-500 hover:text-gray-700"
-          >
-            ← Volver
-          </button>
-        )}
       </div>
     </div>
   );
