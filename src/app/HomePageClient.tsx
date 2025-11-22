@@ -48,6 +48,35 @@ export default function HomePageClient() {
         </div>
       </section>
 
+      {/* VARIANTES DEL DETECTOR - Internal Linking SEO */}
+      <section className="max-w-5xl mx-auto mb-12 px-2">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-6 text-center">
+          <p className="text-gray-700 text-sm mb-3">
+            <span className="font-semibold">También buscado como:</span>
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a
+              href="/identificador-de-ia"
+              className="px-4 py-2 bg-white hover:bg-violet-50 text-violet-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-violet-200"
+            >
+              Identificador de IA
+            </a>
+            <a
+              href="/verificador-de-ia"
+              className="px-4 py-2 bg-white hover:bg-violet-50 text-violet-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-violet-200"
+            >
+              Verificador de IA
+            </a>
+            <a
+              href="/comprobador-de-ia"
+              className="px-4 py-2 bg-white hover:bg-violet-50 text-violet-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-violet-200"
+            >
+              Comprobador de IA
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* SECCIÓN DE BENEFICIOS */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 animate-fade-in">
