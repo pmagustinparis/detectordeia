@@ -15,6 +15,38 @@ interface UserInsightsViewProps {
   data: UserInsights;
 }
 
+// Label mappings for better readability
+const ROLE_LABELS: Record<string, string> = {
+  student_university: '🎓 Estudiante Universitario',
+  student_secondary: '📚 Estudiante Secundario',
+  teacher: '👨‍🏫 Profesor/Docente',
+  writer: '✍️ Escritor/Creador',
+  journalist: '📰 Periodista',
+  professional: '💼 Profesional/Empresa',
+  researcher: '🔬 Investigador/Académico',
+  other: '🔍 Otro',
+};
+
+const USE_LABELS: Record<string, string> = {
+  detect_ai: '🤖 Detectar IA',
+  humanize: '👤 Humanizar',
+  paraphrase: '🔄 Parafrasear',
+  review_work: '📝 Revisar trabajos',
+  create_content: '✨ Crear contenido',
+  other: '🔍 Otro',
+};
+
+const SOURCE_LABELS: Record<string, string> = {
+  google: '🔍 Google/Buscador',
+  instagram: '📷 Instagram',
+  tiktok: '🎵 TikTok',
+  youtube: '🎥 YouTube',
+  twitter: '🐦 Twitter/X',
+  recommendation: '👥 Recomendación',
+  other_website: '🔗 Otro sitio',
+  other: '🌐 Otro',
+};
+
 export default function UserInsightsView({ data }: UserInsightsViewProps) {
   const formatPercentage = (value: number, total: number) => {
     if (total === 0) return '0%';
@@ -90,10 +122,10 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
                   .map(([role, count]) => (
                     <div
                       key={role}
-                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2"
+                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2 hover:bg-gray-100 transition-colors cursor-default"
                     >
                       <span className="text-sm text-gray-700 truncate flex-1">
-                        {role || 'Sin especificar'}
+                        {ROLE_LABELS[role] || role || 'Sin especificar'}
                       </span>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-gray-900">
@@ -124,10 +156,10 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
                   .map(([use, count]) => (
                     <div
                       key={use}
-                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2"
+                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2 hover:bg-gray-100 transition-colors cursor-default"
                     >
                       <span className="text-sm text-gray-700 truncate flex-1">
-                        {use || 'Sin especificar'}
+                        {USE_LABELS[use] || use || 'Sin especificar'}
                       </span>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-gray-900">
@@ -158,10 +190,10 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
                   .map(([source, count]) => (
                     <div
                       key={source}
-                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2"
+                      className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-2 hover:bg-gray-100 transition-colors cursor-default"
                     >
                       <span className="text-sm text-gray-700 truncate flex-1">
-                        {source || 'Sin especificar'}
+                        {SOURCE_LABELS[source] || source || 'Sin especificar'}
                       </span>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-gray-900">
@@ -178,6 +210,13 @@ export default function UserInsightsView({ data }: UserInsightsViewProps) {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Info note */}
+        <div className="mt-4 bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+          <p className="text-sm text-blue-800">
+            💡 <strong>Tip:</strong> Para ver los usuarios específicos de cada segmento y contactarlos, ve a la sección <strong>"Usuarios Registrados"</strong> más abajo y usa los filtros por Rol.
+          </p>
         </div>
       </div>
 

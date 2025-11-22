@@ -1038,7 +1038,7 @@ export async function getAllRegisteredUsers(
     return [];
   }
 
-  // For each user, get usage stats
+  // For each user, get usage stats and profile data
   const usersWithStats = await Promise.all(
     users.map(async (user) => {
       // Check if test user
@@ -1063,6 +1063,13 @@ export async function getAllRegisteredUsers(
         .order('created_at', { ascending: false })
         .limit(1);
 
+      // Get user profile data
+      const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('role, primary_use, discovery_source')
+        .eq('user_id', user.id)
+        .single();
+
       return {
         id: user.id,
         email: user.email,
@@ -1072,6 +1079,10 @@ export async function getAllRegisteredUsers(
         lastActivity: lastEvent?.[0]?.created_at || undefined,
         totalUses: count || 0,
         isTestUser,
+        // Profile data
+        role: profile?.role || undefined,
+        primaryUse: profile?.primary_use || undefined,
+        discoverySource: profile?.discovery_source || undefined,
       };
     })
   );

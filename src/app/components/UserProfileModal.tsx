@@ -9,28 +9,33 @@ interface UserProfileModalProps {
 }
 
 const ROLES = [
-  { value: 'student', label: 'Estudiante', icon: '🎓' },
+  { value: 'student_university', label: 'Estudiante Universitario', icon: '🎓' },
+  { value: 'student_secondary', label: 'Estudiante Secundario/Colegio', icon: '📚' },
   { value: 'teacher', label: 'Profesor/Docente', icon: '👨‍🏫' },
-  { value: 'writer', label: 'Escritor/Creador', icon: '✍️' },
+  { value: 'writer', label: 'Escritor/Creador de Contenido', icon: '✍️' },
   { value: 'journalist', label: 'Periodista', icon: '📰' },
   { value: 'professional', label: 'Profesional/Empresa', icon: '💼' },
+  { value: 'researcher', label: 'Investigador/Académico', icon: '🔬' },
   { value: 'other', label: 'Otro', icon: '🔍' },
 ];
 
 const PRIMARY_USES = [
-  { value: 'detect_ai', label: 'Detectar si un texto es IA', icon: '🤖' },
+  { value: 'detect_ai', label: 'Detectar si un texto es generado por IA', icon: '🤖' },
   { value: 'humanize', label: 'Humanizar textos de IA', icon: '👤' },
-  { value: 'paraphrase', label: 'Parafrasear contenido', icon: '🔄' },
-  { value: 'review_work', label: 'Revisar trabajos/tareas', icon: '📝' },
+  { value: 'paraphrase', label: 'Parafrasear y reescribir contenido', icon: '🔄' },
+  { value: 'review_work', label: 'Revisar trabajos académicos', icon: '📝' },
+  { value: 'create_content', label: 'Crear contenido original', icon: '✨' },
   { value: 'other', label: 'Otro', icon: '🔍' },
 ];
 
 const DISCOVERY_SOURCES = [
   { value: 'google', label: 'Google/Buscador', icon: '🔍' },
-  { value: 'social_media', label: 'Redes sociales', icon: '📱' },
-  { value: 'recommendation', label: 'Recomendación', icon: '👥' },
+  { value: 'instagram', label: 'Instagram', icon: '📷' },
+  { value: 'tiktok', label: 'TikTok', icon: '🎵' },
   { value: 'youtube', label: 'YouTube', icon: '🎥' },
-  { value: 'other_website', label: 'Otro sitio web', icon: '🔗' },
+  { value: 'twitter', label: 'Twitter/X', icon: '🐦' },
+  { value: 'recommendation', label: 'Recomendación de amigo/colega', icon: '👥' },
+  { value: 'other_website', label: 'Otro sitio web/blog', icon: '🔗' },
   { value: 'other', label: 'Otro', icon: '🌐' },
 ];
 
