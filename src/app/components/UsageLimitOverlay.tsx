@@ -3,8 +3,9 @@
  *
  * Modal/overlay que aparece cuando un usuario alcanza su límite diario.
  * Muestra mensajes diferentes según el tipo de usuario:
- * - Anonymous: CTA para registrarse (obtener 50 usos/día)
- * - Free: CTA para Premium (próximamente)
+ * - Anonymous: CTA para registrarse (obtener más usos/día)
+ * - Free: CTA para Express ($2.99/24h) o Pro ($6.99/mes)
+ * - Express/Premium: No deberían ver este modal (tienen usos ilimitados)
  */
 
 'use client';
@@ -14,7 +15,7 @@ import { useEffect } from 'react';
 interface UsageLimitOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  userType: 'anonymous' | 'free' | 'premium';
+  userType: 'anonymous' | 'free' | 'express' | 'premium';
   limit: number;
   resetAt: Date;
   toolName: string; // "Detector", "Humanizador", "Parafraseador"
@@ -153,40 +154,72 @@ export default function UsageLimitOverlay({
                 </span>
               </p>
 
-              <div className="bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-5 mb-6">
-                <p className="text-sm font-bold text-cyan-900 mb-3">
-                  🚀 Actualiza a Plan Pro
+              {/* Express Option - Destacado */}
+              <div className="bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-300 rounded-2xl p-5 mb-4 relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">
+                  ⚡ URGENTE
+                </div>
+                <p className="text-sm font-bold text-orange-900 mb-2 mt-2">
+                  Express Pass - 24 horas ilimitadas
                 </p>
-                <ul className="space-y-2 text-sm text-cyan-800">
+                <ul className="space-y-1.5 text-sm text-orange-800 mb-3">
                   <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Usos ilimitados</strong> todos los días</span>
+                    <span className="text-orange-600 font-bold">✓</span>
+                    <span><strong>Todo ilimitado</strong> por 24 horas</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>5 modos premium</strong> en Humanizador y Parafraseador</span>
+                    <span className="text-orange-600 font-bold">✓</span>
+                    <span>5 modos premium + archivos</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>✨ Caracteres ilimitados</strong> por uso</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Historial completo</strong> sin límites</span>
+                    <span className="text-orange-600 font-bold">✓</span>
+                    <span>Perfecto para entregas urgentes</span>
                   </li>
                 </ul>
-                <p className="text-xs text-cyan-700 mt-3">
-                  Desde $10/mes • Ahorra 20% con plan anual
+                <p className="text-lg font-extrabold text-orange-900">
+                  $2.99 • Pago único
                 </p>
               </div>
 
-              {/* CTA - Upgrade to Pro */}
-              <a
-                href="/pricing"
-                className="block w-full text-center bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
-              >
-                Actualizar a Plan Pro
-              </a>
+              {/* Pro Option */}
+              <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
+                <p className="text-sm font-bold text-violet-900 mb-2">
+                  🚀 Plan Pro - Uso continuo
+                </p>
+                <ul className="space-y-1.5 text-sm text-violet-800 mb-3">
+                  <li className="flex items-start gap-2">
+                    <span className="text-violet-600 font-bold">✓</span>
+                    <span><strong>Usos ilimitados</strong> permanentes</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-violet-600 font-bold">✓</span>
+                    <span>5 modos premium + archivos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-violet-600 font-bold">✓</span>
+                    <span>Mejor para uso regular</span>
+                  </li>
+                </ul>
+                <p className="text-lg font-extrabold text-violet-900">
+                  $6.99/mes • $66.99/año
+                </p>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="space-y-3 mb-3">
+                <a
+                  href="/pricing"
+                  className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  ⚡ Activar Express ($2.99/24h)
+                </a>
+                <a
+                  href="/pricing"
+                  className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  Ver Plan Pro ($6.99/mes)
+                </a>
+              </div>
 
               <button
                 onClick={onClose}
