@@ -6,6 +6,7 @@ import ParafraseadorMain from '../components/ParafraseadorMain';
 import EmailCaptureModal from '../components/EmailCaptureModal';
 import FAQSection from '../components/FAQSection';
 import { useAuth } from '@/lib/hooks/useAuth';
+import ExpressPromoBanner from '../components/ExpressPromoBanner';
 
 export default function ParafraseadorClient() {
   const { isAuthenticated, user } = useAuth();
@@ -43,6 +44,9 @@ export default function ParafraseadorClient() {
 
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
+      {/* Banner Promocional - Express Pass */}
+      <ExpressPromoBanner />
+
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
         {/* Elementos decorativos de fondo */}
