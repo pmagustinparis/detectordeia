@@ -7,21 +7,13 @@ import { trackEvent } from "@/lib/analytics/client";
 
 const PRICES = {
   free: { monthly: 0, annual: 0 },
-  pro: { monthly: 10, annual: 96 }, // $8/mes efectivo
+  express: 2.99, // Pago único 24h
+  pro: { monthly: 6.99, annual: 66.99 }, // $5.58/mes efectivo
 };
 
 export default function PricingPageClient() {
   const { isAuthenticated } = useAuth();
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
-  const [showTeamModal, setShowTeamModal] = useState(false);
-  const [teamFormData, setTeamFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    teamSize: '',
-    message: '',
-  });
-  const [teamSubmitted, setTeamSubmitted] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
   const [loadingPlan, setLoadingPlan] = useState(true);
@@ -66,47 +58,38 @@ export default function PricingPageClient() {
   // Check if user just logged in and had a pending checkout
   useEffect(() => {
     if (isAuthenticated) {
-      const pendingPlan = localStorage.getItem('pending_plan_checkout');
-      if (pendingPlan) {
-        const planInterval = pendingPlan as 'month' | 'year';
+      const pendingPlanType = localStorage.getItem('pending_plan_type');
+      const pendingPlanInterval = localStorage.getItem('pending_plan_checkout');
+
+      if (pendingPlanType) {
+        const planType = pendingPlanType as 'express' | 'premium';
+        const planInterval = pendingPlanInterval as 'month' | 'year' | null;
+
+        localStorage.removeItem('pending_plan_type');
         localStorage.removeItem('pending_plan_checkout');
+
         // Trigger checkout after a small delay to ensure auth is fully settled
         setTimeout(() => {
-          handleCheckout(planInterval);
+          if (planType === 'express') {
+            handleCheckout('express');
+          } else if (planInterval) {
+            handleCheckout('premium', planInterval);
+          }
         }, 500);
       }
     }
   }, [isAuthenticated]);
 
-  const handleTeamSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Team contact form:', teamFormData);
-
-    try {
-      // TODO: Implement Google Sheets integration
-      const response = await fetch('/api/contact-team', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(teamFormData),
-      });
-
-      if (response.ok) {
-        console.log('Team contact submitted successfully');
-        setTeamSubmitted(true);
-      }
-    } catch (error) {
-      console.error('Error submitting team contact:', error);
-    }
-  };
-
-  const handleCheckout = async (planInterval: 'month' | 'year') => {
+  const handleCheckout = async (planType: 'express' | 'premium', planInterval?: 'month' | 'year') => {
     // Track checkout initiation
     trackEvent({
       eventType: 'checkout_started',
       metadata: {
-        plan_interval: planInterval,
-        plan_type: 'pro',
-        price: planInterval === 'month' ? PRICES.pro.monthly : PRICES.pro.annual,
+        plan_type: planType,
+        ...(planInterval && { plan_interval: planInterval }),
+        price: planType === 'express'
+          ? PRICES.express
+          : (planInterval === 'month' ? PRICES.pro.monthly : PRICES.pro.annual),
         is_authenticated: isAuthenticated,
         current_plan: userPlan,
       }
@@ -117,7 +100,8 @@ export default function PricingPageClient() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          plan_interval: planInterval,
+          plan_type: planType,
+          ...(planInterval && { plan_interval: planInterval }),
         }),
       });
 
@@ -172,13 +156,27 @@ export default function PricingPageClient() {
       // Save the plan selection and redirect to signup
       const planInterval = billing === 'monthly' ? 'month' : 'year';
       localStorage.setItem('pending_plan_checkout', planInterval);
+      localStorage.setItem('pending_plan_type', 'premium');
 
       // Redirect to signup page
       window.location.href = '/auth/signup';
     } else {
       // User is authenticated, proceed to checkout
       const planInterval = billing === 'monthly' ? 'month' : 'year';
-      await handleCheckout(planInterval);
+      await handleCheckout('premium', planInterval);
+    }
+  };
+
+  const handleExpressCTAClick = async () => {
+    if (!isAuthenticated) {
+      // Save the plan selection and redirect to signup
+      localStorage.setItem('pending_plan_type', 'express');
+
+      // Redirect to signup page
+      window.location.href = '/auth/signup';
+    } else {
+      // User is authenticated, proceed to checkout
+      await handleCheckout('express');
     }
   };
 
@@ -208,24 +206,28 @@ export default function PricingPageClient() {
 
   const faqs = [
     {
+      q: "¿Qué es el plan Express?",
+      a: "El plan Express es un pase de 24 horas que te da acceso ilimitado a todas las funcionalidades premium por solo $2.99. Es perfecto para cuando necesitas completar un proyecto urgente o quieres probar todas las funciones premium antes de suscribirte al plan Pro.",
+    },
+    {
+      q: "¿El plan Express se renueva automáticamente?",
+      a: "No, el plan Express es un pago único que dura exactamente 24 horas desde el momento de la compra. No hay renovación automática. Si quieres más acceso, puedes comprar otro pase Express o suscribirte al plan Pro.",
+    },
+    {
       q: "¿Qué métodos de pago aceptan?",
       a: "Aceptamos todas las tarjetas de crédito y débito principales (Visa, Mastercard, American Express) a través de Stripe, nuestra plataforma de pago segura.",
     },
     {
-      q: "¿Puedo cancelar en cualquier momento?",
-      a: "Sí, puedes cancelar tu suscripción en cualquier momento desde tu dashboard. No hay compromisos ni penalizaciones por cancelación anticipada.",
+      q: "¿Puedo cancelar el plan Pro en cualquier momento?",
+      a: "Sí, puedes cancelar tu suscripción Pro en cualquier momento desde tu dashboard. No hay compromisos ni penalizaciones por cancelación anticipada.",
     },
     {
-      q: "¿Qué pasa con mis datos si cancelo?",
-      a: "Mantendrás acceso a tu historial durante 30 días después de la cancelación. Pasado ese tiempo, tus datos serán eliminados de nuestros servidores.",
-    },
-    {
-      q: "¿Ofrecen descuentos para estudiantes o educadores?",
-      a: "Actualmente estamos trabajando en planes especiales para educación. Contáctanos a través del formulario de Team para más información.",
+      q: "¿Qué diferencia hay entre Express y Pro?",
+      a: "Express te da acceso completo por 24 horas ($2.99), mientras que Pro es una suscripción mensual ($6.99/mes) o anual ($66.99/año) con acceso continuo. Ambos tienen las mismas funcionalidades ilimitadas.",
     },
     {
       q: "¿El plan anual se renueva automáticamente?",
-      a: "Sí, el plan anual se renueva automáticamente cada año. Puedes cancelar la renovación automática en cualquier momento desde tu dashboard.",
+      a: "Sí, el plan Pro anual se renueva automáticamente cada año. Puedes cancelar la renovación automática en cualquier momento desde tu dashboard.",
     },
     {
       q: "¿Puedo cambiar de plan mensual a anual?",
@@ -233,19 +235,15 @@ export default function PricingPageClient() {
     },
     {
       q: "¿Los planes incluyen todas las herramientas?",
-      a: "Sí, el plan Pro incluye acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
+      a: "Sí, tanto Express como Pro incluyen acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
     },
     {
-      q: "¿Hay límites de uso en el plan Pro?",
-      a: "El plan Pro incluye usos ilimitados diarios y caracteres ilimitados por análisis. No hay límites en la cantidad de texto que puedes procesar.",
-    },
-    {
-      q: "¿Qué incluye el plan Team?",
-      a: "El plan Team incluye todo lo del plan Pro más gestión de equipo, facturación consolidada, soporte prioritario y opciones de personalización. Contáctanos para un presupuesto personalizado.",
+      q: "¿Hay límites de uso en Express y Pro?",
+      a: "No, tanto Express como Pro incluyen usos ilimitados diarios y caracteres ilimitados por análisis. No hay límites en la cantidad de texto que puedes procesar.",
     },
     {
       q: "¿Ofrecen reembolsos?",
-      a: "No ofrecemos reembolsos. Al suscribirte, aceptas nuestros términos de servicio y la política de no reembolso. Puedes cancelar tu suscripción en cualquier momento desde el portal de gestión, y mantendrás acceso hasta el final del período pagado.",
+      a: "No ofrecemos reembolsos en ningún plan. Al comprar Express o suscribirte a Pro, aceptas nuestros términos de servicio y la política de no reembolso. En Pro, puedes cancelar en cualquier momento y mantendrás acceso hasta el final del período pagado.",
     },
   ];
 
@@ -358,26 +356,84 @@ export default function PricingPageClient() {
             )}
           </div>
 
-          {/* Pro Plan - POPULAR */}
-          <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl shadow-2xl p-8 flex flex-col items-start border-4 border-violet-500 relative transform scale-105">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-600 to-purple-600 text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">
-              MÁS POPULAR
+          {/* Express Pass - NUEVO */}
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl shadow-2xl p-8 flex flex-col items-start border-4 border-orange-400 relative transform scale-105">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">
+              ⚡ POPULAR
             </div>
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">
+                Express
+              </h2>
+              <p className="text-gray-700 text-sm font-medium">⏱️ Acceso ilimitado por 24 horas</p>
+            </div>
+            <div className="mb-8">
+              <span className="text-5xl font-extrabold text-gray-900">${PRICES.express}</span>
+              <span className="text-xl text-gray-600">/24h</span>
+              <p className="text-sm text-orange-700 font-semibold mt-2">
+                Pago único • Sin renovación automática
+              </p>
+            </div>
+            <ul className="space-y-4 mb-8 flex-grow w-full">
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-semibold">✨ Todo ilimitado por 24h</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-semibold">Caracteres ilimitados</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-medium">5 modos premium</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-medium">Subida de archivos</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-medium">Perfecto para entregas urgentes</span>
+              </li>
+            </ul>
+            <button
+              onClick={handleExpressCTAClick}
+              className="mt-auto w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
+            >
+              {isAuthenticated ? 'Activar Express' : 'Registrate y Activa'}
+            </button>
+            <p className="text-xs text-gray-600 mt-3 text-center w-full">
+              💳 Pago seguro con Stripe
+            </p>
+          </div>
+
+          {/* Pro Plan */}
+          <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 border-gray-200 hover:border-violet-200 transition-all duration-300">
             <div className="mb-6">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Pro
               </h2>
-              <p className="text-gray-700 text-sm font-medium">🔥 Ideal para estudiantes y profesionales</p>
+              <p className="text-gray-700 text-sm font-medium">🎓 Mejor para uso continuo</p>
             </div>
             <div className="mb-2">
               <span className="text-5xl font-extrabold text-gray-900">
-                ${billing === 'monthly' ? PRICES.pro.monthly : Math.round(PRICES.pro.annual / 12)}
+                ${billing === 'monthly' ? PRICES.pro.monthly : (PRICES.pro.annual / 12).toFixed(2)}
               </span>
               <span className="text-xl text-gray-600">/mes</span>
             </div>
             {billing === 'annual' && (
               <p className="text-sm text-violet-700 font-semibold mb-6">
-                ${PRICES.pro.annual}/año • Ahorra ${PRICES.pro.monthly * 12 - PRICES.pro.annual}
+                ${PRICES.pro.annual}/año • Ahorra ${(PRICES.pro.monthly * 12 - PRICES.pro.annual).toFixed(2)}
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
@@ -424,55 +480,6 @@ export default function PricingPageClient() {
               💳 Pago seguro con Stripe
             </p>
           </div>
-
-          {/* Team Plan */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 border-gray-200 hover:border-violet-200 transition-all duration-300">
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Team</h2>
-              <p className="text-gray-600 text-sm">Para equipos y empresas</p>
-            </div>
-            <div className="mb-8">
-              <span className="text-5xl font-extrabold text-gray-900">Custom</span>
-            </div>
-            <ul className="space-y-4 mb-8 flex-grow w-full">
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-gray-700">Todo lo de Pro</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-gray-700">Múltiples usuarios</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-gray-700">Gestión centralizada</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-gray-700">Facturación consolidada</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-gray-700">Soporte dedicado</span>
-              </li>
-            </ul>
-            <button
-              onClick={() => setShowTeamModal(true)}
-              className="w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all cursor-pointer"
-            >
-              Contactar Ventas
-            </button>
-          </div>
         </div>
 
         {/* Scroll Hint - Ver Comparación */}
@@ -510,11 +517,19 @@ export default function PricingPageClient() {
                 <tr className="border-b-2 border-gray-200">
                   <th className="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
                   <th className="text-center py-4 px-4 font-semibold text-gray-900">Free</th>
+                  <th className="text-center py-4 px-4 font-semibold bg-orange-50 text-orange-700 rounded-t-xl">Express</th>
                   <th className="text-center py-4 px-4 font-semibold bg-violet-50 text-violet-700 rounded-t-xl">Pro</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-900">Team</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
+                {/* Precio */}
+                <tr className="border-b border-gray-100 bg-gray-50">
+                  <td className="py-3 px-4 font-bold text-gray-900">💰 Precio</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Gratis</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">$2.99/24h</td>
+                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">$6.99/mes</td>
+                </tr>
+
                 {/* Detector Features */}
                 <tr className="border-b border-gray-100">
                   <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
@@ -524,14 +539,14 @@ export default function PricingPageClient() {
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Caracteres por análisis</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">1,200</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✨ Ilimitado</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✨ Ilimitado</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✨ Ilimitado</td>
                 </tr>
 
                 {/* Humanizador Features */}
@@ -543,14 +558,14 @@ export default function PricingPageClient() {
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">3</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">5 modos</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">5 modos</td>
                 </tr>
 
                 {/* Parafraseador Features */}
@@ -561,15 +576,15 @@ export default function PricingPageClient() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Ilimitado</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">5 modos</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">5 modos</td>
                 </tr>
 
                 {/* General Features */}
@@ -579,34 +594,28 @@ export default function PricingPageClient() {
                   </td>
                 </tr>
                 <tr className="border-b border-gray-100">
+                  <td className="py-3 px-4 text-gray-700">Duración</td>
+                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Ilimitado</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">24 horas</td>
+                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Mientras pagues</td>
+                </tr>
+                <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Historial</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✅</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Subida de archivos</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✅ PDF, DOCX, TXT</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅ PDF, DOCX, TXT</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅ PDF, DOCX, TXT</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-3 px-4 text-gray-700">Soporte</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">Email</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Email</td>
                   <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Prioritario</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">Dedicado</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Gestión de equipo</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
-                  <td className="text-center py-3 px-4 bg-violet-50">❌</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Facturación consolidada</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
-                  <td className="text-center py-3 px-4 bg-violet-50">❌</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-semibold">✅</td>
                 </tr>
               </tbody>
             </table>
@@ -695,15 +704,15 @@ export default function PricingPageClient() {
                 ))}
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Para nuestra agencia de marketing, el plan Team es perfecto. Gestión centralizada, facturación simple y todos los miembros del equipo pueden usar las herramientas sin límites."
+                "El plan Express fue perfecto para terminar mi tesis de grado en un fin de semana. Por solo $2.99 tuve acceso ilimitado a todas las herramientas. Excelente inversión."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-pink-400 flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-400 flex items-center justify-center text-white font-bold text-lg">
                   LM
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Luis Mendoza</p>
-                  <p className="text-sm text-gray-600">Director de Marketing, Colombia</p>
+                  <p className="font-semibold text-gray-900">Laura Martínez</p>
+                  <p className="text-sm text-gray-600">Estudiante de Licenciatura, Chile</p>
                 </div>
               </div>
             </div>
@@ -745,118 +754,6 @@ export default function PricingPageClient() {
           </div>
         </div>
       </div>
-
-      {/* Team Contact Modal */}
-      {showTeamModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl p-8 shadow-2xl w-full max-w-md relative">
-            <button
-              onClick={() => {
-                setShowTeamModal(false);
-                setTeamSubmitted(false);
-                setTeamFormData({ name: '', email: '', company: '', teamSize: '', message: '' });
-              }}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold"
-            >
-              ×
-            </button>
-
-            {teamSubmitted ? (
-              <div className="text-center py-8">
-                <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">¡Gracias por tu interés!</h3>
-                <p className="text-gray-600">
-                  Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas.
-                </p>
-              </div>
-            ) : (
-              <>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Contactar Ventas</h3>
-                <p className="text-gray-600 mb-6">
-                  Cuéntanos sobre tu equipo y te enviaremos una propuesta personalizada.
-                </p>
-                <form onSubmit={handleTeamSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Nombre completo *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={teamFormData.name}
-                      onChange={(e) => setTeamFormData({ ...teamFormData, name: e.target.value })}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Email corporativo *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={teamFormData.email}
-                      onChange={(e) => setTeamFormData({ ...teamFormData, email: e.target.value })}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Empresa
-                    </label>
-                    <input
-                      type="text"
-                      value={teamFormData.company}
-                      onChange={(e) => setTeamFormData({ ...teamFormData, company: e.target.value })}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Tamaño del equipo *
-                    </label>
-                    <select
-                      required
-                      value={teamFormData.teamSize}
-                      onChange={(e) => setTeamFormData({ ...teamFormData, teamSize: e.target.value })}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
-                    >
-                      <option value="">Selecciona...</option>
-                      <option value="2-5">2-5 personas</option>
-                      <option value="6-10">6-10 personas</option>
-                      <option value="11-25">11-25 personas</option>
-                      <option value="26-50">26-50 personas</option>
-                      <option value="50+">Más de 50 personas</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Mensaje (opcional)
-                    </label>
-                    <textarea
-                      value={teamFormData.message}
-                      onChange={(e) => setTeamFormData({ ...teamFormData, message: e.target.value })}
-                      rows={3}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
-                      placeholder="Cuéntanos tus necesidades específicas..."
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                  >
-                    Enviar Solicitud
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
