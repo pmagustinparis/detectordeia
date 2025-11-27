@@ -1146,7 +1146,7 @@ export async function fetchUserInsights(
   // Calculate conversion rate by role
   const { data: usersWithProfiles } = await supabase
     .from('users')
-    .select('id, email, plan_type');
+    .select('id, auth_id, email, plan_type');
 
   const { data: allProfiles } = await supabase
     .from('user_profiles')
@@ -1164,7 +1164,7 @@ export async function fetchUserInsights(
 
   // Count total and premium users by role
   usersWithProfiles?.forEach(user => {
-    const role = userRoleMap[user.id];
+    const role = userRoleMap[user.auth_id];
     if (role && !TEST_USER_CONFIG.emails.includes(user.email)) {
       if (!conversionByRole[role]) {
         conversionByRole[role] = { totalUsers: 0, premiumUsers: 0, conversionRate: 0 };
@@ -1219,7 +1219,7 @@ export async function getAllRegisteredUsers(
   // Get all users
   const { data: users, error } = await supabase
     .from('users')
-    .select('id, email, full_name, plan_type, created_at')
+    .select('id, auth_id, email, full_name, plan_type, created_at')
     .order('created_at', { ascending: false });
 
   if (error || !users) {
@@ -1256,7 +1256,7 @@ export async function getAllRegisteredUsers(
       const { data: profile, error: profileError } = await supabase
         .from('user_profiles')
         .select('role, primary_use, discovery_source')
-        .eq('user_id', user.id)
+        .eq('user_id', user.auth_id)
         .maybeSingle();
 
       // Log profile errors for debugging
