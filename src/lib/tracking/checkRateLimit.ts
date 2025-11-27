@@ -9,7 +9,8 @@
  *   - Detector: 15 análisis/día
  *   - Humanizador: 3 usos/día (REDUCIDO para impulsar conversión a PRO)
  *   - Parafraseador: 10 usos/día
- * - Premium: ilimitado
+ * - Express: ilimitado por 24 horas ($2.99)
+ * - Premium: ilimitado permanente ($6.99/mes)
  */
 
 import { createClient } from '@/lib/supabase/server';
@@ -37,8 +38,9 @@ export interface RateLimitResult {
   remaining: number; // Usos restantes hoy
   limit: number; // Límite total
   usedToday: number; // Usos consumidos hoy
-  resetAt: Date; // Cuándo resetea el límite (medianoche UTC)
-  userType: 'anonymous' | 'free' | 'premium';
+  resetAt: Date; // Cuándo resetea el límite (medianoche UTC o expiración Express)
+  userType: 'anonymous' | 'free' | 'express' | 'premium';
+  expressExpiresAt?: Date; // Si tiene Express activo, cuándo expira
 }
 
 export interface CheckRateLimitParams {
@@ -68,26 +70,35 @@ export async function checkRateLimit(
     const supabase = await createClient();
 
     // Determinar tipo de usuario y límite
-    let userType: 'anonymous' | 'free' | 'premium' = 'anonymous';
+    let userType: 'anonymous' | 'free' | 'express' | 'premium' = 'anonymous';
     let limit: number;
     let internalUserId: string | null = null;
+    let expressExpiresAt: Date | undefined;
 
     if (userId) {
-      // Usuario autenticado: obtener id interno y plan
+      // Usuario autenticado: obtener id interno, plan y Express
       const { data: user } = await supabase
         .from('users')
-        .select('id, plan_type')
+        .select('id, plan_type, express_expires_at')
         .eq('auth_id', userId)
         .single();
 
       if (user) {
         internalUserId = user.id;
-        userType = user.plan_type === 'premium' ? 'premium' : 'free';
 
-        // Límite según plan y herramienta
-        if (userType === 'premium') {
+        // Verificar si tiene Express activo (primero que Premium)
+        const hasActiveExpress = user.express_expires_at &&
+          new Date(user.express_expires_at) > new Date();
+
+        if (hasActiveExpress) {
+          userType = 'express';
+          limit = Infinity; // Sin límite durante Express
+          expressExpiresAt = new Date(user.express_expires_at);
+        } else if (user.plan_type === 'premium') {
+          userType = 'premium';
           limit = Infinity; // Sin límite para premium
         } else {
+          userType = 'free';
           limit = RATE_LIMITS.free[toolType];
         }
       } else {
@@ -136,13 +147,19 @@ export async function checkRateLimit(
     const remaining = Math.max(0, limit - usedToday);
     const allowed = usedToday < limit;
 
+    // Para Express, resetAt es cuando expira el pase
+    const resetAt = userType === 'express' && expressExpiresAt
+      ? expressExpiresAt
+      : startOfTomorrow;
+
     return {
       allowed,
       remaining,
       limit,
       usedToday,
-      resetAt: startOfTomorrow,
+      resetAt,
       userType,
+      ...(expressExpiresAt && { expressExpiresAt }),
     };
   } catch (err) {
     console.error('[checkRateLimit] Error:', err);

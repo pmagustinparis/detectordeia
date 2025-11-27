@@ -89,25 +89,53 @@ export async function POST(request: Request) {
   }
 }
 
-// Manejar checkout completado (primera suscripción)
+// Manejar checkout completado (suscripción o pago único Express)
 async function handleCheckoutCompleted(
   session: Stripe.Checkout.Session,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
   const userId = session.metadata?.supabase_user_id;
-  const planInterval = session.metadata?.plan_interval;
+  const planType = session.metadata?.plan_type; // 'express' o 'premium'
 
   if (!userId) {
     console.error('No user_id in checkout session metadata');
     return;
   }
 
-  // Obtener la suscripción de Stripe
+  // CASO 1: Pago único Express (24h)
+  if (planType === 'express' || session.mode === 'payment') {
+    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // +24 horas
+
+    const { error } = await supabase
+      .from('users')
+      .update({
+        express_expires_at: expiresAt.toISOString(),
+        // plan_type se mantiene 'free' - Express no cambia el plan base
+      })
+      .eq('id', userId);
+
+    if (error) {
+      console.error('Error activating Express:', error);
+      throw error;
+    }
+
+    console.log(`✅ User ${userId} activated Express pass (expires: ${expiresAt.toISOString()})`);
+    return;
+  }
+
+  // CASO 2: Suscripción Premium (mensual o anual)
   const subscriptionId = session.subscription as string;
+  if (!subscriptionId) {
+    console.error('No subscription ID in session');
+    return;
+  }
+
   const stripe = getStripe();
   const subscription: any = await stripe.subscriptions.retrieve(subscriptionId, {
     expand: ['items.data.price'],
   });
+
+  const planInterval = session.metadata?.plan_interval;
 
   // Crear registro de suscripción en Supabase
   const { error: subscriptionError } = await supabase
