@@ -5,6 +5,7 @@ import type { User } from '@supabase/supabase-js';
 import type { UsageStats } from '@/lib/queries/usageStats';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import UserProfileModal from '@/app/components/UserProfileModal';
+import ExpressTimer from '@/components/ExpressTimer';
 
 interface DashboardClientProps {
   user: User;
@@ -12,9 +13,10 @@ interface DashboardClientProps {
   history: any[];
   planType: 'free' | 'premium';
   hasStripeCustomer: boolean;
+  expressExpiresAt: string | null;
 }
 
-export default function DashboardClient({ user, usageStats, history, planType, hasStripeCustomer }: DashboardClientProps) {
+export default function DashboardClient({ user, usageStats, history, planType, hasStripeCustomer, expressExpiresAt }: DashboardClientProps) {
   const [selectedHistory, setSelectedHistory] = useState<any>(null);
   const [isLoadingPortal, setIsLoadingPortal] = useState(false);
   const [isBannerDismissed, setIsBannerDismissed] = useState(() => {
@@ -142,10 +144,43 @@ export default function DashboardClient({ user, usageStats, history, planType, h
     localStorage.setItem('upgrade_banner_dismissed', 'true');
   };
 
+  // Check if Express is active
+  const isExpressActive = expressExpiresAt && new Date(expressExpiresAt) > new Date();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 to-white pb-12">
-      {/* Upgrade Banner - Solo para usuarios Free */}
-      {planType === 'free' && !isBannerDismissed && (
+      {/* Express Active Banner */}
+      {isExpressActive && expressExpiresAt && (
+        <div className="sticky top-0 z-40 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 text-white shadow-lg">
+          <div className="max-w-6xl mx-auto px-4 py-3">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3 flex-1">
+                <div className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-white/20">
+                  <span className="text-2xl">⚡</span>
+                </div>
+                <div className="flex-1">
+                  <p className="font-bold text-sm sm:text-base">
+                    Express Pass Activo - ¡Acceso Ilimitado!
+                  </p>
+                  <div className="text-xs sm:text-sm text-white/90 flex items-center gap-2">
+                    <span>Tu pase expira en:</span>
+                    <ExpressTimer expiresAt={expressExpiresAt} compact={true} />
+                  </div>
+                </div>
+              </div>
+              <a
+                href="/pricing"
+                className="bg-white text-orange-600 hover:bg-orange-50 font-bold py-2 px-4 sm:px-6 rounded-lg shadow-md hover:shadow-lg transition-all text-sm sm:text-base whitespace-nowrap"
+              >
+                Renovar Express
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Upgrade Banner - Solo para usuarios Free sin Express */}
+      {planType === 'free' && !isExpressActive && !isBannerDismissed && (
         <div className="sticky top-0 z-40 bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 text-white shadow-lg">
           <div className="max-w-6xl mx-auto px-4 py-3">
             <div className="flex items-center justify-between gap-4">
@@ -158,7 +193,7 @@ export default function DashboardClient({ user, usageStats, history, planType, h
                     ¡Desbloquea todo el potencial de DetectorDeIA!
                   </p>
                   <p className="text-xs sm:text-sm text-violet-100 hidden sm:block">
-                    Usos ilimitados • 5 modos premium • 15,000 caracteres • Desde $10/mes
+                    Express $2.99/24h • Pro $6.99/mes • Usos ilimitados • 5 modos premium
                   </p>
                 </div>
               </div>
