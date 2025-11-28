@@ -260,6 +260,9 @@ export async function fetchRevenueHealth(
   supabase: SupabaseClient,
   timeframe: QueryTimeframe
 ): Promise<RevenueHealth> {
+  const PRO_PRICE = 6.99; // Updated pricing
+  const EXPRESS_PRICE = 2.99;
+
   // Get all premium users
   const { data: premiumUsers } = await supabase
     .from('users')
@@ -267,19 +270,48 @@ export async function fetchRevenueHealth(
     .eq('plan_type', 'premium')
     .not('email', 'in', `(${TEST_USER_CONFIG.emails.map(e => `"${e}"`).join(',')})`);
 
-  const totalMRR = (premiumUsers?.length || 0) * 9.99;
+  const totalMRR = (premiumUsers?.length || 0) * PRO_PRICE;
 
   // New premium users this period
   const newPremiumUsers = premiumUsers?.filter(
     u => new Date(u.created_at) >= timeframe.startDate
   ) || [];
-  const newMRR = newPremiumUsers.length * 9.99;
+  const newMRR = newPremiumUsers.length * PRO_PRICE;
 
   // Churned MRR (users who downgraded/cancelled)
   // For now, simplified - would need subscription status table
   const churnedMRR = 0;
   const expansionMRR = 0;
   const contractionMRR = 0;
+
+  // ============================================
+  // EXPRESS METRICS
+  // ============================================
+
+  // Active Express passes right now
+  const { data: activeExpressUsers } = await supabase
+    .from('users')
+    .select('id, express_expires_at')
+    .not('express_expires_at', 'is', null)
+    .gte('express_expires_at', new Date().toISOString());
+
+  const activePasses = activeExpressUsers?.length || 0;
+
+  // Express purchases this period (check for express_expires_at set in this timeframe)
+  // Since we don't have a purchases table, we approximate by counting users whose
+  // express_expires_at falls within the timeframe
+  const { data: expressPurchasesInPeriod } = await supabase
+    .from('users')
+    .select('id, express_expires_at')
+    .not('express_expires_at', 'is', null)
+    .gte('express_expires_at', timeframe.startDate.toISOString());
+
+  const newExpressPurchases = expressPurchasesInPeriod?.length || 0;
+  const expressRevenue = newExpressPurchases * EXPRESS_PRICE;
+
+  // Average duration used (simplified - assumes 12h average usage out of 24h)
+  // Would need analytics events to calculate actual usage
+  const avgDuration = 12;
 
   // Churn Risk: Premium users with no activity in last 7 days
   const sevenDaysAgo = new Date();
@@ -337,7 +369,7 @@ export async function fetchRevenueHealth(
   // LTV calculation (simplified)
   // Average months subscribed * MRR per user
   const averageMonthsSubscribed = 6; // Placeholder - would need actual subscription data
-  const averageLTV = averageMonthsSubscribed * 9.99;
+  const averageLTV = averageMonthsSubscribed * PRO_PRICE;
 
   return {
     mrrBreakdown: {
@@ -347,6 +379,12 @@ export async function fetchRevenueHealth(
       contraction: contractionMRR,
       churned: churnedMRR,
       netGrowth: newMRR + expansionMRR - contractionMRR - churnedMRR,
+    },
+    expressMetrics: {
+      activePasses,
+      totalRevenue: expressRevenue,
+      newPurchases: newExpressPurchases,
+      avgDuration,
     },
     churnMetrics: {
       count: churnRiskUsers.length,

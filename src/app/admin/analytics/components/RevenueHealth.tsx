@@ -41,11 +41,73 @@ export default function RevenueHealth({ data }: RevenueHealthProps) {
         </p>
       </div>
 
+      {/* Express Metrics - NEW */}
+      <div className="bg-white border-2 border-orange-200 rounded-2xl p-6">
+        <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span>⚡</span>
+          Express Pass Metrics
+        </h3>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Active Passes */}
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-xl p-4">
+            <p className="text-xs font-semibold text-gray-600 uppercase mb-1">
+              Pases Activos
+            </p>
+            <p className="text-3xl font-extrabold text-orange-900">
+              {data.expressMetrics.activePasses}
+            </p>
+            <p className="text-xs text-orange-600 mt-1">
+              Ahora mismo
+            </p>
+          </div>
+
+          {/* New Purchases */}
+          <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4">
+            <p className="text-xs font-semibold text-gray-600 uppercase mb-1">
+              Compras
+            </p>
+            <p className="text-2xl font-bold text-green-700">
+              {data.expressMetrics.newPurchases}
+            </p>
+            <p className="text-xs text-green-600 mt-1">
+              Este período
+            </p>
+          </div>
+
+          {/* Revenue */}
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+            <p className="text-xs font-semibold text-gray-600 uppercase mb-1">
+              Revenue
+            </p>
+            <p className="text-2xl font-bold text-blue-700">
+              {formatCurrency(data.expressMetrics.totalRevenue)}
+            </p>
+            <p className="text-xs text-blue-600 mt-1">
+              $2.99 c/u
+            </p>
+          </div>
+
+          {/* Avg Duration */}
+          <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-4">
+            <p className="text-xs font-semibold text-gray-600 uppercase mb-1">
+              Uso Promedio
+            </p>
+            <p className="text-2xl font-bold text-purple-700">
+              {data.expressMetrics.avgDuration}h
+            </p>
+            <p className="text-xs text-purple-600 mt-1">
+              de 24h disponibles
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* MRR Breakdown */}
       <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
         <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
           <span>📊</span>
-          MRR Breakdown
+          MRR Breakdown (Pro Suscripciones)
         </h3>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
