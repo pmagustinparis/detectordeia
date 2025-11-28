@@ -44,7 +44,7 @@ const CHARACTER_LIMITS = {
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
   titulo: 'Desbloquea todo el poder del Detector',
-  subtitulo: 'Incluido en Plan Pro',
+  subtitulo: 'Incluido en Express y Pro',
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
     '✨ Caracteres ilimitados en el Detector',
@@ -53,15 +53,15 @@ const premiumTextos = {
     'Historial completo de todos tus análisis',
     'Soporte prioritario vía email',
   ],
-  precio: 'Desde $10/mes o $96/año',
+  precio: 'Express $2.99/24h • Pro $6.99/mes',
   cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: 'Desbloquea Plan Pro',
+  titulo: 'Desbloquea Express o Pro',
   bullets: [
-    'Usos ilimitados + 25K caracteres',
+    'Usos ilimitados + Caracteres ilimitados',
     '5 modos premium + Historial completo',
-    'Desde $10/mes o $96/año',
+    'Express $2.99/24h • Pro $6.99/mes',
   ],
   cta: 'Ver Planes',
 };

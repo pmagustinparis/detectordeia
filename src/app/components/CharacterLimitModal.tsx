@@ -147,7 +147,7 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-violet-700 mt-3 font-medium">
-                  Desde $10/mes • Ahorra 20% con plan anual
+                  Express $2.99/24h • Pro $6.99/mes • Ahorra 20% anual
                 </p>
               </div>
 
@@ -159,12 +159,12 @@ export default function CharacterLimitModal({
                 Registrarme Gratis en 10 segundos
               </a>
 
-              {/* Secondary CTA - Ver Pro */}
+              {/* Secondary CTA - Ver Planes */}
               <a
                 href="/pricing"
                 className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm mb-3"
               >
-                O ver Plan Pro →
+                O ver Express y Pro →
               </a>
             </>
           )}
@@ -204,11 +204,11 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-violet-700 mt-3 font-medium">
-                  Desde $10/mes • Ahorra 20% con plan anual
+                  Express $2.99/24h • Pro $6.99/mes • Ahorra 20% anual
                 </p>
               </div>
 
-              {/* CTA - Upgrade to Pro */}
+              {/* CTA - Upgrade to Pro or Express */}
               <a
                 href="/pricing"
                 className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"

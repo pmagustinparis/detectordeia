@@ -20,25 +20,36 @@ export default function Terminos() {
         <li><strong>Humanizador de IA:</strong> Reescribe textos generados por IA para que parezcan más humanos</li>
         <li><strong>Parafraseador:</strong> Reformula textos manteniendo el significado original</li>
       </ul>
-      <p className="text-gray-700 mb-4">Ofrecemos un Plan Free gratuito y planes de pago (Plan Pro y Plan Team) con funcionalidades adicionales.</p>
+      <p className="text-gray-700 mb-4">Ofrecemos un Plan Free gratuito, Plan Express (pase de 24 horas) y Plan Pro (suscripción mensual/anual) con funcionalidades adicionales.</p>
 
       <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">2. Planes y Servicios</h2>
       <p className="text-gray-700 mb-2"><strong>Plan Free:</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
-        <li>10 usos diarios por herramienta</li>
-        <li>Hasta 600 caracteres por análisis</li>
+        <li>3 usos diarios del Humanizador</li>
+        <li>15 análisis diarios del Detector</li>
+        <li>10 usos diarios del Parafraseador</li>
+        <li>Hasta 1,200 caracteres por análisis</li>
         <li>Acceso al modo estándar únicamente</li>
         <li>Sin necesidad de registro (usuarios anónimos)</li>
       </ul>
-      <p className="text-gray-700 mb-2"><strong>Plan Pro ($10/mes o $96/año):</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Plan Express ($2.99/pago único):</strong></p>
+      <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
+        <li>Acceso completo por 24 horas</li>
+        <li>Usos ilimitados en todas las herramientas</li>
+        <li>Caracteres ilimitados por análisis</li>
+        <li>Acceso a 5 modos premium</li>
+        <li>Subida de archivos (PDF, DOCX, TXT)</li>
+        <li>Perfecto para entregas urgentes</li>
+      </ul>
+      <p className="text-gray-700 mb-2"><strong>Plan Pro ($6.99/mes o $66.99/año):</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Usos ilimitados diarios</li>
-        <li>Hasta 15,000 caracteres por análisis</li>
+        <li>Caracteres ilimitados por análisis</li>
         <li>Acceso a 5 modos premium (Estándar, Formal, Creativo, Simplificado, Académico)</li>
+        <li>Subida de archivos (PDF, DOCX, TXT)</li>
         <li>Historial completo de análisis</li>
         <li>Soporte prioritario</li>
       </ul>
-      <p className="text-gray-700 mb-4"><strong>Plan Team:</strong> Pricing personalizado para equipos con gestión centralizada, facturación consolidada y soporte dedicado.</p>
 
       <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">3. Uso Permitido</h2>
       <p className="text-gray-700 mb-4">El usuario se compromete a utilizar la plataforma de manera lícita y conforme a estos términos. <strong>No está permitido:</strong></p>
