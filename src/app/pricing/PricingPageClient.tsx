@@ -433,7 +433,7 @@ export default function PricingPageClient() {
             </div>
             {billing === 'annual' && (
               <p className="text-sm text-violet-700 font-semibold mb-6">
-                ${PRICES.pro.annual}/año • Ahorra ${(PRICES.pro.monthly * 12 - PRICES.pro.annual).toFixed(2)}
+                ${PRICES.pro.annual}/año • Ahorra 20%
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
