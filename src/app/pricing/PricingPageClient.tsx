@@ -704,15 +704,15 @@ export default function PricingPageClient() {
                 ))}
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "El plan Express fue perfecto para terminar mi tesis de grado en un fin de semana. Por solo $2.99 tuve acceso ilimitado a todas las herramientas. Excelente inversión."
+                "Necesitaba revisar 20 trabajos antes de la fecha de entrega y los límites gratis no me alcanzaban. El Express me salvó - por $2.99 pude terminar todo en un día sin interrupciones."
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-400 flex items-center justify-center text-white font-bold text-lg">
-                  LM
+                  CM
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Laura Martínez</p>
-                  <p className="text-sm text-gray-600">Estudiante de Licenciatura, Chile</p>
+                  <p className="font-semibold text-gray-900">Carlos Mendoza</p>
+                  <p className="text-sm text-gray-600">Profesor de Secundaria, Colombia</p>
                 </div>
               </div>
             </div>
