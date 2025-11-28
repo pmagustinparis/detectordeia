@@ -35,6 +35,8 @@ export default function ParafraseadorMain() {
   const [usageCount, setUsageCount] = useState(0);
   const [selectedMode, setSelectedMode] = useState<ParaphraserMode>('standard');
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+  const [expressExpiresAt, setExpressExpiresAt] = useState<string | null>(null);
+  const [isExpressActive, setIsExpressActive] = useState(false);
 
   // Validation state (Fase 4: Validación de similitud post-parafraseo)
   const [similarityScore, setSimilarityScore] = useState<number | null>(null);
@@ -67,11 +69,13 @@ export default function ParafraseadorMain() {
     }
   }, [isAuthenticated]);
 
-  // Obtener plan del usuario
+  // Obtener plan del usuario y Express status
   useEffect(() => {
     async function fetchUserPlan() {
       if (!isAuthenticated || !user) {
         setUserPlan('free');
+        setExpressExpiresAt(null);
+        setIsExpressActive(false);
         return;
       }
 
@@ -80,10 +84,23 @@ export default function ParafraseadorMain() {
         if (response.ok) {
           const data = await response.json();
           setUserPlan(data.plan_type || 'free');
+
+          // Check Express status
+          if (data.express_expires_at) {
+            const expiresAt = new Date(data.express_expires_at);
+            const isActive = expiresAt > new Date();
+            setExpressExpiresAt(data.express_expires_at);
+            setIsExpressActive(isActive);
+          } else {
+            setExpressExpiresAt(null);
+            setIsExpressActive(false);
+          }
         }
       } catch (error) {
         console.error('Error fetching user plan:', error);
         setUserPlan('free');
+        setExpressExpiresAt(null);
+        setIsExpressActive(false);
       }
     }
 
@@ -1066,15 +1083,28 @@ export default function ParafraseadorMain() {
                 </div>
               </div>
 
-              {/* Hint de usos ilimitados - SOLO para usuarios FREE */}
-              {userPlan !== 'premium' && (
+              {/* Hint dinámico según plan */}
+              {isExpressActive && (
+                <div className="text-center text-sm bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 border border-orange-200">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <span>⚡</span>
+                    <span className="font-bold text-orange-700">
+                      Express Activo - Acceso Ilimitado
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-600">
+                    Usos y caracteres ilimitados por 24h
+                  </p>
+                </div>
+              )}
+              {!isExpressActive && userPlan !== 'premium' && (
                 <div className="text-center text-sm bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-100">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <svg className="w-5 h-5 text-violet-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     <span className="font-bold text-violet-700">
-                      {isAuthenticated ? '15 usos diarios gratis' : '3 usos diarios'}
+                      {isAuthenticated ? '10 usos diarios gratis' : '3 usos diarios'}
                     </span>
                   </div>
                   <p className="text-xs text-gray-600">

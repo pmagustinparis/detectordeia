@@ -127,15 +127,15 @@ export default function HumanizadorPage() {
                 name: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. El Modo Avanzado (próximamente en Premium) ofrece humanización más profunda con adaptación regional (LATAM vs España) y mayor libertad de reformulación.',
+                  text: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. Los Modos Avanzados (incluidos en Express y Pro) ofrecen humanización más profunda con adaptación regional (LATAM vs España), diferentes tonos (formal, creativo, académico) y mayor libertad de reformulación.',
                 },
               },
               {
                 '@type': 'Question',
-                name: '¿Cuándo estará disponible el plan Premium?',
+                name: '¿Qué incluyen los planes Express y Pro?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Estamos trabajando en el plan Premium que estará disponible próximamente. Incluirá límites más altos (15,000 caracteres), Modo Avanzado, historial, carga de archivos y más. Puedes dejar tu email para ser avisado cuando esté listo.',
+                  text: 'Express ($2.99 por 24 horas) te da acceso ilimitado a todas las herramientas con 5 modos premium, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Pro ($6.99/mes o $66.99/año) incluye lo mismo pero de forma continua, con historial completo y soporte prioritario.',
                 },
               },
               {

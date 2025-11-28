@@ -143,7 +143,7 @@ export default function ParafraseadorPage() {
                 name: '¿Qué modos de parafraseo hay disponibles?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Actualmente el Modo Estándar está disponible gratis. Próximamente en Premium: Formal (tono profesional), Creativo (cambios profundos), Simplificado (más fácil de entender) y Académico (estilo universitario).',
+                  text: 'El Modo Estándar está disponible gratis. Con Express ($2.99/24h) o Pro ($6.99/mes) obtenés 4 modos premium adicionales: Formal (tono profesional), Creativo (cambios profundos), Simplificado (más fácil de entender) y Académico (estilo universitario).',
                 },
               },
             ],

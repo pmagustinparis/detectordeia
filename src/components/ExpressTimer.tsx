@@ -55,15 +55,29 @@ export default function ExpressTimer({ expiresAt, compact = false }: ExpressTime
   }, [isExpired]);
 
   if (compact) {
-    // Versión compacta para header
+    // Versión compacta para header con tooltip
     return (
-      <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-        isExpired
-          ? 'bg-gray-100 text-gray-600'
-          : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-      }`}>
-        <span>⚡</span>
-        <span>{isExpired ? 'Expirado' : timeLeft}</span>
+      <div className="relative group">
+        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium cursor-help ${
+          isExpired
+            ? 'bg-gray-100 text-gray-600'
+            : 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm'
+        }`}>
+          <span>⚡</span>
+          <span>{isExpired ? 'Expirado' : timeLeft}</span>
+        </div>
+
+        {/* Tooltip */}
+        <div className="absolute right-0 top-full mt-2 w-64 bg-gray-900 text-white text-xs rounded-lg p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-xl">
+          <div className="font-bold mb-1">⚡ Express Pass Activo</div>
+          <div className="text-gray-300">
+            {isExpired
+              ? 'Tu pase de 24h ha expirado. Renuévalo para seguir con acceso ilimitado.'
+              : 'Acceso ilimitado a todas las herramientas. Tu pase expira en ' + timeLeft + '.'
+            }
+          </div>
+          <div className="absolute -top-1 right-4 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+        </div>
       </div>
     );
   }
@@ -73,7 +87,7 @@ export default function ExpressTimer({ expiresAt, compact = false }: ExpressTime
     <div className={`rounded-xl p-4 ${
       isExpired
         ? 'bg-gray-100 border-2 border-gray-300'
-        : 'bg-gradient-to-r from-purple-500 to-pink-500'
+        : 'bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 shadow-lg'
     }`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -103,9 +117,9 @@ export default function ExpressTimer({ expiresAt, compact = false }: ExpressTime
         <div className="mt-3 pt-3 border-t border-gray-300">
           <a
             href="/pricing"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-purple-600 hover:text-purple-700"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700"
           >
-            Ver planes →
+            Renovar Express →
           </a>
         </div>
       )}

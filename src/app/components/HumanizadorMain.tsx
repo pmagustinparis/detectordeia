@@ -35,6 +35,8 @@ export default function HumanizadorMain() {
   const [usageCount, setUsageCount] = useState(0);
   const [selectedMode, setSelectedMode] = useState<HumanizerMode>('standard');
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+  const [expressExpiresAt, setExpressExpiresAt] = useState<string | null>(null);
+  const [isExpressActive, setIsExpressActive] = useState(false);
 
   // Validation state (Fase 3: Validación post-humanización)
   const [originalScore, setOriginalScore] = useState<number | null>(null);
@@ -107,11 +109,13 @@ export default function HumanizadorMain() {
     }
   }, [isAuthenticated, loading]);
 
-  // Obtener plan del usuario
+  // Obtener plan del usuario y Express status
   useEffect(() => {
     async function fetchUserPlan() {
       if (!isAuthenticated || !user) {
         setUserPlan('free');
+        setExpressExpiresAt(null);
+        setIsExpressActive(false);
         return;
       }
 
@@ -120,10 +124,23 @@ export default function HumanizadorMain() {
         if (response.ok) {
           const data = await response.json();
           setUserPlan(data.plan_type || 'free');
+
+          // Check Express status
+          if (data.express_expires_at) {
+            const expiresAt = new Date(data.express_expires_at);
+            const isActive = expiresAt > new Date();
+            setExpressExpiresAt(data.express_expires_at);
+            setIsExpressActive(isActive);
+          } else {
+            setExpressExpiresAt(null);
+            setIsExpressActive(false);
+          }
         }
       } catch (error) {
         console.error('Error fetching user plan:', error);
         setUserPlan('free');
+        setExpressExpiresAt(null);
+        setIsExpressActive(false);
       }
     }
 
@@ -557,8 +574,8 @@ export default function HumanizadorMain() {
             <span className={getCounterColor() + ' font-medium'}>
               {text.length}/{CHARACTER_LIMIT}
             </span>
-            {/* Badge de usos restantes */}
-            {rateLimitStatus && userPlan !== 'premium' && (
+            {/* Badge de usos restantes - Solo para Free sin Express */}
+            {rateLimitStatus && userPlan !== 'premium' && !isExpressActive && (
               <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ${
                 rateLimitStatus.remaining === 0
                   ? 'bg-red-100 text-red-700'
@@ -570,9 +587,16 @@ export default function HumanizadorMain() {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
                 {isAuthenticated
-                  ? `${rateLimitStatus.usedToday}/${rateLimitStatus.limit} usados hoy`
-                  : `${rateLimitStatus.usedToday}/${rateLimitStatus.limit} invitado • Registrate: 3/día`
+                  ? `${rateLimitStatus.usedToday || 0}/${rateLimitStatus.limit || 0} usados hoy`
+                  : `${rateLimitStatus.usedToday || 0}/${rateLimitStatus.limit || 0} invitado • Registrate: 3/día`
                 }
+              </span>
+            )}
+            {/* Badge ilimitado para Express */}
+            {isExpressActive && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-orange-100 to-amber-100 text-orange-700">
+                <span>⚡</span>
+                Express Activo - Ilimitado
               </span>
             )}
             {/* Badge ilimitado para PRO */}
@@ -581,7 +605,7 @@ export default function HumanizadorMain() {
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                Usos ilimitados
+                Pro - Usos ilimitados
               </span>
             )}
           </div>
@@ -1169,8 +1193,21 @@ export default function HumanizadorMain() {
                 </div>
               </div>
 
-              {/* Hint de usos ilimitados - SOLO para usuarios FREE y Anónimos */}
-              {userPlan !== 'premium' && (
+              {/* Hint dinámico según plan */}
+              {isExpressActive && (
+                <div className="text-center text-sm bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 border border-orange-200">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <span>⚡</span>
+                    <span className="font-bold text-orange-700">
+                      Express Activo - Acceso Ilimitado
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-600">
+                    Usos y caracteres ilimitados por 24h
+                  </p>
+                </div>
+              )}
+              {!isExpressActive && userPlan !== 'premium' && (
                 <div className="text-center text-sm bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-100">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <svg className="w-5 h-5 text-violet-600" fill="currentColor" viewBox="0 0 20 20">
