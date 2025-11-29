@@ -12,6 +12,7 @@ import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import { PARAPHRASER_MODES, type ParaphraserMode } from '@/lib/prompts/paraphraser';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
+import type { UserStatus } from '@/lib/types/user-status';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -22,7 +23,6 @@ const CHARACTER_LIMITS = {
 const MIN_CHARACTERS = 50;
 
 export default function ParafraseadorMain() {
-  const { isAuthenticated, loading, user } = useAuth();
   const [text, setText] = useState('');
   const [isParaphrasing, setIsParaphrasing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -34,9 +34,18 @@ export default function ParafraseadorMain() {
   const [emailModalSource, setEmailModalSource] = useState('');
   const [usageCount, setUsageCount] = useState(0);
   const [selectedMode, setSelectedMode] = useState<ParaphraserMode>('standard');
-  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
-  const [expressExpiresAt, setExpressExpiresAt] = useState<string | null>(null);
-  const [isExpressActive, setIsExpressActive] = useState(false);
+
+  // Consolidated user status (replaces userPlan, expressExpiresAt, isExpressActive)
+  const [userStatus, setUserStatus] = useState<UserStatus>({
+    isAuthenticated: false,
+    user: null,
+    plan_type: 'free',
+    express: {
+      expires_at: null,
+      is_active: false,
+      time_remaining_ms: null,
+    },
+  });
 
   // Validation state (Fase 4: Validación de similitud post-parafraseo)
   const [similarityScore, setSimilarityScore] = useState<number | null>(null);
@@ -44,9 +53,9 @@ export default function ParafraseadorMain() {
   const [isCalculatingSimilarity, setIsCalculatingSimilarity] = useState(false);
 
   // Límite de caracteres dinámico basado en autenticación y plan
-  const CHARACTER_LIMIT = !isAuthenticated
+  const CHARACTER_LIMIT = !userStatus.isAuthenticated
     ? CHARACTER_LIMITS.anonymous
-    : userPlan === 'premium'
+    : userStatus.plan_type === 'premium' || userStatus.express.is_active
       ? CHARACTER_LIMITS.premium
       : CHARACTER_LIMITS.free;
 
@@ -63,49 +72,30 @@ export default function ParafraseadorMain() {
 
   // Track usage count for anonymous users
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!userStatus.isAuthenticated) {
       const count = parseInt(localStorage.getItem('parafraseador_usage_count') || '0');
       setUsageCount(count);
     }
-  }, [isAuthenticated]);
+  }, [userStatus.isAuthenticated]);
 
-  // Obtener plan del usuario y Express status
+  // Fetch consolidated user status (auth + plan + express) in a single request
+  // This eliminates cascading fetches and prevents UI flickering
   useEffect(() => {
-    async function fetchUserPlan() {
-      if (!isAuthenticated || !user) {
-        setUserPlan('free');
-        setExpressExpiresAt(null);
-        setIsExpressActive(false);
-        return;
-      }
-
+    async function fetchUserStatus() {
       try {
-        const response = await fetch('/api/user/plan');
+        const response = await fetch('/api/user/status');
         if (response.ok) {
           const data = await response.json();
-          setUserPlan(data.plan_type || 'free');
-
-          // Check Express status
-          if (data.express_expires_at) {
-            const expiresAt = new Date(data.express_expires_at);
-            const isActive = expiresAt > new Date();
-            setExpressExpiresAt(data.express_expires_at);
-            setIsExpressActive(isActive);
-          } else {
-            setExpressExpiresAt(null);
-            setIsExpressActive(false);
-          }
+          setUserStatus(data); // Single setState - no flickering!
         }
       } catch (error) {
-        console.error('Error fetching user plan:', error);
-        setUserPlan('free');
-        setExpressExpiresAt(null);
-        setIsExpressActive(false);
+        console.error('Error fetching user status:', error);
+        // Keep default free state on error
       }
     }
 
-    fetchUserPlan();
-  }, [isAuthenticated, user]);
+    fetchUserStatus();
+  }, []); // Execute only once on mount - no dependencies!
 
   // Colores del contador dinámico
   const getCounterColor = () => {
@@ -153,15 +143,15 @@ export default function ParafraseadorMain() {
             text_length: text.length,
             character_limit: CHARACTER_LIMIT,
             exceeded_by: text.length - CHARACTER_LIMIT,
-            plan: userPlan,
-            is_authenticated: isAuthenticated,
+            plan: userStatus.plan_type,
+            is_authenticated: userStatus.isAuthenticated,
             hour_of_day: new Date().getHours(),
             day_of_week: new Date().getDay(),
           }
         });
       } else {
         // Obtener anonymousId para usuarios no autenticados
-        const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
+        const anonymousId = !userStatus.isAuthenticated ? getAnonymousId() : undefined;
 
         // Step 2: Parafraseo (after 1 second)
         setTimeout(() => setLoadingStep(2), 1000);
@@ -201,11 +191,11 @@ export default function ParafraseadorMain() {
               limit_type: 'daily_uses',
               user_type: data.userType || 'anonymous',
               limit: data.limit || 10,
-              plan: userPlan,
-              is_authenticated: isAuthenticated,
+              plan: userStatus.plan_type,
+              is_authenticated: userStatus.isAuthenticated,
               hour_of_day: new Date().getHours(),
               day_of_week: new Date().getDay(), // 0=domingo, 1=lunes, etc
-              usage_count: isAuthenticated ? undefined : usageCount,
+              usage_count: userStatus.isAuthenticated ? undefined : usageCount,
             }
           });
 
@@ -222,11 +212,11 @@ export default function ParafraseadorMain() {
             toolType: 'parafraseador',
             metadata: {
               mode: selectedMode,
-              plan: userPlan,
-              is_authenticated: isAuthenticated,
+              plan: userStatus.plan_type,
+              is_authenticated: userStatus.isAuthenticated,
               hour_of_day: new Date().getHours(),
               day_of_week: new Date().getDay(),
-              usage_count: isAuthenticated ? undefined : usageCount,
+              usage_count: userStatus.isAuthenticated ? undefined : usageCount,
             }
           });
 
@@ -243,7 +233,7 @@ export default function ParafraseadorMain() {
         setIsLimitExceeded(false);
 
         // Incrementar contador de uso para usuarios anónimos
-        if (!isAuthenticated) {
+        if (!userStatus.isAuthenticated) {
           const newCount = usageCount + 1;
           setUsageCount(newCount);
           localStorage.setItem('parafraseador_usage_count', newCount.toString());
@@ -256,12 +246,12 @@ export default function ParafraseadorMain() {
           metadata: {
             text_length: text.length,
             mode: selectedMode,
-            plan: userPlan,
-            is_authenticated: isAuthenticated,
+            plan: userStatus.plan_type,
+            is_authenticated: userStatus.isAuthenticated,
             exceeded_limit: false,
             hour_of_day: new Date().getHours(),
             day_of_week: new Date().getDay(),
-            usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
+            usage_count: userStatus.isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
           }
         });
 
@@ -330,7 +320,7 @@ export default function ParafraseadorMain() {
           passed_threshold: change >= 60,
           mode: selectedMode,
           plan: userPlan,
-          is_authenticated: isAuthenticated,
+          is_authenticated: userStatus.isAuthenticated,
         }
       });
 
@@ -376,14 +366,14 @@ export default function ParafraseadorMain() {
     e.preventDefault();
     e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
 
-    if (userPlan !== 'premium') {
+    if (userStatus.plan_type !== 'premium' && !userStatus.express.is_active) {
       // Track intento de subir archivo bloqueado
       trackEvent({
         eventType: 'file_upload_blocked',
         toolType: 'parafraseador',
         metadata: {
           plan: userPlan,
-          is_authenticated: isAuthenticated,
+          is_authenticated: userStatus.isAuthenticated,
           hour_of_day: new Date().getHours(),
           day_of_week: new Date().getDay(),
         }
@@ -451,8 +441,7 @@ export default function ParafraseadorMain() {
             </svg>
             En español
           </span>
-          {!loading && (
-            !isAuthenticated ? (
+          {!userStatus.isAuthenticated ? (
               <span className="inline-flex items-center gap-1 bg-gradient-to-r from-gray-100 to-slate-100 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -467,7 +456,7 @@ export default function ParafraseadorMain() {
                 Cuenta activa
               </span>
             )
-          )}
+          }
         </div>
 
         <label htmlFor="parafraseador-textarea" className="block text-base font-semibold text-gray-800 mb-2">
@@ -479,7 +468,7 @@ export default function ParafraseadorMain() {
           onTextExtracted={handleFileTextExtracted}
           maxChars={CHARACTER_LIMIT}
           disabled={isParaphrasing}
-          userPlan={userPlan}
+          userPlan={userStatus.plan_type}
           toolName="Parafraseador"
           className="mb-3"
         />
@@ -502,7 +491,7 @@ export default function ParafraseadorMain() {
             }}
             onDragOver={(e) => {
               e.preventDefault();
-              if (userPlan === 'premium') {
+              if (userStatus.plan_type === 'premium' || userStatus.express.is_active) {
                 e.currentTarget.classList.add('border-violet-400', 'bg-violet-50');
               }
             }}
@@ -536,7 +525,7 @@ export default function ParafraseadorMain() {
           <div className="space-y-2">
             {Object.entries(PARAPHRASER_MODES).map(([key, mode]) => {
               const modeKey = key as ParaphraserMode;
-              const isLocked = mode.isPremium && userPlan !== 'premium';
+              const isLocked = mode.isPremium && userStatus.plan_type !== 'premium' && !userStatus.express.is_active;
               const isSelected = selectedMode === modeKey;
 
               return (
@@ -738,7 +727,7 @@ export default function ParafraseadorMain() {
                         </p>
                         <p className="text-xs">
                           Tu texto cambió <strong>{changePercentage}%</strong>.
-                          {userPlan !== 'premium' ? ' Probá un modo premium para más cambios.' : ' Intenta parafrasear nuevamente.'}
+                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? ' Probá un modo premium para más cambios.' : ' Intenta parafrasear nuevamente.'}
                         </p>
                       </div>
                     ) : (
@@ -748,7 +737,7 @@ export default function ParafraseadorMain() {
                         </p>
                         <p className="text-xs">
                           Solo cambió <strong>{changePercentage}%</strong>. Riesgo de plagio.
-                          {userPlan !== 'premium' ? ' Probá modos premium para mejores resultados.' : ' Intenta parafrasear nuevamente.'}
+                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? ' Probá modos premium para mejores resultados.' : ' Intenta parafrasear nuevamente.'}
                         </p>
                       </div>
                     )}
@@ -760,7 +749,7 @@ export default function ParafraseadorMain() {
                 ) : null}
 
                 {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
-                {userPlan !== 'premium' && !isLimitExceeded && (
+                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-3 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
@@ -772,7 +761,7 @@ export default function ParafraseadorMain() {
                       <div className="bg-white p-3 rounded-lg border-2 border-gray-200">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full font-bold">
-                            {isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
+                            {userStatus.isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
                           </span>
                         </div>
                         <p className="text-xs font-bold text-gray-800 mb-2">Lo que acabas de usar:</p>
@@ -783,7 +772,7 @@ export default function ParafraseadorMain() {
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-green-600 font-bold">✓</span>
-                            <span>Hasta {isAuthenticated ? '600' : '400'} caracteres</span>
+                            <span>Hasta {userStatus.isAuthenticated ? '600' : '400'} caracteres</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-green-600 font-bold">✓</span>
@@ -855,7 +844,7 @@ export default function ParafraseadorMain() {
                 )}
 
                 {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
-                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="mt-3 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
                     <p className="text-sm font-semibold text-violet-800 mb-1">
                       <Icon icon={ProductIcons.Info} size="xs" className="inline" /> ¿Usás seguido las herramientas?
@@ -873,7 +862,7 @@ export default function ParafraseadorMain() {
                 )}
 
                 {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
-                {!isAuthenticated && usageCount >= 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 5 && (
                   <div className="mt-3 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
                     <p className="text-sm font-bold text-cyan-900 mb-2">
                       <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> ¡Ya usaste el Parafraseador {usageCount} veces!
@@ -1084,7 +1073,7 @@ export default function ParafraseadorMain() {
               </div>
 
               {/* Hint dinámico según plan */}
-              {isExpressActive && (
+              {userStatus.express.is_active && (
                 <div className="text-center text-sm bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 border border-orange-200">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <span>⚡</span>
@@ -1097,14 +1086,14 @@ export default function ParafraseadorMain() {
                   </p>
                 </div>
               )}
-              {!isExpressActive && userPlan !== 'premium' && (
+              {!userStatus.express.is_active && userStatus.plan_type !== 'premium' && (
                 <div className="text-center text-sm bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-100">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <svg className="w-5 h-5 text-violet-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     <span className="font-bold text-violet-700">
-                      {isAuthenticated ? '10 usos diarios gratis' : '3 usos diarios'}
+                      {userStatus.isAuthenticated ? '10 usos diarios gratis' : '3 usos diarios'}
                     </span>
                   </div>
                   <p className="text-xs text-gray-600">
