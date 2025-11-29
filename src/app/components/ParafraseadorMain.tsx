@@ -47,6 +47,9 @@ export default function ParafraseadorMain() {
     },
   });
 
+  // DEBUG: Log estado inicial en primera renderización
+  console.log('[PARAFRASEADOR DEBUG] Component render - userStatus:', userStatus);
+
   // Validation state (Fase 4: Validación de similitud post-parafraseo)
   const [similarityScore, setSimilarityScore] = useState<number | null>(null);
   const [changePercentage, setChangePercentage] = useState<number | null>(null);
@@ -83,19 +86,34 @@ export default function ParafraseadorMain() {
   useEffect(() => {
     async function fetchUserStatus() {
       try {
+        const start = performance.now();
+        console.log('[PARAFRASEADOR DEBUG] 🚀 Fetch START');
+
         const response = await fetch('/api/user/status');
+
+        const end = performance.now();
+        console.log('[PARAFRASEADOR DEBUG] ⏱️  Fetch END - took:', (end - start).toFixed(2), 'ms');
+
         if (response.ok) {
           const data = await response.json();
+          console.log('[PARAFRASEADOR DEBUG] 📦 Received data:', data);
+
           setUserStatus(data); // Single setState - no flickering!
+          console.log('[PARAFRASEADOR DEBUG] ✅ State updated');
         }
       } catch (error) {
-        console.error('Error fetching user status:', error);
+        console.error('[PARAFRASEADOR DEBUG] ❌ Error fetching user status:', error);
         // Keep default free state on error
       }
     }
 
     fetchUserStatus();
   }, []); // Execute only once on mount - no dependencies!
+
+  // DEBUG: Monitor userStatus changes
+  useEffect(() => {
+    console.log('[PARAFRASEADOR DEBUG] 🔄 userStatus CHANGED:', userStatus);
+  }, [userStatus]);
 
   // Colores del contador dinámico
   const getCounterColor = () => {

@@ -122,6 +122,9 @@ export default function DetectorMain({
     },
   });
 
+  // DEBUG: Log estado inicial en primera renderización
+  console.log('[DETECTOR DEBUG] Component render - userStatus:', userStatus);
+
   // Límite de caracteres dinámico basado en autenticación y plan
   const CHARACTER_LIMIT = !userStatus.isAuthenticated
     ? CHARACTER_LIMITS.anonymous
@@ -142,19 +145,34 @@ export default function DetectorMain({
   useEffect(() => {
     async function fetchUserStatus() {
       try {
+        const start = performance.now();
+        console.log('[DETECTOR DEBUG] 🚀 Fetch START');
+
         const response = await fetch('/api/user/status');
+
+        const end = performance.now();
+        console.log('[DETECTOR DEBUG] ⏱️  Fetch END - took:', (end - start).toFixed(2), 'ms');
+
         if (response.ok) {
           const data = await response.json();
+          console.log('[DETECTOR DEBUG] 📦 Received data:', data);
+
           setUserStatus(data); // Single setState - no flickering!
+          console.log('[DETECTOR DEBUG] ✅ State updated');
         }
       } catch (error) {
-        console.error('Error fetching user status:', error);
+        console.error('[DETECTOR DEBUG] ❌ Error fetching user status:', error);
         // Keep default free state on error
       }
     }
 
     fetchUserStatus();
   }, []); // Execute only once on mount - no dependencies!
+
+  // DEBUG: Monitor userStatus changes
+  useEffect(() => {
+    console.log('[DETECTOR DEBUG] 🔄 userStatus CHANGED:', userStatus);
+  }, [userStatus]);
 
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
