@@ -942,7 +942,7 @@ export default function HumanizadorMain() {
                 )}
 
                 {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
-                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
                     <div className="flex items-start gap-2">
                       <span className="text-lg"><Icon icon={ProductIcons.Info} size="xs" className="inline" /></span>
@@ -964,7 +964,7 @@ export default function HumanizadorMain() {
                   </div>
                 )}
 
-                {!isAuthenticated && usageCount >= 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 5 && (
                   <div className="p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl"><Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /></span>
@@ -1018,7 +1018,7 @@ export default function HumanizadorMain() {
                     </div>
 
                     {/* Copy dinámico según tipo de usuario */}
-                    {!isAuthenticated ? (
+                    {!userStatus.isAuthenticated ? (
                       <>
                         <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
                           Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
