@@ -393,7 +393,7 @@ export default function DetectorMain({
               }}
               onDragOver={(e) => {
                 e.preventDefault();
-                if (userPlan === 'premium') {
+                if (userStatus.plan_type === 'premium' || userStatus.express.is_active) {
                   e.currentTarget.classList.add('border-violet-400', 'bg-violet-50');
                 }
               }}
