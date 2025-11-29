@@ -372,7 +372,7 @@ export default function ParafraseadorMain() {
         eventType: 'file_upload_blocked',
         toolType: 'parafraseador',
         metadata: {
-          plan: userPlan,
+          plan: userStatus.plan_type,
           is_authenticated: userStatus.isAuthenticated,
           hour_of_day: new Date().getHours(),
           day_of_week: new Date().getDay(),
@@ -884,7 +884,7 @@ export default function ParafraseadorMain() {
               </div>
 
               {/* Overlay inline cuando se excede el límite */}
-              {isLimitExceeded && userPlan !== 'premium' && (
+              {isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                 <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none z-10">
                   <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto animate-scale-in">
                     {/* Icon */}

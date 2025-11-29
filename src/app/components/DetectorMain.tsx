@@ -999,7 +999,7 @@ export default function DetectorMain({
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
 
                 {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
-                {userPlan !== 'premium' && !isLimitExceeded && (
+                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-4 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
@@ -1167,7 +1167,7 @@ export default function DetectorMain({
               </div>
 
               {/* Overlay inline cuando se excede el límite */}
-              {isLimitExceeded && userPlan !== 'premium' && (
+              {isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                 <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none z-10">
                   <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto animate-scale-in">
                     {/* Icon */}
@@ -1354,7 +1354,7 @@ export default function DetectorMain({
                   <div className="border-dotted border-b border-gray-300" />
                 </div>
                 {/* Bloque premium solo en empty state - SOLO para usuarios FREE */}
-                {userPlan !== 'premium' && (
+                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                   <PremiumUpsellBlock textos={premiumTextos} />
                 )}
               </>
