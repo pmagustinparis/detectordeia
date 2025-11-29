@@ -122,8 +122,11 @@ export default function DetectorMain({
     },
   });
 
+  // Loading state - prevents flickering by not showing wrong UI while fetching
+  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
+
   // DEBUG: Log estado inicial en primera renderización
-  console.log('[DETECTOR DEBUG] Component render - userStatus:', userStatus);
+  console.log('[DETECTOR DEBUG] Component render - userStatus:', userStatus, 'isLoading:', isLoadingUserStatus);
 
   // Límite de caracteres dinámico basado en autenticación y plan
   const CHARACTER_LIMIT = !userStatus.isAuthenticated
@@ -163,6 +166,9 @@ export default function DetectorMain({
       } catch (error) {
         console.error('[DETECTOR DEBUG] ❌ Error fetching user status:', error);
         // Keep default free state on error
+      } finally {
+        setIsLoadingUserStatus(false);
+        console.log('[DETECTOR DEBUG] 🏁 Loading finished');
       }
     }
 
@@ -338,6 +344,32 @@ export default function DetectorMain({
       setTimeout(() => setError(null), 5000);
     }
   };
+
+  // Show minimal loading skeleton while fetching user status - prevents flickering
+  if (isLoadingUserStatus) {
+    return (
+      <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
+        {/* Elementos decorativos de fondo */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
+
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight">
+          <span className="gradient-text-primary">{h1}</span>
+        </h1>
+        <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto">{subtitle}</p>
+        <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
+          {/* Loading skeleton */}
+          <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 min-w-[320px] max-h-[600px]">
+            <div className="animate-pulse space-y-4">
+              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+              <div className="h-32 bg-gray-200 rounded"></div>
+              <div className="h-10 bg-gray-200 rounded"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">

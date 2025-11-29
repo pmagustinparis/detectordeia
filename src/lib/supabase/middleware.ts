@@ -40,10 +40,12 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   // Rutas protegidas: solo usuarios autenticados
+  // EXCEPCIÓN: /api/user/status debe funcionar para usuarios anónimos también
   if (
     !user &&
     (request.nextUrl.pathname.startsWith('/dashboard') ||
-      request.nextUrl.pathname.startsWith('/api/user'))
+      (request.nextUrl.pathname.startsWith('/api/user') &&
+        !request.nextUrl.pathname.startsWith('/api/user/status')))
   ) {
     // Redirect a home si no está autenticado
     const url = request.nextUrl.clone();
