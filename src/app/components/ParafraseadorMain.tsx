@@ -319,7 +319,7 @@ export default function ParafraseadorMain() {
           change_percentage: Math.round(change),
           passed_threshold: change >= 60,
           mode: selectedMode,
-          plan: userPlan,
+          plan: userStatus.plan_type,
           is_authenticated: userStatus.isAuthenticated,
         }
       });
@@ -911,7 +911,7 @@ export default function ParafraseadorMain() {
                     </div>
 
                     {/* Copy dinámico según tipo de usuario */}
-                    {!isAuthenticated ? (
+                    {!userStatus.isAuthenticated ? (
                       <>
                         <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
                           Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
@@ -1097,7 +1097,7 @@ export default function ParafraseadorMain() {
                     </span>
                   </div>
                   <p className="text-xs text-gray-600">
-                    {isAuthenticated
+                    {userStatus.isAuthenticated
                       ? 'Hasta 600 caracteres por uso'
                       : 'Hasta 400 caracteres por uso • Registrate gratis para más'}
                   </p>

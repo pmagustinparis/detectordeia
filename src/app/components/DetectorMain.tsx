@@ -293,13 +293,13 @@ export default function DetectorMain({
     e.preventDefault();
     e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
 
-    if (userPlan !== 'premium') {
+    if (userStatus.plan_type !== 'premium' && !userStatus.express.is_active) {
       // Track intento de subir archivo bloqueado
       trackEvent({
         eventType: 'file_upload_blocked',
         toolType: 'detector',
         metadata: {
-          plan: userPlan,
+          plan: userStatus.plan_type,
           is_authenticated: userStatus.isAuthenticated,
         }
       });
