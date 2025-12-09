@@ -135,7 +135,7 @@ export default function HumanizadorPage() {
                 name: '¿Qué incluyen los planes Express y Pro?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Express ($2.99 por 24 horas) te da acceso ilimitado a todas las herramientas con 5 modos premium, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Pro ($6.99/mes o $66.99/año) incluye lo mismo pero de forma continua, con historial completo y soporte prioritario.',
+                  text: 'Express ($3.99 por 24 horas) te da acceso ilimitado a todas las herramientas con 5 modos premium, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Pro ($12.99/mes o $124.68/año) incluye lo mismo pero de forma continua, con historial completo y soporte prioritario.',
                 },
               },
               {

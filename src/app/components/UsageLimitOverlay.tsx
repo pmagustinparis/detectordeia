@@ -4,7 +4,7 @@
  * Modal/overlay que aparece cuando un usuario alcanza su límite diario.
  * Muestra mensajes diferentes según el tipo de usuario:
  * - Anonymous: CTA para registrarse (obtener más usos/día)
- * - Free: CTA para Express ($2.99/24h) o Pro ($6.99/mes)
+ * - Free: CTA para Express ($3.99/24h) o Pro ($12.99/mes)
  * - Express/Premium: No deberían ver este modal (tienen usos ilimitados)
  */
 
@@ -177,7 +177,7 @@ export default function UsageLimitOverlay({
                   </li>
                 </ul>
                 <p className="text-lg font-extrabold text-orange-900">
-                  $2.99 • Pago único
+                  $3.99 • Pago único
                 </p>
               </div>
 
@@ -201,7 +201,7 @@ export default function UsageLimitOverlay({
                   </li>
                 </ul>
                 <p className="text-lg font-extrabold text-violet-900">
-                  $6.99/mes • $66.99/año
+                  $12.99/mes • $124.68/año
                 </p>
               </div>
 
@@ -211,13 +211,13 @@ export default function UsageLimitOverlay({
                   href="/pricing"
                   className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  ⚡ Activar Express ($2.99/24h)
+                  ⚡ Activar Express ($3.99/24h)
                 </a>
                 <a
                   href="/pricing"
                   className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 >
-                  Ver Plan Pro ($6.99/mes)
+                  Ver Plan Pro ($12.99/mes)
                 </a>
               </div>
 

@@ -59,14 +59,14 @@ export async function POST(request: Request) {
     let mode: 'payment' | 'subscription';
 
     if (plan_type === 'express') {
-      // Express Pass - Pago único
-      priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1SY684R5MbTVVQlkg17chSfr';
+      // Express Pass - Pago único ($3.99)
+      priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1ScR9nR5MbTVVQlk2oIBvATK';
       mode = 'payment';
     } else {
-      // Premium - Suscripción
+      // Premium - Suscripción ($12.99/mes o $124.68/año)
       priceId = plan_interval === 'month'
-        ? (process.env.STRIPE_PRICE_MONTHLY || 'price_1SY66fR5MbTVVQlk34bldpqY')
-        : (process.env.STRIPE_PRICE_ANNUAL || 'price_1SY65ER5MbTVVQlkF4rYBupX');
+        ? (process.env.STRIPE_PRICE_MONTHLY || 'price_1ScRCOR5MbTVVQlkQkuJDJxi')
+        : (process.env.STRIPE_PRICE_ANNUAL || 'price_1ScUSzR5MbTVVQlklglZnaQp');
       mode = 'subscription';
     }
 

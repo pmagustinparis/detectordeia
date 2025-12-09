@@ -7,8 +7,8 @@ import { trackEvent } from "@/lib/analytics/client";
 
 const PRICES = {
   free: { monthly: 0, annual: 0 },
-  express: 2.99, // Pago único 24h
-  pro: { monthly: 6.99, annual: 66.99 }, // $5.58/mes efectivo
+  express: 3.99, // Pago único 24h
+  pro: { monthly: 12.99, annual: 124.68 }, // $10.39/mes efectivo con 20% descuento
 };
 
 export default function PricingPageClient() {
@@ -207,7 +207,7 @@ export default function PricingPageClient() {
   const faqs = [
     {
       q: "¿Qué es el plan Express?",
-      a: "El plan Express es un pase de 24 horas que te da acceso ilimitado a todas las funcionalidades premium por solo $2.99. Es perfecto para cuando necesitas completar un proyecto urgente o quieres probar todas las funciones premium antes de suscribirte al plan Pro.",
+      a: "El plan Express es un pase de 24 horas que te da acceso ilimitado a todas las funcionalidades premium por solo $3.99. Es perfecto para cuando necesitas completar un proyecto urgente o quieres probar todas las funciones premium antes de suscribirte al plan Pro.",
     },
     {
       q: "¿El plan Express se renueva automáticamente?",
@@ -223,7 +223,7 @@ export default function PricingPageClient() {
     },
     {
       q: "¿Qué diferencia hay entre Express y Pro?",
-      a: "Express te da acceso completo por 24 horas ($2.99), mientras que Pro es una suscripción mensual ($6.99/mes) o anual ($66.99/año) con acceso continuo. Ambos tienen las mismas funcionalidades ilimitadas.",
+      a: "Express te da acceso completo por 24 horas ($3.99), mientras que Pro es una suscripción mensual ($12.99/mes) o anual ($124.68/año) con acceso continuo. Ambos tienen las mismas funcionalidades ilimitadas.",
     },
     {
       q: "¿El plan anual se renueva automáticamente?",
@@ -526,8 +526,8 @@ export default function PricingPageClient() {
                 <tr className="border-b border-gray-100 bg-gray-50">
                   <td className="py-3 px-4 font-bold text-gray-900">💰 Precio</td>
                   <td className="text-center py-3 px-4 text-gray-900 font-medium">Gratis</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">$2.99/24h</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">$6.99/mes</td>
+                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">$3.99/24h</td>
+                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">$12.99/mes</td>
                 </tr>
 
                 {/* Detector Features */}
@@ -704,7 +704,7 @@ export default function PricingPageClient() {
                 ))}
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Necesitaba revisar 20 trabajos antes de la fecha de entrega y los límites gratis no me alcanzaban. El Express me salvó - por $2.99 pude terminar todo en un día sin interrupciones."
+                "Necesitaba revisar 20 trabajos antes de la fecha de entrega y los límites gratis no me alcanzaban. El Express me salvó - por $3.99 pude terminar todo en un día sin interrupciones."
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-400 flex items-center justify-center text-white font-bold text-lg">

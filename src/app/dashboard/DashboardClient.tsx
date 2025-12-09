@@ -193,7 +193,7 @@ export default function DashboardClient({ user, usageStats, history, planType, h
                     ¡Desbloquea todo el potencial de DetectorDeIA!
                   </p>
                   <p className="text-xs sm:text-sm text-violet-100 hidden sm:block">
-                    Express $2.99/24h • Pro $6.99/mes • Usos ilimitados • 5 modos premium
+                    Express $3.99/24h • Pro $12.99/mes • Usos ilimitados • 5 modos premium
                   </p>
                 </div>
               </div>

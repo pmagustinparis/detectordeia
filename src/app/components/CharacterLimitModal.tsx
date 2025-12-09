@@ -147,7 +147,7 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-violet-700 mt-3 font-medium">
-                  Express $2.99/24h • Pro $6.99/mes • Ahorra 20% anual
+                  Express $3.99/24h • Pro $12.99/mes • Ahorra 20% anual
                 </p>
               </div>
 
@@ -204,7 +204,7 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-violet-700 mt-3 font-medium">
-                  Express $2.99/24h • Pro $6.99/mes • Ahorra 20% anual
+                  Express $3.99/24h • Pro $12.99/mes • Ahorra 20% anual
                 </p>
               </div>
 

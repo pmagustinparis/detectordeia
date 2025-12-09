@@ -260,8 +260,8 @@ export async function fetchRevenueHealth(
   supabase: SupabaseClient,
   timeframe: QueryTimeframe
 ): Promise<RevenueHealth> {
-  const PRO_PRICE = 6.99; // Updated pricing
-  const EXPRESS_PRICE = 2.99;
+  const PRO_PRICE = 12.99; // Updated pricing
+  const EXPRESS_PRICE = 3.99;
 
   // Get all premium users
   const { data: premiumUsers } = await supabase

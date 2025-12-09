@@ -9,8 +9,8 @@
  *   - Detector: 15 análisis/día
  *   - Humanizador: 3 usos/día (REDUCIDO para impulsar conversión a PRO)
  *   - Parafraseador: 10 usos/día
- * - Express: ilimitado por 24 horas ($2.99)
- * - Premium: ilimitado permanente ($6.99/mes)
+ * - Express: ilimitado por 24 horas ($3.99)
+ * - Premium: ilimitado permanente ($12.99/mes)
  */
 
 import { createClient } from '@/lib/supabase/server';

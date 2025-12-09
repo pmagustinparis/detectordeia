@@ -84,7 +84,7 @@ export default function RevenueHealth({ data }: RevenueHealthProps) {
               {formatCurrency(data.expressMetrics.totalRevenue)}
             </p>
             <p className="text-xs text-blue-600 mt-1">
-              $2.99 c/u
+              $3.99 c/u
             </p>
           </div>
 

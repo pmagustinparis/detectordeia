@@ -32,7 +32,7 @@ export default function Terminos() {
         <li>Acceso al modo estándar únicamente</li>
         <li>Sin necesidad de registro (usuarios anónimos)</li>
       </ul>
-      <p className="text-gray-700 mb-2"><strong>Plan Express ($2.99/pago único):</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Plan Express ($3.99/pago único):</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Acceso completo por 24 horas</li>
         <li>Usos ilimitados en todas las herramientas</li>
@@ -41,7 +41,7 @@ export default function Terminos() {
         <li>Subida de archivos (PDF, DOCX, TXT)</li>
         <li>Perfecto para entregas urgentes</li>
       </ul>
-      <p className="text-gray-700 mb-2"><strong>Plan Pro ($6.99/mes o $66.99/año):</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Plan Pro ($12.99/mes o $124.68/año):</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Usos ilimitados diarios</li>
         <li>Caracteres ilimitados por análisis</li>

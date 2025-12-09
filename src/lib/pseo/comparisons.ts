@@ -22,7 +22,7 @@ export const comparisons: ComparisonPage[] = [
 
     whyBetter: [
       'Optimizado 100% para español (España y LATAM), mientras que Turnitin está diseñado principalmente para inglés',
-      'Precio hasta 10x más económico: desde $10/mes vs $100-$300/año de Turnitin institucional',
+      'Precio hasta 10x más económico: desde $12.99/mes vs $100-$300/año de Turnitin institucional',
       'Sin necesidad de licencia institucional - cualquiera puede usar DetectorDeIA',
       'Resultados instantáneos sin espera de procesamiento',
       'Análisis avanzado con métricas lingüísticas específicas para español',
@@ -31,7 +31,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: '$10/mes o $96/año', competitor: 'Solo institucional ($100-$300/año)' },
+      { feature: 'Precio individual', detectordeia: '$12.99/mes o $96/año', competitor: 'Solo institucional ($100-$300/año)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Limitada' },
       { feature: 'Acceso sin institución', detectordeia: true, competitor: false },
       { feature: 'Tiempo de análisis', detectordeia: 'Instantáneo (<5 seg)', competitor: '5-15 minutos' },
@@ -46,7 +46,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Turnitin es la mejor opción si necesitás detección de plagio además de IA, o si tu institución ya tiene licencia. Para detección de IA pura en español con presupuesto limitado, DetectorDeIA es superior.',
 
     pricing: {
-      detectordeia: '$10/mes o $96/año (individual)',
+      detectordeia: '$12.99/mes o $96/año (individual)',
       competitor: '$100-$300/año (solo institucional)'
     },
 
@@ -57,7 +57,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Puedo usar DetectorDeIA sin licencia institucional?',
-        answer: 'Sí, DetectorDeIA está diseñado para uso individual. Cualquier persona (profesor, estudiante, profesional) puede crear una cuenta gratis y usar el detector. El plan PRO cuesta solo $10/mes, sin necesidad de aprobación institucional.'
+        answer: 'Sí, DetectorDeIA está diseñado para uso individual. Cualquier persona (profesor, estudiante, profesional) puede crear una cuenta gratis y usar el detector. El plan PRO cuesta solo $12.99/mes, sin necesidad de aprobación institucional.'
       },
       {
         question: '¿DetectorDeIA detecta plagio como Turnitin?',
@@ -65,7 +65,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Qué ventajas tiene DetectorDeIA sobre Turnitin para profesores?',
-        answer: 'Acceso inmediato sin trámites institucionales, precio individual accesible ($10/mes vs $100-$300/año), resultados instantáneos (vs 5-15 minutos), optimización para español con menor tasa de falsos positivos, y herramientas adicionales (Humanizador y Parafraseador) para enseñar a los estudiantes.'
+        answer: 'Acceso inmediato sin trámites institucionales, precio individual accesible ($12.99/mes vs $100-$300/año), resultados instantáneos (vs 5-15 minutos), optimización para español con menor tasa de falsos positivos, y herramientas adicionales (Humanizador y Parafraseador) para enseñar a los estudiantes.'
       },
       {
         question: '¿Puedo usar DetectorDeIA si mi universidad usa Turnitin?',
@@ -100,13 +100,13 @@ export const comparisons: ComparisonPage[] = [
       'Multi-pasada con GPT-3.5 + GPT-4o-mini vs análisis de una sola pasada',
       'Métricas lingüísticas avanzadas específicas para español',
       'Sin límite mensual de palabras en plan PRO (QuillBot tiene caps)',
-      'Precio más económico: $10/mes vs $19.95/mes de QuillBot Premium',
+      'Precio más económico: $12.99/mes vs $19.95/mes de QuillBot Premium',
       'Interfaz en español nativo, no traducida',
       'Mejor soporte para modismos de LATAM y España'
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes', competitor: '$19.95/mes' },
+      { feature: 'Precio', detectordeia: '$12.99/mes', competitor: '$19.95/mes' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Traducción automática' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '70-80%' },
       { feature: 'Límite de palabras', detectordeia: 'Ilimitado (PRO)', competitor: '5,000 palabras/mes' },
@@ -121,7 +121,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'QuillBot es mejor si necesitás todas las herramientas en un solo lugar (grammar, plagio, parafraseo) y trabajás principalmente en inglés. Para detección de IA en español, DetectorDeIA es superior.',
 
     pricing: {
-      detectordeia: '$10/mes o $96/año',
+      detectordeia: '$12.99/mes o $96/año',
       competitor: '$19.95/mes o $99.95/año'
     },
 
@@ -171,13 +171,13 @@ export const comparisons: ComparisonPage[] = [
       'Sistema multi-pasada (2-3 análisis) vs análisis único de Smodin',
       'Métricas lingüísticas avanzadas (perplejidad, diversidad léxica, etc.)',
       'Interfaz más limpia y enfocada vs Smodin con muchas features distractoras',
-      'Precio transparente ($10/mes) vs modelo de créditos complejo',
+      'Precio transparente ($12.99/mes) vs modelo de créditos complejo',
       'Sin límites artificiales de caracteres por análisis',
       'Mejor detección de modismos regionales (LATAM + España)'
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes transparente', competitor: 'Sistema de créditos variable' },
+      { feature: 'Precio', detectordeia: '$12.99/mes transparente', competitor: 'Sistema de créditos variable' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '75-85%' },
       { feature: 'Análisis por texto', detectordeia: 'Multi-pasada (2-3)', competitor: 'Una sola pasada' },
       { feature: 'Métricas avanzadas', detectordeia: '5 métricas lingüísticas', competitor: 'Básicas' },
@@ -192,7 +192,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Smodin puede ser útil si necesitás herramientas en múltiples idiomas (más de 100) o features adicionales como resumen de textos, traductor, etc. Para detección de IA pura en español, DetectorDeIA es más preciso y económico.',
 
     pricing: {
-      detectordeia: '$10/mes o $96/año (ilimitado)',
+      detectordeia: '$12.99/mes o $96/año (ilimitado)',
       competitor: 'Sistema de créditos ($8-$29/mes)'
     },
 
@@ -203,7 +203,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿El sistema de precios de DetectorDeIA es más simple que Smodin?',
-        answer: 'Sí. Smodin usa créditos que varían según la feature usada (detector, humanizador, etc.), lo que complica el cálculo. DetectorDeIA tiene precio fijo: $10/mes = usos ilimitados de todas las herramientas. Sin sorpresas ni créditos que contar.'
+        answer: 'Sí. Smodin usa créditos que varían según la feature usada (detector, humanizador, etc.), lo que complica el cálculo. DetectorDeIA tiene precio fijo: $12.99/mes = usos ilimitados de todas las herramientas. Sin sorpresas ni créditos que contar.'
       },
       {
         question: '¿DetectorDeIA tiene las mismas features que Smodin?',
@@ -242,14 +242,14 @@ export const comparisons: ComparisonPage[] = [
       'Optimizado 100% para español vs GPTZero diseñado para inglés',
       'Precisión 95% en español vs 65-75% de GPTZero en textos no ingleses',
       'Detecta modismos específicos de LATAM (che, vos, pibe) y España (tío, flipar)',
-      'Precio más económico: $10/mes vs $15/mes de GPTZero Premium',
+      'Precio más económico: $12.99/mes vs $15/mes de GPTZero Premium',
       'Sistema multi-pasada (GPT-3.5 + GPT-4o-mini) vs modelo único',
       'Incluye Humanizador y Parafraseador en el mismo plan',
       'Interfaz en español nativo, no traducida automáticamente'
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes o $96/año', competitor: '$15/mes o $144/año' },
+      { feature: 'Precio', detectordeia: '$12.99/mes o $96/año', competitor: '$15/mes o $144/año' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Solo inglés nativo' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '65-75%' },
       { feature: 'Precisión en inglés', detectordeia: 'No optimizado', competitor: '90%+' },
@@ -264,7 +264,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'GPTZero es mejor si escribís principalmente en inglés o necesitás API para integración. Para textos en español (académicos, profesionales, personales), DetectorDeIA es significativamente más preciso y económico.',
 
     pricing: {
-      detectordeia: '$10/mes o $96/año',
+      detectordeia: '$12.99/mes o $96/año',
       competitor: '$15/mes o $144/año'
     },
 
@@ -311,7 +311,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Originality.AI es una herramienta profesional enfocada en creadores de contenido SEO, pero con un modelo de créditos costoso y optimización limitada para español. DetectorDeIA ofrece precio fijo accesible y especialización total en español.',
 
     whyBetter: [
-      'Precio transparente ($10/mes ilimitado) vs sistema de créditos ($0.01/crédito)',
+      'Precio transparente ($12.99/mes ilimitado) vs sistema de créditos ($0.01/crédito)',
       'Sin créditos que administrar - usos ilimitados en plan PRO',
       'Optimizado 100% para español vs Originality diseñado para inglés',
       'Incluye Humanizador y Parafraseador sin costo adicional',
@@ -321,7 +321,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes ilimitado', competitor: '$0.01/crédito (variable)' },
+      { feature: 'Precio', detectordeia: '$12.99/mes ilimitado', competitor: '$0.01/crédito (variable)' },
       { feature: 'Modelo de precio', detectordeia: 'Suscripción fija', competitor: 'Pago por uso (créditos)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica' },
       { feature: 'Detección de plagio', detectordeia: false, competitor: true },
@@ -336,14 +336,14 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Originality.AI es mejor si sos agencia SEO que necesita detección de plagio, fact-checking, API y gestionás múltiples clientes en inglés. Para uso individual en español (académico, profesional), DetectorDeIA es más económico y preciso.',
 
     pricing: {
-      detectordeia: '$10/mes ilimitado',
+      detectordeia: '$12.99/mes ilimitado',
       competitor: '$14.95/mes base + créditos ($0.01/scan)'
     },
 
     faqs: [
       {
         question: '¿Por qué Originality.AI es más caro?',
-        answer: 'Originality.AI usa modelo de créditos: pagas $14.95/mes + $0.01 por cada escaneo. Si analizás 500 textos/mes, pagarías ~$19.95/mes. DetectorDeIA cuesta $10/mes con análisis ILIMITADOS. Para usuarios individuales que analizan frecuentemente, DetectorDeIA ahorra dinero.'
+        answer: 'Originality.AI usa modelo de créditos: pagas $14.95/mes + $0.01 por cada escaneo. Si analizás 500 textos/mes, pagarías ~$19.95/mes. DetectorDeIA cuesta $12.99/mes con análisis ILIMITADOS. Para usuarios individuales que analizan frecuentemente, DetectorDeIA ahorra dinero.'
       },
       {
         question: '¿Originality.AI detecta plagio como Turnitin?',
@@ -388,13 +388,13 @@ export const comparisons: ComparisonPage[] = [
       'Optimizado para español (España + LATAM) vs ZeroGPT genérico',
       'Límites más generosos: 15 usos/día vs 3 usos/día en ZeroGPT gratis',
       'Métricas lingüísticas avanzadas (perplejidad, diversidad léxica)',
-      'Plan PRO económico ($10/mes) para análisis ilimitados',
+      'Plan PRO económico ($12.99/mes) para análisis ilimitados',
       'Incluye Humanizador y Parafraseador integrado'
     ],
 
     comparisons: [
       { feature: 'Precio gratis', detectordeia: '15 análisis/día', competitor: '3 análisis/día' },
-      { feature: 'Precio PRO', detectordeia: '$10/mes ilimitado', competitor: 'No tiene plan PRO' },
+      { feature: 'Precio PRO', detectordeia: '$12.99/mes ilimitado', competitor: 'No tiene plan PRO' },
       { feature: 'Anuncios', detectordeia: 'Sin anuncios', competitor: 'Publicidad invasiva' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Genérico multi-idioma' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '60-70%' },
@@ -408,7 +408,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'ZeroGPT es útil si necesitás analizar textos MUY largos en inglés (15,000+ caracteres) de forma gratuita. Para español, textos cortos/medios (<5,000 caracteres), o uso frecuente, DetectorDeIA es superior.',
 
     pricing: {
-      detectordeia: 'Gratis (15/día) o $10/mes ilimitado',
+      detectordeia: 'Gratis (15/día) o $12.99/mes ilimitado',
       competitor: 'Gratis (3/día) - Sin plan PRO'
     },
 
@@ -419,7 +419,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿ZeroGPT es realmente gratis?',
-        answer: 'Sí, pero limitado: solo 3 análisis por día (vs 15 de DetectorDeIA), con anuncios invasivos, y precisión cuestionable. Es gratis pero no confiable para uso serio. DetectorDeIA ofrece 15/día gratis SIN anuncios, y plan PRO a $10/mes para uso profesional.'
+        answer: 'Sí, pero limitado: solo 3 análisis por día (vs 15 de DetectorDeIA), con anuncios invasivos, y precisión cuestionable. Es gratis pero no confiable para uso serio. DetectorDeIA ofrece 15/día gratis SIN anuncios, y plan PRO a $12.99/mes para uso profesional.'
       },
       {
         question: '¿Puedo confiar en ZeroGPT para trabajos académicos?',
@@ -455,7 +455,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Copyleaks es una solución empresarial robusta con detección de plagio e IA, pero con precio institucional alto y optimización limitada para español. DetectorDeIA ofrece acceso individual económico y especialización total en español.',
 
     whyBetter: [
-      'Acceso individual ($10/mes) vs Copyleaks solo institucional/empresarial',
+      'Acceso individual ($12.99/mes) vs Copyleaks solo institucional/empresarial',
       'Sin necesidad de aprobación institucional - cualquiera puede usar DetectorDeIA',
       'Optimizado 100% para español vs Copyleaks diseñado para inglés',
       'Precio hasta 20x más económico para uso individual',
@@ -465,7 +465,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: '$10/mes', competitor: 'No disponible (solo institucional)' },
+      { feature: 'Precio individual', detectordeia: '$12.99/mes', competitor: 'No disponible (solo institucional)' },
       { feature: 'Precio institucional', detectordeia: 'No aplica', competitor: '$10-$20/estudiante/año' },
       { feature: 'Acceso sin institución', detectordeia: true, competitor: false },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Multi-idioma genérico' },
@@ -480,14 +480,14 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Copyleaks es mejor si tu institución necesita detección de plagio + IA con integración LMS, API y gestión de múltiples usuarios. Para uso individual en español (profesor independiente, estudiante, profesional), DetectorDeIA es más accesible y preciso.',
 
     pricing: {
-      detectordeia: '$10/mes individual',
+      detectordeia: '$12.99/mes individual',
       competitor: 'Solo institucional ($10-$20/usuario/año)'
     },
 
     faqs: [
       {
         question: '¿Puedo usar Copyleaks como individuo?',
-        answer: 'Copyleaks está diseñado para instituciones y empresas. Aunque ofrecen prueba gratis, sus planes son institucionales con precios por usuario/año que requieren contrato. DetectorDeIA permite acceso individual inmediato por $10/mes sin contrato.'
+        answer: 'Copyleaks está diseñado para instituciones y empresas. Aunque ofrecen prueba gratis, sus planes son institucionales con precios por usuario/año que requieren contrato. DetectorDeIA permite acceso individual inmediato por $12.99/mes sin contrato.'
       },
       {
         question: '¿Copyleaks detecta plagio como Turnitin?',
@@ -495,7 +495,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿DetectorDeIA funciona para profesores sin apoyo institucional?',
-        answer: 'Exactamente. DetectorDeIA está diseñado para profesores que quieren verificar trabajos SIN necesidad de licencia institucional. Creás cuenta gratis, pagás $10/mes y listo. Ideal para profesores particulares, academias pequeñas, etc.'
+        answer: 'Exactamente. DetectorDeIA está diseñado para profesores que quieren verificar trabajos SIN necesidad de licencia institucional. Creás cuenta gratis, pagás $12.99/mes y listo. Ideal para profesores particulares, academias pequeñas, etc.'
       },
       {
         question: '¿Copyleaks tiene mejor precisión que DetectorDeIA?',
@@ -527,7 +527,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Writer.com es una plataforma empresarial de generación de contenido que incluye detector de IA, enfocada en equipos grandes con presupuesto corporativo. DetectorDeIA es la alternativa accesible para uso individual en español.',
 
     whyBetter: [
-      'Precio individual accesible ($10/mes) vs Writer solo empresarial ($18+/usuario/mes)',
+      'Precio individual accesible ($12.99/mes) vs Writer solo empresarial ($18+/usuario/mes)',
       'Sin necesidad de plan Team - uso individual directo',
       'Optimizado para español vs Writer diseñado para contenido empresarial en inglés',
       'Enfoque 100% en detección vs Writer mezclado con generación de contenido',
@@ -537,7 +537,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: '$10/mes', competitor: 'No disponible (solo Team)' },
+      { feature: 'Precio individual', detectordeia: '$12.99/mes', competitor: 'No disponible (solo Team)' },
       { feature: 'Precio Team', detectordeia: 'No aplica', competitor: '$18/usuario/mes (mín 5 usuarios)' },
       { feature: 'Mínimo de usuarios', detectordeia: '1 usuario', competitor: '5 usuarios ($90/mes mínimo)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica' },
@@ -552,14 +552,14 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Writer.com es mejor si tenés un equipo grande (5+ personas) que necesita crear Y detectar contenido en inglés con brand voice consistente. Para uso individual en español o equipos pequeños, DetectorDeIA es mucho más económico.',
 
     pricing: {
-      detectordeia: '$10/mes individual',
+      detectordeia: '$12.99/mes individual',
       competitor: '$18/usuario/mes (mínimo 5 usuarios)'
     },
 
     faqs: [
       {
         question: '¿Puedo usar Writer.com como individuo?',
-        answer: 'No fácilmente. Writer.com requiere mínimo 5 usuarios ($90/mes total) y está diseñado para equipos empresariales. DetectorDeIA permite uso individual por $10/mes sin mínimos ni contratos.'
+        answer: 'No fácilmente. Writer.com requiere mínimo 5 usuarios ($90/mes total) y está diseñado para equipos empresariales. DetectorDeIA permite uso individual por $12.99/mes sin mínimos ni contratos.'
       },
       {
         question: '¿Writer.com genera contenido además de detectar IA?',
@@ -567,7 +567,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿DetectorDeIA funciona para equipos pequeños?',
-        answer: 'Sí. Si tu equipo tiene 2-4 personas, cada uno puede tener cuenta individual de DetectorDeIA por $10/mes ($20-$40/mes total). Más económico que Writer.com que cobra $90/mes mínimo para 5 usuarios.'
+        answer: 'Sí. Si tu equipo tiene 2-4 personas, cada uno puede tener cuenta individual de DetectorDeIA por $12.99/mes ($20-$40/mes total). Más económico que Writer.com que cobra $90/mes mínimo para 5 usuarios.'
       },
       {
         question: '¿Writer.com detecta contenido en español?',
@@ -599,7 +599,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Undetectable.AI ofrece detector + humanizador en uno, pero con enfoque en inglés y modelo de créditos costoso. DetectorDeIA ofrece las mismas features optimizadas para español con precio fijo más económico.',
 
     whyBetter: [
-      'Precio fijo ($10/mes ilimitado) vs Undetectable sistema de créditos variable',
+      'Precio fijo ($12.99/mes ilimitado) vs Undetectable sistema de créditos variable',
       'Optimizado 100% para español vs Undetectable diseñado para inglés',
       'Sin créditos que administrar - usos ilimitados en PRO',
       'Humanizador con 5 modos en español vs Undetectable genérico',
@@ -609,7 +609,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes ilimitado', competitor: 'Desde $9.99/mes (250 palabras)' },
+      { feature: 'Precio', detectordeia: '$12.99/mes ilimitado', competitor: 'Desde $9.99/mes (250 palabras)' },
       { feature: 'Modelo de precio', detectordeia: 'Suscripción fija', competitor: 'Créditos limitados' },
       { feature: 'Palabras/mes incluidas', detectordeia: 'Ilimitadas', competitor: '250-10,000 según plan' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica (enfoque inglés)' },
@@ -624,7 +624,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Undetectable.AI es mejor si escribís principalmente en inglés y necesitás humanizar grandes volúmenes (10,000+ palabras/mes). Para español o uso moderado, DetectorDeIA es más económico y preciso.',
 
     pricing: {
-      detectordeia: '$10/mes ilimitado',
+      detectordeia: '$12.99/mes ilimitado',
       competitor: '$9.99-$209/mes (250-10,000 palabras)'
     },
 
@@ -635,7 +635,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Por qué Undetectable.AI limita palabras y DetectorDeIA no?',
-        answer: 'Undetectable.AI usa modelo de créditos: pagas por cada palabra humanizada. DetectorDeIA cobra suscripción fija ($10/mes) con usos ilimitados. Para usuarios que humanizan frecuentemente, DetectorDeIA sale más económico.'
+        answer: 'Undetectable.AI usa modelo de créditos: pagas por cada palabra humanizada. DetectorDeIA cobra suscripción fija ($12.99/mes) con usos ilimitados. Para usuarios que humanizan frecuentemente, DetectorDeIA sale más económico.'
       },
       {
         question: '¿Cuál humaniza mejor para pasar detectores?',
@@ -670,7 +670,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Content at Scale es una plataforma de generación de contenido SEO a gran escala que incluye detector de IA, enfocada en agencias y publishers con alto volumen. DetectorDeIA es la alternativa para creadores individuales en español.',
 
     whyBetter: [
-      'Precio accesible ($10/mes) vs Content at Scale desde $250/mes',
+      'Precio accesible ($12.99/mes) vs Content at Scale desde $250/mes',
       'Enfoque en detección pura vs Content at Scale mezclado con generación',
       'Optimizado para español vs Content at Scale solo inglés',
       'Sin necesidad de generar contenido - solo detectar',
@@ -680,7 +680,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes', competitor: 'Desde $250/mes' },
+      { feature: 'Precio', detectordeia: '$12.99/mes', competitor: 'Desde $250/mes' },
       { feature: 'Enfoque principal', detectordeia: 'Detección de IA', competitor: 'Generación SEO + detección' },
       { feature: 'Plan gratis', detectordeia: '15 usos/día', competitor: 'No disponible' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Solo inglés' },
@@ -695,7 +695,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Content at Scale es mejor si sos publisher grande o agencia que necesita generar 100+ artículos SEO optimizados por mes en inglés. Para detectar IA en contenido existente en español, DetectorDeIA es 25x más económico.',
 
     pricing: {
-      detectordeia: '$10/mes',
+      detectordeia: '$12.99/mes',
       competitor: 'Desde $250/mes'
     },
 
@@ -706,7 +706,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Por qué Content at Scale es tan caro?',
-        answer: 'Content at Scale cobra $250/mes porque incluye generación de hasta 100 artículos SEO optimizados de 2,500+ palabras. Es una herramienta empresarial para publishers. Si solo necesitás detectar IA (no generar), DetectorDeIA a $10/mes es suficiente.'
+        answer: 'Content at Scale cobra $250/mes porque incluye generación de hasta 100 artículos SEO optimizados de 2,500+ palabras. Es una herramienta empresarial para publishers. Si solo necesitás detectar IA (no generar), DetectorDeIA a $12.99/mes es suficiente.'
       },
       {
         question: '¿DetectorDeIA funciona para contenido SEO?',
@@ -741,7 +741,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Crossplag ofrece detección de plagio + IA enfocado en instituciones educativas, con precio por estudiante. DetectorDeIA ofrece acceso individual inmediato optimizado para español sin necesidad de licencia institucional.',
 
     whyBetter: [
-      'Acceso individual ($10/mes) vs Crossplag solo institucional',
+      'Acceso individual ($12.99/mes) vs Crossplag solo institucional',
       'Sin necesidad de aprobación institucional',
       'Optimizado 100% para español vs Crossplag multi-idioma genérico',
       'Precio transparente vs Crossplag requiere cotización',
@@ -751,7 +751,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: '$10/mes', competitor: 'No disponible (solo institucional)' },
+      { feature: 'Precio individual', detectordeia: '$12.99/mes', competitor: 'No disponible (solo institucional)' },
       { feature: 'Acceso sin institución', detectordeia: true, competitor: false },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Multi-idioma genérico' },
       { feature: 'Detección de plagio', detectordeia: false, competitor: true },
@@ -766,14 +766,14 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Crossplag es mejor si tu institución necesita gestionar cientos de estudiantes con detección de plagio + IA integrada al LMS. Para profesores independientes o uso individual en español, DetectorDeIA es más accesible.',
 
     pricing: {
-      detectordeia: '$10/mes individual',
+      detectordeia: '$12.99/mes individual',
       competitor: 'Institucional (requiere cotización)'
     },
 
     faqs: [
       {
         question: '¿Puedo usar Crossplag como profesor individual?',
-        answer: 'Crossplag está diseñado para instituciones que gestionan múltiples profesores y cientos de estudiantes. No tiene plan individual accesible. DetectorDeIA permite acceso inmediato para cualquier profesor por $10/mes sin trámites institucionales.'
+        answer: 'Crossplag está diseñado para instituciones que gestionan múltiples profesores y cientos de estudiantes. No tiene plan individual accesible. DetectorDeIA permite acceso inmediato para cualquier profesor por $12.99/mes sin trámites institucionales.'
       },
       {
         question: '¿Crossplag detecta plagio como Turnitin?',
@@ -813,7 +813,7 @@ export const comparisons: ComparisonPage[] = [
 
     whyBetter: [
       'Enfoque 100% en detección vs Sapling mezclado con autocomplete y chat assist',
-      'Precio individual ($10/mes) vs Sapling desde $25/usuario/mes',
+      'Precio individual ($12.99/mes) vs Sapling desde $25/usuario/mes',
       'Optimizado para español vs Sapling diseñado para customer service en inglés',
       'Sin necesidad de plan Team - uso individual directo',
       'Incluye Humanizador y Parafraseador integrados',
@@ -822,7 +822,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes', competitor: 'Desde $25/usuario/mes' },
+      { feature: 'Precio', detectordeia: '$12.99/mes', competitor: 'Desde $25/usuario/mes' },
       { feature: 'Enfoque principal', detectordeia: 'Detección de IA', competitor: 'Customer service assist' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica' },
       { feature: 'Autocomplete', detectordeia: false, competitor: true },
@@ -837,7 +837,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Sapling es mejor si tenés un equipo de customer service que necesita autocomplete, chat assist y snippets integrados con CRM. Para detección pura de IA en español, DetectorDeIA es más simple y económico.',
 
     pricing: {
-      detectordeia: '$10/mes individual',
+      detectordeia: '$12.99/mes individual',
       competitor: 'Desde $25/usuario/mes'
     },
 
@@ -884,7 +884,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Humbot ofrece humanizador + detector de IA enfocado en "burlar" detectores, con modelo de créditos y optimización para inglés. DetectorDeIA ofrece humanización ética optimizada para español con precio fijo.',
 
     whyBetter: [
-      'Precio fijo transparente ($10/mes ilimitado) vs Humbot modelo de créditos',
+      'Precio fijo transparente ($12.99/mes ilimitado) vs Humbot modelo de créditos',
       'Optimizado 100% para español vs Humbot diseñado para inglés',
       'Humanización ética (mejorar calidad) vs Humbot enfocado en "burlar"',
       '5 modos de humanización vs Humbot modo único',
@@ -894,7 +894,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$10/mes ilimitado', competitor: 'Desde $9.99/mes (10,000 palabras)' },
+      { feature: 'Precio', detectordeia: '$12.99/mes ilimitado', competitor: 'Desde $9.99/mes (10,000 palabras)' },
       { feature: 'Modelo de precio', detectordeia: 'Suscripción fija', competitor: 'Créditos limitados' },
       { feature: 'Palabras/mes incluidas', detectordeia: 'Ilimitadas', competitor: '10,000-50,000 según plan' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica (enfoque inglés)' },
@@ -909,7 +909,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Humbot puede ser útil si escribís en inglés y necesitás "burlar" detectores a gran volumen. Para español o uso ético (mejorar calidad de redacción), DetectorDeIA es superior y más económico.',
 
     pricing: {
-      detectordeia: '$10/mes ilimitado',
+      detectordeia: '$12.99/mes ilimitado',
       competitor: '$9.99-$49.99/mes (10,000-50,000 palabras)'
     },
 
@@ -928,7 +928,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Por qué Humbot limita palabras y DetectorDeIA no?',
-        answer: 'Humbot usa modelo de créditos: pagas por cada palabra humanizada. DetectorDeIA cobra suscripción fija ($10/mes) con usos ilimitados. Para usuarios que humanizan frecuentemente, DetectorDeIA sale más económico.'
+        answer: 'Humbot usa modelo de créditos: pagas por cada palabra humanizada. DetectorDeIA cobra suscripción fija ($12.99/mes) con usos ilimitados. Para usuarios que humanizan frecuentemente, DetectorDeIA sale más económico.'
       },
       {
         question: '¿Cuál humaniza mejor para pasar detectores académicos?',

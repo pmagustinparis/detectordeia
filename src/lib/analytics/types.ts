@@ -56,7 +56,7 @@ export interface RevenueHealth {
   };
   expressMetrics: {
     activePasses: number;      // Users with active Express right now
-    totalRevenue: number;      // Total Express revenue this period ($2.99 per purchase)
+    totalRevenue: number;      // Total Express revenue this period ($3.99 per purchase)
     newPurchases: number;      // New Express purchases this period
     avgDuration: number;       // Average hours used (out of 24h)
   };

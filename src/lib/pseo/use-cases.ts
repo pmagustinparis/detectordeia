@@ -39,7 +39,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Gratis para empezar',
-        description: 'Plan FREE con 10 análisis diarios sin registro. Plan PRO a solo $6.99/mes con análisis ilimitados, archivos PDF/DOCX y hasta 15,000 caracteres.'
+        description: 'Plan FREE con 10 análisis diarios sin registro. Plan PRO a solo $12.99/mes con análisis ilimitados, archivos PDF/DOCX y hasta 15,000 caracteres.'
       },
       {
         icon: '🔒',
@@ -78,11 +78,11 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Puedo subir archivos PDF o Word directamente?',
-        answer: 'Sí, en el plan PRO ($6.99/mes) podés subir archivos PDF, DOCX o TXT de hasta 10MB. El plan FREE solo permite pegar texto (hasta 5,000 caracteres). Con PRO analizás hasta 15,000 caracteres por archivo.'
+        answer: 'Sí, en el plan PRO ($12.99/mes) podés subir archivos PDF, DOCX o TXT de hasta 10MB. El plan FREE solo permite pegar texto (hasta 5,000 caracteres). Con PRO analizás hasta 15,000 caracteres por archivo.'
       },
       {
         question: '¿Cuántos trabajos puedo analizar por día?',
-        answer: 'Plan FREE: 10 análisis diarios sin registro (5,000 caracteres cada uno). Plan PRO: análisis ilimitados de hasta 15,000 caracteres cada uno. Si tenés que revisar muchos trabajos, el plan PRO a $6.99/mes es ideal.'
+        answer: 'Plan FREE: 10 análisis diarios sin registro (5,000 caracteres cada uno). Plan PRO: análisis ilimitados de hasta 15,000 caracteres cada uno. Si tenés que revisar muchos trabajos, el plan PRO a $12.99/mes es ideal.'
       },
       {
         question: '¿Los trabajos de mis estudiantes quedan guardados?',
@@ -142,7 +142,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💸',
         title: 'Gratis para siempre',
-        description: 'Plan FREE con 10 análisis diarios. Suficiente para verificar tus trabajos antes de entregarlos. Plan PRO a $6.99/mes si necesitás más.'
+        description: 'Plan FREE con 10 análisis diarios. Suficiente para verificar tus trabajos antes de entregarlos. Plan PRO a $12.99/mes si necesitás más.'
       },
       {
         icon: '✨',
@@ -236,7 +236,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Económico vs Turnitin',
-        description: 'Turnitin cuesta $3-5 USD por estudiante/año. DetectorDeIA PRO cuesta $6.99/mes con análisis ilimitados. Ahorro masivo para la institución.'
+        description: 'Turnitin cuesta $3-5 USD por estudiante/año. DetectorDeIA PRO cuesta $12.99/mes con análisis ilimitados. Ahorro masivo para la institución.'
       },
       {
         icon: '📊',
@@ -277,7 +277,7 @@ export const useCases: UseCasePage[] = [
     faqs: [
       {
         question: '¿Cuánto cuesta para una universidad completa?',
-        answer: 'DetectorDeIA no cobra licencias institucionales costosas. Cada profesor puede usar plan FREE (10 análisis diarios gratis) o plan PRO ($6.99/mes individual con análisis ilimitados). Para 50 profesores: $349/mes total. Turnitin cobraría $10,000-15,000/año para la misma cantidad de estudiantes. Ahorro masivo.'
+        answer: 'DetectorDeIA no cobra licencias institucionales costosas. Cada profesor puede usar plan FREE (10 análisis diarios gratis) o plan PRO ($12.99/mes individual con análisis ilimitados). Para 50 profesores: $349/mes total. Turnitin cobraría $10,000-15,000/año para la misma cantidad de estudiantes. Ahorro masivo.'
       },
       {
         question: '¿Cómo se compara con Turnitin?',
@@ -404,7 +404,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos trabajos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Plan PRO: análisis ilimitados (15,000 caracteres cada uno) + subida de archivos PDF/DOCX. Si sos profesor revisando muchos trabajos, plan PRO a $6.99/mes es ideal.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Plan PRO: análisis ilimitados (15,000 caracteres cada uno) + subida de archivos PDF/DOCX. Si sos profesor revisando muchos trabajos, plan PRO a $12.99/mes es ideal.'
       }
     ],
 
@@ -658,7 +658,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Gratis para profesores',
-        description: 'Plan FREE con 10 análisis diarios sin registro. Suficiente para revisar las tareas sospechosas de tu clase cada día. Plan PRO a solo $6.99/mes para análisis ilimitados.'
+        description: 'Plan FREE con 10 análisis diarios sin registro. Suficiente para revisar las tareas sospechosas de tu clase cada día. Plan PRO a solo $12.99/mes para análisis ilimitados.'
       },
       {
         icon: '🎯',
@@ -713,7 +713,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántas tareas puedo analizar por día?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para tareas escolares normales). Plan PRO: análisis ilimitados (15,000 caracteres cada uno). Si sos profesor con muchos alumnos, plan PRO a $6.99/mes te permite revisar todas las tareas que necesites.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para tareas escolares normales). Plan PRO: análisis ilimitados (15,000 caracteres cada uno). Si sos profesor con muchos alumnos, plan PRO a $12.99/mes te permite revisar todas las tareas que necesites.'
       }
     ],
 
@@ -808,7 +808,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuánto contenido puedo analizar por mes?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para equipos: plan PRO individual $6.99/mes (análisis ilimitados, 15,000 caracteres). Si tu equipo analiza mucho contenido diariamente, varios miembros pueden tener cuentas PRO. No hay planes empresariales especiales por ahora, pero puedes contactarnos para volúmenes grandes.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para equipos: plan PRO individual $12.99/mes (análisis ilimitados, 15,000 caracteres). Si tu equipo analiza mucho contenido diariamente, varios miembros pueden tener cuentas PRO. No hay planes empresariales especiales por ahora, pero puedes contactarnos para volúmenes grandes.'
       },
       {
         question: '¿El detector ayuda a mejorar el contenido?',
@@ -915,7 +915,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos artículos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para artículos largos (2,000+ palabras), plan PRO a $6.99/mes permite hasta 15,000 caracteres por análisis + análisis ilimitados. Si publicas contenido a escala (10+ artículos semanales), plan PRO es esencial. Puedes analizar por secciones si el artículo es muy largo.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para artículos largos (2,000+ palabras), plan PRO a $12.99/mes permite hasta 15,000 caracteres por análisis + análisis ilimitados. Si publicas contenido a escala (10+ artículos semanales), plan PRO es esencial. Puedes analizar por secciones si el artículo es muy largo.'
       },
       {
         question: '¿El detector reemplaza herramientas SEO como Surfer o Clearscope?',
@@ -1022,7 +1022,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos artículos de blog puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para artículos de blog estándar de 1,000-1,500 palabras). Plan PRO: $6.99/mes con análisis ilimitados de hasta 15,000 caracteres (artículos de 3,000-4,000 palabras). Si publicas múltiples posts semanales, plan PRO es ideal. Puedes analizar por secciones si el artículo es muy largo.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para artículos de blog estándar de 1,000-1,500 palabras). Plan PRO: $12.99/mes con análisis ilimitados de hasta 15,000 caracteres (artículos de 3,000-4,000 palabras). Si publicas múltiples posts semanales, plan PRO es ideal. Puedes analizar por secciones si el artículo es muy largo.'
       }
     ],
 
@@ -1125,7 +1125,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos artículos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, artículos cortos). Para redacciones: plan PRO a $6.99/mes individual (análisis ilimitados, 15,000 caracteres). Si tu medio publica volumen alto diariamente, varios editores pueden tener cuentas PRO. Para redacciones grandes que necesiten plan institucional, contactanos a hola@detectordeia.ai.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, artículos cortos). Para redacciones: plan PRO a $12.99/mes individual (análisis ilimitados, 15,000 caracteres). Si tu medio publica volumen alto diariamente, varios editores pueden tener cuentas PRO. Para redacciones grandes que necesiten plan institucional, contactanos a hola@detectordeia.ai.'
       }
     ],
 
@@ -1228,7 +1228,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos textos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, capítulos cortos/artículos). Plan PRO: $6.99/mes con análisis ilimitados (15,000 caracteres, capítulos largos). Para editoriales/publicaciones que procesan volumen alto, múltiples editores pueden tener cuentas PRO. Puedes analizar manuscritos largos por capítulos/secciones.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, capítulos cortos/artículos). Plan PRO: $12.99/mes con análisis ilimitados (15,000 caracteres, capítulos largos). Para editoriales/publicaciones que procesan volumen alto, múltiples editores pueden tener cuentas PRO. Puedes analizar manuscritos largos por capítulos/secciones.'
       }
     ],
 
@@ -1276,7 +1276,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Precios accesibles para Argentina',
-        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a solo USD $6.99/mes (aproximadamente ARS según tipo de cambio). Sin costos ocultos.'
+        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a solo USD $12.99/mes (aproximadamente ARS según tipo de cambio). Sin costos ocultos.'
       },
       {
         icon: '🏫',
@@ -1319,11 +1319,11 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Funciona para trabajos universitarios en Argentina?',
-        answer: 'Sí, es ideal para eso. Trabajamos con textos académicos de UBA, UNC, UNLP, UTN, Universidad de Rosario, etc. Detectamos IA en ensayos, monografías, tesis, trabajos prácticos. El plan FREE (10 análisis diarios) es suficiente para estudiantes. Profesores con muchos alumnos pueden usar plan PRO a USD $6.99/mes.'
+        answer: 'Sí, es ideal para eso. Trabajamos con textos académicos de UBA, UNC, UNLP, UTN, Universidad de Rosario, etc. Detectamos IA en ensayos, monografías, tesis, trabajos prácticos. El plan FREE (10 análisis diarios) es suficiente para estudiantes. Profesores con muchos alumnos pueden usar plan PRO a USD $12.99/mes.'
       },
       {
         question: '¿Cuánto cuesta en pesos argentinos?',
-        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $6.99/mes (equivalente en ARS según tipo de cambio oficial del día de pago). Se puede pagar con tarjeta de crédito/débito internacional. No aceptamos Mercado Pago por ahora, solo tarjetas internacionales (Visa, Mastercard).'
+        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $12.99/mes (equivalente en ARS según tipo de cambio oficial del día de pago). Se puede pagar con tarjeta de crédito/débito internacional. No aceptamos Mercado Pago por ahora, solo tarjetas internacionales (Visa, Mastercard).'
       },
       {
         question: '¿Los profesores argentinos pueden usarlo para revisar trabajos?',
@@ -1379,7 +1379,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Precios accesibles para México',
-        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $6.99/mes (aproximadamente MXN según tipo de cambio). Sin costos ocultos ni sorpresas.'
+        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $12.99/mes (aproximadamente MXN según tipo de cambio). Sin costos ocultos ni sorpresas.'
       },
       {
         icon: '🏫',
@@ -1422,11 +1422,11 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Sirve para trabajos universitarios en México?',
-        answer: 'Sí, totalmente. Funciona para textos académicos de UNAM, IPN, Tec de Monterrey, UAM, UDG, UANL, Universidad de Guadalajara, etc. Detectamos IA en ensayos, monografías, tesis, proyectos, tareas. Plan FREE (10 análisis diarios) suficiente para estudiantes. Maestros con muchos alumnos usan plan PRO a USD $6.99/mes.'
+        answer: 'Sí, totalmente. Funciona para textos académicos de UNAM, IPN, Tec de Monterrey, UAM, UDG, UANL, Universidad de Guadalajara, etc. Detectamos IA en ensayos, monografías, tesis, proyectos, tareas. Plan FREE (10 análisis diarios) suficiente para estudiantes. Maestros con muchos alumnos usan plan PRO a USD $12.99/mes.'
       },
       {
         question: '¿Cuánto cuesta en pesos mexicanos?',
-        answer: 'Plan FREE: totalmente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $6.99/mes (equivalente en MXN según tipo de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos pagos con OXXO o SPEI por ahora, solo tarjetas internacionales (Visa, Mastercard, Amex).'
+        answer: 'Plan FREE: totalmente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $12.99/mes (equivalente en MXN según tipo de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos pagos con OXXO o SPEI por ahora, solo tarjetas internacionales (Visa, Mastercard, Amex).'
       },
       {
         question: '¿Los maestros mexicanos pueden usarlo para revisar tareas?',
@@ -1482,7 +1482,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Precios accesibles para Colombia',
-        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $6.99/mes (aproximadamente COP según tasa de cambio). Sin costos ocultos.'
+        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $12.99/mes (aproximadamente COP según tasa de cambio). Sin costos ocultos.'
       },
       {
         icon: '🏫',
@@ -1525,11 +1525,11 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Sirve para trabajos universitarios en Colombia?',
-        answer: 'Sí, totalmente. Funciona para textos académicos de Universidad Nacional, Universidad de los Andes, Pontificia Universidad Javeriana, Universidad de Antioquia, Universidad del Valle, Universidad del Rosario, etc. Detectamos IA en ensayos, monografías, tesis, proyectos. Plan FREE (10 análisis diarios) suficiente para estudiantes. Profesores usan plan PRO a USD $6.99/mes.'
+        answer: 'Sí, totalmente. Funciona para textos académicos de Universidad Nacional, Universidad de los Andes, Pontificia Universidad Javeriana, Universidad de Antioquia, Universidad del Valle, Universidad del Rosario, etc. Detectamos IA en ensayos, monografías, tesis, proyectos. Plan FREE (10 análisis diarios) suficiente para estudiantes. Profesores usan plan PRO a USD $12.99/mes.'
       },
       {
         question: '¿Cuánto cuesta en pesos colombianos?',
-        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $6.99/mes (equivalente en COP según tasa de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos PSE o efecty por ahora, solo tarjetas internacionales (Visa, Mastercard).'
+        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $12.99/mes (equivalente en COP según tasa de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos PSE o efecty por ahora, solo tarjetas internacionales (Visa, Mastercard).'
       },
       {
         question: '¿Los profesores colombianos pueden usarlo para revisar trabajos?',

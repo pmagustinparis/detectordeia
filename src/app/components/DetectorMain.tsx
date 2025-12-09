@@ -54,7 +54,7 @@ const premiumTextos = {
     'Historial completo de todos tus análisis',
     'Soporte prioritario vía email',
   ],
-  precio: 'Express $2.99/24h • Pro $6.99/mes',
+  precio: 'Express $3.99/24h • Pro $12.99/mes',
   cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
@@ -62,7 +62,7 @@ const premiumCompactTextos = {
   bullets: [
     'Usos ilimitados + Caracteres ilimitados',
     '5 modos premium + Historial completo',
-    'Express $2.99/24h • Pro $6.99/mes',
+    'Express $3.99/24h • Pro $12.99/mes',
   ],
   cta: 'Ver Planes',
 };
