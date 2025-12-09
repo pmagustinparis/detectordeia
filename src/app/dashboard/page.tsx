@@ -23,12 +23,13 @@ export default async function DashboardPage() {
   // Obtener plan del usuario
   const { data: userData } = await supabase
     .from('users')
-    .select('plan_type, stripe_customer_id')
+    .select('plan_type, stripe_customer_id, express_expires_at')
     .eq('auth_id', user.id)
     .single();
 
   const planType = userData?.plan_type || 'free';
   const hasStripeCustomer = !!userData?.stripe_customer_id;
+  const expressExpiresAt = userData?.express_expires_at || null;
 
   return (
     <DashboardClient
@@ -37,6 +38,7 @@ export default async function DashboardPage() {
       history={history}
       planType={planType}
       hasStripeCustomer={hasStripeCustomer}
+      expressExpiresAt={expressExpiresAt}
     />
   );
 }

@@ -106,7 +106,7 @@ export default function FileUploadUpsellModal({
               </li>
             </ul>
             <p className="text-xs text-violet-700 mt-3 font-semibold">
-              Desde $10/mes • Ahorra 20% con plan anual
+              Express $2.99/24h • Pro $6.99/mes • Ahorra 20% anual
             </p>
           </div>
 

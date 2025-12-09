@@ -54,6 +54,12 @@ export interface RevenueHealth {
     churned: number;      // Cancellations
     netGrowth: number;    // new + expansion - contraction - churned
   };
+  expressMetrics: {
+    activePasses: number;      // Users with active Express right now
+    totalRevenue: number;      // Total Express revenue this period ($2.99 per purchase)
+    newPurchases: number;      // New Express purchases this period
+    avgDuration: number;       // Average hours used (out of 24h)
+  };
   churnMetrics: {
     count: number;        // Users at risk
     percentage: number;   // % of premium base

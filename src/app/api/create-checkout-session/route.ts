@@ -9,12 +9,20 @@ export async function POST(request: Request) {
       apiVersion: '2025-10-29.clover',
     });
 
-    const { plan_interval } = await request.json();
+    const { plan_type, plan_interval } = await request.json();
 
-    // Validar plan_interval
-    if (!plan_interval || !['month', 'year'].includes(plan_interval)) {
+    // Validar plan_type (express o premium)
+    if (!plan_type || !['express', 'premium'].includes(plan_type)) {
       return NextResponse.json(
-        { error: 'plan_interval debe ser "month" o "year"' },
+        { error: 'plan_type debe ser "express" o "premium"' },
+        { status: 400 }
+      );
+    }
+
+    // Si es premium, validar plan_interval
+    if (plan_type === 'premium' && (!plan_interval || !['month', 'year'].includes(plan_interval))) {
+      return NextResponse.json(
+        { error: 'Para premium, plan_interval debe ser "month" o "year"' },
         { status: 400 }
       );
     }
@@ -47,9 +55,20 @@ export async function POST(request: Request) {
     }
 
     // Seleccionar el Price ID según el plan
-    const priceId = plan_interval === 'month'
-      ? process.env.STRIPE_PRICE_MONTHLY
-      : process.env.STRIPE_PRICE_ANNUAL;
+    let priceId: string;
+    let mode: 'payment' | 'subscription';
+
+    if (plan_type === 'express') {
+      // Express Pass - Pago único
+      priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1SY684R5MbTVVQlkg17chSfr';
+      mode = 'payment';
+    } else {
+      // Premium - Suscripción
+      priceId = plan_interval === 'month'
+        ? (process.env.STRIPE_PRICE_MONTHLY || 'price_1SY66fR5MbTVVQlk34bldpqY')
+        : (process.env.STRIPE_PRICE_ANNUAL || 'price_1SY65ER5MbTVVQlkF4rYBupX');
+      mode = 'subscription';
+    }
 
     if (!priceId) {
       return NextResponse.json(
@@ -88,12 +107,13 @@ export async function POST(request: Request) {
           quantity: 1,
         },
       ],
-      mode: 'subscription',
+      mode: mode,
       success_url: `${request.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${request.headers.get('origin')}/pricing`,
       metadata: {
         supabase_user_id: userData.id,
-        plan_interval: plan_interval,
+        plan_type: plan_type,
+        ...(plan_interval && { plan_interval }),
       },
     });
 

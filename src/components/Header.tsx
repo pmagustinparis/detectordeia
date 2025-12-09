@@ -1,11 +1,47 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AuthButton from './AuthButton';
+import { useAuth } from '@/lib/hooks/useAuth';
+import ExpressTimer from './ExpressTimer';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
+  const [expressExpiresAt, setExpressExpiresAt] = useState<string | null>(null);
+
+  // Fetch Express status if authenticated
+  useEffect(() => {
+    async function fetchExpressStatus() {
+      if (!isAuthenticated) {
+        setExpressExpiresAt(null);
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/user/plan');
+        if (response.ok) {
+          const data = await response.json();
+          // Check if Express is active
+          if (data.express_expires_at) {
+            const expiresAt = new Date(data.express_expires_at);
+            if (expiresAt > new Date()) {
+              setExpressExpiresAt(data.express_expires_at);
+            } else {
+              setExpressExpiresAt(null);
+            }
+          } else {
+            setExpressExpiresAt(null);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching Express status:', error);
+      }
+    }
+
+    fetchExpressStatus();
+  }, [isAuthenticated]);
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-violet-100 shadow-sm animate-slide-in-top">
@@ -63,6 +99,9 @@ export default function Header() {
 
           {/* Auth & CTA */}
           <div className="hidden md:flex items-center gap-4">
+            {expressExpiresAt && (
+              <ExpressTimer expiresAt={expressExpiresAt} compact={true} />
+            )}
             <AuthButton />
           </div>
 
@@ -144,6 +183,11 @@ export default function Header() {
                 FAQ
               </Link>
               <div className="px-4 mt-4 border-t border-gray-200 pt-4">
+                {expressExpiresAt && (
+                  <div className="mb-3">
+                    <ExpressTimer expiresAt={expressExpiresAt} compact={false} />
+                  </div>
+                )}
                 <AuthButton />
               </div>
             </nav>

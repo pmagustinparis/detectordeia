@@ -10,6 +10,7 @@ import LoadingSteps from './LoadingSteps';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
+import type { UserStatus } from '@/lib/types/user-status';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -44,7 +45,7 @@ const CHARACTER_LIMITS = {
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
   titulo: 'Desbloquea todo el poder del Detector',
-  subtitulo: 'Incluido en Plan Pro',
+  subtitulo: 'Incluido en Express y Pro',
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
     '✨ Caracteres ilimitados en el Detector',
@@ -53,15 +54,15 @@ const premiumTextos = {
     'Historial completo de todos tus análisis',
     'Soporte prioritario vía email',
   ],
-  precio: 'Desde $10/mes o $96/año',
+  precio: 'Express $2.99/24h • Pro $6.99/mes',
   cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: 'Desbloquea Plan Pro',
+  titulo: 'Desbloquea Express o Pro',
   bullets: [
-    'Usos ilimitados + 25K caracteres',
+    'Usos ilimitados + Caracteres ilimitados',
     '5 modos premium + Historial completo',
-    'Desde $10/mes o $96/año',
+    'Express $2.99/24h • Pro $6.99/mes',
   ],
   cta: 'Ver Planes',
 };
@@ -73,7 +74,6 @@ export default function DetectorMain({
   h1?: string;
   subtitle?: string;
 }) {
-  const { isAuthenticated, user } = useAuth();
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -109,45 +109,76 @@ export default function DetectorMain({
   const [textType, setTextType] = useState('default');
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [usageCount, setUsageCount] = useState(0);
-  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+
+  // Consolidated user status (replaces userPlan, no Express needed for Detector)
+  const [userStatus, setUserStatus] = useState<UserStatus>({
+    isAuthenticated: false,
+    user: null,
+    plan_type: 'free',
+    express: {
+      expires_at: null,
+      is_active: false,
+      time_remaining_ms: null,
+    },
+  });
+
+  // Loading state - prevents flickering by not showing wrong UI while fetching
+  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
+
+  // DEBUG: Log estado inicial en primera renderización
+  console.log('[DETECTOR DEBUG] Component render - userStatus:', userStatus, 'isLoading:', isLoadingUserStatus);
 
   // Límite de caracteres dinámico basado en autenticación y plan
-  const CHARACTER_LIMIT = !isAuthenticated
+  const CHARACTER_LIMIT = !userStatus.isAuthenticated
     ? CHARACTER_LIMITS.anonymous
-    : userPlan === 'premium'
+    : userStatus.plan_type === 'premium' || userStatus.express.is_active
       ? CHARACTER_LIMITS.premium
       : CHARACTER_LIMITS.free;
 
   // Track usage count for anonymous users
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!userStatus.isAuthenticated) {
       const count = parseInt(localStorage.getItem('detector_usage_count') || '0');
       setUsageCount(count);
     }
-  }, [isAuthenticated]);
+  }, [userStatus.isAuthenticated]);
 
-  // Obtener plan del usuario
+  // Fetch consolidated user status (auth + plan + express) in a single request
+  // This eliminates cascading fetches and prevents UI flickering
   useEffect(() => {
-    async function fetchUserPlan() {
-      if (!isAuthenticated || !user) {
-        setUserPlan('free');
-        return;
-      }
-
+    async function fetchUserStatus() {
       try {
-        const response = await fetch('/api/user/plan');
+        const start = performance.now();
+        console.log('[DETECTOR DEBUG] 🚀 Fetch START');
+
+        const response = await fetch('/api/user/status');
+
+        const end = performance.now();
+        console.log('[DETECTOR DEBUG] ⏱️  Fetch END - took:', (end - start).toFixed(2), 'ms');
+
         if (response.ok) {
           const data = await response.json();
-          setUserPlan(data.plan_type || 'free');
+          console.log('[DETECTOR DEBUG] 📦 Received data:', data);
+
+          setUserStatus(data); // Single setState - no flickering!
+          console.log('[DETECTOR DEBUG] ✅ State updated');
         }
       } catch (error) {
-        console.error('Error fetching user plan:', error);
-        setUserPlan('free');
+        console.error('[DETECTOR DEBUG] ❌ Error fetching user status:', error);
+        // Keep default free state on error
+      } finally {
+        setIsLoadingUserStatus(false);
+        console.log('[DETECTOR DEBUG] 🏁 Loading finished');
       }
     }
 
-    fetchUserPlan();
-  }, [isAuthenticated, user]);
+    fetchUserStatus();
+  }, []); // Execute only once on mount - no dependencies!
+
+  // DEBUG: Monitor userStatus changes
+  useEffect(() => {
+    console.log('[DETECTOR DEBUG] 🔄 userStatus CHANGED:', userStatus);
+  }, [userStatus]);
 
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
@@ -200,8 +231,8 @@ export default function DetectorMain({
             text_length: text.length,
             character_limit: CHARACTER_LIMIT,
             exceeded_by: text.length - CHARACTER_LIMIT,
-            plan: userPlan,
-            is_authenticated: isAuthenticated,
+            plan: userStatus.plan_type,
+            is_authenticated: userStatus.isAuthenticated,
             hour_of_day: new Date().getHours(),
             day_of_week: new Date().getDay(), // 0=domingo, 1=lunes, etc
           }
@@ -232,7 +263,7 @@ export default function DetectorMain({
         setFeedbackSent(false);
 
         // Incrementar contador de uso para usuarios anónimos (solo análisis reales)
-        if (!isAuthenticated) {
+        if (!userStatus.isAuthenticated) {
           const newCount = usageCount + 1;
           setUsageCount(newCount);
           localStorage.setItem('detector_usage_count', newCount.toString());
@@ -244,13 +275,13 @@ export default function DetectorMain({
           toolType: 'detector',
           metadata: {
             text_length: text.length,
-            plan: userPlan,
-            is_authenticated: isAuthenticated,
+            plan: userStatus.plan_type,
+            is_authenticated: userStatus.isAuthenticated,
             probability: data.probability,
             confidence_level: data.confidenceLevel,
             hour_of_day: new Date().getHours(),
             day_of_week: new Date().getDay(),
-            usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
+            usage_count: userStatus.isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
           }
         });
       }
@@ -286,14 +317,14 @@ export default function DetectorMain({
     e.preventDefault();
     e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
 
-    if (userPlan !== 'premium') {
+    if (userStatus.plan_type !== 'premium' && !userStatus.express.is_active) {
       // Track intento de subir archivo bloqueado
       trackEvent({
         eventType: 'file_upload_blocked',
         toolType: 'detector',
         metadata: {
-          plan: userPlan,
-          is_authenticated: isAuthenticated,
+          plan: userStatus.plan_type,
+          is_authenticated: userStatus.isAuthenticated,
         }
       });
 
@@ -314,6 +345,32 @@ export default function DetectorMain({
     }
   };
 
+  // Show minimal loading skeleton while fetching user status - prevents flickering
+  if (isLoadingUserStatus) {
+    return (
+      <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
+        {/* Elementos decorativos de fondo */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
+
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight">
+          <span className="gradient-text-primary">{h1}</span>
+        </h1>
+        <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto">{subtitle}</p>
+        <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
+          {/* Loading skeleton */}
+          <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 min-w-[320px] max-h-[600px]">
+            <div className="animate-pulse space-y-4">
+              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+              <div className="h-32 bg-gray-200 rounded"></div>
+              <div className="h-10 bg-gray-200 rounded"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
@@ -329,7 +386,7 @@ export default function DetectorMain({
         <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px] card-elevated">
           {/* Trust indicators */}
           <div className="flex items-center gap-2 mb-3 flex-wrap">
-            {!isAuthenticated ? (
+            {!userStatus.isAuthenticated ? (
               <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -364,7 +421,7 @@ export default function DetectorMain({
             onTextExtracted={handleFileTextExtracted}
             maxChars={CHARACTER_LIMIT}
             disabled={isAnalyzing}
-            userPlan={userPlan}
+            userPlan={userStatus.plan_type}
             toolName="Detector"
             className="mb-3"
           />
@@ -386,7 +443,7 @@ export default function DetectorMain({
               }}
               onDragOver={(e) => {
                 e.preventDefault();
-                if (userPlan === 'premium') {
+                if (userStatus.plan_type === 'premium' || userStatus.express.is_active) {
                   e.currentTarget.classList.add('border-violet-400', 'bg-violet-50');
                 }
               }}
@@ -992,7 +1049,7 @@ export default function DetectorMain({
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
 
                 {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
-                {userPlan !== 'premium' && !isLimitExceeded && (
+                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-4 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
@@ -1004,7 +1061,7 @@ export default function DetectorMain({
                       <div className="bg-white p-3 rounded-lg border-2 border-gray-200">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full font-bold">
-                            {isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
+                            {userStatus.isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
                           </span>
                         </div>
                         <p className="text-xs font-bold text-gray-800 mb-2">Lo que acabas de recibir:</p>
@@ -1019,7 +1076,7 @@ export default function DetectorMain({
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-green-600 font-bold">✓</span>
-                            <span>Hasta {isAuthenticated ? '1,200' : '800'} caracteres</span>
+                            <span>Hasta {userStatus.isAuthenticated ? '1,200' : '800'} caracteres</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-gray-400 font-bold">✗</span>
@@ -1087,7 +1144,7 @@ export default function DetectorMain({
                 )}
 
                 {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
-                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="mt-4 p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
                     <p className="text-sm font-semibold text-violet-800 mb-1">
                       <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Info} size="sm" className="text-violet-600" />¿Usás seguido las herramientas?</span>
@@ -1105,7 +1162,7 @@ export default function DetectorMain({
                 )}
 
                 {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
-                {!isAuthenticated && usageCount >= 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 5 && (
                   <div className="mt-4 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl shadow-sm">
                     <p className="text-sm font-bold text-cyan-900 mb-2">
                       <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-cyan-700" />¡Ya usaste el Detector {usageCount} veces!</span>
@@ -1160,7 +1217,7 @@ export default function DetectorMain({
               </div>
 
               {/* Overlay inline cuando se excede el límite */}
-              {isLimitExceeded && userPlan !== 'premium' && (
+              {isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                 <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none z-10">
                   <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto animate-scale-in">
                     {/* Icon */}
@@ -1187,7 +1244,7 @@ export default function DetectorMain({
                     </div>
 
                     {/* Copy dinámico según tipo de usuario */}
-                    {!isAuthenticated ? (
+                    {!userStatus.isAuthenticated ? (
                       <>
                         <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
                           Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
@@ -1347,7 +1404,7 @@ export default function DetectorMain({
                   <div className="border-dotted border-b border-gray-300" />
                 </div>
                 {/* Bloque premium solo en empty state - SOLO para usuarios FREE */}
-                {userPlan !== 'premium' && (
+                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                   <PremiumUpsellBlock textos={premiumTextos} />
                 )}
               </>
@@ -1357,7 +1414,7 @@ export default function DetectorMain({
       </div>
 
       {/* Banner de incentivo para registro - Anónimos que ya usaron 2+ veces */}
-      {!isAuthenticated && usageCount >= 2 && (
+      {!userStatus.isAuthenticated && usageCount >= 2 && (
         <div className="max-w-5xl mx-auto mt-8 px-2 animate-slide-in-bottom">
           <div className="bg-gradient-to-br from-violet-50 to-purple-50 border-2 border-violet-300 rounded-2xl shadow-xl p-6">
             <div className="flex flex-col md:flex-row items-center gap-6">

@@ -12,6 +12,7 @@ import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
+import type { UserStatus } from '@/lib/types/user-status';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -22,7 +23,6 @@ const CHARACTER_LIMITS = {
 const MIN_CHARACTERS = 50;
 
 export default function HumanizadorMain() {
-  const { isAuthenticated, loading, user } = useAuth();
   const [text, setText] = useState('');
   const [isHumanizing, setIsHumanizing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -34,7 +34,24 @@ export default function HumanizadorMain() {
   const [emailModalSource, setEmailModalSource] = useState('');
   const [usageCount, setUsageCount] = useState(0);
   const [selectedMode, setSelectedMode] = useState<HumanizerMode>('standard');
-  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
+
+  // Consolidated user status (replaces userPlan, expressExpiresAt, isExpressActive)
+  const [userStatus, setUserStatus] = useState<UserStatus>({
+    isAuthenticated: false,
+    user: null,
+    plan_type: 'free',
+    express: {
+      expires_at: null,
+      is_active: false,
+      time_remaining_ms: null,
+    },
+  });
+
+  // Loading state - prevents flickering by not showing wrong UI while fetching
+  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
+
+  // DEBUG: Log estado inicial en primera renderización
+  console.log('[HUMANIZADOR DEBUG] Component render - userStatus:', userStatus, 'isLoading:', isLoadingUserStatus);
 
   // Validation state (Fase 3: Validación post-humanización)
   const [originalScore, setOriginalScore] = useState<number | null>(null);
@@ -43,9 +60,9 @@ export default function HumanizadorMain() {
   const [validationError, setValidationError] = useState<string | null>(null);
 
   // Límite de caracteres dinámico basado en autenticación y plan
-  const CHARACTER_LIMIT = !isAuthenticated
+  const CHARACTER_LIMIT = !userStatus.isAuthenticated
     ? CHARACTER_LIMITS.anonymous
-    : userPlan === 'premium'
+    : userStatus.plan_type === 'premium' || userStatus.express.is_active
       ? CHARACTER_LIMITS.premium
       : CHARACTER_LIMITS.free;
 
@@ -69,17 +86,17 @@ export default function HumanizadorMain() {
 
   // Track usage count for anonymous users
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!userStatus.isAuthenticated) {
       const count = parseInt(localStorage.getItem('humanizador_usage_count') || '0');
       setUsageCount(count);
     }
-  }, [isAuthenticated]);
+  }, [userStatus.isAuthenticated]);
 
   // Fetch rate limit status on mount and when auth changes
   useEffect(() => {
     async function fetchRateLimitStatus() {
       try {
-        const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
+        const anonymousId = !userStatus.isAuthenticated ? getAnonymousId() : undefined;
         const response = await fetch('/api/rate-limit-status', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -102,33 +119,45 @@ export default function HumanizadorMain() {
       }
     }
 
-    if (!loading) {
-      fetchRateLimitStatus();
-    }
-  }, [isAuthenticated, loading]);
+    fetchRateLimitStatus();
+  }, [userStatus.isAuthenticated]);
 
-  // Obtener plan del usuario
+  // Fetch consolidated user status (auth + plan + express) in a single request
+  // This eliminates cascading fetches and prevents UI flickering
   useEffect(() => {
-    async function fetchUserPlan() {
-      if (!isAuthenticated || !user) {
-        setUserPlan('free');
-        return;
-      }
-
+    async function fetchUserStatus() {
       try {
-        const response = await fetch('/api/user/plan');
+        const start = performance.now();
+        console.log('[HUMANIZADOR DEBUG] 🚀 Fetch START');
+
+        const response = await fetch('/api/user/status');
+
+        const end = performance.now();
+        console.log('[HUMANIZADOR DEBUG] ⏱️  Fetch END - took:', (end - start).toFixed(2), 'ms');
+
         if (response.ok) {
           const data = await response.json();
-          setUserPlan(data.plan_type || 'free');
+          console.log('[HUMANIZADOR DEBUG] 📦 Received data:', data);
+
+          setUserStatus(data); // Single setState - no flickering!
+          console.log('[HUMANIZADOR DEBUG] ✅ State updated');
         }
       } catch (error) {
-        console.error('Error fetching user plan:', error);
-        setUserPlan('free');
+        console.error('[HUMANIZADOR DEBUG] ❌ Error fetching user status:', error);
+        // Keep default free state on error
+      } finally {
+        setIsLoadingUserStatus(false);
+        console.log('[HUMANIZADOR DEBUG] 🏁 Loading finished');
       }
     }
 
-    fetchUserPlan();
-  }, [isAuthenticated, user]);
+    fetchUserStatus();
+  }, []); // Execute only once on mount - no dependencies!
+
+  // DEBUG: Monitor userStatus changes
+  useEffect(() => {
+    console.log('[HUMANIZADOR DEBUG] 🔄 userStatus CHANGED:', userStatus);
+  }, [userStatus]);
 
   // Colores del contador dinámico
   const getCounterColor = () => {
@@ -176,15 +205,15 @@ export default function HumanizadorMain() {
             text_length: text.length,
             character_limit: CHARACTER_LIMIT,
             exceeded_by: text.length - CHARACTER_LIMIT,
-            plan: userPlan,
-            is_authenticated: isAuthenticated,
+            plan: userStatus.plan_type,
+            is_authenticated: userStatus.isAuthenticated,
             hour_of_day: new Date().getHours(),
             day_of_week: new Date().getDay(),
           }
         });
       } else {
         // Obtener anonymousId para usuarios no autenticados
-        const anonymousId = !isAuthenticated ? getAnonymousId() : undefined;
+        const anonymousId = !userStatus.isAuthenticated ? getAnonymousId() : undefined;
 
         // Step 2: Humanización (after 1 second)
         setTimeout(() => setLoadingStep(2), 1000);
@@ -224,11 +253,11 @@ export default function HumanizadorMain() {
               limit_type: 'daily_uses',
               user_type: data.userType || 'anonymous',
               limit: data.limit || 10,
-              plan: userPlan,
-              is_authenticated: isAuthenticated,
+              plan: userStatus.plan_type,
+              is_authenticated: userStatus.isAuthenticated,
               hour_of_day: new Date().getHours(),
               day_of_week: new Date().getDay(), // 0=domingo, 1=lunes, etc
-              usage_count: isAuthenticated ? undefined : usageCount,
+              usage_count: userStatus.isAuthenticated ? undefined : usageCount,
             }
           });
 
@@ -245,11 +274,11 @@ export default function HumanizadorMain() {
             toolType: 'humanizador',
             metadata: {
               mode: selectedMode,
-              plan: userPlan,
-              is_authenticated: isAuthenticated,
+              plan: userStatus.plan_type,
+              is_authenticated: userStatus.isAuthenticated,
               hour_of_day: new Date().getHours(),
               day_of_week: new Date().getDay(),
-              usage_count: isAuthenticated ? undefined : usageCount,
+              usage_count: userStatus.isAuthenticated ? undefined : usageCount,
             }
           });
 
@@ -275,7 +304,7 @@ export default function HumanizadorMain() {
         }
 
         // Incrementar contador de uso para usuarios anónimos
-        if (!isAuthenticated) {
+        if (!userStatus.isAuthenticated) {
           const newCount = usageCount + 1;
           setUsageCount(newCount);
           localStorage.setItem('humanizador_usage_count', newCount.toString());
@@ -288,12 +317,12 @@ export default function HumanizadorMain() {
           metadata: {
             text_length: text.length,
             mode: selectedMode,
-            plan: userPlan,
-            is_authenticated: isAuthenticated,
+            plan: userStatus.plan_type,
+            is_authenticated: userStatus.isAuthenticated,
             exceeded_limit: false,
             hour_of_day: new Date().getHours(),
             day_of_week: new Date().getDay(),
-            usage_count: isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
+            usage_count: userStatus.isAuthenticated ? undefined : usageCount + 1, // Para anónimos, su uso #N
           }
         });
 
@@ -369,8 +398,8 @@ export default function HumanizadorMain() {
           improvement: originalData.probability - humanizedData.probability,
           mode: selectedMode,
           passed_detector: humanizedData.probability < 30,
-          plan: userPlan,
-          is_authenticated: isAuthenticated,
+          plan: userStatus.plan_type,
+          is_authenticated: userStatus.isAuthenticated,
         }
       });
 
@@ -418,14 +447,14 @@ export default function HumanizadorMain() {
     e.preventDefault();
     e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
 
-    if (userPlan !== 'premium') {
+    if (userStatus.plan_type !== 'premium' && !userStatus.express.is_active) {
       // Track intento de subir archivo bloqueado
       trackEvent({
         eventType: 'file_upload_blocked',
         toolType: 'humanizador',
         metadata: {
-          plan: userPlan,
-          is_authenticated: isAuthenticated,
+          plan: userStatus.plan_type,
+          is_authenticated: userStatus.isAuthenticated,
           hour_of_day: new Date().getHours(),
           day_of_week: new Date().getDay(),
         }
@@ -467,6 +496,28 @@ export default function HumanizadorMain() {
     setIsEmailModalOpen(true);
   };
 
+  // Show minimal loading skeleton while fetching user status - prevents flickering
+  if (isLoadingUserStatus) {
+    return (
+      <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
+        {/* Loading skeleton */}
+        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+          <div className="animate-pulse space-y-4">
+            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div className="h-32 bg-gray-200 rounded"></div>
+            <div className="h-10 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+          <div className="animate-pulse space-y-4">
+            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div className="h-32 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
@@ -475,22 +526,20 @@ export default function HumanizadorMain() {
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
-          {!loading && (
-            !isAuthenticated ? (
-              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Sin registro
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-full px-3 py-1.5 text-xs">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Cuenta activa
-              </span>
-            )
+          {!userStatus.isAuthenticated ? (
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Sin registro
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Cuenta activa
+            </span>
           )}
           <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -515,7 +564,7 @@ export default function HumanizadorMain() {
           onTextExtracted={handleFileTextExtracted}
           maxChars={CHARACTER_LIMIT}
           disabled={isHumanizing}
-          userPlan={userPlan}
+          userPlan={userStatus.plan_type}
           toolName="Humanizador"
           className="mb-3"
         />
@@ -539,7 +588,7 @@ export default function HumanizadorMain() {
             }}
             onDragOver={(e) => {
               e.preventDefault();
-              if (userPlan === 'premium') {
+              if (userStatus.plan_type === 'premium' || userStatus.express.is_active) {
                 e.currentTarget.classList.add('border-violet-400', 'bg-violet-50');
               }
             }}
@@ -557,8 +606,8 @@ export default function HumanizadorMain() {
             <span className={getCounterColor() + ' font-medium'}>
               {text.length}/{CHARACTER_LIMIT}
             </span>
-            {/* Badge de usos restantes */}
-            {rateLimitStatus && userPlan !== 'premium' && (
+            {/* Badge de usos restantes - Solo para Free sin Express */}
+            {rateLimitStatus && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
               <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ${
                 rateLimitStatus.remaining === 0
                   ? 'bg-red-100 text-red-700'
@@ -569,19 +618,26 @@ export default function HumanizadorMain() {
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
-                {isAuthenticated
-                  ? `${rateLimitStatus.usedToday}/${rateLimitStatus.limit} usados hoy`
-                  : `${rateLimitStatus.usedToday}/${rateLimitStatus.limit} invitado • Registrate: 3/día`
+                {userStatus.isAuthenticated
+                  ? `${rateLimitStatus.usedToday || 0}/${rateLimitStatus.limit || 0} usados hoy`
+                  : `${rateLimitStatus.usedToday || 0}/${rateLimitStatus.limit || 0} invitado • Registrate: 3/día`
                 }
               </span>
             )}
+            {/* Badge ilimitado para Express */}
+            {userStatus.express.is_active && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-orange-100 to-amber-100 text-orange-700">
+                <span>⚡</span>
+                Express Activo - Ilimitado
+              </span>
+            )}
             {/* Badge ilimitado para PRO */}
-            {userPlan === 'premium' && (
+            {userStatus.plan_type === 'premium' && (
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700">
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                Usos ilimitados
+                Pro - Usos ilimitados
               </span>
             )}
           </div>
@@ -602,7 +658,7 @@ export default function HumanizadorMain() {
           <div className="space-y-2">
             {Object.entries(HUMANIZER_MODES).map(([key, mode]) => {
               const modeKey = key as HumanizerMode;
-              const isLocked = mode.isPremium && userPlan !== 'premium';
+              const isLocked = mode.isPremium && userStatus.plan_type !== 'premium' && !userStatus.express.is_active;
               const isSelected = selectedMode === modeKey;
 
               return (
@@ -812,7 +868,7 @@ export default function HumanizadorMain() {
                         </p>
                         <p className="text-xs">
                           Mejora de <strong>{Math.abs(originalScore - humanizedScore)} puntos</strong>.
-                          {userPlan !== 'premium' ? ' Probá un modo premium para mejores resultados.' : ' Intenta humanizar nuevamente.'}
+                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? ' Probá un modo premium para mejores resultados.' : ' Intenta humanizar nuevamente.'}
                         </p>
                       </div>
                     ) : (
@@ -825,7 +881,7 @@ export default function HumanizadorMain() {
                             ? `Mejora de ${Math.abs(originalScore - humanizedScore)} puntos, pero aún detectado. `
                             : 'No hubo mejora. '
                           }
-                          {userPlan !== 'premium' ? 'Probá un modo premium para mejores resultados.' : 'Intenta humanizar nuevamente o usa otro modo.'}
+                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? 'Probá un modo premium para mejores resultados.' : 'Intenta humanizar nuevamente o usa otro modo.'}
                         </p>
                       </div>
                     )}
@@ -837,7 +893,7 @@ export default function HumanizadorMain() {
                 ) : null}
 
                 {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
-                {userPlan !== 'premium' && !isLimitExceeded && (
+                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-3 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
@@ -849,7 +905,7 @@ export default function HumanizadorMain() {
                       <div className="bg-white p-3 rounded-lg border-2 border-gray-200">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full font-bold">
-                            {isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
+                            {userStatus.isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
                           </span>
                         </div>
                         <p className="text-xs font-bold text-gray-800 mb-2">Lo que acabas de usar:</p>
@@ -860,7 +916,7 @@ export default function HumanizadorMain() {
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-green-600 font-bold">✓</span>
-                            <span>Hasta {isAuthenticated ? '600' : '400'} caracteres</span>
+                            <span>Hasta {userStatus.isAuthenticated ? '600' : '400'} caracteres</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-green-600 font-bold">✓</span>
@@ -932,7 +988,7 @@ export default function HumanizadorMain() {
                 )}
 
                 {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
-                {!isAuthenticated && usageCount >= 2 && usageCount < 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
                   <div className="p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
                     <div className="flex items-start gap-2">
                       <span className="text-lg"><Icon icon={ProductIcons.Info} size="xs" className="inline" /></span>
@@ -954,7 +1010,7 @@ export default function HumanizadorMain() {
                   </div>
                 )}
 
-                {!isAuthenticated && usageCount >= 5 && (
+                {!userStatus.isAuthenticated && usageCount >= 5 && (
                   <div className="p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl"><Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /></span>
@@ -981,7 +1037,7 @@ export default function HumanizadorMain() {
               </div>
 
               {/* Overlay inline cuando se excede el límite */}
-              {isLimitExceeded && userPlan !== 'premium' && (
+              {isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                 <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none z-10">
                   <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto animate-scale-in">
                     {/* Icon */}
@@ -1008,7 +1064,7 @@ export default function HumanizadorMain() {
                     </div>
 
                     {/* Copy dinámico según tipo de usuario */}
-                    {!isAuthenticated ? (
+                    {!userStatus.isAuthenticated ? (
                       <>
                         <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
                           Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
@@ -1169,19 +1225,32 @@ export default function HumanizadorMain() {
                 </div>
               </div>
 
-              {/* Hint de usos ilimitados - SOLO para usuarios FREE y Anónimos */}
-              {userPlan !== 'premium' && (
+              {/* Hint dinámico según plan */}
+              {userStatus.express.is_active && (
+                <div className="text-center text-sm bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 border border-orange-200">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <span>⚡</span>
+                    <span className="font-bold text-orange-700">
+                      Express Activo - Acceso Ilimitado
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-600">
+                    Usos y caracteres ilimitados por 24h
+                  </p>
+                </div>
+              )}
+              {!userStatus.express.is_active && userStatus.plan_type !== 'premium' && (
                 <div className="text-center text-sm bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-100">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <svg className="w-5 h-5 text-violet-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     <span className="font-bold text-violet-700">
-                      {isAuthenticated ? '3 usos diarios gratis' : '1 uso diario'}
+                      {userStatus.isAuthenticated ? '3 usos diarios gratis' : '1 uso diario'}
                     </span>
                   </div>
                   <p className="text-xs text-gray-600">
-                    {isAuthenticated
+                    {userStatus.isAuthenticated
                       ? 'Hasta 600 caracteres por uso'
                       : 'Hasta 400 caracteres por uso • Registrate gratis para más'}
                   </p>
