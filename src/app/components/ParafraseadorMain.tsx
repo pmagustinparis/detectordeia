@@ -619,7 +619,7 @@ export default function ParafraseadorMain() {
                       <div className="flex items-start gap-2 mb-2">
                         <span className="text-xl"><Icon icon={ProductIcons.Locked} size="sm" className="inline" /></span>
                         <div>
-                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
+                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro o Express</p>
                           <p className="text-violet-100 leading-relaxed">
                             Parafrasea tu texto con estilo <strong>{mode.name.toLowerCase()}</strong> profesional.
                             Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
@@ -628,7 +628,7 @@ export default function ParafraseadorMain() {
                       </div>
                       <div className="text-center mt-2 pt-2 border-t border-violet-400/50">
                         <p className="text-violet-100 font-semibold">
-                          Desde $10/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
+                          Express $3.99/24h • Pro desde $12.99/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
                         </p>
                       </div>
                     </div>
@@ -884,7 +884,7 @@ export default function ParafraseadorMain() {
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-gray-600 mt-2">Desde $10/mes • Cancela cuando quieras</p>
+                      <p className="text-xs text-gray-600 mt-2">Desde $12.99/mes • Cancela cuando quieras</p>
                     </div>
                   </div>
                 )}
@@ -1005,7 +1005,7 @@ export default function ParafraseadorMain() {
                             </li>
                           </ul>
                           <p className="text-xs text-violet-700 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 
@@ -1056,7 +1056,7 @@ export default function ParafraseadorMain() {
                             </li>
                           </ul>
                           <p className="text-xs text-violet-700 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 

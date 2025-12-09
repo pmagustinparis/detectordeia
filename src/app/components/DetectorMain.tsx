@@ -1138,7 +1138,7 @@ export default function DetectorMain({
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-gray-600 mt-2">Desde $10/mes • Cancela cuando quieras</p>
+                      <p className="text-xs text-gray-600 mt-2">Desde $12.99/mes • Cancela cuando quieras</p>
                     </div>
                   </div>
                 )}
@@ -1195,7 +1195,7 @@ export default function DetectorMain({
                       <li>• Subida de archivos (PDF, DOCX, TXT)</li>
                       <li>• 5 modos premium en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
-                      <li>• Desde $10/mes o $96/año</li>
+                      <li>• Desde $12.99/mes o $124.68/año</li>
                     </ul>
                   </div>
                   <a
@@ -1292,7 +1292,7 @@ export default function DetectorMain({
                             </li>
                           </ul>
                           <p className="text-xs text-violet-700 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 
@@ -1343,7 +1343,7 @@ export default function DetectorMain({
                             </li>
                           </ul>
                           <p className="text-xs text-violet-700 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 
