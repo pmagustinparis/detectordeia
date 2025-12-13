@@ -324,27 +324,24 @@ export default function PricingPageClient() {
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">
               ⚡ POPULAR
             </div>
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-3">
+            <div className="mb-5">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">
                 Express
               </h2>
-              <div className="bg-gradient-to-r from-orange-100 to-amber-100 border-2 border-orange-400 rounded-xl px-4 py-3">
-                <p className="text-orange-900 text-base font-bold text-center">
+              <div className="bg-gradient-to-r from-orange-100 to-amber-100 border-2 border-orange-400 rounded-lg px-3 py-2">
+                <p className="text-orange-900 text-sm font-bold text-center">
                   ⏱️ Acceso ilimitado por 24 horas
-                </p>
-                <p className="text-orange-700 text-xs font-semibold text-center mt-1">
-                  ¡Actívalo cuando lo necesites!
                 </p>
               </div>
             </div>
-            <div className="mb-8">
+            <div className="mb-6">
               <span className="text-5xl font-extrabold text-gray-900">${PRICES.express}</span>
               <span className="text-xl text-gray-600">/24h</span>
               <p className="text-sm text-orange-700 font-semibold mt-2">
                 Pago único • Sin renovación automática
               </p>
             </div>
-            <ul className="space-y-3.5 mb-8 flex-grow w-full">
+            <ul className="space-y-3 mb-6 flex-grow w-full">
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
