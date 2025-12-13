@@ -565,6 +565,7 @@ export default function HumanizadorMain() {
           maxChars={CHARACTER_LIMIT}
           disabled={isHumanizing}
           userPlan={userStatus.plan_type}
+          isExpressActive={userStatus.express.is_active}
           toolName="Humanizador"
           className="mb-3"
         />

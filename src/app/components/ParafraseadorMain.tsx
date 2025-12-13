@@ -515,6 +515,7 @@ export default function ParafraseadorMain() {
           maxChars={CHARACTER_LIMIT}
           disabled={isParaphrasing}
           userPlan={userStatus.plan_type}
+          isExpressActive={userStatus.express.is_active}
           toolName="Parafraseador"
           className="mb-3"
         />

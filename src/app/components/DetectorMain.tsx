@@ -422,6 +422,7 @@ export default function DetectorMain({
             maxChars={CHARACTER_LIMIT}
             disabled={isAnalyzing}
             userPlan={userStatus.plan_type}
+            isExpressActive={userStatus.express.is_active}
             toolName="Detector"
             className="mb-3"
           />
