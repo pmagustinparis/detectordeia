@@ -256,7 +256,7 @@ export default function PricingPageClient() {
             <span className="gradient-text-primary">Planes y Precios</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Elige el plan perfecto para ti. Desde análisis gratuitos hasta soluciones empresariales completas.
+            Elige el plan que se adapta a tu ritmo. Acceso temporal o continuo, la decisión es tuya.
           </p>
         </div>
 
@@ -325,10 +325,17 @@ export default function PricingPageClient() {
               ⚡ POPULAR
             </div>
             <div className="mb-6">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-3">
                 Express
               </h2>
-              <p className="text-gray-700 text-sm font-medium">⏱️ Acceso ilimitado por 24 horas</p>
+              <div className="bg-gradient-to-r from-orange-100 to-amber-100 border-2 border-orange-400 rounded-xl px-4 py-3">
+                <p className="text-orange-900 text-base font-bold text-center">
+                  ⏱️ Acceso ilimitado por 24 horas
+                </p>
+                <p className="text-orange-700 text-xs font-semibold text-center mt-1">
+                  ¡Actívalo cuando lo necesites!
+                </p>
+              </div>
             </div>
             <div className="mb-8">
               <span className="text-5xl font-extrabold text-gray-900">${PRICES.express}</span>
@@ -337,12 +344,12 @@ export default function PricingPageClient() {
                 Pago único • Sin renovación automática
               </p>
             </div>
-            <ul className="space-y-4 mb-8 flex-grow w-full">
+            <ul className="space-y-3.5 mb-8 flex-grow w-full">
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-semibold">✨ Todo ilimitado por 24h</span>
+                <span className="text-gray-900 font-semibold">Acceso completo a todas las herramientas</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -354,19 +361,25 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">5 modos premium</span>
+                <span className="text-gray-900 font-semibold">Usos ilimitados</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Subida de archivos</span>
+                <span className="text-gray-900 font-medium">Modos premium en Humanizador y Parafraseador</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Perfecto para entregas urgentes</span>
+                <span className="text-gray-900 font-medium">Subida de archivos (PDF, DOCX, TXT)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-medium">Ideal para entregas urgentes o uso intensivo</span>
               </li>
             </ul>
             <button
@@ -386,7 +399,7 @@ export default function PricingPageClient() {
               <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Pro
               </h2>
-              <p className="text-gray-700 text-sm font-medium">🎓 Mejor para uso continuo</p>
+              <p className="text-gray-700 text-sm font-bold">🔄 Acceso continuo, sin interrupciones</p>
             </div>
 
             {/* Toggle Billing - DENTRO de la card */}
@@ -485,7 +498,7 @@ export default function PricingPageClient() {
 
         {/* Scroll Hint - Ver Comparación */}
         <div className="flex flex-col items-center justify-center py-8 mb-8">
-          <p className="text-lg font-semibold text-gray-700 mb-3">
+          <p className="text-2xl font-bold text-gray-900 mb-4">
             ¿Querés ver todas las diferencias en detalle?
           </p>
           <button
@@ -493,11 +506,11 @@ export default function PricingPageClient() {
               const comparisonTable = document.getElementById('comparison-table');
               comparisonTable?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
-            className="flex flex-col items-center gap-2 text-violet-600 hover:text-violet-700 transition-all group"
+            className="flex flex-col items-center gap-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all group"
           >
-            <span className="font-bold text-base">Ver Comparación Completa</span>
+            <span className="font-bold text-lg">📊 Ver Comparación Completa de Planes</span>
             <svg
-              className="w-8 h-8 animate-bounce group-hover:scale-110 transition-transform"
+              className="w-6 h-6 animate-bounce group-hover:scale-110 transition-transform"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -508,10 +521,13 @@ export default function PricingPageClient() {
         </div>
 
         {/* Feature Comparison Table */}
-        <div id="comparison-table" className="bg-white rounded-3xl shadow-xl p-8 mb-20">
-          <h2 className="text-3xl font-bold text-center mb-8">
+        <div id="comparison-table" className="bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-2xl p-8 md:p-12 mb-20 border-2 border-gray-200">
+          <h2 className="text-4xl font-extrabold text-center mb-3">
             <span className="gradient-text-primary">Comparación Completa</span>
           </h2>
+          <p className="text-center text-gray-600 mb-10 text-lg">
+            Todos los detalles de cada plan, lado a lado
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
