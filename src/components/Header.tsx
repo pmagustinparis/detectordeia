@@ -20,17 +20,12 @@ export default function Header() {
       }
 
       try {
-        const response = await fetch('/api/user/plan');
+        const response = await fetch('/api/user/status');
         if (response.ok) {
           const data = await response.json();
-          // Check if Express is active
-          if (data.express_expires_at) {
-            const expiresAt = new Date(data.express_expires_at);
-            if (expiresAt > new Date()) {
-              setExpressExpiresAt(data.express_expires_at);
-            } else {
-              setExpressExpiresAt(null);
-            }
+          // Use consolidated response structure
+          if (data.express?.is_active && data.express?.expires_at) {
+            setExpressExpiresAt(data.express.expires_at);
           } else {
             setExpressExpiresAt(null);
           }

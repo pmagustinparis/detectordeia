@@ -79,16 +79,29 @@ export async function POST(request: Request) {
 
     let customerId = userData.stripe_customer_id;
 
-    // Crear Stripe Customer si no existe
+    // Crear Stripe Customer si no existe (o buscar existente)
     if (!customerId) {
-      const customer = await stripe.customers.create({
+      // Buscar si ya existe un customer con este email en Stripe
+      const existingCustomers = await stripe.customers.list({
         email: userData.email,
-        metadata: {
-          supabase_user_id: userData.id,
-        },
+        limit: 1,
       });
 
-      customerId = customer.id;
+      if (existingCustomers.data.length > 0) {
+        // Reutilizar customer existente
+        customerId = existingCustomers.data[0].id;
+        console.log(`♻️ Reusing existing Stripe customer: ${customerId} for ${userData.email}`);
+      } else {
+        // Crear nuevo customer solo si no existe
+        const customer = await stripe.customers.create({
+          email: userData.email,
+          metadata: {
+            supabase_user_id: userData.id,
+          },
+        });
+        customerId = customer.id;
+        console.log(`✨ Created new Stripe customer: ${customerId} for ${userData.email}`);
+      }
 
       // Guardar el customer_id en nuestra base de datos
       await supabase
