@@ -527,133 +527,246 @@ export default function PricingPageClient() {
               <span className="gradient-text-primary">Comparación Completa</span>
             </h2>
             <p className="text-gray-600 text-lg">
-              Todos los detalles de cada plan, lado a lado
+              Encuentra el plan perfecto para tus necesidades
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-6 px-4 md:px-6 font-semibold text-gray-500 text-sm uppercase tracking-wide w-2/5"></th>
-                  <th className="text-center py-6 px-3 md:px-6 w-1/5">
-                    <div className="flex flex-col gap-2">
-                      <span className="text-sm font-semibold text-gray-600">Free</span>
-                      <span className="text-3xl font-bold text-gray-900">$0</span>
-                      <span className="text-xs text-gray-500">Gratis siempre</span>
-                    </div>
-                  </th>
-                  <th className="text-center py-6 px-3 md:px-6 w-1/5 relative">
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg whitespace-nowrap">
-                        MÁS POPULAR
-                      </span>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <span className="text-sm font-semibold text-orange-600">Express</span>
-                      <span className="text-3xl font-bold text-orange-600">$3.99</span>
-                      <span className="text-xs text-orange-600 font-medium">Pago único 24h</span>
-                    </div>
-                  </th>
-                  <th className="text-center py-6 px-3 md:px-6 w-1/5">
-                    <div className="flex flex-col gap-2">
-                      <span className="text-sm font-semibold text-violet-600">Pro</span>
-                      <span className="text-3xl font-bold text-violet-600">$12.99</span>
-                      <span className="text-xs text-violet-600 font-medium">por mes</span>
-                    </div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
+          {/* Comparison Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Free Column */}
+            <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center border-b-2 border-gray-200">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Free</h3>
+                <div className="mb-2">
+                  <span className="text-4xl font-extrabold text-gray-900">$0</span>
+                </div>
+                <p className="text-sm text-gray-600">Gratis para siempre</p>
+              </div>
+
+              <div className="p-6 space-y-6">
                 {/* Detector */}
-                <tr className="bg-gray-50">
-                  <td colSpan={4} className="pt-6 pb-3 px-4 md:px-6">
-                    <span className="text-sm font-bold text-gray-900 uppercase tracking-wider">🔍 Detector de IA</span>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Usos diarios</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">15</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">Ilimitado</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">Ilimitado</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Caracteres por análisis</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">1,200</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">Ilimitado</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">Ilimitado</td>
-                </tr>
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔍 Detector</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-semibold text-gray-900">15</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Caracteres</span>
+                      <span className="font-semibold text-gray-900">1,200</span>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Humanizador */}
-                <tr className="bg-gray-50">
-                  <td colSpan={4} className="pt-6 pb-3 px-4 md:px-6">
-                    <span className="text-sm font-bold text-gray-900 uppercase tracking-wider">✨ Humanizador de IA</span>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Usos diarios</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">3</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">Ilimitado</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">Ilimitado</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Modos disponibles</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">Estándar</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">5 modos premium</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">5 modos premium</td>
-                </tr>
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">✨ Humanizador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-semibold text-gray-900">3</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-semibold text-gray-900">Estándar</span>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Parafraseador */}
-                <tr className="bg-gray-50">
-                  <td colSpan={4} className="pt-6 pb-3 px-4 md:px-6">
-                    <span className="text-sm font-bold text-gray-900 uppercase tracking-wider">🔄 Parafraseador</span>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Usos diarios</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">10</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">Ilimitado</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">Ilimitado</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Modos disponibles</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">Estándar</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">5 modos premium</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">5 modos premium</td>
-                </tr>
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔄 Parafraseador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-semibold text-gray-900">10</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-semibold text-gray-900">Estándar</span>
+                    </div>
+                  </div>
+                </div>
 
-                {/* Características Generales */}
-                <tr className="bg-gray-50">
-                  <td colSpan={4} className="pt-6 pb-3 px-4 md:px-6">
-                    <span className="text-sm font-bold text-gray-900 uppercase tracking-wider">⚙️ Características</span>
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Duración del plan</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">Ilimitado</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">24 horas</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">Continuo</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Historial completo</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-400">—</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">✓</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">✓</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Subida de archivos</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-400">—</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold text-sm">✓ PDF, DOCX, TXT</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold text-sm">✓ PDF, DOCX, TXT</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 md:px-6 text-gray-700">Soporte</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-gray-900 font-medium">Email</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-orange-600 font-semibold">Email</td>
-                  <td className="py-4 px-3 md:px-6 text-center text-violet-600 font-semibold">Prioritario</td>
-                </tr>
-              </tbody>
-            </table>
+                {/* Características */}
+                <div className="pt-4 border-t-2 border-gray-100">
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Historial</span>
+                      <span className="text-gray-400">—</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Subir archivos</span>
+                      <span className="text-gray-400">—</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Soporte</span>
+                      <span className="font-medium text-gray-900">Email</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Express Column - DESTACADO */}
+            <div className="relative bg-white rounded-2xl shadow-2xl border-4 border-orange-400 overflow-hidden transform md:scale-105">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-amber-500"></div>
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap inline-block">
+                  ⚡ MÁS POPULAR
+                </span>
+              </div>
+
+              <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 text-center border-b-2 border-orange-200 mt-2">
+                <h3 className="text-xl font-bold text-orange-700 mb-2">Express</h3>
+                <div className="mb-2">
+                  <span className="text-4xl font-extrabold text-orange-600">$3.99</span>
+                </div>
+                <p className="text-sm text-orange-700 font-medium">Pago único · 24 horas</p>
+              </div>
+
+              <div className="p-6 space-y-6 bg-gradient-to-b from-orange-50/30 to-white">
+                {/* Detector */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔍 Detector</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Caracteres</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Humanizador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">✨ Humanizador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-orange-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Parafraseador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔄 Parafraseador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-orange-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Características */}
+                <div className="pt-4 border-t-2 border-orange-100">
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Historial</span>
+                      <span className="font-bold text-orange-600">✓</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Subir archivos</span>
+                      <span className="font-bold text-orange-600 text-xs">✓ PDF, DOCX, TXT</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Soporte</span>
+                      <span className="font-bold text-orange-600">Email</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pro Column */}
+            <div className="bg-white rounded-2xl shadow-lg border-2 border-violet-200 overflow-hidden">
+              <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 text-center border-b-2 border-violet-200">
+                <h3 className="text-xl font-bold text-violet-700 mb-2">Pro</h3>
+                <div className="mb-2">
+                  <span className="text-4xl font-extrabold text-violet-600">$12.99</span>
+                </div>
+                <p className="text-sm text-violet-700 font-medium">Suscripción mensual</p>
+              </div>
+
+              <div className="p-6 space-y-6">
+                {/* Detector */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔍 Detector</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Caracteres</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Humanizador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">✨ Humanizador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-violet-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Parafraseador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔄 Parafraseador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-violet-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Características */}
+                <div className="pt-4 border-t-2 border-violet-100">
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Historial</span>
+                      <span className="font-bold text-violet-600">✓</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Subir archivos</span>
+                      <span className="font-bold text-violet-600 text-xs">✓ PDF, DOCX, TXT</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Soporte</span>
+                      <span className="font-bold text-violet-600">Prioritario</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
