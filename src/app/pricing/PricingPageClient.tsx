@@ -260,43 +260,6 @@ export default function PricingPageClient() {
           </p>
         </div>
 
-        {/* Toggle Billing */}
-        <div className="flex justify-center items-center mb-12">
-          <div className="relative flex bg-violet-100 rounded-full p-1.5 w-[360px] h-14 shadow-md">
-            <button
-              className={`flex-1 z-10 font-bold text-lg transition-colors duration-200 rounded-full focus:outline-none ${
-                billing === 'monthly' ? 'text-white' : 'text-violet-700'
-              }`}
-              onClick={() => setBilling('monthly')}
-            >
-              Mensual
-            </button>
-            <button
-              className={`flex-1 z-10 font-bold text-lg transition-colors duration-200 rounded-full focus:outline-none flex items-center justify-center gap-2 ${
-                billing === 'annual' ? 'text-white' : 'text-violet-700'
-              }`}
-              onClick={() => setBilling('annual')}
-            >
-              Anual
-              <span
-                className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                  billing === 'annual'
-                    ? 'bg-white text-violet-600'
-                    : 'bg-violet-200 text-violet-700'
-                }`}
-              >
-                AHORRA 20%
-              </span>
-            </button>
-            <span
-              className="absolute top-1.5 left-1.5 h-11 w-[calc(50%-6px)] rounded-full bg-gradient-to-r from-violet-600 to-purple-600 transition-all duration-300 shadow-lg"
-              style={{
-                transform: billing === 'monthly' ? 'translateX(0)' : 'translateX(100%)',
-              }}
-            />
-          </div>
-        </div>
-
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {/* Free Plan */}
@@ -419,12 +382,50 @@ export default function PricingPageClient() {
 
           {/* Pro Plan */}
           <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 border-gray-200 hover:border-violet-200 transition-all duration-300">
-            <div className="mb-6">
+            <div className="mb-4">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Pro
               </h2>
               <p className="text-gray-700 text-sm font-medium">🎓 Mejor para uso continuo</p>
             </div>
+
+            {/* Toggle Billing - DENTRO de la card */}
+            <div className="w-full mb-6">
+              <div className="relative flex bg-violet-100 rounded-full p-1 w-full h-11 shadow-sm">
+                <button
+                  className={`flex-1 z-10 font-semibold text-sm transition-colors duration-200 rounded-full focus:outline-none ${
+                    billing === 'monthly' ? 'text-white' : 'text-violet-700'
+                  }`}
+                  onClick={() => setBilling('monthly')}
+                >
+                  Mensual
+                </button>
+                <button
+                  className={`flex-1 z-10 font-semibold text-sm transition-colors duration-200 rounded-full focus:outline-none flex items-center justify-center gap-1.5 ${
+                    billing === 'annual' ? 'text-white' : 'text-violet-700'
+                  }`}
+                  onClick={() => setBilling('annual')}
+                >
+                  Anual
+                  <span
+                    className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                      billing === 'annual'
+                        ? 'bg-white text-violet-600'
+                        : 'bg-violet-200 text-violet-700'
+                    }`}
+                  >
+                    -20%
+                  </span>
+                </button>
+                <span
+                  className="absolute top-1 left-1 h-9 w-[calc(50%-4px)] rounded-full bg-gradient-to-r from-violet-600 to-purple-600 transition-all duration-300 shadow-md"
+                  style={{
+                    transform: billing === 'monthly' ? 'translateX(0)' : 'translateX(100%)',
+                  }}
+                />
+              </div>
+            </div>
+
             <div className="mb-2">
               <span className="text-5xl font-extrabold text-gray-900">
                 ${billing === 'monthly' ? PRICES.pro.monthly : (PRICES.pro.annual / 12).toFixed(2)}
