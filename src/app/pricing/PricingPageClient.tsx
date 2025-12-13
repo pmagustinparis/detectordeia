@@ -251,11 +251,11 @@ export default function PricingPageClient() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-20">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto py-16 px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
             <span className="gradient-text-primary">Planes y Precios</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Elige el plan que se adapta a tu ritmo. Acceso temporal o continuo, la decisión es tuya.
           </p>
         </div>
@@ -521,118 +521,208 @@ export default function PricingPageClient() {
         </div>
 
         {/* Feature Comparison Table */}
-        <div id="comparison-table" className="bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-2xl p-8 md:p-12 mb-20 border-2 border-gray-200">
+        <div id="comparison-table" className="bg-white rounded-3xl shadow-2xl p-6 md:p-12 mb-20 border border-gray-200">
           <h2 className="text-4xl font-extrabold text-center mb-3">
             <span className="gradient-text-primary">Comparación Completa</span>
           </h2>
-          <p className="text-center text-gray-600 mb-10 text-lg">
+          <p className="text-center text-gray-600 mb-12 text-lg">
             Todos los detalles de cada plan, lado a lado
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-900">Free</th>
-                  <th className="text-center py-4 px-4 font-semibold bg-orange-50 text-orange-700 rounded-t-xl">Express</th>
-                  <th className="text-center py-4 px-4 font-semibold bg-violet-50 text-violet-700 rounded-t-xl">Pro</th>
+                <tr>
+                  <th className="text-left py-5 px-6 font-bold text-gray-900 text-base border-b-2 border-gray-300">Características</th>
+                  <th className="text-center py-5 px-6 font-bold text-gray-900 text-base border-b-2 border-gray-300 bg-gray-50">
+                    <div className="flex flex-col items-center gap-1">
+                      <span>Free</span>
+                      <span className="text-2xl font-extrabold text-gray-900">$0</span>
+                    </div>
+                  </th>
+                  <th className="text-center py-5 px-6 font-bold text-orange-700 text-base border-b-2 border-orange-300 bg-gradient-to-br from-orange-50 to-amber-50 relative">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-orange-800">Express</span>
+                      <span className="text-2xl font-extrabold text-orange-900">$3.99</span>
+                      <span className="text-xs text-orange-600">24 horas</span>
+                    </div>
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-0.5 rounded-full text-[10px] font-bold shadow-md">
+                      POPULAR
+                    </div>
+                  </th>
+                  <th className="text-center py-5 px-6 font-bold text-violet-700 text-base border-b-2 border-violet-300 bg-gradient-to-br from-violet-50 to-purple-50">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-violet-800">Pro</span>
+                      <span className="text-2xl font-extrabold text-violet-900">$12.99</span>
+                      <span className="text-xs text-violet-600">por mes</span>
+                    </div>
+                  </th>
                 </tr>
               </thead>
-              <tbody className="text-sm">
-                {/* Precio */}
-                <tr className="border-b border-gray-100 bg-gray-50">
-                  <td className="py-3 px-4 font-bold text-gray-900">💰 Precio</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Gratis</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">$3.99/24h</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">$12.99/mes</td>
-                </tr>
-
+              <tbody>
                 {/* Detector Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
+                <tr>
+                  <td colSpan={4} className="py-4 px-6 font-extrabold text-gray-900 bg-gradient-to-r from-gray-100 to-gray-50 text-base border-b-2 border-gray-200">
                     🔍 Detector de IA
                   </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Usos diarios</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">15</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">Ilimitado</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">Ilimitado</span>
+                  </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Caracteres por análisis</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">1,200</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✨ Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✨ Ilimitado</td>
+                <tr className="hover:bg-gray-50 transition-colors border-b border-gray-200">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Caracteres por análisis</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">1,200</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">✨ Ilimitado</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">✨ Ilimitado</span>
+                  </td>
                 </tr>
 
                 {/* Humanizador Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
+                <tr>
+                  <td colSpan={4} className="py-4 px-6 font-extrabold text-gray-900 bg-gradient-to-r from-gray-100 to-gray-50 text-base border-b-2 border-gray-200">
                     ✨ Humanizador de IA
                   </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">3</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Usos diarios</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">3</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">Ilimitado</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">Ilimitado</span>
+                  </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">5 modos</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
+                <tr className="hover:bg-gray-50 transition-colors border-b border-gray-200">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Modos disponibles</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">Estándar</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">5 modos premium</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">5 modos premium</span>
+                  </td>
                 </tr>
 
                 {/* Parafraseador Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
+                <tr>
+                  <td colSpan={4} className="py-4 px-6 font-extrabold text-gray-900 bg-gradient-to-r from-gray-100 to-gray-50 text-base border-b-2 border-gray-200">
                     🔄 Parafraseador
                   </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Usos diarios</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">10</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">Ilimitado</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">Ilimitado</span>
+                  </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">5 modos</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
+                <tr className="hover:bg-gray-50 transition-colors border-b border-gray-200">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Modos disponibles</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">Estándar</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">5 modos premium</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">5 modos premium</span>
+                  </td>
                 </tr>
 
                 {/* General Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
+                <tr>
+                  <td colSpan={4} className="py-4 px-6 font-extrabold text-gray-900 bg-gradient-to-r from-gray-100 to-gray-50 text-base border-b-2 border-gray-200">
                     ⚙️ Características Generales
                   </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Duración</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">24 horas</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Mientras pagues</td>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Duración del plan</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">∞ Ilimitado</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">24 horas</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">Continuo</span>
+                  </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Historial</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✅</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅</td>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Historial completo</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <svg className="w-6 h-6 text-gray-400 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <svg className="w-6 h-6 text-orange-600 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <svg className="w-6 h-6 text-violet-600 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Subida de archivos</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✅ PDF, DOCX, TXT</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅ PDF, DOCX, TXT</td>
+                <tr className="hover:bg-gray-50 transition-colors">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Subida de archivos</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <svg className="w-6 h-6 text-gray-400 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <div className="flex flex-col items-center gap-1">
+                      <svg className="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-xs text-orange-700 font-medium">PDF, DOCX, TXT</span>
+                    </div>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <div className="flex flex-col items-center gap-1">
+                      <svg className="w-6 h-6 text-violet-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-xs text-violet-700 font-medium">PDF, DOCX, TXT</span>
+                    </div>
+                  </td>
                 </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Soporte</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Email</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Email</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Prioritario</td>
+                <tr className="hover:bg-gray-50 transition-colors border-b border-gray-200">
+                  <td className="py-4 px-6 text-gray-800 font-medium">Soporte</td>
+                  <td className="text-center py-4 px-6 bg-gray-50/50">
+                    <span className="text-gray-900 font-semibold">Email</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-orange-50/70 to-amber-50/70 border-l-2 border-r-2 border-orange-200">
+                    <span className="text-orange-700 font-bold">Email</span>
+                  </td>
+                  <td className="text-center py-4 px-6 bg-gradient-to-br from-violet-50/70 to-purple-50/70 border-r-2 border-violet-200">
+                    <span className="text-violet-700 font-bold">⚡ Prioritario</span>
+                  </td>
                 </tr>
               </tbody>
             </table>
