@@ -94,6 +94,13 @@ async function handleCheckoutCompleted(
   session: Stripe.Checkout.Session,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
+  console.log('🔔 Processing checkout.session.completed:', {
+    session_id: session.id,
+    customer: session.customer,
+    mode: session.mode,
+    metadata: session.metadata,
+  });
+
   const userId = session.metadata?.supabase_user_id;
   const planType = session.metadata?.plan_type; // 'express' o 'premium'
 
@@ -137,20 +144,31 @@ async function handleCheckoutCompleted(
 
   const planInterval = session.metadata?.plan_interval;
 
+  // Verificar que tenemos los datos necesarios
+  if (!subscription.items?.data?.[0]?.price?.id) {
+    console.error('Missing price data in subscription:', subscription);
+    throw new Error('Missing price data in subscription');
+  }
+
   // Crear registro de suscripción en Supabase
   const { error: subscriptionError } = await supabase
     .from('subscriptions')
-    .upsert({
-      user_id: userId,
-      stripe_customer_id: session.customer as string,
-      stripe_subscription_id: subscriptionId,
-      stripe_price_id: subscription.items.data[0].price.id,
-      plan_interval: planInterval,
-      status: subscription.status,
-      current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-      cancel_at_period_end: subscription.cancel_at_period_end,
-    });
+    .upsert(
+      {
+        user_id: userId,
+        stripe_customer_id: session.customer as string,
+        stripe_subscription_id: subscriptionId,
+        stripe_price_id: subscription.items.data[0].price.id,
+        plan_interval: planInterval,
+        status: subscription.status,
+        current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
+        current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
+        cancel_at_period_end: subscription.cancel_at_period_end,
+      },
+      {
+        onConflict: 'stripe_subscription_id',
+      }
+    );
 
   if (subscriptionError) {
     console.error('Error creating subscription:', subscriptionError);
@@ -160,7 +178,10 @@ async function handleCheckoutCompleted(
   // Actualizar plan del usuario a premium
   const { error: userError } = await supabase
     .from('users')
-    .update({ plan_type: 'premium' })
+    .update({
+      plan_type: 'premium',
+      stripe_customer_id: session.customer as string,
+    })
     .eq('id', userId);
 
   if (userError) {
