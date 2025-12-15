@@ -142,24 +142,27 @@ async function handleCheckoutCompleted(
     expand: ['items.data.price'],
   });
 
+  // Los period dates están en subscription_item, no en el nivel raíz
+  const subscriptionItem = subscription.items?.data?.[0];
+
   console.log('📦 Subscription retrieved:', {
     id: subscription.id,
     status: subscription.status,
-    current_period_start: subscription.current_period_start,
-    current_period_end: subscription.current_period_end,
+    current_period_start: subscriptionItem?.current_period_start,
+    current_period_end: subscriptionItem?.current_period_end,
     items_count: subscription.items?.data?.length,
-    has_price: !!subscription.items?.data?.[0]?.price?.id,
+    has_price: !!subscriptionItem?.price?.id,
   });
 
   const planInterval = session.metadata?.plan_interval;
 
   // Verificar que tenemos los datos necesarios
-  if (!subscription.items?.data?.[0]?.price?.id) {
+  if (!subscriptionItem?.price?.id) {
     console.error('❌ Missing price data in subscription:', JSON.stringify(subscription, null, 2));
     throw new Error('Missing price data in subscription');
   }
 
-  if (!subscription.current_period_start || !subscription.current_period_end) {
+  if (!subscriptionItem.current_period_start || !subscriptionItem.current_period_end) {
     console.error('❌ Missing period dates. Subscription data:', JSON.stringify(subscription, null, 2));
     throw new Error('Missing period dates in subscription');
   }
@@ -172,11 +175,11 @@ async function handleCheckoutCompleted(
         user_id: userId,
         stripe_customer_id: session.customer as string,
         stripe_subscription_id: subscriptionId,
-        stripe_price_id: subscription.items.data[0].price.id,
+        stripe_price_id: subscriptionItem.price.id,
         plan_interval: planInterval,
         status: subscription.status,
-        current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
-        current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
+        current_period_start: new Date(subscriptionItem.current_period_start * 1000).toISOString(),
+        current_period_end: new Date(subscriptionItem.current_period_end * 1000).toISOString(),
         cancel_at_period_end: subscription.cancel_at_period_end || false,
       },
       {
