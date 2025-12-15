@@ -142,12 +142,26 @@ async function handleCheckoutCompleted(
     expand: ['items.data.price'],
   });
 
+  console.log('📦 Subscription retrieved:', {
+    id: subscription.id,
+    status: subscription.status,
+    current_period_start: subscription.current_period_start,
+    current_period_end: subscription.current_period_end,
+    items_count: subscription.items?.data?.length,
+    has_price: !!subscription.items?.data?.[0]?.price?.id,
+  });
+
   const planInterval = session.metadata?.plan_interval;
 
   // Verificar que tenemos los datos necesarios
   if (!subscription.items?.data?.[0]?.price?.id) {
-    console.error('Missing price data in subscription:', subscription);
+    console.error('❌ Missing price data in subscription:', JSON.stringify(subscription, null, 2));
     throw new Error('Missing price data in subscription');
+  }
+
+  if (!subscription.current_period_start || !subscription.current_period_end) {
+    console.error('❌ Missing period dates. Subscription data:', JSON.stringify(subscription, null, 2));
+    throw new Error('Missing period dates in subscription');
   }
 
   // Crear registro de suscripción en Supabase
@@ -163,7 +177,7 @@ async function handleCheckoutCompleted(
         status: subscription.status,
         current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
         current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-        cancel_at_period_end: subscription.cancel_at_period_end,
+        cancel_at_period_end: subscription.cancel_at_period_end || false,
       },
       {
         onConflict: 'stripe_subscription_id',
