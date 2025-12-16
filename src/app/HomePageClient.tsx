@@ -2,7 +2,6 @@
 
 import DetectorMain from './components/DetectorMain';
 import { ProductIcons, Icon } from '@/lib/icons';
-import HumanizadorPromoBanner from './components/HumanizadorPromoBanner';
 import ExpressPromoBanner from './components/ExpressPromoBanner';
 import ToolSwitcher from './components/ToolSwitcher';
 
@@ -11,9 +10,6 @@ export default function HomePageClient() {
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
       {/* Banner Promocional - Express Pass */}
       <ExpressPromoBanner />
-
-      {/* Banner Promocional - Lanzamiento Humanizador */}
-      <HumanizadorPromoBanner />
 
       {/* Navegación entre herramientas - Sticky */}
       <ToolSwitcher />
