@@ -44,18 +44,17 @@ const CHARACTER_LIMITS = {
 
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
-  titulo: 'Desbloquea todo el poder del Detector',
-  subtitulo: 'Incluido en Express y Pro',
+  titulo: '¿Necesitas analizar múltiples textos o archivos largos?',
+  subtitulo: 'Accede ilimitado con Express o Pro',
   bullets: [
-    'Usos ilimitados diarios en todas las herramientas',
-    '✨ Caracteres ilimitados en el Detector',
-    'Subida de archivos (PDF, DOCX, TXT)',
-    '5 modos premium en Humanizador y Parafraseador',
-    'Historial completo de todos tus análisis',
-    'Soporte prioritario vía email',
+    '✅ Sin límites de uso - Analiza todo lo que necesites',
+    '📄 Sube archivos completos (PDF, Word, TXT)',
+    '✨ Caracteres ilimitados - Textos de cualquier tamaño',
+    '🎨 5 modos premium para humanizar y parafrasear',
+    '📊 Historial completo de tus análisis',
   ],
-  precio: 'Express $3.99/24h • Pro $12.99/mes',
-  cta: 'Ver Planes y Precios',
+  precio: 'Express $3.99/24h (ideal entregas urgentes) • Pro $12.99/mes',
+  cta: 'Ver Planes →',
 };
 const premiumCompactTextos = {
   titulo: 'Desbloquea Express o Pro',
