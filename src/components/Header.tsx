@@ -55,28 +55,10 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <Link
-              href="/#detector"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              Detector
-            </Link>
-            <Link
-              href="/humanizador"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              Humanizador
-            </Link>
-            <Link
-              href="/parafraseador"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              Parafraseador
-            </Link>
-            <Link
               href="/pricing"
               className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
             >
-              Precios
+              Planes
             </Link>
           </nav>
 
@@ -124,32 +106,11 @@ export default function Header() {
           <div className="md:hidden py-4 animate-fade-in">
             <nav className="flex flex-col gap-3">
               <Link
-                href="/#detector"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Detector
-              </Link>
-              <Link
-                href="/humanizador"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Humanizador
-              </Link>
-              <Link
-                href="/parafraseador"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Parafraseador
-              </Link>
-              <Link
                 href="/pricing"
                 className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Precios
+                Planes
               </Link>
               <div className="px-4 mt-4 border-t border-gray-200 pt-4">
                 {expressExpiresAt && (
