@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import DetectorMain from '../components/DetectorMain';
-import HumanizadorPromoBanner from '../components/HumanizadorPromoBanner';
+import ExpressPromoBanner from '../components/ExpressPromoBanner';
+import ToolSwitcher from '../components/ToolSwitcher';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Chile – DetectordeIA.ai',
@@ -35,7 +36,8 @@ export const metadata: Metadata = {
 export default function DetectorChile() {
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
-      <HumanizadorPromoBanner />
+      <ExpressPromoBanner />
+      <ToolSwitcher />
       <DetectorMain 
         h1="Detector de IA para Chile"
         subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Chile. Herramienta gratuita, sin registro, optimizada para español de Chile. Ideal para estudiantes, docentes y empresas chilenas."
