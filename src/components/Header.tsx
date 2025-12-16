@@ -52,18 +52,19 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Auth & CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Planes Button - Premium style */}
             <Link
               href="/pricing"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
+              className="group relative px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105 bg-gradient-to-r from-violet-50 to-purple-50 hover:from-violet-100 hover:to-purple-100 border border-violet-200 hover:border-violet-300 hover:shadow-md"
             >
-              Planes
+              <span className="flex items-center gap-1.5">
+                <span className="text-violet-600 group-hover:scale-110 transition-transform">💎</span>
+                <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">Planes</span>
+              </span>
             </Link>
-          </nav>
 
-          {/* Auth & CTA */}
-          <div className="hidden md:flex items-center gap-4">
             {expressExpiresAt && (
               <ExpressTimer expiresAt={expressExpiresAt} compact={true} />
             )}
