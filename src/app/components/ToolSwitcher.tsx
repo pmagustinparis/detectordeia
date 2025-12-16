@@ -2,11 +2,12 @@
 
 import { usePathname } from 'next/navigation';
 import { Icon, ProductIcons } from '@/lib/icons';
+import type { LucideIcon } from 'lucide-react';
 
 interface Tool {
   name: string;
   path: string;
-  icon: string;
+  icon: LucideIcon;
   color: string;
   gradient: string;
   isPopular?: boolean;
