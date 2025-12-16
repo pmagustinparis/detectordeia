@@ -4,6 +4,7 @@ import DetectorMain from './components/DetectorMain';
 import { ProductIcons, Icon } from '@/lib/icons';
 import HumanizadorPromoBanner from './components/HumanizadorPromoBanner';
 import ExpressPromoBanner from './components/ExpressPromoBanner';
+import ToolSwitcher from './components/ToolSwitcher';
 
 export default function HomePageClient() {
   return (
@@ -13,6 +14,9 @@ export default function HomePageClient() {
 
       {/* Banner Promocional - Lanzamiento Humanizador */}
       <HumanizadorPromoBanner />
+
+      {/* Navegación entre herramientas - Sticky */}
+      <ToolSwitcher />
 
       {/* DETECTOR UNIFICADO */}
       <DetectorMain
@@ -125,19 +129,24 @@ export default function HomePageClient() {
       {/* OTRAS HERRAMIENTAS */}
       <section className="max-w-4xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">Otras</span>
+          <span className="gradient-text-primary">Más</span>
           <span className="text-gray-800"> herramientas</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
-          Más herramientas para trabajar con contenido de IA
+          Herramientas complementarias para trabajar con IA
         </p>
 
         <div className="space-y-6">
-          {/* Humanizador */}
-          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
+          {/* Humanizador - DESTACADO */}
+          <div className="relative bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-xl border-2 border-emerald-300 p-8 card-elevated transform hover:scale-[1.02] transition-transform">
+            {/* Badge "Más Popular" */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+              ⭐ MÁS POPULAR
+            </div>
+
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                <Icon icon={ProductIcons.Humanizer} size="2xl" className="text-emerald-600" />
+                <Icon icon={ProductIcons.Humanizer} size="2xl" className="text-white" />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
