@@ -2,15 +2,15 @@ import { Metadata } from 'next';
 import HumanizadorClient from './HumanizadorClient';
 
 export const metadata: Metadata = {
-  title: 'Humanizador de IA en Español Gratis | DetectorDeIA',
-  description: 'Transforma texto generado por IA en contenido natural y humano. Humanizador gratuito, sin registro, optimizado para español. Hasta 600 caracteres gratis.',
+  title: 'Humanizador de IA Gratis en Español 2025 | Sin Registro',
+  description: 'Transforma texto generado por IA en contenido natural y humano. Humanizador gratuito actualizado 2025, sin registro, optimizado para español. Hasta 600 caracteres gratis.',
   keywords: ['humanizador de ia', 'humanizar texto ia', 'convertir ia a humano', 'humanizador español', 'chatgpt humanizer', 'humanizar chatgpt', 'humanizar texto chatgpt', 'pasar detector ia', 'humanizador gratis'],
   alternates: {
     canonical: 'https://detectordeia.ai/humanizador',
   },
   openGraph: {
-    title: 'Humanizador de IA en Español Gratis',
-    description: 'Transforma texto generado por IA en contenido natural y humano. Sin registro, 100% privado, optimizado para español.',
+    title: 'Humanizador de IA Gratis en Español 2025',
+    description: 'Transforma texto generado por IA en contenido natural y humano. Sin registro, 100% privado, optimizado para español. Actualizado 2025.',
     url: 'https://detectordeia.ai/humanizador',
     siteName: 'DetectorDeIA',
     type: 'website',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Humanizador de IA en Español Gratis',
-    description: 'Transforma texto generado por IA en contenido natural y humano. Sin registro, optimizado para español.',
+    title: 'Humanizador de IA Gratis en Español 2025',
+    description: 'Transforma texto generado por IA en contenido natural y humano. Sin registro, optimizado para español. Actualizado 2025.',
     images: ['https://detectordeia.ai/og-humanizador.png'],
   },
   robots: {

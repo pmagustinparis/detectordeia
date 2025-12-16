@@ -727,7 +727,31 @@ export default function DetectorMain({
                     </>
                   )}
                 </div>
-                
+
+                {/* CTA Humanizador - Solo si detecta > 70% IA */}
+                {result.probability >= 70 && (
+                  <div className="w-full bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-400 rounded-2xl p-4 my-4 shadow-lg">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl">⚠️</div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-gray-800 text-base mb-1">
+                          Este texto fue detectado como IA
+                        </h4>
+                        <p className="text-sm text-gray-700 mb-3">
+                          Humanízalo en segundos para que pase desapercibido y suene más natural
+                        </p>
+                        <a
+                          href={`/humanizador?texto=${encodeURIComponent(text.substring(0, 600))}`}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all text-sm"
+                        >
+                          <Icon icon={ProductIcons.Humanizer} size="md" />
+                          Humanizar ahora →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* CTA premium compacto inmediatamente después del resultado principal */}
                 <div className="w-full flex flex-col items-center my-3">
                   <a
