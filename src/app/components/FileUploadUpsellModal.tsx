@@ -116,7 +116,7 @@ export default function FileUploadUpsellModal({
               href="/pricing"
               className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Ver Planes y Precios
+              Ver Planes
             </a>
 
             <button

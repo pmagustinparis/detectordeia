@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         destination: '/humanizador',
         permanent: true, // 301 redirect para mantener SEO
       },
+      {
+        source: '/precios',
+        destination: '/pricing',
+        permanent: true, // 301 redirect para consolidar en /pricing
+      },
     ];
   },
 };

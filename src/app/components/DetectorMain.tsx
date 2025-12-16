@@ -1159,7 +1159,7 @@ export default function DetectorMain({
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icon icon={ProductIcons.Upgrade} size="md" />
-                          Ver Planes y Precios
+                          Ver Planes
                         </span>
                       </a>
                       <p className="text-xs text-gray-600 mt-2">Desde $12.99/mes • Cancela cuando quieras</p>
@@ -1226,7 +1226,7 @@ export default function DetectorMain({
                     href="/pricing"
                     className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
                   >
-                    <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Ver Planes y Precios</span>
+                    <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Ver Planes</span>
                   </a>
                   <p className="text-xs text-gray-500">Soporte prioritario vía email incluido</p>
                 </div>
@@ -1376,7 +1376,7 @@ export default function DetectorMain({
                           href="/pricing"
                           className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
                         >
-                          Ver Planes y Precios
+                          Ver Planes
                         </a>
                       </>
                     )}

@@ -980,7 +980,7 @@ export default function HumanizadorMain() {
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icon icon={ProductIcons.Upgrade} size="md" />
-                          Ver Planes y Precios
+                          Ver Planes
                         </span>
                       </a>
                       <p className="text-xs text-gray-600 mt-2">Desde $12.99/mes • Cancela cuando quieras</p>
@@ -1173,7 +1173,7 @@ export default function HumanizadorMain() {
                           href="/pricing"
                           className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
                         >
-                          Ver Planes y Precios
+                          Ver Planes
                         </a>
                       </>
                     )}

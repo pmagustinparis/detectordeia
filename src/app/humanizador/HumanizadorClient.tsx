@@ -114,7 +114,7 @@ export default function HumanizadorClient() {
               href="/pricing"
               className="inline-block w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
             >
-              Ver Planes y Precios
+              Ver Planes
             </a>
           </div>
         </section>
