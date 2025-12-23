@@ -214,13 +214,36 @@ async function handleSubscriptionUpdated(
   subscription: any,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
+  console.log('🔔 Processing customer.subscription.updated:', {
+    subscription_id: subscription.id,
+    status: subscription.status,
+    cancel_at_period_end: subscription.cancel_at_period_end,
+  });
+
+  // Los period dates están en subscription_item, igual que en checkout
+  const subscriptionItem = subscription.items?.data?.[0];
+
+  if (!subscriptionItem) {
+    console.error('❌ No subscription items found');
+    throw new Error('Missing subscription items');
+  }
+
+  // Validar que tenemos las fechas
+  if (!subscriptionItem.current_period_start || !subscriptionItem.current_period_end) {
+    console.error('❌ Missing period dates in subscription item:', {
+      subscription_id: subscription.id,
+      has_items: !!subscription.items?.data?.length,
+    });
+    throw new Error('Missing period dates in subscription item');
+  }
+
   const { error } = await supabase
     .from('subscriptions')
     .update({
       status: subscription.status,
-      current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-      cancel_at_period_end: subscription.cancel_at_period_end,
+      current_period_start: new Date(subscriptionItem.current_period_start * 1000).toISOString(),
+      current_period_end: new Date(subscriptionItem.current_period_end * 1000).toISOString(),
+      cancel_at_period_end: subscription.cancel_at_period_end || false,
     })
     .eq('stripe_subscription_id', subscription.id);
 
@@ -229,7 +252,7 @@ async function handleSubscriptionUpdated(
     throw error;
   }
 
-  console.log(`✅ Subscription ${subscription.id} updated`);
+  console.log(`✅ Subscription ${subscription.id} updated (cancel_at_period_end: ${subscription.cancel_at_period_end})`);
 }
 
 // Manejar cancelación de suscripción
