@@ -222,11 +222,23 @@ export default function PricingPageClient() {
   const faqs = [
     {
       q: "¿Qué es el plan Express?",
-      a: "El plan Express es un pase de 24 horas que te da acceso ilimitado a todas las funcionalidades premium por solo $3.99. Es perfecto para cuando necesitas completar un proyecto urgente o quieres probar todas las funciones premium antes de suscribirte al plan Premium.",
+      a: "El plan Express es un pase temporal que te da acceso ilimitado a todas las funcionalidades premium. Disponible en dos opciones: Express 24h ($3.99) para emergencias puntuales, o Express Semanal ($8.99) para 7 días completos - ideal para semanas de exámenes o proyectos intensivos. Es perfecto para cuando necesitas acceso premium sin suscribirte.",
+    },
+    {
+      q: "¿Qué diferencia hay entre Express 24h y Express Semanal?",
+      a: "Express 24h ($3.99) te da acceso ilimitado por 24 horas - ideal para una entrega urgente o emergencia puntual. Express Semanal ($8.99) te da 7 días completos de acceso, perfecto para semanas de exámenes, proyectos grupales o múltiples entregas. El Semanal ahorra 68% vs comprar 7 pases de 24h individuales.",
     },
     {
       q: "¿El plan Express se renueva automáticamente?",
-      a: "No, el plan Express es un pago único que dura exactamente 24 horas desde el momento de la compra. No hay renovación automática. Si quieres más acceso, puedes comprar otro pase Express o suscribirte al plan Premium.",
+      a: "No, el plan Express (tanto 24h como Semanal) es un pago único sin renovación automática. Dura exactamente el tiempo comprado desde el momento de la activación. Si quieres más acceso, puedes comprar otro pase Express (se extiende tu tiempo activo) o suscribirte al plan Premium.",
+    },
+    {
+      q: "¿Puedo comprar más Express si ya tengo uno activo?",
+      a: "¡Sí! Si compras otro pase Express mientras tienes uno activo, el tiempo se suma automáticamente. Por ejemplo, si te quedan 2 horas de Express 24h y compras otro 24h, tendrás 26 horas totales. Lo mismo aplica para Express Semanal.",
+    },
+    {
+      q: "¿Qué diferencia hay entre Express y Premium?",
+      a: "Express es un pago único temporal (24h por $3.99 o 7 días por $8.99) sin renovación automática - ideal para necesidades puntuales. Premium es una suscripción continua ($12.99/mes o $124.68/año) con acceso permanente - ideal para uso regular. Ambos tienen las mismas funcionalidades ilimitadas.",
     },
     {
       q: "¿Qué métodos de pago aceptan?",
@@ -235,10 +247,6 @@ export default function PricingPageClient() {
     {
       q: "¿Puedo cancelar el plan Premium en cualquier momento?",
       a: "Sí, puedes cancelar tu suscripción Premium en cualquier momento desde tu dashboard. No hay compromisos ni penalizaciones por cancelación anticipada.",
-    },
-    {
-      q: "¿Qué diferencia hay entre Express y Premium?",
-      a: "Express te da acceso completo por 24 horas ($3.99), mientras que Premium es una suscripción mensual ($12.99/mes) o anual ($124.68/año) con acceso continuo. Ambos tienen las mismas funcionalidades ilimitadas.",
     },
     {
       q: "¿El plan anual se renueva automáticamente?",
@@ -250,7 +258,7 @@ export default function PricingPageClient() {
     },
     {
       q: "¿Los planes incluyen todas las herramientas?",
-      a: "Sí, tanto Express como Premium incluyen acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
+      a: "Sí, tanto Express (24h y Semanal) como Premium incluyen acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
     },
     {
       q: "¿Hay límites de uso en Express y Premium?",
@@ -393,7 +401,7 @@ export default function PricingPageClient() {
             {expressDuration === '7d' && (
               <div className="bg-green-50 border-2 border-green-400 rounded-lg px-3 py-2 mb-4 w-full">
                 <p className="text-xs text-green-800 font-bold text-center">
-                  💰 Ahorra 64% vs 7 días individuales ($27.93)
+                  💰 Ahorra 68% vs 7 días individuales ($27.93)
                 </p>
               </div>
             )}
@@ -457,41 +465,33 @@ export default function PricingPageClient() {
               <p className="text-gray-700 text-sm font-bold">🔄 Acceso continuo, sin interrupciones</p>
             </div>
 
-            {/* Toggle Billing - DENTRO de la card */}
-            <div className="w-full mb-6">
-              <div className="relative flex bg-violet-100 rounded-full p-1 w-full h-11 shadow-sm">
-                <button
-                  className={`flex-1 z-10 font-semibold text-sm transition-colors duration-200 rounded-full focus:outline-none ${
-                    billing === 'monthly' ? 'text-white' : 'text-violet-700'
-                  }`}
-                  onClick={() => setBilling('monthly')}
-                >
-                  Mensual
-                </button>
-                <button
-                  className={`flex-1 z-10 font-semibold text-sm transition-colors duration-200 rounded-full focus:outline-none flex items-center justify-center gap-1.5 ${
-                    billing === 'annual' ? 'text-white' : 'text-violet-700'
-                  }`}
-                  onClick={() => setBilling('annual')}
-                >
-                  Anual
-                  <span
-                    className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
-                      billing === 'annual'
-                        ? 'bg-white text-violet-600'
-                        : 'bg-violet-200 text-violet-700'
-                    }`}
-                  >
-                    -20%
-                  </span>
-                </button>
-                <span
-                  className="absolute top-1 left-1 h-9 w-[calc(50%-4px)] rounded-full bg-gradient-to-r from-violet-600 to-purple-600 transition-all duration-300 shadow-md"
-                  style={{
-                    transform: billing === 'monthly' ? 'translateX(0)' : 'translateX(100%)',
-                  }}
-                />
-              </div>
+            {/* Botones de selección de billing */}
+            <div className="flex gap-2 mb-4">
+              <button
+                onClick={() => setBilling('monthly')}
+                className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                  billing === 'monthly'
+                    ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg scale-105'
+                    : 'bg-white text-violet-700 hover:bg-violet-100 border-2 border-violet-200'
+                }`}
+              >
+                Mensual
+              </button>
+              <button
+                onClick={() => setBilling('annual')}
+                className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-1.5 ${
+                  billing === 'annual'
+                    ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg scale-105'
+                    : 'bg-white text-violet-700 hover:bg-violet-100 border-2 border-violet-200'
+                }`}
+              >
+                Anual
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                  billing === 'annual' ? 'bg-white text-violet-600' : 'bg-violet-200 text-violet-700'
+                }`}>
+                  -20%
+                </span>
+              </button>
             </div>
 
             <div className="mb-2">
@@ -506,42 +506,53 @@ export default function PricingPageClient() {
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
+            <div className="bg-gradient-to-r from-violet-100 to-purple-100 border-2 border-violet-300 rounded-xl px-4 py-3 mb-4 w-full">
+              <p className="text-violet-900 text-sm font-bold text-center">
+                💎 Perfecto para: Uso diario profesional, estudiantes avanzados, creadores de contenido
+              </p>
+            </div>
             <ul className="space-y-4 mb-8 flex-grow w-full">
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-semibold">✨ Caracteres ilimitados</span>
+                <span className="text-gray-900 font-semibold">Trabajo ilimitado sin interrupciones ni restricciones</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-semibold">Usos ilimitados diarios</span>
+                <span className="text-gray-900 font-semibold">Caracteres y usos ilimitados todos los días</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Subida de archivos (PDF, DOCX, TXT)</span>
+                <span className="text-gray-900 font-semibold">5 modos premium en Humanizador y Parafraseador</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">5 modos premium</span>
+                <span className="text-gray-900 font-medium">Subida de archivos largos (PDF, DOCX, TXT)</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Historial completo</span>
+                <span className="text-gray-900 font-medium">Historial completo de tus análisis</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Soporte prioritario</span>
+                <span className="text-gray-900 font-medium">Soporte prioritario por email</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-medium">Ideal para uso profesional continuo</span>
               </li>
             </ul>
             {getProCTA()}

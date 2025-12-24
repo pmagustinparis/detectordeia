@@ -6,7 +6,7 @@ import { useAuth } from '@/lib/hooks/useAuth';
 /**
  * ExpressPromoBanner Component
  *
- * Banner promocional para el plan Express ($3.99/24h)
+ * Banner promocional para el plan Express ($3.99/24h o $8.99/7d)
  * Solo se muestra para usuarios FREE (no Express ni Premium)
  * Dismissible con localStorage
  */
@@ -93,10 +93,10 @@ export default function ExpressPromoBanner() {
 
           <div className="flex-1">
             <p className="text-white font-bold text-sm sm:text-base mb-1">
-              ¿Entrega urgente? Express Pass - Acceso ilimitado por 24 horas
+              ¿Necesitás acceso premium? Express Pass - 24h o 7 días
             </p>
             <p className="text-white/90 text-xs sm:text-sm">
-              Todo ilimitado • 5 modos premium • Perfecto para entregas de último momento • <strong>Solo $3.99</strong>
+              Todo ilimitado • 5 modos premium • Desde <strong>$3.99/24h</strong> o <strong>$8.99/semana</strong> (ahorra 68%)
             </p>
           </div>
 
