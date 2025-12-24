@@ -130,7 +130,7 @@ export default function CharacterLimitModal({
               {/* Pro Benefits */}
               <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
                 <p className="text-sm font-bold text-violet-900 mb-3">
-                  🚀 Con Plan Pro obtenés:
+                  🚀 Con Plan Premium obtenés:
                 </p>
                 <ul className="space-y-2 text-sm text-violet-800">
                   <li className="flex items-start gap-2">
@@ -147,7 +147,7 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-violet-700 mt-3 font-medium">
-                  Express $3.99/24h • Pro $12.99/mes • Ahorra 20% anual
+                  Express $3.99/24h • Premium $12.99/mes • Ahorra 20% anual
                 </p>
               </div>
 
@@ -164,7 +164,7 @@ export default function CharacterLimitModal({
                 href="/pricing"
                 className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm mb-3"
               >
-                O ver Express y Pro →
+                O ver Express y Premium →
               </a>
             </>
           )}
@@ -179,7 +179,7 @@ export default function CharacterLimitModal({
               {/* Premium Benefits */}
               <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
                 <p className="text-sm font-bold text-violet-900 mb-3">
-                  🚀 Con Plan Pro obtenés:
+                  🚀 Con Plan Premium obtenés:
                 </p>
                 <ul className="space-y-2 text-sm text-violet-800">
                   <li className="flex items-start gap-2">
@@ -204,7 +204,7 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-violet-700 mt-3 font-medium">
-                  Express $3.99/24h • Pro $12.99/mes • Ahorra 20% anual
+                  Express $3.99/24h • Premium $12.99/mes • Ahorra 20% anual
                 </p>
               </div>
 

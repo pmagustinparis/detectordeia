@@ -199,7 +199,7 @@ export default function PricingPageClient() {
         onClick={handleProCTAClick}
         className="mt-auto w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
       >
-        {isAuthenticated ? 'Actualizar a Pro' : 'Registrate Gratis y Actualiza'}
+        {isAuthenticated ? 'Actualizar a Premium' : 'Registrate Gratis y Actualiza'}
       </button>
     );
   };
@@ -207,27 +207,27 @@ export default function PricingPageClient() {
   const faqs = [
     {
       q: "¿Qué es el plan Express?",
-      a: "El plan Express es un pase de 24 horas que te da acceso ilimitado a todas las funcionalidades premium por solo $3.99. Es perfecto para cuando necesitas completar un proyecto urgente o quieres probar todas las funciones premium antes de suscribirte al plan Pro.",
+      a: "El plan Express es un pase de 24 horas que te da acceso ilimitado a todas las funcionalidades premium por solo $3.99. Es perfecto para cuando necesitas completar un proyecto urgente o quieres probar todas las funciones premium antes de suscribirte al plan Premium.",
     },
     {
       q: "¿El plan Express se renueva automáticamente?",
-      a: "No, el plan Express es un pago único que dura exactamente 24 horas desde el momento de la compra. No hay renovación automática. Si quieres más acceso, puedes comprar otro pase Express o suscribirte al plan Pro.",
+      a: "No, el plan Express es un pago único que dura exactamente 24 horas desde el momento de la compra. No hay renovación automática. Si quieres más acceso, puedes comprar otro pase Express o suscribirte al plan Premium.",
     },
     {
       q: "¿Qué métodos de pago aceptan?",
       a: "Aceptamos todas las tarjetas de crédito y débito principales (Visa, Mastercard, American Express) a través de Stripe, nuestra plataforma de pago segura.",
     },
     {
-      q: "¿Puedo cancelar el plan Pro en cualquier momento?",
-      a: "Sí, puedes cancelar tu suscripción Pro en cualquier momento desde tu dashboard. No hay compromisos ni penalizaciones por cancelación anticipada.",
+      q: "¿Puedo cancelar el plan Premium en cualquier momento?",
+      a: "Sí, puedes cancelar tu suscripción Premium en cualquier momento desde tu dashboard. No hay compromisos ni penalizaciones por cancelación anticipada.",
     },
     {
-      q: "¿Qué diferencia hay entre Express y Pro?",
-      a: "Express te da acceso completo por 24 horas ($3.99), mientras que Pro es una suscripción mensual ($12.99/mes) o anual ($124.68/año) con acceso continuo. Ambos tienen las mismas funcionalidades ilimitadas.",
+      q: "¿Qué diferencia hay entre Express y Premium?",
+      a: "Express te da acceso completo por 24 horas ($3.99), mientras que Premium es una suscripción mensual ($12.99/mes) o anual ($124.68/año) con acceso continuo. Ambos tienen las mismas funcionalidades ilimitadas.",
     },
     {
       q: "¿El plan anual se renueva automáticamente?",
-      a: "Sí, el plan Pro anual se renueva automáticamente cada año. Puedes cancelar la renovación automática en cualquier momento desde tu dashboard.",
+      a: "Sí, el plan Premium anual se renueva automáticamente cada año. Puedes cancelar la renovación automática en cualquier momento desde tu dashboard.",
     },
     {
       q: "¿Puedo cambiar de plan mensual a anual?",
@@ -235,15 +235,15 @@ export default function PricingPageClient() {
     },
     {
       q: "¿Los planes incluyen todas las herramientas?",
-      a: "Sí, tanto Express como Pro incluyen acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
+      a: "Sí, tanto Express como Premium incluyen acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
     },
     {
-      q: "¿Hay límites de uso en Express y Pro?",
-      a: "No, tanto Express como Pro incluyen usos ilimitados diarios y caracteres ilimitados por análisis. No hay límites en la cantidad de texto que puedes procesar.",
+      q: "¿Hay límites de uso en Express y Premium?",
+      a: "No, tanto Express como Premium incluyen usos ilimitados diarios y caracteres ilimitados por análisis. No hay límites en la cantidad de texto que puedes procesar.",
     },
     {
       q: "¿Ofrecen reembolsos?",
-      a: "No ofrecemos reembolsos en ningún plan. Al comprar Express o suscribirte a Pro, aceptas nuestros términos de servicio y la política de no reembolso. En Pro, puedes cancelar en cualquier momento y mantendrás acceso hasta el final del período pagado.",
+      a: "No ofrecemos reembolsos en ningún plan. Al comprar Express o suscribirte a Premium, aceptas nuestros términos de servicio y la política de no reembolso. En Premium, puedes cancelar en cualquier momento y mantendrás acceso hasta el final del período pagado.",
     },
   ];
 
@@ -307,7 +307,7 @@ export default function PricingPageClient() {
                 disabled
                 className="w-full text-center bg-gray-300 text-gray-500 font-bold py-3 px-6 rounded-xl shadow-md cursor-not-allowed"
               >
-                Tu plan actual es Pro
+                Tu plan actual es Premium
               </button>
             ) : (
               <a
@@ -390,11 +390,11 @@ export default function PricingPageClient() {
             </p>
           </div>
 
-          {/* Pro Plan */}
+          {/* Premium Plan */}
           <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 border-gray-200 hover:border-violet-200 transition-all duration-300">
             <div className="mb-4">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                Pro
+                Premium
               </h2>
               <p className="text-gray-700 text-sm font-bold">🔄 Acceso continuo, sin interrupciones</p>
             </div>
@@ -689,7 +689,7 @@ export default function PricingPageClient() {
               </div>
             </div>
 
-            {/* Pro Column */}
+            {/* Premium Column */}
             <div className="bg-white rounded-2xl shadow-lg border-2 border-violet-200 overflow-hidden">
               <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 text-center border-b-2 border-violet-200">
                 <h3 className="text-xl font-bold text-violet-700 mb-2">Pro</h3>
@@ -805,7 +805,7 @@ export default function PricingPageClient() {
                 ))}
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Uso DetectorDeIA diariamente para verificar el contenido de mi blog. El plan Pro vale cada centavo - los usos ilimitados y los 5 modos del parafraseador me ahorran horas de trabajo manual."
+                "Uso DetectorDeIA diariamente para verificar el contenido de mi blog. El plan Premium vale cada centavo - los usos ilimitados y los 5 modos del parafraseador me ahorran horas de trabajo manual."
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 flex items-center justify-center text-white font-bold text-lg">

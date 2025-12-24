@@ -45,7 +45,7 @@ const CHARACTER_LIMITS = {
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
   titulo: '¿Necesitas analizar múltiples textos o archivos largos?',
-  subtitulo: 'Accede ilimitado con Express o Pro',
+  subtitulo: 'Accede ilimitado con Express o Premium',
   bullets: [
     '✅ Sin límites de uso - Analiza todo lo que necesites',
     '📄 Sube archivos completos (PDF, Word, TXT)',
@@ -53,15 +53,15 @@ const premiumTextos = {
     '🎨 5 modos premium para humanizar y parafrasear',
     '📊 Historial completo de tus análisis',
   ],
-  precio: 'Express $3.99/24h (ideal entregas urgentes) • Pro $12.99/mes',
+  precio: 'Express $3.99/24h (ideal entregas urgentes) • Premium $12.99/mes',
   cta: 'Ver Planes →',
 };
 const premiumCompactTextos = {
-  titulo: 'Desbloquea Express o Pro',
+  titulo: 'Desbloquea Express o Premium',
   bullets: [
     'Usos ilimitados + Caracteres ilimitados',
     '5 modos premium + Historial completo',
-    'Express $3.99/24h • Pro $12.99/mes',
+    'Express $3.99/24h • Premium $12.99/mes',
   ],
   cta: 'Ver Planes',
 };
@@ -1072,12 +1072,12 @@ export default function DetectorMain({
                 )}
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
 
-                {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
+                {/* FASE 5: Comparación visual Free vs Premium - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-4 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
-                      <h3 className="text-sm font-bold text-purple-900">Comparación: Free vs Pro</h3>
+                      <h3 className="text-sm font-bold text-purple-900">Comparación: Free vs Premium</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">
@@ -1299,7 +1299,7 @@ export default function DetectorMain({
                         {/* Pro Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-orange-700" />Con Plan Pro obtenés:</span>
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-orange-700" />Con Plan Premium obtenés:</span>
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
@@ -1333,7 +1333,7 @@ export default function DetectorMain({
                           href="/pricing"
                           className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm"
                         >
-                          O ver Plan Pro →
+                          O ver Plan Premium →
                         </a>
                       </>
                     ) : (
@@ -1346,7 +1346,7 @@ export default function DetectorMain({
                         {/* Premium Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-orange-700" />Con Plan Pro obtenés:</span>
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-orange-700" />Con Plan Premium obtenés:</span>
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">

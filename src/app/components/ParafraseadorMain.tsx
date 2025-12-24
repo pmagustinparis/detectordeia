@@ -228,7 +228,7 @@ export default function ParafraseadorMain() {
 
         // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
-          setError(data.message || 'Este modo requiere Plan Pro');
+          setError(data.message || 'Este modo requiere Plan Premium');
 
           // Track modo premium bloqueado
           trackEvent({
@@ -620,16 +620,16 @@ export default function ParafraseadorMain() {
                       <div className="flex items-start gap-2 mb-2">
                         <span className="text-xl"><Icon icon={ProductIcons.Locked} size="sm" className="inline" /></span>
                         <div>
-                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro o Express</p>
+                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Premium o Express</p>
                           <p className="text-violet-100 leading-relaxed">
                             Parafrasea tu texto con estilo <strong>{mode.name.toLowerCase()}</strong> profesional.
-                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
+                            Con Plan Premium obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
                           </p>
                         </div>
                       </div>
                       <div className="text-center mt-2 pt-2 border-t border-violet-400/50">
                         <p className="text-violet-100 font-semibold">
-                          Express $3.99/24h • Pro desde $12.99/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
+                          Express $3.99/24h • Premium desde $12.99/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
                         </p>
                       </div>
                     </div>
@@ -795,12 +795,12 @@ export default function ParafraseadorMain() {
                   </div>
                 ) : null}
 
-                {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
+                {/* FASE 5: Comparación visual Free vs Premium - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-3 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
-                      <h3 className="text-sm font-bold text-purple-900">Comparación: Free vs Pro</h3>
+                      <h3 className="text-sm font-bold text-purple-900">Comparación: Free vs Premium</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">
@@ -989,7 +989,7 @@ export default function ParafraseadorMain() {
                         {/* Pro Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Premium obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
@@ -1023,7 +1023,7 @@ export default function ParafraseadorMain() {
                           href="/pricing"
                           className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm"
                         >
-                          O ver Plan Pro →
+                          O ver Plan Premium →
                         </a>
                       </>
                     ) : (
@@ -1036,7 +1036,7 @@ export default function ParafraseadorMain() {
                         {/* Premium Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-violet-900 mb-2">
-                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Premium obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-violet-800">
                             <li className="flex items-start gap-2">
