@@ -93,10 +93,10 @@ export default function ExpressPromoBanner() {
 
           <div className="flex-1">
             <p className="text-white font-bold text-sm sm:text-base mb-1">
-              ¿Necesitás acceso premium? Express Pass - 24h o 7 días
+              Express Pass: $3.99 por 24h • $8.99 por semana (ahorra 68%)
             </p>
             <p className="text-white/90 text-xs sm:text-sm">
-              Todo ilimitado • 5 modos premium • Desde <strong>$3.99/24h</strong> o <strong>$8.99/semana</strong> (ahorra 68%)
+              Acceso completo e ilimitado • 5 modos premium • Perfecto para entregas urgentes
             </p>
           </div>
 
