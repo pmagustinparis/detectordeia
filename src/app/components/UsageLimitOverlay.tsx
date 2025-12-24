@@ -184,7 +184,7 @@ export default function UsageLimitOverlay({
               {/* Pro Option */}
               <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
                 <p className="text-sm font-bold text-violet-900 mb-2">
-                  🚀 Plan Pro - Uso continuo
+                  🚀 Plan Premium - Uso continuo
                 </p>
                 <ul className="space-y-1.5 text-sm text-violet-800 mb-3">
                   <li className="flex items-start gap-2">
@@ -217,7 +217,7 @@ export default function UsageLimitOverlay({
                   href="/pricing"
                   className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 >
-                  Ver Plan Pro ($12.99/mes)
+                  Ver Plan Premium ($12.99/mes)
                 </a>
               </div>
 

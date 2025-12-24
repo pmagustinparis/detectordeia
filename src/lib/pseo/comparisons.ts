@@ -57,7 +57,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Puedo usar DetectorDeIA sin licencia institucional?',
-        answer: 'Sí, DetectorDeIA está diseñado para uso individual. Cualquier persona (profesor, estudiante, profesional) puede crear una cuenta gratis y usar el detector. El plan PRO cuesta solo $12.99/mes, sin necesidad de aprobación institucional.'
+        answer: 'Sí, DetectorDeIA está diseñado para uso individual. Cualquier persona (profesor, estudiante, profesional) puede crear una cuenta gratis y usar el detector. El plan premium cuesta solo $12.99/mes, sin necesidad de aprobación institucional.'
       },
       {
         question: '¿DetectorDeIA detecta plagio como Turnitin?',
@@ -99,7 +99,7 @@ export const comparisons: ComparisonPage[] = [
       'Especialización 100% en español - QuillBot tiene precisión limitada en idiomas no ingleses',
       'Multi-pasada con GPT-3.5 + GPT-4o-mini vs análisis de una sola pasada',
       'Métricas lingüísticas avanzadas específicas para español',
-      'Sin límite mensual de palabras en plan PRO (QuillBot tiene caps)',
+      'Sin límite mensual de palabras en plan premium (QuillBot tiene caps)',
       'Precio más económico: $12.99/mes vs $19.95/mes de QuillBot Premium',
       'Interfaz en español nativo, no traducida',
       'Mejor soporte para modismos de LATAM y España'
@@ -312,7 +312,7 @@ export const comparisons: ComparisonPage[] = [
 
     whyBetter: [
       'Precio transparente ($12.99/mes ilimitado) vs sistema de créditos ($0.01/crédito)',
-      'Sin créditos que administrar - usos ilimitados en plan PRO',
+      'Sin créditos que administrar - usos ilimitados en plan premium',
       'Optimizado 100% para español vs Originality diseñado para inglés',
       'Incluye Humanizador y Parafraseador sin costo adicional',
       'Análisis instantáneo sin consumir créditos por re-escaneo',
@@ -328,7 +328,7 @@ export const comparisons: ComparisonPage[] = [
       { feature: 'Fact-checking', detectordeia: false, competitor: true },
       { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
       { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
-      { feature: 'Análisis ilimitados', detectordeia: 'Sí (plan PRO)', competitor: 'No (limitado por créditos)' },
+      { feature: 'Análisis ilimitados', detectordeia: 'Sí (plan premium)', competitor: 'No (limitado por créditos)' },
       { feature: 'Ideal para', detectordeia: 'Individuales (profesores, estudiantes)', competitor: 'Agencias SEO' },
       { feature: 'API', detectordeia: false, competitor: true }
     ],
@@ -388,13 +388,13 @@ export const comparisons: ComparisonPage[] = [
       'Optimizado para español (España + LATAM) vs ZeroGPT genérico',
       'Límites más generosos: 15 usos/día vs 3 usos/día en ZeroGPT gratis',
       'Métricas lingüísticas avanzadas (perplejidad, diversidad léxica)',
-      'Plan PRO económico ($12.99/mes) para análisis ilimitados',
+      'plan premium económico ($12.99/mes) para análisis ilimitados',
       'Incluye Humanizador y Parafraseador integrado'
     ],
 
     comparisons: [
       { feature: 'Precio gratis', detectordeia: '15 análisis/día', competitor: '3 análisis/día' },
-      { feature: 'Precio PRO', detectordeia: '$12.99/mes ilimitado', competitor: 'No tiene plan PRO' },
+      { feature: 'Precio PRO', detectordeia: '$12.99/mes ilimitado', competitor: 'No tiene plan premium' },
       { feature: 'Anuncios', detectordeia: 'Sin anuncios', competitor: 'Publicidad invasiva' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Genérico multi-idioma' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '60-70%' },
@@ -409,7 +409,7 @@ export const comparisons: ComparisonPage[] = [
 
     pricing: {
       detectordeia: 'Gratis (15/día) o $12.99/mes ilimitado',
-      competitor: 'Gratis (3/día) - Sin plan PRO'
+      competitor: 'Gratis (3/día) - Sin plan premium'
     },
 
     faqs: [
@@ -419,7 +419,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿ZeroGPT es realmente gratis?',
-        answer: 'Sí, pero limitado: solo 3 análisis por día (vs 15 de DetectorDeIA), con anuncios invasivos, y precisión cuestionable. Es gratis pero no confiable para uso serio. DetectorDeIA ofrece 15/día gratis SIN anuncios, y plan PRO a $12.99/mes para uso profesional.'
+        answer: 'Sí, pero limitado: solo 3 análisis por día (vs 15 de DetectorDeIA), con anuncios invasivos, y precisión cuestionable. Es gratis pero no confiable para uso serio. DetectorDeIA ofrece 15/día gratis SIN anuncios, y plan premium a $12.99/mes para uso profesional.'
       },
       {
         question: '¿Puedo confiar en ZeroGPT para trabajos académicos?',
@@ -643,7 +643,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿DetectorDeIA tiene límite de palabras como Undetectable.AI?',
-        answer: 'Plan FREE: 5,000 caracteres por análisis/humanización. Plan PRO: 15,000 caracteres (~3,000 palabras) por análisis, pero ILIMITADOS análisis/mes. Undetectable.AI limita palabras totales al mes (ej: 250 palabras/mes en plan básico).'
+        answer: 'Plan FREE: 5,000 caracteres por análisis/humanización. plan premium: 15,000 caracteres (~3,000 palabras) por análisis, pero ILIMITADOS análisis/mes. Undetectable.AI limita palabras totales al mes (ej: 250 palabras/mes en plan básico).'
       }
     ],
 
@@ -818,7 +818,7 @@ export const comparisons: ComparisonPage[] = [
       'Sin necesidad de plan Team - uso individual directo',
       'Incluye Humanizador y Parafraseador integrados',
       'Interfaz simple sin features empresariales innecesarias',
-      'Análisis ilimitados en plan PRO vs Sapling con límites'
+      'Análisis ilimitados en plan premium vs Sapling con límites'
     ],
 
     comparisons: [
@@ -829,7 +829,7 @@ export const comparisons: ComparisonPage[] = [
       { feature: 'Chat assist', detectordeia: false, competitor: true },
       { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
       { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
-      { feature: 'Análisis ilimitados', detectordeia: 'Sí (plan PRO)', competitor: 'Limitado por plan' },
+      { feature: 'Análisis ilimitados', detectordeia: 'Sí (plan premium)', competitor: 'Limitado por plan' },
       { feature: 'Integración CRM', detectordeia: false, competitor: 'Sí (Salesforce, Zendesk)' },
       { feature: 'Ideal para', detectordeia: 'Individuales (académico, profesional)', competitor: 'Teams de customer service' }
     ],

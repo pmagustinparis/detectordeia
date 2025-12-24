@@ -49,7 +49,7 @@ export const features: FeaturePage[] = [
       {
         icon: '🚀',
         title: '5 Modos PRO',
-        description: 'Plan PRO ($10/mes): Modo Formal, Creativo, Simplificado, Académico + 15,000 caracteres. Plan FREE: Modo Estándar (muy efectivo).'
+        description: 'plan premium ($10/mes): Modo Formal, Creativo, Simplificado, Académico + 15,000 caracteres. Plan FREE: Modo Estándar (muy efectivo).'
       }
     ],
 
@@ -65,11 +65,11 @@ export const features: FeaturePage[] = [
     faqs: [
       {
         question: '¿Es realmente gratis el humanizador de IA?',
-        answer: 'SÍ. Ofrecemos 3 usos diarios sin registro (solo visitá la página). Si te registrás gratis, obtenés 15 usos diarios. El plan FREE permite humanizar hasta 600 caracteres por uso. Si necesitás más (hasta 15,000 caracteres), el plan PRO cuesta solo $10/mes con usos ilimitados.'
+        answer: 'SÍ. Ofrecemos 3 usos diarios sin registro (solo visitá la página). Si te registrás gratis, obtenés 15 usos diarios. El plan FREE permite humanizar hasta 600 caracteres por uso. Si necesitás más (hasta 15,000 caracteres), el plan premium cuesta solo $10/mes con usos ilimitados.'
       },
       {
         question: '¿Cuál es la diferencia entre el plan FREE y PRO?',
-        answer: 'Plan FREE: 15 usos diarios, 600 caracteres por uso, Modo Estándar (muy efectivo). Plan PRO ($10/mes): Usos ILIMITADOS, 15,000 caracteres por uso, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), subida de archivos PDF/DOCX, historial de humanizaciones.'
+        answer: 'Plan FREE: 15 usos diarios, 600 caracteres por uso, Modo Estándar (muy efectivo). plan premium ($10/mes): Usos ILIMITADOS, 15,000 caracteres por uso, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), subida de archivos PDF/DOCX, historial de humanizaciones.'
       },
       {
         question: '¿El humanizador cambia el significado de mi texto?',
@@ -89,11 +89,11 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Cuánto tiempo tarda en humanizar?',
-        answer: 'Entre 3-8 segundos dependiendo del largo del texto y el modo seleccionado. Plan FREE (Modo Estándar): ~3-5 segundos. Plan PRO (Modos avanzados): ~5-8 segundos. Mucho más rápido que editar manualmente.'
+        answer: 'Entre 3-8 segundos dependiendo del largo del texto y el modo seleccionado. Plan FREE (Modo Estándar): ~3-5 segundos. plan premium (Modos avanzados): ~5-8 segundos. Mucho más rápido que editar manualmente.'
       },
       {
         question: '¿Los textos humanizados quedan guardados?',
-        answer: 'En plan FREE: NO, se borran inmediatamente. En plan PRO: SÍ, se guardan en tu historial privado para que puedas acceder después. Solo VOS podés ver tu historial. Nadie más tiene acceso.'
+        answer: 'En plan FREE: NO, se borran inmediatamente. En plan premium: SÍ, se guardan en tu historial privado para que puedas acceder después. Solo VOS podés ver tu historial. Nadie más tiene acceso.'
       }
     ],
 
@@ -141,7 +141,7 @@ export const features: FeaturePage[] = [
       {
         icon: '🎯',
         title: '5 Modos de Parafraseo',
-        description: 'Plan PRO: Formal (tono profesional), Creativo (cambios profundos), Simplificado (más fácil), Académico (estilo universitario). Plan FREE: Modo Estándar.'
+        description: 'plan premium: Formal (tono profesional), Creativo (cambios profundos), Simplificado (más fácil), Académico (estilo universitario). Plan FREE: Modo Estándar.'
       },
       {
         icon: '🔒',
@@ -176,7 +176,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Es gratis parafrasear textos online?',
-        answer: 'SÍ. Plan FREE: 15 usos diarios gratis (con registro), 600 caracteres por paráfrasis. Sin registro: 3 usos diarios. Plan PRO ($10/mes): usos ILIMITADOS, 15,000 caracteres, 5 modos, archivos PDF/DOCX.'
+        answer: 'SÍ. Plan FREE: 15 usos diarios gratis (con registro), 600 caracteres por paráfrasis. Sin registro: 3 usos diarios. plan premium ($10/mes): usos ILIMITADOS, 15,000 caracteres, 5 modos, archivos PDF/DOCX.'
       },
       {
         question: '¿Cuál es la diferencia entre parafrasear y resumir?',
@@ -192,11 +192,11 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Cuántas veces puedo parafrasear gratis por día?',
-        answer: 'Plan FREE con registro: 15 paráfrasis diarias (600 caracteres cada una). Sin registro: 3 paráfrasis diarias compartidas entre las 3 herramientas. Plan PRO: paráfrasis ILIMITADAS de hasta 15,000 caracteres.'
+        answer: 'Plan FREE con registro: 15 paráfrasis diarias (600 caracteres cada una). Sin registro: 3 paráfrasis diarias compartidas entre las 3 herramientas. plan premium: paráfrasis ILIMITADAS de hasta 15,000 caracteres.'
       },
       {
         question: '¿Qué modos de parafraseo están disponibles?',
-        answer: 'Plan FREE: Modo Estándar (reescritura equilibrada, muy efectiva). Plan PRO: (1) Formal - tono profesional/empresarial, (2) Creativo - cambios profundos y originales, (3) Simplificado - vocabulario más fácil, (4) Académico - estilo universitario con tecnicismos.'
+        answer: 'Plan FREE: Modo Estándar (reescritura equilibrada, muy efectiva). plan premium: (1) Formal - tono profesional/empresarial, (2) Creativo - cambios profundos y originales, (3) Simplificado - vocabulario más fácil, (4) Académico - estilo universitario con tecnicismos.'
       },
       {
         question: '¿Puedo parafrasear textos en inglés?',
@@ -435,17 +435,17 @@ export const features: FeaturePage[] = [
 
     // SEO
     title: 'Detector de Gemini Gratis en Español 2025 | Sin Registro',
-    description: 'Detecta si un texto fue escrito por Google Gemini (Gemini Pro, Ultra, Flash) gratis en español. Análisis en 5 segundos. Sin límites. Preciso para Gemini.',
+    description: 'Detecta si un texto fue escrito por Google Gemini (Gemini Premium, Ultra, Flash) gratis en español. Análisis en 5 segundos. Sin límites. Preciso para Gemini.',
     h1: 'Detector de Gemini Gratis: Identifica Textos de Google Gemini AI',
 
     // Content
-    intro: '¿Sospechás que un texto fue generado por Google Gemini? Nuestro detector gratuito especializado en Gemini identifica contenido escrito por Gemini Pro, Gemini Ultra, Gemini Flash y Gemini 1.5 con alta precisión. Optimizado específicamente para detectar el estilo único de Gemini: explicaciones técnicas detalladas, estructura organizada con subtítulos, tono profesional neutral. 100% gratis, sin registro, análisis en 5 segundos.',
+    intro: '¿Sospechás que un texto fue generado por Google Gemini? Nuestro detector gratuito especializado en Gemini identifica contenido escrito por Gemini Premium, Gemini Ultra, Gemini Flash y Gemini 1.5 con alta precisión. Optimizado específicamente para detectar el estilo único de Gemini: explicaciones técnicas detalladas, estructura organizada con subtítulos, tono profesional neutral. 100% gratis, sin registro, análisis en 5 segundos.',
 
     benefits: [
       {
         icon: '🔍',
         title: 'Especializado en Google Gemini',
-        description: 'Entrenado específicamente con textos de Gemini Pro, Gemini Ultra, Gemini Flash, Gemini 1.5. Detecta patrones únicos de Google: tono técnico preciso, estructura organizada, referencias a fuentes.'
+        description: 'Entrenado específicamente con textos de Gemini Premium, Gemini Ultra, Gemini Flash, Gemini 1.5. Detecta patrones únicos de Google: tono técnico preciso, estructura organizada, referencias a fuentes.'
       },
       {
         icon: '🎯',
@@ -490,7 +490,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Qué versiones de Gemini puede detectar?',
-        answer: 'Detectamos TODAS las versiones de Gemini: Gemini Pro (equilibrado), Gemini Ultra (más avanzado), Gemini Flash (rápido), Gemini 1.5 Pro, Gemini 1.5 Flash. Todos comparten la "firma Google": tono técnico balanceado, organización clara, menciones a limitaciones del modelo.'
+        answer: 'Detectamos TODAS las versiones de Gemini: Gemini Premium (equilibrado), Gemini Ultra (más avanzado), Gemini Flash (rápido), Gemini 1.5 Premium, Gemini 1.5 Flash. Todos comparten la "firma Google": tono técnico balanceado, organización clara, menciones a limitaciones del modelo.'
       },
       {
         question: '¿En qué se diferencia Gemini de ChatGPT y Claude?',
@@ -687,7 +687,7 @@ export const features: FeaturePage[] = [
       {
         icon: '🚀',
         title: '5 Modos PRO + Modo Estándar FREE',
-        description: 'Plan FREE: Modo Estándar (muy efectivo). Plan PRO ($10/mes): Formal, Creativo, Simplificado, Académico + 15,000 caracteres, usos ilimitados.'
+        description: 'Plan FREE: Modo Estándar (muy efectivo). plan premium ($10/mes): Formal, Creativo, Simplificado, Académico + 15,000 caracteres, usos ilimitados.'
       }
     ],
 
@@ -712,7 +712,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Es realmente gratis humanizar ChatGPT?',
-        answer: 'SÍ. Plan FREE: 15 humanizaciones diarias (con registro gratuito), 600 caracteres por uso, Modo Estándar. Sin registro: 3 humanizaciones diarias. Plan PRO ($10/mes): humanizaciones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. Puedes usar FREE para siempre sin pagar.'
+        answer: 'SÍ. Plan FREE: 15 humanizaciones diarias (con registro gratuito), 600 caracteres por uso, Modo Estándar. Sin registro: 3 humanizaciones diarias. plan premium ($10/mes): humanizaciones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. Puedes usar FREE para siempre sin pagar.'
       },
       {
         question: '¿El humanizador cambia el significado del texto de ChatGPT?',
@@ -724,7 +724,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Cuánto tarda en humanizar texto de ChatGPT?',
-        answer: 'Entre 3-8 segundos dependiendo del largo del texto y modo seleccionado. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. Plan PRO (Modos avanzados): ~5-8 segundos para textos más largos. Mucho más rápido que editar manualmente para eliminar patrones de ChatGPT.'
+        answer: 'Entre 3-8 segundos dependiendo del largo del texto y modo seleccionado. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. plan premium (Modos avanzados): ~5-8 segundos para textos más largos. Mucho más rápido que editar manualmente para eliminar patrones de ChatGPT.'
       },
       {
         question: '¿Puedo usar texto humanizado para trabajos académicos?',
@@ -794,7 +794,7 @@ export const features: FeaturePage[] = [
       {
         icon: '🚀',
         title: '5 Modos de Conversión',
-        description: 'Plan FREE: Modo Estándar. Plan PRO ($10/mes): Formal (profesional), Creativo (personalidad), Simplificado (fácil), Académico (universitario) + 15,000 caracteres.'
+        description: 'Plan FREE: Modo Estándar. plan premium ($10/mes): Formal (profesional), Creativo (personalidad), Simplificado (fácil), Académico (universitario) + 15,000 caracteres.'
       }
     ],
 
@@ -815,11 +815,11 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Funciona con ChatGPT, Claude, Gemini y otros LLMs?',
-        answer: 'SÍ. Nuestro conversor funciona con TODOS los LLMs principales: ChatGPT (GPT-3.5, GPT-4, GPT-4o), Claude (Claude 3, Claude 2), Google Gemini (Pro, Ultra, Flash), Llama, Mistral, Perplexity, DeepSeek, Copilot, Jasper, Copy.ai. Cada LLM tiene patrones únicos, pero nuestro sistema reconoce y transforma todos efectivamente (~80-90% éxito).'
+        answer: 'SÍ. Nuestro conversor funciona con TODOS los LLMs principales: ChatGPT (GPT-3.5, GPT-4, GPT-4o), Claude (Claude 3, Claude 2), Google Gemini (Premium, Ultra, Flash), Llama, Mistral, Perplexity, DeepSeek, Copilot, Jasper, Copy.ai. Cada LLM tiene patrones únicos, pero nuestro sistema reconoce y transforma todos efectivamente (~80-90% éxito).'
       },
       {
         question: '¿Es realmente gratis convertir texto de IA a humano?',
-        answer: 'SÍ. Plan FREE: 15 conversiones diarias (con registro gratuito), 600 caracteres por conversión, Modo Estándar (muy efectivo). Sin registro: 3 conversiones diarias. Plan PRO ($10/mes): conversiones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. FREE es suficiente para la mayoría de usuarios.'
+        answer: 'SÍ. Plan FREE: 15 conversiones diarias (con registro gratuito), 600 caracteres por conversión, Modo Estándar (muy efectivo). Sin registro: 3 conversiones diarias. plan premium ($10/mes): conversiones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. FREE es suficiente para la mayoría de usuarios.'
       },
       {
         question: '¿El texto convertido pasará los detectores de IA?',
@@ -831,7 +831,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Cuánto tarda en convertir texto de IA a humano?',
-        answer: 'Entre 3-8 segundos dependiendo del largo y modo. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. Plan PRO (Modos avanzados): ~5-8 segundos para textos largos (hasta 15,000 caracteres). Mucho más rápido que reescribir manualmente eliminando patrones de IA.'
+        answer: 'Entre 3-8 segundos dependiendo del largo y modo. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. plan premium (Modos avanzados): ~5-8 segundos para textos largos (hasta 15,000 caracteres). Mucho más rápido que reescribir manualmente eliminando patrones de IA.'
       },
       {
         question: '¿Puedo usar texto convertido para trabajos académicos?',

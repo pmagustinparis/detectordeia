@@ -84,7 +84,7 @@ export default function ParafraseadorClient() {
             </div>
 
             <p className="text-violet-700 font-semibold text-lg mb-4">
-              Plan Pro – Ya Disponible
+              Plan Premium – Ya Disponible
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
