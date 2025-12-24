@@ -9,12 +9,20 @@ export async function POST(request: Request) {
       apiVersion: '2025-10-29.clover',
     });
 
-    const { plan_type, plan_interval } = await request.json();
+    const { plan_type, plan_interval, duration } = await request.json();
 
     // Validar plan_type (express o premium)
     if (!plan_type || !['express', 'premium'].includes(plan_type)) {
       return NextResponse.json(
         { error: 'plan_type debe ser "express" o "premium"' },
+        { status: 400 }
+      );
+    }
+
+    // Si es express, validar duration
+    if (plan_type === 'express' && (!duration || !['24h', '7d'].includes(duration))) {
+      return NextResponse.json(
+        { error: 'Para express, duration debe ser "24h" o "7d"' },
         { status: 400 }
       );
     }
@@ -57,17 +65,28 @@ export async function POST(request: Request) {
     // Seleccionar el Price ID según el plan
     let priceId: string;
     let mode: 'payment' | 'subscription';
+    let planTypeForMetadata: string;
 
     if (plan_type === 'express') {
-      // Express Pass - Pago único ($3.99)
-      priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1ScR9nR5MbTVVQlk2oIBvATK';
+      // Express Pass - Pago único
       mode = 'payment';
+
+      if (duration === '7d') {
+        // Express Semanal - $8.99 / 7 días
+        priceId = process.env.STRIPE_PRICE_EXPRESS_WEEKLY || 'price_1Sho71R5MbTVVQlkSbXwgWmk';
+        planTypeForMetadata = 'express_semanal';
+      } else {
+        // Express 24h - $3.99 / 24 horas
+        priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1ScR9nR5MbTVVQlk2oIBvATK';
+        planTypeForMetadata = 'express';
+      }
     } else {
       // Premium - Suscripción ($12.99/mes o $124.68/año)
       priceId = plan_interval === 'month'
         ? (process.env.STRIPE_PRICE_MONTHLY || 'price_1ScRCOR5MbTVVQlkQkuJDJxi')
         : (process.env.STRIPE_PRICE_ANNUAL || 'price_1ScUSzR5MbTVVQlklglZnaQp');
       mode = 'subscription';
+      planTypeForMetadata = 'premium';
     }
 
     if (!priceId) {
@@ -125,7 +144,7 @@ export async function POST(request: Request) {
       cancel_url: `${request.headers.get('origin')}/pricing`,
       metadata: {
         supabase_user_id: userData.id,
-        plan_type: plan_type,
+        plan_type: planTypeForMetadata,
         ...(plan_interval && { plan_interval }),
       },
     });

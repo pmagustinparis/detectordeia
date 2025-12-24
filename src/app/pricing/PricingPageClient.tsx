@@ -7,13 +7,14 @@ import { trackEvent } from "@/lib/analytics/client";
 
 const PRICES = {
   free: { monthly: 0, annual: 0 },
-  express: 3.99, // Pago único 24h
+  express: { '24h': 3.99, '7d': 8.99 }, // Pago único
   pro: { monthly: 12.99, annual: 124.68 }, // $10.39/mes efectivo con 20% descuento
 };
 
 export default function PricingPageClient() {
   const { isAuthenticated } = useAuth();
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
+  const [expressDuration, setExpressDuration] = useState<'24h' | '7d'>('24h');
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
   const [loadingPlan, setLoadingPlan] = useState(true);
@@ -60,18 +61,21 @@ export default function PricingPageClient() {
     if (isAuthenticated) {
       const pendingPlanType = localStorage.getItem('pending_plan_type');
       const pendingPlanInterval = localStorage.getItem('pending_plan_checkout');
+      const pendingExpressDuration = localStorage.getItem('pending_express_duration');
 
       if (pendingPlanType) {
         const planType = pendingPlanType as 'express' | 'premium';
         const planInterval = pendingPlanInterval as 'month' | 'year' | null;
+        const duration = pendingExpressDuration as '24h' | '7d' | null;
 
         localStorage.removeItem('pending_plan_type');
         localStorage.removeItem('pending_plan_checkout');
+        localStorage.removeItem('pending_express_duration');
 
         // Trigger checkout after a small delay to ensure auth is fully settled
         setTimeout(() => {
           if (planType === 'express') {
-            handleCheckout('express');
+            handleCheckout('express', duration || '24h');
           } else if (planInterval) {
             handleCheckout('premium', planInterval);
           }
@@ -80,15 +84,24 @@ export default function PricingPageClient() {
     }
   }, [isAuthenticated]);
 
-  const handleCheckout = async (planType: 'express' | 'premium', planInterval?: 'month' | 'year') => {
+  const handleCheckout = async (
+    planType: 'express' | 'premium',
+    planIntervalOrDuration?: 'month' | 'year' | '24h' | '7d'
+  ) => {
+    // Determinar si es duration (Express) o interval (Premium)
+    const isDuration = planType === 'express';
+    const duration = isDuration ? planIntervalOrDuration as '24h' | '7d' : undefined;
+    const planInterval = !isDuration ? planIntervalOrDuration as 'month' | 'year' : undefined;
+
     // Track checkout initiation
     trackEvent({
       eventType: 'checkout_started',
       metadata: {
         plan_type: planType,
         ...(planInterval && { plan_interval: planInterval }),
+        ...(duration && { duration: duration }),
         price: planType === 'express'
-          ? PRICES.express
+          ? PRICES.express[duration || '24h']
           : (planInterval === 'month' ? PRICES.pro.monthly : PRICES.pro.annual),
         is_authenticated: isAuthenticated,
         current_plan: userPlan,
@@ -102,6 +115,7 @@ export default function PricingPageClient() {
         body: JSON.stringify({
           plan_type: planType,
           ...(planInterval && { plan_interval: planInterval }),
+          ...(duration && { duration: duration }),
         }),
       });
 
@@ -171,12 +185,13 @@ export default function PricingPageClient() {
     if (!isAuthenticated) {
       // Save the plan selection and redirect to signup
       localStorage.setItem('pending_plan_type', 'express');
+      localStorage.setItem('pending_express_duration', expressDuration);
 
       // Redirect to signup page
       window.location.href = '/auth/signup';
     } else {
       // User is authenticated, proceed to checkout
-      await handleCheckout('express');
+      await handleCheckout('express', expressDuration);
     }
   };
 
@@ -324,23 +339,64 @@ export default function PricingPageClient() {
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">
               ⚡ POPULAR
             </div>
-            <div className="mb-5">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">
-                Express
+            <div className="mb-4 w-full">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-3 text-center">
+                🚀 Express Pass
               </h2>
-              <div className="bg-gradient-to-r from-orange-100 to-amber-100 border-2 border-orange-400 rounded-lg px-3 py-2">
-                <p className="text-orange-900 text-sm font-bold text-center">
-                  ⏱️ Acceso ilimitado por 24 horas
-                </p>
+              <p className="text-sm text-orange-900 font-semibold text-center mb-4">⚡ Acceso temporal ilimitado • 💰 Pago único</p>
+
+              {/* Tabs para duración */}
+              <div className="flex gap-2 mb-4">
+                <button
+                  onClick={() => setExpressDuration('24h')}
+                  className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                    expressDuration === '24h'
+                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg scale-105'
+                      : 'bg-white text-orange-700 hover:bg-orange-100 border-2 border-orange-200'
+                  }`}
+                >
+                  24 Horas
+                </button>
+                <button
+                  onClick={() => setExpressDuration('7d')}
+                  className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                    expressDuration === '7d'
+                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg scale-105'
+                      : 'bg-white text-orange-700 hover:bg-orange-100 border-2 border-orange-200'
+                  }`}
+                >
+                  7 Días
+                </button>
               </div>
             </div>
-            <div className="mb-6">
-              <span className="text-5xl font-extrabold text-gray-900">${PRICES.express}</span>
-              <span className="text-xl text-gray-600">/24h</span>
+
+            {/* Precio dinámico */}
+            <div className="mb-4 text-center w-full">
+              <span className="text-5xl font-extrabold text-gray-900">${PRICES.express[expressDuration]}</span>
+              <span className="text-xl text-gray-600">/{expressDuration === '24h' ? '24h' : '7 días'}</span>
               <p className="text-sm text-orange-700 font-semibold mt-2">
                 Pago único • Sin renovación automática
               </p>
             </div>
+
+            {/* Copy dinámico según duración */}
+            <div className="bg-gradient-to-r from-orange-100 to-amber-100 border-2 border-orange-300 rounded-xl px-4 py-3 mb-4 w-full">
+              <p className="text-orange-900 text-sm font-bold text-center">
+                {expressDuration === '24h'
+                  ? '⚡ Perfecto para: Entrega urgente mañana, emergencia académica'
+                  : '📚 Perfecto para: Semana de exámenes, proyecto grupal, múltiples entregas'
+                }
+              </p>
+            </div>
+
+            {/* Badge de ahorro solo para 7d */}
+            {expressDuration === '7d' && (
+              <div className="bg-green-50 border-2 border-green-400 rounded-lg px-3 py-2 mb-4 w-full">
+                <p className="text-xs text-green-800 font-bold text-center">
+                  💰 Ahorra 64% vs 7 días individuales ($27.93)
+                </p>
+              </div>
+            )}
             <ul className="space-y-3 mb-6 flex-grow w-full">
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -383,7 +439,9 @@ export default function PricingPageClient() {
               onClick={handleExpressCTAClick}
               className="mt-auto w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
             >
-              {isAuthenticated ? 'Activar Express' : 'Registrate y Activa'}
+              {isAuthenticated
+                ? `Activar Express ${expressDuration === '24h' ? '24h' : 'Semanal'}`
+                : 'Registrate y Activa'}
             </button>
             <p className="text-xs text-gray-600 mt-3 text-center w-full">
               💳 Pago seguro con Stripe
