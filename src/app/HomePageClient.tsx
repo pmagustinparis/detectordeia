@@ -97,94 +97,40 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* SECCIÓN DE BENEFICIOS - LIMPIA Y CLARA */}
+      {/* SECCIÓN DE BENEFICIOS - SIMPLIFICADA Y ACADÉMICA */}
       <section className="max-w-5xl mx-auto mb-32 px-2">
-        <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4 text-center" style={{fontFamily: "'Georgia', serif"}}>
-          Diseñado para estudiantes y educadores
-        </h2>
-        <p className="text-center text-gray-700 text-lg mb-16 max-w-3xl mx-auto">
-          La herramienta de confianza para verificar la autenticidad del trabajo académico
-        </p>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>
+            Confianza académica
+          </h2>
+          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
+            Utilizado por docentes, estudiantes e instituciones para verificar autenticidad
+          </p>
+        </div>
 
-        <div className="space-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Docentes */}
-          <div className="flex flex-col md:flex-row gap-12 items-center border-b pb-12">
-            <div className="md:w-1/2">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
-                  <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Docentes</h3>
-              </div>
-              <p className="text-gray-700 text-base leading-relaxed">
-                Verifica la autenticidad de trabajos académicos de tus estudiantes. Detecta contenido generado por ChatGPT, Claude y otras IA en ensayos y trabajos finales.
-              </p>
-            </div>
-            <div className="md:w-1/2">
-              <div className="w-full aspect-square bg-blue-50 rounded-lg border border-blue-200 flex items-center justify-center">
-                <div className="text-4xl">📚</div>
-              </div>
-            </div>
+          <div className="bg-white border-l-4 border-blue-900 p-8 hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>Docentes</h3>
+            <p className="text-gray-700 text-base leading-relaxed">
+              Verifica la autenticidad de trabajos académicos. Detecta contenido generado por IA en ensayos y trabajos finales de manera confiable.
+            </p>
           </div>
 
           {/* Estudiantes */}
-          <div className="flex flex-col md:flex-row-reverse gap-12 items-center border-b pb-12">
-            <div className="md:w-1/2">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
-                  <Icon icon={ProductIcons.FileText} size="lg" className="text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Estudiantes</h3>
-              </div>
-              <p className="text-gray-700 text-base leading-relaxed">
-                Asegúrate de que tu trabajo sea reconocido como auténtico. Valida tu escritura antes de entregar ensayos, trabajos finales y proyectos de investigación.
-              </p>
-            </div>
-            <div className="md:w-1/2">
-              <div className="w-full aspect-square bg-red-50 rounded-lg border border-red-200 flex items-center justify-center">
-                <div className="text-4xl">✍️</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Creadores */}
-          <div className="flex flex-col md:flex-row gap-12 items-center border-b pb-12">
-            <div className="md:w-1/2">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
-                  <Icon icon={ProductIcons.PenTool} size="lg" className="text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Creadores</h3>
-              </div>
-              <p className="text-gray-700 text-base leading-relaxed">
-                Valida que tu contenido mantenga autenticidad. Ideal para bloggers, periodistas, escritores y creadores de contenido que confían en la originalidad.
-              </p>
-            </div>
-            <div className="md:w-1/2">
-              <div className="w-full aspect-square bg-blue-50 rounded-lg border border-blue-200 flex items-center justify-center">
-                <div className="text-4xl">✨</div>
-              </div>
-            </div>
+          <div className="bg-white border-l-4 border-red-600 p-8 hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>Estudiantes</h3>
+            <p className="text-gray-700 text-base leading-relaxed">
+              Valida que tu trabajo sea reconocido como auténtico. Asegúrate antes de entregar ensayos, proyectos e investigaciones.
+            </p>
           </div>
 
           {/* Instituciones */}
-          <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
-            <div className="md:w-1/2">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
-                  <Icon icon={ProductIcons.Building2} size="lg" className="text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Instituciones</h3>
-              </div>
-              <p className="text-gray-700 text-base leading-relaxed">
-                Asegura la calidad y autenticidad del contenido. Escala la verificación con planes empresariales y licencias institucionales para universidades.
-              </p>
-            </div>
-            <div className="md:w-1/2">
-              <div className="w-full aspect-square bg-red-50 rounded-lg border border-red-200 flex items-center justify-center">
-                <div className="text-4xl">🏛️</div>
-              </div>
-            </div>
+          <div className="bg-white border-l-4 border-blue-900 p-8 hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>Instituciones</h3>
+            <p className="text-gray-700 text-base leading-relaxed">
+              Implementa verificación de autenticidad en toda tu institución. Escalable y confiable para universidades y centros educativos.
+            </p>
           </div>
         </div>
       </section>
