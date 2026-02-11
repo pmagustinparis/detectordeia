@@ -20,12 +20,17 @@ export default function Header() {
       }
 
       try {
-        const response = await fetch('/api/user/status');
+        const response = await fetch('/api/user/plan');
         if (response.ok) {
           const data = await response.json();
-          // Use consolidated response structure
-          if (data.express?.is_active && data.express?.expires_at) {
-            setExpressExpiresAt(data.express.expires_at);
+          // Check if Express is active
+          if (data.express_expires_at) {
+            const expiresAt = new Date(data.express_expires_at);
+            if (expiresAt > new Date()) {
+              setExpressExpiresAt(data.express_expires_at);
+            } else {
+              setExpressExpiresAt(null);
+            }
           } else {
             setExpressExpiresAt(null);
           }
@@ -39,32 +44,61 @@ export default function Header() {
   }, [isAuthenticated]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-violet-100 shadow-sm animate-slide-in-top">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm animate-slide-in-top">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-cyan-500 shadow-lg group-hover:shadow-xl transition-all duration-300">
-              <span className="text-white font-bold text-lg">🤖</span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-900 shadow-sm group-hover:shadow-md transition-all duration-300">
+              <span className="text-white font-bold text-base">🤖</span>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-cyan-500 bg-clip-text text-transparent hidden sm:block">
+            <span className="text-lg font-bold text-blue-900 hidden sm:block" style={{fontFamily: "'Georgia', serif"}}>
               DetectordeIA.ai
             </span>
           </Link>
 
-          {/* Auth & CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            {/* Planes Button - Premium style */}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <Link
+              href="/#detector"
+              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+            >
+              Detector
+            </Link>
+            <Link
+              href="/humanizador"
+              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+            >
+              Humanizador
+            </Link>
+            <Link
+              href="/parafraseador"
+              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+            >
+              Parafraseador
+            </Link>
             <Link
               href="/pricing"
-              className="group relative px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105 bg-gradient-to-r from-violet-50 to-purple-50 hover:from-violet-100 hover:to-purple-100 border border-violet-200 hover:border-violet-300 hover:shadow-md"
+              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
             >
-              <span className="flex items-center gap-1.5">
-                <span className="text-violet-600 group-hover:scale-110 transition-transform">💎</span>
-                <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">Planes</span>
-              </span>
+              Precios
             </Link>
+            <Link
+              href="/#features"
+              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+            >
+              Funciones
+            </Link>
+            <Link
+              href="/#faq"
+              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+            >
+              FAQ
+            </Link>
+          </nav>
 
+          {/* Auth & CTA */}
+          <div className="hidden md:flex items-center gap-4">
             {expressExpiresAt && (
               <ExpressTimer expiresAt={expressExpiresAt} compact={true} />
             )}
@@ -74,7 +108,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-violet-50 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             aria-label="Toggle menu"
           >
             <svg
@@ -107,11 +141,46 @@ export default function Header() {
           <div className="md:hidden py-4 animate-fade-in">
             <nav className="flex flex-col gap-3">
               <Link
-                href="/pricing"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
+                href="/#detector"
+                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Planes
+                Detector
+              </Link>
+              <Link
+                href="/humanizador"
+                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Humanizador
+              </Link>
+              <Link
+                href="/parafraseador"
+                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Parafraseador
+              </Link>
+              <Link
+                href="/pricing"
+                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Precios
+              </Link>
+              <Link
+                href="/#features"
+                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Funciones
+              </Link>
+              <Link
+                href="/#faq"
+                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                FAQ
               </Link>
               <div className="px-4 mt-4 border-t border-gray-200 pt-4">
                 {expressExpiresAt && (

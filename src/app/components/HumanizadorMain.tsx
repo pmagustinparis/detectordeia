@@ -266,7 +266,7 @@ export default function HumanizadorMain() {
 
         // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
-          setError(data.message || 'Este modo requiere Plan Premium');
+          setError(data.message || 'Este modo requiere Plan Pro');
 
           // Track modo premium bloqueado
           trackEvent({
@@ -445,7 +445,7 @@ export default function HumanizadorMain() {
 
   const handleDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
-    e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
+    e.currentTarget.classList.remove('border-blue-500', 'bg-blue-50');
 
     if (userStatus.plan_type !== 'premium' && !userStatus.express.is_active) {
       // Track intento de subir archivo bloqueado
@@ -501,14 +501,14 @@ export default function HumanizadorMain() {
     return (
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
         {/* Loading skeleton */}
-        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
           <div className="animate-pulse space-y-4">
             <div className="h-4 bg-gray-200 rounded w-3/4"></div>
             <div className="h-32 bg-gray-200 rounded"></div>
             <div className="h-10 bg-gray-200 rounded"></div>
           </div>
         </div>
-        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
           <div className="animate-pulse space-y-4">
             <div className="h-4 bg-gray-200 rounded w-3/4"></div>
             <div className="h-32 bg-gray-200 rounded"></div>
@@ -522,32 +522,32 @@ export default function HumanizadorMain() {
     <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
       {/* COLUMNA IZQUIERDA - INPUT */}
-      <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px'}}>
+      <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px'}}>
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           {!userStatus.isAuthenticated ? (
-            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-100 to-green-100 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               Sin registro
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+            <span className="inline-flex items-center gap-1 bg-red-100 text-red-900 font-semibold rounded-full px-3 py-1.5 text-xs">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               Cuenta activa
             </span>
           )}
-          <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+          <span className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-100 to-green-100 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
             </svg>
             100% privado
           </span>
-          <span className="inline-flex items-center gap-1 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+          <span className="inline-flex items-center gap-1 bg-red-100 text-red-900 font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
             </svg>
@@ -565,7 +565,6 @@ export default function HumanizadorMain() {
           maxChars={CHARACTER_LIMIT}
           disabled={isHumanizing}
           userPlan={userStatus.plan_type}
-          isExpressActive={userStatus.express.is_active}
           toolName="Humanizador"
           className="mb-3"
         />
@@ -573,7 +572,7 @@ export default function HumanizadorMain() {
         <div className="flex flex-col" style={{flexGrow: 1}}>
           <textarea
             id="humanizador-textarea"
-            className="w-full border-2 border-violet-200 rounded-2xl shadow-inner focus:ring-4 focus:ring-violet-300/50 focus:border-violet-400 p-4 text-base text-gray-800 placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-violet-300 leading-relaxed"
+            className="w-full border-2 border-gray-300 rounded-2xl shadow-inner focus:ring-4 focus:ring-blue-500/50 focus:border-blue-500 p-4 text-base text-gray-800 placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-gray-400 leading-relaxed"
             style={{minHeight: '220px', flexGrow: 1}}
             placeholder="Pega aquí tu texto generado por ChatGPT, Claude, Gemini u otra IA..."
             value={text}
@@ -590,11 +589,11 @@ export default function HumanizadorMain() {
             onDragOver={(e) => {
               e.preventDefault();
               if (userStatus.plan_type === 'premium' || userStatus.express.is_active) {
-                e.currentTarget.classList.add('border-violet-400', 'bg-violet-50');
+                e.currentTarget.classList.add('border-blue-500', 'bg-blue-50');
               }
             }}
             onDragLeave={(e) => {
-              e.currentTarget.classList.remove('border-violet-400', 'bg-violet-50');
+              e.currentTarget.classList.remove('border-blue-500', 'bg-blue-50');
             }}
             onDrop={handleDrop}
             aria-label="Texto a humanizar"
@@ -614,7 +613,7 @@ export default function HumanizadorMain() {
                   ? 'bg-red-100 text-red-700'
                   : rateLimitStatus.remaining <= 1
                     ? 'bg-yellow-100 text-yellow-700'
-                    : 'bg-green-100 text-green-700'
+                    : 'bg-blue-100 text-blue-900'
               }`}>
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -627,24 +626,24 @@ export default function HumanizadorMain() {
             )}
             {/* Badge ilimitado para Express */}
             {userStatus.express.is_active && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-orange-100 to-amber-100 text-orange-700">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-900">
                 <span>⚡</span>
                 Express Activo - Ilimitado
               </span>
             )}
             {/* Badge ilimitado para PRO */}
             {userStatus.plan_type === 'premium' && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet-100 to-purple-100 text-violet-700">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-amber-100 to-green-100 text-blue-900">
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                Premium - Usos ilimitados
+                Pro - Usos ilimitados
               </span>
             )}
           </div>
           <button
             onClick={handleClear}
-            className="text-violet-600 font-semibold ml-2 hover:text-violet-700 hover:underline transition-all disabled:opacity-40"
+            className="text-blue-900 font-semibold ml-2 hover:text-blue-900 hover:underline transition-all disabled:opacity-40"
             type="button"
             disabled={text.length === 0 && !result}
             aria-label="Limpiar texto"
@@ -669,8 +668,8 @@ export default function HumanizadorMain() {
                       isLocked
                         ? 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
                         : isSelected
-                        ? 'border-violet-400 bg-violet-50 cursor-pointer'
-                        : 'border-violet-200 bg-white hover:border-violet-300 cursor-pointer'
+                        ? 'border-blue-500 bg-blue-50 cursor-pointer'
+                        : 'border-gray-300 bg-white hover:border-gray-400 cursor-pointer'
                     }`}
                   >
                     <input
@@ -680,7 +679,7 @@ export default function HumanizadorMain() {
                       checked={isSelected}
                       disabled={isLocked}
                       onChange={() => !isLocked && setSelectedMode(modeKey)}
-                      className={`w-4 h-4 ${isLocked ? 'text-gray-400' : 'text-violet-600 focus:ring-violet-500'}`}
+                      className={`w-4 h-4 ${isLocked ? 'text-gray-400' : 'text-blue-900 focus:ring-blue-500'}`}
                     />
                     <div className="ml-2 flex-1">
                       <div className="flex items-center gap-2 mb-0.5">
@@ -690,8 +689,8 @@ export default function HumanizadorMain() {
                         <span
                           className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                             mode.isPremium
-                              ? 'bg-violet-100 text-violet-700'
-                              : 'bg-green-100 text-green-700'
+                              ? 'bg-amber-100 text-blue-900'
+                              : 'bg-blue-100 text-blue-900'
                           }`}
                         >
                           {mode.isPremium ? 'PRO' : 'FREE'}
@@ -703,20 +702,20 @@ export default function HumanizadorMain() {
 
                   {/* Tooltip para modos bloqueados */}
                   {isLocked && (
-                    <div className="absolute left-0 right-0 top-full mt-2 bg-gradient-to-br from-violet-600 to-purple-600 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border-2 border-violet-400">
+                    <div className="absolute left-0 right-0 top-full mt-2 bg-blue-900 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border-2 border-blue-500">
                       <div className="flex items-start gap-2 mb-2">
                         <span className="text-xl"><Icon icon={ProductIcons.Locked} size="sm" className="inline" /></span>
                         <div>
-                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Premium o Express</p>
-                          <p className="text-violet-100 leading-relaxed">
+                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
+                          <p className="text-amber-100 leading-relaxed">
                             Humaniza tu texto con <strong>{mode.name.toLowerCase()}</strong> profesional.
-                            Con Plan Premium obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
+                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
                           </p>
                         </div>
                       </div>
-                      <div className="text-center mt-2 pt-2 border-t border-violet-400/50">
-                        <p className="text-violet-100 font-semibold">
-                          Express $3.99/24h • Premium desde $12.99/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
+                      <div className="text-center mt-2 pt-2 border-t border-blue-500/50">
+                        <p className="text-amber-100 font-semibold">
+                          Desde $10/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
                         </p>
                       </div>
                     </div>
@@ -738,7 +737,7 @@ export default function HumanizadorMain() {
         <button
           onClick={handleHumanize}
           disabled={isHumanizing || !isButtonEnabled()}
-          className={`mt-2 w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isHumanizing ? 'animate-pulse-glow' : ''}`}
+          className={`mt-2 w-full bg-gradient-to-r from-amber-600 to-green-700 hover:from-amber-700 hover:to-green-800 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isHumanizing ? 'animate-pulse-glow' : ''}`}
           aria-label="Humanizar texto"
         >
           <span className="text-xl"><Icon icon={ProductIcons.AI} size="sm" className="inline text-red-600" />→<Icon icon={ProductIcons.Human} size="sm" className="inline text-green-600" /></span>
@@ -753,7 +752,7 @@ export default function HumanizadorMain() {
 
       {/* COLUMNA DERECHA - OUTPUT */}
       <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-violet-100 p-6 flex flex-col justify-between relative card-elevated" style={{minHeight: '560px'}}>
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between relative card-elevated" style={{minHeight: '560px'}}>
 
           {/* Header con icono */}
           <div className="flex items-center gap-2 mb-3">
@@ -779,14 +778,14 @@ export default function HumanizadorMain() {
                   <button
                     id="copy-button"
                     onClick={handleCopy}
-                    className="flex-1 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <span>📋</span>
                     Copiar todo
                   </button>
                   <button
                     onClick={handleDownload}
-                    className="flex-1 bg-violet-600 hover:bg-violet-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <span>⬇️</span>
                     Descargar .txt
@@ -795,10 +794,10 @@ export default function HumanizadorMain() {
 
                 {/* VALIDACIÓN AUTOMÁTICA - Resultados con datos reales del detector (Fase 3) */}
                 {isValidating ? (
-                  <div className="mb-4 p-5 bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl shadow-sm">
+                  <div className="mb-4 p-5 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 justify-center">
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
-                      <p className="text-base font-semibold text-blue-900">Validando con el detector...</p>
+                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600"></div>
+                      <p className="text-base font-semibold text-green-900">Validando con el detector...</p>
                     </div>
                   </div>
                 ) : validationError ? (
@@ -893,12 +892,12 @@ export default function HumanizadorMain() {
                   </div>
                 ) : null}
 
-                {/* FASE 5: Comparación visual Free vs Premium - Solo para usuarios Free */}
+                {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
-                  <div className="mt-3 p-4 bg-gradient-to-br from-purple-50 via-violet-50 to-blue-50 border-2 border-purple-200 rounded-xl shadow-md">
+                  <div className="mt-3 p-4 bg-gradient-to-br from-amber-50 via-green-50 to-emerald-50 border-2 border-gray-300 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
-                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-purple-600" />
-                      <h3 className="text-sm font-bold text-purple-900">Comparación: Free vs Premium</h3>
+                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-blue-900" />
+                      <h3 className="text-sm font-bold text-amber-900">Comparación: Free vs Pro</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">
@@ -935,36 +934,36 @@ export default function HumanizadorMain() {
                       </div>
 
                       {/* LO QUE OBTENDRÍAS (PRO) */}
-                      <div className="bg-gradient-to-br from-purple-100 to-violet-100 p-3 rounded-lg border-2 border-purple-300 relative">
+                      <div className="bg-gradient-to-br from-amber-100 to-green-100 p-3 rounded-lg border-2 border-gray-400 relative">
                         <div className="absolute -top-2 -right-2">
-                          <span className="bg-gradient-to-r from-purple-600 to-violet-600 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
+                          <span className="bg-gradient-to-r from-amber-600 to-green-700 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
                             PREMIUM
                           </span>
                         </div>
                         <div className="flex items-center gap-2 mb-2">
-                          <Icon icon={ProductIcons.Star} size="sm" className="text-purple-600" />
-                          <span className="text-xs font-bold text-purple-900">CON PLAN PRO</span>
+                          <Icon icon={ProductIcons.Star} size="sm" className="text-blue-900" />
+                          <span className="text-xs font-bold text-amber-900">CON PLAN PRO</span>
                         </div>
-                        <p className="text-xs font-bold text-purple-900 mb-2">Todo lo anterior PLUS:</p>
-                        <ul className="text-xs text-purple-900 space-y-1.5">
+                        <p className="text-xs font-bold text-amber-900 mb-2">Todo lo anterior PLUS:</p>
+                        <ul className="text-xs text-amber-900 space-y-1.5">
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
                             <span><strong>5 modos premium</strong> (Académico, Creativo, etc.)</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
                             <span><strong>✨ Caracteres ilimitados</strong> por texto</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
                             <span><strong>Subida de archivos</strong> (PDF, DOCX, TXT)</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
                             <span><strong>Usos ilimitados</strong> diarios</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
                             <span><strong>Mejor calidad</strong> de humanización</span>
                           </li>
                         </ul>
@@ -976,33 +975,33 @@ export default function HumanizadorMain() {
                       <a
                         href="/pricing"
                         onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: 'humanizador', metadata: { source: 'free_vs_pro_comparison' }})}
-                        className="inline-block w-full bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="inline-block w-full bg-gradient-to-r from-amber-600 to-green-700 hover:from-amber-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icon icon={ProductIcons.Upgrade} size="md" />
-                          Ver Planes
+                          Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-gray-600 mt-2">Desde $12.99/mes • Cancela cuando quieras</p>
+                      <p className="text-xs text-gray-600 mt-2">Desde $10/mes • Cancela cuando quieras</p>
                     </div>
                   </div>
                 )}
 
                 {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
                 {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
-                  <div className="p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-200 rounded-xl">
+                  <div className="p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-gray-300 rounded-xl">
                     <div className="flex items-start gap-2">
                       <span className="text-lg"><Icon icon={ProductIcons.Info} size="xs" className="inline" /></span>
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-violet-900 mb-1">
+                        <p className="text-sm font-semibold text-amber-900 mb-1">
                           ¿Usás seguido las herramientas?
                         </p>
-                        <p className="text-xs text-violet-700 mb-2">
+                        <p className="text-xs text-blue-900 mb-2">
                           Registrándote gratis podés guardar tu historial y obtener más usos diarios.
                         </p>
                         <a
                           href="/dashboard"
-                          className="inline-block text-xs font-semibold text-violet-600 hover:text-violet-700 underline"
+                          className="inline-block text-xs font-semibold text-blue-900 hover:text-blue-900 underline"
                         >
                           Crear cuenta gratis →
                         </a>
@@ -1012,14 +1011,14 @@ export default function HumanizadorMain() {
                 )}
 
                 {!userStatus.isAuthenticated && usageCount >= 5 && (
-                  <div className="p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-xl">
+                  <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl"><Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /></span>
                       <div className="flex-1">
                         <p className="text-sm font-bold text-cyan-900 mb-1">
                           ¡Ya usaste el Humanizador {usageCount} veces!
                         </p>
-                        <p className="text-xs text-cyan-700 mb-3">
+                        <p className="text-xs text-green-700 mb-3">
                           Registrándote gratis obtenés:<br/>
                           • Historial de tus últimos usos<br/>
                           • Más usos diarios (hasta 50/día)<br/>
@@ -1094,11 +1093,11 @@ export default function HumanizadorMain() {
                         </div>
 
                         {/* Pro Benefits */}
-                        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
-                          <p className="text-sm font-bold text-violet-900 mb-2">
-                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Premium obtenés:
+                        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-gray-300 rounded-xl p-4 mb-4">
+                          <p className="text-sm font-bold text-amber-900 mb-2">
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
                           </p>
-                          <ul className="space-y-1.5 text-xs text-violet-800">
+                          <ul className="space-y-1.5 text-xs text-amber-800">
                             <li className="flex items-start gap-2">
                               <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
@@ -1112,8 +1111,8 @@ export default function HumanizadorMain() {
                               <span><strong>5 modos premium</strong> + archivos</span>
                             </li>
                           </ul>
-                          <p className="text-xs text-violet-700 mt-2 font-medium">
-                            Desde $12.99/mes • Ahorra 20% anual
+                          <p className="text-xs text-blue-900 mt-2 font-medium">
+                            Desde $10/mes • Ahorra 20% anual
                           </p>
                         </div>
 
@@ -1128,9 +1127,9 @@ export default function HumanizadorMain() {
                         {/* Secondary CTA - Ver Pro */}
                         <a
                           href="/pricing"
-                          className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm"
+                          className="block w-full text-center text-blue-900 hover:text-blue-900 font-semibold py-2 transition-colors text-sm"
                         >
-                          O ver Plan Premium →
+                          O ver Plan Pro →
                         </a>
                       </>
                     ) : (
@@ -1141,11 +1140,11 @@ export default function HumanizadorMain() {
                         </p>
 
                         {/* Premium Benefits */}
-                        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-xl p-4 mb-4">
-                          <p className="text-sm font-bold text-violet-900 mb-2">
-                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Premium obtenés:
+                        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-gray-300 rounded-xl p-4 mb-4">
+                          <p className="text-sm font-bold text-amber-900 mb-2">
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
                           </p>
-                          <ul className="space-y-1.5 text-xs text-violet-800">
+                          <ul className="space-y-1.5 text-xs text-amber-800">
                             <li className="flex items-start gap-2">
                               <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
@@ -1163,17 +1162,17 @@ export default function HumanizadorMain() {
                               <span><strong>Historial completo</strong></span>
                             </li>
                           </ul>
-                          <p className="text-xs text-violet-700 mt-2 font-medium">
-                            Desde $12.99/mes • Ahorra 20% anual
+                          <p className="text-xs text-blue-900 mt-2 font-medium">
+                            Desde $10/mes • Ahorra 20% anual
                           </p>
                         </div>
 
                         {/* CTA - Upgrade to Pro */}
                         <a
                           href="/pricing"
-                          className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                          className="block w-full text-center bg-gradient-to-r from-amber-600 to-green-700 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
                         >
-                          Ver Planes
+                          Ver Planes y Precios
                         </a>
                       </>
                     )}
@@ -1219,7 +1218,7 @@ export default function HumanizadorMain() {
                   Pega el texto generado por IA que quieres humanizar y haz clic en el botón
                 </p>
                 <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <svg className="w-4 h-4 text-violet-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Resultado instantáneo</span>
@@ -1241,12 +1240,12 @@ export default function HumanizadorMain() {
                 </div>
               )}
               {!userStatus.express.is_active && userStatus.plan_type !== 'premium' && (
-                <div className="text-center text-sm bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-100">
+                <div className="text-center text-sm bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-gray-200">
                   <div className="flex items-center justify-center gap-2 mb-1">
-                    <svg className="w-5 h-5 text-violet-600" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
-                    <span className="font-bold text-violet-700">
+                    <span className="font-bold text-blue-900">
                       {userStatus.isAuthenticated ? '3 usos diarios gratis' : '1 uso diario'}
                     </span>
                   </div>
