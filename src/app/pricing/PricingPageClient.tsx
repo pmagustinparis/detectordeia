@@ -7,13 +7,14 @@ import { trackEvent } from "@/lib/analytics/client";
 
 const PRICES = {
   free: { monthly: 0, annual: 0 },
-  express: 2.99, // Pago único 24h
-  pro: { monthly: 6.99, annual: 66.99 }, // $5.58/mes efectivo
+  express: { '24h': 3.99, '7d': 8.99 }, // Pago único
+  pro: { monthly: 12.99, annual: 124.68 }, // $10.39/mes efectivo con 20% descuento
 };
 
 export default function PricingPageClient() {
   const { isAuthenticated } = useAuth();
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
+  const [expressDuration, setExpressDuration] = useState<'24h' | '7d'>('24h');
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
   const [loadingPlan, setLoadingPlan] = useState(true);
@@ -60,18 +61,21 @@ export default function PricingPageClient() {
     if (isAuthenticated) {
       const pendingPlanType = localStorage.getItem('pending_plan_type');
       const pendingPlanInterval = localStorage.getItem('pending_plan_checkout');
+      const pendingExpressDuration = localStorage.getItem('pending_express_duration');
 
       if (pendingPlanType) {
         const planType = pendingPlanType as 'express' | 'premium';
         const planInterval = pendingPlanInterval as 'month' | 'year' | null;
+        const duration = pendingExpressDuration as '24h' | '7d' | null;
 
         localStorage.removeItem('pending_plan_type');
         localStorage.removeItem('pending_plan_checkout');
+        localStorage.removeItem('pending_express_duration');
 
         // Trigger checkout after a small delay to ensure auth is fully settled
         setTimeout(() => {
           if (planType === 'express') {
-            handleCheckout('express');
+            handleCheckout('express', duration || '24h');
           } else if (planInterval) {
             handleCheckout('premium', planInterval);
           }
@@ -80,15 +84,24 @@ export default function PricingPageClient() {
     }
   }, [isAuthenticated]);
 
-  const handleCheckout = async (planType: 'express' | 'premium', planInterval?: 'month' | 'year') => {
+  const handleCheckout = async (
+    planType: 'express' | 'premium',
+    planIntervalOrDuration?: 'month' | 'year' | '24h' | '7d'
+  ) => {
+    // Determinar si es duration (Express) o interval (Premium)
+    const isDuration = planType === 'express';
+    const duration = isDuration ? planIntervalOrDuration as '24h' | '7d' : undefined;
+    const planInterval = !isDuration ? planIntervalOrDuration as 'month' | 'year' : undefined;
+
     // Track checkout initiation
     trackEvent({
       eventType: 'checkout_started',
       metadata: {
         plan_type: planType,
         ...(planInterval && { plan_interval: planInterval }),
+        ...(duration && { duration: duration }),
         price: planType === 'express'
-          ? PRICES.express
+          ? PRICES.express[duration || '24h']
           : (planInterval === 'month' ? PRICES.pro.monthly : PRICES.pro.annual),
         is_authenticated: isAuthenticated,
         current_plan: userPlan,
@@ -102,6 +115,7 @@ export default function PricingPageClient() {
         body: JSON.stringify({
           plan_type: planType,
           ...(planInterval && { plan_interval: planInterval }),
+          ...(duration && { duration: duration }),
         }),
       });
 
@@ -171,12 +185,13 @@ export default function PricingPageClient() {
     if (!isAuthenticated) {
       // Save the plan selection and redirect to signup
       localStorage.setItem('pending_plan_type', 'express');
+      localStorage.setItem('pending_express_duration', expressDuration);
 
       // Redirect to signup page
       window.location.href = '/auth/signup';
     } else {
       // User is authenticated, proceed to checkout
-      await handleCheckout('express');
+      await handleCheckout('express', expressDuration);
     }
   };
 
@@ -199,7 +214,7 @@ export default function PricingPageClient() {
         onClick={handleProCTAClick}
         className="mt-auto w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
       >
-        {isAuthenticated ? 'Actualizar a Pro' : 'Registrate Gratis y Actualiza'}
+        {isAuthenticated ? 'Actualizar a Premium' : 'Registrate Gratis y Actualiza'}
       </button>
     );
   };
@@ -207,27 +222,35 @@ export default function PricingPageClient() {
   const faqs = [
     {
       q: "¿Qué es el plan Express?",
-      a: "El plan Express es un pase de 24 horas que te da acceso ilimitado a todas las funcionalidades premium por solo $2.99. Es perfecto para cuando necesitas completar un proyecto urgente o quieres probar todas las funciones premium antes de suscribirte al plan Pro.",
+      a: "El plan Express es un pase temporal que te da acceso ilimitado a todas las funcionalidades premium. Disponible en dos opciones: Express 24h ($3.99) para emergencias puntuales, o Express Semanal ($8.99) para 7 días completos - ideal para semanas de exámenes o proyectos intensivos. Es perfecto para cuando necesitas acceso premium sin suscribirte.",
+    },
+    {
+      q: "¿Qué diferencia hay entre Express 24h y Express Semanal?",
+      a: "Express 24h ($3.99) te da acceso ilimitado por 24 horas - ideal para una entrega urgente o emergencia puntual. Express Semanal ($8.99) te da 7 días completos de acceso, perfecto para semanas de exámenes, proyectos grupales o múltiples entregas. El Semanal ahorra 68% vs comprar 7 pases de 24h individuales.",
     },
     {
       q: "¿El plan Express se renueva automáticamente?",
-      a: "No, el plan Express es un pago único que dura exactamente 24 horas desde el momento de la compra. No hay renovación automática. Si quieres más acceso, puedes comprar otro pase Express o suscribirte al plan Pro.",
+      a: "No, el plan Express (tanto 24h como Semanal) es un pago único sin renovación automática. Dura exactamente el tiempo comprado desde el momento de la activación. Si quieres más acceso, puedes comprar otro pase Express (se extiende tu tiempo activo) o suscribirte al plan Premium.",
+    },
+    {
+      q: "¿Puedo comprar más Express si ya tengo uno activo?",
+      a: "¡Sí! Si compras otro pase Express mientras tienes uno activo, el tiempo se suma automáticamente. Por ejemplo, si te quedan 2 horas de Express 24h y compras otro 24h, tendrás 26 horas totales. Lo mismo aplica para Express Semanal.",
+    },
+    {
+      q: "¿Qué diferencia hay entre Express y Premium?",
+      a: "Express es un pago único temporal (24h por $3.99 o 7 días por $8.99) sin renovación automática - ideal para necesidades puntuales. Premium es una suscripción continua ($12.99/mes o $124.68/año) con acceso permanente - ideal para uso regular. Ambos tienen las mismas funcionalidades ilimitadas.",
     },
     {
       q: "¿Qué métodos de pago aceptan?",
       a: "Aceptamos todas las tarjetas de crédito y débito principales (Visa, Mastercard, American Express) a través de Stripe, nuestra plataforma de pago segura.",
     },
     {
-      q: "¿Puedo cancelar el plan Pro en cualquier momento?",
-      a: "Sí, puedes cancelar tu suscripción Pro en cualquier momento desde tu dashboard. No hay compromisos ni penalizaciones por cancelación anticipada.",
-    },
-    {
-      q: "¿Qué diferencia hay entre Express y Pro?",
-      a: "Express te da acceso completo por 24 horas ($2.99), mientras que Pro es una suscripción mensual ($6.99/mes) o anual ($66.99/año) con acceso continuo. Ambos tienen las mismas funcionalidades ilimitadas.",
+      q: "¿Puedo cancelar el plan Premium en cualquier momento?",
+      a: "Sí, puedes cancelar tu suscripción Premium en cualquier momento desde tu dashboard. No hay compromisos ni penalizaciones por cancelación anticipada.",
     },
     {
       q: "¿El plan anual se renueva automáticamente?",
-      a: "Sí, el plan Pro anual se renueva automáticamente cada año. Puedes cancelar la renovación automática en cualquier momento desde tu dashboard.",
+      a: "Sí, el plan Premium anual se renueva automáticamente cada año. Puedes cancelar la renovación automática en cualquier momento desde tu dashboard.",
     },
     {
       q: "¿Puedo cambiar de plan mensual a anual?",
@@ -235,15 +258,15 @@ export default function PricingPageClient() {
     },
     {
       q: "¿Los planes incluyen todas las herramientas?",
-      a: "Sí, tanto Express como Pro incluyen acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
+      a: "Sí, tanto Express (24h y Semanal) como Premium incluyen acceso completo a Detector, Humanizador y Parafraseador con todas sus funcionalidades premium.",
     },
     {
-      q: "¿Hay límites de uso en Express y Pro?",
-      a: "No, tanto Express como Pro incluyen usos ilimitados diarios y caracteres ilimitados por análisis. No hay límites en la cantidad de texto que puedes procesar.",
+      q: "¿Hay límites de uso en Express y Premium?",
+      a: "No, tanto Express como Premium incluyen usos ilimitados diarios y caracteres ilimitados por análisis. No hay límites en la cantidad de texto que puedes procesar.",
     },
     {
       q: "¿Ofrecen reembolsos?",
-      a: "No ofrecemos reembolsos en ningún plan. Al comprar Express o suscribirte a Pro, aceptas nuestros términos de servicio y la política de no reembolso. En Pro, puedes cancelar en cualquier momento y mantendrás acceso hasta el final del período pagado.",
+      a: "No ofrecemos reembolsos en ningún plan. Al comprar Express o suscribirte a Premium, aceptas nuestros términos de servicio y la política de no reembolso. En Premium, puedes cancelar en cualquier momento y mantendrás acceso hasta el final del período pagado.",
     },
   ];
 
@@ -251,50 +274,13 @@ export default function PricingPageClient() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-20">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto py-16 px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
-            <span className="gradient-text-primary">Planes y Precios</span>
+            <span className="gradient-text-primary">Planes</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Elige el plan perfecto para ti. Desde análisis gratuitos hasta soluciones empresariales completas.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Elige el plan que se adapta a tu ritmo. Acceso temporal o continuo, la decisión es tuya.
           </p>
-        </div>
-
-        {/* Toggle Billing */}
-        <div className="flex justify-center items-center mb-12">
-          <div className="relative flex bg-violet-100 rounded-full p-1.5 w-[360px] h-14 shadow-md">
-            <button
-              className={`flex-1 z-10 font-bold text-lg transition-colors duration-200 rounded-full focus:outline-none ${
-                billing === 'monthly' ? 'text-white' : 'text-violet-700'
-              }`}
-              onClick={() => setBilling('monthly')}
-            >
-              Mensual
-            </button>
-            <button
-              className={`flex-1 z-10 font-bold text-lg transition-colors duration-200 rounded-full focus:outline-none flex items-center justify-center gap-2 ${
-                billing === 'annual' ? 'text-white' : 'text-violet-700'
-              }`}
-              onClick={() => setBilling('annual')}
-            >
-              Anual
-              <span
-                className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                  billing === 'annual'
-                    ? 'bg-white text-violet-600'
-                    : 'bg-violet-200 text-violet-700'
-                }`}
-              >
-                AHORRA 20%
-              </span>
-            </button>
-            <span
-              className="absolute top-1.5 left-1.5 h-11 w-[calc(50%-6px)] rounded-full bg-gradient-to-r from-violet-600 to-purple-600 transition-all duration-300 shadow-lg"
-              style={{
-                transform: billing === 'monthly' ? 'translateX(0)' : 'translateX(100%)',
-              }}
-            />
-          </div>
         </div>
 
         {/* Pricing Cards */}
@@ -344,7 +330,7 @@ export default function PricingPageClient() {
                 disabled
                 className="w-full text-center bg-gray-300 text-gray-500 font-bold py-3 px-6 rounded-xl shadow-md cursor-not-allowed"
               >
-                Tu plan actual es Pro
+                Tu plan actual es Premium
               </button>
             ) : (
               <a
@@ -361,25 +347,70 @@ export default function PricingPageClient() {
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">
               ⚡ POPULAR
             </div>
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">
-                Express
+            <div className="mb-4 w-full">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-3 text-center">
+                🚀 Express Pass
               </h2>
-              <p className="text-gray-700 text-sm font-medium">⏱️ Acceso ilimitado por 24 horas</p>
+              <p className="text-sm text-orange-900 font-semibold text-center mb-4">⚡ Acceso temporal ilimitado • 💰 Pago único</p>
+
+              {/* Tabs para duración */}
+              <div className="flex gap-2 mb-4">
+                <button
+                  onClick={() => setExpressDuration('24h')}
+                  className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                    expressDuration === '24h'
+                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg scale-105'
+                      : 'bg-white text-orange-700 hover:bg-orange-100 border-2 border-orange-200'
+                  }`}
+                >
+                  24 Horas
+                </button>
+                <button
+                  onClick={() => setExpressDuration('7d')}
+                  className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                    expressDuration === '7d'
+                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg scale-105'
+                      : 'bg-white text-orange-700 hover:bg-orange-100 border-2 border-orange-200'
+                  }`}
+                >
+                  7 Días
+                </button>
+              </div>
             </div>
-            <div className="mb-8">
-              <span className="text-5xl font-extrabold text-gray-900">${PRICES.express}</span>
-              <span className="text-xl text-gray-600">/24h</span>
+
+            {/* Precio dinámico */}
+            <div className="mb-4 text-center w-full">
+              <span className="text-5xl font-extrabold text-gray-900">${PRICES.express[expressDuration]}</span>
+              <span className="text-xl text-gray-600">/{expressDuration === '24h' ? '24h' : '7 días'}</span>
               <p className="text-sm text-orange-700 font-semibold mt-2">
                 Pago único • Sin renovación automática
               </p>
             </div>
-            <ul className="space-y-4 mb-8 flex-grow w-full">
+
+            {/* Copy dinámico según duración */}
+            <div className="bg-gradient-to-r from-orange-100 to-amber-100 border-2 border-orange-300 rounded-xl px-4 py-3 mb-4 w-full">
+              <p className="text-orange-900 text-sm font-bold text-center">
+                {expressDuration === '24h'
+                  ? '⚡ Perfecto para: Entrega urgente mañana, emergencia académica'
+                  : '📚 Perfecto para: Semana de exámenes, proyecto grupal, múltiples entregas'
+                }
+              </p>
+            </div>
+
+            {/* Badge de ahorro solo para 7d */}
+            {expressDuration === '7d' && (
+              <div className="bg-green-50 border-2 border-green-400 rounded-lg px-3 py-2 mb-4 w-full">
+                <p className="text-xs text-green-800 font-bold text-center">
+                  💰 Ahorra 68% vs 7 días individuales ($27.93)
+                </p>
+              </div>
+            )}
+            <ul className="space-y-3 mb-6 flex-grow w-full">
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-semibold">✨ Todo ilimitado por 24h</span>
+                <span className="text-gray-900 font-semibold">Acceso completo a todas las herramientas</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -391,40 +422,78 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">5 modos premium</span>
+                <span className="text-gray-900 font-semibold">Usos ilimitados</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Subida de archivos</span>
+                <span className="text-gray-900 font-medium">Modos premium en Humanizador y Parafraseador</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Perfecto para entregas urgentes</span>
+                <span className="text-gray-900 font-medium">Subida de archivos (PDF, DOCX, TXT)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-medium">Ideal para entregas urgentes o uso intensivo</span>
               </li>
             </ul>
             <button
               onClick={handleExpressCTAClick}
               className="mt-auto w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
             >
-              {isAuthenticated ? 'Activar Express' : 'Registrate y Activa'}
+              {isAuthenticated
+                ? `Activar Express ${expressDuration === '24h' ? '24h' : 'Semanal'}`
+                : 'Registrate y Activa'}
             </button>
             <p className="text-xs text-gray-600 mt-3 text-center w-full">
               💳 Pago seguro con Stripe
             </p>
           </div>
 
-          {/* Pro Plan */}
+          {/* Premium Plan */}
           <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 border-gray-200 hover:border-violet-200 transition-all duration-300">
-            <div className="mb-6">
+            <div className="mb-4">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                Pro
+                Premium
               </h2>
-              <p className="text-gray-700 text-sm font-medium">🎓 Mejor para uso continuo</p>
+              <p className="text-gray-700 text-sm font-bold">🔄 Acceso continuo, sin interrupciones</p>
             </div>
+
+            {/* Botones de selección de billing */}
+            <div className="flex gap-2 mb-4">
+              <button
+                onClick={() => setBilling('monthly')}
+                className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                  billing === 'monthly'
+                    ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg scale-105'
+                    : 'bg-white text-violet-700 hover:bg-violet-100 border-2 border-violet-200'
+                }`}
+              >
+                Mensual
+              </button>
+              <button
+                onClick={() => setBilling('annual')}
+                className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-1.5 ${
+                  billing === 'annual'
+                    ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg scale-105'
+                    : 'bg-white text-violet-700 hover:bg-violet-100 border-2 border-violet-200'
+                }`}
+              >
+                Anual
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                  billing === 'annual' ? 'bg-white text-violet-600' : 'bg-violet-200 text-violet-700'
+                }`}>
+                  -20%
+                </span>
+              </button>
+            </div>
+
             <div className="mb-2">
               <span className="text-5xl font-extrabold text-gray-900">
                 ${billing === 'monthly' ? PRICES.pro.monthly : (PRICES.pro.annual / 12).toFixed(2)}
@@ -437,42 +506,53 @@ export default function PricingPageClient() {
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
+            <div className="bg-gradient-to-r from-violet-100 to-purple-100 border-2 border-violet-300 rounded-xl px-4 py-3 mb-4 w-full">
+              <p className="text-violet-900 text-sm font-bold text-center">
+                💎 Perfecto para: Uso diario profesional, estudiantes avanzados, creadores de contenido
+              </p>
+            </div>
             <ul className="space-y-4 mb-8 flex-grow w-full">
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-semibold">✨ Caracteres ilimitados</span>
+                <span className="text-gray-900 font-semibold">Trabajo ilimitado sin interrupciones ni restricciones</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-semibold">Usos ilimitados diarios</span>
+                <span className="text-gray-900 font-semibold">Caracteres y usos ilimitados todos los días</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Subida de archivos (PDF, DOCX, TXT)</span>
+                <span className="text-gray-900 font-semibold">5 modos premium en Humanizador y Parafraseador</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">5 modos premium</span>
+                <span className="text-gray-900 font-medium">Subida de archivos largos (PDF, DOCX, TXT)</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Historial completo</span>
+                <span className="text-gray-900 font-medium">Historial completo de tus análisis</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-900 font-medium">Soporte prioritario</span>
+                <span className="text-gray-900 font-medium">Soporte prioritario por email</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-gray-900 font-medium">Ideal para uso profesional continuo</span>
               </li>
             </ul>
             {getProCTA()}
@@ -484,7 +564,7 @@ export default function PricingPageClient() {
 
         {/* Scroll Hint - Ver Comparación */}
         <div className="flex flex-col items-center justify-center py-8 mb-8">
-          <p className="text-lg font-semibold text-gray-700 mb-3">
+          <p className="text-2xl font-bold text-gray-900 mb-4">
             ¿Querés ver todas las diferencias en detalle?
           </p>
           <button
@@ -492,11 +572,11 @@ export default function PricingPageClient() {
               const comparisonTable = document.getElementById('comparison-table');
               comparisonTable?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
-            className="flex flex-col items-center gap-2 text-violet-600 hover:text-violet-700 transition-all group"
+            className="flex flex-col items-center gap-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all group"
           >
-            <span className="font-bold text-base">Ver Comparación Completa</span>
+            <span className="font-bold text-lg">📊 Ver Comparación Completa de Planes</span>
             <svg
-              className="w-8 h-8 animate-bounce group-hover:scale-110 transition-transform"
+              className="w-6 h-6 animate-bounce group-hover:scale-110 transition-transform"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -507,118 +587,252 @@ export default function PricingPageClient() {
         </div>
 
         {/* Feature Comparison Table */}
-        <div id="comparison-table" className="bg-white rounded-3xl shadow-xl p-8 mb-20">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            <span className="gradient-text-primary">Comparación Completa</span>
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-900">Free</th>
-                  <th className="text-center py-4 px-4 font-semibold bg-orange-50 text-orange-700 rounded-t-xl">Express</th>
-                  <th className="text-center py-4 px-4 font-semibold bg-violet-50 text-violet-700 rounded-t-xl">Pro</th>
-                </tr>
-              </thead>
-              <tbody className="text-sm">
-                {/* Precio */}
-                <tr className="border-b border-gray-100 bg-gray-50">
-                  <td className="py-3 px-4 font-bold text-gray-900">💰 Precio</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Gratis</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">$2.99/24h</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">$6.99/mes</td>
-                </tr>
+        <div id="comparison-table" className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-extrabold mb-3">
+              <span className="gradient-text-primary">Comparación Completa</span>
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Encuentra el plan perfecto para tus necesidades
+            </p>
+          </div>
 
-                {/* Detector Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
-                    🔍 Detector de IA
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">15</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Caracteres por análisis</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">1,200</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✨ Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✨ Ilimitado</td>
-                </tr>
+          {/* Comparison Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Free Column */}
+            <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center border-b-2 border-gray-200">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Free</h3>
+                <div className="mb-2">
+                  <span className="text-4xl font-extrabold text-gray-900">$0</span>
+                </div>
+                <p className="text-sm text-gray-600">Gratis para siempre</p>
+              </div>
 
-                {/* Humanizador Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
-                    ✨ Humanizador de IA
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">3</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">5 modos</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
-                </tr>
+              <div className="p-6 space-y-6">
+                {/* Detector */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔍 Detector</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-semibold text-gray-900">15</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Caracteres</span>
+                      <span className="font-semibold text-gray-900">1,200</span>
+                    </div>
+                  </div>
+                </div>
 
-                {/* Parafraseador Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
-                    🔄 Parafraseador
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Usos diarios</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">10</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Ilimitado</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Modos disponibles</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Estándar</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">5 modos</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">5 modos</td>
-                </tr>
+                {/* Humanizador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">✨ Humanizador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-semibold text-gray-900">3</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-semibold text-gray-900">Estándar</span>
+                    </div>
+                  </div>
+                </div>
 
-                {/* General Features */}
-                <tr className="border-b border-gray-100">
-                  <td colSpan={4} className="py-3 px-4 font-bold text-gray-900 bg-gray-50">
-                    ⚙️ Características Generales
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Duración</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Ilimitado</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">24 horas</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Mientras pagues</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Historial</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✅</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Subida de archivos</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">❌</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">✅ PDF, DOCX, TXT</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">✅ PDF, DOCX, TXT</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-3 px-4 text-gray-700">Soporte</td>
-                  <td className="text-center py-3 px-4 text-gray-900 font-medium">Email</td>
-                  <td className="text-center py-3 px-4 bg-orange-50 font-semibold text-orange-700">Email</td>
-                  <td className="text-center py-3 px-4 bg-violet-50 font-semibold text-violet-700">Prioritario</td>
-                </tr>
-              </tbody>
-            </table>
+                {/* Parafraseador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔄 Parafraseador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-semibold text-gray-900">10</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-semibold text-gray-900">Estándar</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Características */}
+                <div className="pt-4 border-t-2 border-gray-100">
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Historial</span>
+                      <span className="text-gray-400">—</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Subir archivos</span>
+                      <span className="text-gray-400">—</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Soporte</span>
+                      <span className="font-medium text-gray-900">Email</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Express Column - DESTACADO */}
+            <div className="relative bg-white rounded-2xl shadow-2xl border-4 border-orange-400 overflow-hidden transform md:scale-105">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-amber-500"></div>
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap inline-block">
+                  ⚡ MÁS POPULAR
+                </span>
+              </div>
+
+              <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 text-center border-b-2 border-orange-200 mt-2">
+                <h3 className="text-xl font-bold text-orange-700 mb-2">Express</h3>
+                <div className="mb-2">
+                  <span className="text-4xl font-extrabold text-orange-600">$3.99</span>
+                </div>
+                <p className="text-sm text-orange-700 font-medium">Pago único · 24 horas</p>
+              </div>
+
+              <div className="p-6 space-y-6 bg-gradient-to-b from-orange-50/30 to-white">
+                {/* Detector */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔍 Detector</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Caracteres</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Humanizador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">✨ Humanizador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-orange-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Parafraseador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔄 Parafraseador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-orange-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-orange-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Características */}
+                <div className="pt-4 border-t-2 border-orange-100">
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Historial</span>
+                      <span className="font-bold text-orange-600">✓</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Subir archivos</span>
+                      <span className="font-bold text-orange-600 text-xs">✓ PDF, DOCX, TXT</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Soporte</span>
+                      <span className="font-bold text-orange-600">Email</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Premium Column */}
+            <div className="bg-white rounded-2xl shadow-lg border-2 border-violet-200 overflow-hidden">
+              <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 text-center border-b-2 border-violet-200">
+                <h3 className="text-xl font-bold text-violet-700 mb-2">Pro</h3>
+                <div className="mb-2">
+                  <span className="text-4xl font-extrabold text-violet-600">$12.99</span>
+                </div>
+                <p className="text-sm text-violet-700 font-medium">Suscripción mensual</p>
+              </div>
+
+              <div className="p-6 space-y-6">
+                {/* Detector */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔍 Detector</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Caracteres</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Humanizador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">✨ Humanizador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-violet-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Parafraseador */}
+                <div>
+                  <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔄 Parafraseador</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Usos diarios</span>
+                      <span className="font-bold text-violet-600">Ilimitado</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Modos</span>
+                      <span className="font-bold text-violet-600">5 premium</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Características */}
+                <div className="pt-4 border-t-2 border-violet-100">
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Historial</span>
+                      <span className="font-bold text-violet-600">✓</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Subir archivos</span>
+                      <span className="font-bold text-violet-600 text-xs">✓ PDF, DOCX, TXT</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Soporte</span>
+                      <span className="font-bold text-violet-600">Prioritario</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -660,7 +874,7 @@ export default function PricingPageClient() {
                 ))}
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Uso DetectorDeIA diariamente para verificar el contenido de mi blog. El plan Pro vale cada centavo - los usos ilimitados y los 5 modos del parafraseador me ahorran horas de trabajo manual."
+                "Uso DetectorDeIA diariamente para verificar el contenido de mi blog. El plan Premium vale cada centavo - los usos ilimitados y los 5 modos del parafraseador me ahorran horas de trabajo manual."
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 flex items-center justify-center text-white font-bold text-lg">
@@ -704,7 +918,7 @@ export default function PricingPageClient() {
                 ))}
               </div>
               <p className="text-gray-700 mb-4 italic">
-                "Necesitaba revisar 20 trabajos antes de la fecha de entrega y los límites gratis no me alcanzaban. El Express me salvó - por $2.99 pude terminar todo en un día sin interrupciones."
+                "Necesitaba revisar 20 trabajos antes de la fecha de entrega y los límites gratis no me alcanzaban. El Express me salvó - por $3.99 pude terminar todo en un día sin interrupciones."
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-400 flex items-center justify-center text-white font-bold text-lg">

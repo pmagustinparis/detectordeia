@@ -75,13 +75,13 @@ export default function FileUploadUpsellModal({
           </h2>
 
           <p className="text-center text-gray-700 mb-6 leading-relaxed">
-            Con <strong>Plan Pro</strong> podés analizar archivos PDF, DOCX y TXT completos sin tener que copiar y pegar.
+            Con <strong>Plan Premium</strong> podés analizar archivos PDF, DOCX y TXT completos sin tener que copiar y pegar.
           </p>
 
           {/* Benefits Box */}
           <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
             <p className="text-sm font-bold text-violet-900 mb-3">
-              🚀 Con Plan Pro obtenés:
+              🚀 Con Plan Premium obtenés:
             </p>
             <ul className="space-y-2 text-sm text-violet-800">
               <li className="flex items-start gap-2">
@@ -106,7 +106,7 @@ export default function FileUploadUpsellModal({
               </li>
             </ul>
             <p className="text-xs text-violet-700 mt-3 font-semibold">
-              Express $2.99/24h • Pro $6.99/mes • Ahorra 20% anual
+              Express $3.99/24h • Premium $12.99/mes • Ahorra 20% anual
             </p>
           </div>
 
@@ -116,7 +116,7 @@ export default function FileUploadUpsellModal({
               href="/pricing"
               className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Ver Planes y Precios
+              Ver Planes
             </a>
 
             <button

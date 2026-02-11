@@ -151,19 +151,31 @@ export async function POST(request: Request) {
     } = await supabase.auth.getUser();
     const userId = user?.id || null;
 
-    // Obtener plan del usuario
+    // Obtener plan del usuario y Express status
     let userPlan: 'free' | 'premium' = 'free';
+    let isExpressActive = false;
     if (userId) {
       const { data: userData } = await supabase
         .from('users')
-        .select('plan_type')
+        .select('plan_type, express_expires_at')
         .eq('auth_id', userId)
         .single();
 
-      if (userData && userData.plan_type === 'premium') {
-        userPlan = 'premium';
+      if (userData) {
+        // Check if premium
+        if (userData.plan_type === 'premium') {
+          userPlan = 'premium';
+        }
+
+        // Check if Express is active
+        if (userData.express_expires_at) {
+          const expiresAt = new Date(userData.express_expires_at);
+          isExpressActive = expiresAt > new Date();
+        }
       }
     }
+
+    const hasPremiumAccess = userPlan === 'premium' || isExpressActive;
 
     // 🚨 RATE LIMITING CHECK
     const rateLimit = await checkRateLimit({
@@ -201,19 +213,19 @@ export async function POST(request: Request) {
       );
     }
 
-    // Límites de caracteres según plan
+    // Límites de caracteres según plan (Pro o Express = ilimitado)
     const CHARACTER_LIMITS = {
       free: 1200,
-      premium: 100000, // ILIMITADO para PRO
+      premium: 100000, // ILIMITADO para PRO o Express
     };
 
-    const charLimit = CHARACTER_LIMITS[userPlan];
+    const charLimit = hasPremiumAccess ? CHARACTER_LIMITS.premium : CHARACTER_LIMITS.free;
 
     if (text.length > charLimit) {
       return NextResponse.json(
         {
-          error: userPlan === 'free'
-            ? 'El texto excede el límite de 1,200 caracteres del plan Free. Actualiza a Pro para textos ilimitados.'
+          error: !hasPremiumAccess
+            ? 'El texto excede el límite de 1,200 caracteres del plan Free. Actualiza a Pro o Express para textos ilimitados.'
             : 'El texto excede el límite máximo permitido.',
           charLimit,
           currentLength: text.length,

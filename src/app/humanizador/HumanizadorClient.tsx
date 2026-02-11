@@ -7,6 +7,7 @@ import EmailCaptureModal from '../components/EmailCaptureModal';
 import FAQSection from '../components/FAQSection';
 import { useAuth } from '@/lib/hooks/useAuth';
 import ExpressPromoBanner from '../components/ExpressPromoBanner';
+import ToolSwitcher from '../components/ToolSwitcher';
 
 export default function HumanizadorClient() {
   const { isAuthenticated, user } = useAuth();
@@ -47,6 +48,9 @@ export default function HumanizadorClient() {
       {/* Banner Promocional - Express Pass */}
       <ExpressPromoBanner />
 
+      {/* Navegación entre herramientas - Sticky */}
+      <ToolSwitcher />
+
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
         {/* Elementos decorativos de fondo */}
@@ -80,7 +84,7 @@ export default function HumanizadorClient() {
             </div>
 
             <p className="text-violet-700 font-semibold text-lg mb-4">
-              Plan Pro – Ya Disponible
+              Plan Premium – Ya Disponible
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
@@ -110,7 +114,7 @@ export default function HumanizadorClient() {
               href="/pricing"
               className="inline-block w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
             >
-              Ver Planes y Precios
+              Ver Planes
             </a>
           </div>
         </section>

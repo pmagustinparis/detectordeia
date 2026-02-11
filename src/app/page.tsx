@@ -2,14 +2,14 @@ import { Metadata } from 'next';
 import HomePageClient from './HomePageClient'; // Importamos el componente cliente
 
 export const metadata: Metadata = {
-  title: 'El Mejor Detector de IA en Español Gratis | DetectordeIA.ai',
-  description: 'Descubre por qué DetectordeIA.ai es considerado el mejor detector de IA en español. Herramienta gratuita, precisa y fácil de usar para analizar textos y identificar contenido generado por inteligencia artificial. Sin registro, 100% privado.',
+  title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
+  description: 'Detector de IA, Humanizador y Parafraseador en español. Herramientas gratuitas, precisas y fáciles de usar para trabajar con contenido de inteligencia artificial. Sin registro, 100% privado.',
   alternates: {
     canonical: 'https://detectordeia.ai/',
   },
   openGraph: {
-    title: 'El Mejor Detector de IA en Español Gratis | DetectordeIA.ai',
-    description: 'Descubre por qué DetectordeIA.ai es el mejor detector de IA en español. Herramienta gratuita y precisa.',
+    title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
+    description: 'Herramientas de IA en español: Detector, Humanizador y Parafraseador. Gratuitas, precisas y sin registro.',
     url: 'https://detectordeia.ai/',
     siteName: 'DetectordeIA.ai',
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         url: 'https://detectordeia.ai/logo.png',
         width: 800,
         height: 600,
-        alt: 'Logo DetectordeIA.ai - El Mejor Detector de IA en Español',
+        alt: 'DetectordeIA.ai - Herramientas de IA en Español',
       },
     ],
     locale: 'es_ES',
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'El Mejor Detector de IA en Español Gratis | DetectordeIA.ai',
-    description: 'El mejor detector de IA en español: gratuito, preciso y fácil de usar. Pruébalo ahora.',
+    title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
+    description: 'Herramientas de IA en español: gratuitas, precisas y fáciles de usar. Pruébalas ahora.',
     images: ['https://detectordeia.ai/logo.png'],
   },
 };

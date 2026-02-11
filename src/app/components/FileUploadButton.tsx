@@ -9,6 +9,7 @@ interface FileUploadButtonProps {
   maxChars: number;
   disabled: boolean;
   userPlan: 'free' | 'premium';
+  isExpressActive?: boolean; // Nuevo: detectar Express Pass
   toolName: string; // "Detector", "Humanizador", "Parafraseador"
   className?: string;
 }
@@ -18,6 +19,7 @@ export default function FileUploadButton({
   maxChars,
   disabled,
   userPlan,
+  isExpressActive = false,
   toolName,
   className = '',
 }: FileUploadButtonProps) {
@@ -48,8 +50,10 @@ export default function FileUploadButton({
     }
   };
 
+  const hasPremiumAccess = userPlan === 'premium' || isExpressActive;
+
   const handleButtonClick = () => {
-    if (userPlan !== 'premium') {
+    if (!hasPremiumAccess) {
       setShowUpsellModal(true);
       return;
     }
@@ -63,8 +67,6 @@ export default function FileUploadButton({
       handleFileSelect(file);
     }
   };
-
-  const isPremium = userPlan === 'premium';
 
   return (
     <>
@@ -82,14 +84,14 @@ export default function FileUploadButton({
             disabled={disabled || isProcessing}
             className={`
               inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all
-              ${isPremium
+              ${hasPremiumAccess
                 ? 'bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white shadow-md hover:shadow-lg'
                 : 'bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300'
               }
               ${(disabled || isProcessing) && 'opacity-50 cursor-not-allowed'}
               relative group
             `}
-            title={!isPremium ? 'Subir archivos es exclusivo del Plan PRO 👑 Click para ver planes' : 'Subir archivo PDF, DOCX o TXT'}
+            title={!hasPremiumAccess ? 'Subir archivos es exclusivo del Plan PRO o Express Pass 👑 Click para ver planes' : 'Subir archivo PDF, DOCX o TXT'}
           >
             {isProcessing ? (
               <>
@@ -105,12 +107,12 @@ export default function FileUploadButton({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
                 Subir archivo
-                {!isPremium && ' 👑'}
+                {!hasPremiumAccess && ' 👑'}
               </>
             )}
           </button>
 
-          {isPremium && (
+          {hasPremiumAccess && (
             <span className="text-xs text-gray-500">PDF, DOCX o TXT (máx. 10MB)</span>
           )}
         </div>

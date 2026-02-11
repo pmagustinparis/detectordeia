@@ -20,17 +20,12 @@ export default function Header() {
       }
 
       try {
-        const response = await fetch('/api/user/plan');
+        const response = await fetch('/api/user/status');
         if (response.ok) {
           const data = await response.json();
-          // Check if Express is active
-          if (data.express_expires_at) {
-            const expiresAt = new Date(data.express_expires_at);
-            if (expiresAt > new Date()) {
-              setExpressExpiresAt(data.express_expires_at);
-            } else {
-              setExpressExpiresAt(null);
-            }
+          // Use consolidated response structure
+          if (data.express?.is_active && data.express?.expires_at) {
+            setExpressExpiresAt(data.express.expires_at);
           } else {
             setExpressExpiresAt(null);
           }
@@ -57,48 +52,19 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="/#detector"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              Detector
-            </Link>
-            <Link
-              href="/humanizador"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              Humanizador
-            </Link>
-            <Link
-              href="/parafraseador"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              Parafraseador
-            </Link>
+          {/* Auth & CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Planes Button - Premium style */}
             <Link
               href="/pricing"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
+              className="group relative px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105 bg-gradient-to-r from-violet-50 to-purple-50 hover:from-violet-100 hover:to-purple-100 border border-violet-200 hover:border-violet-300 hover:shadow-md"
             >
-              Precios
+              <span className="flex items-center gap-1.5">
+                <span className="text-violet-600 group-hover:scale-110 transition-transform">💎</span>
+                <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">Planes</span>
+              </span>
             </Link>
-            <Link
-              href="/#features"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              Funciones
-            </Link>
-            <Link
-              href="/#faq"
-              className="text-gray-700 hover:text-violet-600 font-medium transition-colors duration-200"
-            >
-              FAQ
-            </Link>
-          </nav>
 
-          {/* Auth & CTA */}
-          <div className="hidden md:flex items-center gap-4">
             {expressExpiresAt && (
               <ExpressTimer expiresAt={expressExpiresAt} compact={true} />
             )}
@@ -141,46 +107,11 @@ export default function Header() {
           <div className="md:hidden py-4 animate-fade-in">
             <nav className="flex flex-col gap-3">
               <Link
-                href="/#detector"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Detector
-              </Link>
-              <Link
-                href="/humanizador"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Humanizador
-              </Link>
-              <Link
-                href="/parafraseador"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Parafraseador
-              </Link>
-              <Link
                 href="/pricing"
                 className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Precios
-              </Link>
-              <Link
-                href="/#features"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Funciones
-              </Link>
-              <Link
-                href="/#faq"
-                className="px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                FAQ
+                Planes
               </Link>
               <div className="px-4 mt-4 border-t border-gray-200 pt-4">
                 {expressExpiresAt && (

@@ -94,6 +94,13 @@ async function handleCheckoutCompleted(
   session: Stripe.Checkout.Session,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
+  console.log('🔔 Processing checkout.session.completed:', {
+    session_id: session.id,
+    customer: session.customer,
+    mode: session.mode,
+    metadata: session.metadata,
+  });
+
   const userId = session.metadata?.supabase_user_id;
   const planType = session.metadata?.plan_type; // 'express' o 'premium'
 
@@ -102,11 +109,63 @@ async function handleCheckoutCompleted(
     return;
   }
 
-  // CASO 1: Pago único Express (24h)
-  if (planType === 'express' || session.mode === 'payment') {
-    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // +24 horas
+  // CASO 1: Pago único Express (24h o 7 días)
+  if (planType === 'express' || planType === 'express_semanal' || session.mode === 'payment') {
+    console.log('🚀 Processing Express checkout:', {
+      plan_type: planType,
+      user_id: userId,
+      session_id: session.id,
+    });
 
-    const { error } = await supabase
+    // Validación
+    if (!userId) {
+      console.error('❌ Missing user_id in Express checkout');
+      throw new Error('Missing user_id');
+    }
+
+    // Determinar duración según tipo
+    const hours = planType === 'express_semanal' ? 168 : 24; // 7 días = 168 horas
+    console.log(`⏱️ Duration: ${hours} hours (${planType})`);
+
+    // Leer estado actual del usuario con manejo de errores
+    const { data: currentUser, error: fetchError } = await supabase
+      .from('users')
+      .select('express_expires_at')
+      .eq('id', userId)
+      .single();
+
+    if (fetchError) {
+      console.error('❌ Error fetching current user:', fetchError);
+      throw fetchError;
+    }
+
+    // Calcular nueva fecha de expiración
+    let expiresAt: Date;
+    const now = new Date();
+    const currentExpires = currentUser?.express_expires_at
+      ? new Date(currentUser.express_expires_at)
+      : null;
+
+    // Logging del estado actual
+    console.log('📅 Current state:', {
+      now: now.toISOString(),
+      current_expires_at: currentExpires?.toISOString() || 'none',
+      is_active: currentExpires && currentExpires > now,
+    });
+
+    // Lógica de extensión vs nuevo
+    if (currentExpires && currentExpires > now) {
+      // EXTENDER: Tiene Express activo, sumar horas
+      expiresAt = new Date(currentExpires.getTime() + hours * 60 * 60 * 1000);
+      console.log(`⏰ EXTENDING Express: ${currentExpires.toISOString()} → ${expiresAt.toISOString()} (+${hours}h)`);
+    } else {
+      // NUEVO: No tiene activo o ya expiró, empezar desde ahora
+      expiresAt = new Date(now.getTime() + hours * 60 * 60 * 1000);
+      console.log(`✨ NEW Express: ${now.toISOString()} → ${expiresAt.toISOString()} (${hours}h)`);
+    }
+
+    // Update con validación
+    const { error: updateError } = await supabase
       .from('users')
       .update({
         express_expires_at: expiresAt.toISOString(),
@@ -114,12 +173,12 @@ async function handleCheckoutCompleted(
       })
       .eq('id', userId);
 
-    if (error) {
-      console.error('Error activating Express:', error);
-      throw error;
+    if (updateError) {
+      console.error('❌ Error updating Express expiration:', updateError);
+      throw updateError;
     }
 
-    console.log(`✅ User ${userId} activated Express pass (expires: ${expiresAt.toISOString()})`);
+    console.log(`✅ Express activated successfully for user ${userId} - expires: ${expiresAt.toISOString()}`);
     return;
   }
 
@@ -135,22 +194,50 @@ async function handleCheckoutCompleted(
     expand: ['items.data.price'],
   });
 
+  // Los period dates están en subscription_item, no en el nivel raíz
+  const subscriptionItem = subscription.items?.data?.[0];
+
+  console.log('📦 Subscription retrieved:', {
+    id: subscription.id,
+    status: subscription.status,
+    current_period_start: subscriptionItem?.current_period_start,
+    current_period_end: subscriptionItem?.current_period_end,
+    items_count: subscription.items?.data?.length,
+    has_price: !!subscriptionItem?.price?.id,
+  });
+
   const planInterval = session.metadata?.plan_interval;
+
+  // Verificar que tenemos los datos necesarios
+  if (!subscriptionItem?.price?.id) {
+    console.error('❌ Missing price data in subscription:', JSON.stringify(subscription, null, 2));
+    throw new Error('Missing price data in subscription');
+  }
+
+  if (!subscriptionItem.current_period_start || !subscriptionItem.current_period_end) {
+    console.error('❌ Missing period dates. Subscription data:', JSON.stringify(subscription, null, 2));
+    throw new Error('Missing period dates in subscription');
+  }
 
   // Crear registro de suscripción en Supabase
   const { error: subscriptionError } = await supabase
     .from('subscriptions')
-    .upsert({
-      user_id: userId,
-      stripe_customer_id: session.customer as string,
-      stripe_subscription_id: subscriptionId,
-      stripe_price_id: subscription.items.data[0].price.id,
-      plan_interval: planInterval,
-      status: subscription.status,
-      current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-      cancel_at_period_end: subscription.cancel_at_period_end,
-    });
+    .upsert(
+      {
+        user_id: userId,
+        stripe_customer_id: session.customer as string,
+        stripe_subscription_id: subscriptionId,
+        stripe_price_id: subscriptionItem.price.id,
+        plan_interval: planInterval,
+        status: subscription.status,
+        current_period_start: new Date(subscriptionItem.current_period_start * 1000).toISOString(),
+        current_period_end: new Date(subscriptionItem.current_period_end * 1000).toISOString(),
+        cancel_at_period_end: subscription.cancel_at_period_end || false,
+      },
+      {
+        onConflict: 'stripe_subscription_id',
+      }
+    );
 
   if (subscriptionError) {
     console.error('Error creating subscription:', subscriptionError);
@@ -160,7 +247,10 @@ async function handleCheckoutCompleted(
   // Actualizar plan del usuario a premium
   const { error: userError } = await supabase
     .from('users')
-    .update({ plan_type: 'premium' })
+    .update({
+      plan_type: 'premium',
+      stripe_customer_id: session.customer as string,
+    })
     .eq('id', userId);
 
   if (userError) {
@@ -176,13 +266,36 @@ async function handleSubscriptionUpdated(
   subscription: any,
   supabase: ReturnType<typeof getSupabaseAdmin>
 ) {
+  console.log('🔔 Processing customer.subscription.updated:', {
+    subscription_id: subscription.id,
+    status: subscription.status,
+    cancel_at_period_end: subscription.cancel_at_period_end,
+  });
+
+  // Los period dates están en subscription_item, igual que en checkout
+  const subscriptionItem = subscription.items?.data?.[0];
+
+  if (!subscriptionItem) {
+    console.error('❌ No subscription items found');
+    throw new Error('Missing subscription items');
+  }
+
+  // Validar que tenemos las fechas
+  if (!subscriptionItem.current_period_start || !subscriptionItem.current_period_end) {
+    console.error('❌ Missing period dates in subscription item:', {
+      subscription_id: subscription.id,
+      has_items: !!subscription.items?.data?.length,
+    });
+    throw new Error('Missing period dates in subscription item');
+  }
+
   const { error } = await supabase
     .from('subscriptions')
     .update({
       status: subscription.status,
-      current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-      cancel_at_period_end: subscription.cancel_at_period_end,
+      current_period_start: new Date(subscriptionItem.current_period_start * 1000).toISOString(),
+      current_period_end: new Date(subscriptionItem.current_period_end * 1000).toISOString(),
+      cancel_at_period_end: subscription.cancel_at_period_end || false,
     })
     .eq('stripe_subscription_id', subscription.id);
 
@@ -191,7 +304,7 @@ async function handleSubscriptionUpdated(
     throw error;
   }
 
-  console.log(`✅ Subscription ${subscription.id} updated`);
+  console.log(`✅ Subscription ${subscription.id} updated (cancel_at_period_end: ${subscription.cancel_at_period_end})`);
 }
 
 // Manejar cancelación de suscripción

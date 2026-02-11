@@ -85,7 +85,7 @@ export default function RootLayout({
                   </a>
                   <a href="/pricing" className="text-gray-400 hover:text-violet-400 transition-colors text-sm flex items-center gap-2 group">
                     <span className="text-xs group-hover:translate-x-1 transition-transform">💎</span>
-                    <span>Precios</span>
+                    <span>Planes</span>
                   </a>
                 </div>
               </div>

@@ -55,6 +55,16 @@ export async function GET() {
       ? Math.max(0, expiresAt.getTime() - now.getTime())
       : null;
 
+    // DEBUG: Log Express calculation
+    console.log('[USER STATUS DEBUG]', {
+      email: user.email,
+      express_expires_at: userData?.express_expires_at,
+      expiresAt: expiresAt?.toISOString(),
+      now: now.toISOString(),
+      isExpressActive,
+      timeRemainingMs,
+    });
+
     // 5. Return consolidated response
     const response: UserStatus = {
       isAuthenticated: true,
@@ -70,7 +80,13 @@ export async function GET() {
       },
     };
 
-    return NextResponse.json(response);
+    return NextResponse.json(response, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   } catch (error) {
     console.error('Error fetching user status:', error);
 

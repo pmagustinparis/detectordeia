@@ -39,7 +39,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Gratis para empezar',
-        description: 'Plan FREE con 10 análisis diarios sin registro. Plan PRO a solo $6.99/mes con análisis ilimitados, archivos PDF/DOCX y hasta 15,000 caracteres.'
+        description: 'Plan FREE con 10 análisis diarios sin registro. plan premium a solo $12.99/mes con análisis ilimitados, archivos PDF/DOCX y hasta 15,000 caracteres.'
       },
       {
         icon: '🔒',
@@ -49,12 +49,12 @@ export const useCases: UseCasePage[] = [
       {
         icon: '✨',
         title: 'Incluye Humanizador',
-        description: 'Enseñá a tus estudiantes cómo mejorar su redacción. El plan PRO incluye Humanizador y Parafraseador como herramienta educativa.'
+        description: 'Enseñá a tus estudiantes cómo mejorar su redacción. El plan premium incluye Humanizador y Parafraseador como herramienta educativa.'
       }
     ],
 
     howItWorks: [
-      'Copiá el texto del trabajo del estudiante (o subí PDF/DOCX en plan PRO)',
+      'Copiá el texto del trabajo del estudiante (o subí PDF/DOCX en plan premium)',
       'Hacé clic en "Analizar" y esperá 5 segundos',
       'Obtené el porcentaje de probabilidad de IA (0-100%)',
       'Revisá las frases específicas que parecen generadas por IA',
@@ -70,7 +70,7 @@ export const useCases: UseCasePage[] = [
     faqs: [
       {
         question: '¿Cómo puedo saber si mi estudiante usó ChatGPT?',
-        answer: 'DetectorDeIA analiza el texto buscando patrones típicos de IA: frases cliché como "cabe destacar que", estructura mecánica perfecta, falta de errores naturales, vocabulario genérico sin personalidad. Si el análisis muestra +70% de probabilidad y marca múltiples frases sospechosas, es probable que usó IA. El plan PRO muestra exactamente qué frases son sospechosas.'
+        answer: 'DetectorDeIA analiza el texto buscando patrones típicos de IA: frases cliché como "cabe destacar que", estructura mecánica perfecta, falta de errores naturales, vocabulario genérico sin personalidad. Si el análisis muestra +70% de probabilidad y marca múltiples frases sospechosas, es probable que usó IA. El plan premium muestra exactamente qué frases son sospechosas.'
       },
       {
         question: '¿Es confiable para evaluar trabajos académicos?',
@@ -78,11 +78,11 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Puedo subir archivos PDF o Word directamente?',
-        answer: 'Sí, en el plan PRO ($6.99/mes) podés subir archivos PDF, DOCX o TXT de hasta 10MB. El plan FREE solo permite pegar texto (hasta 5,000 caracteres). Con PRO analizás hasta 15,000 caracteres por archivo.'
+        answer: 'Sí, en el plan premium ($12.99/mes) podés subir archivos PDF, DOCX o TXT de hasta 10MB. El plan FREE solo permite pegar texto (hasta 5,000 caracteres). Con PRO analizás hasta 15,000 caracteres por archivo.'
       },
       {
         question: '¿Cuántos trabajos puedo analizar por día?',
-        answer: 'Plan FREE: 10 análisis diarios sin registro (5,000 caracteres cada uno). Plan PRO: análisis ilimitados de hasta 15,000 caracteres cada uno. Si tenés que revisar muchos trabajos, el plan PRO a $6.99/mes es ideal.'
+        answer: 'Plan FREE: 10 análisis diarios sin registro (5,000 caracteres cada uno). plan premium: análisis ilimitados de hasta 15,000 caracteres cada uno. Si tenés que revisar muchos trabajos, el plan premium a $12.99/mes es ideal.'
       },
       {
         question: '¿Los trabajos de mis estudiantes quedan guardados?',
@@ -142,7 +142,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💸',
         title: 'Gratis para siempre',
-        description: 'Plan FREE con 10 análisis diarios. Suficiente para verificar tus trabajos antes de entregarlos. Plan PRO a $6.99/mes si necesitás más.'
+        description: 'Plan FREE con 10 análisis diarios. Suficiente para verificar tus trabajos antes de entregarlos. plan premium a $12.99/mes si necesitás más.'
       },
       {
         icon: '✨',
@@ -194,7 +194,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Puedo analizar mi trabajo por partes?',
-        answer: 'Sí. El plan FREE permite 5,000 caracteres por análisis (aproximadamente 2-3 páginas). Si tu trabajo es más largo, analizalo por secciones. El plan PRO permite hasta 15,000 caracteres (8-10 páginas) y podés subir archivos PDF/DOCX directamente.'
+        answer: 'Sí. El plan FREE permite 5,000 caracteres por análisis (aproximadamente 2-3 páginas). Si tu trabajo es más largo, analizalo por secciones. El plan premium permite hasta 15,000 caracteres (8-10 páginas) y podés subir archivos PDF/DOCX directamente.'
       },
       {
         question: '¿Qué hago si mi trabajo marca 80% pero lo escribí yo?',
@@ -236,7 +236,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Económico vs Turnitin',
-        description: 'Turnitin cuesta $3-5 USD por estudiante/año. DetectorDeIA PRO cuesta $6.99/mes con análisis ilimitados. Ahorro masivo para la institución.'
+        description: 'Turnitin cuesta $3-5 USD por estudiante/año. DetectorDeIA PRO cuesta $12.99/mes con análisis ilimitados. Ahorro masivo para la institución.'
       },
       {
         icon: '📊',
@@ -251,7 +251,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '⚡',
         title: 'Rápido y escalable',
-        description: 'Análisis en menos de 5 segundos. Profesores pueden revisar decenas de trabajos diariamente sin esperas. Sin límites de uso en plan PRO.'
+        description: 'Análisis en menos de 5 segundos. Profesores pueden revisar decenas de trabajos diariamente sin esperas. Sin límites de uso en plan premium.'
       },
       {
         icon: '🌍',
@@ -261,7 +261,7 @@ export const useCases: UseCasePage[] = [
     ],
 
     howItWorks: [
-      'Profesores copian el texto del trabajo del estudiante (o suben PDF/DOCX con plan PRO)',
+      'Profesores copian el texto del trabajo del estudiante (o suben PDF/DOCX con plan premium)',
       'Sistema analiza en menos de 5 segundos usando modelos especializados en español',
       'Reporte muestra porcentaje de probabilidad de IA (0-100%) y frases específicas sospechosas',
       'Profesor usa reporte como evidencia objetiva para conversar con estudiante',
@@ -277,7 +277,7 @@ export const useCases: UseCasePage[] = [
     faqs: [
       {
         question: '¿Cuánto cuesta para una universidad completa?',
-        answer: 'DetectorDeIA no cobra licencias institucionales costosas. Cada profesor puede usar plan FREE (10 análisis diarios gratis) o plan PRO ($6.99/mes individual con análisis ilimitados). Para 50 profesores: $349/mes total. Turnitin cobraría $10,000-15,000/año para la misma cantidad de estudiantes. Ahorro masivo.'
+        answer: 'DetectorDeIA no cobra licencias institucionales costosas. Cada profesor puede usar plan FREE (10 análisis diarios gratis) o plan premium ($12.99/mes individual con análisis ilimitados). Para 50 profesores: $349/mes total. Turnitin cobraría $10,000-15,000/año para la misma cantidad de estudiantes. Ahorro masivo.'
       },
       {
         question: '¿Cómo se compara con Turnitin?',
@@ -293,7 +293,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Funciona para tesis de maestría/doctorado?',
-        answer: 'Sí, perfectamente. El plan PRO permite analizar hasta 15,000 caracteres por análisis (aproximadamente 8-10 páginas). Para tesis completas, se pueden analizar por capítulos. DetectorDeIA detecta patrones de IA en escritura académica avanzada, no solo ensayos básicos.'
+        answer: 'Sí, perfectamente. El plan premium permite analizar hasta 15,000 caracteres por análisis (aproximadamente 8-10 páginas). Para tesis completas, se pueden analizar por capítulos. DetectorDeIA detecta patrones de IA en escritura académica avanzada, no solo ensayos básicos.'
       },
       {
         question: '¿Qué pasa si hay falsos positivos?',
@@ -344,7 +344,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '⚡',
         title: 'Análisis instantáneo',
-        description: 'Resultados en menos de 5 segundos. Analiza hasta 5,000 caracteres gratis (plan FREE) o 15,000 caracteres (plan PRO).'
+        description: 'Resultados en menos de 5 segundos. Analiza hasta 5,000 caracteres gratis (plan FREE) o 15,000 caracteres (plan premium).'
       },
       {
         icon: '📊',
@@ -354,7 +354,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '📄',
         title: 'Sube archivos PDF/DOCX',
-        description: 'Plan PRO permite subir trabajos en PDF, DOCX o TXT directamente. No necesitas copiar y pegar manualmente.'
+        description: 'plan premium permite subir trabajos en PDF, DOCX o TXT directamente. No necesitas copiar y pegar manualmente.'
       },
       {
         icon: '🔒',
@@ -364,7 +364,7 @@ export const useCases: UseCasePage[] = [
     ],
 
     howItWorks: [
-      'Copiá el texto del trabajo académico (o subí archivo PDF/DOCX con plan PRO)',
+      'Copiá el texto del trabajo académico (o subí archivo PDF/DOCX con plan premium)',
       'El sistema analiza en segundos buscando patrones típicos de IA en texto académico',
       'Obtenés porcentaje de probabilidad de IA y frases específicas sospechosas',
       'Revisá las métricas lingüísticas (perplexity, burstiness) para evaluación objetiva',
@@ -404,7 +404,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos trabajos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Plan PRO: análisis ilimitados (15,000 caracteres cada uno) + subida de archivos PDF/DOCX. Si sos profesor revisando muchos trabajos, plan PRO a $6.99/mes es ideal.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). plan premium: análisis ilimitados (15,000 caracteres cada uno) + subida de archivos PDF/DOCX. Si sos profesor revisando muchos trabajos, plan premium a $12.99/mes es ideal.'
       }
     ],
 
@@ -442,7 +442,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '📑',
         title: 'Análisis por capítulos',
-        description: 'Las tesis son largas. Analizá capítulo por capítulo (hasta 15,000 caracteres por análisis en plan PRO). Ideal para revisión exhaustiva.'
+        description: 'Las tesis son largas. Analizá capítulo por capítulo (hasta 15,000 caracteres por análisis en plan premium). Ideal para revisión exhaustiva.'
       },
       {
         icon: '🔬',
@@ -457,7 +457,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '📄',
         title: 'Sube PDF directamente',
-        description: 'Con plan PRO, subí capítulos de tu tesis en PDF o DOCX. No necesitas copiar/pegar manualmente cientos de páginas.'
+        description: 'Con plan premium, subí capítulos de tu tesis en PDF o DOCX. No necesitas copiar/pegar manualmente cientos de páginas.'
       },
       {
         icon: '🌍',
@@ -468,7 +468,7 @@ export const useCases: UseCasePage[] = [
 
     howItWorks: [
       'Seleccioná el capítulo de la tesis que querés analizar (introducción, marco teórico, metodología, etc.)',
-      'Copiá el texto o subí el PDF del capítulo (plan PRO permite hasta 15,000 caracteres)',
+      'Copiá el texto o subí el PDF del capítulo (plan premium permite hasta 15,000 caracteres)',
       'El sistema analiza en segundos buscando patrones de IA en escritura académica avanzada',
       'Obtenés reporte con porcentaje de IA y frases específicas sospechosas por capítulo',
       'Repetí el proceso para cada capítulo de la tesis para análisis completo'
@@ -483,7 +483,7 @@ export const useCases: UseCasePage[] = [
     faqs: [
       {
         question: '¿Puede analizar una tesis doctoral completa?',
-        answer: 'Las tesis doctorales tienen 150-300 páginas, demasiado para un solo análisis. Recomendamos analizar por capítulos: introducción, marco teórico, metodología, resultados, discusión, conclusiones. Cada capítulo se analiza separadamente (hasta 15,000 caracteres por análisis en plan PRO). Así obtenés un panorama completo de toda la tesis.'
+        answer: 'Las tesis doctorales tienen 150-300 páginas, demasiado para un solo análisis. Recomendamos analizar por capítulos: introducción, marco teórico, metodología, resultados, discusión, conclusiones. Cada capítulo se analiza separadamente (hasta 15,000 caracteres por análisis en plan premium). Así obtenés un panorama completo de toda la tesis.'
       },
       {
         question: '¿Detecta IA en marcos teóricos y revisiones bibliográficas?',
@@ -658,7 +658,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Gratis para profesores',
-        description: 'Plan FREE con 10 análisis diarios sin registro. Suficiente para revisar las tareas sospechosas de tu clase cada día. Plan PRO a solo $6.99/mes para análisis ilimitados.'
+        description: 'Plan FREE con 10 análisis diarios sin registro. Suficiente para revisar las tareas sospechosas de tu clase cada día. plan premium a solo $12.99/mes para análisis ilimitados.'
       },
       {
         icon: '🎯',
@@ -713,7 +713,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántas tareas puedo analizar por día?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para tareas escolares normales). Plan PRO: análisis ilimitados (15,000 caracteres cada uno). Si sos profesor con muchos alumnos, plan PRO a $6.99/mes te permite revisar todas las tareas que necesites.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para tareas escolares normales). plan premium: análisis ilimitados (15,000 caracteres cada uno). Si sos profesor con muchos alumnos, plan premium a $12.99/mes te permite revisar todas las tareas que necesites.'
       }
     ],
 
@@ -808,7 +808,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuánto contenido puedo analizar por mes?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para equipos: plan PRO individual $6.99/mes (análisis ilimitados, 15,000 caracteres). Si tu equipo analiza mucho contenido diariamente, varios miembros pueden tener cuentas PRO. No hay planes empresariales especiales por ahora, pero puedes contactarnos para volúmenes grandes.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para equipos: plan premium individual $12.99/mes (análisis ilimitados, 15,000 caracteres). Si tu equipo analiza mucho contenido diariamente, varios miembros pueden tener cuentas PRO. No hay planes empresariales especiales por ahora, pero puedes contactarnos para volúmenes grandes.'
       },
       {
         question: '¿El detector ayuda a mejorar el contenido?',
@@ -915,7 +915,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos artículos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para artículos largos (2,000+ palabras), plan PRO a $6.99/mes permite hasta 15,000 caracteres por análisis + análisis ilimitados. Si publicas contenido a escala (10+ artículos semanales), plan PRO es esencial. Puedes analizar por secciones si el artículo es muy largo.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno). Para artículos largos (2,000+ palabras), plan premium a $12.99/mes permite hasta 15,000 caracteres por análisis + análisis ilimitados. Si publicas contenido a escala (10+ artículos semanales), plan premium es esencial. Puedes analizar por secciones si el artículo es muy largo.'
       },
       {
         question: '¿El detector reemplaza herramientas SEO como Surfer o Clearscope?',
@@ -1022,7 +1022,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos artículos de blog puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para artículos de blog estándar de 1,000-1,500 palabras). Plan PRO: $6.99/mes con análisis ilimitados de hasta 15,000 caracteres (artículos de 3,000-4,000 palabras). Si publicas múltiples posts semanales, plan PRO es ideal. Puedes analizar por secciones si el artículo es muy largo.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres cada uno, suficiente para artículos de blog estándar de 1,000-1,500 palabras). plan premium: $12.99/mes con análisis ilimitados de hasta 15,000 caracteres (artículos de 3,000-4,000 palabras). Si publicas múltiples posts semanales, plan premium es ideal. Puedes analizar por secciones si el artículo es muy largo.'
       }
     ],
 
@@ -1125,7 +1125,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos artículos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, artículos cortos). Para redacciones: plan PRO a $6.99/mes individual (análisis ilimitados, 15,000 caracteres). Si tu medio publica volumen alto diariamente, varios editores pueden tener cuentas PRO. Para redacciones grandes que necesiten plan institucional, contactanos a hola@detectordeia.ai.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, artículos cortos). Para redacciones: plan premium a $12.99/mes individual (análisis ilimitados, 15,000 caracteres). Si tu medio publica volumen alto diariamente, varios editores pueden tener cuentas PRO. Para redacciones grandes que necesiten plan institucional, contactanos a hola@detectordeia.ai.'
       }
     ],
 
@@ -1228,7 +1228,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Cuántos textos puedo analizar?',
-        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, capítulos cortos/artículos). Plan PRO: $6.99/mes con análisis ilimitados (15,000 caracteres, capítulos largos). Para editoriales/publicaciones que procesan volumen alto, múltiples editores pueden tener cuentas PRO. Puedes analizar manuscritos largos por capítulos/secciones.'
+        answer: 'Plan FREE: 10 análisis diarios (5,000 caracteres, capítulos cortos/artículos). plan premium: $12.99/mes con análisis ilimitados (15,000 caracteres, capítulos largos). Para editoriales/publicaciones que procesan volumen alto, múltiples editores pueden tener cuentas PRO. Puedes analizar manuscritos largos por capítulos/secciones.'
       }
     ],
 
@@ -1276,7 +1276,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Precios accesibles para Argentina',
-        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a solo USD $6.99/mes (aproximadamente ARS según tipo de cambio). Sin costos ocultos.'
+        description: 'Plan FREE gratis con 10 análisis diarios. plan premium a solo USD $12.99/mes (aproximadamente ARS según tipo de cambio). Sin costos ocultos.'
       },
       {
         icon: '🏫',
@@ -1319,15 +1319,15 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Funciona para trabajos universitarios en Argentina?',
-        answer: 'Sí, es ideal para eso. Trabajamos con textos académicos de UBA, UNC, UNLP, UTN, Universidad de Rosario, etc. Detectamos IA en ensayos, monografías, tesis, trabajos prácticos. El plan FREE (10 análisis diarios) es suficiente para estudiantes. Profesores con muchos alumnos pueden usar plan PRO a USD $6.99/mes.'
+        answer: 'Sí, es ideal para eso. Trabajamos con textos académicos de UBA, UNC, UNLP, UTN, Universidad de Rosario, etc. Detectamos IA en ensayos, monografías, tesis, trabajos prácticos. El plan FREE (10 análisis diarios) es suficiente para estudiantes. Profesores con muchos alumnos pueden usar plan premium a USD $12.99/mes.'
       },
       {
         question: '¿Cuánto cuesta en pesos argentinos?',
-        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $6.99/mes (equivalente en ARS según tipo de cambio oficial del día de pago). Se puede pagar con tarjeta de crédito/débito internacional. No aceptamos Mercado Pago por ahora, solo tarjetas internacionales (Visa, Mastercard).'
+        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. plan premium: USD $12.99/mes (equivalente en ARS según tipo de cambio oficial del día de pago). Se puede pagar con tarjeta de crédito/débito internacional. No aceptamos Mercado Pago por ahora, solo tarjetas internacionales (Visa, Mastercard).'
       },
       {
         question: '¿Los profesores argentinos pueden usarlo para revisar trabajos?',
-        answer: 'Absolutamente. Muchos docentes de universidades y colegios secundarios argentinos usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. El plan FREE alcanza para revisar trabajos sospechosos (10 por día). Si sos profe con muchos alumnos, plan PRO da análisis ilimitados. Protegé la integridad académica sin gastar fortunas en Turnitin.'
+        answer: 'Absolutamente. Muchos docentes de universidades y colegios secundarios argentinos usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. El plan FREE alcanza para revisar trabajos sospechosos (10 por día). Si sos profe con muchos alumnos, plan premium da análisis ilimitados. Protegé la integridad académica sin gastar fortunas en Turnitin.'
       },
       {
         question: '¿Qué pasa si mi texto tiene muchas palabras argentinas?',
@@ -1379,7 +1379,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Precios accesibles para México',
-        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $6.99/mes (aproximadamente MXN según tipo de cambio). Sin costos ocultos ni sorpresas.'
+        description: 'Plan FREE gratis con 10 análisis diarios. plan premium a USD $12.99/mes (aproximadamente MXN según tipo de cambio). Sin costos ocultos ni sorpresas.'
       },
       {
         icon: '🏫',
@@ -1422,15 +1422,15 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Sirve para trabajos universitarios en México?',
-        answer: 'Sí, totalmente. Funciona para textos académicos de UNAM, IPN, Tec de Monterrey, UAM, UDG, UANL, Universidad de Guadalajara, etc. Detectamos IA en ensayos, monografías, tesis, proyectos, tareas. Plan FREE (10 análisis diarios) suficiente para estudiantes. Maestros con muchos alumnos usan plan PRO a USD $6.99/mes.'
+        answer: 'Sí, totalmente. Funciona para textos académicos de UNAM, IPN, Tec de Monterrey, UAM, UDG, UANL, Universidad de Guadalajara, etc. Detectamos IA en ensayos, monografías, tesis, proyectos, tareas. Plan FREE (10 análisis diarios) suficiente para estudiantes. Maestros con muchos alumnos usan plan premium a USD $12.99/mes.'
       },
       {
         question: '¿Cuánto cuesta en pesos mexicanos?',
-        answer: 'Plan FREE: totalmente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $6.99/mes (equivalente en MXN según tipo de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos pagos con OXXO o SPEI por ahora, solo tarjetas internacionales (Visa, Mastercard, Amex).'
+        answer: 'Plan FREE: totalmente gratis, 10 análisis diarios, 5,000 caracteres por análisis. plan premium: USD $12.99/mes (equivalente en MXN según tipo de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos pagos con OXXO o SPEI por ahora, solo tarjetas internacionales (Visa, Mastercard, Amex).'
       },
       {
         question: '¿Los maestros mexicanos pueden usarlo para revisar tareas?',
-        answer: 'Claro que sí. Muchos maestros de universidades y prepas mexicanas usan DetectorDeIA para identificar qué trabajos revisar con más detalle. Plan FREE alcanza para revisar tareas sospechosas (10 por día). Maestros con grupos grandes usan plan PRO para análisis ilimitados. Mucho más barato que Turnitin y funciona mejor con español mexicano.'
+        answer: 'Claro que sí. Muchos maestros de universidades y prepas mexicanas usan DetectorDeIA para identificar qué trabajos revisar con más detalle. Plan FREE alcanza para revisar tareas sospechosas (10 por día). Maestros con grupos grandes usan plan premium para análisis ilimitados. Mucho más barato que Turnitin y funciona mejor con español mexicano.'
       },
       {
         question: '¿Qué pasa si mi texto tiene muchas palabras mexicanas?',
@@ -1482,7 +1482,7 @@ export const useCases: UseCasePage[] = [
       {
         icon: '💰',
         title: 'Precios accesibles para Colombia',
-        description: 'Plan FREE gratis con 10 análisis diarios. Plan PRO a USD $6.99/mes (aproximadamente COP según tasa de cambio). Sin costos ocultos.'
+        description: 'Plan FREE gratis con 10 análisis diarios. plan premium a USD $12.99/mes (aproximadamente COP según tasa de cambio). Sin costos ocultos.'
       },
       {
         icon: '🏫',
@@ -1525,15 +1525,15 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Sirve para trabajos universitarios en Colombia?',
-        answer: 'Sí, totalmente. Funciona para textos académicos de Universidad Nacional, Universidad de los Andes, Pontificia Universidad Javeriana, Universidad de Antioquia, Universidad del Valle, Universidad del Rosario, etc. Detectamos IA en ensayos, monografías, tesis, proyectos. Plan FREE (10 análisis diarios) suficiente para estudiantes. Profesores usan plan PRO a USD $6.99/mes.'
+        answer: 'Sí, totalmente. Funciona para textos académicos de Universidad Nacional, Universidad de los Andes, Pontificia Universidad Javeriana, Universidad de Antioquia, Universidad del Valle, Universidad del Rosario, etc. Detectamos IA en ensayos, monografías, tesis, proyectos. Plan FREE (10 análisis diarios) suficiente para estudiantes. Profesores usan plan premium a USD $12.99/mes.'
       },
       {
         question: '¿Cuánto cuesta en pesos colombianos?',
-        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. Plan PRO: USD $6.99/mes (equivalente en COP según tasa de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos PSE o efecty por ahora, solo tarjetas internacionales (Visa, Mastercard).'
+        answer: 'Plan FREE: completamente gratis, 10 análisis diarios, 5,000 caracteres por análisis. plan premium: USD $12.99/mes (equivalente en COP según tasa de cambio del día de pago). Se paga con tarjeta de crédito/débito internacional. No aceptamos PSE o efecty por ahora, solo tarjetas internacionales (Visa, Mastercard).'
       },
       {
         question: '¿Los profesores colombianos pueden usarlo para revisar trabajos?',
-        answer: 'Claro que sí. Muchos docentes de universidades colombianas usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. Plan FREE alcanza para revisar trabajos sospechosos (10 por día). Profesores con muchos estudiantes usan plan PRO para análisis ilimitados. Más económico que Turnitin y funciona mejor con español colombiano.'
+        answer: 'Claro que sí. Muchos docentes de universidades colombianas usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. Plan FREE alcanza para revisar trabajos sospechosos (10 por día). Profesores con muchos estudiantes usan plan premium para análisis ilimitados. Más económico que Turnitin y funciona mejor con español colombiano.'
       },
       {
         question: '¿Qué pasa si mi texto tiene muchas palabras colombianas?',

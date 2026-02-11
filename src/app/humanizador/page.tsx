@@ -2,15 +2,15 @@ import { Metadata } from 'next';
 import HumanizadorClient from './HumanizadorClient';
 
 export const metadata: Metadata = {
-  title: 'Humanizador de IA en Español Gratis | DetectorDeIA',
-  description: 'Transforma texto generado por IA en contenido natural y humano. Humanizador gratuito, sin registro, optimizado para español. Hasta 600 caracteres gratis.',
-  keywords: ['humanizador de ia', 'humanizar texto ia', 'convertir ia a humano', 'humanizador español', 'chatgpt humanizer', 'humanizar chatgpt', 'humanizar texto chatgpt', 'pasar detector ia', 'humanizador gratis'],
+  title: 'Humanizar Texto IA Gratis 2025 | Humanizador en Español Sin Registro',
+  description: 'Humaniza texto de IA gratis y online. Convierte contenido de ChatGPT, Gemini o cualquier IA en texto natural y humano. Sin límites en versión free, sin registro. 600 caracteres gratis, actualizado 2025.',
+  keywords: ['humanizar texto ia gratis', 'humanizar texto gratis', 'humanizar ia gratis', 'humanizador de ia gratis', 'humanizar texto de ia', 'humanizar texto de chatgpt', 'humanizador de textos gratis', 'humanizar ia', 'humanizador de texto ia', 'quitar ia de un texto', 'eliminador de ia', 'humanizador gratis', 'humanizar chatgpt gratis'],
   alternates: {
     canonical: 'https://detectordeia.ai/humanizador',
   },
   openGraph: {
-    title: 'Humanizador de IA en Español Gratis',
-    description: 'Transforma texto generado por IA en contenido natural y humano. Sin registro, 100% privado, optimizado para español.',
+    title: 'Humanizar Texto IA Gratis 2025 | Humanizador en Español',
+    description: 'Humaniza texto de IA gratis y online. Convierte contenido de ChatGPT, Gemini o cualquier IA en texto natural. Sin registro, 100% privado. Actualizado 2025.',
     url: 'https://detectordeia.ai/humanizador',
     siteName: 'DetectorDeIA',
     type: 'website',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Humanizador de IA en Español Gratis',
-    description: 'Transforma texto generado por IA en contenido natural y humano. Sin registro, optimizado para español.',
+    title: 'Humanizar Texto IA Gratis 2025 | Humanizador en Español',
+    description: 'Humaniza texto de IA gratis y online. Convierte contenido de ChatGPT, Gemini o cualquier IA en texto natural. Sin registro, actualizado 2025.',
     images: ['https://detectordeia.ai/og-humanizador.png'],
   },
   robots: {
@@ -52,8 +52,8 @@ export default function HumanizadorPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: 'Humanizador de IA en Español',
-            description: 'Herramienta gratuita para transformar texto generado por IA en contenido natural y humano',
+            name: 'Humanizar Texto IA Gratis - Humanizador en Español',
+            description: 'Humaniza texto de IA gratis y online. Herramienta gratuita para convertir contenido de ChatGPT, Gemini o cualquier IA en texto natural y humano',
             url: 'https://detectordeia.ai/humanizador',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'All',
@@ -135,7 +135,7 @@ export default function HumanizadorPage() {
                 name: '¿Qué incluyen los planes Express y Pro?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Express ($2.99 por 24 horas) te da acceso ilimitado a todas las herramientas con 5 modos premium, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Pro ($6.99/mes o $66.99/año) incluye lo mismo pero de forma continua, con historial completo y soporte prioritario.',
+                  text: 'Express ($3.99 por 24 horas) te da acceso ilimitado a todas las herramientas con 5 modos premium, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Pro ($12.99/mes o $124.68/año) incluye lo mismo pero de forma continua, con historial completo y soporte prioritario.',
                 },
               },
               {
