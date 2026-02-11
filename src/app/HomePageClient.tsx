@@ -2,17 +2,17 @@
 
 import DetectorMain from './components/DetectorMain';
 import { ProductIcons, Icon } from '@/lib/icons';
+import HumanizadorPromoBanner from './components/HumanizadorPromoBanner';
 import ExpressPromoBanner from './components/ExpressPromoBanner';
-import ToolSwitcher from './components/ToolSwitcher';
 
 export default function HomePageClient() {
   return (
-    <div className="min-h-screen bg-gray-100 pb-10 px-2">
+    <div className="min-h-screen bg-white pb-24 px-4">
       {/* Banner Promocional - Express Pass */}
       <ExpressPromoBanner />
 
-      {/* Navegación entre herramientas - Sticky */}
-      <ToolSwitcher />
+      {/* Banner Promocional - Lanzamiento Humanizador */}
+      <HumanizadorPromoBanner />
 
       {/* DETECTOR UNIFICADO */}
       <DetectorMain
@@ -20,170 +20,233 @@ export default function HomePageClient() {
         subtitle="Detecta contenido generado por IA con precisión líder. Gratis, privado y sin registro."
       />
 
-      {/* VALUE PROPS/FEATURES ROW */}
-      <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8 animate-slide-in-bottom">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-violet-600" />
+      {/* VALUE PROPS/FEATURES - GRID LIMPIO */}
+      <section id="features" className="max-w-6xl mx-auto mb-32 px-2 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Feature 1 */}
+          <div className="bg-white border-l-4 border-blue-900 p-8 animate-slide-in-left" style={{animationDelay: '0s'}}>
+            <div className="flex items-start gap-4 mb-4">
+              <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Icon icon={ProductIcons.Confidence} size="xl" className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Precisión en español</h3>
+            </div>
+            <p className="text-gray-700 text-base leading-relaxed">
+              Optimizado para textos de España y LATAM. Resultados confiables y explicados en tu idioma.
+            </p>
           </div>
-          <h3 className="font-bold text-lg mb-2 text-gray-800">Precisión en español</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">Optimizado para textos de España y LATAM. Resultados confiables y explicados.</p>
+
+          {/* Feature 2 */}
+          <div className="bg-white border-l-4 border-red-600 p-8 animate-fade-in" style={{animationDelay: '0.1s'}}>
+            <div className="flex items-start gap-4 mb-4">
+              <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Icon icon={ProductIcons.Locked} size="xl" className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Privacidad total</h3>
+            </div>
+            <p className="text-gray-700 text-base leading-relaxed">
+              Tus textos no se guardan ni comparten. 100% privado, seguro y sin datos guardados en servidores.
+            </p>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="bg-white border-l-4 border-blue-900 p-8 animate-slide-in-right" style={{animationDelay: '0.2s'}}>
+            <div className="flex items-start gap-4 mb-4">
+              <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Icon icon={ProductIcons.Fast} size="xl" className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Sin registro</h3>
+            </div>
+            <p className="text-gray-700 text-base leading-relaxed">
+              Analizá textos gratis, sin crear cuenta. 10 usos diarios sin necesidad de identificación.
+            </p>
+          </div>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Locked} size="2xl" className="text-cyan-600" />
+
+        {/* Feature destacado - Reportes */}
+        <div className="mt-12 bg-blue-50 border border-blue-200 p-8 rounded-lg">
+          <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
+            <div className="w-16 h-16 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+              <Icon icon={ProductIcons.Analytics} size="2xl" className="text-white" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-blue-900 mb-2" style={{fontFamily: "'Georgia', serif"}}>Reportes avanzados</h3>
+              <p className="text-gray-700 text-base leading-relaxed">
+                Planes premium con análisis de archivos, historial completo y reportes detallados para docentes y profesionales.
+              </p>
+            </div>
           </div>
-          <h3 className="font-bold text-lg mb-2 text-gray-800">Privacidad total</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">Tus textos no se guardan ni comparten. 100% privado y seguro.</p>
-        </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Fast} size="2xl" className="text-emerald-600" />
-          </div>
-          <h3 className="font-bold text-lg mb-2 text-gray-800">Sin registro</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">Analizá textos gratis, sin crear cuenta. 10 usos diarios.</p>
-        </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-orange-600" />
-          </div>
-          <h3 className="font-bold text-lg mb-2 text-gray-800">Reportes avanzados</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">Planes premium con archivos, historial y reportes detallados.</p>
         </div>
       </section>
 
       {/* VARIANTES DEL DETECTOR - Internal Linking SEO */}
-      <section className="max-w-5xl mx-auto mb-12 px-2">
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-6 text-center">
-          <p className="text-gray-700 text-sm mb-3">
-            <span className="font-semibold">También buscado como:</span>
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href="/identificador-de-ia"
-              className="px-4 py-2 bg-white hover:bg-violet-50 text-violet-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-violet-200"
-            >
+      <section className="max-w-5xl mx-auto mb-32 px-2">
+        <div className="border-l-4 border-blue-900 pl-6">
+          <p className="text-sm font-semibold text-blue-900 mb-6 uppercase tracking-wider">También conocido como</p>
+          <div className="flex flex-wrap gap-3">
+            <a href="/identificador-de-ia" className="px-4 py-2.5 bg-blue-900 hover:bg-blue-800 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all">
               Identificador de IA
             </a>
-            <a
-              href="/verificador-de-ia"
-              className="px-4 py-2 bg-white hover:bg-violet-50 text-violet-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-violet-200"
-            >
+            <a href="/verificador-de-ia" className="px-4 py-2.5 bg-white hover:bg-blue-50 text-blue-900 font-medium rounded-lg border border-blue-900 shadow-sm hover:shadow-md transition-all">
               Verificador de IA
             </a>
-            <a
-              href="/comprobador-de-ia"
-              className="px-4 py-2 bg-white hover:bg-violet-50 text-violet-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-violet-200"
-            >
+            <a href="/comprobador-de-ia" className="px-4 py-2.5 bg-white hover:bg-blue-50 text-blue-900 font-medium rounded-lg border border-blue-900 shadow-sm hover:shadow-md transition-all">
               Comprobador de IA
             </a>
           </div>
         </div>
       </section>
 
-      {/* SECCIÓN DE BENEFICIOS */}
-      <section className="max-w-5xl mx-auto mb-16 px-2">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 animate-fade-in">
-          <span className="gradient-text-primary">¿Para quién es</span>
-          <span className="text-gray-800"> DetectordeIA.ai?</span>
+      {/* SECCIÓN DE BENEFICIOS - LIMPIA Y CLARA */}
+      <section className="max-w-5xl mx-auto mb-32 px-2">
+        <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4 text-center" style={{fontFamily: "'Georgia', serif"}}>
+          Diseñado para estudiantes y educadores
         </h2>
-        <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-          Diseñado para profesionales, educadores, estudiantes y creadores de contenido
+        <p className="text-center text-gray-700 text-lg mb-16 max-w-3xl mx-auto">
+          La herramienta de confianza para verificar la autenticidad del trabajo académico
         </p>
-        <div className="grid md:grid-cols-4 gap-6 animate-slide-in-bottom">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.GraduationCap} size="2xl" className="text-blue-600" />
+
+        <div className="space-y-16">
+          {/* Docentes */}
+          <div className="flex flex-col md:flex-row gap-12 items-center border-b pb-12">
+            <div className="md:w-1/2">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
+                  <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Docentes</h3>
+              </div>
+              <p className="text-gray-700 text-base leading-relaxed">
+                Verifica la autenticidad de trabajos académicos de tus estudiantes. Detecta contenido generado por ChatGPT, Claude y otras IA en ensayos y trabajos finales.
+              </p>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Docentes</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">Verifica la autenticidad de trabajos académicos de tus estudiantes.</p>
+            <div className="md:w-1/2">
+              <div className="w-full aspect-square bg-blue-50 rounded-lg border border-blue-200 flex items-center justify-center">
+                <div className="text-4xl">📚</div>
+              </div>
+            </div>
           </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.FileText} size="2xl" className="text-green-600" />
+
+          {/* Estudiantes */}
+          <div className="flex flex-col md:flex-row-reverse gap-12 items-center border-b pb-12">
+            <div className="md:w-1/2">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                  <Icon icon={ProductIcons.FileText} size="lg" className="text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Estudiantes</h3>
+              </div>
+              <p className="text-gray-700 text-base leading-relaxed">
+                Asegúrate de que tu trabajo sea reconocido como auténtico. Valida tu escritura antes de entregar ensayos, trabajos finales y proyectos de investigación.
+              </p>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Estudiantes</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">Asegúrate de que tu trabajo no sea confundido con contenido de IA.</p>
+            <div className="md:w-1/2">
+              <div className="w-full aspect-square bg-red-50 rounded-lg border border-red-200 flex items-center justify-center">
+                <div className="text-4xl">✍️</div>
+              </div>
+            </div>
           </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.PenTool} size="2xl" className="text-purple-600" />
+
+          {/* Creadores */}
+          <div className="flex flex-col md:flex-row gap-12 items-center border-b pb-12">
+            <div className="md:w-1/2">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
+                  <Icon icon={ProductIcons.PenTool} size="lg" className="text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Creadores</h3>
+              </div>
+              <p className="text-gray-700 text-base leading-relaxed">
+                Valida que tu contenido mantenga autenticidad. Ideal para bloggers, periodistas, escritores y creadores de contenido que confían en la originalidad.
+              </p>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Creadores</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">Valida que tu contenido mantenga autenticidad y originalidad.</p>
+            <div className="md:w-1/2">
+              <div className="w-full aspect-square bg-blue-50 rounded-lg border border-blue-200 flex items-center justify-center">
+                <div className="text-4xl">✨</div>
+              </div>
+            </div>
           </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.Building2} size="2xl" className="text-orange-600" />
+
+          {/* Instituciones */}
+          <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
+            <div className="md:w-1/2">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                  <Icon icon={ProductIcons.Building2} size="lg" className="text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Para Instituciones</h3>
+              </div>
+              <p className="text-gray-700 text-base leading-relaxed">
+                Asegura la calidad y autenticidad del contenido. Escala la verificación con planes empresariales y licencias institucionales para universidades.
+              </p>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Empresas</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">Asegura la calidad y autenticidad del contenido de tu organización.</p>
+            <div className="md:w-1/2">
+              <div className="w-full aspect-square bg-red-50 rounded-lg border border-red-200 flex items-center justify-center">
+                <div className="text-4xl">🏛️</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* OTRAS HERRAMIENTAS */}
-      <section className="max-w-4xl mx-auto mb-16 px-2">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">Más</span>
-          <span className="text-gray-800"> herramientas</span>
+      {/* OTRAS HERRAMIENTAS - GRID LIMPIO */}
+      <section className="max-w-6xl mx-auto px-2">
+        <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6" style={{fontFamily: "'Georgia', serif"}}>
+          Amplía tu toolkit
         </h2>
-        <p className="text-center text-gray-600 mb-10">
-          Herramientas complementarias para trabajar con IA
+        <p className="text-gray-700 text-lg max-w-2xl mb-16">
+          Completa tu detector con herramientas complementarias para humanizar y parafrasear contenido.
         </p>
 
-        <div className="space-y-6">
-          {/* Humanizador - DESTACADO */}
-          <div className="relative bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-xl border-2 border-emerald-300 p-8 card-elevated transform hover:scale-[1.02] transition-transform">
-            {/* Badge "Más Popular" */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
-              ⭐ MÁS POPULAR
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg flex-shrink-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Humanizador */}
+          <div className="bg-white border-2 border-green-600 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <div className="flex items-start gap-6 mb-6">
+              <div className="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Humanizer} size="2xl" className="text-white" />
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  ¿Tu texto suena a IA? Humanízalo
+              <div className="flex-1">
+                <span className="text-xs font-bold text-green-600 uppercase tracking-wider">Nueva herramienta</span>
+                <h3 className="text-3xl font-bold text-blue-900 mt-2" style={{fontFamily: "'Georgia', serif"}}>
+                  Humanizador de IA
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Transforma texto generado por ChatGPT, Claude o cualquier IA en contenido que suena natural y humano. Gratis, sin registro, optimizado para español.
-                </p>
-                <a
-                  href="/humanizador"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-                >
-                  <span>Probar el Humanizador de IA</span>
-                  <span>→</span>
-                </a>
               </div>
             </div>
+            <p className="text-gray-700 text-base leading-relaxed mb-8">
+              Transforma texto generado por ChatGPT, Claude o cualquier IA en contenido que suena natural, humano y auténtico. Perfecto para ensayos y contenido académico.
+            </p>
+            <a
+              href="/humanizador"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-all"
+            >
+              <span>Probar ahora</span>
+              <span>→</span>
+            </a>
           </div>
 
           {/* Parafraseador */}
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-lg border border-purple-200 p-8 card-elevated">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                <Icon icon={ProductIcons.Paraphraser} size="2xl" className="text-purple-600" />
+          <div className="bg-white border-2 border-blue-900 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <div className="flex items-start gap-6 mb-6">
+              <div className="w-16 h-16 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Icon icon={ProductIcons.Paraphraser} size="2xl" className="text-white" />
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  ¿Necesitas reescribir tu texto? Parafraseálo
+              <div className="flex-1">
+                <span className="text-xs font-bold text-blue-900 uppercase tracking-wider">Herramienta destacada</span>
+                <h3 className="text-3xl font-bold text-blue-900 mt-2" style={{fontFamily: "'Georgia', serif"}}>
+                  Parafraseador
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Reescribe cualquier texto con otras palabras manteniendo el significado. Sin plagio, sin registro, optimizado para español.
-                </p>
-                <a
-                  href="/parafraseador"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-                >
-                  <span>Probar el Parafraseador</span>
-                  <span>→</span>
-                </a>
               </div>
             </div>
+            <p className="text-gray-700 text-base leading-relaxed mb-8">
+              Reescribe cualquier texto con otras palabras manteniendo el significado. Sin plagio, sin registro y optimizado para español académico.
+            </p>
+            <a
+              href="/parafraseador"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-lg transition-all"
+            >
+              <span>Explorar</span>
+              <span>→</span>
+            </a>
           </div>
         </div>
       </section>
