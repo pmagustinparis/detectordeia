@@ -40,9 +40,9 @@ async function extractTextFromPDF(file: File): Promise<string> {
     // Dynamic import para evitar problemas con SSR
     const pdfjsLib = await import('pdfjs-dist');
 
-    // Configurar worker
+    // Configurar worker - usar archivo local en lugar de CDN
     if (typeof window !== 'undefined') {
-      pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
     }
 
     const arrayBuffer = await file.arrayBuffer();
