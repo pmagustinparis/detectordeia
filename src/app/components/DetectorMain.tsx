@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { ProductIcons, Icon } from '@/lib/icons';
 import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
@@ -54,15 +55,15 @@ const premiumTextos = {
     'Historial completo de todos tus análisis',
     'Soporte prioritario vía email',
   ],
-  precio: 'Express $2.99/24h • Pro $6.99/mes',
+  precio: 'Express $3.99/24h o $8.99/sem • Premium $12.99/mes',
   cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: 'Desbloquea Express o Pro',
+  titulo: 'Desbloquea Express o Premium',
   bullets: [
     'Usos ilimitados + Caracteres ilimitados',
     '5 modos premium + Historial completo',
-    'Express $2.99/24h • Pro $6.99/mes',
+    'Express $3.99/24h o $8.99/sem • Premium $12.99/mes',
   ],
   cta: 'Ver Planes',
 };
@@ -74,6 +75,7 @@ export default function DetectorMain({
   h1?: string;
   subtitle?: string;
 }) {
+  const router = useRouter();
   const [text, setText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -125,9 +127,6 @@ export default function DetectorMain({
   // Loading state - prevents flickering by not showing wrong UI while fetching
   const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
 
-  // DEBUG: Log estado inicial en primera renderización
-  console.log('[DETECTOR DEBUG] Component render - userStatus:', userStatus, 'isLoading:', isLoadingUserStatus);
-
   // Límite de caracteres dinámico basado en autenticación y plan
   const CHARACTER_LIMIT = !userStatus.isAuthenticated
     ? CHARACTER_LIMITS.anonymous
@@ -148,37 +147,19 @@ export default function DetectorMain({
   useEffect(() => {
     async function fetchUserStatus() {
       try {
-        const start = performance.now();
-        console.log('[DETECTOR DEBUG] 🚀 Fetch START');
-
         const response = await fetch('/api/user/status');
-
-        const end = performance.now();
-        console.log('[DETECTOR DEBUG] ⏱️  Fetch END - took:', (end - start).toFixed(2), 'ms');
-
         if (response.ok) {
           const data = await response.json();
-          console.log('[DETECTOR DEBUG] 📦 Received data:', data);
-
-          setUserStatus(data); // Single setState - no flickering!
-          console.log('[DETECTOR DEBUG] ✅ State updated');
+          setUserStatus(data);
         }
-      } catch (error) {
-        console.error('[DETECTOR DEBUG] ❌ Error fetching user status:', error);
+      } catch {
         // Keep default free state on error
       } finally {
         setIsLoadingUserStatus(false);
-        console.log('[DETECTOR DEBUG] 🏁 Loading finished');
       }
     }
-
     fetchUserStatus();
-  }, []); // Execute only once on mount - no dependencies!
-
-  // DEBUG: Monitor userStatus changes
-  useEffect(() => {
-    console.log('[DETECTOR DEBUG] 🔄 userStatus CHANGED:', userStatus);
-  }, [userStatus]);
+  }, []);
 
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
@@ -489,9 +470,9 @@ export default function DetectorMain({
         </div>
         {/* Result block (right) */}
         <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-amber-100 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
             <div className="flex items-center gap-2 mb-3">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-amber-600 to-green-700 shadow-md">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-900 shadow-md">
                 <span className="text-white text-lg">🛡️</span>
               </div>
               <div className="flex flex-col">
@@ -503,7 +484,7 @@ export default function DetectorMain({
               <div className="relative" style={{maxHeight: '500px', overflow: 'hidden'}}>
               <div className={isLimitExceeded ? "filter blur-sm overflow-y-auto" : "overflow-y-auto"} style={{maxHeight: '500px'}}>
                 {/* HERO CARD - Score Principal con diseño mejorado */}
-                <div className="mb-6 p-6 bg-gradient-to-br from-white via-gray-50 to-slate-50 rounded-2xl border-2 border-amber-200 shadow-xl animate-fade-in">
+                <div className="mb-6 p-6 bg-gradient-to-br from-white via-gray-50 to-slate-50 rounded-2xl border-2 border-gray-200 shadow-xl animate-fade-in">
                   {/* Score gigante centrado */}
                   <div className="text-center mb-4">
                     <div className={`text-7xl md:text-8xl font-black leading-none mb-3 ${getResultColor(result.probability)} animate-scale-in`}>
@@ -546,6 +527,36 @@ export default function DetectorMain({
                     <ConfidenceBar value={result.probability} />
                   </div>
                 </div>
+
+                {/* CTA Detector → Humanizador: aparece cuando el texto tiene alta probabilidad de IA */}
+                {result.probability >= 60 && !isLimitExceeded && (
+                  <div className="mb-5 p-4 bg-violet-50 border border-violet-200 rounded-xl animate-fade-in">
+                    <div className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-violet-600 flex items-center justify-center shrink-0">
+                        <Icon icon={ProductIcons.Humanizer} size="md" className="text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-bold text-violet-900 mb-0.5">
+                          Tu texto fue detectado como IA
+                        </p>
+                        <p className="text-xs text-violet-700 mb-3">
+                          Humanizalo en 1 clic para que suene natural y pase la detección.
+                        </p>
+                        <button
+                          onClick={() => {
+                            localStorage.setItem('humanizer_prefill_text', text);
+                            router.push('/humanizador');
+                          }}
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-bold rounded-lg transition-all"
+                        >
+                          <Icon icon={ProductIcons.Humanizer} size="sm" className="text-white" />
+                          Humanizar este texto →
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Interpretación específica del resultado */}
                 <div className="mb-6 p-5 bg-gradient-to-br from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-xl shadow-sm animate-fade-in" style={{animationDelay: '0.1s'}}>
                   <h3 className="text-base font-bold text-green-900 mb-3 flex items-center gap-2">
@@ -719,16 +730,18 @@ export default function DetectorMain({
                   )}
                 </div>
                 
-                {/* CTA premium compacto inmediatamente después del resultado principal */}
-                <div className="w-full flex flex-col items-center my-3">
-                  <a
-                    href="/pricing"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
-                  >
-                    <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Desbloquear análisis avanzado</span>
-                  </a>
-                  <p className="text-xs text-gray-500 mt-1">Usos ilimitados + Caracteres ilimitados + subida de archivos</p>
-                </div>
+                {/* CTA premium compacto — solo si no hay flujo humanizador activo */}
+                {result.probability < 60 && (
+                  <div className="w-full flex flex-col items-center my-3">
+                    <a
+                      href="/pricing"
+                      className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
+                    >
+                      <span className="flex items-center justify-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Desbloquear análisis avanzado</span>
+                    </a>
+                    <p className="text-xs text-gray-500 mt-1">Usos ilimitados + Caracteres ilimitados + subida de archivos</p>
+                  </div>
+                )}
                 
                 {/* Interpretación explicativa */}
                 {result.interpretation && (
@@ -1042,10 +1055,10 @@ export default function DetectorMain({
 
                 {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
-                  <div className="mt-4 p-4 bg-gradient-to-br from-amber-50 via-green-50 to-emerald-50 border-2 border-amber-200 rounded-xl shadow-md">
+                  <div className="mt-4 p-4 bg-gradient-to-br from-blue-50 via-violet-50 to-blue-50 border-2 border-blue-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
-                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-amber-600" />
-                      <h3 className="text-sm font-bold text-amber-900">Comparación: Free vs Pro</h3>
+                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-blue-900" />
+                      <h3 className="text-sm font-bold text-blue-900">Comparación: Free vs Premium</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">
@@ -1082,18 +1095,18 @@ export default function DetectorMain({
                       </div>
 
                       {/* LO QUE OBTENDRÍAS (PRO) */}
-                      <div className="bg-gradient-to-br from-amber-100 to-green-100 p-3 rounded-lg border-2 border-amber-300 relative">
+                      <div className="bg-gradient-to-br from-violet-50 to-blue-50 p-3 rounded-lg border-2 border-violet-300 relative">
                         <div className="absolute -top-2 -right-2">
-                          <span className="bg-gradient-to-r from-amber-600 to-green-700 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
+                          <span className="bg-violet-600 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
                             PREMIUM
                           </span>
                         </div>
                         <div className="flex items-center gap-2 mb-2">
-                          <Icon icon={ProductIcons.Star} size="sm" className="text-amber-600" />
-                          <span className="text-xs font-bold text-amber-900">CON PLAN PRO</span>
+                          <Icon icon={ProductIcons.Star} size="sm" className="text-violet-600" />
+                          <span className="text-xs font-bold text-violet-900">CON PLAN PREMIUM</span>
                         </div>
-                        <p className="text-xs font-bold text-amber-900 mb-2">Todo lo anterior PLUS:</p>
-                        <ul className="text-xs text-amber-900 space-y-1.5">
+                        <p className="text-xs font-bold text-violet-900 mb-2">Todo lo anterior PLUS:</p>
+                        <ul className="text-xs text-violet-900 space-y-1.5">
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-amber-600 mt-0.5" />
                             <span><strong>✨ Caracteres ilimitados</strong> por análisis</span>
@@ -1123,14 +1136,14 @@ export default function DetectorMain({
                       <a
                         href="/pricing"
                         onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: 'detector', metadata: { source: 'free_vs_pro_comparison' }})}
-                        className="inline-block w-full bg-gradient-to-r from-amber-600 to-green-700 hover:from-amber-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="inline-block w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icon icon={ProductIcons.Upgrade} size="md" />
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-gray-600 mt-2">Desde $10/mes • Cancela cuando quieras</p>
+                      <p className="text-xs text-gray-600 mt-2">Express $3.99/24h • Premium $12.99/mes • Cancela cuando quieras</p>
                     </div>
                   </div>
                 )}
@@ -1175,9 +1188,9 @@ export default function DetectorMain({
                 )}
 
                 {/* Bloque premium compacto al final cuando hay resultado */}
-                <div className="mt-6 mb-2 bg-white border border-amber-200 rounded-xl shadow p-4 flex flex-col items-center text-center">
+                <div className="mt-6 mb-2 bg-white border border-gray-200 rounded-xl shadow p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">
-                    <Icon icon={ProductIcons.Locked} size="xl" className="text-amber-600" />
+                    <Icon icon={ProductIcons.Locked} size="xl" className="text-violet-600" />
                     <span className="font-bold text-base text-gray-800">¿Querés análisis premium?</span>
                   </div>
                   <div className="text-xs text-gray-700 mb-2">
@@ -1192,7 +1205,7 @@ export default function DetectorMain({
                   </div>
                   <a
                     href="/pricing"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
+                    className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
                   >
                     <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Ver Planes y Precios</span>
                   </a>

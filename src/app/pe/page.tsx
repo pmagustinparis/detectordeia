@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import DetectorMain from '../components/DetectorMain';
 import ExpressPromoBanner from '../components/ExpressPromoBanner';
-import ToolSwitcher from '../components/ToolSwitcher';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Perú – DetectordeIA.ai',
@@ -37,7 +36,6 @@ export default function DetectorPeru() {
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
       <ExpressPromoBanner />
-      <ToolSwitcher />
       <DetectorMain 
         h1="Detector de IA para Perú"
         subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Perú. Herramienta gratuita, sin registro, optimizada para español de Perú. Ideal para estudiantes, docentes y empresas peruanas."

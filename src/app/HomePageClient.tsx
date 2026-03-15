@@ -2,18 +2,10 @@
 
 import DetectorMain from './components/DetectorMain';
 import { ProductIcons, Icon } from '@/lib/icons';
-import HumanizadorPromoBanner from './components/HumanizadorPromoBanner';
-import ExpressPromoBanner from './components/ExpressPromoBanner';
 
 export default function HomePageClient() {
   return (
     <div className="min-h-screen bg-white pb-24 px-4">
-      {/* Banner Promocional - Express Pass */}
-      <ExpressPromoBanner />
-
-      {/* Banner Promocional - Lanzamiento Humanizador */}
-      <HumanizadorPromoBanner />
-
       {/* DETECTOR UNIFICADO */}
       <DetectorMain
         h1="El Mejor Detector de IA en Español"
@@ -146,13 +138,13 @@ export default function HomePageClient() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Humanizador */}
-          <div className="bg-white border-2 border-green-600 rounded-lg p-8 hover:shadow-lg transition-shadow">
+          <div className="bg-white border-2 border-violet-600 rounded-lg p-8 hover:shadow-lg transition-shadow">
             <div className="flex items-start gap-6 mb-6">
-              <div className="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 bg-violet-600 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Humanizer} size="2xl" className="text-white" />
               </div>
               <div className="flex-1">
-                <span className="text-xs font-bold text-green-600 uppercase tracking-wider">Nueva herramienta</span>
+                <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">Herramienta popular</span>
                 <h3 className="text-3xl font-bold text-blue-900 mt-2" style={{fontFamily: "'Georgia', serif"}}>
                   Humanizador de IA
                 </h3>
@@ -163,7 +155,7 @@ export default function HomePageClient() {
             </p>
             <a
               href="/humanizador"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-all"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-lg transition-all"
             >
               <span>Probar ahora</span>
               <span>→</span>

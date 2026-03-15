@@ -50,8 +50,14 @@ export default function HumanizadorMain() {
   // Loading state - prevents flickering by not showing wrong UI while fetching
   const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
 
-  // DEBUG: Log estado inicial en primera renderización
-  console.log('[HUMANIZADOR DEBUG] Component render - userStatus:', userStatus, 'isLoading:', isLoadingUserStatus);
+  // Prefill desde el detector (flujo detector → humanizador)
+  useEffect(() => {
+    const prefill = localStorage.getItem('humanizer_prefill_text');
+    if (prefill) {
+      setText(prefill);
+      localStorage.removeItem('humanizer_prefill_text');
+    }
+  }, []);
 
   // Validation state (Fase 3: Validación post-humanización)
   const [originalScore, setOriginalScore] = useState<number | null>(null);
@@ -127,37 +133,19 @@ export default function HumanizadorMain() {
   useEffect(() => {
     async function fetchUserStatus() {
       try {
-        const start = performance.now();
-        console.log('[HUMANIZADOR DEBUG] 🚀 Fetch START');
-
         const response = await fetch('/api/user/status');
-
-        const end = performance.now();
-        console.log('[HUMANIZADOR DEBUG] ⏱️  Fetch END - took:', (end - start).toFixed(2), 'ms');
-
         if (response.ok) {
           const data = await response.json();
-          console.log('[HUMANIZADOR DEBUG] 📦 Received data:', data);
-
-          setUserStatus(data); // Single setState - no flickering!
-          console.log('[HUMANIZADOR DEBUG] ✅ State updated');
+          setUserStatus(data);
         }
-      } catch (error) {
-        console.error('[HUMANIZADOR DEBUG] ❌ Error fetching user status:', error);
+      } catch {
         // Keep default free state on error
       } finally {
         setIsLoadingUserStatus(false);
-        console.log('[HUMANIZADOR DEBUG] 🏁 Loading finished');
       }
     }
-
     fetchUserStatus();
-  }, []); // Execute only once on mount - no dependencies!
-
-  // DEBUG: Monitor userStatus changes
-  useEffect(() => {
-    console.log('[HUMANIZADOR DEBUG] 🔄 userStatus CHANGED:', userStatus);
-  }, [userStatus]);
+  }, []);
 
   // Colores del contador dinámico
   const getCounterColor = () => {

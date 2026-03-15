@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import CookieBanner from '../components/CookieBanner';
-import Header from '../components/Header';
+import AppSidebar from './components/AppSidebar';
+import AppTopBar from './components/AppTopBar';
+import MobileBottomNav from './components/MobileBottomNav';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,11 +38,16 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" sizes="16x16" />
       </head>
       <body className={inter.className}>
-        <Header />
-        <main className="min-h-screen gradient-bg-primary">
-        {children}
-        </main>
-        <CookieBanner />
+        <div className="flex min-h-screen bg-white">
+          {/* Sidebar — desktop only, sticky */}
+          <AppSidebar />
+
+          {/* Main content area */}
+          <div className="flex-1 flex flex-col min-w-0">
+            <AppTopBar />
+            <main className="flex-1 pb-16 md:pb-0">
+              {children}
+            </main>
         <footer className="bg-gradient-to-br from-gray-900 via-violet-950 to-gray-900 text-white pt-16 pb-8">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
@@ -133,6 +140,10 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+          </div>{/* end main content area */}
+        </div>{/* end flex min-h-screen */}
+        <MobileBottomNav />
+        <CookieBanner />
       </body>
     </html>
   );

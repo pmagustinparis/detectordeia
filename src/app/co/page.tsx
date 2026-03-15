@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import DetectorMain from '../components/DetectorMain';
 import ExpressPromoBanner from '../components/ExpressPromoBanner';
-import ToolSwitcher from '../components/ToolSwitcher';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Colombia – DetectordeIA.ai',
@@ -37,7 +36,6 @@ export default function DetectorColombia() {
   return (
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
       <ExpressPromoBanner />
-      <ToolSwitcher />
       <DetectorMain 
         h1="Detector de IA para Colombia"
         subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Colombia. Herramienta gratuita, sin registro, optimizada para español de Colombia. Ideal para estudiantes, docentes y empresas colombianas."
