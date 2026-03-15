@@ -1327,29 +1327,29 @@ export default function DetectorMain({
                         </p>
 
                         {/* Premium Benefits */}
-                        <div className="bg-gradient-to-r from-amber-50 to-green-50 border-2 border-amber-200 rounded-xl p-4 mb-4">
-                          <p className="text-sm font-bold text-amber-900 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-amber-700" />Con Plan Pro obtenés:</span>
+                        <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-4">
+                          <p className="text-sm font-bold text-slate-800 mb-2">
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Pro obtenés:</span>
                           </p>
-                          <ul className="space-y-1.5 text-xs text-amber-800">
+                          <ul className="space-y-1.5 text-xs text-slate-700">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>Usos ilimitados</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>5 modos premium</strong> + archivos</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>Historial completo</strong></span>
                             </li>
                           </ul>
-                          <p className="text-xs text-amber-700 mt-2 font-medium">
+                          <p className="text-xs text-slate-500 mt-2 font-medium">
                             Desde $10/mes • Ahorra 20% anual
                           </p>
                         </div>
@@ -1357,7 +1357,7 @@ export default function DetectorMain({
                         {/* CTA - Upgrade to Pro */}
                         <a
                           href="/pricing"
-                          className="block w-full text-center bg-gradient-to-r from-amber-600 to-green-700 hover:from-amber-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
                         >
                           Ver Planes y Precios
                         </a>
@@ -1423,41 +1423,43 @@ export default function DetectorMain({
       {/* Banner de incentivo para registro - Anónimos que ya usaron 2+ veces */}
       {!userStatus.isAuthenticated && usageCount >= 2 && (
         <div className="max-w-5xl mx-auto mt-8 px-2 animate-slide-in-bottom">
-          <div className="bg-gradient-to-br from-amber-50 to-green-50 border-2 border-amber-300 rounded-2xl shadow-xl p-6">
+          <div className="bg-slate-50 border-2 border-slate-200 rounded-2xl shadow-xl p-6">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-green-700 flex items-center justify-center shadow-lg">
-                  <span className="text-3xl">🎁</span>
+                <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />
+                  </svg>
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-slate-800 mb-2">
                   ¿Te está gustando el Detector? Registrate gratis y obtené más
                 </h3>
-                <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 mb-3">
+                <div className="grid md:grid-cols-2 gap-2 text-sm text-slate-700 mb-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
+                    <span className="text-emerald-600 font-bold">✓</span>
                     <span><strong>15 usos diarios</strong> (vs 3 ahora)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
+                    <span className="text-emerald-600 font-bold">✓</span>
                     <span><strong>1200 caracteres</strong> en Detector (vs 800 ahora)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
+                    <span className="text-emerald-600 font-bold">✓</span>
                     <span><strong>600 caracteres</strong> en Humanizador y Parafraseador (vs 400 ahora)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
+                    <span className="text-emerald-600 font-bold">✓</span>
                     <span><strong>Historial</strong> de tus últimos 20 análisis</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-600 mb-4">
-                  <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Secure} size="sm" className="text-gray-600" />100% gratis · Sin tarjeta · Registro en 30 segundos</span>
+                <p className="text-xs text-slate-500 mb-4">
+                  <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Secure} size="sm" className="text-slate-400" />100% gratis · Sin tarjeta · Registro en 30 segundos</span>
                 </p>
                 <a
                   href="/auth/signup"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-green-700 hover:from-amber-700 hover:to-green-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />

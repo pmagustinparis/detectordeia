@@ -601,7 +601,7 @@ export default function PricingPageClient() {
           <div className="grid md:grid-cols-3 gap-6">
             {/* Free Column */}
             <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-200 overflow-hidden">
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 text-center border-b-2 border-gray-200">
+              <div className="bg-white p-6 text-center border-b border-slate-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Free</h3>
                 <div className="mb-2">
                   <span className="text-4xl font-extrabold text-gray-900">$0</span>
@@ -738,7 +738,7 @@ export default function PricingPageClient() {
                 </div>
 
                 {/* Características */}
-                <div className="pt-4 border-t-2 border-orange-100">
+                <div className="pt-4 border-t-2 border-slate-100">
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Historial</span>
@@ -746,11 +746,11 @@ export default function PricingPageClient() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Subir archivos</span>
-                      <span className="font-bold text-orange-600 text-xs">✓ PDF, DOCX, TXT</span>
+                      <span className="font-bold text-slate-900 text-xs">✓ PDF, DOCX, TXT</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Soporte</span>
-                      <span className="font-bold text-orange-600">Email</span>
+                      <span className="font-bold text-slate-900">Email</span>
                     </div>
                   </div>
                 </div>
@@ -758,13 +758,13 @@ export default function PricingPageClient() {
             </div>
 
             {/* Premium Column */}
-            <div className="bg-white rounded-2xl shadow-lg border-2 border-violet-200 overflow-hidden">
-              <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 text-center border-b-2 border-violet-200">
-                <h3 className="text-xl font-bold text-violet-700 mb-2">Pro</h3>
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+              <div className="bg-white p-6 text-center border-b border-slate-200">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Pro</h3>
                 <div className="mb-2">
-                  <span className="text-4xl font-extrabold text-violet-600">$12.99</span>
+                  <span className="text-4xl font-extrabold text-slate-900">$12.99</span>
                 </div>
-                <p className="text-sm text-violet-700 font-medium">Suscripción mensual</p>
+                <p className="text-sm text-slate-600 font-medium">Suscripción mensual</p>
               </div>
 
               <div className="p-6 space-y-6">
@@ -774,11 +774,11 @@ export default function PricingPageClient() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Usos diarios</span>
-                      <span className="font-bold text-violet-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Caracteres</span>
-                      <span className="font-bold text-violet-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                   </div>
                 </div>
@@ -789,11 +789,11 @@ export default function PricingPageClient() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Usos diarios</span>
-                      <span className="font-bold text-violet-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Modos</span>
-                      <span className="font-bold text-violet-600">5 premium</span>
+                      <span className="font-bold text-slate-900">5 premium</span>
                     </div>
                   </div>
                 </div>
@@ -804,29 +804,29 @@ export default function PricingPageClient() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Usos diarios</span>
-                      <span className="font-bold text-violet-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Modos</span>
-                      <span className="font-bold text-violet-600">5 premium</span>
+                      <span className="font-bold text-slate-900">5 premium</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Características */}
-                <div className="pt-4 border-t-2 border-violet-100">
+                <div className="pt-4 border-t-2 border-slate-100">
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Historial</span>
-                      <span className="font-bold text-violet-600">✓</span>
+                      <span className="font-bold text-slate-900">✓</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Subir archivos</span>
-                      <span className="font-bold text-violet-600 text-xs">✓ PDF, DOCX, TXT</span>
+                      <span className="font-bold text-slate-900 text-xs">✓ PDF, DOCX, TXT</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Soporte</span>
-                      <span className="font-bold text-violet-600">Prioritario</span>
+                      <span className="font-bold text-slate-900">Prioritario</span>
                     </div>
                   </div>
                 </div>
