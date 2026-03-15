@@ -600,7 +600,7 @@ export default function PricingPageClient() {
           {/* Comparison Grid */}
           <div className="grid md:grid-cols-3 gap-6">
             {/* Free Column */}
-            <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-200 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
               <div className="bg-white p-6 text-center border-b border-slate-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Free</h3>
                 <div className="mb-2">
@@ -947,7 +947,7 @@ export default function PricingPageClient() {
                 >
                   <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
                   <svg
-                    className={`w-6 h-6 text-violet-600 flex-shrink-0 transition-transform ${
+                    className={`w-6 h-6 text-slate-500 flex-shrink-0 transition-transform ${
                       faqOpen === index ? 'transform rotate-180' : ''
                     }`}
                     fill="none"
