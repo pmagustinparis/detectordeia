@@ -461,13 +461,13 @@ export default function ParafraseadorMain() {
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <span className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-100 to-green-100 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
+          <span className="inline-flex items-center gap-1 bg-slate-100 text-slate-700 font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             Sin plagio
           </span>
-          <span className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-100 to-green-100 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
+          <span className="inline-flex items-center gap-1 bg-slate-100 text-slate-700 font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
             </svg>
@@ -480,7 +480,7 @@ export default function ParafraseadorMain() {
             En español
           </span>
           {!userStatus.isAuthenticated ? (
-              <span className="inline-flex items-center gap-1 bg-gradient-to-r from-gray-100 to-slate-100 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <span className="inline-flex items-center gap-1 bg-slate-100 text-slate-700 font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                 </svg>
@@ -573,7 +573,7 @@ export default function ParafraseadorMain() {
                       isLocked
                         ? 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
                         : isSelected
-                        ? 'border-blue-500 bg-blue-50 cursor-pointer'
+                        ? 'border-slate-800 bg-slate-50 cursor-pointer'
                         : 'border-gray-300 bg-white hover:border-gray-400 cursor-pointer'
                     }`}
                   >
@@ -594,8 +594,8 @@ export default function ParafraseadorMain() {
                         <span
                           className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                             mode.isPremium
-                              ? 'bg-amber-100 text-blue-900'
-                              : 'bg-blue-100 text-blue-900'
+                              ? 'bg-amber-50 text-amber-700'
+                              : 'bg-slate-100 text-slate-600'
                           }`}
                         >
                           {mode.isPremium ? 'PRO' : 'FREE'}
@@ -642,10 +642,9 @@ export default function ParafraseadorMain() {
         <button
           onClick={handleParaphrase}
           disabled={isParaphrasing || !isButtonEnabled()}
-          className={`mt-2 w-full bg-gradient-to-r from-amber-600 to-green-700 hover:from-violet-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 btn-glow ${isParaphrasing ? 'animate-pulse-glow' : ''}`}
+          className={`mt-2 w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isParaphrasing ? 'animate-pulse-glow' : ''}`}
           aria-label="Parafrasear texto"
         >
-          <span className="text-xl"><Icon icon={ProductIcons.Paraphraser} size="sm" className="inline" /></span>
           {isParaphrasing ? 'Parafraseando...' : 'Parafrasear Texto'}
         </button>
 
@@ -830,7 +829,7 @@ export default function ParafraseadorMain() {
                       {/* LO QUE OBTENDRÍAS (PRO) */}
                       <div className="bg-gradient-to-br from-amber-100 to-green-100 p-3 rounded-lg border-2 border-gray-400 relative">
                         <div className="absolute -top-2 -right-2">
-                          <span className="bg-gradient-to-r from-amber-600 to-green-700 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
+                          <span className="bg-slate-800 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
                             PREMIUM
                           </span>
                         </div>
@@ -869,7 +868,7 @@ export default function ParafraseadorMain() {
                       <a
                         href="/pricing"
                         onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: 'parafraseador', metadata: { source: 'free_vs_pro_comparison' }})}
-                        className="inline-block w-full bg-gradient-to-r from-amber-600 to-green-700 hover:from-amber-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="inline-block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors"
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icon icon={ProductIcons.Upgrade} size="md" />
@@ -1004,7 +1003,7 @@ export default function ParafraseadorMain() {
                         {/* CTA - Registro gratis primero */}
                         <a
                           href="/auth/signup"
-                          className="block w-full text-center bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors mb-2"
                         >
                           Registrarme Gratis
                         </a>
@@ -1055,7 +1054,7 @@ export default function ParafraseadorMain() {
                         {/* CTA - Upgrade to Pro */}
                         <a
                           href="/pricing"
-                          className="block w-full text-center bg-gradient-to-r from-amber-600 to-green-700 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors mb-2"
                         >
                           Ver Planes y Precios
                         </a>

@@ -212,7 +212,7 @@ export default function PricingPageClient() {
     return (
       <button
         onClick={handleProCTAClick}
-        className="mt-auto w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
+        className="mt-auto w-full text-center bg-slate-800 text-white hover:bg-slate-700 font-semibold py-3 px-6 rounded-lg transition-colors cursor-pointer"
       >
         {isAuthenticated ? 'Actualizar a Premium' : 'Registrate Gratis y Actualiza'}
       </button>
@@ -286,10 +286,10 @@ export default function PricingPageClient() {
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {/* Free Plan */}
-          <div className={`bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 transition-all duration-300 ${
+          <div className={`bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border transition-all duration-300 ${
             isAuthenticated && userPlan === 'premium'
-              ? 'border-gray-200 opacity-60'
-              : 'border-gray-200 hover:border-violet-200'
+              ? 'border-slate-200 opacity-60'
+              : 'border-slate-200'
           }`}>
             <div className="mb-6">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Free</h2>
@@ -301,41 +301,41 @@ export default function PricingPageClient() {
             </div>
             <ul className="space-y-4 mb-8 flex-grow w-full">
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700"><strong>3 usos/día</strong> del Humanizador</span>
+                <span className="text-slate-700"><strong>3 usos/día</strong> del Humanizador</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">15 análisis/día con el Detector</span>
+                <span className="text-slate-700">15 análisis/día con el Detector</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">Hasta 1,200 caracteres</span>
+                <span className="text-slate-700">Hasta 1,200 caracteres</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">Solo modo Estándar</span>
+                <span className="text-slate-700">Solo modo Estándar</span>
               </li>
             </ul>
             {isAuthenticated && userPlan === 'premium' ? (
               <button
                 disabled
-                className="w-full text-center bg-gray-300 text-gray-500 font-bold py-3 px-6 rounded-xl shadow-md cursor-not-allowed"
+                className="w-full text-center bg-slate-100 text-slate-400 font-semibold py-3 px-6 rounded-lg cursor-not-allowed"
               >
                 Tu plan actual es Premium
               </button>
             ) : (
               <a
                 href="/auth/signup"
-                className="w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all"
+                className="w-full text-center border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold py-3 px-6 rounded-lg transition-colors"
               >
                 Empezar Gratis
               </a>
@@ -343,34 +343,34 @@ export default function PricingPageClient() {
           </div>
 
           {/* Express Pass - NUEVO */}
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl shadow-2xl p-8 flex flex-col items-start border-4 border-orange-400 relative transform scale-105">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">
-              ⚡ POPULAR
+          <div className="bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border-2 border-slate-800 relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-3 py-1 rounded-full text-xs font-bold">
+              POPULAR
             </div>
             <div className="mb-4 w-full">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-3 text-center">
-                🚀 Express Pass
+              <h2 className="text-3xl font-bold text-slate-900 mb-3 text-center">
+                Express Pass
               </h2>
-              <p className="text-sm text-orange-900 font-semibold text-center mb-4">⚡ Acceso temporal ilimitado • 💰 Pago único</p>
+              <p className="text-sm text-slate-600 font-semibold text-center mb-4">⚡ Acceso temporal ilimitado • 💰 Pago único</p>
 
               {/* Tabs para duración */}
               <div className="flex gap-2 mb-4">
                 <button
                   onClick={() => setExpressDuration('24h')}
-                  className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                  className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors ${
                     expressDuration === '24h'
-                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg scale-105'
-                      : 'bg-white text-orange-700 hover:bg-orange-100 border-2 border-orange-200'
+                      ? 'bg-slate-800 text-white'
+                      : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
                   }`}
                 >
                   24 Horas
                 </button>
                 <button
                   onClick={() => setExpressDuration('7d')}
-                  className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                  className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors ${
                     expressDuration === '7d'
-                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg scale-105'
-                      : 'bg-white text-orange-700 hover:bg-orange-100 border-2 border-orange-200'
+                      ? 'bg-slate-800 text-white'
+                      : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
                   }`}
                 >
                   7 Días
@@ -380,16 +380,16 @@ export default function PricingPageClient() {
 
             {/* Precio dinámico */}
             <div className="mb-4 text-center w-full">
-              <span className="text-5xl font-extrabold text-gray-900">${PRICES.express[expressDuration]}</span>
-              <span className="text-xl text-gray-600">/{expressDuration === '24h' ? '24h' : '7 días'}</span>
-              <p className="text-sm text-orange-700 font-semibold mt-2">
+              <span className="text-5xl font-bold text-slate-900">${PRICES.express[expressDuration]}</span>
+              <span className="text-xl text-slate-600">/{expressDuration === '24h' ? '24h' : '7 días'}</span>
+              <p className="text-sm text-slate-600 font-semibold mt-2">
                 Pago único • Sin renovación automática
               </p>
             </div>
 
             {/* Copy dinámico según duración */}
-            <div className="bg-gradient-to-r from-orange-100 to-amber-100 border-2 border-orange-300 rounded-xl px-4 py-3 mb-4 w-full">
-              <p className="text-orange-900 text-sm font-bold text-center">
+            <div className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 mb-4 w-full">
+              <p className="text-slate-700 text-sm font-semibold text-center">
                 {expressDuration === '24h'
                   ? '⚡ Perfecto para: Entrega urgente mañana, emergencia académica'
                   : '📚 Perfecto para: Semana de exámenes, proyecto grupal, múltiples entregas'
@@ -407,37 +407,37 @@ export default function PricingPageClient() {
             )}
             <ul className="space-y-3 mb-6 flex-grow w-full">
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-semibold">Acceso completo a todas las herramientas</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-semibold">Caracteres ilimitados</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-semibold">Usos ilimitados</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-medium">Modos premium en Humanizador y Parafraseador</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-medium">Subida de archivos (PDF, DOCX, TXT)</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-medium">Ideal para entregas urgentes o uso intensivo</span>
@@ -445,7 +445,7 @@ export default function PricingPageClient() {
             </ul>
             <button
               onClick={handleExpressCTAClick}
-              className="mt-auto w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
+              className="mt-auto w-full text-center bg-slate-800 text-white hover:bg-slate-700 font-semibold py-3 px-6 rounded-lg transition-colors cursor-pointer"
             >
               {isAuthenticated
                 ? `Activar Express ${expressDuration === '24h' ? '24h' : 'Semanal'}`
@@ -457,9 +457,9 @@ export default function PricingPageClient() {
           </div>
 
           {/* Premium Plan */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-start border-2 border-gray-200 hover:border-violet-200 transition-all duration-300">
+          <div className="bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border border-slate-200 transition-all duration-300">
             <div className="mb-4">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
+              <h2 className="text-3xl font-bold text-slate-900 mb-2">
                 Premium
               </h2>
               <p className="text-gray-700 text-sm font-bold">🔄 Acceso continuo, sin interrupciones</p>
@@ -469,25 +469,25 @@ export default function PricingPageClient() {
             <div className="flex gap-2 mb-4">
               <button
                 onClick={() => setBilling('monthly')}
-                className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${
+                className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors ${
                   billing === 'monthly'
-                    ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg scale-105'
-                    : 'bg-white text-violet-700 hover:bg-violet-100 border-2 border-violet-200'
+                    ? 'bg-slate-800 text-white'
+                    : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
                 }`}
               >
                 Mensual
               </button>
               <button
                 onClick={() => setBilling('annual')}
-                className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-1.5 ${
+                className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center gap-1.5 ${
                   billing === 'annual'
-                    ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg scale-105'
-                    : 'bg-white text-violet-700 hover:bg-violet-100 border-2 border-violet-200'
+                    ? 'bg-slate-800 text-white'
+                    : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
                 }`}
               >
                 Anual
                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
-                  billing === 'annual' ? 'bg-white text-violet-600' : 'bg-violet-200 text-violet-700'
+                  billing === 'annual' ? 'bg-white text-slate-800' : 'bg-slate-200 text-slate-700'
                 }`}>
                   -20%
                 </span>
@@ -501,55 +501,55 @@ export default function PricingPageClient() {
               <span className="text-xl text-gray-600">/mes</span>
             </div>
             {billing === 'annual' && (
-              <p className="text-sm text-violet-700 font-semibold mb-6">
+              <p className="text-sm text-slate-600 font-semibold mb-6">
                 ${PRICES.pro.annual}/año • Ahorra 20%
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
-            <div className="bg-gradient-to-r from-violet-100 to-purple-100 border-2 border-violet-300 rounded-xl px-4 py-3 mb-4 w-full">
-              <p className="text-violet-900 text-sm font-bold text-center">
+            <div className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 mb-4 w-full">
+              <p className="text-slate-700 text-sm font-semibold text-center">
                 💎 Perfecto para: Uso diario profesional, estudiantes avanzados, creadores de contenido
               </p>
             </div>
             <ul className="space-y-4 mb-8 flex-grow w-full">
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-semibold">Trabajo ilimitado sin interrupciones ni restricciones</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-semibold">Caracteres y usos ilimitados todos los días</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-semibold">5 modos premium en Humanizador y Parafraseador</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-medium">Subida de archivos largos (PDF, DOCX, TXT)</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-medium">Historial completo de tus análisis</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-medium">Soporte prioritario por email</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-violet-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-900 font-medium">Ideal para uso profesional continuo</span>
@@ -572,7 +572,7 @@ export default function PricingPageClient() {
               const comparisonTable = document.getElementById('comparison-table');
               comparisonTable?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
-            className="flex flex-col items-center gap-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all group"
+            className="flex flex-col items-center gap-3 bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-colors group"
           >
             <span className="font-bold text-lg">📊 Ver Comparación Completa de Planes</span>
             <svg
@@ -676,34 +676,33 @@ export default function PricingPageClient() {
             </div>
 
             {/* Express Column - DESTACADO */}
-            <div className="relative bg-white rounded-2xl shadow-2xl border-4 border-orange-400 overflow-hidden transform md:scale-105">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-amber-500"></div>
+            <div className="relative bg-white rounded-2xl shadow-2xl border-2 border-slate-800 overflow-hidden transform md:scale-105">
               <div className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap inline-block">
-                  ⚡ MÁS POPULAR
+                <span className="bg-slate-800 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap inline-block">
+                  MÁS POPULAR
                 </span>
               </div>
 
-              <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 text-center border-b-2 border-orange-200 mt-2">
-                <h3 className="text-xl font-bold text-orange-700 mb-2">Express</h3>
+              <div className="bg-white p-6 text-center border-b border-slate-200 mt-2">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Express</h3>
                 <div className="mb-2">
-                  <span className="text-4xl font-extrabold text-orange-600">$3.99</span>
+                  <span className="text-4xl font-extrabold text-slate-900">$3.99</span>
                 </div>
-                <p className="text-sm text-orange-700 font-medium">Pago único · 24 horas</p>
+                <p className="text-sm text-slate-600 font-medium">Pago único · 24 horas</p>
               </div>
 
-              <div className="p-6 space-y-6 bg-gradient-to-b from-orange-50/30 to-white">
+              <div className="p-6 space-y-6">
                 {/* Detector */}
                 <div>
                   <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">🔍 Detector</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Usos diarios</span>
-                      <span className="font-bold text-orange-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Caracteres</span>
-                      <span className="font-bold text-orange-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                   </div>
                 </div>
@@ -714,11 +713,11 @@ export default function PricingPageClient() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Usos diarios</span>
-                      <span className="font-bold text-orange-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Modos</span>
-                      <span className="font-bold text-orange-600">5 premium</span>
+                      <span className="font-bold text-slate-900">5 premium</span>
                     </div>
                   </div>
                 </div>
@@ -729,11 +728,11 @@ export default function PricingPageClient() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Usos diarios</span>
-                      <span className="font-bold text-orange-600">Ilimitado</span>
+                      <span className="font-bold text-slate-900">Ilimitado</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Modos</span>
-                      <span className="font-bold text-orange-600">5 premium</span>
+                      <span className="font-bold text-slate-900">5 premium</span>
                     </div>
                   </div>
                 </div>
@@ -743,7 +742,7 @@ export default function PricingPageClient() {
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Historial</span>
-                      <span className="font-bold text-orange-600">✓</span>
+                      <span className="font-bold text-slate-900">✓</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600">Subir archivos</span>

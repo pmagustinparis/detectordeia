@@ -363,28 +363,28 @@ export default function DetectorMain({
           {/* Trust indicators */}
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             {!userStatus.isAuthenticated ? (
-              <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
+                <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 Sin registro
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
+                <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 Cuenta activa
               </span>
             )}
-            <span className="inline-flex items-center gap-1 bg-red-100 text-red-900 font-semibold rounded-full px-3 py-1.5 text-xs">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
               </svg>
               100% privado
             </span>
-            <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
               </svg>
               En español
@@ -463,10 +463,9 @@ export default function DetectorMain({
           <button
             onClick={handleAnalyze}
             disabled={isAnalyzing || text.length < 80}
-            className={`mt-2 w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg font-bold text-base shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+            className={`mt-2 w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
             aria-label="Detectar contenido de IA"
           >
-            <Icon icon={ProductIcons.Detector} size="lg" className="text-white" />
             {isAnalyzing ? 'Analizando...' : 'Analizar texto'}
           </button>
           <p className="text-center text-sm text-gray-600 mt-2 font-medium">Sin registro. 100% privado. Precisión líder en español.</p>
@@ -475,7 +474,7 @@ export default function DetectorMain({
         <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
           <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
             <div className="flex items-center gap-2 mb-3">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-900 shadow-md">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-800 shadow-md">
                 <span className="text-white text-lg">🛡️</span>
               </div>
               <div className="flex flex-col">
@@ -550,7 +549,7 @@ export default function DetectorMain({
                             localStorage.setItem('humanizer_prefill_text', text);
                             router.push('/humanizador');
                           }}
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-bold rounded-lg transition-all"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-lg transition-all"
                         >
                           <Icon icon={ProductIcons.Humanizer} size="sm" className="text-white" />
                           Humanizar este texto →
@@ -738,7 +737,7 @@ export default function DetectorMain({
                   <div className="w-full flex flex-col items-center my-3">
                     <a
                       href="/pricing"
-                      className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
+                      className="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl shadow-md transition-all text-base text-center"
                     >
                       <span className="flex items-center justify-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Desbloquear análisis avanzado</span>
                     </a>
@@ -1058,10 +1057,10 @@ export default function DetectorMain({
 
                 {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
-                  <div className="mt-4 p-4 bg-gradient-to-br from-blue-50 via-violet-50 to-blue-50 border-2 border-blue-200 rounded-xl shadow-md">
+                  <div className="mt-4 p-4 bg-slate-50 border-2 border-slate-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
-                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-blue-900" />
-                      <h3 className="text-sm font-bold text-blue-900">Comparación: Free vs Premium</h3>
+                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-slate-800" />
+                      <h3 className="text-sm font-bold text-slate-800">Comparación: Free vs Premium</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">
@@ -1098,36 +1097,36 @@ export default function DetectorMain({
                       </div>
 
                       {/* LO QUE OBTENDRÍAS (PRO) */}
-                      <div className="bg-gradient-to-br from-violet-50 to-blue-50 p-3 rounded-lg border-2 border-violet-300 relative">
+                      <div className="bg-slate-50 p-3 rounded-lg border-2 border-slate-200 relative">
                         <div className="absolute -top-2 -right-2">
-                          <span className="bg-violet-600 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
+                          <span className="bg-slate-800 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
                             PREMIUM
                           </span>
                         </div>
                         <div className="flex items-center gap-2 mb-2">
-                          <Icon icon={ProductIcons.Star} size="sm" className="text-violet-600" />
-                          <span className="text-xs font-bold text-violet-900">CON PLAN PREMIUM</span>
+                          <Icon icon={ProductIcons.Star} size="sm" className="text-slate-600" />
+                          <span className="text-xs font-bold text-slate-800">CON PLAN PREMIUM</span>
                         </div>
-                        <p className="text-xs font-bold text-violet-900 mb-2">Todo lo anterior PLUS:</p>
-                        <ul className="text-xs text-violet-900 space-y-1.5">
+                        <p className="text-xs font-bold text-slate-800 mb-2">Todo lo anterior PLUS:</p>
+                        <ul className="text-xs text-slate-700 space-y-1.5">
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-amber-600 mt-0.5" />
-                            <span><strong>✨ Caracteres ilimitados</strong> por análisis</span>
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-emerald-600 mt-0.5" />
+                            <span><strong>Caracteres ilimitados</strong> por análisis</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-emerald-600 mt-0.5" />
                             <span><strong>Subida de archivos</strong> (PDF, DOCX, TXT)</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-emerald-600 mt-0.5" />
                             <span><strong>Usos ilimitados</strong> en todas las herramientas</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-emerald-600 mt-0.5" />
                             <span><strong>Historial completo</strong> de análisis</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-purple-600 mt-0.5" />
+                            <Icon icon={ProductIcons.Success} size="xs" className="text-emerald-600 mt-0.5" />
                             <span><strong>5 modos premium</strong> en Humanizador/Parafraseador</span>
                           </li>
                         </ul>
@@ -1139,7 +1138,7 @@ export default function DetectorMain({
                       <a
                         href="/pricing"
                         onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: 'detector', metadata: { source: 'free_vs_pro_comparison' }})}
-                        className="inline-block w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="inline-block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icon icon={ProductIcons.Upgrade} size="md" />
@@ -1153,16 +1152,16 @@ export default function DetectorMain({
 
                 {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
                 {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
-                  <div className="mt-4 p-3 bg-gradient-to-r from-amber-50 to-green-50 border border-amber-200 rounded-xl">
-                    <p className="text-sm font-semibold text-amber-800 mb-1">
-                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Info} size="sm" className="text-amber-600" />¿Usás seguido las herramientas?</span>
+                  <div className="mt-4 p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <p className="text-sm font-semibold text-slate-800 mb-1">
+                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Info} size="sm" className="text-slate-400" />¿Usás seguido las herramientas?</span>
                     </p>
-                    <p className="text-xs text-amber-700 mb-2">
+                    <p className="text-xs text-slate-500 mb-2">
                       Registrándote gratis podés guardar tu historial y acceder a todos tus análisis desde cualquier dispositivo.
                     </p>
                     <a
                       href="/dashboard"
-                      className="inline-block text-xs font-bold text-amber-600 hover:text-amber-700 hover:underline"
+                      className="inline-block text-xs font-bold text-slate-700 hover:text-slate-900 hover:underline"
                     >
                       Crear cuenta gratis →
                     </a>
@@ -1171,11 +1170,11 @@ export default function DetectorMain({
 
                 {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
                 {!userStatus.isAuthenticated && usageCount >= 5 && (
-                  <div className="mt-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-sm">
-                    <p className="text-sm font-bold text-green-900 mb-2">
-                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-green-700" />¡Ya usaste el Detector {usageCount} veces!</span>
+                  <div className="mt-4 p-4 bg-slate-50 border-2 border-slate-200 rounded-xl shadow-sm">
+                    <p className="text-sm font-bold text-slate-800 mb-2">
+                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />¡Ya usaste el Detector {usageCount} veces!</span>
                     </p>
-                    <p className="text-xs text-green-800 mb-3 leading-relaxed">
+                    <p className="text-xs text-slate-500 mb-3 leading-relaxed">
                       Registrándote gratis obtenés:<br/>
                       • <strong>Historial</strong> de tus últimos análisis<br/>
                       • <strong>Más usos diarios</strong> (hasta 50 usos/día)<br/>
@@ -1183,7 +1182,7 @@ export default function DetectorMain({
                     </p>
                     <a
                       href="/dashboard"
-                      className="inline-block w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all"
+                      className="inline-block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all"
                     >
                       Crear cuenta gratis en 10 segundos
                     </a>
@@ -1193,7 +1192,7 @@ export default function DetectorMain({
                 {/* Bloque premium compacto al final cuando hay resultado */}
                 <div className="mt-6 mb-2 bg-white border border-gray-200 rounded-xl shadow p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">
-                    <Icon icon={ProductIcons.Locked} size="xl" className="text-violet-600" />
+                    <Icon icon={ProductIcons.Locked} size="xl" className="text-slate-400" />
                     <span className="font-bold text-base text-gray-800">¿Querés análisis premium?</span>
                   </div>
                   <div className="text-xs text-gray-700 mb-2">
@@ -1208,7 +1207,7 @@ export default function DetectorMain({
                   </div>
                   <a
                     href="/pricing"
-                    className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
+                    className="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
                   >
                     <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Ver Planes y Precios</span>
                   </a>
@@ -1260,46 +1259,46 @@ export default function DetectorMain({
                         </p>
 
                         {/* Free Benefits */}
-                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-4 mb-3">
-                          <p className="text-sm font-bold text-green-900 mb-2">
-                            🎁 Registrándote GRATIS obtenés:
+                        <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-3">
+                          <p className="text-sm font-bold text-slate-800 mb-2">
+                            Registrándote GRATIS obtenés:
                           </p>
-                          <ul className="space-y-1.5 text-xs text-green-800">
+                          <ul className="space-y-1.5 text-xs text-slate-700">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>Hasta {CHARACTER_LIMITS.free.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.free / CHARACTER_LIMIT)}x más)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>Historial</strong> de tus análisis</span>
                             </li>
                           </ul>
                         </div>
 
                         {/* Pro Benefits */}
-                        <div className="bg-gradient-to-r from-amber-50 to-green-50 border-2 border-amber-200 rounded-xl p-4 mb-4">
-                          <p className="text-sm font-bold text-amber-900 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-amber-700" />Con Plan Pro obtenés:</span>
+                        <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-4">
+                          <p className="text-sm font-bold text-slate-800 mb-2">
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Pro obtenés:</span>
                           </p>
-                          <ul className="space-y-1.5 text-xs text-amber-800">
+                          <ul className="space-y-1.5 text-xs text-slate-700">
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más que ahora)</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>Usos ilimitados</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold">✓</span>
+                              <span className="text-emerald-600 font-bold">✓</span>
                               <span><strong>5 modos premium</strong> + archivos</span>
                             </li>
                           </ul>
-                          <p className="text-xs text-amber-700 mt-2 font-medium">
+                          <p className="text-xs text-slate-500 mt-2 font-medium">
                             Desde $10/mes • Ahorra 20% anual
                           </p>
                         </div>
@@ -1307,7 +1306,7 @@ export default function DetectorMain({
                         {/* CTA - Registro gratis primero */}
                         <a
                           href="/auth/signup"
-                          className="block w-full text-center bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
                         >
                           Registrarme Gratis
                         </a>
@@ -1315,7 +1314,7 @@ export default function DetectorMain({
                         {/* Secondary CTA - Ver Pro */}
                         <a
                           href="/pricing"
-                          className="block w-full text-center text-amber-600 hover:text-amber-700 font-semibold py-2 transition-colors text-sm"
+                          className="block w-full text-center text-slate-600 hover:text-slate-800 font-semibold py-2 transition-colors text-sm"
                         >
                           O ver Plan Pro →
                         </a>
