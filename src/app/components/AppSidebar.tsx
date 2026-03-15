@@ -89,7 +89,7 @@ export default function AppSidebar() {
               </div>
               <span className="flex-1">{tool.name}</span>
               {tool.isPopular && (
-                <span className="text-[9px] font-bold bg-orange-100 text-orange-600 px-1.5 py-0.5 rounded-full whitespace-nowrap">
+                <span className="text-[9px] font-bold bg-violet-100 text-violet-600 px-1.5 py-0.5 rounded-full whitespace-nowrap">
                   Popular
                 </span>
               )}

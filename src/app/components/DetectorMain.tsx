@@ -111,6 +111,7 @@ export default function DetectorMain({
   const [textType, setTextType] = useState('default');
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [usageCount, setUsageCount] = useState(0);
+  const [hasAnalyzed, setHasAnalyzed] = useState(false);
 
   // Consolidated user status (replaces userPlan, no Express needed for Detector)
   const [userStatus, setUserStatus] = useState<UserStatus>({
@@ -202,6 +203,7 @@ export default function DetectorMain({
         });
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
+        setHasAnalyzed(true);
 
         // Track límite de caracteres excedido
         trackEvent({
@@ -241,6 +243,7 @@ export default function DetectorMain({
         setResult(data);
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(false);
+        setHasAnalyzed(true);
         setFeedbackSent(false);
 
         // Incrementar contador de uso para usuarios anónimos (solo análisis reales)
@@ -1408,8 +1411,8 @@ export default function DetectorMain({
                   </div>
                   <div className="border-dotted border-b border-gray-300" />
                 </div>
-                {/* Bloque premium solo en empty state - SOLO para usuarios FREE */}
-                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
+                {/* Bloque premium: solo tras primer análisis, SOLO para usuarios FREE */}
+                {hasAnalyzed && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                   <PremiumUpsellBlock textos={premiumTextos} />
                 )}
               </>
