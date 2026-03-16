@@ -359,7 +359,7 @@ export default function DetectorMain({
       <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>{subtitle}</p>
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
         {/* Input + Button (left) */}
-        <div className="flex-1 bg-white rounded-2xl shadow-lg border border-blue-900/20 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px]">
+        <div className="flex-1 bg-white rounded-2xl shadow-lg border border-blue-900/20 p-6 flex flex-col justify-between min-w-[320px]">
           {/* Trust indicators */}
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             {!userStatus.isAuthenticated ? (
