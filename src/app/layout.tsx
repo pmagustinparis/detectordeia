@@ -76,7 +76,7 @@ export default function RootLayout({
 
               {/* Columna 2: Herramientas */}
               <div>
-                <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">Herramientas</h3>
+                <h3 className="font-bold !text-white mb-4 text-sm uppercase tracking-wider">Herramientas</h3>
                 <div className="flex flex-col gap-2.5">
                   <a href="/" className="text-blue-300 hover:text-white transition-colors text-sm">Detector de IA</a>
                   <a href="/humanizador" className="text-blue-300 hover:text-white transition-colors text-sm">Humanizador</a>
@@ -87,7 +87,7 @@ export default function RootLayout({
 
               {/* Columna 3: Legal */}
               <div>
-                <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">Legal</h3>
+                <h3 className="font-bold !text-white mb-4 text-sm uppercase tracking-wider">Legal</h3>
                 <div className="flex flex-col gap-2.5">
                   <a href="/terminos" className="text-blue-300 hover:text-white transition-colors text-sm">Términos de uso</a>
                   <a href="/privacidad" className="text-blue-300 hover:text-white transition-colors text-sm">Política de privacidad</a>
@@ -96,7 +96,7 @@ export default function RootLayout({
 
               {/* Columna 4: Regiones */}
               <div>
-                <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">Regiones</h3>
+                <h3 className="font-bold !text-white mb-4 text-sm uppercase tracking-wider">Regiones</h3>
                 <div className="flex flex-col gap-2.5">
                   <a href="/es" className="text-blue-300 hover:text-white transition-colors text-sm">🇪🇸 España</a>
                   <a href="/mx" className="text-blue-300 hover:text-white transition-colors text-sm">🇲🇽 México</a>

@@ -343,7 +343,7 @@ export default function HumanizadorClient() {
         <section className="max-w-4xl mx-auto mb-16 px-2">
           <div className="bg-slate-800 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white relative overflow-hidden">
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-4 !text-white">
                 Comienza a humanizar tus textos ahora
               </h2>
               <p className="text-lg md:text-xl text-violet-100 mb-8 max-w-2xl mx-auto">
