@@ -46,10 +46,8 @@ export default function ParafraseadorClient() {
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
 
         {/* Hero Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-2 mt-2 leading-tight animate-fade-in">
-          <span className="text-slate-900">Parafraseador de IA</span>
-          <br />
-          <span className="text-gray-800">en Español</span>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900" style={{fontFamily: "'Georgia', serif"}}>
+          Parafraseador de IA en Español
         </h1>
 
         <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
