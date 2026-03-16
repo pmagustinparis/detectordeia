@@ -38,8 +38,8 @@ export default function UniversityPageClient({ university }: { university: Unive
           </p>
         </div>
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Locked} size="2xl" className="text-cyan-600" />
+          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+            <Icon icon={ProductIcons.Locked} size="2xl" className="text-slate-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Privacidad total</h3>
           <p className="text-gray-600 text-sm leading-relaxed">
@@ -47,8 +47,8 @@ export default function UniversityPageClient({ university }: { university: Unive
           </p>
         </div>
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Fast} size="2xl" className="text-emerald-600" />
+          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+            <Icon icon={ProductIcons.Fast} size="2xl" className="text-slate-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Sin registro</h3>
           <p className="text-gray-600 text-sm leading-relaxed">
@@ -56,8 +56,8 @@ export default function UniversityPageClient({ university }: { university: Unive
           </p>
         </div>
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-orange-600" />
+          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-slate-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">
             {university.usesTurnitin ? 'Compatible con Turnitin' : 'Reportes académicos'}
@@ -164,7 +164,7 @@ export default function UniversityPageClient({ university }: { university: Unive
             </li>
           </ul>
 
-          <div className="bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-6 mt-8 border-2 border-violet-200">
+          <div className="bg-slate-50 rounded-xl p-6 mt-8 border-2 border-slate-200">
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               ¿Eres estudiante de {university.shortName}?
             </h3>
