@@ -43,13 +43,10 @@ export default function AppTopBar() {
       {/* Logo — visible on mobile only (desktop has it in sidebar) */}
       <Link href="/" className="md:hidden flex items-center gap-2 shrink-0">
         <div className="w-8 h-8 rounded-lg bg-blue-900 flex items-center justify-center">
-          <span className="text-white text-sm">🤖</span>
+          <span className="text-white font-black italic text-base leading-none">D</span>
         </div>
-        <span
-          className="text-sm font-bold text-blue-900"
-          style={{ fontFamily: "'Georgia', serif" }}
-        >
-          DetectordeIA.ai
+        <span className="text-sm font-black tracking-tight text-blue-900">
+          Detector<span className="text-blue-600">deIA</span><span className="text-blue-400 font-semibold">.ai</span>
         </span>
       </Link>
 

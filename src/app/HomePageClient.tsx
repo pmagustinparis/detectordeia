@@ -5,7 +5,7 @@ import { ProductIcons, Icon } from '@/lib/icons';
 
 export default function HomePageClient() {
   return (
-    <div className="min-h-screen bg-white pb-24 px-4">
+    <div className="min-h-screen bg-blue-50/50 pb-24 px-4">
       {/* DETECTOR UNIFICADO */}
       <DetectorMain
         h1="El Mejor Detector de IA en Español"

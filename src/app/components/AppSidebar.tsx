@@ -46,13 +46,10 @@ export default function AppSidebar() {
       <div className="px-4 py-4 border-b border-blue-800">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg bg-blue-800 flex items-center justify-center shrink-0">
-            <span className="text-white text-sm">🤖</span>
+            <span className="text-white font-black italic text-base leading-none">D</span>
           </div>
-          <span
-            className="text-sm font-bold text-white leading-tight"
-            style={{ fontFamily: "'Georgia', serif" }}
-          >
-            DetectordeIA
+          <span className="text-sm font-black tracking-tight text-white leading-tight">
+            Detector<span className="text-blue-300">deIA</span>
           </span>
         </Link>
       </div>

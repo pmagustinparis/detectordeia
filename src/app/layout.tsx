@@ -55,10 +55,10 @@ export default function RootLayout({
               <div className="lg:col-span-2">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-800 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">🤖</span>
+                    <span className="text-white font-black italic text-xl leading-none">D</span>
                   </div>
-                  <span className="text-xl font-bold text-white">
-                    DetectordeIA.ai
+                  <span className="text-xl font-black tracking-tight text-white">
+                    Detector<span className="text-blue-300">deIA</span><span className="text-blue-400 font-semibold">.ai</span>
                   </span>
                 </div>
                 <p className="text-blue-200 text-sm leading-relaxed mb-4 max-w-sm">

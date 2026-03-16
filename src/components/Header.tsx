@@ -50,10 +50,10 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-900 shadow-sm group-hover:shadow-md transition-all duration-300">
-              <span className="text-white font-bold text-base">🤖</span>
+              <span className="text-white font-black italic text-xl leading-none">D</span>
             </div>
-            <span className="text-lg font-bold text-blue-900 hidden sm:block" style={{fontFamily: "'Georgia', serif"}}>
-              DetectordeIA.ai
+            <span className="hidden sm:block text-lg font-black tracking-tight text-blue-900">
+              Detector<span className="text-blue-600">deIA</span><span className="text-blue-400 font-semibold">.ai</span>
             </span>
           </Link>
 
