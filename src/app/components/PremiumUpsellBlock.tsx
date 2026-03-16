@@ -12,18 +12,18 @@ interface PremiumUpsellBlockProps {
 }
 
 const PremiumUpsellBlock: React.FC<PremiumUpsellBlockProps> = ({ textos }) => (
-  <div className="mt-8 bg-blue-50 border border-blue-900/20 rounded-2xl shadow-xl p-6 relative overflow-hidden">
+  <div className="mt-8 bg-blue-900 border border-blue-800 rounded-2xl shadow-xl p-6 relative overflow-hidden">
     <div className="relative">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-blue-900 flex items-center justify-center shadow-lg">
+        <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shadow-lg">
           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
           </svg>
         </div>
         <div>
-          <h3 className="font-bold text-lg text-blue-900">{textos.titulo}</h3>
-          <p className="text-sm text-blue-900/60 font-medium">{textos.subtitulo}</p>
+          <h3 className="font-bold text-lg text-white">{textos.titulo}</h3>
+          <p className="text-sm text-blue-200 font-medium">{textos.subtitulo}</p>
         </div>
       </div>
 
@@ -31,25 +31,25 @@ const PremiumUpsellBlock: React.FC<PremiumUpsellBlockProps> = ({ textos }) => (
       <ul className="space-y-2.5 mb-5">
         {textos.bullets.map((bullet, i) => (
           <li key={i} className="flex items-start gap-2.5">
-            <div className="mt-0.5 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-              <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="mt-0.5 w-5 h-5 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+              <svg className="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <span className="text-sm text-blue-900/70 leading-relaxed">{bullet}</span>
+            <span className="text-sm text-blue-100 leading-relaxed">{bullet}</span>
           </li>
         ))}
       </ul>
 
       {/* Price */}
-      <div className="mb-4 px-4 py-2.5 bg-white rounded-xl border border-blue-900/20 shadow-sm">
-        <p className="text-center text-blue-900 font-bold text-base">{textos.precio}</p>
+      <div className="mb-4 px-4 py-2.5 bg-white/10 rounded-xl border border-white/20 shadow-sm">
+        <p className="text-center text-white font-bold text-base">{textos.precio}</p>
       </div>
 
       {/* CTA Button */}
       <Link
         href="/pricing"
-        className="block w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors duration-200 text-center group"
+        className="block w-full bg-white hover:bg-blue-50 text-blue-900 font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors duration-200 text-center group"
       >
         <span className="flex items-center justify-center gap-2">
           {textos.cta}

@@ -63,18 +63,18 @@ export default function FAQSection() {
         {faqData.map((item, index) => (
           <div
             key={index}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 overflow-hidden card-elevated"
+            className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-900/10 overflow-hidden card-elevated"
           >
             <button
               onClick={() => toggleItem(index)}
-              className="w-full text-left p-5 flex items-center justify-between hover:bg-violet-50/50 transition-colors"
+              className="w-full text-left p-5 flex items-center justify-between hover:bg-blue-50 transition-colors"
               aria-expanded={openIndex === index}
             >
               <span className="font-bold text-gray-800 text-base pr-4">
                 {item.question}
               </span>
               <svg
-                className={`w-6 h-6 text-violet-600 flex-shrink-0 transition-transform duration-200 ${
+                className={`w-6 h-6 text-blue-900 flex-shrink-0 transition-transform duration-200 ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}
                 fill="none"

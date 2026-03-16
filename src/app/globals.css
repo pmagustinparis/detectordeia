@@ -223,13 +223,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Estilos para cards elevadas */
 .card-elevated {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(107, 142, 35, 0.1);
+  border: 1px solid rgba(30, 58, 95, 0.1);
 }
 
 .card-elevated:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px -8px rgba(107, 142, 35, 0.12);
-  border-color: rgba(107, 142, 35, 0.2);
+  box-shadow: 0 16px 40px -8px rgba(30, 58, 95, 0.12);
+  border-color: rgba(30, 58, 95, 0.2);
 }
 
 /* Fondos académicos limpios */

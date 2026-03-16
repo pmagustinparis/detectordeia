@@ -94,7 +94,7 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg">💡</span>
             <div>
-              <p className="text-base font-bold text-[#7c3aed]">¿Te resultó útil el análisis?</p>
+              <p className="text-base font-bold text-blue-900">¿Te resultó útil el análisis?</p>
               <p className="text-xs text-gray-600">
                 Tu feedback nos ayuda a mejorar la precisión del detector. Cada comentario nos permite afinar el algoritmo para que sea más útil para todos.
               </p>
@@ -135,7 +135,7 @@ export default function FeedbackBlock({ originalText, result, onSent }: Feedback
           />
           {error && <div className="text-red-600 text-xs mb-2">{error}</div>}
           <button
-            className="mt-1 bg-[#7c3aed] hover:bg-[#5b21b6] text-white px-4 py-1 rounded font-bold text-sm transition-all disabled:opacity-50"
+            className="mt-1 bg-blue-900 hover:bg-blue-800 text-white px-4 py-1 rounded font-bold text-sm transition-all disabled:opacity-50"
             onClick={handleSend}
             disabled={enviando}
             type="button"

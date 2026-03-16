@@ -212,7 +212,7 @@ export default function PricingPageClient() {
     return (
       <button
         onClick={handleProCTAClick}
-        className="mt-auto w-full text-center bg-slate-800 text-white hover:bg-slate-700 font-semibold py-3 px-6 rounded-lg transition-colors cursor-pointer"
+        className="mt-auto w-full text-center bg-blue-900 text-white hover:bg-blue-800 font-semibold py-3 px-6 rounded-lg transition-colors cursor-pointer"
       >
         {isAuthenticated ? 'Actualizar a Premium' : 'Registrate Gratis y Actualiza'}
       </button>
@@ -335,7 +335,7 @@ export default function PricingPageClient() {
             ) : (
               <a
                 href="/auth/signup"
-                className="w-full text-center border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold py-3 px-6 rounded-lg transition-colors"
+                className="w-full text-center border border-blue-900/30 text-blue-900 hover:bg-blue-50 font-semibold py-3 px-6 rounded-lg transition-colors"
               >
                 Empezar Gratis
               </a>
@@ -343,8 +343,8 @@ export default function PricingPageClient() {
           </div>
 
           {/* Express Pass - NUEVO */}
-          <div className="bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border-2 border-slate-800 relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-3 py-1 rounded-full text-xs font-bold">
+          <div className="bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border-2 border-blue-900 relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-900 text-white px-3 py-1 rounded-full text-xs font-bold">
               POPULAR
             </div>
             <div className="mb-4 w-full">
@@ -359,8 +359,8 @@ export default function PricingPageClient() {
                   onClick={() => setExpressDuration('24h')}
                   className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors ${
                     expressDuration === '24h'
-                      ? 'bg-slate-800 text-white'
-                      : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
+                      ? 'bg-blue-900 text-white'
+                      : 'bg-white text-blue-900 hover:bg-blue-50 border border-blue-900/30'
                   }`}
                 >
                   24 Horas
@@ -369,8 +369,8 @@ export default function PricingPageClient() {
                   onClick={() => setExpressDuration('7d')}
                   className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors ${
                     expressDuration === '7d'
-                      ? 'bg-slate-800 text-white'
-                      : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
+                      ? 'bg-blue-900 text-white'
+                      : 'bg-white text-blue-900 hover:bg-blue-50 border border-blue-900/30'
                   }`}
                 >
                   7 Días
@@ -388,7 +388,7 @@ export default function PricingPageClient() {
             </div>
 
             {/* Copy dinámico según duración */}
-            <div className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 mb-4 w-full">
+            <div className="bg-blue-50/50 border border-blue-900/15 rounded-lg px-4 py-3 mb-4 w-full">
               <p className="text-slate-700 text-sm font-semibold text-center">
                 {expressDuration === '24h'
                   ? '⚡ Perfecto para: Entrega urgente mañana, emergencia académica'
@@ -445,7 +445,7 @@ export default function PricingPageClient() {
             </ul>
             <button
               onClick={handleExpressCTAClick}
-              className="mt-auto w-full text-center bg-slate-800 text-white hover:bg-slate-700 font-semibold py-3 px-6 rounded-lg transition-colors cursor-pointer"
+              className="mt-auto w-full text-center bg-blue-900 text-white hover:bg-blue-800 font-semibold py-3 px-6 rounded-lg transition-colors cursor-pointer"
             >
               {isAuthenticated
                 ? `Activar Express ${expressDuration === '24h' ? '24h' : 'Semanal'}`
@@ -471,8 +471,8 @@ export default function PricingPageClient() {
                 onClick={() => setBilling('monthly')}
                 className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors ${
                   billing === 'monthly'
-                    ? 'bg-slate-800 text-white'
-                    : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
+                    ? 'bg-blue-900 text-white'
+                    : 'bg-white text-blue-900 hover:bg-blue-50 border border-blue-900/30'
                 }`}
               >
                 Mensual
@@ -481,13 +481,13 @@ export default function PricingPageClient() {
                 onClick={() => setBilling('annual')}
                 className={`flex-1 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center gap-1.5 ${
                   billing === 'annual'
-                    ? 'bg-slate-800 text-white'
-                    : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-300'
+                    ? 'bg-blue-900 text-white'
+                    : 'bg-white text-blue-900 hover:bg-blue-50 border border-blue-900/30'
                 }`}
               >
                 Anual
                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
-                  billing === 'annual' ? 'bg-white text-slate-800' : 'bg-slate-200 text-slate-700'
+                  billing === 'annual' ? 'bg-white text-blue-900' : 'bg-blue-900/10 text-blue-900'
                 }`}>
                   -20%
                 </span>
@@ -506,7 +506,7 @@ export default function PricingPageClient() {
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
-            <div className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 mb-4 w-full">
+            <div className="bg-blue-50/50 border border-blue-900/15 rounded-lg px-4 py-3 mb-4 w-full">
               <p className="text-slate-700 text-sm font-semibold text-center">
                 💎 Perfecto para: Uso diario profesional, estudiantes avanzados, creadores de contenido
               </p>
@@ -581,7 +581,7 @@ export default function PricingPageClient() {
                 "Como docente universitario, DetectorDeIA me ha ayudado enormemente a identificar trabajos generados por IA. La precisión en español es excelente y los 5 modos del humanizador son perfectos para enseñar a mis estudiantes."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center text-white font-bold text-lg">
                   MC
                 </div>
                 <div>

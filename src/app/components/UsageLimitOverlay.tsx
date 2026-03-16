@@ -106,11 +106,11 @@ export default function UsageLimitOverlay({
                 Ya usaste tus <strong>{limit} {getToolNamePlural()} gratis</strong> de hoy.
               </p>
 
-              <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
-                <p className="text-sm font-bold text-violet-900 mb-3">
+              <div className="bg-blue-900/5 border-2 border-blue-900/20 rounded-2xl p-5 mb-6">
+                <p className="text-sm font-bold text-blue-900 mb-3">
                   🎁 Registrándote gratis obtenés:
                 </p>
-                <ul className="space-y-2 text-sm text-violet-800">
+                <ul className="space-y-2 text-sm text-blue-900/80">
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
                     <span><strong>Más usos diarios</strong> en todas las herramientas</span>
@@ -129,7 +129,7 @@ export default function UsageLimitOverlay({
               {/* CTA - Register */}
               <a
                 href="/dashboard"
-                className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
+                className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
               >
                 Crear Cuenta Gratis en 10 Segundos
               </a>
@@ -182,25 +182,25 @@ export default function UsageLimitOverlay({
               </div>
 
               {/* Pro Option */}
-              <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
-                <p className="text-sm font-bold text-violet-900 mb-2">
+              <div className="bg-blue-900/5 border-2 border-blue-900/20 rounded-2xl p-5 mb-6">
+                <p className="text-sm font-bold text-blue-900 mb-2">
                   🚀 Plan Premium - Uso continuo
                 </p>
-                <ul className="space-y-1.5 text-sm text-violet-800 mb-3">
+                <ul className="space-y-1.5 text-sm text-blue-900/80 mb-3">
                   <li className="flex items-start gap-2">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-blue-900 font-bold">✓</span>
                     <span><strong>Usos ilimitados</strong> permanentes</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-blue-900 font-bold">✓</span>
                     <span>5 modos premium + archivos</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-violet-600 font-bold">✓</span>
+                    <span className="text-blue-900 font-bold">✓</span>
                     <span>Mejor para uso regular</span>
                   </li>
                 </ul>
-                <p className="text-lg font-extrabold text-violet-900">
+                <p className="text-lg font-extrabold text-blue-900">
                   $12.99/mes • $124.68/año
                 </p>
               </div>
@@ -215,7 +215,7 @@ export default function UsageLimitOverlay({
                 </a>
                 <a
                   href="/pricing"
-                  className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 >
                   Ver Plan Premium ($12.99/mes)
                 </a>
