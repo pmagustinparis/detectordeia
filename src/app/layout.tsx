@@ -38,7 +38,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" sizes="16x16" />
       </head>
       <body className={inter.className}>
-        <div className="flex min-h-screen bg-blue-50/30">
+        <div className="flex min-h-screen bg-white">
           {/* Sidebar — desktop only, sticky */}
           <AppSidebar />
 
