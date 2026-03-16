@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import HomePageClient from './HomePageClient'; // Importamos el componente cliente
+import HomePageClient from './HomePageClient';
+import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  return <HomePageClient />;
+export default async function Home() {
+  const initialUserStatus = await getUserStatus();
+  return <HomePageClient initialUserStatus={initialUserStatus} />;
 }

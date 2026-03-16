@@ -2,14 +2,16 @@
 
 import DetectorMain from './components/DetectorMain';
 import { ProductIcons, Icon } from '@/lib/icons';
+import type { UserStatus } from '@/lib/types/user-status';
 
-export default function HomePageClient() {
+export default function HomePageClient({ initialUserStatus }: { initialUserStatus?: UserStatus }) {
   return (
     <div className="min-h-screen bg-white pb-24 px-4">
       {/* DETECTOR UNIFICADO */}
       <DetectorMain
         h1="El Mejor Detector de IA en Español"
         subtitle="Detecta contenido generado por IA con precisión líder. Gratis, privado y sin registro."
+        initialUserStatus={initialUserStatus}
       />
 
       {/* VALUE PROPS/FEATURES - GRID LIMPIO */}

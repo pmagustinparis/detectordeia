@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import DetectorMain from '../components/DetectorMain';
+import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Chile – DetectordeIA.ai',
@@ -31,12 +32,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DetectorChile() {
+export default async function DetectorChile() {
+  const initialUserStatus = await getUserStatus();
   return (
     <div className="min-h-screen bg-white pb-10 px-2">
-      <DetectorMain 
+      <DetectorMain
         h1="Detector de IA para Chile"
         subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Chile. Herramienta gratuita, sin registro, optimizada para español de Chile. Ideal para estudiantes, docentes y empresas chilenas."
+        initialUserStatus={initialUserStatus}
       />
       <div className="mt-8 max-w-2xl mx-auto">
         <h2 className="text-xl font-bold text-slate-800 mb-2">Preguntas frecuentes sobre IA en Chile</h2>

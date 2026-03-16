@@ -1,39 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ProductIcons, Icon } from '@/lib/icons';
 import HumanizadorMain from '../components/HumanizadorMain';
 import EmailCaptureModal from '../components/EmailCaptureModal';
 import FAQSection from '../components/FAQSection';
-import { useAuth } from '@/lib/hooks/useAuth';
-export default function HumanizadorClient() {
-  const { isAuthenticated, user } = useAuth();
+import type { UserStatus } from '@/lib/types/user-status';
+
+export default function HumanizadorClient({ initialUserStatus }: { initialUserStatus?: UserStatus }) {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [emailModalSource, setEmailModalSource] = useState('');
-  const [userPlan, setUserPlan] = useState<'free' | 'premium'>('free');
-
-  // Obtener plan del usuario
-  useEffect(() => {
-    async function fetchUserPlan() {
-      if (!isAuthenticated || !user) {
-        setUserPlan('free');
-        return;
-      }
-
-      try {
-        const response = await fetch('/api/user/plan');
-        if (response.ok) {
-          const data = await response.json();
-          setUserPlan(data.plan_type || 'free');
-        }
-      } catch (error) {
-        console.error('Error fetching user plan:', error);
-        setUserPlan('free');
-      }
-    }
-
-    fetchUserPlan();
-  }, [isAuthenticated, user]);
+  const userPlan = initialUserStatus?.plan_type ?? 'free';
 
   const openEmailModal = (source: string) => {
     setEmailModalSource(source);
@@ -55,7 +32,7 @@ export default function HumanizadorClient() {
         </p>
 
         {/* COMPONENTE PRINCIPAL - HERRAMIENTA */}
-        <HumanizadorMain />
+        <HumanizadorMain initialUserStatus={initialUserStatus} />
       </section>
 
       {/* Premium Upsell Block - SOLO para usuarios FREE */}

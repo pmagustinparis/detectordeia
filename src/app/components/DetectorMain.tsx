@@ -70,10 +70,12 @@ const premiumCompactTextos = {
 
 export default function DetectorMain({
   h1 = 'Detector de IA en Español',
-  subtitle = 'Detecta si un texto fue escrito por inteligencia artificial con precisión líder en español. Analiza, sube archivos y obtén resultados confiables en segundos. Sin registro, sin fricción, 100% privado.'
+  subtitle = 'Detecta si un texto fue escrito por inteligencia artificial con precisión líder en español. Analiza, sube archivos y obtén resultados confiables en segundos. Sin registro, sin fricción, 100% privado.',
+  initialUserStatus,
 }: {
   h1?: string;
   subtitle?: string;
+  initialUserStatus?: UserStatus;
 }) {
   const router = useRouter();
   const [text, setText] = useState('');
@@ -114,19 +116,17 @@ export default function DetectorMain({
   const [hasAnalyzed, setHasAnalyzed] = useState(false);
 
   // Consolidated user status (replaces userPlan, no Express needed for Detector)
-  const [userStatus, setUserStatus] = useState<UserStatus>({
-    isAuthenticated: false,
-    user: null,
-    plan_type: 'free',
-    express: {
-      expires_at: null,
-      is_active: false,
-      time_remaining_ms: null,
-    },
-  });
+  const [userStatus, setUserStatus] = useState<UserStatus>(
+    initialUserStatus ?? {
+      isAuthenticated: false,
+      user: null,
+      plan_type: 'free',
+      express: { expires_at: null, is_active: false, time_remaining_ms: null },
+    }
+  );
 
-  // Loading state - prevents flickering by not showing wrong UI while fetching
-  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
+  // If initialUserStatus was provided server-side, no need to show loading skeleton
+  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(!initialUserStatus);
 
   // Límite de caracteres dinámico basado en autenticación y plan
   const CHARACTER_LIMIT = !userStatus.isAuthenticated
@@ -159,7 +159,11 @@ export default function DetectorMain({
         setIsLoadingUserStatus(false);
       }
     }
-    fetchUserStatus();
+    // If initial status was provided server-side, skip the fetch entirely
+    if (!initialUserStatus) {
+      fetchUserStatus();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getCounterColor = () => {

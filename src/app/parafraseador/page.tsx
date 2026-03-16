@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import ParafraseadorClient from './ParafraseadorClient';
+import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Parafraseador de IA en Español Gratis | DetectorDeIA',
@@ -40,10 +41,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ParafraseadorPage() {
+export default async function ParafraseadorPage() {
+  const initialUserStatus = await getUserStatus();
   return (
     <>
-      <ParafraseadorClient />
+      <ParafraseadorClient initialUserStatus={initialUserStatus} />
 
       {/* Structured Data - JSON-LD */}
       <script

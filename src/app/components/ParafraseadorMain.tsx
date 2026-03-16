@@ -22,7 +22,7 @@ const CHARACTER_LIMITS = {
 };
 const MIN_CHARACTERS = 50;
 
-export default function ParafraseadorMain() {
+export default function ParafraseadorMain({ initialUserStatus }: { initialUserStatus?: UserStatus } = {}) {
   const [text, setText] = useState('');
   const [isParaphrasing, setIsParaphrasing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -36,19 +36,17 @@ export default function ParafraseadorMain() {
   const [selectedMode, setSelectedMode] = useState<ParaphraserMode>('standard');
 
   // Consolidated user status (replaces userPlan, expressExpiresAt, isExpressActive)
-  const [userStatus, setUserStatus] = useState<UserStatus>({
-    isAuthenticated: false,
-    user: null,
-    plan_type: 'free',
-    express: {
-      expires_at: null,
-      is_active: false,
-      time_remaining_ms: null,
-    },
-  });
+  const [userStatus, setUserStatus] = useState<UserStatus>(
+    initialUserStatus ?? {
+      isAuthenticated: false,
+      user: null,
+      plan_type: 'free',
+      express: { expires_at: null, is_active: false, time_remaining_ms: null },
+    }
+  );
 
-  // Loading state - prevents flickering by not showing wrong UI while fetching
-  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
+  // If initialUserStatus was provided server-side, no need to show loading skeleton
+  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(!initialUserStatus);
 
   // DEBUG: Log estado inicial en primera renderización
 
@@ -88,26 +86,23 @@ export default function ParafraseadorMain() {
   useEffect(() => {
     async function fetchUserStatus() {
       try {
-        const start = performance.now();
-
         const response = await fetch('/api/user/status');
-
-        const end = performance.now();
-
         if (response.ok) {
           const data = await response.json();
-
-          setUserStatus(data); // Single setState - no flickering!
+          setUserStatus(data);
         }
-      } catch (error) {
+      } catch {
         // Keep default free state on error
       } finally {
         setIsLoadingUserStatus(false);
       }
     }
-
-    fetchUserStatus();
-  }, []); // Execute only once on mount - no dependencies!
+    // If initial status was provided server-side, skip the fetch entirely
+    if (!initialUserStatus) {
+      fetchUserStatus();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // DEBUG: Monitor userStatus changes
   useEffect(() => {

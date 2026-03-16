@@ -22,7 +22,7 @@ const CHARACTER_LIMITS = {
 };
 const MIN_CHARACTERS = 50;
 
-export default function HumanizadorMain() {
+export default function HumanizadorMain({ initialUserStatus }: { initialUserStatus?: UserStatus } = {}) {
   const [text, setText] = useState('');
   const [isHumanizing, setIsHumanizing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -36,19 +36,17 @@ export default function HumanizadorMain() {
   const [selectedMode, setSelectedMode] = useState<HumanizerMode>('standard');
 
   // Consolidated user status (replaces userPlan, expressExpiresAt, isExpressActive)
-  const [userStatus, setUserStatus] = useState<UserStatus>({
-    isAuthenticated: false,
-    user: null,
-    plan_type: 'free',
-    express: {
-      expires_at: null,
-      is_active: false,
-      time_remaining_ms: null,
-    },
-  });
+  const [userStatus, setUserStatus] = useState<UserStatus>(
+    initialUserStatus ?? {
+      isAuthenticated: false,
+      user: null,
+      plan_type: 'free',
+      express: { expires_at: null, is_active: false, time_remaining_ms: null },
+    }
+  );
 
-  // Loading state - prevents flickering by not showing wrong UI while fetching
-  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(true);
+  // If initialUserStatus was provided server-side, no need to show loading skeleton
+  const [isLoadingUserStatus, setIsLoadingUserStatus] = useState(!initialUserStatus);
 
   // Prefill desde el detector (flujo detector → humanizador)
   useEffect(() => {
@@ -144,7 +142,11 @@ export default function HumanizadorMain() {
         setIsLoadingUserStatus(false);
       }
     }
-    fetchUserStatus();
+    // If initial status was provided server-side, skip the fetch entirely
+    if (!initialUserStatus) {
+      fetchUserStatus();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Colores del contador dinámico

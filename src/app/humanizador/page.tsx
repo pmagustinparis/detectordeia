@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import HumanizadorClient from './HumanizadorClient';
+import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Humanizar Texto IA Gratis 2025 | Humanizador en Español Sin Registro',
@@ -40,10 +41,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HumanizadorPage() {
+export default async function HumanizadorPage() {
+  const initialUserStatus = await getUserStatus();
   return (
     <>
-      <HumanizadorClient />
+      <HumanizadorClient initialUserStatus={initialUserStatus} />
 
       {/* Structured Data - JSON-LD */}
       <script
