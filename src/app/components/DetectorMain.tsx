@@ -359,32 +359,32 @@ export default function DetectorMain({
       <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>{subtitle}</p>
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
         {/* Input + Button (left) */}
-        <div className="flex-1 bg-white rounded-2xl shadow-lg border border-gray-200 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px]">
+        <div className="flex-1 bg-white rounded-2xl shadow-lg border border-blue-900/20 p-6 flex flex-col justify-between min-w-[320px] max-h-[600px]">
           {/* Trust indicators */}
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             {!userStatus.isAuthenticated ? (
-              <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 Sin registro
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 Cuenta activa
               </span>
             )}
-            <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
-              <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+            <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4 text-blue-900/60" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
               </svg>
               100% privado
             </span>
-            <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-600 font-semibold rounded-full px-3 py-1.5 text-xs">
-              <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+            <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4 text-blue-900/60" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
               </svg>
               En español
@@ -405,7 +405,7 @@ export default function DetectorMain({
           <div className="flex flex-col flex-grow">
             <textarea
               id="detector-textarea"
-              className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-2 border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 p-4 text-base text-gray-800 placeholder-gray-500 transition-all outline-none resize-none mb-1 hover:border-gray-400"
+              className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-2 border-blue-900/25 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 p-4 text-base text-gray-800 placeholder-gray-500 transition-all outline-none resize-none mb-1 hover:border-blue-900/50"
               placeholder="Pega aquí el texto que quieras analizar (mínimo 80 caracteres)"
               value={text}
               onChange={(e) => {
@@ -448,7 +448,7 @@ export default function DetectorMain({
             <select
               value={textType}
               onChange={(e) => setTextType(e.target.value)}
-              className="w-full border-2 border-gray-300 rounded-lg px-3 py-2.5 text-sm bg-white hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-gray-700"
+              className="w-full border-2 border-blue-900/25 rounded-lg px-3 py-2.5 text-sm bg-white hover:border-blue-900/50 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 transition-all text-gray-700"
             >
               <option value="default" className="text-gray-700">Sin especificar</option>
               <option value="academic" className="text-gray-700">Académico / formal</option>
@@ -463,7 +463,7 @@ export default function DetectorMain({
           <button
             onClick={handleAnalyze}
             disabled={isAnalyzing || text.length < 80}
-            className={`mt-2 w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
+            className={`mt-2 w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
             aria-label="Detectar contenido de IA"
           >
             {isAnalyzing ? 'Analizando...' : 'Analizar texto'}
@@ -472,9 +472,9 @@ export default function DetectorMain({
         </div>
         {/* Result block (right) */}
         <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-blue-900/20 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
             <div className="flex items-center gap-2 mb-3">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-800 shadow-md">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-900 shadow-md">
                 <span className="text-white text-lg">🛡️</span>
               </div>
               <div className="flex flex-col">
@@ -486,7 +486,7 @@ export default function DetectorMain({
               <div className="relative" style={{maxHeight: '500px', overflow: 'hidden'}}>
               <div className={isLimitExceeded ? "filter blur-sm overflow-y-auto" : "overflow-y-auto"} style={{maxHeight: '500px'}}>
                 {/* HERO CARD - Score Principal con diseño mejorado */}
-                <div className="mb-6 p-6 bg-gradient-to-br from-white via-gray-50 to-slate-50 rounded-2xl border-2 border-gray-200 shadow-xl animate-fade-in">
+                <div className="mb-6 p-6 bg-gradient-to-br from-white via-blue-50/30 to-blue-50/50 rounded-2xl border-2 border-blue-900/15 shadow-xl animate-fade-in">
                   {/* Score gigante centrado */}
                   <div className="text-center mb-4">
                     <div className={`text-7xl md:text-8xl font-black leading-none mb-3 ${getResultColor(result.probability)} animate-scale-in`}>

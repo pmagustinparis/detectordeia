@@ -39,7 +39,7 @@ export default function AppTopBar() {
   }, [isAuthenticated]);
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-200 h-14 flex items-center px-4 gap-4">
+    <header className="sticky top-0 z-40 bg-white border-b border-blue-900/20 h-14 flex items-center px-4 gap-4">
       {/* Logo — visible on mobile only (desktop has it in sidebar) */}
       <Link href="/" className="md:hidden flex items-center gap-2 shrink-0">
         <div className="w-8 h-8 rounded-lg bg-blue-900 flex items-center justify-center">
@@ -63,7 +63,7 @@ export default function AppTopBar() {
         )}
         <Link
           href="/pricing"
-          className="hidden md:inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+          className="hidden md:inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-900 border border-blue-900 rounded-lg hover:bg-blue-50 transition-colors"
         >
           Ver Planes
         </Link>
