@@ -44,13 +44,10 @@ export default function HumanizadorClient() {
     <div className="min-h-screen bg-gray-100 pb-10 px-2">
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
-        {/* Elementos decorativos de fondo */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
 
         {/* Hero Title */}
         <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-2 mt-2 leading-tight animate-fade-in">
-          <span className="gradient-text-primary">Humanizador de IA</span>
+          <span className="text-slate-900">Humanizador de IA</span>
           <br />
           <span className="text-gray-800">en Español</span>
         </h1>
@@ -66,7 +63,7 @@ export default function HumanizadorClient() {
       {/* Premium Upsell Block - SOLO para usuarios FREE */}
       {userPlan !== 'premium' && (
         <section className="max-w-3xl mx-auto mt-12 mb-16 px-2">
-          <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl shadow-xl border border-violet-200 p-8 text-center card-elevated">
+          <div className="bg-slate-50 rounded-3xl shadow-xl border border-slate-200 p-8 text-center card-elevated">
             <div className="flex items-center justify-center gap-2 mb-3">
               <span className="text-3xl">🔓</span>
               <h2 className="text-2xl font-bold text-gray-800">
@@ -103,7 +100,7 @@ export default function HumanizadorClient() {
 
             <a
               href="/pricing"
-              className="inline-block w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              className="inline-block w-full md:w-auto px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
             >
               Ver Planes
             </a>
@@ -114,7 +111,7 @@ export default function HumanizadorClient() {
       {/* Por qué usar el humanizador Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">¿Por qué usar</span>
+          <span className="text-slate-900">¿Por qué usar</span>
           <span className="text-gray-800"> el humanizador de DetectorDeIA?</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
@@ -123,9 +120,9 @@ export default function HumanizadorClient() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Beneficio 1 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6 card-elevated">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-violet-600" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+            <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
+              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-slate-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Especializado en español</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -134,9 +131,9 @@ export default function HumanizadorClient() {
           </div>
 
           {/* Beneficio 2 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6 card-elevated">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Locked} size="2xl" className="text-cyan-600" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+            <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
+              <Icon icon={ProductIcons.Locked} size="2xl" className="text-slate-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">100% Privado</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -145,9 +142,9 @@ export default function HumanizadorClient() {
           </div>
 
           {/* Beneficio 3 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6 card-elevated">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Fast} size="2xl" className="text-emerald-600" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+            <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
+              <Icon icon={ProductIcons.Fast} size="2xl" className="text-slate-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Resultados instantáneos</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -156,8 +153,8 @@ export default function HumanizadorClient() {
           </div>
 
           {/* Beneficio 4 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6 card-elevated">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center mb-4 shadow-md">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+            <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
               <span className="text-3xl">✅</span>
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Mantiene el significado</h3>
@@ -171,7 +168,7 @@ export default function HumanizadorClient() {
       {/* Cómo Funciona Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">¿Cómo funciona</span>
+          <span className="text-slate-900">¿Cómo funciona</span>
           <span className="text-gray-800"> el humanizador de IA?</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
@@ -180,7 +177,7 @@ export default function HumanizadorClient() {
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 shadow-lg">
               <span className="text-3xl">1️⃣</span>
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Pega tu texto</h3>
@@ -190,7 +187,7 @@ export default function HumanizadorClient() {
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 shadow-lg">
               <span className="text-3xl">2️⃣</span>
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Haz clic en "Humanizar"</h3>
@@ -200,7 +197,7 @@ export default function HumanizadorClient() {
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 shadow-lg">
               <span className="text-3xl">3️⃣</span>
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Copia el resultado</h3>
@@ -214,7 +211,7 @@ export default function HumanizadorClient() {
       {/* Casos de Uso Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">¿Quién usa</span>
+          <span className="text-slate-900">¿Quién usa</span>
           <span className="text-gray-800"> el humanizador de IA?</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
@@ -222,9 +219,9 @@ export default function HumanizadorClient() {
         </p>
 
         <div className="grid md:grid-cols-4 gap-6">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.GraduationCap} size="2xl" className="text-blue-600" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <Icon icon={ProductIcons.GraduationCap} size="2xl" className="text-slate-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Estudiantes</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -232,9 +229,9 @@ export default function HumanizadorClient() {
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.Briefcase} size="2xl" className="text-violet-600" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <Icon icon={ProductIcons.Briefcase} size="2xl" className="text-slate-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Profesionales</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -242,9 +239,9 @@ export default function HumanizadorClient() {
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.PenTool} size="2xl" className="text-purple-600" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <Icon icon={ProductIcons.PenTool} size="2xl" className="text-slate-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Creadores</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -252,9 +249,9 @@ export default function HumanizadorClient() {
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 flex flex-col items-center text-center card-elevated group">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
-              <Icon icon={ProductIcons.Users} size="2xl" className="text-green-600" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
+            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform">
+              <Icon icon={ProductIcons.Users} size="2xl" className="text-slate-600" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Docentes</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -269,20 +266,20 @@ export default function HumanizadorClient() {
 
       {/* VARIANTES DEL HUMANIZADOR - Internal Linking SEO */}
       <section className="max-w-5xl mx-auto mb-12 px-2">
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-6 text-center">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200 p-6 text-center">
           <p className="text-gray-700 text-sm mb-3">
             <span className="font-semibold">También buscado como:</span>
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href="/convertidor-ia-a-humano"
-              className="px-4 py-2 bg-white hover:bg-emerald-50 text-emerald-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-emerald-200"
+              className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-200"
             >
               Convertidor IA a Humano
             </a>
             <a
               href="/transformador-texto-ia"
-              className="px-4 py-2 bg-white hover:bg-emerald-50 text-emerald-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-emerald-200"
+              className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-200"
             >
               Transformador de Texto IA
             </a>
@@ -294,9 +291,9 @@ export default function HumanizadorClient() {
       <section className="max-w-4xl mx-auto mb-16 px-2">
         <div className="space-y-6">
           {/* Detector */}
-          <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl shadow-lg border border-cyan-200 p-8 card-elevated">
+          <div className="bg-white border border-slate-200 rounded-3xl shadow-lg p-8 card-elevated">
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center shadow-lg flex-shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center shadow-lg flex-shrink-0">
                 <span className="text-3xl">🔍</span>
               </div>
               <div className="flex-1 text-center md:text-left">
@@ -308,7 +305,7 @@ export default function HumanizadorClient() {
                 </p>
                 <a
                   href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-700 hover:to-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 >
                   <span>Probar el Detector de IA</span>
                   <span>→</span>
@@ -318,10 +315,10 @@ export default function HumanizadorClient() {
           </div>
 
           {/* Parafraseador */}
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-lg border border-purple-200 p-8 card-elevated">
+          <div className="bg-white border border-slate-200 rounded-3xl shadow-lg p-8 card-elevated">
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                <Icon icon={ProductIcons.Paraphraser} size="2xl" className="text-purple-600" />
+              <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center shadow-lg flex-shrink-0">
+                <Icon icon={ProductIcons.Paraphraser} size="2xl" className="text-slate-600" />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
@@ -332,7 +329,7 @@ export default function HumanizadorClient() {
                 </p>
                 <a
                   href="/parafraseador"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 >
                   <span>Probar el Parafraseador</span>
                   <span>→</span>
@@ -346,11 +343,7 @@ export default function HumanizadorClient() {
       {/* CTA Final Section - SOLO para usuarios FREE */}
       {userPlan !== 'premium' && (
         <section className="max-w-4xl mx-auto mb-16 px-2">
-          <div className="bg-gradient-to-br from-violet-600 to-purple-600 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white relative overflow-hidden">
-            {/* Elementos decorativos */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-300/20 rounded-full blur-3xl"></div>
-
+          <div className="bg-slate-800 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white relative overflow-hidden">
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
                 Comienza a humanizar tus textos ahora
@@ -362,7 +355,7 @@ export default function HumanizadorClient() {
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-white text-violet-600 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
+                className="px-8 py-4 bg-white text-slate-800 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
               >
                 Probar el humanizador gratis
               </button>
