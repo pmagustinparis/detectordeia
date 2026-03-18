@@ -3127,5 +3127,226 @@ export const guides: GuidePage[] = [
       { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-reducir-ia-turnitin' }
     ],
     cta: { text: 'Verificar tu texto antes de subir a Turnitin', url: '/?ref=guia-reducir-ia-turnitin' }
+  },
+
+  // ── SPRINT 4B ────────────────────────────────────────────────────────────
+
+  {
+    slug: 'como-hacer-marco-teorico',
+    title: 'Cómo Hacer un Marco Teórico para tu Investigación',
+    keywords: ['como hacer marco teorico', 'marco teorico ejemplo', 'marco teorico tesis', 'estructura marco teorico', 'marco teorico sin ia'],
+    metaTitle: 'Cómo Hacer un Marco Teórico: Guía Paso a Paso con Ejemplos 2025',
+    metaDescription: 'Aprende a construir el marco teórico de tu tesis o investigación paso a paso. Qué incluir, cómo estructurarlo y cómo evitar que parezca generado por IA.',
+    h1: 'Cómo Hacer un Marco Teórico: Guía Completa para Investigadores',
+    intro: 'El marco teórico es la sección más importante de una investigación y la que más fácilmente delata el uso de IA — porque la IA tiende a hacer resúmenes genéricos de teorías en lugar de argumentar por qué esas teorías son relevantes para tu pregunta específica. Esta guía te enseña a hacerlo bien.',
+    overview: 'Cubre: (1) qué es y para qué sirve el marco teórico, (2) cómo seleccionar las teorías relevantes, (3) estructura interna del marco teórico, (4) cómo conectar la teoría con tu pregunta de investigación, (5) errores que delatan uso de IA.',
+    steps: [
+      { number: 1, title: 'Define qué necesita explicar tu marco teórico', description: 'El marco teórico no es un catálogo de teorías — es un andamiaje conceptual que explica tu fenómeno. Pregúntate: ¿qué conceptos necesito definir para que mi análisis tenga sentido? Solo incluye teorías que usarás directamente en el análisis.' },
+      { number: 2, title: 'Selecciona fuentes primarias, no explicaciones secundarias', description: 'Si trabajas con Bourdieu, lee a Bourdieu — no un artículo que explica a Bourdieu. El marco teórico construido sobre fuentes primarias es más sólido y menos propenso a errores de interpretación que propaga la literatura secundaria.' },
+      { number: 3, title: 'Organiza el marco de lo general a lo específico', description: 'Empieza con el marco conceptual más amplio (el campo disciplinar), avanza a las teorías de alcance medio relevantes, y termina con los conceptos operacionales que usarás directamente. Esta estructura muestra dominio del campo.' },
+      { number: 4, title: 'Argumenta por qué cada teoría es la adecuada', description: 'No basta con describir las teorías — debes justificar por qué las elegiste sobre otras. "Se utiliza el enfoque de Bourdieu porque permite analizar las prácticas sin reducirlas a intenciones individuales" es argumentación teórica. "Bourdieu propuso que..." es descripción.' },
+      { number: 5, title: 'Cierra el marco conectándolo explícitamente con tu pregunta', description: 'El último párrafo del marco teórico debe mostrar cómo los conceptos presentados configuran el lente con el que analizarás tus datos. Esta conexión explícita es lo que más frecuentemente falta en marcos teóricos generados con IA.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Incluir todo lo que existe sobre el tema', solution: 'El marco teórico no es una revisión exhaustiva — es una selección argumentada. Más no es mejor. Cada teoría debe ganarse su lugar justificando su relevancia.' },
+      { mistake: 'Describir las teorías sin conectarlas entre sí', solution: 'El marco teórico debe mostrar cómo las teorías dialogan, se complementan o se tensionan. Un listado de resúmenes de teorías no es un marco teórico.' }
+    ],
+    faqs: [
+      { question: '¿Cuánto debe medir el marco teórico?', answer: 'Depende del tipo de investigación. En una tesis de grado, entre 10-20% del total. En un paper académico, puede ser más breve (2-4 páginas). Lo importante es que sea suficiente para sustentar el análisis, sin extenderse en teorías que no usarás.' },
+      { question: '¿Puedo usar IA para construir el marco teórico?', answer: 'Puedes usarla para explorar qué autores son relevantes en tu campo o para entender conceptos difíciles. No debes usarla para generar las secciones del marco — tiende a hacer resúmenes correctos pero genéricos que no se conectan con tu pregunta específica.' },
+      { question: '¿El marco teórico es lo mismo que el estado del arte?', answer: 'No. El estado del arte (o revisión de literatura) mapea qué se ha investigado sobre el tema. El marco teórico define los conceptos y teorías con los que analizarás. En muchas tesis ambos son secciones separadas; en papers cortos pueden integrarse.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Hacer un Estado del Arte', slug: 'como-hacer-estado-del-arte' },
+      { title: 'Cómo Investigar con Fuentes Académicas', slug: 'como-investigar-fuentes-academicas' },
+      { title: 'Cómo Presentar tu Tesis con Integridad Académica', slug: 'como-presentar-tesis-con-integridad-academica' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-marco-teorico' }
+    ],
+    cta: { text: 'Verificar que tu marco teórico no parece de IA', url: '/?ref=guia-marco-teorico' }
+  },
+
+  {
+    slug: 'como-hacer-estado-del-arte',
+    title: 'Cómo Hacer el Estado del Arte de una Investigación',
+    keywords: ['como hacer estado del arte', 'estado del arte tesis', 'revision de literatura investigacion', 'estado del arte ejemplo', 'estado del arte sin ia'],
+    metaTitle: 'Cómo Hacer el Estado del Arte: Guía Completa para Tesis y Papers 2025',
+    metaDescription: 'Aprende a construir el estado del arte de tu investigación paso a paso. Cómo buscar, seleccionar y sintetizar literatura académica sin depender de IA.',
+    h1: 'Cómo Hacer el Estado del Arte de tu Investigación: Guía Paso a Paso',
+    intro: 'El estado del arte (o revisión de literatura) es la prueba de que conoces tu campo. Un estado del arte generado por IA se reconoce porque describe estudios sin tensionarlos, no identifica brechas reales y cita fuentes que a veces no existen. Esta guía te enseña a hacerlo con rigor.',
+    overview: 'Cubre: (1) diferencia entre estado del arte y marco teórico, (2) cómo buscar literatura sistemáticamente, (3) cómo seleccionar qué incluir, (4) cómo organizar y sintetizar, (5) cómo identificar la brecha que justifica tu investigación.',
+    steps: [
+      { number: 1, title: 'Define los términos de búsqueda antes de empezar', description: 'Identifica 5-8 términos clave en tu idioma y en inglés. Busca en Google Scholar, Scopus o WoS con operadores booleanos: ("detección de IA" OR "AI detection") AND ("educación universitaria" OR "higher education"). Filtra por los últimos 5-10 años salvo que necesites antecedentes históricos.' },
+      { number: 2, title: 'Organiza los estudios encontrados en una tabla antes de escribir', description: 'Para cada artículo relevante: autor, año, pregunta de investigación, metodología, hallazgos principales, limitaciones. Esta tabla te muestra los patrones del campo antes de escribir una sola línea del estado del arte.' },
+      { number: 3, title: 'Organiza la revisión temáticamente, no cronológicamente', description: 'Un estado del arte cronológico ("En 2018 X encontró... en 2020 Y demostró...") es difícil de leer y fácil de generar con IA. Organiza por subtemas o tensiones conceptuales: los estudios que apoyan la hipótesis A, los que la cuestionan, y los que proponen alternativas.' },
+      { number: 4, title: 'Sintetiza: muestra convergencias y divergencias entre estudios', description: 'El valor del estado del arte no está en resumir estudios uno por uno — está en mostrar dónde convergen, dónde se contradicen y qué preguntas quedan sin responder. Esas preguntas sin respuesta son la brecha que justifica tu investigación.' },
+      { number: 5, title: 'Cierra identificando explícitamente la brecha que llena tu estudio', description: 'El último párrafo del estado del arte debe decir, con precisión, qué no se ha investigado todavía o qué limitación de los estudios previos tu investigación viene a superar. Eso justifica la existencia de tu trabajo.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Incluir artículos que no leíste completos', solution: 'Solo incluye en el estado del arte estudios que hayas leído al menos en su abstract, metodología y conclusiones. Citar solo por el título es fácilmente detectable para un especialista del tribunal.' },
+      { mistake: 'No actualizar la revisión antes de la entrega final', solution: 'El estado del arte puede quedar desactualizado si tu investigación tarda. Verifica que no hayan aparecido publicaciones clave en los últimos 6 meses antes de la entrega definitiva.' }
+    ],
+    faqs: [
+      { question: '¿Cuántos estudios debe incluir el estado del arte?', answer: 'No hay número mágico. Para una tesis de grado: 15-30 fuentes bien analizadas. Para una tesis doctoral: 50-100+. Para un paper corto: 10-20. Lo que importa es la calidad de la síntesis, no la cantidad de referencias.' },
+      { question: '¿Puedo usar IA para encontrar artículos para el estado del arte?', answer: 'Sí, con precaución. Herramientas como Perplexity o Connected Papers pueden orientarte, pero verifica cada referencia en las bases de datos originales. ChatGPT inventa referencias con frecuencia — nunca incluyas una cita sin verificarla directamente.' },
+      { question: '¿El estado del arte va antes o después del marco teórico?', answer: 'Depende de la disciplina y del formato requerido. En ciencias sociales y humanidades, el marco teórico suele ir primero. En ciencias exactas, la revisión de literatura puede integrarse. Consulta el reglamento de tu institución o el estilo de los papers de tu campo.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Hacer un Marco Teórico', slug: 'como-hacer-marco-teorico' },
+      { title: 'Cómo Investigar con Fuentes Académicas', slug: 'como-investigar-fuentes-academicas' },
+      { title: 'Cómo Usar ChatGPT para Investigar Sin Plagiar', slug: 'como-usar-chatgpt-para-investigar-sin-plagiar' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-estado-del-arte' }
+    ],
+    cta: { text: 'Verificar originalidad de tu revisión de literatura', url: '/?ref=guia-estado-del-arte' }
+  },
+
+  {
+    slug: 'como-escribir-tesis-sin-chatgpt',
+    title: 'Cómo Escribir tu Tesis Sin Usar ChatGPT',
+    keywords: ['escribir tesis sin chatgpt', 'tesis sin ia', 'como hacer tesis original', 'tesis sin inteligencia artificial', 'escribir tesis universitaria'],
+    metaTitle: 'Cómo Escribir tu Tesis Sin ChatGPT: Guía Completa 2025',
+    metaDescription: 'Guía paso a paso para escribir una tesis universitaria sin depender de ChatGPT ni IA. Técnicas de productividad, escritura y organización que funcionan.',
+    h1: 'Cómo Escribir tu Tesis Sin ChatGPT: De la Idea a la Defensa',
+    intro: 'Escribir una tesis es el mayor proyecto de escritura que enfrenta un estudiante universitario. La tentación de delegar partes a ChatGPT es enorme — pero las consecuencias de ser descubierto lo son más. Esta guía te muestra cómo producir una tesis genuinamente tuya, con mayor eficiencia de la que crees posible.',
+    overview: 'Cubre: (1) planificación del proyecto de tesis sin IA, (2) sistema de toma de notas para investigación, (3) técnica de escritura por bloques, (4) cómo superar el bloqueo del escritor académico, (5) uso ético de herramientas digitales en el proceso.',
+    steps: [
+      { number: 1, title: 'Construye tu sistema de notas antes de escribir una sola palabra', description: 'La tesis se escribe desde las notas, no desde cero. Usa Zotero (gratuito) para gestionar fuentes y anota en tus propias palabras lo que cada fuente aporta a tu argumento. Cuando llegue el momento de escribir, tendrás material propio, no texto ajeno para copiar.' },
+      { number: 2, title: 'Escribe por bloques de 25 minutos (técnica Pomodoro)', description: 'La tesis intimida cuando la ves completa. Descomponla en tareas de 25 minutos: "escribir la primera mitad del párrafo introductorio del capítulo 2". El progreso diario en bloques acumulados es más sostenible que sesiones largas de escritura.' },
+      { number: 3, title: 'Escribe borradores sin editar en la misma sesión', description: 'La mayor trampa de la tesis es editar mientras escribís. Desactiva el corrector mientras escribes el borrador. Poner palabras en la página — aunque imperfectas — es mucho más valioso que la página en blanco perfecta.' },
+      { number: 4, title: 'Reúnete con tu director cada 2-3 semanas con material escrito', description: 'Los directores no pueden ayudarte si no tienen nada que leer. Lleva siempre páginas escritas, aunque sean borradores. El feedback sobre texto concreto es infinitamente más útil que las conversaciones abstractas sobre el plan.' },
+      { number: 5, title: 'Usa herramientas digitales para organización, no para generación', description: 'Scrivener o Notion para organizar capítulos. Zotero para fuentes. LanguageTool para ortografía. El calendario digital para planificación. Estas herramientas apoyan tu proceso sin generar contenido por ti.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Intentar escribir la tesis en orden cronológico', solution: 'Empieza por la sección que mejor conoces, no por la introducción. Muchos tesistas escriben la metodología primero porque es la más concreta. La introducción se escribe al final.' },
+      { mistake: 'Esperar tener todo leído antes de empezar a escribir', solution: 'Escribir y leer deben ocurrir en paralelo. Las preguntas que surgen al escribir te dicen exactamente qué falta leer. El ciclo escritura-lectura-escritura es más eficiente que leer todo primero.' }
+    ],
+    faqs: [
+      { question: '¿Cuánto tarda en promedio escribir una tesis de grado?', answer: 'La escritura en sí (con el material ya recopilado) toma entre 2-6 meses dependiendo de la extensión, la disciplina y la dedicación. El proceso completo (desde la definición del tema hasta la defensa) suele ser de 6 meses a 2 años.' },
+      { question: '¿Qué usos de IA están generalmente permitidos al escribir una tesis?', answer: 'Con declaración: IA para entender conceptos difíciles, generar preguntas de investigación, revisar estilo y coherencia (no generar el texto), y explorar bibliografía. Sin declaración: ninguno que afecte el texto entregable.' },
+      { question: '¿Cómo sé si mi tesis tiene secciones que parecen de IA aunque no las generé así?', answer: 'Las secciones de transición, las introducciones de capítulo y los resúmenes son las más propensas a sonar genéricas. Pásalas por DetectordeIA.ai antes de la entrega. Si detecta señal alta, revisa si usaste frases formulaicas que puedes humanizar.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Presentar tu Tesis con Integridad Académica', slug: 'como-presentar-tesis-con-integridad-academica' },
+      { title: 'Cómo Hacer un Marco Teórico', slug: 'como-hacer-marco-teorico' },
+      { title: 'Cómo Hacer el Estado del Arte', slug: 'como-hacer-estado-del-arte' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-tesis-sin-chatgpt' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=guia-tesis-sin-chatgpt' }
+    ],
+    cta: { text: 'Verificar tu tesis antes de la entrega — gratis', url: '/?ref=guia-tesis-sin-chatgpt' }
+  },
+
+  {
+    slug: 'como-hacer-abstract-investigacion',
+    title: 'Cómo Hacer el Abstract de una Investigación',
+    keywords: ['como hacer abstract', 'abstract investigacion ejemplo', 'resumen abstract tesis', 'estructura abstract cientifico', 'como escribir abstract'],
+    metaTitle: 'Cómo Hacer el Abstract de una Investigación: Guía con Ejemplos 2025',
+    metaDescription: 'Aprende a redactar el abstract de tu tesis, paper o investigación en 5 pasos. Estructura, extensión, errores comunes y diferencias con el resumen ejecutivo.',
+    h1: 'Cómo Hacer el Abstract de una Investigación: Guía Paso a Paso',
+    intro: 'El abstract es el texto más leído y más exigente de una investigación científica. En 150-300 palabras debe comunicar el problema, la metodología, los hallazgos y la contribución. Es también la sección donde el uso de IA es más detectable por su tendencia a ser vago donde el abstract debe ser preciso.',
+    overview: 'Cubre: (1) estructura estándar del abstract científico, (2) diferencia entre abstract y resumen ejecutivo, (3) cómo condensar sin perder precisión, (4) cuándo se escribe, (5) errores que lo invalidan.',
+    steps: [
+      { number: 1, title: 'El abstract tiene 4 componentes obligatorios', description: 'Problema (qué pregunta o gap existe), Metodología (cómo lo investigaste), Resultados (qué encontraste, con datos concretos), Conclusión/Contribución (qué aporta al campo). Cada componente debe estar presente aunque sea en una sola oración.' },
+      { number: 2, title: 'Empieza con el problema, no con el contexto', description: 'La IA tiende a abrir el abstract con contexto general. El abstract científico abre con el problema específico: "Este estudio examina..." o "Se analiza la relación entre..." El contexto es opcional en el abstract; la pregunta de investigación no lo es.' },
+      { number: 3, title: 'Incluye números concretos en los resultados', description: '"Los resultados muestran un aumento significativo" es vago. "Los resultados muestran un aumento del 23% (p<0.05)" es preciso. La especificidad numérica es la diferencia entre un abstract que informa y uno que no dice nada.' },
+      { number: 4, title: 'No incluyas citas bibliográficas en el abstract', description: 'El abstract se lee de forma aislada — sin acceso a la bibliografía del paper. Por eso, las citas dentro del abstract están prohibidas en la mayoría de estilos académicos (APA, Vancouver, IEEE). Toda afirmación del abstract debe ser resultado de tu propia investigación.' },
+      { number: 5, title: 'Escríbelo al final, cuando ya conoces todos los resultados', description: 'El abstract se posiciona al inicio del documento pero se escribe al final. Es un destilado del trabajo completo — no puedes destilarlo antes de tenerlo. Los abstracts escritos antes de terminar la investigación son inevitablemente vagos.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Confundir abstract con introducción', solution: 'La introducción contextualiza y plantea la pregunta. El abstract condensa todo el paper incluyendo resultados. El abstract es independiente; la introducción forma parte del cuerpo.' },
+      { mistake: 'Superar el límite de palabras', solution: 'La mayoría de journals y programas de posgrado tienen límites estrictos: 150-250 palabras para papers, hasta 350 para tesis doctorales. Superar el límite puede llevar al rechazo automático.' }
+    ],
+    faqs: [
+      { question: '¿El abstract va en español o en inglés?', answer: 'Depende del destino. Para revistas internacionales en inglés, el abstract va en inglés. Para tesis en universidades latinoamericanas, generalmente va en español con una versión en inglés opcional o requerida (según el reglamento). Algunos journals piden abstract en ambos idiomas.' },
+      { question: '¿Puedo usar IA para revisar mi abstract?', answer: 'Sí, para feedback sobre claridad y completitud: "¿Está claro el problema que estudié?", "¿Los resultados son suficientemente específicos?". No para generar el abstract — el texto final debe ser tuyo y reflejar con precisión tus resultados reales.' },
+      { question: '¿Qué es el abstract estructurado?', answer: 'El abstract estructurado es un formato con secciones explícitas con títulos: Objetivo, Métodos, Resultados, Conclusiones. Es más común en ciencias de la salud y medicina. La mayoría de journals de ciencias sociales y humanidades usan abstract no estructurado (texto continuo).' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Hacer un Resumen Ejecutivo Sin IA', slug: 'como-hacer-resumen-ejecutivo-sin-ia' },
+      { title: 'Cómo Presentar tu Tesis con Integridad Académica', slug: 'como-presentar-tesis-con-integridad-academica' },
+      { title: 'Cómo Hacer el Estado del Arte', slug: 'como-hacer-estado-del-arte' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-abstract' },
+      { name: 'Parafraseador Online', url: '/parafraseador?ref=guia-abstract' }
+    ],
+    cta: { text: 'Verificar que tu abstract es original', url: '/?ref=guia-abstract' }
+  },
+
+  {
+    slug: 'como-mejorar-coherencia-texto',
+    title: 'Cómo Mejorar la Coherencia de un Texto Académico',
+    keywords: ['coherencia texto academico', 'como mejorar coherencia', 'texto coherente universitario', 'mejorar cohesion texto', 'coherencia sin ia'],
+    metaTitle: 'Cómo Mejorar la Coherencia de un Texto Académico: Técnicas 2025',
+    metaDescription: 'Aprende a mejorar la coherencia y cohesión de tus textos académicos sin depender de IA. Técnicas de revisión que los profesores valoran.',
+    h1: 'Cómo Mejorar la Coherencia de un Texto Académico: Guía Práctica',
+    intro: 'Un texto coherente no es el que usa muchas palabras de transición — es el que lleva al lector de una idea a la siguiente sin esfuerzo. Paradójicamente, el texto de IA tiene coherencia local (cada párrafo tiene sentido) pero falla en la coherencia global (los argumentos no construyen hacia la tesis).',
+    overview: 'Cubre: (1) diferencia entre coherencia y cohesión, (2) técnica del hilo argumentativo, (3) cómo revisar la progresión temática, (4) errores de coherencia que delatan IA, (5) herramientas de revisión sin IA.',
+    steps: [
+      { number: 1, title: 'Extrae la idea central de cada párrafo para ver el esqueleto', description: 'Lee solo la primera oración de cada párrafo en secuencia. Si juntas forman una progresión lógica que cuenta la historia del argumento, tu texto es coherente. Si no tiene sentido o se repite, hay un problema de estructura.' },
+      { number: 2, title: 'Verifica que cada párrafo avanza, no solo añade', description: 'El problema de coherencia más común en textos de IA: los párrafos añaden perspectivas sin avanzar el argumento. Cada párrafo debe dejar al lector más cerca de entender la tesis que el anterior.' },
+      { number: 3, title: 'Usa transiciones que explican la relación lógica, no solo la secuencia', description: '"Además" indica adición. "Sin embargo" indica contraste. "Por tanto" indica consecuencia. "Lo que demuestra que" indica interpretación. Elige la transición según la relación real entre los párrafos — no la que suena más académica.' },
+      { number: 4, title: 'Revisa que los pronombres referencien sin ambigüedad', description: '"Este", "ello", "esto" son fuentes frecuentes de incoherencia cuando referencian un antecedente ambiguo. Si no está claro a qué refiere el pronombre, reemplázalo con el sustantivo correspondiente.' },
+      { number: 5, title: 'Lee el texto en voz alta para detectar incoherencias', description: 'El cerebro omite errores al leer en silencio porque completa lo que falta. La lectura en voz alta fuerza el procesamiento completo. Los saltos de lógica y las transiciones forzadas se escuchan antes de verse.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Usar muchas palabras de transición para simular coherencia', solution: 'Las muletillas de transición ("Asimismo", "En este sentido", "Cabe destacar") no crean coherencia — la disfrazan temporalmente. La coherencia viene de la organización lógica de las ideas, no de los conectores.' },
+      { mistake: 'Confundir coherencia con longitud', solution: 'Un texto largo no es más coherente que uno corto. A menudo, acortar y eliminar párrafos que no avanzan el argumento mejora más la coherencia que añadir transiciones.' }
+    ],
+    faqs: [
+      { question: '¿Cuál es la diferencia entre coherencia y cohesión?', answer: 'Coherencia es la organización lógica de las ideas (el texto tiene sentido como totalidad). Cohesión es los mecanismos lingüísticos que conectan las partes (pronombres, conectores, repetición controlada). Un texto puede tener buena cohesión gramatical y mala coherencia conceptual.' },
+      { question: '¿El texto de IA es coherente?', answer: 'Localmente sí, globalmente no siempre. Los LLMs son muy buenos generando párrafos coherentes en sí mismos, pero fallan cuando el argumento requiere progresión estratégica hacia una tesis específica. La coherencia global es la debilidad del texto de IA.' },
+      { question: '¿Puede LanguageTool o Word detectar problemas de coherencia?', answer: 'No. Los correctores automáticos detectan errores gramaticales y ortográficos, no problemas conceptuales de coherencia. La revisión de coherencia es necesariamente manual o requiere feedback humano (tutor, compañero, director).' }
+    ],
+    relatedGuides: [
+      { title: 'Técnicas de Escritura Académica Sin IA', slug: 'tecnicas-de-escritura-academica-sin-ia' },
+      { title: 'Cómo Argumentar en un Ensayo Sin IA', slug: 'como-argumentar-ensayo-sin-ia' },
+      { title: 'Cómo Estructurar un Ensayo Argumentativo', slug: 'como-estructurar-ensayo-argumentativo' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-coherencia-texto' },
+      { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-coherencia-texto' }
+    ],
+    cta: { text: 'Verificar que tu texto no parece generado por IA', url: '/?ref=guia-coherencia-texto' }
+  },
+
+  {
+    slug: 'como-hacer-informe-tecnico-sin-ia',
+    title: 'Cómo Hacer un Informe Técnico Sin IA',
+    keywords: ['como hacer informe tecnico', 'informe tecnico sin ia', 'estructura informe tecnico', 'informe tecnico universitario', 'redactar informe tecnico'],
+    metaTitle: 'Cómo Hacer un Informe Técnico Sin IA: Estructura y Guía 2025',
+    metaDescription: 'Aprende a redactar informes técnicos universitarios y profesionales sin usar IA. Estructura estándar, secciones obligatorias y errores que debes evitar.',
+    h1: 'Cómo Hacer un Informe Técnico Sin IA: Guía Completa',
+    intro: 'El informe técnico es el formato de escritura más común en ingeniería, ciencias y áreas aplicadas. A diferencia de un ensayo, tiene estructura fija y exige precisión factual. Aquí no caben opiniones vagas — y aquí la IA se equivoca más fácilmente con los datos específicos.',
+    overview: 'Cubre: (1) estructura estándar del informe técnico, (2) qué va en cada sección, (3) normas de presentación de datos y figuras, (4) cómo redactar la sección de resultados, (5) errores técnicos que delatan uso de IA.',
+    steps: [
+      { number: 1, title: 'Estructura obligatoria: portada, resumen, índice, introducción, desarrollo, resultados, conclusiones, bibliografía', description: 'El informe técnico tiene secciones estándar en la mayoría de disciplinas. Consulta si tu institución tiene una plantilla específica — muchas facultades de ingeniería tienen formatos propios que deben seguirse exactamente.' },
+      { number: 2, title: 'La introducción técnica: contexto + objetivo + alcance', description: 'La introducción del informe técnico tiene tres partes: el contexto del problema, el objetivo específico del informe (medible y concreto), y el alcance (qué incluye y qué no). Sin el alcance, el lector no sabe qué esperar.' },
+      { number: 3, title: 'El desarrollo: describir procedimientos con suficiente detalle para replicar', description: 'El desarrollo de un informe técnico debe permitir que otro profesional replique lo que hiciste. Incluye materiales, equipos (con especificaciones), procedimientos paso a paso y condiciones del experimento o análisis.' },
+      { number: 4, title: 'Resultados: datos primero, interpretación después', description: 'Primero presentas los datos (tablas, gráficos, mediciones) sin interpretación. Luego, en una subsección separada o en la discusión, los interpretas. Mezclar presentación e interpretación es un error técnico frecuente.' },
+      { number: 5, title: 'Verifica que todas las figuras y tablas tienen título, unidades y fuente', description: 'Cada figura y tabla debe ser autoexplicativa: título descriptivo, unidades en los ejes, y fuente si no es propia. Las figuras sin unidades o con títulos vagos ("Figura 1") son errores técnicos que reducen la calidad del informe.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Usar lenguaje subjetivo en la sección de resultados', solution: 'Los resultados se presentan en términos objetivos y cuantitativos. "La temperatura fue alta" no es un resultado técnico. "La temperatura alcanzó 87°C ± 2°C a los 30 minutos" sí lo es.' },
+      { mistake: 'No distinguir entre resultados y conclusiones', solution: 'Los resultados son hechos medidos. Las conclusiones son la interpretación de esos hechos en relación con el objetivo del informe. Son secciones diferentes con roles diferentes.' }
+    ],
+    faqs: [
+      { question: '¿Puedo usar IA para generar partes de un informe técnico?', answer: 'Con declaración y cuidado. La sección de procedimientos o la revisión de literatura pueden tener apoyo de IA si lo declaras. Los resultados NUNCA — deben ser tus datos reales. Las conclusiones deben ser tuyas porque requieren interpretar tus resultados específicos.' },
+      { question: '¿Cómo sé si mi informe técnico parece generado por IA?', answer: 'Señales: resultados presentados en términos vagos sin datos concretos, secciones genéricas que podrían aplicar a cualquier experimento, ausencia de especificidades del laboratorio o contexto real, y muletillas de transición excesivas. DetectordeIA.ai puede ayudar a identificar secciones problemáticas.' },
+      { question: '¿El informe técnico debe tener abstract?', answer: 'Depende del destino. Los informes técnicos para uso interno a veces no lo tienen. Los que se presentan como papers o a clientes importantes sí. Si el informe supera 10 páginas, el abstract o resumen ejecutivo es recomendable para facilitar la lectura rápida.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Hacer un Resumen Ejecutivo Sin IA', slug: 'como-hacer-resumen-ejecutivo-sin-ia' },
+      { title: 'Cómo Hacer el Abstract de una Investigación', slug: 'como-hacer-abstract-investigacion' },
+      { title: 'Técnicas de Escritura Académica Sin IA', slug: 'tecnicas-de-escritura-academica-sin-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-informe-tecnico' }
+    ],
+    cta: { text: 'Verificar que tu informe no parece de IA', url: '/?ref=guia-informe-tecnico' }
   }
 ];
