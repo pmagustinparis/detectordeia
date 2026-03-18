@@ -2603,5 +2603,306 @@ export const guides: GuidePage[] = [
       text: 'Verificar originalidad de tu trabajo — gratis',
       url: '/?ref=guia-politica-ia-latam'
     }
+  },
+
+  // ── SPRINT 3 GUIDES ──────────────────────────────────────────────────────
+
+  {
+    slug: 'como-hacer-resumen-ejecutivo-sin-ia',
+    title: 'Cómo Hacer un Resumen Ejecutivo Sin IA',
+    keywords: ['resumen ejecutivo', 'como hacer resumen ejecutivo', 'resumen ejecutivo sin chatgpt', 'resumen ejecutivo ejemplo', 'estructura resumen ejecutivo'],
+    metaTitle: 'Cómo Hacer un Resumen Ejecutivo Sin IA: Guía Paso a Paso 2025',
+    metaDescription: 'Aprende a redactar un resumen ejecutivo profesional sin depender de ChatGPT. Estructura, ejemplos y técnicas para que sea tuyo 100%.',
+    h1: 'Cómo Hacer un Resumen Ejecutivo Sin IA: Guía Completa',
+    intro: 'Un resumen ejecutivo es la primera impresión de cualquier informe, tesis o proyecto empresarial. Generarlo con IA parece tentador, pero los evaluadores detectan fácilmente el tono genérico. Esta guía te enseña a redactarlo tú mismo en menos de 30 minutos con una estructura probada.',
+    overview: 'Cubre: (1) qué es y para qué sirve, (2) estructura estándar en 5 bloques, (3) cómo resumir sin perder el mensaje clave, (4) errores que delatan el texto generado por IA, (5) checklist final.',
+    steps: [
+      { number: 1, title: 'Lee el documento completo antes de escribir', description: 'Nunca resumas lo que no has leído. Lee una vez para entender el conjunto, luego anota los 3-5 puntos más importantes.' },
+      { number: 2, title: 'Identifica: problema, solución, resultados y llamada a la acción', description: 'Todo buen resumen ejecutivo responde 4 preguntas: ¿cuál es el problema? ¿qué propones? ¿qué resultados obtienes? ¿qué pedís al lector?' },
+      { number: 3, title: 'Escribe primero el borrador a mano o en texto plano', description: 'Escribe sin editar. El objetivo es verter las ideas clave en un párrafo por bloque. No te preocupes por la perfección todavía.' },
+      { number: 4, title: 'Revisa con la regla del "lector en 90 segundos"', description: 'El resumen ejecutivo debe comunicar el núcleo del documento en 90 segundos de lectura. Si tardas más, está demasiado largo o demasiado denso.' },
+      { number: 5, title: 'Ajusta el tono al destinatario', description: 'Un resumen para un profesor difiere del de un inversor. Adapta el vocabulario técnico, la extensión y el énfasis según quién lo leerá.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Copiar frases del texto original', solution: 'Reformula con tus propias palabras. El resumen ejecutivo no es un collage de fragmentos.' },
+      { mistake: 'Incluir detalles que no son esenciales', solution: 'Si un dato no cambia la decisión del lector, no va en el resumen ejecutivo.' },
+      { mistake: 'Usar lenguaje genérico ("en el presente trabajo se analizó...")', solution: 'Usa voz activa: "Este proyecto propone...", "Los resultados muestran..."' }
+    ],
+    faqs: [
+      { question: '¿Cuánto debe medir un resumen ejecutivo?', answer: 'Entre el 5% y el 10% del documento original. Para una tesis de 50 páginas, el resumen ejecutivo ideal tiene 1-2 páginas.' },
+      { question: '¿Se puede usar IA para revisar (no para generar) el resumen?', answer: 'Sí, siempre que el texto base sea tuyo. Usar IA para revisar gramática o claridad es legítimo; usarla para generarlo es lo que se sanciona.' },
+      { question: '¿El resumen ejecutivo va al principio o al final?', answer: 'Siempre al principio del documento, después del título y antes del índice. Se escribe al final del proceso pero se ubica al inicio.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Estructurar un Ensayo Argumentativo', slug: 'como-estructurar-ensayo-argumentativo' },
+      { title: 'Cómo Mejorar la Escritura Académica', slug: 'como-mejorar-escritura-academica' },
+      { title: 'Técnicas de Escritura Académica Sin IA', slug: 'tecnicas-de-escritura-academica-sin-ia' }
+    ],
+    relatedTools: [
+      { name: 'Parafraseador Online', url: '/parafraseador?ref=guia-resumen-ejecutivo' },
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-resumen-ejecutivo' }
+    ],
+    cta: { text: 'Verificar que tu resumen es 100% original', url: '/?ref=guia-resumen-ejecutivo' }
+  },
+
+  {
+    slug: 'como-usar-chatgpt-para-investigar-sin-plagiar',
+    title: 'Cómo Usar ChatGPT para Investigar Sin Plagiar',
+    keywords: ['chatgpt investigar', 'usar chatgpt investigacion', 'chatgpt sin plagiar', 'chatgpt trabajo universitario sin plagio', 'chatgpt buscar informacion'],
+    metaTitle: 'Cómo Usar ChatGPT para Investigar Sin Plagiar: Guía 2025',
+    metaDescription: 'Usa ChatGPT como asistente de investigación sin riesgo de plagio. Técnicas concretas para estudiantes universitarios que quieren aprovechar la IA éticamente.',
+    h1: 'Cómo Usar ChatGPT para Investigar Sin Plagiar: Técnicas Paso a Paso',
+    intro: 'ChatGPT puede ser un asistente de investigación potente si sabes usarlo correctamente. El problema no es usarlo — es no saber cuándo empieza el plagio. Esta guía traza la línea con ejemplos concretos.',
+    overview: 'Aprende: (1) usos legítimos de ChatGPT en investigación, (2) cuándo el uso se convierte en plagio, (3) cómo generar ideas sin copiar, (4) cómo verificar lo que ChatGPT dice, (5) cómo declarar el uso correctamente.',
+    steps: [
+      { number: 1, title: 'Usa ChatGPT para generar preguntas de investigación, no respuestas', description: 'Pídele que te ayude a formular el problema de investigación o que proponga ángulos que no has considerado. Las preguntas son tuyas; las respuestas las construyes tú con fuentes reales.' },
+      { number: 2, title: 'Verifica SIEMPRE las afirmaciones de ChatGPT con fuentes primarias', description: 'ChatGPT alucina datos, citas y estadísticas. Antes de incluir cualquier dato en tu trabajo, confírmalo en Google Scholar, bases de datos académicas o fuentes oficiales.' },
+      { number: 3, title: 'Usa ChatGPT para entender conceptos, no para explicarlos en tu trabajo', description: 'Pídele que te explique un concepto difícil como si tuvieras 15 años. Una vez que lo entiendes, explícalo tú con tus palabras. Eso sí es aprendizaje.' },
+      { number: 4, title: 'Cita las fuentes que encontraste por tu cuenta, no a ChatGPT', description: 'Si ChatGPT te dirigió hacia un autor o un estudio, busca ese artículo original y cítalo directamente. La referencia debe ser la fuente primaria, no el chatbot.' },
+      { number: 5, title: 'Declara el uso de ChatGPT en la sección de metodología', description: 'Una frase como "Se utilizó ChatGPT (OpenAI, 2025) como herramienta exploratoria para identificar áreas temáticas, no como fuente de información primaria" es suficiente y honesta.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Incluir estadísticas que ChatGPT "inventó"', solution: 'Verifica todo número, porcentaje o dato en una fuente citable antes de incluirlo.' },
+      { mistake: 'Pegar respuestas de ChatGPT directamente en el trabajo', solution: 'Usa sus respuestas como punto de partida para tu propia investigación, nunca como el destino.' },
+      { mistake: 'No declarar el uso de ChatGPT por miedo a penalizaciones', solution: 'La transparencia protege más que el silencio. La mayoría de universidades penalizan el uso no declarado, no el declarado.' }
+    ],
+    faqs: [
+      { question: '¿Puedo citar a ChatGPT como fuente en mi bibliografía?', answer: 'Técnicamente sí (APA 7ª edición incluye formato para citar software de IA), pero no deberías usarlo como fuente principal de información. ChatGPT no es una fuente académica — es un generador de texto que puede o no basarse en información correcta.' },
+      { question: '¿ChatGPT puede ayudarme a encontrar papers académicos?', answer: 'Con cuidado. ChatGPT puede sugerir autores relevantes o títulos de áreas, pero inventa referencias frecuentemente. Úsalo para orientarte, luego busca los artículos tú mismo en Google Scholar, Scopus o PubMed.' },
+      { question: '¿Usar ChatGPT para buscar es igual que plagiar?', answer: 'No, buscar ideas no es plagiar. Plagiar es presentar como tuyo el texto que generó ChatGPT. Si usas ChatGPT como motor de búsqueda conceptual y construyes tu trabajo con fuentes reales y argumentos propios, no hay plagio.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Investigar con Fuentes Académicas', slug: 'como-investigar-fuentes-academicas' },
+      { title: 'Cómo Evitar el Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'ChatGPT para Trabajos Universitarios', slug: 'chatgpt-para-trabajos-universitarios-guia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-chatgpt-investigar' },
+      { name: 'Verificador de Originalidad', url: '/?ref=guia-chatgpt-investigar' }
+    ],
+    cta: { text: 'Verificar que tu trabajo no parece generado por IA', url: '/?ref=guia-chatgpt-investigar' }
+  },
+
+  {
+    slug: 'herramientas-ia-para-estudiantes-universitarios',
+    title: 'Las Mejores Herramientas de IA para Estudiantes Universitarios',
+    keywords: ['herramientas ia estudiantes', 'ia para estudiar', 'mejores ia universitarios', 'apps ia estudiantes 2025', 'ia gratis estudiantes'],
+    metaTitle: 'Las Mejores Herramientas de IA para Estudiantes en 2025 (Gratis y de Pago)',
+    metaDescription: 'Las 10 mejores herramientas de IA para estudiantes universitarios en 2025. Cuáles son gratis, para qué sirve cada una y cómo usarlas sin violar las normas de tu universidad.',
+    h1: 'Las Mejores Herramientas de IA para Estudiantes Universitarios en 2025',
+    intro: 'Hay docenas de herramientas de IA para estudiantes, pero no todas son útiles, seguras o permitidas. Esta guía filtra las mejores por categoría, explica para qué sirve cada una y advierte cuándo su uso puede generarte problemas académicos.',
+    overview: 'Cubre: (1) detector de IA para verificar tus textos, (2) asistentes de escritura, (3) herramientas de investigación, (4) organizadores de notas con IA, (5) cómo usarlas sin violar políticas universitarias.',
+    steps: [
+      { number: 1, title: 'Primero verifica qué herramientas permite tu universidad', description: 'Antes de adoptar cualquier herramienta, consulta la política de IA de tu institución. Algunas universidades listan explícitamente herramientas permitidas; otras prohíben categorías enteras.' },
+      { number: 2, title: 'Para detectar IA en tus propios textos: DetectordeIA.ai', description: 'Antes de entregar cualquier trabajo donde hayas usado IA de apoyo, verifica que el resultado no sea detectado como generado por IA. Gratis, en español, sin registro.' },
+      { number: 3, title: 'Para investigación: Perplexity AI y Connected Papers', description: 'Perplexity cita fuentes en tiempo real (reduce el riesgo de alucinaciones). Connected Papers muestra el grafo de papers relacionados con cualquier artículo académico.' },
+      { number: 4, title: 'Para organizar notas y resumir: NotebookLM (Google)', description: 'Carga tus PDFs, apuntes y libros — NotebookLM genera resúmenes, preguntas de estudio y mapas conceptuales. Todo sobre tus propias fuentes, sin inventar datos.' },
+      { number: 5, title: 'Para escritura y revisión: Claude o ChatGPT (con límites claros)', description: 'Úsalos para feedback ("¿Este argumento es claro?"), para encontrar inconsistencias, o para generar primeros borradores que después reescribes completamente. Nunca para texto final.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Usar herramientas de IA sin saber si tu universidad las permite', solution: 'Consulta el reglamento o pregunta directamente al profesor antes de usar cualquier herramienta en un trabajo evaluable.' },
+      { mistake: 'Confundir "IA para aprender" con "IA para hacer el trabajo"', solution: 'Una herramienta que explica conceptos es legítima. Una herramienta que genera el trabajo entregable sin declarar es problemática.' },
+      { mistake: 'No verificar la información que proporciona la IA', solution: 'Todas las herramientas de IA pueden generar errores. Siempre contrasta con fuentes primarias antes de incluir datos en tu trabajo.' }
+    ],
+    faqs: [
+      { question: '¿Cuál es la mejor IA gratuita para estudiantes en 2025?', answer: 'Para investigación: Perplexity AI (gratis, cita fuentes). Para escritura y comprensión: Claude.ai (versión gratuita). Para organizar materiales propios: Google NotebookLM (gratuito). Para detectar si tu texto parece IA: DetectordeIA.ai (gratuito, en español).' },
+      { question: '¿Es legal usar herramientas de IA en la universidad?', answer: 'Depende de cada institución y de cómo las uses. El uso no está prohibido por ley, pero puede violar los reglamentos académicos de tu universidad. La clave es la declaración y la honestidad sobre el uso.' },
+      { question: '¿Las herramientas de IA guardan mis trabajos?', answer: 'La mayoría sí guardan conversaciones para mejorar sus modelos, salvo que lo configures de otra manera. Si tu trabajo contiene información confidencial o de investigación inédita, desactiva el historial o usa versiones de pago con privacidad mejorada.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'ChatGPT para Trabajos Universitarios', slug: 'chatgpt-para-trabajos-universitarios-guia' },
+      { title: 'Cómo Usar ChatGPT para Investigar Sin Plagiar', slug: 'como-usar-chatgpt-para-investigar-sin-plagiar' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-herramientas-ia' },
+      { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-herramientas-ia' }
+    ],
+    cta: { text: 'Probar el detector de IA gratuito para estudiantes', url: '/?ref=guia-herramientas-ia' }
+  },
+
+  {
+    slug: 'ia-en-educacion-ventajas-y-riesgos',
+    title: 'IA en la Educación: Ventajas, Riesgos y el Debate Real',
+    keywords: ['ia en educacion', 'inteligencia artificial educacion', 'ventajas ia educacion', 'riesgos ia educacion', 'chatgpt en escuelas'],
+    metaTitle: 'IA en la Educación: Ventajas y Riesgos en 2025 — Guía Completa',
+    metaDescription: 'El debate real sobre IA en la educación: qué beneficios aporta, qué riesgos genera y qué dicen los expertos e instituciones en 2025.',
+    h1: 'IA en la Educación: Ventajas, Riesgos y lo que Dicen los Expertos',
+    intro: 'La IA está transformando la educación más rápido que las políticas de las instituciones. Estudiantes la usan para estudiar, para hacer trampa y para aprender más rápido — a veces todo al mismo tiempo. Esta guía analiza el fenómeno sin tomar partido pero con evidencia.',
+    overview: 'Cubre: (1) beneficios documentados, (2) riesgos identificados, (3) qué dicen las investigaciones, (4) posición de las universidades, (5) cómo navegar el cambio como estudiante.',
+    steps: [
+      { number: 1, title: 'Entiende qué puede y qué no puede hacer la IA en educación', description: 'La IA puede personalizar el ritmo de aprendizaje, dar feedback inmediato y explicar conceptos de múltiples maneras. No puede reemplazar el pensamiento crítico, la creatividad genuina ni la comprensión profunda.' },
+      { number: 2, title: 'Conoce los riesgos documentados para estudiantes', description: 'Dependencia cognitiva (se reduce el esfuerzo de pensar), dificultad para desarrollar escritura propia, alucinaciones tomadas como verdad, y riesgo de sanciones académicas por uso no declarado.' },
+      { number: 3, title: 'Aprende qué dicen las investigaciones sobre IA y aprendizaje', description: 'Estudios de MIT y Stanford (2024) muestran que estudiantes que usan IA para completar tareas retienen menos conocimiento. El esfuerzo es parte del aprendizaje — la IA puede saltarse el proceso.' },
+      { number: 4, title: 'Conoce la posición de tu institución', description: 'Las universidades están en tres posiciones: prohibición total, regulación con declaración, o integración activa en el currículo. Saber dónde está tu institución define lo que puedes hacer.' },
+      { number: 5, title: 'Desarrolla una estrategia personal de uso ético', description: 'Usa IA para explorar, preguntar y verificar. No la uses para producir tu trabajo final. El conocimiento que construyes hoy es la competencia que te diferencia mañana.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Creer que la IA en educación es solo positiva o solo negativa', solution: 'El impacto depende del uso. Hay usos que aceleran el aprendizaje y usos que lo evitan. La diferencia está en si el estudiante procesa o solo consume.' },
+      { mistake: 'Ignorar el debate sobre la IA en tu propia universidad', solution: 'Participar en el debate institucional te protege y posiciona como estudiante proactivo ante las nuevas normas.' }
+    ],
+    faqs: [
+      { question: '¿La IA va a reemplazar a los profesores?', answer: 'Según el consenso actual de investigadores en educación: no. La IA puede automatizar partes de la enseñanza rutinaria, pero el rol del docente como guía, mentor y evaluador de pensamiento crítico es irreemplazable.' },
+      { question: '¿Es malo que los estudiantes usen IA para estudiar?', answer: 'No intrínsecamente. Lo que importa es si el uso de IA produce aprendizaje real. Un estudiante que usa IA para entender mejor un concepto está aprendiendo; uno que la usa para saltarse el proceso de pensar, no.' },
+      { question: '¿Qué ventajas concretas tiene la IA para estudiantes universitarios?', answer: 'Explicaciones personalizadas a cualquier nivel de comprensión, feedback inmediato sobre escritura, generación de ejemplos y contraejemplos, síntesis de bibliografía extensa, y práctica de exámenes con corrección automática.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Política de IA en Universidades LATAM 2025', slug: 'politica-ia-universidades-latam-2025' },
+      { title: 'Mejores Prácticas de IA para Estudiantes', slug: 'mejores-practicas-uso-ia-estudiantes' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-ia-educacion' }
+    ],
+    cta: { text: 'Analizar originalidad de tu texto — gratis', url: '/?ref=guia-ia-educacion' }
+  },
+
+  {
+    slug: 'tecnicas-de-escritura-academica-sin-ia',
+    title: 'Técnicas de Escritura Académica Sin IA',
+    keywords: ['escritura academica sin ia', 'como escribir academicamente', 'tecnicas escritura universitaria', 'redaccion academica sin chatgpt', 'mejorar escritura academica'],
+    metaTitle: 'Técnicas de Escritura Académica Sin IA: Guía Práctica 2025',
+    metaDescription: 'Domina la escritura académica sin depender de ChatGPT. Técnicas probadas para estudiantes universitarios: estructura, argumentación, estilo y originalidad.',
+    h1: 'Técnicas de Escritura Académica Sin IA: Lo que los Profesores Quieren Leer',
+    intro: 'La escritura académica tiene reglas propias que la IA imita mal. Saber escribir con rigor y originalidad es la habilidad que separa a los estudiantes destacados de los que aprueban raspando. Esta guía reúne las técnicas que funcionan.',
+    overview: 'Cubre: (1) estructura básica del texto académico, (2) cómo desarrollar un argumento propio, (3) técnicas de estilo académico, (4) cómo referenciar sin interrumpir el flujo, (5) checklist de revisión final.',
+    steps: [
+      { number: 1, title: 'Empieza con una tesis clara y defendible', description: 'Todo texto académico gira alrededor de una tesis. No una pregunta, no un tema — una posición que puedes defender con evidencia. "La IA generativa reduce la originalidad del pensamiento estudiantil" es una tesis. "La IA en educación" es un tema.' },
+      { number: 2, title: 'Estructura cada párrafo con el modelo PEEL', description: 'Point (idea del párrafo), Evidence (evidencia que la sostiene), Explanation (explicación de por qué la evidencia apoya la idea), Link (transición al siguiente párrafo). Un párrafo = una idea.' },
+      { number: 3, title: 'Usa el lenguaje académico sin exagerar el tecnicismo', description: 'El buen texto académico es preciso, no oscuro. Evita los gerundios encadenados ("cabe destacar que se ha venido observando que..."). Escribe oraciones directas: sujeto + verbo + complemento.' },
+      { number: 4, title: 'Integra fuentes sin perder tu propia voz', description: 'Cuando citas, primero da tu interpretación, luego la cita, luego explica por qué esa cita apoya tu argumento. Tu voz encuadra la evidencia; la evidencia no reemplaza tu argumento.' },
+      { number: 5, title: 'Revisa en al menos dos pasadas separadas', description: 'Primera pasada: argumentación y estructura (¿cada párrafo apoya la tesis? ¿fluye la lógica?). Segunda pasada: estilo y gramática. Revisarlas juntas es menos efectivo.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Escribir sin haber leído suficiente sobre el tema', solution: 'La escritura académica es la destilación de la lectura. Escribe solo sobre lo que has leído; cita solo lo que has leído directamente.' },
+      { mistake: 'Usar sinónimos para variar ("asimismo", "cabe señalar", "en este sentido")', solution: 'Estas muletillas son señales de texto de IA. En escritura real, cada palabra tiene una razón. Si no la tiene, elimínala.' },
+      { mistake: 'Confundir longitud con calidad', solution: 'Un argumento bien desarrollado en 300 palabras supera a uno diluido en 1000. La densidad conceptual es lo que se evalúa.' }
+    ],
+    faqs: [
+      { question: '¿Cómo desarrollo mi propio estilo de escritura académica?', answer: 'Lee mucho en tu disciplina — los textos más citados, no los más accesibles. Escribe regularmente aunque no sea para notas. Pide feedback específico sobre claridad y lógica, no solo sobre corrección gramatical.' },
+      { question: '¿Cómo sé si mi texto "suena" demasiado a IA?', answer: 'Señales de alerta: oraciones de longitud uniforme, ausencia de especificidad, muletillas de transición ("en este sentido", "cabe destacar"), ausencia de citas concretas, y argumentos que funcionarían igual en cualquier disciplina. Pasa tu texto por DetectordeIA.ai.' },
+      { question: '¿Puedo usar IA para corregir gramática de mi texto?', answer: 'Sí, con precaución. Las herramientas de corrección gramatical están permitidas en casi todas las universidades. El problema empieza cuando la herramienta reescribe párrafos enteros — ahí ya no es tu texto.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Estructurar un Ensayo Argumentativo', slug: 'como-estructurar-ensayo-argumentativo' },
+      { title: 'Cómo Mejorar la Escritura Académica', slug: 'como-mejorar-escritura-academica' },
+      { title: 'Cómo Parafrasear Correctamente', slug: 'como-parafrasear-correctamente' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-escritura-academica' },
+      { name: 'Parafraseador Online', url: '/parafraseador?ref=guia-escritura-academica' }
+    ],
+    cta: { text: 'Verificar que tu texto no parece generado por IA', url: '/?ref=guia-escritura-academica' }
+  },
+
+  {
+    slug: 'como-presentar-tesis-con-integridad-academica',
+    title: 'Cómo Presentar tu Tesis con Integridad Académica en la Era de la IA',
+    keywords: ['tesis integridad academica', 'tesis sin plagio ia', 'como presentar tesis ia', 'tesis chatgpt permitido', 'defensa tesis ia'],
+    metaTitle: 'Cómo Presentar tu Tesis con Integridad Académica: Guía 2025',
+    metaDescription: 'Todo lo que necesitas saber sobre integridad académica en la tesis: qué uso de IA está permitido, cómo declararlo y cómo defender tu investigación.',
+    h1: 'Cómo Presentar tu Tesis con Integridad Académica en 2025',
+    intro: 'La tesis es el trabajo académico con más consecuencias — y también el que más scrutinio recibe en la era de la IA. Cometer una falta de integridad puede invalidar años de trabajo. Esta guía es tu mapa para evitarlo.',
+    overview: 'Cubre: (1) qué usos de IA están generalmente permitidos en tesis, (2) cómo declarar herramientas en la metodología, (3) qué buscan los detectores en trabajos de grado, (4) cómo preparar la defensa, (5) qué hacer si tienes dudas sobre un uso previo.',
+    steps: [
+      { number: 1, title: 'Consulta el reglamento específico de tu institución antes de empezar', description: 'Muchas universidades tienen normativas específicas para TFG/TFM/tesis doctorales que difieren de las generales. La inversión de 30 minutos en leer el reglamento puede ahorrarte años de retraso.' },
+      { number: 2, title: 'Documenta cada uso de IA desde el primer día', description: 'Mantén un registro: fecha, herramienta usada, prompt enviado, output recibido y cómo lo usaste. Este registro te protege si hay una auditoría y te ayuda a redactar la declaración metodológica.' },
+      { number: 3, title: 'Redacta la sección de declaración de uso de IA en metodología', description: 'Incluye: qué herramientas usaste, para qué tareas específicas, cómo verificaste los outputs, y cómo la responsabilidad final sobre el contenido es tuya. Esta transparencia es tu principal protección.' },
+      { number: 4, title: 'Prepara la defensa sabiendo explicar todo el contenido', description: 'En la defensa, el tribunal puede preguntarte por cualquier párrafo. Si usaste IA para redactar secciones, asegúrate de entenderlas a fondo y poder explicar, ampliar y defender cada argumento con tus propias palabras.' },
+      { number: 5, title: 'Verifica el texto final con detector de IA antes de entregar', description: 'Aunque hayas sido ético en tu proceso, algunas frases pueden haber quedado con patrones asociados a texto generado por IA. Verifica y reescribe las secciones que el detector marque con alta probabilidad.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Usar IA para la revisión de literatura y no verificar las citas', solution: 'ChatGPT inventa referencias. Cada cita debe ser verificada directamente en la fuente original antes de incluirla.' },
+      { mistake: 'Creer que la declaración de uso de IA es opcional en tesis', solution: 'En posgrado especialmente, la metodología de investigación incluye las herramientas utilizadas. Omitir herramientas de IA relevantes puede considerarse falta de transparencia.' },
+      { mistake: 'No saber defender una sección generada con ayuda de IA', solution: 'Si no puedes explicar y defender un párrafo de tu propia tesis, no debería estar ahí. Reescríbelo desde tu comprensión real del tema.' }
+    ],
+    faqs: [
+      { question: '¿Puedo usar ChatGPT para revisar el estilo de mi tesis?', answer: 'En la mayoría de instituciones sí, con declaración. La revisión de estilo y gramática es diferente a la generación de contenido. Cita el uso en la metodología para mayor seguridad.' },
+      { question: '¿Los directores de tesis saben detectar texto de IA?', answer: 'Muchos sí, especialmente con experiencia. Además, cada vez más instituciones pasan los TFG/TFM por detectores de IA como parte del proceso de evaluación. La consistencia de estilo entre secciones también delata un uso no homogéneo de IA.' },
+      { question: '¿Qué pasa si declaré un uso de IA que mi director no esperaba?', answer: 'Generalmente, la honestidad es valorada. Un director puede pedirte que revises secciones, pero es mucho menos grave que no declarar y ser descubierto. Habla con tu director antes de entregar si tienes dudas.' }
+    ],
+    relatedGuides: [
+      { title: 'Diferencia entre Plagio y Uso de IA', slug: 'diferencia-plagio-uso-ia-trabajos' },
+      { title: 'Cómo Evitar el Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Citar IA en Trabajos Académicos', slug: 'como-citar-ia-en-trabajos-academicos' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-tesis-integridad' },
+      { name: 'Verificador de Originalidad', url: '/?ref=guia-tesis-integridad' }
+    ],
+    cta: { text: 'Verificar originalidad de tu tesis — gratis', url: '/?ref=guia-tesis-integridad' }
+  },
+
+  {
+    slug: 'que-hace-exactamente-turnitin-con-ia',
+    title: 'Qué Hace Exactamente Turnitin con la IA en 2025',
+    keywords: ['turnitin ia deteccion', 'turnitin detecta chatgpt', 'como funciona turnitin ia', 'turnitin porcentaje ia', 'turnitin similarity ia'],
+    metaTitle: 'Qué Hace Turnitin con la IA en 2025: Cómo Funciona su Detector',
+    metaDescription: 'Explicación técnica y práctica de cómo Turnitin detecta texto generado por IA en 2025, qué porcentaje es preocupante y cómo interpretar los informes.',
+    h1: 'Qué Hace Exactamente Turnitin con la IA: Guía Completa 2025',
+    intro: 'Turnitin añadió detección de IA en 2023 y desde entonces es el estándar en universidades de todo el mundo. Pero ¿cómo funciona realmente? ¿Puede distinguir texto de ChatGPT del tuyo? Esta guía lo explica sin tecnicismos.',
+    overview: 'Cubre: (1) cómo funciona el detector de IA de Turnitin, (2) qué significa el porcentaje de IA, (3) falsos positivos y sus causas, (4) diferencia entre similitud y detección de IA, (5) cómo interpretar el informe.',
+    steps: [
+      { number: 1, title: 'Entiende que Turnitin tiene dos sistemas separados', description: 'El indicador de similitud (porcentaje rojo/amarillo) detecta plagio de fuentes conocidas. El indicador de IA (separado, generalmente en porcentaje azul) detecta si el texto parece generado por IA. Son independientes: puedes tener 0% similitud y alto porcentaje de IA.' },
+      { number: 2, title: 'El detector de IA de Turnitin analiza patrones estadísticos del texto', description: 'Turnitin usa modelos entrenados para detectar la distribución probabilística de palabras que caracteriza el texto generado por GPT y similares. No tiene acceso a los prompts ni al historial de uso de ChatGPT.' },
+      { number: 3, title: 'Aprende a interpretar el porcentaje de IA en el informe', description: 'Turnitin reporta el porcentaje de texto que considera probablemente generado por IA. Por encima del 20% muchas instituciones piden explicaciones. Por encima del 50% suele activar procesos disciplinarios. Pero cada institución define sus umbrales.' },
+      { number: 4, title: 'Conoce los casos de falsos positivos documentados', description: 'Turnitin puede marcar como IA textos muy técnicos (especialmente en ciencias e ingeniería), textos en idiomas distintos del inglés, textos con estructura muy formulaica (como reportes financieros) y textos de escritores con estilo muy uniforme.' },
+      { number: 5, title: 'Si obtienes un porcentaje inesperado, documenta tu proceso', description: 'Si tu texto es genuinamente tuyo y Turnitin lo marca, reúne evidencia de tu proceso: borradores, notas, historial de edición del documento, capturas de búsquedas. La mayoría de instituciones aceptan el proceso como defensa ante falsos positivos.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Creer que 0% de similitud garantiza que no detectará IA', solution: 'Son dos indicadores separados. Puedes no haber copiado de ninguna fuente conocida y aún así tener alto porcentaje de detección de IA.' },
+      { mistake: 'Confiar en que Turnitin no detecta Claude o Gemini', solution: 'El detector de Turnitin está entrenado para texto generado por IA en general, no solo ChatGPT. Claude, Gemini y otros modelos también producen texto con patrones que Turnitin detecta.' }
+    ],
+    faqs: [
+      { question: '¿Puede Turnitin identificar qué modelo de IA generó el texto?', answer: 'No. Turnitin detecta si el texto parece generado por IA, pero no puede decir si fue ChatGPT, Claude, Gemini u otro modelo. Solo indica la probabilidad de que sea texto generado por IA.' },
+      { question: '¿El humanizador de texto engaña a Turnitin?', answer: 'Algunos humanizadores reducen la señal de IA, pero Turnitin actualiza sus modelos regularmente. La estrategia más fiable no es evadir el detector sino escribir el trabajo genuinamente. Si lo usas como apoyo y reescribes con tus palabras, el resultado suele pasar sin problemas.' },
+      { question: '¿Qué porcentaje de IA en Turnitin es preocupante?', answer: 'Depende de la institución. Muchas universidades no tienen umbral definido y evalúan caso por caso. Como referencia, Turnitin considera que por encima del 20% hay "señales significativas" que justifican revisión. Pero algunos profesores actúan ante cualquier porcentaje por encima de 0%.' }
+    ],
+    relatedGuides: [
+      { title: 'Diferencia entre Plagio y Uso de IA', slug: 'diferencia-plagio-uso-ia-trabajos' },
+      { title: 'Cómo Presentar tu Tesis con Integridad Académica', slug: 'como-presentar-tesis-con-integridad-academica' },
+      { title: 'Cómo Detectar Texto IA Sin Herramientas', slug: 'como-detectar-texto-ia-sin-herramientas' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-turnitin-ia' },
+      { name: 'vs Turnitin — Comparativa', url: '/detector-de-ia-vs/turnitin?ref=guia-turnitin-ia' }
+    ],
+    cta: { text: 'Verificar tu texto con nuestro detector gratuito', url: '/?ref=guia-turnitin-ia' }
+  },
+
+  {
+    slug: 'guia-politica-ia-para-profesores',
+    title: 'Guía de Política de IA para Profesores Universitarios',
+    keywords: ['politica ia profesores', 'como detectar ia en trabajos', 'guia ia para docentes', 'deteccion ia estudiantes', 'profesor chatgpt trabajos'],
+    metaTitle: 'Guía de Política de IA para Profesores: Cómo Detectar y Gestionar el Uso 2025',
+    metaDescription: 'Guía práctica para profesores sobre cómo redactar políticas de IA, detectar uso no declarado y diseñar evaluaciones resistentes al fraude con IA.',
+    h1: 'Guía de Política de IA para Profesores Universitarios en 2025',
+    intro: 'Los profesores están en primera línea del debate sobre IA en la educación sin que nadie les haya dado un manual. Esta guía reúne lo que funciona: desde redactar una política clara hasta diseñar evaluaciones que la IA no puede completar.',
+    overview: 'Cubre: (1) cómo redactar una política de IA para tu asignatura, (2) herramientas para detectar uso de IA, (3) señales textuales de texto generado por IA, (4) cómo diseñar evaluaciones resilientes, (5) cómo gestionar casos de sospecha.',
+    steps: [
+      { number: 1, title: 'Redacta una política de IA clara al inicio del semestre', description: 'Una política efectiva especifica: qué herramientas están permitidas (si hay alguna), para qué tareas, cómo declarar el uso, y cuáles son las consecuencias del uso no declarado. La ambigüedad no protege al profesor — protege al estudiante que hace trampa.' },
+      { number: 2, title: 'Usa detectores de IA como primera línea de análisis', description: 'Herramientas como DetectordeIA.ai, GPTZero o el módulo de Turnitin son el primer filtro. No son infalibles, pero señalan trabajos que merecen revisión adicional. Úsalos como punto de partida, no como juez final.' },
+      { number: 3, title: 'Aprende las señales textuales de escritura generada por IA', description: 'Uniformidad en longitud de oraciones, vocabulario omnidisciplinar sin especificidad, transiciones formulaicas ("en este contexto", "cabe destacar"), ausencia de opinión personal, y ausencia de referencias a contextos concretos del curso.' },
+      { number: 4, title: 'Diseña evaluaciones que la IA no puede completar sin ser detectada', description: 'Usa preguntas que requieren ejemplos concretos de clase, reflexión sobre experiencias personales, análisis de materiales específicos del curso, o posiciones sobre debates no resueltos. La IA no sabe qué pasó en tu aula.' },
+      { number: 5, title: 'Gestiona los casos de sospecha con proceso, no con certeza', description: 'Ante sospecha, solicita al estudiante que explique su trabajo en conversación directa. Si no puede defender su propio texto, eso es más evidencia que cualquier porcentaje de detector. Sigue el procedimiento disciplinario de tu institución.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Prohibir la IA sin dar alternativas claras o formación', solution: 'La prohibición sin educación genera ansiedad y creatividad en la evasión. Es más efectivo enseñar uso ético que solo prohibir.' },
+      { mistake: 'Usar detectores de IA como prueba definitiva para sanciones', solution: 'Los detectores tienen falsos positivos. Úsalos como indicador de revisión adicional, no como evidencia suficiente por sí sola para sanciones.' }
+    ],
+    faqs: [
+      { question: '¿Qué herramientas de detección de IA son las más fiables?', answer: 'Para texto en español: DetectordeIA.ai. Para inglés: GPTZero y el módulo de Turnitin. Ninguna es 100% fiable; la combinación de varios indicadores (detector + análisis textual + entrevista) es lo más sólido.' },
+      { question: '¿Cómo pido a un estudiante que explique su trabajo sin acusarlo?', answer: 'Formula preguntas abiertas en positivo: "Me interesa tu argumento sobre X, ¿puedes ampliarlo?" o "¿Cómo llegaste a esta conclusión?" Si el trabajo es genuino, el estudiante puede responder. Si no, la dificultad para responder es información relevante.' },
+      { question: '¿Debo permitir el uso de IA si mi institución no tiene política?', answer: 'Es tu prerrogativa definir las reglas de tu asignatura mientras la institución no lo haga. Comunicar una política clara al inicio del semestre es legalmente más sólido que actuar ad hoc cuando surja un caso.' }
+    ],
+    relatedGuides: [
+      { title: 'Qué Hace Exactamente Turnitin con la IA', slug: 'que-hace-exactamente-turnitin-con-ia' },
+      { title: 'Cómo Detectar Texto IA Sin Herramientas', slug: 'como-detectar-texto-ia-sin-herramientas' },
+      { title: 'Política de IA en Universidades LATAM 2025', slug: 'politica-ia-universidades-latam-2025' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis para Profesores', url: '/?ref=guia-ia-profesores' }
+    ],
+    cta: { text: 'Analizar textos de estudiantes — gratis', url: '/?ref=guia-ia-profesores' }
   }
 ];

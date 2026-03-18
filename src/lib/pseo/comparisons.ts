@@ -940,5 +940,143 @@ export const comparisons: ComparisonPage[] = [
       text: 'Probar DetectorDeIA gratis',
       url: '/detector?ref=vs-humbot'
     }
+  },
+
+  {
+    slug: 'scribbr',
+    competitorName: 'Scribbr',
+    competitorWebsite: 'https://www.scribbr.com',
+    keywords: [
+      'detector de ia vs scribbr',
+      'scribbr detector ia',
+      'scribbr alternativa español',
+      'scribbr gratis vs detectoreia',
+      'scribbr plagio ia'
+    ],
+    title: 'DetectorDeIA vs Scribbr: Comparación Completa 2025',
+    description: 'Comparación detallada entre DetectorDeIA y Scribbr AI Detector. Cuál es mejor para estudiantes en español y para qué sirve cada uno.',
+    h1: 'DetectorDeIA vs Scribbr: ¿Cuál Detecta Mejor la IA en Español?',
+    intro: 'Scribbr es conocida como plataforma de revisión de tesis y detección de plagio, especialmente popular en España y universidades europeas. Desde 2023 añadió un detector de IA. DetectorDeIA está especializado exclusivamente en detección de IA en español con mayor profundidad de análisis.',
+    whyBetter: [
+      'Especialización exclusiva en detección de IA vs Scribbr que es principalmente plataforma de corrección de tesis',
+      'Gratuito con análisis ilimitados vs Scribbr que cobra por verificación de plagio e IA',
+      'Optimizado específicamente para español de España y LATAM vs orientación principalmente a inglés de Scribbr',
+      'Análisis instantáneo en segundos vs Scribbr que puede tardar minutos',
+      'Incluye Humanizador y Parafraseador en el mismo plan sin coste adicional',
+      'Sin límite de caracteres en plan Pro (hasta 15,000 por análisis)',
+      'Interfaz en español completo, sin necesidad de traducción'
+    ],
+    comparisons: [
+      { feature: 'Precio detector IA', detectordeia: 'Gratis (básico) / $12.99/mes (Pro)', competitor: 'De pago por verificación' },
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Parcial (centrado en inglés)' },
+      { feature: 'Especialización', detectordeia: 'Solo detección de IA', competitor: 'Corrección de tesis + plagio + IA' },
+      { feature: 'Tiempo de análisis', detectordeia: 'Instantáneo (<5 seg)', competitor: '1-5 minutos' },
+      { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
+      { feature: 'Corrección manual de tesis', detectordeia: false, competitor: true },
+      { feature: 'Detección de plagio', detectordeia: false, competitor: true },
+      { feature: 'Interfaz en español', detectordeia: true, competitor: 'Parcial' },
+      { feature: 'Sin registro requerido', detectordeia: true, competitor: false }
+    ],
+    whenToUseCompetitor: 'Scribbr es ideal si necesitás revisión humana de tu tesis o trabajo académico, corrección de estilo APA/MLA y detección de plagio todo en uno. Para detección de IA pura en español con coste cero, DetectorDeIA es la opción más eficiente.',
+    pricing: {
+      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $96/año',
+      competitor: 'Desde €9.95 por verificación de plagio; precio variable para revisión de tesis'
+    },
+    faqs: [
+      {
+        question: '¿Scribbr detecta IA generada por ChatGPT, Claude y Gemini?',
+        answer: 'Sí, el detector de IA de Scribbr está entrenado para identificar los principales modelos. Sin embargo, su punto fuerte es la detección de plagio y la revisión de estilo académico, no la detección de IA específicamente. Para detección de IA en español con mayor profundidad, DetectorDeIA ofrece mejor especialización.'
+      },
+      {
+        question: '¿Scribbr es popular en España y LATAM?',
+        answer: 'Scribbr tiene presencia en España, principalmente para revisión de TFG y TFM. En LATAM su uso es menor. Es conocida especialmente entre estudiantes de máster y doctorado que buscan corrección de estilo y formato de citas. Para detección de IA en español latinoamericano, DetectorDeIA tiene mayor especialización regional.'
+      },
+      {
+        question: '¿Puedo usar DetectorDeIA y Scribbr de forma complementaria?',
+        answer: 'Sí. Una estrategia efectiva es: usar DetectorDeIA (gratis) para verificar que tu texto no tenga alta señal de IA antes de revisión, y usar Scribbr para la corrección de estilo, formato APA y verificación de plagio en la entrega final. Son herramientas complementarias, no sustitutivas.'
+      },
+      {
+        question: '¿Scribbr detecta el "patchwriting" o solo el plagio literal?',
+        answer: 'Scribbr usa tecnología Turnitin para detección de plagio, que incluye análisis semántico capaz de detectar patchwriting. Para IA, su detector analiza patrones estadísticos del texto. DetectorDeIA se enfoca exclusivamente en la detección de IA, sin módulo de plagio.'
+      },
+      {
+        question: '¿Es más preciso Scribbr o DetectorDeIA para texto académico en español?',
+        answer: 'Para detección de IA en español, DetectorDeIA está más especializado. Para verificación de plagio y corrección de estilo académico, Scribbr es más completo. La precisión en detección de IA depende del idioma: en español, los modelos entrenados específicamente en este idioma tienen menos falsos positivos.'
+      }
+    ],
+    cta: {
+      text: 'Probar DetectorDeIA gratis — sin registro',
+      url: '/?ref=vs-scribbr'
+    }
+  },
+
+  {
+    slug: 'ithenticate',
+    competitorName: 'iThenticate',
+    competitorWebsite: 'https://www.ithenticate.com',
+    keywords: [
+      'detector de ia vs ithenticate',
+      'ithenticate detector ia',
+      'ithenticate alternativa',
+      'ithenticate para tesis',
+      'ithenticate precio'
+    ],
+    title: 'DetectorDeIA vs iThenticate: Comparación Completa 2025',
+    description: 'Comparación entre DetectorDeIA e iThenticate para investigadores y estudiantes de posgrado. Cuál es mejor para detectar IA en tesis doctorales y papers.',
+    h1: 'DetectorDeIA vs iThenticate: ¿Cuál Necesitás para tu Tesis o Paper?',
+    intro: 'iThenticate es la herramienta de Turnitin orientada a investigadores, doctorantes y publicaciones científicas. Detecta plagio en documentos académicos de alto nivel. DetectorDeIA ofrece detección de IA accesible y sin coste para quienes necesitan verificar texto antes de someterlo a revisión.',
+    whyBetter: [
+      'Gratuito para detección de IA vs iThenticate que requiere suscripción institucional o de pago',
+      'Acceso individual inmediato sin trámites institucionales vs iThenticate que requiere suscripción editorial o universitaria',
+      'Análisis instantáneo en segundos vs iThenticate que puede tardar más en documentos largos',
+      'Optimizado para español de España y LATAM, idiomas frecuentemente con menos cobertura en plataformas angloparlantes',
+      'Incluye Humanizador y Parafraseador en el mismo plan Pro',
+      'Interfaz completamente en español sin necesidad de traducción',
+      'Ideal para verificación previa antes de la entrega a iThenticate o a revistas'
+    ],
+    comparisons: [
+      { feature: 'Acceso individual', detectordeia: 'Sí (gratis y Pro)', competitor: 'Solo institucional/editorial' },
+      { feature: 'Precio', detectordeia: 'Gratis / $12.99/mes', competitor: 'Institucional (variable, generalmente cientos de dólares/año)' },
+      { feature: 'Detección de IA', detectordeia: true, competitor: 'Limitada (principalmente plagio)' },
+      { feature: 'Detección de plagio', detectordeia: false, competitor: true },
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Parcial' },
+      { feature: 'Tiempo de respuesta', detectordeia: 'Instantáneo (<5 seg)', competitor: 'Variable (minutos)' },
+      { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
+      { feature: 'Para uso en revistas científicas', detectordeia: 'Parcialmente', competitor: 'Sí (standard editorial)' },
+      { feature: 'Base de datos de papers', detectordeia: false, competitor: 'Sí (extensa)' },
+      { feature: 'Sin institución requerida', detectordeia: true, competitor: false }
+    ],
+    whenToUseCompetitor: 'iThenticate es el estándar para investigadores que deben verificar papers antes de someter a revistas científicas indexadas, y para doctorandos que requieren certificado de originalidad. Para verificación de IA previa y para uso sin licencia institucional, DetectorDeIA es más accesible.',
+    pricing: {
+      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $96/año',
+      competitor: 'Suscripción institucional requerida; precio variable según institución (generalmente $100-$500/año para acceso individual editorial)'
+    },
+    faqs: [
+      {
+        question: '¿iThenticate detecta texto generado por ChatGPT o Claude?',
+        answer: 'iThenticate está principalmente diseñado para detección de plagio (comparación con bases de datos de papers y publicaciones). Su módulo de detección de IA es más reciente y menos desarrollado que su motor de plagio. Para detección específica de IA en español, DetectorDeIA ofrece mayor especialización.'
+      },
+      {
+        question: '¿Pueden usar iThenticate estudiantes de grado sin cuenta institucional?',
+        answer: 'Generalmente no. iThenticate requiere acceso a través de una institución académica o editorial. Es una herramienta B2B orientada a investigadores, revistas y universidades de investigación. DetectorDeIA está disponible gratuitamente para cualquier usuario sin necesidad de afiliación institucional.'
+      },
+      {
+        question: '¿Por qué usar DetectorDeIA si mi universidad tiene iThenticate?',
+        answer: 'Ambas herramientas son complementarias. DetectorDeIA te permite verificar la señal de IA en tu texto ANTES de la entrega, con acceso gratuito e inmediato. Si el texto pasa limpio en DetectorDeIA, es un buen indicador antes de someterlo al flujo formal de iThenticate o Turnitin de tu institución.'
+      },
+      {
+        question: '¿iThenticate es el mismo que Turnitin?',
+        answer: 'iThenticate y Turnitin son productos de la misma empresa (Clarivate/Turnitin), pero orientados a distintos mercados. Turnitin está diseñado para aulas universitarias (envío de trabajos). iThenticate está orientado a investigadores, revistas científicas y publicaciones. Comparten tecnología pero tienen interfaces y flujos de trabajo distintos.'
+      },
+      {
+        question: '¿Las revistas científicas pueden detectar si usé IA con iThenticate?',
+        answer: 'Las principales revistas científicas están adoptando iThenticate y otras herramientas para detectar tanto plagio como texto de IA. Nature, Science y Elsevier ya tienen políticas explícitas sobre uso de IA en papers. Declarar el uso de herramientas de IA en la sección de métodos es cada vez más requerido por las publicaciones.'
+      }
+    ],
+    cta: {
+      text: 'Verificar tu paper antes de enviarlo — gratis',
+      url: '/?ref=vs-ithenticate'
+    }
   }
 ];

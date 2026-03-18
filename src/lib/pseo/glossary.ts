@@ -1483,5 +1483,375 @@ export const glossary: GlossaryPage[] = [
       text: 'Verificar si un texto fue generado por IA',
       url: '/?ref=glosario-perplexity'
     }
+  },
+
+  // ── SPRINT 3 GLOSSARY TERMS ────────────────────────────────────────────
+
+  {
+    slug: 'que-es-patchwriting',
+    term: 'Patchwriting',
+    keywords: ['que es patchwriting', 'patchwriting plagio', 'patchwriting ejemplo', 'parafraseo incorrecto', 'plagio encubierto'],
+    title: '¿Qué es el Patchwriting? Plagio Encubierto en Trabajos Académicos',
+    description: 'El patchwriting es una forma de plagio sutil que consiste en modificar levemente el texto de una fuente. Aprende a identificarlo y evitarlo en tus trabajos.',
+    h1: '¿Qué es el Patchwriting? La Forma de Plagio que Muchos No Reconocen',
+    intro: 'El patchwriting es uno de los tipos de plagio más comunes en universidades — y uno de los menos reconocidos como tal por los propios estudiantes. Consiste en tomar un texto de otra fuente y cambiarlo ligeramente: sinónimos, orden de palabras, cambios superficiales. El resultado sigue siendo plagio aunque no sea una copia exacta.',
+    definition: 'El patchwriting es la práctica de modificar superficialmente el texto de una fuente (cambiando palabras por sinónimos, alterando la estructura de las frases o reorganizando el orden) sin citar adecuadamente ni transformar genuinamente las ideas. Es una forma de plagio que puede ser intencional o no, y que los detectores modernos identifican con alta precisión.',
+    characteristics: [
+      { icon: '✂️', title: 'Modificación superficial', description: 'Se cambian palabras sueltas o estructura pero se mantiene la lógica y flujo del texto original.' },
+      { icon: '🔍', title: 'Detectable por IA y herramientas', description: 'Turnitin y otros detectores identifican patchwriting por similitud semántica, no solo por coincidencia exacta de palabras.' },
+      { icon: '📚', title: 'Frecuente en trabajos académicos', description: 'Muy común en traducciones de fuentes en inglés a español y en resúmenes de papers científicos.' },
+      { icon: '⚠️', title: 'Puede ser no intencional', description: 'Muchos estudiantes hacen patchwriting creyendo que están parafraseando correctamente.' }
+    ],
+    examples: [
+      'Original: "La inteligencia artificial generativa está transformando la educación superior." → Patchwriting: "La IA generativa está cambiando la educación universitaria." (Solo cambió dos palabras)',
+      'Original: "Students who use AI tools perform better on short-term tasks." → Patchwriting: "Los alumnos que emplean herramientas de IA obtienen mejores resultados en tareas a corto plazo." (Traducción directa sin citar)',
+      'Paráfrasis correcta: Tomar la idea, cerrar el texto, escribir con tus propias palabras y citar: "Según García (2024), las herramientas de IA mejoran el rendimiento a corto plazo, aunque sus efectos a largo plazo en el aprendizaje están menos documentados."'
+    ],
+    faqs: [
+      { question: '¿El patchwriting es lo mismo que parafrasear?', answer: 'No. Parafrasear correctamente implica comprender la idea original y expresarla con tus propias palabras y estructura, conservando el significado pero sin seguir el texto original. El patchwriting es una modificación superficial del texto original que no demuestra comprensión real.' },
+      { question: '¿Turnitin detecta el patchwriting?', answer: 'Sí, aunque con variación según el grado de modificación. Turnitin usa análisis semántico que detecta similitudes de significado, no solo de palabras. Las versiones recientes con IA son especialmente efectivas para identificar parafraseos superficiales.' },
+      { question: '¿Cómo evito hacer patchwriting sin darme cuenta?', answer: 'Técnica del "cierre y escritura": lee el texto original, ciérralo o quítalo de la vista, espera 5 minutos y entonces escribe el concepto con tus propias palabras. Si no puedes explicarlo sin mirar el original, todavía no lo has comprendido suficientemente.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' },
+      { term: 'Texto Sintético', slug: 'que-es-texto-sintetico' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-patchwriting' },
+      { name: 'Parafraseador Online', url: '/parafraseador?ref=glosario-patchwriting' }
+    ],
+    cta: { text: 'Verificar originalidad de tu texto', url: '/?ref=glosario-patchwriting' }
+  },
+
+  {
+    slug: 'que-es-texto-sintetico',
+    term: 'Texto Sintético',
+    keywords: ['que es texto sintetico', 'texto generado por ia', 'contenido sintetico ia', 'texto artificial ia', 'synthetic text ia'],
+    title: '¿Qué es un Texto Sintético? La IA y el Contenido Artificial',
+    description: 'Un texto sintético es contenido generado por IA en lugar de por humanos. Aprende cómo funciona, cómo detectarlo y por qué importa en educación.',
+    h1: '¿Qué es un Texto Sintético? Contenido Generado por IA Explicado',
+    intro: 'Un texto sintético es cualquier texto generado por un sistema de inteligencia artificial en lugar de un ser humano. Con la proliferación de ChatGPT, Claude y otros modelos, el texto sintético es hoy más común que nunca — y difícil de distinguir del texto humano a simple vista.',
+    definition: 'El texto sintético es contenido textual generado automáticamente por modelos de lenguaje (LLMs) como GPT-4, Claude, Gemini u otros sistemas de IA. A diferencia del texto escrito por humanos, el texto sintético se produce mediante predicción estadística de la siguiente palabra más probable dado un contexto. Sus características estadísticas son detectables por herramientas especializadas.',
+    characteristics: [
+      { icon: '🤖', title: 'Generado por predicción probabilística', description: 'Los LLMs generan texto prediciendo la secuencia más probable de palabras, lo que produce patrones estadísticos distintivos.' },
+      { icon: '📊', title: 'Detectable por análisis estadístico', description: 'La distribución de vocabulario, la longitud de oraciones y la entropía del texto sintético difieren del texto humano de formas medibles.' },
+      { icon: '🌐', title: 'Fluido y gramaticalmente correcto', description: 'El texto sintético moderno es gramaticalmente impecable, coherente y puede imitar distintos estilos — lo que lo hace difícil de detectar visualmente.' },
+      { icon: '⚡', title: 'Producido a escala y velocidad', description: 'Un LLM puede generar miles de palabras en segundos, lo que cambia radicalmente la dinámica de producción de contenido.' }
+    ],
+    examples: [
+      'Un ensayo académico completo generado con ChatGPT a partir de un prompt como "Escribe un ensayo sobre el cambio climático de 1000 palabras".',
+      'Un artículo de noticias generado automáticamente por IA para cubrir resultados deportivos o financieros.',
+      'Respuestas de soporte al cliente generadas por un chatbot basado en LLM.',
+      'Código de programación generado por GitHub Copilot o similares a partir de comentarios en lenguaje natural.'
+    ],
+    faqs: [
+      { question: '¿Cómo se detecta si un texto es sintético?', answer: 'Los detectores de texto sintético (como DetectordeIA.ai) analizan patrones estadísticos del texto: distribución de vocabulario, variabilidad en longitud de oraciones, nivel de entropía léxica y probabilidad de cada palabra en contexto. Los textos sintéticos tienden a ser estadísticamente más predecibles que los textos humanos.' },
+      { question: '¿Todo el texto generado por IA es sintético?', answer: 'Sí, por definición. El término "sintético" en este contexto significa "generado artificialmente por un sistema de IA en lugar de un humano". Aunque el texto sea útil, correcto y bien escrito, sigue siendo sintético si lo generó una IA.' },
+      { question: '¿El texto sintético es siempre incorrecto o de mala calidad?', answer: 'No. El texto sintético moderno puede ser de alta calidad, informativo y bien estructurado. El problema en contextos académicos no es la calidad sino la autoría: presentar texto sintético como trabajo propio sin declararlo constituye deshonestidad académica.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Alucinación de IA', slug: 'que-es-hallucination-ia' },
+      { term: 'Patchwriting', slug: 'que-es-patchwriting' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-texto-sintetico' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=glosario-texto-sintetico' }
+    ],
+    cta: { text: 'Detectar si tu texto es sintético — gratis', url: '/?ref=glosario-texto-sintetico' }
+  },
+
+  {
+    slug: 'que-es-copyleaks',
+    term: 'Copyleaks',
+    keywords: ['que es copyleaks', 'copyleaks detector ia', 'copyleaks plagio', 'copyleaks vs turnitin', 'copyleaks gratis'],
+    title: '¿Qué es Copyleaks? Detector de Plagio e IA Explicado 2025',
+    description: 'Copyleaks es una plataforma de detección de plagio e IA usada por universidades. Descubre cómo funciona, qué detecta y en qué se diferencia de Turnitin.',
+    h1: '¿Qué es Copyleaks? Guía Completa del Detector de Plagio e IA',
+    intro: 'Copyleaks es una de las principales plataformas de detección de plagio y texto generado por IA, utilizada por universidades, empresas editoriales y equipos de contenido. A diferencia de Turnitin, tiene un plan gratuito limitado y está disponible directamente para estudiantes.',
+    definition: 'Copyleaks es una plataforma SaaS de detección de plagio y contenido generado por IA que combina análisis de similitud con fuentes conocidas (similar a Turnitin) con detección de patrones de texto de IA. Soporta más de 100 idiomas, incluido el español, y tiene integraciones con LMS como Canvas y Moodle.',
+    characteristics: [
+      { icon: '🔍', title: 'Doble detección: plagio + IA', description: 'Analiza tanto similitud con fuentes conocidas como probabilidad de que el texto sea generado por IA, en un solo informe.' },
+      { icon: '🌐', title: 'Multilingüe con buen soporte en español', description: 'A diferencia de algunos competidores, Copyleaks tiene cobertura sólida para texto en español, lo que lo hace relevante para universidades de España y LATAM.' },
+      { icon: '💰', title: 'Plan gratuito disponible', description: 'Ofrece créditos gratuitos que permiten analizar textos sin pagar, aunque con límites mensuales.' },
+      { icon: '🔗', title: 'Integración con LMS', description: 'Se integra con Canvas, Moodle, Blackboard y Google Classroom, lo que facilita su adopción institucional.' }
+    ],
+    examples: [
+      'Una universidad usa Copyleaks como complemento a Turnitin para verificar trabajos finales con su módulo de detección de IA.',
+      'Un estudiante usa el plan gratuito de Copyleaks para verificar que su TFG no tenga similitudes no intencionadas antes de entregarlo.',
+      'Un editor de contenido usa Copyleaks AI Detector para verificar que los artículos de su equipo no contienen texto generado por IA sin declarar.'
+    ],
+    faqs: [
+      { question: '¿Copyleaks detecta ChatGPT y otros modelos de IA?', answer: 'Sí. El módulo de detección de IA de Copyleaks está entrenado para identificar texto generado por los principales LLMs: ChatGPT (GPT-3.5 y GPT-4), Claude, Gemini, LLaMA y otros. Como todos los detectores, tiene un porcentaje de error que varía según el idioma y el tipo de texto.' },
+      { question: '¿Copyleaks es gratuito?', answer: 'Parcialmente. Tiene un plan gratuito con créditos limitados que permiten analizar textos cortos. Para uso intensivo o institucional requiere suscripción de pago. DetectordeIA.ai ofrece detección ilimitada gratuita específicamente optimizada para español.' },
+      { question: '¿Es mejor Copyleaks o Turnitin?', answer: 'Depende del caso de uso. Turnitin es el estándar en educación superior y tiene la mayor base de datos de trabajos académicos para comparación. Copyleaks es más accesible para estudiantes (plan gratuito), multilingüe y tiene buena detección de IA. Para texto en español, ambos funcionan, aunque con distintas fortalezas.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' },
+      { term: 'Texto Sintético', slug: 'que-es-texto-sintetico' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA en Español (Gratis)', url: '/?ref=glosario-copyleaks' },
+      { name: 'vs Copyleaks — Comparativa', url: '/detector-de-ia-vs/copyleaks?ref=glosario-copyleaks' }
+    ],
+    cta: { text: 'Probar detector de IA gratuito en español', url: '/?ref=glosario-copyleaks' }
+  },
+
+  {
+    slug: 'que-es-originality-ai',
+    term: 'Originality.ai',
+    keywords: ['que es originality ai', 'originality ai detector', 'originality ai vs gptzero', 'originality ai precio', 'detector ia originality'],
+    title: '¿Qué es Originality.ai? El Detector de IA para Contenido Web',
+    description: 'Originality.ai es un detector de IA y plagio diseñado principalmente para creadores de contenido. Aprende cómo funciona, su precisión y para qué sirve.',
+    h1: '¿Qué es Originality.ai? Detector de IA para Contenido y SEO',
+    intro: 'Originality.ai es una herramienta de detección de contenido generado por IA orientada principalmente a agencias de contenido, freelancers y equipos SEO. A diferencia de Turnitin (académico) o GPTZero (académico/general), Originality.ai está diseñada para el contexto de producción de contenido web.',
+    definition: 'Originality.ai es una plataforma de detección de IA y plagio que combina análisis de texto con IA para identificar contenido generado por modelos como GPT-4, Claude o Gemini. Está orientada al mercado de contenido web y SEO, con integración de API para flujos de trabajo a escala.',
+    characteristics: [
+      { icon: '🎯', title: 'Orientada a contenido web y SEO', description: 'Su diseño y marketing están enfocados en agencias de contenido y freelancers, no en el mercado académico.' },
+      { icon: '🔌', title: 'API disponible para integraciones', description: 'Permite verificar contenido a escala mediante API, útil para agencias que producen cientos de artículos.' },
+      { icon: '💵', title: 'Modelo de pago por uso (créditos)', description: 'No tiene plan gratuito significativo; funciona con créditos de pago. Precio competitivo para uso profesional.' },
+      { icon: '📊', title: 'Análisis de legibilidad integrado', description: 'Incluye métricas de legibilidad (Flesch-Kincaid) junto con la detección de IA en un solo informe.' }
+    ],
+    examples: [
+      'Una agencia de contenido usa Originality.ai para verificar que los textos producidos por su equipo (que puede usar IA como herramienta) no superen ciertos umbrales de detección antes de publicarlos.',
+      'Un freelancer de SEO lo usa para garantizar a sus clientes que el contenido entregado es predominantemente humano.',
+      'Un departamento editorial lo usa via API para procesar cientos de artículos automáticamente.'
+    ],
+    faqs: [
+      { question: '¿Originality.ai funciona bien en español?', answer: 'Con limitaciones. Originality.ai está principalmente entrenado en inglés. Para texto en español, la precisión es menor que para inglés, con más falsos positivos. Para detección en español, DetectordeIA.ai está específicamente optimizado para el idioma.' },
+      { question: '¿Es Originality.ai más preciso que GPTZero?', answer: 'Las comparativas independientes muestran resultados mixtos. Originality.ai tiende a tener menos falsos negativos (detecta más IA real), pero más falsos positivos en texto humano técnico. GPTZero tiene mejor cobertura académica. Para texto en español, ninguno es el estándar.' },
+      { question: '¿Cuándo usar Originality.ai vs un detector académico como Turnitin?', answer: 'Originality.ai es ideal para verificar contenido web antes de publicar. Turnitin es el estándar para entornos académicos. Si eres estudiante y quieres verificar tu trabajo antes de entregarlo, DetectordeIA.ai (gratuito, en español) o GPTZero son más adecuados.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Copyleaks', slug: 'que-es-copyleaks' },
+      { term: 'Texto Sintético', slug: 'que-es-texto-sintetico' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis en Español', url: '/?ref=glosario-originality' }
+    ],
+    cta: { text: 'Probar detector de IA optimizado para español', url: '/?ref=glosario-originality' }
+  },
+
+  {
+    slug: 'que-es-claude-anthropic',
+    term: 'Claude (Anthropic)',
+    keywords: ['que es claude ia', 'claude anthropic', 'claude vs chatgpt', 'claude ai estudiantes', 'anthropic claude'],
+    title: '¿Qué es Claude de Anthropic? IA para Estudiantes 2025',
+    description: 'Claude es el modelo de IA de Anthropic, alternativa a ChatGPT. Descubre sus características, cómo usarlo éticamente en la universidad y en qué se diferencia de GPT.',
+    h1: '¿Qué es Claude de Anthropic? Guía para Estudiantes 2025',
+    intro: 'Claude es el modelo de inteligencia artificial desarrollado por Anthropic, una empresa fundada por ex-investigadores de OpenAI. Es el principal competidor de ChatGPT y se caracteriza por ser más cauteloso, tener ventanas de contexto más largas y enfocarse especialmente en la seguridad y la honestidad.',
+    definition: 'Claude es una familia de modelos de lenguaje grande (LLM) desarrollados por Anthropic. La versión actual (Claude 3.5/4) destaca por su capacidad para analizar documentos extensos, razonar con precisión y mantener conversaciones largas. Está entrenado con Constitutional AI, un método que enfatiza la honestidad y la reducción de respuestas dañinas.',
+    characteristics: [
+      { icon: '📄', title: 'Ventana de contexto muy larga', description: 'Claude puede procesar documentos de cientos de páginas en una sola conversación, ideal para análisis de tesis, papers o libros completos.' },
+      { icon: '🛡️', title: 'Enfoque en seguridad y honestidad', description: 'Anthropic ha priorizado que Claude diga "no sé" cuando no sabe, en lugar de inventar respuestas, lo que lo hace relativamente más fiable en temas académicos.' },
+      { icon: '✍️', title: 'Excelente en escritura y análisis', description: 'Claude es especialmente bueno para análisis de textos, redacción de feedback estructurado y explicación de conceptos complejos.' },
+      { icon: '🆓', title: 'Plan gratuito disponible en claude.ai', description: 'Accesible gratuitamente con límites de uso en claude.ai, sin necesidad de crear cuenta en algunos contextos.' }
+    ],
+    examples: [
+      'Un estudiante sube su borrador de tesis a Claude y le pide feedback sobre la coherencia argumentativa de cada capítulo.',
+      'Un profesor usa Claude para generar preguntas de examen a partir del programa de su asignatura, ahorrando tiempo en el diseño de evaluaciones.',
+      'Un investigador usa la ventana de contexto larga para analizar 50 papers a la vez y pedir a Claude que identifique patrones comunes y divergencias.'
+    ],
+    faqs: [
+      { question: '¿Claude es mejor que ChatGPT para trabajos académicos?', answer: 'Depende de la tarea. Claude tiene ventajas en análisis de documentos largos y razonamiento paso a paso. ChatGPT tiene mayor integración con herramientas externas (GPT-4o con internet, Dall-E para imágenes). Para análisis de textos académicos extensos, Claude suele ser la elección preferida de investigadores.' },
+      { question: '¿Los detectores de IA detectan texto generado por Claude?', answer: 'Sí. Los detectores de IA analizan patrones estadísticos del texto, no la marca del modelo. El texto generado por Claude tiene patrones similares a otros LLMs que los detectores identifican. DetectordeIA.ai está entrenado para detectar texto de Claude, ChatGPT, Gemini y otros.' },
+      { question: '¿Es ético usar Claude para estudiar?', answer: 'Usar Claude para entender conceptos, generar preguntas de práctica o recibir feedback sobre borradores es ético y beneficioso. Usarlo para generar trabajos entregables sin declararlo es deshonestidad académica, independientemente del modelo.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Gemini (Google)', slug: 'que-es-gemini-google' },
+      { term: 'DeepSeek', slug: 'que-es-deepseek' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-claude' }
+    ],
+    cta: { text: 'Verificar si un texto fue generado por Claude u otra IA', url: '/?ref=glosario-claude' }
+  },
+
+  {
+    slug: 'que-es-llm-large-language-model',
+    term: 'LLM (Large Language Model)',
+    keywords: ['que es llm', 'large language model', 'modelo de lenguaje grande', 'llm ia', 'como funciona llm'],
+    title: '¿Qué es un LLM o Modelo de Lenguaje Grande? Guía Sencilla 2025',
+    description: 'Un LLM (Large Language Model) es la tecnología detrás de ChatGPT, Claude y Gemini. Explicación clara para estudiantes sin conocimientos técnicos.',
+    h1: '¿Qué es un LLM? Los Modelos de Lenguaje que Explican la IA Generativa',
+    intro: 'LLM significa Large Language Model (Modelo de Lenguaje Grande). Es la tecnología que está detrás de ChatGPT, Claude, Gemini y prácticamente toda IA generativa de texto. Entender qué es un LLM te ayuda a entender por qué la IA hace lo que hace — y por qué se equivoca.',
+    definition: 'Un Large Language Model (LLM) es un sistema de inteligencia artificial entrenado con enormes cantidades de texto para predecir la probabilidad de la siguiente palabra en una secuencia. A partir de esta tarea aparentemente simple, los LLMs desarrollan capacidades emergentes como escritura, traducción, razonamiento y código. Contienen miles de millones de parámetros que capturan patrones estadísticos del lenguaje humano.',
+    characteristics: [
+      { icon: '📚', title: 'Entrenados en billones de palabras', description: 'Los LLMs más grandes se entrenan con una fracción significativa del texto disponible en internet, libros digitalizados y otras fuentes.' },
+      { icon: '🎲', title: 'Funcionan por predicción de probabilidad', description: 'No "saben" nada en el sentido humano: predicen cuál es la continuación más probable dado el texto anterior. Por eso pueden alucinar.' },
+      { icon: '⚡', title: 'Capacidades emergentes no programadas', description: 'Algunas capacidades como la traducción o el razonamiento matemático no se programaron explícitamente — emergieron del entrenamiento a escala.' },
+      { icon: '🔄', title: 'Se refinan con feedback humano (RLHF)', description: 'Después del entrenamiento inicial, se afinan con retroalimentación humana para hacer las respuestas más útiles, honestas y seguras.' }
+    ],
+    examples: [
+      'GPT-4 (OpenAI), Claude 3.5 (Anthropic) y Gemini Ultra (Google) son LLMs de alto rendimiento.',
+      'LLaMA (Meta) es un LLM de código abierto que puede ejecutarse localmente en hardware potente.',
+      'Los asistentes de código como GitHub Copilot están basados en LLMs especializados en código de programación.'
+    ],
+    faqs: [
+      { question: '¿Cuál es la diferencia entre un LLM y la inteligencia artificial general?', answer: 'Un LLM es IA especializada en lenguaje — extraordinariamente buena en procesar y generar texto, pero no tiene comprensión real del mundo ni conciencia. La Inteligencia Artificial General (AGI) sería un sistema con capacidades cognitivas comparables o superiores a las humanas en todos los dominios. Los LLMs actuales no son AGI.' },
+      { question: '¿Por qué los LLMs inventan información (alucinan)?', answer: 'Porque su objetivo de entrenamiento es predecir texto plausible, no verificar la verdad. Cuando el LLM no tiene información precisa, genera la continuación estadísticamente más probable, que puede ser incorrecta. La "alucinación" es una consecuencia directa de cómo funcionan.' },
+      { question: '¿Los detectores de IA detectan texto de cualquier LLM?', answer: 'Los detectores de IA están entrenados para identificar los patrones estadísticos que comparten los textos de LLMs en general. Funcionan bien con los modelos más usados (GPT-4, Claude, Gemini). Modelos menos conocidos o muy especializados pueden ser más difíciles de detectar.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'IA Generativa', slug: 'que-es-ia-generativa' },
+      { term: 'Alucinación de IA', slug: 'que-es-hallucination-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-llm' }
+    ],
+    cta: { text: 'Detectar texto generado por LLMs — gratis', url: '/?ref=glosario-llm' }
+  },
+
+  {
+    slug: 'que-es-ia-generativa',
+    term: 'IA Generativa',
+    keywords: ['que es ia generativa', 'inteligencia artificial generativa', 'ia generativa ejemplos', 'ia generativa educacion', 'generative ai español'],
+    title: '¿Qué es la IA Generativa? Guía Completa para Estudiantes 2025',
+    description: 'La IA generativa es la tecnología que crea texto, imágenes y código desde cero. Guía clara sobre qué es, cómo funciona y su impacto en la educación.',
+    h1: '¿Qué es la IA Generativa? De ChatGPT a Midjourney Explicado',
+    intro: 'La inteligencia artificial generativa es la categoría de IA que puede crear contenido nuevo — texto, imágenes, código, audio — en lugar de solo clasificar o analizar datos existentes. Es la tecnología detrás de ChatGPT, Midjourney, Suno y cientos de otras herramientas que están cambiando cómo creamos.',
+    definition: 'La IA generativa es un subconjunto de la inteligencia artificial que utiliza modelos (principalmente LLMs para texto, modelos de difusión para imágenes) entrenados en grandes volúmenes de datos para generar contenido nuevo y original. A diferencia de la IA discriminativa (que clasifica o predice), la IA generativa produce outputs que no existían previamente.',
+    characteristics: [
+      { icon: '✨', title: 'Crea contenido original a demanda', description: 'Puede generar texto, imágenes, código, música o video que no existen previamente, a partir de instrucciones en lenguaje natural.' },
+      { icon: '🧠', title: 'Aprende patrones de datos de entrenamiento', description: 'Los modelos generativos aprenden la distribución estadística de sus datos de entrenamiento y pueden generar muestras de esa distribución.' },
+      { icon: '🌍', title: 'Accesible para no-técnicos', description: 'A diferencia de la IA anterior, la IA generativa se controla en lenguaje natural, lo que la hace accesible para cualquier persona.' },
+      { icon: '⚡', title: 'Velocidad de adopción sin precedentes', description: 'ChatGPT alcanzó 100 millones de usuarios en 2 meses, la adopción tecnológica más rápida de la historia.' }
+    ],
+    examples: [
+      'ChatGPT, Claude y Gemini son IA generativa de texto — generan respuestas, ensayos, código y análisis.',
+      'Midjourney, Stable Diffusion y DALL-E 3 son IA generativa de imágenes.',
+      'Suno y Udio generan música completa a partir de descripciones en texto.',
+      'GitHub Copilot genera código de programación a partir de comentarios o contexto del archivo.'
+    ],
+    faqs: [
+      { question: '¿Cuál es la diferencia entre IA generativa e IA tradicional?', answer: 'La IA tradicional (antes de 2020) se especializaba en tareas específicas: clasificar imágenes, detectar fraude, recomendar películas. La IA generativa puede crear contenido nuevo en múltiples dominios a partir de instrucciones en lenguaje natural. Es más flexible pero también más difícil de controlar.' },
+      { question: '¿La IA generativa entiende lo que produce?', answer: 'No en el sentido humano. Los modelos generativos producen outputs estadísticamente coherentes con su entrenamiento, pero no tienen comprensión semántica real. Por eso pueden generar texto que "suena" bien pero es factualmente incorrecto (alucinaciones).' },
+      { question: '¿Cómo cambia la IA generativa la educación?', answer: 'Permite personalizar el aprendizaje a nivel individual, generar material de estudio bajo demanda y automatizar tareas rutinarias de los docentes. Al mismo tiempo, plantea desafíos de evaluación (¿cómo saber si el trabajo es del estudiante?) e integridad académica que las instituciones están resolviendo progresivamente.' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Alucinación de IA', slug: 'que-es-hallucination-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Generativa Gratis', url: '/?ref=glosario-ia-generativa' }
+    ],
+    cta: { text: 'Detectar texto generado por IA generativa', url: '/?ref=glosario-ia-generativa' }
+  },
+
+  {
+    slug: 'que-es-prompt-engineering',
+    term: 'Prompt Engineering',
+    keywords: ['que es prompt engineering', 'prompt engineering ia', 'como hacer buenos prompts', 'prompts para chatgpt', 'ingenieria de prompts'],
+    title: '¿Qué es el Prompt Engineering? Cómo Escribir Mejores Prompts en 2025',
+    description: 'El prompt engineering es el arte de escribir instrucciones efectivas para modelos de IA. Guía práctica para estudiantes que quieren mejores resultados de ChatGPT y Claude.',
+    h1: '¿Qué es el Prompt Engineering? Guía Práctica para Mejores Resultados',
+    intro: 'Prompt engineering es la práctica de diseñar instrucciones (prompts) para modelos de IA de forma que obtengas los resultados que necesitas. Con los mismos modelos, un buen prompt puede darte resultados 10 veces mejores que uno malo.',
+    definition: 'El prompt engineering es la disciplina de diseñar, optimizar y estructurar las instrucciones (prompts) que se envían a modelos de IA para obtener outputs específicos y de alta calidad. Combina conocimiento del comportamiento del modelo con técnicas como chain-of-thought, few-shot learning y role prompting para maximizar la utilidad de los LLMs.',
+    characteristics: [
+      { icon: '🎯', title: 'Especificidad sobre generalidad', description: 'Los prompts específicos producen mejores resultados. "Explica la fotosíntesis para un estudiante de 16 años con analogía del automóvil" supera a "explica la fotosíntesis".' },
+      { icon: '🔄', title: 'Iterativo por naturaleza', description: 'El buen prompt engineering es un proceso de refinamiento: el primer prompt rara vez es el mejor.' },
+      { icon: '📋', title: 'Contexto, tarea, formato y audiencia', description: 'Los cuatro elementos de un buen prompt: contexto (quién eres), tarea (qué quieres), formato (cómo lo quieres), audiencia (para quién).' },
+      { icon: '🧪', title: 'Técnicas avanzadas probadas', description: 'Chain-of-thought (pedir razonamiento paso a paso), few-shot (dar ejemplos), role prompting (asignar un rol al modelo) y tree-of-thought mejoran resultados en tareas complejas.' }
+    ],
+    examples: [
+      'Prompt básico: "Explica la democracia". Prompt mejorado: "Explica el concepto de democracia representativa en 200 palabras para un estudiante de bachillerato, usando una analogía con la elección de un representante de clase."',
+      'Chain-of-thought: "Resuelve este problema matemático paso a paso, explicando tu razonamiento en cada paso antes de dar el resultado."',
+      'Role prompting: "Actúa como un profesor universitario de filosofía. Revisa este párrafo de mi ensayo y dime qué argumentos necesitan más sustento y por qué."'
+    ],
+    faqs: [
+      { question: '¿El prompt engineering es una habilidad valiosa para estudiantes?', answer: 'Sí, cada vez más. Saber extraer el máximo valor de las herramientas de IA es una competencia digital relevante en casi cualquier carrera. Al mismo tiempo, es una herramienta que facilita el estudio — no lo reemplaza.' },
+      { question: '¿Usar buenos prompts hace el texto más o menos detectable como IA?', answer: 'Paradójicamente, los textos generados con prompts muy específicos y contextualizados pueden ser más difíciles de detectar porque se parecen más al estilo del escritor. Sin embargo, los patrones estadísticos del LLM persisten independientemente del prompt. Un buen detector analiza esos patrones, no el contenido.' },
+      { question: '¿Dónde aprendo prompt engineering de forma gratuita?', answer: 'Anthropic y OpenAI tienen guías gratuitas. "Prompt Engineering Guide" de dair.ai es el recurso de referencia open-source. Para uso académico, el punto clave es aprender a obtener feedback y explicaciones útiles de la IA, no a generar contenido para entregar.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'IA Generativa', slug: 'que-es-ia-generativa' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-prompt-engineering' },
+      { name: 'Humanizador de Texto IA', url: '/humanizador?ref=glosario-prompt-engineering' }
+    ],
+    cta: { text: 'Verificar si tu texto parece generado por IA', url: '/?ref=glosario-prompt-engineering' }
+  },
+
+  {
+    slug: 'que-es-turnitin-ia-detector',
+    term: 'Turnitin AI Detector',
+    keywords: ['turnitin ia detector', 'turnitin deteccion ia', 'turnitin ai writing detector', 'turnitin porcentaje ia', 'turnitin chatgpt'],
+    title: '¿Qué es el Detector de IA de Turnitin? Cómo Funciona en 2025',
+    description: 'Turnitin AI Detector analiza trabajos académicos para detectar texto generado por IA. Aprende cómo funciona, su precisión y cómo interpretar sus informes.',
+    h1: '¿Qué es el Detector de IA de Turnitin? Guía Completa 2025',
+    intro: 'Desde 2023, Turnitin incorporó un módulo específico de detección de texto generado por IA a su plataforma de antiplagio. Es hoy el detector de IA más usado en universidades de todo el mundo, y entender cómo funciona es esencial para cualquier estudiante.',
+    definition: 'El Turnitin AI Writing Detector es un módulo integrado en la plataforma Turnitin que analiza trabajos académicos para determinar qué porcentaje del texto tiene probabilidad de haber sido generado por IA. Funciona mediante modelos de aprendizaje automático entrenados para identificar los patrones estadísticos del texto generado por LLMs como GPT-4, Claude y similares.',
+    characteristics: [
+      { icon: '📊', title: 'Reporta porcentaje de "probabilidad de IA"', description: 'A diferencia del indicador de similitud (plagio), el indicador de IA muestra qué porcentaje del texto es probablemente generado por IA, no qué fuente.' },
+      { icon: '🔵', title: 'Indicador visual separado del de plagio', description: 'En el informe de Turnitin, la detección de IA aparece en azul, separada del indicador de similitud en rojo/amarillo.' },
+      { icon: '🔄', title: 'Actualizado regularmente', description: 'Turnitin actualiza sus modelos para seguir el ritmo de los nuevos LLMs y de las técnicas de evasión.' },
+      { icon: '⚠️', title: 'No es infalible — tiene falsos positivos', description: 'Texto humano muy técnico, formulaico o en idiomas distintos del inglés puede ser marcado incorrectamente como IA.' }
+    ],
+    examples: [
+      'Un estudiante entrega un trabajo con 40% de texto generado por ChatGPT — Turnitin AI Detector lo marca con alto porcentaje de IA.',
+      'Un estudiante con escritura muy uniforme y técnica recibe un falso positivo de 20% de IA cuando su texto es 100% humano.',
+      'Un profesor ve un informe Turnitin con 0% similitud pero 65% IA — el texto no está copiado de ninguna fuente conocida pero es mayoritariamente generado por IA.'
+    ],
+    faqs: [
+      { question: '¿Qué porcentaje en Turnitin AI es preocupante?', answer: 'No existe un umbral universal. Cada institución define sus propios umbrales. Como referencia: 0-10% rara vez activa procesos; 20-40% puede justificar una conversación con el estudiante; >50% es señal de alerta significativa en la mayoría de instituciones. Pero la interpretación siempre debe ser contextual.' },
+      { question: '¿Turnitin AI Detector detecta Claude y Gemini además de ChatGPT?', answer: 'Sí. Turnitin detecta texto de todos los principales LLMs, no solo ChatGPT. El modelo está entrenado en los patrones estadísticos comunes a los LLMs en general, independientemente del proveedor.' },
+      { question: '¿Puede un estudiante impugnar un resultado de Turnitin AI?', answer: 'Sí, y en muchas instituciones se puede. La evidencia más efectiva es demostrar el proceso: borradores previos, historial de edición, notas de investigación. Turnitin misma indica en su documentación que el indicador de IA no debe usarse como única evidencia para sanciones.' }
+    ],
+    relatedTerms: [
+      { term: 'Texto Sintético', slug: 'que-es-texto-sintetico' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' },
+      { term: 'Copyleaks', slug: 'que-es-copyleaks' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis (alternativa)', url: '/?ref=glosario-turnitin-detector' },
+      { name: 'vs Turnitin — Comparativa', url: '/detector-de-ia-vs/turnitin?ref=glosario-turnitin-detector' }
+    ],
+    cta: { text: 'Verificar tu trabajo antes de entregarlo en Turnitin', url: '/?ref=glosario-turnitin-detector' }
+  },
+
+  {
+    slug: 'que-es-plagio-de-ideas',
+    term: 'Plagio de Ideas',
+    keywords: ['que es plagio de ideas', 'plagio ideas academico', 'plagio sin copiar texto', 'como evitar plagio de ideas', 'tipos de plagio'],
+    title: '¿Qué es el Plagio de Ideas? El Plagio que Muchos Desconocen',
+    description: 'El plagio de ideas es usar las ideas de otro sin citarlo, aunque no copies sus palabras exactas. Aprende a identificarlo, evitarlo y diferenciarlo del conocimiento común.',
+    h1: '¿Qué es el Plagio de Ideas? Más Allá de Copiar y Pegar',
+    intro: 'La mayoría de estudiantes sabe que copiar texto es plagio. Menos saben que usar las ideas, argumentos o estructuras conceptuales de otro sin citarlo también lo es, aunque uses tus propias palabras. El plagio de ideas es una de las formas más frecuentes de deshonestidad académica no intencional.',
+    definition: 'El plagio de ideas (también llamado plagio conceptual o plagio de pensamiento) ocurre cuando se utilizan las ideas, argumentos, teorías, estructuras de análisis o conclusiones originales de otra persona sin atribuírselos con una cita adecuada. No requiere copiar palabras textuales — basta con apropiarse del pensamiento sin reconocerlo.',
+    characteristics: [
+      { icon: '💭', title: 'Ideas, no palabras', description: 'Se puede parafrrasear perfectamente y aun así plagiar si no se cita la fuente de la idea original.' },
+      { icon: '🔍', title: 'Difícil de detectar automáticamente', description: 'Los detectores de plagio como Turnitin no lo detectan si se han cambiado las palabras. Requiere que el corrector conozca la literatura.' },
+      { icon: '📚', title: 'Especialmente relevante en humanidades y ciencias sociales', description: 'Donde las ideas y los argumentos son la contribución principal, el plagio de ideas es particularmente grave.' },
+      { icon: '⚖️', title: 'Igual de sancionable que el plagio textual', description: 'Los reglamentos académicos no distinguen entre plagio textual e intelectual en las sanciones.' }
+    ],
+    examples: [
+      'Usar la tesis central de un artículo (que el cambio climático afecta desproporcionalmente a países en desarrollo) en tu trabajo sin citar al autor, aunque uses palabras completamente diferentes.',
+      'Adoptar la estructura de análisis que un autor desarrolló (por ejemplo, el marco de las "cinco fuerzas" de Porter sin citarlo) como si fuera tu propio enfoque analítico.',
+      'Presentar las conclusiones de una investigación como propias en un resumen, cuando en realidad son del investigador original que resumiste.'
+    ],
+    faqs: [
+      { question: '¿Cómo distinguir entre plagio de ideas y conocimiento común?', answer: 'Una idea es "conocimiento común" si aparece en múltiples fuentes sin atribución a un origen específico (ej: "la Tierra orbita alrededor del Sol"). Una idea original atribuible a un autor específico (ej: la "disonancia cognitiva" de Festinger) siempre debe citarse. Si dudas, cita.' },
+      { question: '¿Puede la IA ayudarme a plagiar ideas sin saberlo?', answer: 'Sí. ChatGPT y otros LLMs pueden parafrasear ideas de textos de su entrenamiento sin indicar la fuente. Si usas las ideas que la IA genera sin verificar su origen, podrías estar plagiando sin saberlo. Siempre verifica las ideas originales contra fuentes primarias.' },
+      { question: '¿El plagio de ideas se puede probar?', answer: 'Sí, aunque es más difícil. Requiere que el corrector conozca la literatura original. Los académicos especializados reconocen las ideas de su campo. En tesis y trabajos de posgrado, los directores e investigadores del tribunal pueden identificar plagio conceptual que los detectores automáticos no encuentran.' }
+    ],
+    relatedTerms: [
+      { term: 'Patchwriting', slug: 'que-es-patchwriting' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' },
+      { term: 'Texto Sintético', slug: 'que-es-texto-sintetico' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-plagio-ideas' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=glosario-plagio-ideas' }
+    ],
+    cta: { text: 'Verificar originalidad de tu texto', url: '/?ref=glosario-plagio-ideas' }
   }
 ];
