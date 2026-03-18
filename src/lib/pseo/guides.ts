@@ -3348,5 +3348,189 @@ export const guides: GuidePage[] = [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-informe-tecnico' }
     ],
     cta: { text: 'Verificar que tu informe no parece de IA', url: '/?ref=guia-informe-tecnico' }
+  },
+
+  // ── SPRINT 4C ────────────────────────────────────────────────────────────
+
+  {
+    slug: 'ia-y-derechos-de-autor-estudiantes',
+    title: 'IA y Derechos de Autor: Lo que Todo Estudiante Debe Saber',
+    keywords: ['ia derechos de autor', 'copyright ia estudiantes', 'propiedad intelectual ia', 'ia y plagio derechos', 'chatgpt derechos autor'],
+    metaTitle: 'IA y Derechos de Autor: Guía para Estudiantes Universitarios 2025',
+    metaDescription: 'Lo que todo estudiante debe saber sobre IA y derechos de autor: ¿quién es el autor del texto generado por IA? ¿puedes usarlo en tu trabajo? ¿qué dice la ley?',
+    h1: 'IA y Derechos de Autor: Lo que Todo Estudiante Debe Saber en 2025',
+    intro: 'Si usas texto generado por ChatGPT en tu trabajo, ¿a quién pertenece ese texto? ¿Puedes publicarlo? ¿Viola los derechos de autor de los datos con que fue entrenado? Estas preguntas tienen respuestas legales en desarrollo — y no tener claras las bases puede meterte en problemas.',
+    overview: 'Cubre: (1) quién es el autor del texto generado por IA según el marco legal actual, (2) si el contenido de IA tiene copyright, (3) el debate sobre los datos de entrenamiento, (4) implicaciones para trabajos académicos, (5) buenas prácticas.',
+    steps: [
+      { number: 1, title: 'Entiende que el texto generado por IA no tiene autor humano reconocido', description: 'En la mayoría de jurisdicciones (España, LATAM, EE.UU., UE), el derecho de autor requiere autoría humana. El texto generado puramente por IA no es protegible por copyright porque no tiene creador humano identificable. Esto significa que, en principio, es de dominio público — pero las condiciones de uso de cada plataforma pueden establecer restricciones adicionales.' },
+      { number: 2, title: 'Lee los términos de uso de la plataforma que usas', description: 'OpenAI (ChatGPT) establece que el usuario es responsable del output y puede usarlo para cualquier fin legal. Anthropic (Claude) tiene términos similares. Sin embargo, el output no está protegido por tu copyright — lo que significa que otro podría usar el mismo texto sin infringir tus derechos.' },
+      { number: 3, title: 'El debate sobre datos de entrenamiento es activo pero no te afecta directamente hoy', description: 'Hay litigios en curso sobre si los LLMs fueron entrenados con material con copyright sin licencia. Como estudiante usuario, este debate no te afecta directamente, pero podría cambiar cómo funcionan las herramientas en el futuro.' },
+      { number: 4, title: 'En trabajos académicos, el problema es de integridad, no de derechos de autor', description: 'Si presentas texto de IA como tuyo en un trabajo académico, el problema no es legal (derechos de autor) sino ético (deshonestidad académica). La distinción es importante: no estás infringiendo copyright de la IA, estás violando las normas de tu institución.' },
+      { number: 5, title: 'Para publicaciones académicas, declara el uso de IA según las guías del journal', description: 'Nature, Science, Elsevier y la mayoría de journals internacionales ya tienen políticas sobre IA: no se admite la IA como coautora, y el uso de IA en la redacción debe declararse en la sección de métodos. Incumplir esto puede llevar a la retractación del artículo.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Creer que el texto de IA es "libre de derechos" para cualquier uso', solution: 'Ser libre de copyright no significa ser libre de toda restricción. Los términos de uso de la plataforma, las normas de tu institución y las políticas de los journals aplican independientemente del copyright.' },
+      { mistake: 'Poner "ChatGPT" como autor en la bibliografía', solution: 'Los principales estilos de citación (APA 7ª, MLA 9ª, Chicago) tienen formatos para citar outputs de IA, pero como herramienta utilizada, no como autor. El autor sigues siendo tú.' }
+    ],
+    faqs: [
+      { question: '¿Puedo publicar en un blog el texto que generé con ChatGPT?', answer: 'Técnicamente sí, según los términos de OpenAI. Sin embargo, no está protegido por tu copyright, lo que significa que otro podría usarlo. Si quieres contenido que sea inequívocamente tuyo, el texto debe ser tuyo o suficientemente transformado.' },
+      { question: '¿Qué pasa si usé texto de IA en mi tesis que luego publico como paper?', answer: 'Depende del journal. Los que exigen que el trabajo sea original y de autoría humana podrían rechazarlo o retractarlo si se descubre. Declara el uso en la metodología y reescribe las secciones generadas por IA antes de someter.' },
+      { question: '¿Los textos de entrenamiento de ChatGPT tienen derechos de autor?', answer: 'Probablemente muchos sí — y eso está en litigio en varios países. Los autores cuyos textos fueron usados sin licencia para entrenar los modelos tienen reclamaciones legales activas. Como usuario final, no eres parte del problema, pero el debate podría cambiar la disponibilidad de estas herramientas.' }
+    ],
+    relatedGuides: [
+      { title: 'Diferencia entre Plagio y Uso de IA', slug: 'diferencia-plagio-uso-ia-trabajos' },
+      { title: 'Cómo Citar IA en Trabajos Académicos', slug: 'como-citar-ia-en-trabajos-academicos' },
+      { title: 'Cómo Presentar tu Tesis con Integridad Académica', slug: 'como-presentar-tesis-con-integridad-academica' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-ia-derechos-autor' }
+    ],
+    cta: { text: 'Verificar originalidad de tu texto', url: '/?ref=guia-ia-derechos-autor' }
+  },
+
+  {
+    slug: 'como-evitar-dependencia-ia-estudio',
+    title: 'Cómo Evitar la Dependencia de la IA al Estudiar',
+    keywords: ['dependencia ia estudio', 'adiccion chatgpt estudio', 'como estudiar sin ia', 'dejar de depender ia', 'autonomia cognitiva ia'],
+    metaTitle: 'Cómo Evitar la Dependencia de la IA para Estudiar: Guía 2025',
+    metaDescription: 'Si no puedes estudiar sin abrir ChatGPT, esta guía es para vos. Técnicas concretas para recuperar la autonomía cognitiva y aprender de verdad.',
+    h1: 'Cómo Evitar la Dependencia de la IA al Estudiar: Guía Práctica',
+    intro: 'La dependencia de la IA para estudiar es un problema real y creciente. No se trata de moral — se trata de que el esfuerzo cognitivo es donde ocurre el aprendizaje. Si la IA hace el esfuerzo por vos, el conocimiento no se transfiere. Esta guía te ayuda a recuperar la autonomía.',
+    overview: 'Cubre: (1) cómo reconocer si ya sos dependiente, (2) por qué la dependencia perjudica el aprendizaje real, (3) técnicas de "desenganche" gradual, (4) cómo usar IA como apoyo sin depender de ella, (5) preparación para exámenes donde no podés usar IA.',
+    steps: [
+      { number: 1, title: 'Reconoce las señales de dependencia', description: 'Señales de alerta: no podés empezar a estudiar sin abrir ChatGPT, cuando intentás estudiar sin IA te bloqueás rápidamente, tu rendimiento en exámenes presenciales empeoró, y necesitás confirmar con IA lo que "creés" saber. Si reconocés dos o más, probablemente ya hay dependencia.' },
+      { number: 2, title: 'Implementa sesiones de "estudio a oscuras" (sin IA)', description: 'Empieza con sesiones de 30 minutos de estudio sin IA. Aumenta gradualmente. La incomodidad que sentís en las primeras sesiones es evidencia de que el esfuerzo está ocurriendo — y es exactamente donde el aprendizaje sucede.' },
+      { number: 3, title: 'Usa la técnica de "intento primero, IA después"', description: 'Para cada problema o pregunta, intenta resolverlo por tu cuenta primero aunque sea 10 minutos. Si no podés, usa la IA. Este orden preserva el esfuerzo cognitivo inicial que activa el aprendizaje y convierte la IA en un verificador, no en un sustituto.' },
+      { number: 4, title: 'Practica recuperación activa sin IA regularmente', description: 'Cierra todos los apuntes y la IA y escribí lo que recordás sobre el tema. Luego revisá. Las brechas entre lo que creías saber y lo que realmente recordás son tu mapa de estudio real — y no necesitás IA para identificarlas.' },
+      { number: 5, title: 'Prepara específicamente para condiciones sin IA', description: 'Si tus exámenes son presenciales sin IA, estudiá en condiciones similares. No tiene sentido memorizar con IA a mano si la evaluación ocurre sin ella. La condición de práctica debe parecerse a la condición de evaluación.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Prohibirse la IA completamente de golpe', solution: 'La retirada abrupta es difícil y puede generar ansiedad contraproducente. La reducción gradual — empezando por sesiones cortas sin IA — es más sostenible.' },
+      { mistake: 'Confundir "usar IA" con "depender de IA"', solution: 'El uso estratégico de IA como herramienta de apoyo es diferente de la dependencia. La diferencia está en si podés funcionar sin ella. El objetivo no es eliminar la IA sino recuperar la capacidad de estudiar de forma autónoma.' }
+    ],
+    faqs: [
+      { question: '¿Cuánto tarda en recuperarse la autonomía cognitiva?', answer: 'Con práctica deliberada, la mayoría de estudiantes notan mejora en 2-4 semanas. El cerebro es plástico — el hábito de pensar antes de consultar se puede recuperar relativamente rápido si hay consistencia en las sesiones de estudio sin IA.' },
+      { question: '¿La dependencia de la IA afecta los resultados académicos?', answer: 'Sí, especialmente en evaluaciones presenciales. Los estudiantes que estudian principalmente con IA tienden a tener brechas en la recuperación de información sin soporte externo, lo que se manifiesta en exámenes escritos o en presentaciones orales.' },
+      { question: '¿Es malo usar IA para estudiar si rindo bien en los exámenes?', answer: 'Si rendís bien en exámenes presenciales sin IA, probablemente estás usando la IA correctamente: como complemento que refuerza el aprendizaje, no como sustituto. El problema surge cuando la IA lleva todo el trabajo cognitivo y el rendimiento cae cuando no está disponible.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Estudiar con IA de Forma Ética', slug: 'como-estudiar-con-ia-eticamente' },
+      { title: 'Herramientas de IA para Estudiantes', slug: 'herramientas-ia-para-estudiantes-universitarios' },
+      { title: 'IA en la Educación: Ventajas y Riesgos', slug: 'ia-en-educacion-ventajas-y-riesgos' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-dependencia-ia' }
+    ],
+    cta: { text: 'Verificar que tus trabajos son genuinamente tuyos', url: '/?ref=guia-dependencia-ia' }
+  },
+
+  {
+    slug: 'como-citar-formato-mla',
+    title: 'Cómo Citar en Formato MLA: Guía Actualizada 2025',
+    keywords: ['como citar mla', 'formato mla citas', 'mla 9 edicion citas', 'citar libros mla', 'bibliografia mla ejemplo'],
+    metaTitle: 'Cómo Citar en Formato MLA 9ª Edición: Guía Completa 2025',
+    metaDescription: 'Guía actualizada para citar en formato MLA 9ª edición. Libros, artículos, webs, IA y más. Con ejemplos reales y los errores más comunes.',
+    h1: 'Cómo Citar en Formato MLA 9ª Edición: Guía Completa con Ejemplos',
+    intro: 'MLA (Modern Language Association) es el estilo de citación más usado en humanidades, literatura y lingüística. La 9ª edición (2021) simplificó muchas reglas y añadió formatos para fuentes digitales e IA. Esta guía cubre lo que más necesitás.',
+    overview: 'Cubre: (1) estructura básica de la cita MLA, (2) cómo citar libros, artículos y webs, (3) cómo citar IA (ChatGPT, Claude), (4) formato de la lista Works Cited, (5) diferencias clave con APA.',
+    steps: [
+      { number: 1, title: 'Entiende los 9 elementos básicos de MLA 9', description: 'MLA 9 organiza la información en 9 "containers": autor, título, título del container, otros colaboradores, versión, número, editorial, fecha, localización. No todos aplican a cada fuente — solo incluís los que existen para esa fuente específica.' },
+      { number: 2, title: 'Cita en texto con apellido y número de página', description: 'La cita en texto MLA va entre paréntesis al final de la oración con apellido del autor y número de página sin coma: (García 45). Si mencionás al autor en la oración, solo va el número: "García argumenta que la IA transforma la educación (45)".' },
+      { number: 3, title: 'Formato de libro en Works Cited', description: 'Apellido, Nombre. Título del Libro en Cursiva. Editorial, Año. Ejemplo: García, María. La Inteligencia Artificial en la Universidad. Planeta, 2024.' },
+      { number: 4, title: 'Cómo citar IA (ChatGPT, Claude) en MLA 9', description: 'Formato sugerido por MLA: "Prompt que enviaste". Nombre del programa, versión, empresa, fecha del output, URL. Ejemplo: "Explain the impact of AI on academic integrity." ChatGPT, GPT-4, OpenAI, 15 mar. 2025, chat.openai.com.' },
+      { number: 5, title: 'La lista Works Cited: orden y formato', description: 'Al final del trabajo, lista todas las fuentes en orden alfabético por apellido del primer autor. Sangría francesa (la primera línea al margen, las siguientes con sangría). Doble espacio. Título centrado: "Works Cited" (sin comillas ni cursiva en MLA 9).' }
+    ],
+    commonMistakes: [
+      { mistake: 'Confundir el formato de cita en texto MLA con APA', solution: 'APA usa autor y año: (García, 2024). MLA usa autor y página: (García 45). Sin coma en MLA, con coma en APA. El año no aparece en la cita en texto de MLA (va en Works Cited).' },
+      { mistake: 'Poner el número de página con "p." o "pág."', solution: 'En MLA, el número de página va solo, sin prefijo: (García 45), nunca (García p. 45). En APA sí se usa "p." o "pp.".' }
+    ],
+    faqs: [
+      { question: '¿Cuándo se usa MLA y cuándo APA?', answer: 'MLA es el estándar en humanidades (literatura, filosofía, lingüística, historia del arte). APA es el estándar en ciencias sociales y de la salud (psicología, sociología, educación, enfermería). Tu profesor o el journal te indicará cuál usar. Si no lo especifican, pregunta.' },
+      { question: '¿MLA 9 es muy diferente de MLA 8?', answer: 'No drásticamente. MLA 9 clarificó reglas de puntuación, añadió orientaciones sobre fuentes digitales y actualizó las recomendaciones para citar redes sociales e IA. Si ya conocés MLA 8, la transición es sencilla.' },
+      { question: '¿Puedo usar generadores de citas MLA automáticos?', answer: 'Sí, como verificación — no como fuente única. Herramientas como Zotero, Citation Machine o EasyBib generan citas MLA pero cometen errores (especialmente con fuentes atípicas). Verifica siempre contra las reglas oficiales, especialmente la puntuación y el orden de los elementos.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Hacer Bibliografía APA', slug: 'como-hacer-bibliografia-apa' },
+      { title: 'Cómo Citar IA en Trabajos Académicos', slug: 'como-citar-ia-en-trabajos-academicos' },
+      { title: 'Cómo Citar Fuentes APA con Parafraseo', slug: 'como-citar-fuentes-apa-parafraseo' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-citar-mla' },
+      { name: 'Parafraseador Online', url: '/parafraseador?ref=guia-citar-mla' }
+    ],
+    cta: { text: 'Verificar originalidad de tu trabajo', url: '/?ref=guia-citar-mla' }
+  },
+
+  {
+    slug: 'como-hacer-bibliografia-normas-vancouver',
+    title: 'Cómo Hacer Bibliografía con Normas Vancouver',
+    keywords: ['normas vancouver bibliografia', 'citar normas vancouver', 'vancouver referencias medicas', 'como citar vancouver medicina', 'bibliografia vancouver ejemplo'],
+    metaTitle: 'Cómo Hacer Bibliografía con Normas Vancouver: Guía Médica 2025',
+    metaDescription: 'Guía completa para citar con Normas Vancouver, el estándar en medicina y ciencias de la salud. Libros, artículos, webs y casos clínicos con ejemplos.',
+    h1: 'Cómo Hacer Bibliografía con Normas Vancouver: Guía Completa',
+    intro: 'Las Normas Vancouver son el estándar de citación en medicina, enfermería, odontología y ciencias de la salud. A diferencia de APA o MLA, usan numeración correlativa en lugar de apellido-año. Esta guía cubre los casos más frecuentes con ejemplos reales.',
+    overview: 'Cubre: (1) sistema de numeración Vancouver, (2) cómo citar artículos de revista (el más frecuente), (3) cómo citar libros y capítulos, (4) cómo citar fuentes digitales, (5) errores más comunes.',
+    steps: [
+      { number: 1, title: 'El sistema Vancouver usa números, no apellidos', description: 'Las citas en texto van como superíndice o entre paréntesis con número: "según García¹" o "según García (1)". Los números son correlativos al orden de aparición en el texto, no al orden alfabético. La lista de referencias al final sigue el orden numérico.' },
+      { number: 2, title: 'Formato de artículo de revista (el más común)', description: 'Autor(es) apellido inicial(es). Título del artículo. Abreviatura de la revista. Año;Volumen(Número):páginas. Ejemplo: García M, López R. Detección de IA en textos académicos. Rev Educ Super. 2024;53(2):45-58.' },
+      { number: 3, title: 'Formato de libro', description: 'Apellido(s) Inicial(es). Título del libro. Edición. Ciudad: Editorial; Año. Ejemplo: García M. Integridad Académica en la Era de la IA. 2ª ed. Madrid: Elsevier; 2024.' },
+      { number: 4, title: 'Formato de fuente web', description: 'Autor(es) (si hay). Título de la página [Internet]. Ciudad: Organización; Año [actualizado Fecha; citado Fecha]. Disponible en: URL. Incluye siempre la fecha en que accediste, ya que las webs cambian.' },
+      { number: 5, title: 'Límite de autores: primero 6, luego "et al."', description: 'Si hay 6 o menos autores, listo todos. Si hay 7 o más, lista los primeros 6 y añade "et al." Esta regla es diferente de APA (que usa 3+ para et al. en cita en texto) — no las confundas.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Mezclar el sistema Vancouver con APA (usar apellido-año)', solution: 'Vancouver usa numeración, APA usa apellido-año. Son sistemas incompatibles. En un mismo trabajo debes usar solo uno.' },
+      { mistake: 'No abreviar el nombre de la revista correctamente', solution: 'Las revistas médicas tienen abreviaturas oficiales en Index Medicus/MEDLINE. "New England Journal of Medicine" → "N Engl J Med". Usar la abreviatura incorrecta es un error formal en publicaciones médicas.' }
+    ],
+    faqs: [
+      { question: '¿Cuándo se usan Normas Vancouver?', answer: 'En la mayoría de carreras del área de salud: medicina, enfermería, odontología, farmacia, fisioterapia. También en revistas médicas y de salud pública. Si tu carrera es de salud, casi con certeza usarás Vancouver para tesis, trabajos e informes clínicos.' },
+      { question: '¿Puedo citar IA en Vancouver?', answer: 'No hay un formato oficial Vancouver para IA todavía. La práctica más extendida es adaptarla como fuente web (con autor, título, URL y fecha de acceso) y agregar entre corchetes el tipo de fuente: [Software de inteligencia artificial].' },
+      { question: '¿Zotero soporta el estilo Vancouver?', answer: 'Sí. Zotero tiene el estilo Vancouver preinstalado. Verifica en la configuración de Zotero que estás usando la versión correcta (hay variaciones por país e institución). Siempre revisa la salida de Zotero manualmente, especialmente para fuentes atípicas.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Hacer Bibliografía APA', slug: 'como-hacer-bibliografia-apa' },
+      { title: 'Cómo Citar en Formato MLA', slug: 'como-citar-formato-mla' },
+      { title: 'Cómo Citar IA en Trabajos Académicos', slug: 'como-citar-ia-en-trabajos-academicos' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-vancouver' }
+    ],
+    cta: { text: 'Verificar originalidad de tu trabajo médico', url: '/?ref=guia-vancouver' }
+  },
+
+  {
+    slug: 'detector-ia-como-funciona-internamente',
+    title: 'Cómo Funciona Internamente un Detector de IA',
+    keywords: ['como funciona detector ia', 'detector ia como detecta', 'algoritmo detector ia', 'detector ia precision', 'por que detectan ia'],
+    metaTitle: 'Cómo Funciona un Detector de IA: Explicación Técnica 2025',
+    metaDescription: 'Explicación clara y sin tecnicismos de cómo funcionan los detectores de IA internamente: qué analizan, por qué tienen falsos positivos y cómo se entrenan.',
+    h1: 'Cómo Funciona un Detector de IA: Lo que Analizan Realmente',
+    intro: '¿Por qué un detector de IA puede distinguir el texto de ChatGPT del tuyo? No es magia — es estadística. Esta guía explica el funcionamiento interno de los detectores de IA en términos comprensibles para cualquier estudiante o docente.',
+    overview: 'Cubre: (1) qué patrones analizan los detectores, (2) perplejidad y burstiness explicadas, (3) por qué existen falsos positivos, (4) cómo se entrenan los detectores, (5) limitaciones actuales.',
+    steps: [
+      { number: 1, title: 'Los detectores analizan la "predictibilidad" del texto', description: 'Los LLMs como ChatGPT generan texto eligiendo en cada posición la palabra más probable dado el contexto. El resultado es texto estadísticamente muy predecible. Los detectores miden qué tan predecible es cada palabra del texto — si es muy predecible en conjunto, probablemente lo generó una IA.' },
+      { number: 2, title: 'La perplejidad: qué tan "sorprendente" es el texto', description: 'Perplejidad baja = texto muy predecible = señal de IA. Los humanos usamos palabras inesperadas, hacemos referencias personales, cometemos errores y cambiamos de ritmo. Los LLMs tienden a elegir siempre la opción estadísticamente más segura, lo que produce perplejidad baja.' },
+      { number: 3, title: 'La "burstiness": variación en la longitud y complejidad de oraciones', description: 'Los humanos alternamos oraciones cortas y largas de forma irregular ("burstiness" alta). Los LLMs tienden a oraciones de longitud similar y complejidad uniforme ("burstiness" baja). Los detectores más sofisticados miden ambas: perplejidad y burstiness.' },
+      { number: 4, title: 'Los detectores se entrenan con texto humano y texto de IA', description: 'Se entrena un modelo clasificador con miles de textos etiquetados: "este texto lo escribió un humano", "este texto lo generó GPT-4". El clasificador aprende los patrones estadísticos que distinguen uno del otro. Cuanto más diverso el dataset de entrenamiento, mejor la generalización.' },
+      { number: 5, title: 'Los falsos positivos ocurren por texto humano inusualmente uniforme', description: 'El texto técnico muy formulaico, las traducciones directas, el texto de escritores con estilo muy uniforme, y el texto en idiomas con menos representación en los datos de entrenamiento pueden producir falsos positivos — el detector los marca como IA cuando son humanos.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Creer que los detectores de IA son 100% precisos', solution: 'Ningún detector actual tiene precisión perfecta. Los mejores rondan el 85-95% de precisión en condiciones ideales, con tasas de falsos positivos variables según el idioma y el tipo de texto.' },
+      { mistake: 'Pensar que cambiar palabras engaña al detector', solution: 'Los detectores no buscan palabras específicas — analizan patrones estadísticos del texto como un todo. Cambiar palabras individuales sin cambiar la estructura probabilística del texto rara vez engaña a los detectores modernos.' }
+    ],
+    faqs: [
+      { question: '¿Por qué los detectores son mejores en inglés que en español?', answer: 'Porque los modelos de detección se entrenan principalmente con datos en inglés. Hay más texto humano y de IA etiquetado en inglés que en español. DetectordeIA.ai es una excepción — está específicamente entrenado y optimizado para español de España y LATAM.' },
+      { question: '¿Puede un detector distinguir entre ChatGPT y Claude?', answer: 'Los detectores actuales detectan "texto de IA" en general, no el modelo específico. ChatGPT y Claude comparten patrones estadísticos comunes (son ambos LLMs transformer). Distinguir el modelo específico requeriría análisis más fino que los detectores actuales no hacen de forma confiable.' },
+      { question: '¿Los humanizadores de texto engañan a los detectores?', answer: 'Depende del humanizador y del detector. Los humanizadores que solo cambian palabras por sinónimos alteran poco los patrones estadísticos. Los que reescriben oraciones completas y añaden variación real pueden reducir la señal. Los detectores se actualizan continuamente para adaptarse.' }
+    ],
+    relatedGuides: [
+      { title: 'Qué Hace Exactamente Turnitin con la IA', slug: 'que-hace-exactamente-turnitin-con-ia' },
+      { title: 'Cómo Detectar Texto IA Sin Herramientas', slug: 'como-detectar-texto-ia-sin-herramientas' },
+      { title: 'Cómo Reducir el Porcentaje de IA en Turnitin', slug: 'como-reducir-porcentaje-ia-turnitin' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-como-funciona-detector' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=guia-como-funciona-detector' }
+    ],
+    cta: { text: 'Probar el detector de IA — gratis', url: '/?ref=guia-como-funciona-detector' }
   }
 ];
