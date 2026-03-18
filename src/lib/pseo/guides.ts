@@ -2605,7 +2605,7 @@ export const guides: GuidePage[] = [
     }
   },
 
-  // ── SPRINT 3 GUIDES ──────────────────────────────────────────────────────
+  // ── SPRINT 3 + 4 GUIDES ──────────────────────────────────────────────────
 
   {
     slug: 'como-hacer-resumen-ejecutivo-sin-ia',
