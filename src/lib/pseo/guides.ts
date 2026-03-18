@@ -2904,5 +2904,228 @@ export const guides: GuidePage[] = [
       { name: 'Detector de IA Gratis para Profesores', url: '/?ref=guia-ia-profesores' }
     ],
     cta: { text: 'Analizar textos de estudiantes — gratis', url: '/?ref=guia-ia-profesores' }
+  },
+
+  // ── SPRINT 4A ────────────────────────────────────────────────────────────
+
+  {
+    slug: 'como-revisar-ortografia-sin-ia',
+    title: 'Cómo Revisar la Ortografía Sin Depender de IA',
+    keywords: ['revisar ortografia sin ia', 'corrector ortografia sin chatgpt', 'revisar texto sin ia', 'ortografia academica', 'como mejorar ortografia'],
+    metaTitle: 'Cómo Revisar la Ortografía Sin IA: Métodos y Herramientas 2025',
+    metaDescription: 'Métodos probados para revisar la ortografía de tus textos académicos sin depender de ChatGPT. Herramientas, técnicas manuales y hábitos que funcionan.',
+    h1: 'Cómo Revisar la Ortografía Sin Depender de IA: Guía Práctica',
+    intro: 'El corrector automático y la IA se han convertido en el primer recurso para revisar ortografía, pero depender de ellos tiene un precio: el texto pierde tu voz y puede quedar marcado como generado por IA. Esta guía te enseña métodos que mejoran tu ortografía de verdad.',
+    overview: 'Cubre: (1) por qué la IA no es la mejor herramienta para ortografía académica, (2) correctores no-IA recomendados, (3) técnica de revisión en frío, (4) errores ortográficos más frecuentes en español académico, (5) hábitos para mejorar a largo plazo.',
+    steps: [
+      { number: 1, title: 'Usa correctores ortográficos tradicionales, no IA generativa', description: 'LanguageTool (gratuito, open-source) y el corrector integrado de Word/Google Docs detectan errores ortográficos sin reescribir tu texto. Son herramientas de corrección, no de generación — no alteran tu voz ni producen señales de IA.' },
+      { number: 2, title: 'Aplica la técnica de lectura en frío', description: 'Deja el texto reposar al menos 2 horas antes de revisar. Tu cerebro leerá lo que escribiste en lugar de lo que querías escribir. Lee en voz alta: el oído detecta errores que el ojo omite.' },
+      { number: 3, title: 'Lee de atrás hacia adelante párrafo por párrafo', description: 'Para la revisión ortográfica pura, leer desde el último párrafo al primero rompe el flujo narrativo y te fuerza a ver palabras en lugar de frases. Detectas tildes, concordancias y erratas que el modo de lectura normal omite.' },
+      { number: 4, title: 'Ten a mano una lista de tus errores frecuentes', description: 'Todos cometemos los mismos errores recurrentes: "haber/a ver", "hay/ahí/ay", "porqué/porque/por qué/por que", "así mismo/asimismo". Crea tu lista personal y búscalos explícitamente en cada revisión.' },
+      { number: 5, title: 'Usa el buscador de tu procesador de texto', description: 'Ctrl+F es tu aliado: busca "que" para verificar si necesita tilde, busca "cion" para revisar que tengas "ción" donde corresponde, busca "mas" para verificar si debería ser "más". Rápido, preciso y sin IA.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Confiar únicamente en el subrayado rojo del procesador de texto', solution: 'Los correctores integrados no detectan errores contextuales ("tubo" en lugar de "tuvo"). Complementa con lectura manual.' },
+      { mistake: 'Pedir a ChatGPT que corrija la ortografía', solution: 'ChatGPT no solo corrige — reescribe. El texto resultante puede perder tu voz y generar señales de IA. Para ortografía usa LanguageTool o revisión manual.' }
+    ],
+    faqs: [
+      { question: '¿LanguageTool es bueno para español académico?', answer: 'Sí, es el mejor corrector no-IA gratuito para español. Detecta errores ortográficos, gramaticales, de concordancia y de estilo. La versión premium mejora la detección de errores de estilo académico.' },
+      { question: '¿Puedo usar el corrector de Word sin que reescriba mi texto?', answer: 'Sí. El corrector de Word en modo ortografía y gramática (F7) señala errores pero no los corrige automáticamente — tú decides qué cambiar. No genera señales de IA en tu texto.' },
+      { question: '¿Cómo sé si mejoré mi ortografía o solo la delegué?', answer: 'Si puedes escribir sin corrector y luego verificar con él encontrando pocos errores, mejoraste. Si el corrector siempre encuentra los mismos errores, los estás delegando. El objetivo es que la lista de errores frecuentes se acorte con el tiempo.' }
+    ],
+    relatedGuides: [
+      { title: 'Técnicas de Escritura Académica Sin IA', slug: 'tecnicas-de-escritura-academica-sin-ia' },
+      { title: 'Cómo Mejorar la Escritura Académica', slug: 'como-mejorar-escritura-academica' },
+      { title: 'Cómo Parafrasear Correctamente', slug: 'como-parafrasear-correctamente' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-ortografia-sin-ia' },
+      { name: 'Parafraseador Online', url: '/parafraseador?ref=guia-ortografia-sin-ia' }
+    ],
+    cta: { text: 'Verificar que tu texto no parece generado por IA', url: '/?ref=guia-ortografia-sin-ia' }
+  },
+
+  {
+    slug: 'como-argumentar-ensayo-sin-ia',
+    title: 'Cómo Argumentar en un Ensayo Sin Usar IA',
+    keywords: ['como argumentar ensayo', 'argumentacion academica sin ia', 'como hacer argumentos ensayo', 'argumentar sin chatgpt', 'tecnicas argumentacion'],
+    metaTitle: 'Cómo Argumentar en un Ensayo Sin IA: Técnicas de Argumentación 2025',
+    metaDescription: 'Aprende a construir argumentos sólidos en ensayos académicos sin depender de ChatGPT. Técnicas de argumentación que los profesores valoran.',
+    h1: 'Cómo Argumentar en un Ensayo Sin IA: Técnicas que Funcionan',
+    intro: 'El mayor problema de los ensayos generados por IA no es la ortografía — es que los argumentos son genéricos, no toman posición real y no conectan con el contexto específico del curso. Argumentar bien es la habilidad que la IA no puede reemplazar. Esta guía te enseña a hacerlo.',
+    overview: 'Cubre: (1) qué hace a un argumento sólido, (2) estructura de argumentación en 3 niveles, (3) cómo anticipar objeciones, (4) cómo usar evidencia sin perder tu posición, (5) errores de argumentación que delatan uso de IA.',
+    steps: [
+      { number: 1, title: 'Define tu posición antes de buscar evidencia', description: 'La IA genera argumentos buscando el consenso. Tú debes hacer lo contrario: define tu posición primero, luego busca evidencia. Una posición es una respuesta concreta y defendible a la pregunta del ensayo, no una enumeración de perspectivas.' },
+      { number: 2, title: 'Estructura cada argumento con CLAIM + WARRANT + EVIDENCE', description: 'Claim: tu afirmación. Warrant: por qué esa afirmación es relevante para la tesis. Evidence: la evidencia concreta que la respalda. Sin los tres, no es un argumento — es una opinión o una descripción.' },
+      { number: 3, title: 'Anticipa y responde la objeción más fuerte', description: 'Un argumento académico que no considera la contraparte más sólida es débil. Identifica la objeción principal a tu posición ("Sin embargo, podría objetarse que...") y respóndela. Esto demuestra dominio del tema que la IA no puede fingir.' },
+      { number: 4, title: 'Conecta la evidencia con tu contexto específico', description: 'La IA usa evidencia de forma genérica. Tú debes conectarla con el contexto del curso, el autor visto en clase, o los debates específicos de tu disciplina. Esa especificidad es imposible de generar para un modelo sin contexto.' },
+      { number: 5, title: 'Cierra cada argumento volviendo a la tesis', description: 'Cada párrafo argumentativo debe terminar mostrando cómo ese argumento apoya la tesis central. No dejes que la evidencia hable sola — tú la interpretas y la conectas.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Presentar múltiples perspectivas sin tomar posición', solution: 'Mostrar "por un lado... por otro lado..." sin concluir es lo que hace la IA para evitar conflictos. Los profesores valoran la posición. Toma partido y defiéndelo.' },
+      { mistake: 'Usar citas largas como sustituto del argumento propio', solution: 'Una cita larga no es un argumento. Es evidencia. Tu argumentación es la interpretación que haces de esa evidencia y por qué apoya tu tesis.' }
+    ],
+    faqs: [
+      { question: '¿Cómo sé si mi argumento es original o genérico?', answer: 'Hazte esta pregunta: ¿podría este argumento aparecer en cualquier ensayo sobre este tema, o solo en el mío? Si cualquier estudiante podría haberlo escrito, es genérico. La originalidad viene de la posición específica, los ejemplos propios y la conexión con el contexto del curso.' },
+      { question: '¿Es malo usar estructuras de argumentación conocidas como Toulmin o PEEL?', answer: 'No. Las estructuras son andamiaje, no contenido. Usar el modelo Toulmin para organizar un argumento genuinamente tuyo es escribura académica correcta. El problema es cuando el contenido también es genérico.' },
+      { question: '¿Puede la IA ayudarme a argumentar mejor sin generar el texto?', answer: 'Sí. Puedes pedirle a la IA que te señale las debilidades de tu argumento, que te proponga objeciones a tu posición, o que te liste fuentes donde buscar evidencia. Eso es usar la IA como espejo crítico, no como ghostwriter.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Estructurar un Ensayo Argumentativo', slug: 'como-estructurar-ensayo-argumentativo' },
+      { title: 'Cómo Escribir Ensayos Originales', slug: 'como-escribir-ensayos-originales' },
+      { title: 'Técnicas de Escritura Académica Sin IA', slug: 'tecnicas-de-escritura-academica-sin-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-argumentar-sin-ia' },
+      { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-argumentar-sin-ia' }
+    ],
+    cta: { text: 'Verificar que tu ensayo es 100% tuyo', url: '/?ref=guia-argumentar-sin-ia' }
+  },
+
+  {
+    slug: 'como-hacer-introduccion-trabajo-academico',
+    title: 'Cómo Hacer una Introducción para un Trabajo Académico',
+    keywords: ['como hacer introduccion trabajo academico', 'introduccion ensayo universidad', 'como empezar trabajo academico', 'introduccion tesis ejemplo', 'estructura introduccion academica'],
+    metaTitle: 'Cómo Hacer una Introducción Académica: Guía Paso a Paso 2025',
+    metaDescription: 'Aprende a redactar la introducción perfecta para trabajos universitarios, ensayos y tesis. Estructura, ejemplos y errores que delatan uso de IA.',
+    h1: 'Cómo Hacer una Introducción para un Trabajo Académico: Guía Completa',
+    intro: 'La introducción es lo primero que lee el profesor y lo que determina la primera impresión. Una introducción generada por IA se reconoce al instante por su vaguedad y por empezar siempre con la misma fórmula. Esta guía te enseña a escribir una que funcione.',
+    overview: 'Cubre: (1) estructura en 3 bloques de toda buena introducción, (2) cómo abrir sin clichés, (3) cómo plantear el problema de forma precisa, (4) cómo terminar con una tesis clara, (5) longitud y proporciones correctas.',
+    steps: [
+      { number: 1, title: 'El bloque de apertura: contextualiza el tema sin ser vago', description: 'La IA abre con frases como "En el mundo actual..." o "Desde tiempos inmemoriales...". Tú debes abrir con algo concreto: un dato, un problema específico, una pregunta real o una afirmación que tu texto va a defender. El contexto debe ser el mínimo necesario para que el lector entienda la relevancia.' },
+      { number: 2, title: 'El bloque del problema: define qué está en juego', description: 'Explica qué problema, pregunta o debate motiva tu trabajo. Cuanto más específico, mejor. No "el impacto de la IA en la educación" sino "la ausencia de políticas institucionales claras sobre IA en universidades latinoamericanas entre 2023 y 2025".' },
+      { number: 3, title: 'El bloque de la tesis: di qué vas a argumentar', description: 'La tesis va al final de la introducción y es una oración que resume tu posición o argumento principal. Debe ser una afirmación que tu trabajo puede defender con evidencia, no una descripción de lo que vas a hacer.' },
+      { number: 4, title: 'La hoja de ruta (opcional pero útil en trabajos largos)', description: 'En trabajos de más de 10 páginas, añade una oración que anticipe la estructura: "El primer capítulo... el segundo... la conclusión...". No es necesario en ensayos cortos.' },
+      { number: 5, title: 'Revisa que tu introducción cumpla la promesa del título', description: 'El título del trabajo y la introducción deben hacer la misma promesa. Si el título dice "Análisis del impacto de la IA en la evaluación universitaria", la introducción debe llevar al lector exactamente ahí.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Abrir con una definición de diccionario', solution: '"Según la Real Academia Española, la inteligencia artificial es..." es el inicio más predecible y aburrido posible. Reserva las definiciones para el cuerpo si son necesarias.' },
+      { mistake: 'Hacer la introducción demasiado larga', solution: 'La introducción no debe superar el 10-15% del total del trabajo. Si tienes 2000 palabras, la introducción debería tener 200-300 palabras. La información de fondo va en el marco teórico, no en la introducción.' }
+    ],
+    faqs: [
+      { question: '¿La introducción se escribe al principio o al final del proceso?', answer: 'Al final, idealmente. Escribe el cuerpo del trabajo primero — así sabrás exactamente qué prometiste y puedes hacer que la introducción refleje con precisión lo que el trabajo entrega.' },
+      { question: '¿Cómo sé si mi introducción parece de IA?', answer: 'Señales de alerta: abre con generalidad ("En el contexto actual..."), usa muchos gerundios seguidos, no hay una tesis clara, y la longitud es desproporcionada. Pasa tu introducción por DetectordeIA.ai y revisa esos patrones.' },
+      { question: '¿Puedo usar una cita famosa para abrir la introducción?', answer: 'Con cuidado. Una cita puede funcionar si está directamente conectada con tu argumento y no es genérica. Abrir con una cita de Einstein en un trabajo sobre integridad académica es un cliché. Abrir con una cita del rectorado de tu universidad sobre IA podría ser específica y relevante.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Estructurar un Ensayo Argumentativo', slug: 'como-estructurar-ensayo-argumentativo' },
+      { title: 'Cómo Hacer una Conclusión de Ensayo', slug: 'como-hacer-conclusion-ensayo' },
+      { title: 'Técnicas de Escritura Académica Sin IA', slug: 'tecnicas-de-escritura-academica-sin-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-introduccion-academica' },
+      { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-introduccion-academica' }
+    ],
+    cta: { text: 'Verificar que tu introducción no parece de IA', url: '/?ref=guia-introduccion-academica' }
+  },
+
+  {
+    slug: 'como-hacer-conclusion-ensayo',
+    title: 'Cómo Hacer una Conclusión de Ensayo que Impresione',
+    keywords: ['como hacer conclusion ensayo', 'conclusion trabajo academico', 'como terminar un ensayo', 'conclusion tesis ejemplo', 'conclusion sin ia'],
+    metaTitle: 'Cómo Hacer una Conclusión de Ensayo: Guía con Ejemplos 2025',
+    metaDescription: 'Aprende a redactar conclusiones académicas que cierren con fuerza sin repetir ni depender de IA. Estructura, errores comunes y ejemplos concretos.',
+    h1: 'Cómo Hacer una Conclusión de Ensayo que Cierre con Fuerza',
+    intro: 'La conclusión es donde el lector decide si el trabajo valió la pena. Las conclusiones generadas por IA son fácilmente detectables: resumen lo dicho sin añadir nada, usan fórmulas como "En conclusión, podemos afirmar que..." y no dejan al lector con nada nuevo. Esta guía te enseña a hacerlo diferente.',
+    overview: 'Cubre: (1) qué debe hacer una conclusión académica, (2) estructura en 3 movimientos, (3) cómo ir más allá del resumen, (4) errores que delatan uso de IA, (5) longitud y tono correcto.',
+    steps: [
+      { number: 1, title: 'Sintetiza (no resumas): muestra cómo los argumentos se conectan', description: 'Hay diferencia entre resumir (repetir lo dicho) y sintetizar (mostrar cómo las partes forman un todo mayor). Tu conclusión debe mostrar el patrón que emerge de los argumentos, no listarlos de nuevo.' },
+      { number: 2, title: 'Responde la pregunta implícita: "¿y entonces qué?"', description: 'Todo argumento debería llevar a algo. La conclusión responde por qué importa tu tesis más allá del trabajo en sí: qué implica para la práctica, qué contradice una creencia extendida, qué debería cambiar.' },
+      { number: 3, title: 'Abre hacia futuro sin prometer lo que no puedes entregar', description: 'Una buena conclusión señala lo que queda por investigar, las limitaciones del análisis o las preguntas que el trabajo abre. Esto muestra madurez académica. La IA suele ignorar las limitaciones porque nadie se las pide.' },
+      { number: 4, title: 'Evita las fórmulas de cierre predecibles', description: 'Frases prohibidas: "En conclusión...", "Para concluir...", "En resumen..." al inicio del párrafo. Son señales automáticas de texto genérico o de IA. Empieza la conclusión directamente con la síntesis.' },
+      { number: 5, title: 'Conecta con la introducción sin copiarla', description: 'La conclusión y la introducción deben hacer eco. Si la introducción planteó una pregunta o un problema, la conclusión debe responderlo explícitamente. Esto crea un cierre narrativo que la IA rara vez logra.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Introducir información nueva en la conclusión', solution: 'La conclusión no es el lugar para nuevos datos o argumentos. Si tienes algo importante que decir, ve al cuerpo del trabajo.' },
+      { mistake: 'Hacer una conclusión más larga que la introducción', solution: 'La conclusión debe ser más corta que la introducción (10% del total o menos). Si te está quedando larga, estás metiendo información que debería estar en el cuerpo.' }
+    ],
+    faqs: [
+      { question: '¿Puedo poner recomendaciones en la conclusión?', answer: 'Depende del tipo de trabajo. En informes técnicos y trabajos aplicados, las recomendaciones son parte esperada de la conclusión. En ensayos teóricos, son opcionales y deben presentarse como derivaciones lógicas del análisis, no como prescripciones externas al trabajo.' },
+      { question: '¿Cómo sé si mi conclusión suena a IA?', answer: 'Si empieza con "En conclusión" o "Para concluir", si repite literalmente frases del cuerpo, si no añade nada nuevo al lector y si usa muletillas de transición excesivas, probablemente tiene patrones de texto generado por IA. Pásala por DetectordeIA.ai.' },
+      { question: '¿La conclusión debe tener citas bibliográficas?', answer: 'Generalmente no. La conclusión es el espacio de tu voz — síntesis e interpretación propias. Incluir citas en la conclusión puede indicar que todavía estás dependiendo de fuentes en lugar de consolidar tu propio argumento.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Hacer una Introducción para un Trabajo Académico', slug: 'como-hacer-introduccion-trabajo-academico' },
+      { title: 'Cómo Argumentar en un Ensayo Sin IA', slug: 'como-argumentar-ensayo-sin-ia' },
+      { title: 'Cómo Estructurar un Ensayo Argumentativo', slug: 'como-estructurar-ensayo-argumentativo' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-conclusion-ensayo' },
+      { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-conclusion-ensayo' }
+    ],
+    cta: { text: 'Verificar que tu conclusión es original', url: '/?ref=guia-conclusion-ensayo' }
+  },
+
+  {
+    slug: 'como-estudiar-con-ia-eticamente',
+    title: 'Cómo Estudiar con IA de Forma Ética y Efectiva',
+    keywords: ['estudiar con ia etico', 'ia para estudiar bien', 'chatgpt para estudiar', 'como usar ia estudiar sin hacer trampa', 'ia estudio universitario'],
+    metaTitle: 'Cómo Estudiar con IA de Forma Ética: Guía para Universitarios 2025',
+    metaDescription: 'Aprende a usar ChatGPT, Claude y otras IAs para estudiar mejor sin hacer trampa. Técnicas concretas que mejoran el aprendizaje real.',
+    h1: 'Cómo Estudiar con IA de Forma Ética y Efectiva en la Universidad',
+    intro: 'Usar IA para estudiar no es lo mismo que usar IA para hacer trampa. La diferencia está en el proceso: si la IA reemplaza tu esfuerzo cognitivo, no estás aprendiendo. Si lo amplifica, sí. Esta guía traza la línea con ejemplos concretos.',
+    overview: 'Cubre: (1) usos de IA que aceleran el aprendizaje genuino, (2) usos que lo evitan, (3) técnicas concretas por tipo de materia, (4) cómo estudiar para exámenes con IA como tutor, (5) señales de que tu uso se está volviendo dependencia.',
+    steps: [
+      { number: 1, title: 'Usa la IA como tutor socrático, no como oráculo', description: 'En lugar de preguntar "¿Cuál es la respuesta de X?", pregunta "¿Qué preguntas debería poder responder para demostrar que entiendo X?" o "Dame un problema de práctica sobre X y no me des la solución todavía". El esfuerzo de resolver es donde ocurre el aprendizaje.' },
+      { number: 2, title: 'Pídele que te explique de múltiples formas hasta que entiendas', description: 'Una ventaja real de la IA sobre los libros: puede explicar el mismo concepto con analogías distintas hasta que una haga clic. "Explícame la teoría de juegos como si fuera un partido de fútbol" o "dame otro ejemplo más concreto" son usos legítimos y efectivos.' },
+      { number: 3, title: 'Genera preguntas de examen con IA y respóndelas tú', description: 'Dale el programa o el tema al modelo y pídele que genere 10 preguntas de examen tipo múltiple choice y 3 preguntas de desarrollo. Luego respóndelas sin mirar apuntes. Eso es práctica activa de recuperación — una de las técnicas de estudio más efectivas documentadas.' },
+      { number: 4, title: 'Usa IA para identificar tus brechas de conocimiento', description: 'Explícale un concepto a la IA como si fuera un estudiante nuevo. Donde te quedes sin palabras o donde corrija algo que dijiste es exactamente donde tienes una brecha. La IA como espejo de tu propio conocimiento es un uso poderoso.' },
+      { number: 5, title: 'Nunca uses la IA para completar tareas evaluables sin declarar', description: 'Todo lo anterior es estudio. Usar IA para generar la respuesta de un trabajo o examen sin declararlo es trampa — independientemente de que hayas estudiado con IA. La línea es clara: el trabajo evaluable es tuyo.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Copiar explicaciones de IA en tus apuntes como si fueran tuyas', solution: 'Los apuntes son para ti, no para el profesor, pero copiar sin procesar no genera aprendizaje. Reformula con tus propias palabras lo que la IA explicó antes de anotarlo.' },
+      { mistake: 'Usar IA como primer recurso antes de intentar el problema', solution: 'El esfuerzo de intentar primero, aunque falles, es parte del aprendizaje. Usa la IA después del primer intento, no antes.' }
+    ],
+    faqs: [
+      { question: '¿Es ético usar IA para preparar un examen?', answer: 'Sí, completamente. Usar IA como tutor, generador de preguntas de práctica o explicador de conceptos para preparar un examen es equivalente a usar una guía de estudio o Khan Academy. Lo que no es ético es usar IA durante el examen sin autorización.' },
+      { question: '¿La IA puede reemplazar la lectura del libro de texto?', answer: 'Parcialmente y con riesgo. La IA puede resumir y explicar, pero puede omitir matices o cometer errores factuales. Para fundamentos conceptuales, leer la fuente primaria sigue siendo más confiable. Usa la IA para complementar la lectura, no para saltarla.' },
+      { question: '¿Cómo sé si me estoy volviendo dependiente de la IA para estudiar?', answer: 'Señales de dependencia: no puedes empezar a estudiar sin tener la IA abierta, te cuesta más recordar cosas que antes, y cuando estudias sin IA rindes peor en los exámenes. Si lo notas, practica sesiones de estudio sin IA para recuperar la autonomía cognitiva.' }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Herramientas de IA para Estudiantes', slug: 'herramientas-ia-para-estudiantes-universitarios' },
+      { title: 'Mejores Prácticas de IA para Estudiantes', slug: 'mejores-practicas-uso-ia-estudiantes' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-estudiar-ia-etico' }
+    ],
+    cta: { text: 'Verificar originalidad de tu trabajo', url: '/?ref=guia-estudiar-ia-etico' }
+  },
+
+  {
+    slug: 'como-reducir-porcentaje-ia-turnitin',
+    title: 'Cómo Reducir el Porcentaje de IA en Turnitin de Forma Ética',
+    keywords: ['reducir porcentaje ia turnitin', 'bajar deteccion ia turnitin', 'turnitin ia alto porcentaje', 'como pasar turnitin ia', 'porcentaje ia turnitin alto'],
+    metaTitle: 'Cómo Reducir el Porcentaje de IA en Turnitin (Forma Ética) 2025',
+    metaDescription: 'Si tu trabajo propio tiene alto porcentaje de IA en Turnitin, esta guía explica por qué pasa y cómo reescribir éticamente para reducirlo.',
+    h1: 'Cómo Reducir el Porcentaje de IA en Turnitin: Guía Ética',
+    intro: 'Turnitin marca tu trabajo con alto porcentaje de IA y es tuyo. Pasa más de lo que crees — el texto técnico muy uniforme, el español muy formal o ciertas estructuras académicas pueden disparar falsos positivos. Esta guía explica qué hacer, éticamente.',
+    overview: 'Cubre: (1) por qué Turnitin puede marcar texto humano como IA, (2) cómo identificar qué secciones activan el detector, (3) técnicas de reescritura ética para añadir variación natural, (4) qué no hacer, (5) cuándo impugnar el resultado.',
+    steps: [
+      { number: 1, title: 'Identifica primero qué secciones activan el detector', description: 'Antes de reescribir todo, sube el texto a DetectordeIA.ai para ver qué secciones tienen mayor señal de IA. Muchas veces es solo una o dos secciones con estructura muy formulaica — el resumen, la metodología o los párrafos de transición.' },
+      { number: 2, title: 'Añade variación natural en longitud de oraciones', description: 'El texto de IA tiende a tener oraciones de longitud similar. Mezcla oraciones cortas con largas. Usa puntos donde la IA usaría coma. Fragmenta párrafos largos y une algunos cortos. Esta variación es la señal más importante de texto humano.' },
+      { number: 3, title: 'Incorpora tu voz: opiniones, dudas, especificidades del contexto', description: 'Agrega elementos que la IA no puede generar sin contexto: referencias a lo visto en clase, a tu propia experiencia, al contexto regional o institucional. "En el caso de [mi universidad]..." o "Como señaló [el profesor] en clase..." son marcadores de autoría humana.' },
+      { number: 4, title: 'Reformula las transiciones formulaicas', description: 'Frases como "Cabe destacar que", "En este sentido", "Asimismo", "Por otro lado" en exceso son señales de IA. Reemplázalas con transiciones específicas al argumento: "Este dato contradice lo que...", "A diferencia de lo anterior..."' },
+      { number: 5, title: 'Si el texto es genuinamente tuyo, documenta el proceso y considera impugnar', description: 'Si reescribiste y el porcentaje sigue alto, reúne evidencia: borradores con historial de edición, notas de investigación, capturas de búsquedas. La mayoría de instituciones tienen proceso de apelación y aceptan evidencia de proceso.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Usar humanizadores de texto para "burlar" el detector', solution: 'Los humanizadores que solo cambian palabras son detectados por versiones actualizadas de Turnitin. La reescritura genuina — añadir tu voz y variación natural — es más efectiva y no plantea problemas éticos.' },
+      { mistake: 'Reescribir sin entender por qué el detector marca el texto', solution: 'Si no entiendes qué produce la señal de IA en tu texto, reescribirás al azar. Identifica primero el patrón (oraciones uniformes, transiciones formulaicas, ausencia de especificidad) y después actúa sobre eso.' }
+    ],
+    faqs: [
+      { question: '¿Es ético usar herramientas para reducir el porcentaje de IA si el texto es mío?', answer: 'Sí, si el texto es genuinamente tuyo. Mejorar la naturalidad de tu escritura y reducir patrones que activan falsos positivos es legítimo. Lo que no es ético es intentar disfrazar texto generado por IA como si fuera tuyo.' },
+      { question: '¿Por qué mi texto propio tiene 30% de IA en Turnitin?', answer: 'Los falsos positivos ocurren con texto técnico muy formulaico (ciencias, ingeniería), texto en español muy formal y uniforme, traducciones directas del inglés, y texto que sigue plantillas estrictas (informes, protocolos). No significa que hayas hecho trampa.' },
+      { question: '¿Cuánto tarda en actualizarse el porcentaje si resub el texto corregido?', answer: 'Inmediatamente en la mayoría de plataformas con Turnitin. Puedes subir el texto corregido y obtener un nuevo análisis en minutos. Verifica con tu institución si el reenvío está permitido antes de la fecha de entrega definitiva.' }
+    ],
+    relatedGuides: [
+      { title: 'Qué Hace Exactamente Turnitin con la IA', slug: 'que-hace-exactamente-turnitin-con-ia' },
+      { title: 'Técnicas de Escritura Académica Sin IA', slug: 'tecnicas-de-escritura-academica-sin-ia' },
+      { title: 'Diferencia entre Plagio y Uso de IA', slug: 'diferencia-plagio-uso-ia-trabajos' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis (verificar antes de Turnitin)', url: '/?ref=guia-reducir-ia-turnitin' },
+      { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-reducir-ia-turnitin' }
+    ],
+    cta: { text: 'Verificar tu texto antes de subir a Turnitin', url: '/?ref=guia-reducir-ia-turnitin' }
   }
 ];
