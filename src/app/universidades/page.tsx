@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://detectordeia.ai/logo.png',
+        url: 'https://detectordeia.ai/og-default.png',
         width: 1200,
         height: 630,
         alt: 'DetectorDeIA.ai - Universidades',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Detector de IA para Universidades | DetectorDeIA.ai',
     description: 'Detector de IA para universidades de LATAM y España. Gratis y compatible con políticas académicas.',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
 };
 

@@ -1076,5 +1076,412 @@ export const glossary: GlossaryPage[] = [
       text: 'Analizar texto con detector de IA',
       url: '/?ref=glosario-diferencia-ia-humano'
     }
+  },
+
+  {
+    slug: 'que-es-deepseek',
+    term: 'DeepSeek',
+    keywords: [
+      'que es deepseek',
+      'deepseek ia',
+      'deepseek vs chatgpt',
+      'deepseek modelo ia chino',
+      'deepseek r1 explicacion'
+    ],
+    title: '¿Qué es DeepSeek? El Modelo de IA Chino que Revolucionó 2025',
+    description: 'Descubre qué es DeepSeek, el modelo de inteligencia artificial chino que compite con ChatGPT. Cómo funciona, diferencias con otros modelos y uso para estudiantes.',
+    h1: '¿Qué es DeepSeek? El Modelo de IA que Sacudió al Mundo en 2025',
+    intro: 'DeepSeek es un modelo de inteligencia artificial desarrollado por una empresa china que causó sensación a principios de 2025 al demostrar capacidades comparables a los mejores modelos de OpenAI y Google, pero a una fracción del costo de desarrollo. Su aparición generó un debate global sobre el futuro de la IA y provocó caídas en las bolsas de valores de empresas tecnológicas occidentales.',
+    definition: 'DeepSeek es una familia de modelos de lenguaje de gran escala (LLM) desarrollados por la empresa china DeepSeek AI. El modelo más destacado, DeepSeek-R1, es un modelo de razonamiento que compite directamente con o1 de OpenAI y otros modelos frontier, destacándose por su eficiencia: fue entrenado con significativamente menos recursos computacionales y a menor costo que los modelos equivalentes occidentales.',
+    characteristics: [
+      {
+        icon: '🇨🇳',
+        title: 'Origen Chino',
+        description: 'Desarrollado en China por DeepSeek AI, representa el avance de la IA china hasta el nivel de los mejores modelos globales.'
+      },
+      {
+        icon: '💰',
+        title: 'Eficiencia de Costo',
+        description: 'Fue entrenado a una fracción del costo de modelos equivalentes de OpenAI o Google, demostrando que no se necesita tanto capital para desarrollar IA de frontera.'
+      },
+      {
+        icon: '🧠',
+        title: 'Capacidad de Razonamiento',
+        description: 'DeepSeek-R1 es especialmente bueno en matemáticas, ciencias y razonamiento lógico, áreas donde compite directamente con o1 de OpenAI.'
+      },
+      {
+        icon: '🔓',
+        title: 'Código Abierto',
+        description: 'A diferencia de ChatGPT o Claude, DeepSeek ha publicado los pesos de algunos de sus modelos como open source, permitiendo su uso y modificación.'
+      },
+      {
+        icon: '📱',
+        title: 'Interfaz Accesible',
+        description: 'Disponible en web y aplicación móvil, con interfaz en múltiples idiomas incluyendo español.'
+      }
+    ],
+    examples: [
+      'Un estudiante de ingeniería puede usar DeepSeek-R1 para resolver problemas de cálculo paso a paso, ya que es especialmente bueno en matemáticas',
+      'Un investigador puede usar DeepSeek para analizar textos científicos y obtener resúmenes en español',
+      'DeepSeek puede usarse como alternativa gratuita a ChatGPT Plus para tareas de escritura y análisis',
+      'Programadores lo utilizan para debugging de código, área donde tiene rendimiento comparable a GPT-4'
+    ],
+    faqs: [
+      {
+        question: '¿Es DeepSeek seguro para usar?',
+        answer: 'Hay consideraciones de privacidad: DeepSeek es una empresa china sujeta a la legislación de China, lo que significa que sus datos pueden ser accesibles al gobierno chino si se lo requieren. Para uso académico general con información no sensible, el riesgo práctico es bajo. Sin embargo, para información sensible, personal o confidencial, se recomienda usar alternativas como ChatGPT o Claude con políticas de privacidad más claras para usuarios europeos y latinoamericanos.'
+      },
+      {
+        question: '¿DeepSeek es mejor que ChatGPT?',
+        answer: 'En algunas tareas sí, en otras no. DeepSeek-R1 es especialmente competitivo en matemáticas, ciencias y razonamiento lógico — algunos benchmarks lo colocan al nivel de o1 de OpenAI. Para escritura creativa y conversación general en español, ChatGPT 4o sigue siendo superior. La ventaja de DeepSeek es el precio: su uso básico es gratuito y los costos de API son mucho menores.'
+      },
+      {
+        question: '¿Puede un detector de IA detectar texto de DeepSeek?',
+        answer: 'Sí. Los detectores de IA como DetectordeIA.ai detectan patrones estadísticos del texto generado por modelos de lenguaje, independientemente de qué modelo específico lo generó. Un texto de DeepSeek presenta los mismos patrones lingüísticos (uniformidad, formalidad artificial, estructura balanceada) que texto de ChatGPT o Claude. La detección no es por "huella" de un modelo específico sino por características del texto de IA en general.'
+      },
+      {
+        question: '¿Por qué DeepSeek causó tanto revuelo en enero 2025?',
+        answer: 'DeepSeek demostró que podía entrenarse un modelo de IA de frontera por aproximadamente 6 millones de dólares, comparado con los miles de millones invertidos por OpenAI, Google y Anthropic. Esto sugirió que las "ventajas" de las empresas occidentales (acceso a chips avanzados, capital masivo) no eran tan determinantes como se creía. El mercado reaccionó con caídas en acciones de Nvidia y otras empresas de IA, y detonó un debate sobre la estrategia global de IA.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: '¿Qué es Gemini de Google?', slug: 'que-es-gemini-google' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-deepseek' },
+      { name: 'Detector de ChatGPT', url: '/detector-de-chatgpt-gratis?ref=glosario-deepseek' }
+    ],
+    cta: {
+      text: 'Detectar si un texto fue escrito por DeepSeek o IA',
+      url: '/?ref=glosario-deepseek'
+    }
+  },
+
+  {
+    slug: 'que-es-gemini-google',
+    term: 'Gemini de Google',
+    keywords: [
+      'que es gemini google',
+      'gemini ia google',
+      'gemini vs chatgpt',
+      'google gemini explicacion',
+      'gemini estudiantes'
+    ],
+    title: '¿Qué es Gemini de Google? Guía Completa 2025',
+    description: 'Descubre qué es Gemini, el modelo de IA de Google. Cómo se compara con ChatGPT, sus capacidades para estudiantes, y cómo detectar texto generado por Gemini.',
+    h1: '¿Qué es Gemini de Google? Todo lo que Necesitas Saber',
+    intro: 'Gemini es el modelo de inteligencia artificial más avanzado de Google, sucesor de Bard. Lanzado en 2023 y significativamente mejorado en 2024-2025, Gemini es el principal competidor de ChatGPT y el segundo modelo más usado globalmente. Su integración con el ecosistema de Google (Workspace, Search, YouTube) lo hace especialmente relevante para estudiantes que ya usan herramientas de Google.',
+    definition: 'Gemini es una familia de modelos de lenguaje multimodal desarrollados por Google DeepMind. "Multimodal" significa que puede procesar y generar no solo texto sino también imágenes, audio, video y código. Existe en varias versiones: Gemini Ultra (el más potente), Gemini Pro (equilibrio rendimiento/costo) y Gemini Nano (para dispositivos móviles).',
+    characteristics: [
+      {
+        icon: '🔍',
+        title: 'Integración con Búsqueda',
+        description: 'Gemini está integrado en Google Search, apareciendo como "AI Overview" en los resultados de búsqueda. Esto lo hace omnipresente para cualquier usuario de Google.'
+      },
+      {
+        icon: '📁',
+        title: 'Google Workspace',
+        description: 'Disponible en Gmail, Google Docs, Sheets y Slides como "Gemini in Google Workspace", permitiendo generar y editar documentos directamente.'
+      },
+      {
+        icon: '👁️',
+        title: 'Multimodal',
+        description: 'Puede analizar imágenes, documentos PDF, hojas de cálculo y videos, no solo texto. Esto lo diferencia de modelos solo-texto.'
+      },
+      {
+        icon: '🔗',
+        title: 'Acceso a Internet en Tiempo Real',
+        description: 'A diferencia de versiones de ChatGPT sin plugins, Gemini tiene acceso a información actualizada de internet en tiempo real.'
+      },
+      {
+        icon: '🆓',
+        title: 'Plan Gratuito Robusto',
+        description: 'El plan gratuito de Gemini es más generoso que el de ChatGPT, incluyendo acceso a Gemini 1.5 Flash sin límites estrictos.'
+      }
+    ],
+    examples: [
+      'Un estudiante puede pedir a Gemini que analice una imagen de un diagrama de su libro de biología y explique qué representa',
+      'Gemini en Google Docs puede ayudar a mejorar la redacción de un trabajo directamente mientras lo escribes',
+      'Puedes usar Gemini para buscar información actualizada sobre eventos recientes, ya que tiene acceso a internet',
+      'Gemini puede resumir un PDF de un paper académico que subas directamente a la conversación'
+    ],
+    faqs: [
+      {
+        question: '¿Gemini es mejor que ChatGPT para estudiantes?',
+        answer: 'DEPENDE del uso. VENTAJAS DE GEMINI: acceso a internet en tiempo real, integración con Google Workspace, capacidad multimodal robusta, plan gratuito más generoso. VENTAJAS DE CHATGPT: mejor razonamiento complejo, escritura creativa más natural, ecosistema de plugins más desarrollado, historial más largo de afinamiento para conversación. Para tareas académicas que requieren información actualizada o análisis de documentos, Gemini puede ser mejor. Para ensayos y razonamiento profundo, ChatGPT suele ser superior.'
+      },
+      {
+        question: '¿Puede un detector de IA detectar texto de Gemini?',
+        answer: 'Sí. Los detectores de IA como DetectordeIA.ai detectan los patrones estadísticos del texto generado por modelos de lenguaje, independientemente del modelo específico. El texto de Gemini presenta las mismas características del texto de IA en general: estructura uniforme, vocabulario consistentemente formal, ausencia de marcadores de autenticidad humana. La detección funciona por características del texto, no por "firma" del modelo.'
+      },
+      {
+        question: '¿Es Gemini la misma herramienta que Bard?',
+        answer: 'Sí y no. Bard fue el primer chatbot de IA de Google, lanzado en 2023. En 2024, Google renombró Bard a Gemini y simultáneamente lanzó modelos Gemini 1.0 y 1.5 significativamente más avanzados. Si usaste Bard, ya conoces la interfaz básica de Gemini — pero las capacidades del modelo son muy superiores.'
+      },
+      {
+        question: '¿Cómo se llama Gemini cuando está en Google Docs?',
+        answer: '"Gemini in Google Workspace" o simplemente "Gemini" dentro de las aplicaciones de Google. Aparece como un botón de estrella (✦) en la interfaz de Google Docs, Gmail y otras aplicaciones de Workspace. Funciones: ayudar a redactar, resumir, reformular texto, o responder preguntas sobre el documento.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'DeepSeek', slug: 'que-es-deepseek' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-gemini' },
+      { name: 'Detector de Gemini', url: '/detector-de-gemini-gratis?ref=glosario-gemini' }
+    ],
+    cta: {
+      text: 'Detectar si un texto fue escrito por Gemini o IA',
+      url: '/?ref=glosario-gemini'
+    }
+  },
+
+  {
+    slug: 'que-es-integridad-academica',
+    term: 'Integridad Académica',
+    keywords: [
+      'que es integridad academica',
+      'integridad academica definicion',
+      'integridad academica universidad',
+      'importancia integridad academica',
+      'integridad academica e ia'
+    ],
+    title: '¿Qué es la Integridad Académica? Definición y Ejemplos 2025',
+    description: 'Qué es la integridad académica, por qué importa y cómo mantenerla en la era de la IA. Ejemplos prácticos, consecuencias del plagio y uso de ChatGPT para estudiantes.',
+    h1: '¿Qué es la Integridad Académica? Guía Completa para Estudiantes',
+    intro: 'La integridad académica es el conjunto de valores y principios que guían el comportamiento honesto en entornos educativos. En la era de ChatGPT y la IA generativa, estos principios se han vuelto más complejos pero también más importantes. Esta guía define qué es, qué la viola y cómo mantenerla en el contexto actual.',
+    definition: 'La integridad académica es el compromiso con los valores fundamentales de honestidad, confianza, equidad, respeto y responsabilidad en el trabajo académico. Implica que el trabajo presentado por un estudiante representa genuinamente su propio esfuerzo intelectual, y que el uso de cualquier fuente o herramienta (incluyendo IA) se declara apropiadamente.',
+    characteristics: [
+      {
+        icon: '🎯',
+        title: 'Honestidad',
+        description: 'Presentar trabajo propio como propio, y trabajo ajeno o generado por herramientas como tal, con la atribución correspondiente.'
+      },
+      {
+        icon: '🤝',
+        title: 'Confianza',
+        description: 'La relación entre estudiante y profesor requiere confianza mutua: el profesor confía en que el trabajo es del estudiante; el estudiante confía en que será evaluado justamente.'
+      },
+      {
+        icon: '⚖️',
+        title: 'Equidad',
+        description: 'Todos los estudiantes deben ser evaluados bajo las mismas condiciones. El plagio y el uso no declarado de IA crean ventajas injustas sobre quienes trabajan honestamente.'
+      },
+      {
+        icon: '📚',
+        title: 'Responsabilidad',
+        description: 'Cada estudiante es responsable de conocer y seguir las reglas de integridad académica de su institución, incluyendo las políticas sobre uso de IA.'
+      },
+      {
+        icon: '🌱',
+        title: 'Aprendizaje Real',
+        description: 'La integridad académica es condición para el aprendizaje genuino. Saltarla con IA o plagio puede dar buenas notas a corto plazo pero perjudica el desarrollo de habilidades reales.'
+      }
+    ],
+    examples: [
+      'Un estudiante cita correctamente todas las fuentes que usó en su trabajo, incluyendo una conversación con ChatGPT',
+      'Una estudiante declara en su trabajo que usó Gemini para recibir feedback sobre el borrador',
+      'Un grupo de trabajo divide las tareas equitativamente y cada miembro contribuye genuinamente a su parte',
+      'Un profesor diseña evaluaciones donde los estudiantes explican su proceso de pensamiento, no solo el resultado final',
+      'Una universidad publica una política clara sobre uso de IA que los estudiantes pueden consultar antes de cada trabajo'
+    ],
+    faqs: [
+      {
+        question: '¿Qué acciones violan la integridad académica?',
+        answer: 'Las violaciones más comunes son: (1) PLAGIO: copiar texto de otros sin citar, sea de libros, internet o compañeros. (2) USO NO DECLARADO DE IA: usar ChatGPT, Gemini u otras IA para generar trabajo sin declararlo. (3) TRAMPA EN EXÁMENES: usar materiales no permitidos, copiar de compañeros. (4) FALSIFICACIÓN: alterar notas, documentos o resultados de investigación. (5) AUTOPLAGIAR: presentar trabajo propio anterior sin declararlo. (6) COLABORACIÓN NO AUTORIZADA: trabajar con otros cuando la tarea es individual. Cada institución puede tener categorías adicionales.'
+      },
+      {
+        question: '¿La integridad académica aplica también cuando uso IA?',
+        answer: 'SÍ, absolutamente. La integridad académica no es específica del plagio tradicional — aplica a cualquier situación donde el trabajo presentado no represente fielmente el esfuerzo y capacidad del estudiante. El uso no declarado de IA viola el principio de honestidad (presentas como tuyo un trabajo que no es del todo tuyo) y el de equidad (obtienes ventaja sobre quienes no usan IA). Las políticas de las universidades están actualizando sus definiciones para incluir explícitamente el uso de IA.'
+      },
+      {
+        question: '¿Cuáles son las consecuencias de violar la integridad académica?',
+        answer: 'CONSECUENCIAS TÍPICAS (de menor a mayor gravedad): (1) Advertencia y oportunidad de corregir el trabajo. (2) Calificación de cero en el trabajo o examen específico. (3) Reprobar el curso completo. (4) Registro permanente en el expediente académico. (5) Suspensión temporal (un semestre o año académico). (6) Expulsión definitiva de la institución. (7) En posgrado: retiro del título si la violación se descubre después de graduarse. La gravedad depende del tipo de violación, intencionalidad y si es primera vez o reincidencia.'
+      },
+      {
+        question: '¿Es posible usar IA y mantener la integridad académica?',
+        answer: 'SÍ, absolutamente. La integridad académica no implica no usar IA — implica ser transparente sobre cómo la usas. Si tu institución permite el uso de IA con declaración, y usas IA de forma que el trabajo intelectual fundamental siga siendo tuyo (IA como herramienta de apoyo, no como ghostwriter), estás manteniendo tu integridad académica. La clave: transparencia total sobre el uso y asegurarte de que realmente aprendiste.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Patchwriting', slug: 'que-es-patchwriting' },
+      { term: 'DeepSeek', slug: 'que-es-deepseek' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-integridad-academica' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=glosario-integridad-academica' }
+    ],
+    cta: {
+      text: 'Verificar la originalidad de tu trabajo',
+      url: '/?ref=glosario-integridad-academica'
+    }
+  },
+
+  {
+    slug: 'que-es-hallucination-ia',
+    term: 'Alucinación de IA (Hallucination)',
+    keywords: [
+      'que es alucinacion ia',
+      'hallucination ia',
+      'ia inventa informacion',
+      'chatgpt errores informacion falsa',
+      'alucinaciones modelos lenguaje'
+    ],
+    title: '¿Qué es la Alucinación de IA? Cuando ChatGPT Inventa Información',
+    description: 'Qué son las alucinaciones en modelos de IA: cuando ChatGPT, Gemini o DeepSeek inventan datos, citas o hechos que no existen. Cómo detectarlas y evitar errores académicos.',
+    h1: '¿Qué es la Alucinación de IA? Cuando la IA Inventa Información',
+    intro: 'Una de las limitaciones más peligrosas de los modelos de lenguaje como ChatGPT es su tendencia a "alucinar": inventar información, citas, estadísticas o hechos que suenan completamente plausibles pero son completamente falsos. Entender qué es la alucinación de IA y cómo detectarla es fundamental para cualquier estudiante o profesional que use IA.',
+    definition: 'Una alucinación de IA (del inglés "hallucination") es cuando un modelo de lenguaje genera información factualmente incorrecta con aparente seguridad y coherencia. El modelo no está "mintiendo" intencionalmente — simplemente predice la próxima palabra más probable basándose en patrones estadísticos, sin acceso a la verdad factual. El resultado puede ser una cita inexistente, un autor inventado, una fecha incorrecta o un hecho completamente falso presentado como cierto.',
+    characteristics: [
+      {
+        icon: '🎭',
+        title: 'Confianza Aparente',
+        description: 'La IA presenta información falsa con el mismo tono seguro que información verdadera. No hay señal visible de que el dato sea inventado.'
+      },
+      {
+        icon: '📚',
+        title: 'Citas Inventadas',
+        description: 'Uno de los problemas más comunes: la IA genera referencias bibliográficas completamente fabricadas — autores reales con títulos inexistentes, o autores y obras totalmente inventados.'
+      },
+      {
+        icon: '📊',
+        title: 'Estadísticas Falsas',
+        description: 'La IA puede generar estadísticas que suenan específicas y creíbles ("el 73.4% de...") pero que no tienen ninguna base en estudios reales.'
+      },
+      {
+        icon: '🗓️',
+        title: 'Fechas Incorrectas',
+        description: 'Eventos históricos con fechas incorrectas, leyes que no existen en la forma descrita, o precedentes judiciales inventados son formas frecuentes de alucinación.'
+      },
+      {
+        icon: '⚠️',
+        title: 'Riesgo para Trabajos Académicos',
+        description: 'Usar datos alucinados sin verificar puede resultar en trabajos con información falsa, lo que afecta la nota y la credibilidad académica.'
+      }
+    ],
+    examples: [
+      'ChatGPT cita un paper de "García y López (2019)" publicado en "Nature Medicine" que cuando buscas no existe en ninguna base de datos',
+      'Un modelo de IA afirma que "según el estudio de Harvard de 2021, el 82% de los estudiantes..." pero ese estudio no puede encontrarse',
+      'La IA describe el contenido de un libro real pero atribuye ideas que el autor nunca escribió',
+      'Un modelo asegura que una ley o normativa específica dice algo que en realidad no dice cuando lees el texto original',
+      'La IA menciona que una persona famosa dijo una cita que en realidad no dijo o nunca existió'
+    ],
+    faqs: [
+      {
+        question: '¿Por qué los modelos de IA alucinan?',
+        answer: 'Los LLM (modelos de lenguaje) no "saben" hechos — predicen qué palabras vienen después de otras basándose en patrones estadísticos de los textos con los que fueron entrenados. No tienen acceso a una base de datos de verdad factual. Cuando generan información específica (una cita, una estadística), están produciendo el tipo de texto que estadísticamente suele aparecer en ese contexto — pero sin verificar si ese contenido específico es real. El resultado es texto que suena correcto pero puede ser completamente inventado.'
+      },
+      {
+        question: '¿Cómo puedo detectar si la IA me dio información alucinada?',
+        answer: 'MÉTODOS DE VERIFICACIÓN: (1) Busca la cita/referencia específica en Google Scholar, PubMed o Scopus — si no aparece, es probablemente inventada. (2) Busca el libro o artículo mencionado en el catálogo de una biblioteca universitaria. (3) Busca la estadística + su fuente supuesta — ¿existe ese estudio? (4) Para leyes o sentencias, busca el texto original en fuentes oficiales. REGLA DE ORO: Nunca incluyas en un trabajo académico datos, citas o estadísticas que obtuviste de IA sin verificarlos en fuentes primarias.'
+      },
+      {
+        question: '¿Todos los modelos de IA alucinan igualmente?',
+        answer: 'NO. Las tasas de alucinación varían significativamente. Los modelos más recientes y grandes (GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro) alucinan menos que modelos más pequeños o antiguos. Los modelos con acceso a internet en tiempo real (Gemini, ChatGPT con búsqueda) alucinan menos en hechos recientes. Sin embargo, NINGÚN modelo está libre de alucinaciones — todos pueden inventar información en algún momento, especialmente para datos específicos como citas bibliográficas.'
+      },
+      {
+        question: '¿Qué pasa si entrego un trabajo con información alucinada?',
+        answer: 'CONSECUENCIAS POSIBLES: (1) El profesor puede verificar las fuentes y encontrar que no existen — esto levanta sospecha de plagio o uso indebido de IA. (2) Las inexactitudes factuales afectan la calidad y nota del trabajo. (3) En disciplinas como medicina, derecho o ingeniería, la información falsa puede tener implicaciones más serias. PROTECCIÓN: Verifica SIEMPRE cualquier dato, cita o estadística que obtuviste de IA antes de incluirlo en un trabajo académico.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' },
+      { term: 'DeepSeek', slug: 'que-es-deepseek' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-hallucination' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=glosario-hallucination' }
+    ],
+    cta: {
+      text: 'Verificar si un texto fue generado por IA',
+      url: '/?ref=glosario-hallucination'
+    }
+  },
+
+  {
+    slug: 'que-es-perplexity-ai',
+    term: 'Perplexity AI',
+    keywords: [
+      'que es perplexity ai',
+      'perplexity ai explicacion',
+      'perplexity vs chatgpt',
+      'perplexity buscador ia',
+      'perplexity ai estudiantes'
+    ],
+    title: '¿Qué es Perplexity AI? El Motor de Búsqueda con IA 2025',
+    description: 'Qué es Perplexity AI, cómo funciona como motor de búsqueda con IA, cómo se diferencia de ChatGPT y cómo usarlo responsablemente para investigación académica.',
+    h1: '¿Qué es Perplexity AI? El Buscador con IA que Usan los Estudiantes',
+    intro: 'Perplexity AI es una herramienta que combina la búsqueda en internet con la síntesis de inteligencia artificial. A diferencia de ChatGPT, Perplexity siempre accede a internet en tiempo real y cita sus fuentes, lo que lo hace especialmente útil para investigación académica. Sin embargo, sus limitaciones y riesgos son importantes de entender antes de usarlo.',
+    definition: 'Perplexity AI es un motor de búsqueda conversacional impulsado por inteligencia artificial, fundado en 2022. Funciona realizando búsquedas en internet en tiempo real, sintetizando la información encontrada y presentándola en forma de respuestas conversacionales con citas de las fuentes originales. A diferencia de los chatbots de IA tradicionales, no depende exclusivamente de su entrenamiento previo sino que accede a información actualizada.',
+    characteristics: [
+      {
+        icon: '🔍',
+        title: 'Búsqueda en Tiempo Real',
+        description: 'Accede a internet en tiempo real para responder preguntas, por lo que puede dar información actualizada sobre eventos recientes.'
+      },
+      {
+        icon: '📎',
+        title: 'Citas de Fuentes',
+        description: 'Cada respuesta incluye las fuentes donde encontró la información, permitiendo verificar y profundizar. Esto lo diferencia de ChatGPT sin búsqueda.'
+      },
+      {
+        icon: '💬',
+        title: 'Interfaz Conversacional',
+        description: 'A diferencia de Google, puedes hacer preguntas en lenguaje natural y hacer seguimiento con preguntas adicionales.'
+      },
+      {
+        icon: '🆓',
+        title: 'Plan Gratuito Funcional',
+        description: 'El plan gratuito permite búsquedas ilimitadas, aunque con algunas limitaciones en modelos avanzados.'
+      },
+      {
+        icon: '⚠️',
+        title: 'Alucinaciones Posibles',
+        description: 'A pesar de citar fuentes, Perplexity puede cometer errores al sintetizar la información. Las citas no garantizan que la síntesis sea precisa.'
+      }
+    ],
+    examples: [
+      'Un estudiante usa Perplexity para hacer una búsqueda rápida sobre las últimas investigaciones sobre cambio climático, con fuentes incluidas',
+      'Una estudiante pregunta "¿cuáles son los requisitos para el TFG en España 2025?" y obtiene respuesta actualizada con referencias',
+      'Un investigador usa Perplexity para encontrar papers recientes sobre su tema antes de hacer la búsqueda formal en Google Scholar',
+      'Perplexity puede usarse para verificar si una estadística que dio ChatGPT es real buscándola en fuentes actuales'
+    ],
+    faqs: [
+      {
+        question: '¿Perplexity AI es mejor que ChatGPT para investigación académica?',
+        answer: 'Para INVESTIGACIÓN que requiere información actualizada: Perplexity tiene ventajas claras por su acceso a internet en tiempo real y la inclusión de citas. Para RAZONAMIENTO COMPLEJO, escritura o análisis: ChatGPT (especialmente GPT-4o) sigue siendo superior. La estrategia óptima para muchos investigadores: usar Perplexity para encontrar fuentes actuales, luego usar ChatGPT o Claude para análisis y síntesis más profundos.'
+      },
+      {
+        question: '¿Las fuentes que cita Perplexity son confiables?',
+        answer: 'PARCIALMENTE. Perplexity cita las fuentes que encuentra en internet — que pueden incluir artículos académicos revisados por pares, pero también blogs, noticias o Wikipedia. ADEMÁS, el modelo puede malinterpretar o sintetizar incorrectamente lo que esas fuentes dicen. RECOMENDACIÓN: Siempre haz clic en las fuentes citadas y lee el texto original antes de usarlo en un trabajo académico. Las fuentes son el punto de partida, no la verificación final.'
+      },
+      {
+        question: '¿Un detector de IA detecta texto de Perplexity?',
+        answer: 'SÍ. Aunque Perplexity accede a internet y cita fuentes, el texto que genera sigue siendo texto de IA con los patrones estadísticos característicos. Los detectores como DetectordeIA.ai analizan los patrones lingüísticos del texto, no su origen. Si copias una respuesta de Perplexity como tu propio texto, un detector de IA lo identificará con alta probabilidad.'
+      },
+      {
+        question: '¿Puedo citar a Perplexity AI como fuente en mis trabajos?',
+        answer: 'NO directamente. Las respuestas de Perplexity no son fuentes académicas — son síntesis de otras fuentes. Lo que SÍ debes hacer: citar las fuentes originales que Perplexity citó (que puedes verificar haciendo clic en ellas). Si usaste Perplexity para encontrar esas fuentes, puedes mencionarlo en tu declaración de uso de herramientas de IA, pero las referencias de tu trabajo deben ser las fuentes primarias, no Perplexity.'
+      }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'Alucinación de IA', slug: 'que-es-hallucination-ia' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-perplexity' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=glosario-perplexity' }
+    ],
+    cta: {
+      text: 'Verificar si un texto fue generado por IA',
+      url: '/?ref=glosario-perplexity'
+    }
   }
 ];

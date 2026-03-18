@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     siteName: 'DetectordeIA.ai',
     images: [
       {
-        url: 'https://detectordeia.ai/logo.png',
-        width: 800,
-        height: 600,
+        url: 'https://detectordeia.ai/og-default.png',
+        width: 1200,
+        height: 630,
         alt: 'Identificador de IA - DetectordeIA.ai',
       },
     ],
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Identificador de IA Gratis en Español | DetectordeIA.ai',
     description: 'Identifica si un texto fue escrito por IA. Gratis, preciso y privado.',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
 };
 

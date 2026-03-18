@@ -135,6 +135,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Hub de universidades
+  const universitiesHub: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/universidades`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
+
+  // Páginas regionales (targeting geográfico)
+  const regionalPages: MetadataRoute.Sitemap = ['es', 'mx', 'co', 'ar', 'cl', 'pe'].map((region) => ({
+    url: `${baseUrl}/${region}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
   return [
     ...staticPages,
     ...detectorSynonymPages,
@@ -145,5 +163,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...glossaryPages,
     ...guidePages,
     ...universityPages,
+    ...universitiesHub,
+    ...regionalPages,
   ];
 }

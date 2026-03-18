@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'Herramienta gratuita para detectar si un texto fue generado por IA en España. Analiza textos en español con alta precisión. Sin registro, 100% privado.',
     locale: 'es_ES',
     type: 'website',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
   alternates: {
     canonical: 'https://detectordeia.ai/espana',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: 'Herramienta gratuita para detectar si un texto fue generado por IA en España. Analiza textos en español con alta precisión. Sin registro, 100% privado.',
     site: '@detectordeia',
     creator: '@detectordeia',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
 };
 

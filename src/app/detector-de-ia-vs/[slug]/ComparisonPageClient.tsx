@@ -22,12 +22,42 @@ export default function ComparisonPageClient({ comparison }: Props) {
     })),
   };
 
+  // JSON-LD Schema para BreadcrumbList (SEO — rich breadcrumbs en SERPs)
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Inicio',
+        item: 'https://detectordeia.ai',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Comparativas',
+        item: 'https://detectordeia.ai/detector-de-ia-vs',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: `DetectordeIA vs ${comparison.competitorName}`,
+        item: `https://detectordeia.ai/detector-de-ia-vs/${comparison.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen pb-10 px-2">
       {/* JSON-LD para SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* HERO SECTION */}

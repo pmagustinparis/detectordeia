@@ -37,9 +37,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'DetectordeIA.ai',
       images: [
         {
-          url: 'https://detectordeia.ai/logo.png',
-          width: 800,
-          height: 600,
+          url: 'https://detectordeia.ai/og-default.png',
+          width: 1200,
+          height: 630,
           alt: term.term,
         },
       ],
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: term.title,
       description: term.description,
-      images: ['https://detectordeia.ai/logo.png'],
+      images: ['https://detectordeia.ai/og-default.png'],
     },
   };
 }

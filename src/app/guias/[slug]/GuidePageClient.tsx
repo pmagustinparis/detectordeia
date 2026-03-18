@@ -67,6 +67,32 @@ export default function GuidePageClient({ guide }: Props) {
     dateModified: '2025-01-14',
   };
 
+  // JSON-LD Schema para BreadcrumbList (SEO — rich breadcrumbs en SERPs)
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Inicio',
+        item: 'https://detectordeia.ai',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Guías',
+        item: 'https://detectordeia.ai/guias',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: guide.title,
+        item: `https://detectordeia.ai/guias/${guide.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen pb-10 px-2">
       {/* JSON-LD para SEO */}
@@ -81,6 +107,10 @@ export default function GuidePageClient({ guide }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* HERO SECTION */}

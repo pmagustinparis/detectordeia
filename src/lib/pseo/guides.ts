@@ -1737,5 +1737,871 @@ export const guides: GuidePage[] = [
       text: 'Verificar calidad de trabajos',
       url: '/?ref=guia-gestion-tiempo'
     }
+  },
+
+  {
+    slug: 'mejores-practicas-uso-ia-estudiantes',
+    title: 'Mejores Prácticas de Uso de IA para Estudiantes',
+    keywords: [
+      'mejores practicas ia estudiantes',
+      'como usar ia correctamente estudiantes',
+      'guia ia universitarios',
+      'ia estudios practicas recomendadas',
+      'uso responsable ia educacion'
+    ],
+    metaTitle: 'Mejores Prácticas de IA para Estudiantes Universitarios 2025',
+    metaDescription: 'Guía completa de mejores prácticas para usar IA en tus estudios: qué hacer, qué evitar, cómo mejorar tu rendimiento sin comprometer tu integridad académica.',
+    h1: 'Mejores Prácticas de Uso de IA para Estudiantes: Guía Completa',
+    intro: 'La IA es ya una herramienta cotidiana en la vida estudiantil. La pregunta no es si usarla, sino cómo usarla bien. Esta guía reúne las mejores prácticas comprobadas para que los estudiantes universitarios saquen el máximo provecho de herramientas como ChatGPT, Claude o Gemini sin poner en riesgo su integridad académica ni su aprendizaje real.',
+    overview: 'Esta guía cubre: (1) Principios base del uso ético de IA, (2) Qué usos potencian tu aprendizaje, (3) Qué usos te perjudican a largo plazo, (4) Cómo documentar y declarar uso de IA, (5) Cómo mantener tu autonomía intelectual.',
+    steps: [
+      {
+        number: 1,
+        title: 'Conoce la Política de IA de Tu Institución Antes de Empezar',
+        description: 'Cada universidad y cada profesor tiene una política diferente sobre IA. Antes de usar cualquier herramienta de IA en una tarea, verifica: (1) El syllabus del curso — ¿menciona IA?, (2) El código de honor académico de tu universidad, (3) Pregunta directamente al profesor si hay ambigüedad. No asumas que lo que está permitido en un curso lo está en otro.',
+        tips: [
+          'Guarda capturas de pantalla de las políticas como referencia',
+          'Si el syllabus no menciona IA, pregunta explícitamente al profesor',
+          'Las políticas cambian cada semestre — verifica al inicio de cada curso'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Usa IA como Tutor, No como Ghostwriter',
+        description: 'La distinción más importante: IA como tutor te ayuda a APRENDER (explica conceptos, da feedback, sugiere recursos). IA como ghostwriter HACE el trabajo por ti. El primer uso desarrolla tus habilidades. El segundo las atrofia y viola la integridad académica. Pregúntate siempre: "¿Estoy aprendiendo algo con este uso de IA?" Si la respuesta es no, reconsidéralo.',
+        tips: [
+          'Pide a IA que te explique por qué algo es correcto, no solo que te dé la respuesta',
+          'Usa IA para verificar TU trabajo, no para generar el trabajo',
+          'Si IA hace el ensayo y tú solo lo copias, no aprenderás para el examen'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Aplica la Regla de la Transparencia',
+        description: 'Antes de usar IA de cualquier forma para una tarea, hazte esta pregunta: "¿Me sentiría cómodo diciendo exactamente cómo usé IA a mi profesor?" Si la respuesta es NO, ese uso probablemente no es apropiado. Si la respuesta es SÍ, probablemente estás en terreno ético. Esta regla simple elimina la mayoría de los dilemas.',
+        tips: [
+          'La transparencia es el principio más robusto de la integridad académica',
+          'Cuando dudes, declara. Sobre-declarar siempre es mejor que sub-declarar',
+          'Documenta siempre para qué usaste IA (aunque no te lo pidan)'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Practica el "Primero Yo, Luego IA"',
+        description: 'Para tareas importantes, intenta primero sin IA: escribe el borrador, resuelve el problema, construye el argumento. DESPUÉS usa IA para mejorar, verificar o recibir feedback. Este orden garantiza que el trabajo intelectual fundamental es tuyo. Si empiezas con IA, dependes de su estructura y pierdes la oportunidad de desarrollar tu propio pensamiento.',
+        tips: [
+          'Programa 30 minutos de trabajo propio antes de abrir cualquier herramienta de IA',
+          'Comparar tu borrador con la sugerencia de IA enseña mucho sobre escritura',
+          'En la metodología "primero yo" el trabajo es genuinamente tuyo aunque uses IA después'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Verifica Siempre la Información que Genera la IA',
+        description: 'Los modelos de IA cometen errores llamados "alucinaciones": inventan citas, estadísticas, fechas o datos que suenan plausibles pero son falsos. NUNCA uses información de IA sin verificarla en fuentes primarias. Especialmente: (1) citas bibliográficas (inventadas con frecuencia), (2) estadísticas y porcentajes, (3) nombres de autores o expertos, (4) fechas históricas.',
+        tips: [
+          'Pide a IA que cite sus fuentes — luego búscalas tú para verificar que existen',
+          'Usa IA para encontrar pistas sobre dónde buscar, no como fuente final',
+          'Nunca cites a ChatGPT como fuente en un trabajo académico sin verificar los datos'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Mantén tu Voz y Desarrolla Tu Pensamiento Propio',
+        description: 'El mayor riesgo del uso excesivo de IA es la uniformización del pensamiento. Si todos usan IA para redactar, todos producen textos que suenan igual. Desarrolla tu voz académica propia: tu manera de argumentar, tu estilo de escritura, tus perspectivas originales. Usa IA para refinamiento, no para construcción desde cero. Tus profesores notarán la diferencia.',
+        tips: [
+          'Lee mucho en tu campo — es la mejor manera de desarrollar voz propia',
+          'Escribe borradores sin corrección inmediata de IA para desarrollar fluidez',
+          'El pensamiento crítico propio es lo que diferencia a los buenos estudiantes'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Copiar respuestas de IA sin procesar ni verificar',
+        solution: 'Usa las respuestas de IA como punto de partida, no como producto final. Reformula, verifica hechos, agrega tu perspectiva. El texto final debe ser tuyo.'
+      },
+      {
+        mistake: 'Usar IA para todo, incluso tareas simples que podrías hacer en 10 minutos',
+        solution: 'La IA no es necesaria para cada tarea. Para tareas breves o de bajo riesgo, hacerlas tú mismo fortalece habilidades y es más rápido que iterar con IA.'
+      },
+      {
+        mistake: 'Confiar en que la IA sabe más que los recursos académicos especializados',
+        solution: 'Para investigación académica seria, usa bases de datos especializadas (Google Scholar, JSTOR, Scopus). La IA tiene conocimiento general, no acceso a papers recientes ni datos actualizados.'
+      },
+      {
+        mistake: 'Ignorar las alucinaciones y citar datos de IA sin verificar',
+        solution: 'Verifica SIEMPRE los datos específicos que genera la IA (citas, estadísticas, fechas). Los errores factuales de IA en trabajos académicos pueden afectar gravemente tu nota.'
+      },
+      {
+        mistake: 'Usar IA justo antes del deadline en lugar de durante el proceso',
+        solution: 'Integra IA en el proceso temprano: para brainstorming inicial, para entender conceptos, para revisar borradores. Usarla solo al final genera trabajo de menor calidad.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cuáles son los usos de IA más recomendados para estudiantes?',
+        answer: 'USOS DE ALTO VALOR: (1) Explicar conceptos difíciles con ejemplos adaptados a tu nivel, (2) Generar preguntas de práctica sobre un tema para autoevaluarte, (3) Recibir feedback sobre estructura y claridad de tus borradores, (4) Resumir textos largos para decidir si vale la pena leer el original completo, (5) Traducir o clarificar terminología técnica en idioma extranjero, (6) Brainstorming de ideas que luego TÚ desarrollas y filtras.'
+      },
+      {
+        question: '¿Qué usos de IA debo evitar como estudiante?',
+        answer: 'USOS DE ALTO RIESGO: (1) Generar ensayos completos que entregas como tuyos, (2) Resolver exámenes o ejercicios evaluados sin declaración, (3) Copiar código generado por IA en proyectos de programación sin entenderlo, (4) Usar humanizadores para disfrazar texto de IA como propio, (5) Citar fuentes que IA inventó sin verificar que existen. Estos usos violan integridad académica Y te impiden aprender las habilidades que evaluarán después.'
+      },
+      {
+        question: '¿Cómo declaro el uso de IA en mis trabajos?',
+        answer: 'FORMATO RECOMENDADO: Añade una nota al final del trabajo: "Declaración de uso de IA: Utilicé [herramienta] para [propósito específico: p.ej., recibir feedback sobre estructura del borrador, explicar el concepto X, generar ideas iniciales]. Todo el contenido final fue escrito y verificado por mí." Sé específico sobre qué usaste y para qué. Si no sabes qué formato pide tu institución, usa este y ajusta si el profesor lo solicita.'
+      },
+      {
+        question: '¿Usar IA me hace menos competitivo en el mercado laboral?',
+        answer: 'AL CONTRARIO: Saber usar IA efectivamente es ya una habilidad laboral valorada. La clave es que seas competente CON IA, no que IA reemplace tu competencia. Quien sepa hacer las preguntas correctas a IA, verificar sus outputs, y combinar sus capacidades con pensamiento propio tendrá ventaja. Lo que NO quieres es depender tanto de IA que no puedas trabajar sin ella — eso sí limita tu valor profesional.'
+      },
+      {
+        question: '¿Es diferente usar IA para código que para texto en humanidades?',
+        answer: 'SÍ, con matices. En PROGRAMACIÓN: Usar IA para generar código es más aceptado si entiendes el código y puedes explicarlo. Muchos profesores permiten IA para código siempre que entiendas cada línea. En HUMANIDADES: La producción de ideas y argumentos propios es central — IA como ayuda en redacción es más común, pero la sustancia intelectual debe ser tuya. En ambos casos: entiende lo que entregas y sé capaz de defenderlo.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Verificar la Originalidad de un Texto', slug: 'como-verificar-originalidad-texto' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-mejores-practicas-ia' },
+      { name: 'Humanizador de Texto IA', url: '/humanizador?ref=guia-mejores-practicas-ia' }
+    ],
+    cta: {
+      text: 'Verificar si tu texto parece escrito por IA',
+      url: '/?ref=guia-mejores-practicas-ia'
+    }
+  },
+
+  {
+    slug: 'como-verificar-originalidad-texto',
+    title: 'Cómo Verificar la Originalidad de un Texto',
+    keywords: [
+      'verificar originalidad texto',
+      'como comprobar originalidad texto',
+      'verificar plagio texto online',
+      'comprobar originalidad trabajo academico',
+      'herramientas verificar originalidad'
+    ],
+    metaTitle: 'Cómo Verificar la Originalidad de un Texto: Guía Completa 2025',
+    metaDescription: 'Guía paso a paso para verificar la originalidad de cualquier texto. Herramientas gratuitas y de pago, cómo interpretar los resultados, qué hacer si se detecta plagio o IA.',
+    h1: 'Cómo Verificar la Originalidad de un Texto: Métodos y Herramientas',
+    intro: '¿Cómo saber si un texto es original? Tanto si eres estudiante que quiere verificar su propio trabajo antes de entregarlo, como si eres profesor que necesita evaluar la autenticidad de un texto, o un editor que quiere asegurarse de que el contenido es genuino, esta guía cubre todos los métodos y herramientas disponibles para verificar la originalidad de un texto en 2025.',
+    overview: 'Esta guía cubre: (1) Qué significa "originalidad" en el contexto académico y editorial, (2) Herramientas gratuitas para verificar plagio, (3) Herramientas para detectar texto generado por IA, (4) Cómo interpretar los resultados, (5) Qué hacer si se detecta plagio o IA.',
+    steps: [
+      {
+        number: 1,
+        title: 'Entiende Qué Significa Originalidad en Tu Contexto',
+        description: 'La "originalidad" tiene diferentes significados según el contexto: (1) ACADÉMICO: El texto fue escrito por ti, las ideas son tuyas o están correctamente atribuidas, y no fue generado por IA sin declarar. (2) EDITORIAL/SEO: El contenido no aparece publicado en otro sitio web (contenido duplicado). (3) PERIODÍSTICO: Las ideas y la expresión son del autor, no copiadas de otros medios. Define qué tipo de originalidad necesitas verificar antes de elegir herramienta.',
+        tips: [
+          'Para académico: necesitas verificar tanto plagio como detección de IA',
+          'Para SEO: lo importante es la unicidad del contenido en la web',
+          'Para editorial: combina herramientas de plagio con revisión humana'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Usa un Detector de IA para Identificar Contenido Generado por Inteligencia Artificial',
+        description: 'Si tu preocupación es si el texto fue generado total o parcialmente por IA (ChatGPT, Claude, Gemini, etc.), necesitas un detector de IA específico. Estos analizan patrones lingüísticos — fluidez artificial, uniformidad de estructura, ausencia de marcadores de autenticidad humana — para determinar la probabilidad de que el texto sea de IA. Los detectores de IA son diferentes a los detectores de plagio.',
+        tips: [
+          'Pega el texto completo para mejor precisión — fragmentos cortos son menos fiables',
+          'Ningún detector es 100% preciso — úsalos como indicador, no como veredicto definitivo',
+          'Los textos humanizados con herramientas específicas pueden engañar algunos detectores'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Verifica el Plagio Textual con Herramientas Especializadas',
+        description: 'El plagio textual (copiar texto de otras fuentes sin citar) se detecta con herramientas como Turnitin (institucional), Copyscape (web), o buscadores específicos. Estas herramientas comparan el texto contra bases de datos de contenido existente. Son diferentes a los detectores de IA. Un texto puede ser original (no plagio) pero generado por IA, o puede ser plagio de un texto humano. Verifica ambas dimensiones por separado.',
+        tips: [
+          'Turnitin es el estándar institucional pero no todas las universidades lo tienen',
+          'Google "buscar imagen" también detecta texto duplicado en imágenes',
+          'Para webs: Copyscape o Siteliner son efectivos para detectar contenido duplicado'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Interpreta los Resultados Correctamente',
+        description: 'Los resultados de los detectores de originalidad requieren interpretación: (1) DETECCIÓN DE IA: Un 70% de probabilidad de IA no significa necesariamente que el texto fue generado por IA. Textos muy técnicos, listas o contenido formal puntúan más alto. Usa como indicador, no como prueba. (2) PLAGIO: Un 15% de similitud puede ser aceptable si incluye citas y referencias bibliográficas estándar. Analiza QUÉ partes coinciden — citas propias y terminología técnica no son plagio. (3) CONTEXTO: Siempre interpreta en contexto del tipo de texto.',
+        tips: [
+          'Los falsos positivos en detección de IA son comunes en textos técnicos y académicos',
+          'Similitud en detectores de plagio ≠ plagio si son citas correctamente atribuidas',
+          'Solicita siempre un reporte detallado, no solo el porcentaje'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Actúa Según los Resultados',
+        description: 'Si tu propio texto muestra señales de plagio o IA: (1) REVISA FUENTES: Identifica qué fragmentos coinciden y por qué. Si son citas legítimas, asegúrate de que están correctamente formateadas. (2) PARAFRASEA: Si copiaste sin querer, reescribe el fragmento con tus propias palabras y cita la fuente. (3) HUMANIZA LEGÍTIMAMENTE: Si el detector de IA señala tu trabajo como artificial, revisa si tu escritura es demasiado formal o mecánica. Agrega variaciones de estilo y marcadores de autenticidad. (4) DECLARA: Si usaste IA, decláralo según las pautas de tu institución.',
+        tips: [
+          'La herramienta Parafraseador puede ayudarte a reescribir fragmentos problemáticos con tus palabras',
+          'Revisa tu texto en voz alta — el texto de IA suena diferente al leerse en voz alta',
+          'Pide feedback a un compañero antes de entregarlo — los humanos detectan IA intuitivamente'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Establece un Proceso de Verificación Rutinario',
+        description: 'No esperes a tener problemas para verificar originalidad. Establece una rutina: (1) ANTES DE ENTREGAR: Pasa el detector de IA + revisor de plagio a cada trabajo final. (2) MIENTRAS ESCRIBES: Anota las fuentes que consultas para no olvidar citar. (3) DESPUÉS DE REVISAR: Si editaste con ayuda de IA, vuelve a verificar el resultado. Un flujo de trabajo consistente elimina los accidentes y genera hábitos de integridad académica.',
+        tips: [
+          'Crea un checklist pre-entrega: originalidad, citas, formato, longitud',
+          'Los 5 minutos de verificación pueden evitar consecuencias académicas graves',
+          'Guarda los reportes de originalidad como evidencia de tu buena fe'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Creer que cambiar palabras sinónimas es suficiente para evitar el plagio',
+        solution: 'El plagio de ideas (patchwriting) existe aunque cambies palabras. Si reproduces la estructura argumentativa de otro sin citar, es plagio. Reformula completamente las ideas y cita la fuente original.'
+      },
+      {
+        mistake: 'Usar solo un tipo de herramienta (solo detector de plagio O solo detector de IA)',
+        solution: 'Plagio e IA son problemas diferentes. Un texto puede ser original (no está copiado de ningún lado) pero generado por IA. Usa ambos tipos de herramientas para una verificación completa.'
+      },
+      {
+        mistake: 'Confiar ciegamente en el porcentaje sin leer el reporte detallado',
+        solution: 'Un 20% de similitud puede ser completamente legítimo si son citas bibliográficas y referencias estándar. Un 5% puede ser problemático si ese 5% es el argumento central copiado literalmente. Lee el reporte completo.'
+      },
+      {
+        mistake: 'Verificar solo antes de entregar, no durante el proceso de escritura',
+        solution: 'Verifica parcialmente mientras escribes, especialmente si consultas muchas fuentes. Es más fácil corregir un problema de citación cuando el texto es fresco que revisar todo al final.'
+      },
+      {
+        mistake: 'Pensar que los detectores de IA son infalibles',
+        solution: 'Los detectores de IA tienen tasas de error (falsos positivos y falsos negativos). Úsalos como una señal de alerta, no como un veredicto definitivo. La evaluación humana sigue siendo necesaria.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Qué herramientas gratuitas existen para verificar originalidad de texto?',
+        answer: 'DETECTORES DE IA GRATUITOS: DetectordeIA.ai (optimizado para español), ZeroGPT (gratuito, inglés principalmente), GPTZero (plan gratuito limitado). VERIFICADORES DE PLAGIO GRATUITOS: Duplichecker, Small SEO Tools, PaperRater (para trabajos académicos), Plagiarism Detector. OPCIONES DE PAGO CON PRUEBA GRATUITA: Turnitin (institucional, no individual), Copyscape (web), Copyleaks. Para uso académico en español, DetectordeIA.ai es la opción más recomendada por su optimización para el idioma.'
+      },
+      {
+        question: '¿Qué porcentaje de similitud es aceptable en un trabajo académico?',
+        answer: 'DEPENDE DE LA INSTITUCIÓN: No hay un estándar universal. TÍPICAMENTE ACEPTABLE: <15-20% de similitud cuando incluye citas, bibliografía y terminología técnica. ZONA GRIS: 20-30%, requiere análisis de qué partes coinciden. PROBLEMÁTICO: >30% sin justificación clara. IMPORTANTE: El porcentaje no lo es todo. Un 5% de similitud puede ser grave si ese fragmento es el argumento central sin citar. Un 25% puede ser aceptable si son citas legítimas y referencias. Consulta la política específica de tu institución.'
+      },
+      {
+        question: '¿Puede un texto escrito por humano salir con alta probabilidad de IA en los detectores?',
+        answer: 'SÍ, especialmente: textos técnicos muy formales, listas y enumeraciones, instrucciones paso a paso, textos de traducción directa, textos de autores no nativos que usan estructuras muy formales, resúmenes ejecutivos. Los detectores de IA tienen falsos positivos. Si tu texto es humano y sale con alta probabilidad de IA, añade más variación en estructura de oraciones, usa vocabulario más personal, incluye anécdotas o ejemplos específicos, y diversifica la longitud de tus oraciones.'
+      },
+      {
+        question: '¿Cómo verifico la originalidad de un texto en español?',
+        answer: 'Para ESPAÑOL ESPECÍFICAMENTE: DetectordeIA.ai está optimizado para español y detecta tanto patrones de IA como plagio en texto en español. Para plagio: Duplichecker y Small SEO Tools funcionan en español. Para plagio académico institucional: Turnitin (si tu institución lo tiene) es el estándar. CONSEJO: Las herramientas optimizadas para inglés son menos precisas en español — usa siempre herramientas que declaren soporte explícito para español.'
+      },
+      {
+        question: '¿Puedo verificar la originalidad de un PDF?',
+        answer: 'DEPENDE DE LA HERRAMIENTA: Turnitin acepta PDF directamente. DetectordeIA.ai actualmente requiere pegar el texto (copia el texto del PDF y pégalo). Alternativa: usa herramientas de extracción de texto de PDF (Adobe Reader, Smallpdf) y luego pega el texto en el detector. Para PDFs escaneados (imágenes de texto): necesitas primero un OCR (reconocimiento óptico de caracteres) como Adobe Acrobat Pro o Google Drive que puede abrir PDFs escaneados y extraer texto.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Mejores Prácticas de IA para Estudiantes', slug: 'mejores-practicas-uso-ia-estudiantes' },
+      { title: 'Cómo Citar Fuentes en Formato APA al Parafrasear', slug: 'como-citar-fuentes-apa-parafraseo' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-verificar-originalidad' },
+      { name: 'Parafraseador sin Plagio', url: '/parafrasear-textos-online-gratis?ref=guia-verificar-originalidad' }
+    ],
+    cta: {
+      text: 'Verificar originalidad ahora — gratis',
+      url: '/?ref=guia-verificar-originalidad'
+    }
+  },
+
+  {
+    slug: 'como-detectar-texto-ia-sin-herramientas',
+    title: 'Cómo Detectar Texto de IA Sin Herramientas',
+    keywords: [
+      'detectar texto ia sin herramientas',
+      'como saber si texto es ia',
+      'identificar chatgpt sin detector',
+      'señales texto generado ia',
+      'detectar ia manualmente'
+    ],
+    metaTitle: 'Cómo Detectar Texto de IA Sin Herramientas: Señales y Técnicas 2025',
+    metaDescription: 'Aprende a identificar texto generado por IA (ChatGPT, Claude, Gemini) sin usar herramientas. Señales lingüísticas, patrones estructurales y técnicas para detectar IA manualmente.',
+    h1: 'Cómo Detectar Texto de IA Sin Herramientas: Guía Visual y Práctica',
+    intro: 'Los detectores de IA automáticos son útiles, pero saber leer los patrones del texto te da una capa adicional de comprensión. Tanto si eres profesor, editor o simplemente curioso, estas técnicas te permiten identificar texto generado por IA observando sus características lingüísticas y estructurales características.',
+    overview: 'Esta guía cubre: (1) Las señales lingüísticas más reveladoras del texto de IA, (2) Patrones estructurales típicos de ChatGPT y otros modelos, (3) Cómo distinguir texto de IA en diferentes contextos académicos, (4) Qué hacer cuando detectas posible texto de IA, (5) Cuándo usar herramientas automáticas en complemento.',
+    steps: [
+      {
+        number: 1,
+        title: 'Identifica las Señales Lingüísticas Más Comunes',
+        description: 'El texto generado por IA tiene patrones lingüísticos reconocibles: (1) FRASES DE TRANSICIÓN FORMULAICAS: "En resumen", "Es importante destacar", "Cabe mencionar", "En conclusión" usadas de forma mecánica. (2) ORACIONES PERFECTAMENTE BALANCEADAS: Párrafos con longitud casi idéntica, sin variación natural. (3) VOCABULARIO CONSISTENTEMENTE FORMAL: Sin coloquialismos, jerga o variaciones de registro. (4) AUSENCIA DE OPINIONES PERSONALES: Texto que evita tomar posición o que cuando lo hace lo hace de forma genérica. (5) PRECISIÓN UNIFORME: No hay partes donde el autor "no esté seguro" o use aproximaciones.',
+        tips: [
+          'Lee el texto en voz alta — el texto de IA tiene un ritmo artificial que se percibe al leerlo',
+          'Compara con textos conocidos del mismo autor — ¿el estilo es consistente?',
+          'Busca ausencia de anécdotas personales o ejemplos específicos de experiencia propia'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Analiza la Estructura del Texto',
+        description: 'La estructura es uno de los indicadores más fiables: (1) ESTRUCTURA DE LISTA PERFECTA: La IA tiende a organizar todo en puntos numerados o con viñetas, incluso cuando no es necesario. (2) SECCIONES EQUILIBRADAS: Cada sección tiene aproximadamente la misma longitud y desarrollo, sin áreas donde el autor tiene más profundidad que otras. (3) COBERTURA AMPLIA SIN PROFUNDIDAD: El texto menciona muchos aspectos pero no profundiza genuinamente en ninguno. (4) CONCLUSIÓN QUE RESUME LITERALMENTE: Las conclusiones de IA frecuentemente resumen punto por punto lo ya dicho, sin agregar perspectiva nueva.',
+        tips: [
+          'Un texto humano experto tiene desequilibrios: se extiende en lo que le apasiona o conoce mejor',
+          'La IA raramente dice "No lo sé" o "Es un tema complejo sin respuesta clara"',
+          'Los textos de IA típicamente responden todas las preguntas con seguridad excesiva'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Busca Ausencia de Especificidad',
+        description: 'Los textos humanos de calidad tienen detalles específicos; los de IA tienden a la generalización: (1) CIFRAS Y DATOS: La IA inventa estadísticas que suenan plausibles pero son vagas ("Según estudios, el 70% de los estudiantes..."). Un humano citaría la fuente específica. (2) NOMBRES PROPIOS: Los textos humanos referencian personas, lugares, instituciones concretas. La IA usa referencias genéricas. (3) FECHAS Y TIEMPO: La IA tiende a decir "recientemente" o "en los últimos años" en lugar de fechas específicas. (4) EJEMPLOS: Los ejemplos de IA son genéricos y "de manual"; los humanos usan casos reales y experiencias propias.',
+        tips: [
+          'Busca un dato específico y verifica si existe — la IA frecuentemente inventa estadísticas',
+          'Pregunta: ¿Cuándo fue escrito esto? Si no hay ninguna pista temporal específica, es señal',
+          'La ausencia de citas concretas verificables es un indicador importante'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Evalúa la Voz y el Tono',
+        description: 'La voz humana tiene irregularidades que la IA difícilmente replica: (1) HUMOR Y IRONÍA: La IA tiene dificultad con el humor sutil, la ironía y el sarcasmo contextual. Si el texto pretende ser informal pero el humor suena forzado, es señal. (2) EMOCIONES AUTÉNTICAS: Los textos humanos tienen momentos de entusiasmo real, frustración o duda que se perciben. La IA simula emociones de forma uniforme. (3) DIGRESIONES CONTROLADAS: Los humanos se desvían brevemente y vuelven al tema; la IA mantiene foco perfecto en todo momento. (4) CONTRADICCIONES MENORES: Los humanos a veces se contradicen ligeramente al hablar. La IA es internamente perfectamente consistente.',
+        tips: [
+          'Un buen texto humano tiene "personalidad" — reconocerías al autor entre 100 textos',
+          'El texto de IA suena "neutral" de forma artificial — no tiene preferencias ni vicios de estilo',
+          'La ausencia total de errores tipográficos menores también puede ser señal en textos informales'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Usa el Test de la Pregunta Incómoda',
+        description: 'Una técnica efectiva: imagina una pregunta incómoda relacionada con el tema y verifica si el texto la aborda. Los textos humanos de calidad suelen anticipar objeciones y abordarlas; los de IA tienden a evitar la complejidad. También puedes buscar: (1) POSICIONES CLARAS: ¿El autor toma una posición definitiva sobre algo controvertido, o evita el debate? La IA tiende a presentar "todos los lados" sin comprometerse. (2) CONOCIMIENTO IMPLÍCITO: Los textos humanos expertos asumen cierto conocimiento del lector y usan jerga de campo correctamente. La IA sobreexplica todo. (3) ACTUALIZACIONES: ¿El texto menciona eventos o contexto muy reciente? La IA tiene fechas de corte de conocimiento.',
+        tips: [
+          'Pregunta algo que requiera opinión personal — si la respuesta es perfectamente equilibrada y diplomática, sospecha',
+          'Busca términos muy específicos del campo — la IA los usa correctamente pero a veces sin el matiz que tendría un experto',
+          'Los expertos humanos saben cuándo simplificar y cuándo no — la IA simplifica siempre'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Confirma con Herramientas Automáticas',
+        description: 'La detección manual es complementaria, no sustituta. Una vez que tus sospechas están activadas por las señales anteriores, confirma con un detector de IA automático para tener una segunda opinión cuantificada. Los detectores automáticos son especialmente útiles para textos largos donde la lectura atenta manual consume mucho tiempo. Combinar intuición entrenada con herramientas automáticas da los mejores resultados.',
+        tips: [
+          'Usa detectores optimizados para español — los orientados a inglés son menos precisos en nuestro idioma',
+          'Si el detector da 60-80% de probabilidad de IA, combina con tu análisis manual para decidir',
+          'Ningún método (manual ni automático) es 100% definitivo — sirven como indicadores'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Asumir que texto gramaticalmente perfecto = texto de IA',
+        solution: 'Muchos escritores nativos y editores producen texto sin errores. La perfección gramatical es indicio, no prueba. Evalúa en conjunto con otras señales.'
+      },
+      {
+        mistake: 'Creer que textos técnicos o académicos formales son siempre de IA',
+        solution: 'Los textos académicos son formales por naturaleza. La formalidad sola no es indicador. Busca las otras señales: ausencia de especificidad, estructura mecánica, voz neutral artificial.'
+      },
+      {
+        mistake: 'Basar la conclusión en una sola señal',
+        solution: 'Ninguna señal individual es suficiente. Necesitas múltiples indicadores convergentes. Un texto puede tener una señal por motivos legítimos (el autor es formal, o es un texto instruccional). La convergencia de varias señales es lo que importa.'
+      },
+      {
+        mistake: 'Ignorar el contexto del autor',
+        solution: 'Si conoces textos anteriores del autor y el estilo es dramáticamente diferente, eso es más significativo que cualquier señal individual. La inconsistencia de estilo entre textos del mismo autor es una de las señales más fuertes.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Cuáles son las señales más confiables de texto generado por IA?',
+        answer: 'Las más confiables en español: (1) Frases de transición formulaicas ("Es importante destacar que", "Cabe mencionar", "En este sentido") usadas mecánicamente. (2) Párrafos perfectamente balanceados en longitud. (3) Ausencia total de anécdotas personales o ejemplos específicos verificables. (4) Posición neutra artificial ante temas donde un humano tendría opinión. (5) Listas de puntos para explicar casi todo. Cuantas más señales convergen, más confiable es el diagnóstico.'
+      },
+      {
+        question: '¿Los detectores automáticos son más fiables que la detección manual?',
+        answer: 'Son complementarios. Los detectores automáticos son más rápidos y consistentes para textos largos. La detección manual es mejor para entender el contexto y para casos ambiguos. Los mejores resultados se obtienen combinando ambos: el detector automático da un primer indicador, y el análisis manual ayuda a interpretar los resultados en contexto.'
+      },
+      {
+        question: '¿Puede un texto humano ser marcado incorrectamente como IA?',
+        answer: 'SÍ, especialmente en: textos académicos muy formales, instrucciones paso a paso, textos técnicos con terminología estándar, textos de autores no nativos que usan estructuras formales, resúmenes ejecutivos. Los falsos positivos son un problema real. Por eso la detección nunca debe ser el único factor en una decisión académica — siempre debe combinarse con otros elementos de evaluación.'
+      },
+      {
+        question: '¿Los modelos de IA más recientes son más difíciles de detectar?',
+        answer: 'SÍ, los modelos más avanzados (GPT-4o, Claude 3.5, Gemini 1.5 Pro) producen texto más naturales y difíciles de detectar que modelos anteriores. Dicho esto, incluso los mejores modelos presentan patrones reconocibles: la perfección excesiva, la cobertura equilibrada de todos los aspectos, la neutralidad artificial. Los detectores automáticos también mejoran continuamente.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Verificar la Originalidad de un Texto', slug: 'como-verificar-originalidad-texto' },
+      { title: 'Mejores Prácticas de IA para Estudiantes', slug: 'mejores-practicas-uso-ia-estudiantes' },
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-detectar-ia-sin-herramientas' },
+      { name: 'Verificador de IA', url: '/verificador-de-ia?ref=guia-detectar-ia-sin-herramientas' }
+    ],
+    cta: {
+      text: 'Confirmar con detector automático — gratis',
+      url: '/?ref=guia-detectar-ia-sin-herramientas'
+    }
+  },
+
+  {
+    slug: 'como-citar-ia-en-trabajos-academicos',
+    title: 'Cómo Citar IA en Trabajos Académicos',
+    keywords: [
+      'como citar ia trabajos academicos',
+      'citar chatgpt apa',
+      'citar inteligencia artificial apa',
+      'formato citacion ia',
+      'referencias chatgpt trabajos'
+    ],
+    metaTitle: 'Cómo Citar IA en Trabajos Académicos: Guía APA, MLA y Chicago 2025',
+    metaDescription: 'Aprende a citar ChatGPT, Claude y otros modelos de IA en trabajos académicos. Formatos APA 7, MLA y Chicago con ejemplos reales. Cuándo citar y cómo declarar uso de IA.',
+    h1: 'Cómo Citar IA en Trabajos Académicos: Formatos APA, MLA y Chicago',
+    intro: 'Citar herramientas de IA en trabajos académicos es una práctica relativamente nueva y las guías de estilo están evolucionando. Esta guía compila las recomendaciones actuales de APA 7, MLA y Chicago para citar ChatGPT, Claude, Gemini y otros modelos, con ejemplos concretos que puedes copiar y adaptar.',
+    overview: 'Esta guía cubre: (1) Cuándo es necesario citar el uso de IA, (2) Formato de cita en APA 7 con ejemplos, (3) Formato en MLA con ejemplos, (4) Formato en Chicago con ejemplos, (5) Cómo declarar el uso de IA cuando no hay formato de cita establecido.',
+    steps: [
+      {
+        number: 1,
+        title: 'Determina Cuándo Debes Citar el Uso de IA',
+        description: 'No todo uso de IA requiere cita formal. Debes citar cuando: (1) USAS TEXTO GENERADO POR IA directamente (aunque sea parafraseado), (2) USAS IDEAS o argumentos que obtuviste de la IA, (3) PRESENTAS DATOS o estadísticas que la IA te proporcionó, (4) BASAS UNA CONCLUSIÓN en lo que la IA te dijo. No necesitas citar cuando: usas IA solo para corregir gramática/ortografía, para entender conceptos (como usarías un diccionario), para práctica o aprendizaje sin incluir nada en el trabajo final.',
+        tips: [
+          'Regla práctica: Si usaste la IA como fuente de información o ideas, cítala',
+          'Si solo usaste IA para mejorar TU texto (estilo, gramática), no es necesaria la cita formal pero sí la declaración',
+          'Siempre verifica qué requiere específicamente tu institución'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Formato APA 7 para Citar IA',
+        description: 'La APA (7ma edición) publicó directrices en 2023 para citar modelos de lenguaje. FORMATO BÁSICO: Autor/Empresa. (Año). Nombre del modelo (versión) [Modelo de lenguaje grande]. URL\n\nEJEMPLOS COMPLETOS:\n\n• ChatGPT: OpenAI. (2024). ChatGPT (versión GPT-4o) [Modelo de lenguaje grande]. https://chat.openai.com\n\n• Claude: Anthropic. (2024). Claude (claude-3-5-sonnet) [Modelo de lenguaje grande]. https://claude.ai\n\n• Gemini: Google. (2024). Gemini (versión 1.5 Pro) [Modelo de lenguaje grande]. https://gemini.google.com\n\nEN TEXTO: (OpenAI, 2024) / (Anthropic, 2024)\n\nADEMÁS del formato de referencia, APA recomienda incluir en el texto el prompt que usaste o describir cómo usaste la herramienta.',
+        tips: [
+          'Guarda la conversación que usaste — en ChatGPT puedes compartir el link',
+          'APA sugiere incluir el prompt en el texto del trabajo o como apéndice',
+          'La fecha debe ser la del acceso/conversación, no la del modelo'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Formato MLA para Citar IA',
+        description: 'MLA (Modern Language Association) actualizó sus guías en 2023. FORMATO: "Respuesta a [descripción del prompt]." Nombre del programa, empresa desarrolladora, fecha de la respuesta, URL.\n\nEJEMPLO ChatGPT:\n"Explica las causas de la Primera Guerra Mundial en 300 palabras." ChatGPT, OpenAI, 15 de marzo de 2024, chat.openai.com.\n\nEJEMPLO Claude:\n"Resume los principales argumentos sobre el cambio climático." Claude, Anthropic, 10 de febrero de 2024, claude.ai.\n\nEN TEXTO: Citar con comillas o integrar en la prosa, luego la cita al pie o en el listado de obras citadas.',
+        tips: [
+          'MLA pone énfasis en incluir el prompt específico que usaste',
+          'Trata la IA como tratarías cualquier fuente: con la información necesaria para localizarla',
+          'Consulta el MLA Handbook más reciente — las directrices siguen evolucionando'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Formato Chicago para Citar IA',
+        description: 'Chicago tiene dos sistemas: Notas al pie (humanities) y Autor-Fecha (sciences). SISTEMA NOTAS AL PIE:\n1. OpenAI, "Respuesta a pregunta sobre [tema]," ChatGPT, 15 de marzo de 2024, https://chat.openai.com.\n\nBIBLIOGRAFÍA:\nOpenAI. "ChatGPT, 15 de marzo de 2024." https://chat.openai.com.\n\nSISTEMA AUTOR-FECHA:\nEn texto: (OpenAI 2024)\nBibliografía: OpenAI. 2024. ChatGPT. Acceso 15 de marzo. https://chat.openai.com.',
+        tips: [
+          'Chicago recomienda guardar transcripciones ya que las conversaciones con IA no son permanentemente accesibles',
+          'Consulta el Chicago Manual of Style (17ma edición o más reciente) para actualizaciones',
+          'En disciplinas de humanidades, añade descripción del uso en nota al pie'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Declara el Uso de IA Aunque No Haya Cita Formal',
+        description: 'Más allá del formato de cita, muchas instituciones requieren una declaración explícita del uso de IA aunque no haya una "cita" en el sentido tradicional. EJEMPLO DE DECLARACIÓN: "Declaración de uso de IA: Utilicé ChatGPT (OpenAI, 2024) para [finalidad específica: p.ej., generar ideas iniciales sobre el tema X, recibir feedback sobre la estructura del borrador]. Todo el contenido escrito en este trabajo es de mi autoría y fue verificado por mí." Esta declaración va al final del trabajo, antes de la bibliografía.',
+        tips: [
+          'Sé específico: menciona exactamente para qué usaste la IA',
+          'Si tu institución tiene plantilla específica de declaración, úsala',
+          'La declaración protege tu integridad — es mejor declarar de más que de menos'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'No citar la IA porque "no es una fuente real"',
+        solution: 'La IA es una fuente de información y debe citarse cuando influye en el contenido. Las guías APA, MLA y Chicago ya tienen formatos para ello. No citar es engaño académico.'
+      },
+      {
+        mistake: 'Usar la misma cita genérica para todas las conversaciones con IA',
+        solution: 'Cada conversación/prompt es diferente. La fecha, el modelo y el contenido específico del intercambio deben reflejarse en la cita. No uses una cita genérica de "ChatGPT, 2024" sin contexto.'
+      },
+      {
+        mistake: 'Creer que citar la IA justifica cualquier uso',
+        solution: 'Citar es necesario pero no suficiente. Si tu institución no permite usar IA para generar trabajo, citarla no lo hace legítimo. La cita es parte de la transparencia, no una exención de las reglas.'
+      },
+      {
+        mistake: 'No guardar el registro de la conversación',
+        solution: 'Los revisores pueden pedir ver la conversación original. Guarda siempre un screenshot o link compartible de la conversación que usaste.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Es obligatorio citar ChatGPT si lo usé para ideas pero escribí todo yo mismo?',
+        answer: 'DEPENDE: Si las ideas que obtuviste de ChatGPT influenciaron directamente el argumento o contenido de tu trabajo, sí debes citar o al menos declarar el uso. Si solo usaste ChatGPT para entender conceptos básicos que ya sabías pero querías clarificar (como harías con Wikipedia para un trasfondo), puede ser suficiente la declaración sin cita formal. Ante la duda, declara. Es mejor declarar demás que tener que explicar por qué no declaraste.'
+      },
+      {
+        question: '¿Qué hago si mi profesor no acepta citas de IA?',
+        answer: 'Si tu profesor no acepta IA como fuente, lo mejor es no usar IA para obtener información que incluirás en el trabajo. Puedes usar IA para aprender y entender (como usarías cualquier recurso educativo) pero asegúrate de que todo el contenido final de tu trabajo provenga de fuentes académicas tradicionales. Si ya usaste IA y el trabajo está hecho, habla con el profesor — la honestidad es siempre mejor que el ocultamiento.'
+      },
+      {
+        question: '¿Las guías de citación de IA cambiarán en el futuro?',
+        answer: 'SÍ, es muy probable. APA, MLA y Chicago actualizaron sus guías en 2023 precisamente porque no existían antes. A medida que el uso de IA se normalice en contextos académicos, las guías de estilo seguirán refinando los formatos. Siempre verifica la versión más reciente de la guía de estilo que uses.'
+      },
+      {
+        question: '¿Cómo cito a Claude de Anthropic específicamente?',
+        answer: 'APA 7: Anthropic. (2024). Claude (claude-3-5-sonnet-20241022) [Modelo de lenguaje grande]. https://claude.ai\n\nMLA: "Descripción del prompt." Claude, Anthropic, [fecha], claude.ai.\n\nChicago: Anthropic, "Respuesta a [tema]," Claude, [fecha], https://claude.ai.\n\nIncluye la versión específica del modelo si la conoces (puedes verla en la configuración de Claude). La fecha debe ser la de tu conversación específica.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Citar Fuentes en Formato APA al Parafrasear', slug: 'como-citar-fuentes-apa-parafraseo' },
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-citar-ia' },
+      { name: 'Parafraseador sin Plagio', url: '/parafrasear-textos-online-gratis?ref=guia-citar-ia' }
+    ],
+    cta: {
+      text: 'Verificar si tu texto necesita declaración de IA',
+      url: '/?ref=guia-citar-ia'
+    }
+  },
+
+  {
+    slug: 'diferencia-plagio-uso-ia-trabajos',
+    title: 'Diferencia entre Plagio y Uso de IA en Trabajos',
+    keywords: [
+      'diferencia plagio uso ia',
+      'plagio vs inteligencia artificial trabajos',
+      'es plagio usar chatgpt',
+      'plagio con ia diferencias',
+      'uso ia academico plagio'
+    ],
+    metaTitle: 'Diferencia entre Plagio y Uso de IA en Trabajos Académicos 2025',
+    metaDescription: '¿Usar ChatGPT es lo mismo que plagiar? Explicamos las diferencias y similitudes entre plagio tradicional y uso no declarado de IA en trabajos académicos.',
+    h1: '¿Es Plagio Usar IA? Diferencias entre Plagio y Uso de Inteligencia Artificial',
+    intro: '¿Usar ChatGPT en un trabajo es lo mismo que copiar de Wikipedia sin citar? La respuesta es más matizada de lo que parece. Aunque ambos vulneran la integridad académica cuando no se declaran, el plagio tradicional y el uso indebido de IA son problemas distintos con implicaciones diferentes. Esta guía clarifica las diferencias para que entiendas exactamente a qué te enfrentas.',
+    overview: 'Esta guía cubre: (1) Definición técnica de plagio y uso de IA, (2) En qué se parecen y en qué se diferencian, (3) Por qué las universidades los tratan de forma diferente, (4) Cómo evitar ambos problemas, (5) Qué pasa si te atrapan con uno o con otro.',
+    steps: [
+      {
+        number: 1,
+        title: 'Qué es el Plagio Tradicional',
+        description: 'El plagio académico es presentar ideas, palabras o trabajos de otra persona como propios sin la debida atribución. TIPOS: (1) PLAGIO DIRECTO: Copiar texto literalmente sin comillas ni cita. (2) PATCHWRITING: Cambiar algunas palabras del original pero mantener la estructura. (3) PLAGIO DE IDEAS: Tomar argumentos o teorías de otro autor sin citarlos, aunque los escribas con tus palabras. (4) AUTOPLAGIAR: Presentar tu propio trabajo previo como nuevo (entregarlo en dos cursos sin permiso). El denominador común del plagio: existe una FUENTE IDENTIFICABLE — un texto, un autor, una obra — que se está usando sin crédito.',
+        tips: [
+          'El plagio puede ser intencional o accidental — ambos tienen consecuencias',
+          'El autoplagiar es una forma de plagio que muchos estudiantes desconocen',
+          'El patchwriting es la forma más común de plagio accidental'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Qué es el Uso Indebido de IA',
+        description: 'El uso indebido de IA en contextos académicos es presentar texto generado por inteligencia artificial como propio sin declararlo. DIFERENCIA CLAVE CON EL PLAGIO: No hay un autor humano específico que estés copiando. La IA genera contenido nuevo basado en patrones estadísticos, no copia de una fuente identificable. SIN EMBARGO, el efecto es similar al plagio: estás presentando trabajo que no hiciste tú como si lo hubieras hecho. FORMAS DE USO INDEBIDO: Copiar respuesta de ChatGPT sin citar, hacer que IA genere un ensayo completo, usar humanizadores para ocultar que un texto es de IA.',
+        tips: [
+          'El texto de IA no tiene "dueño" en el sentido legal (actualmente), pero viola integridad académica si no se declara',
+          'Algunos llaman al uso de IA "plagio de sí mismo" (de tu propio trabajo que no hiciste)',
+          'La distinción legal vs. académica es importante: puede no ser plagio legal pero sí falta académica'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Diferencias Clave entre Plagio y Uso de IA',
+        description: 'ASPECTO | PLAGIO | USO NO DECLARADO DE IA\nFuente original | Existe (texto/autor identificable) | No existe (generado, no copiado)\nDetección | Turnitin, Google | Detectores específicos de IA\nEvidencia | Coincidencia textual | Patrones estadísticos\nIntención típica | Puede ser accidental | Generalmente intencional\nCita posible | Sí, cita al autor | Sí, cita a la herramienta de IA\nReputación dañada | Del autor copiado | Nadie en particular\nEfecto en aprendizaje | Malo: no aprendes | Malo: no aprendes\n\nCOINCIDENCIA FUNDAMENTAL: Ambos implican presentar como propio trabajo que no es tuyo.',
+        tips: [
+          'En muchas políticas universitarias ya se tratan como infracciones equivalentes',
+          'La detección usa herramientas diferentes — un texto puede estar libre de plagio pero ser detectado como IA',
+          'Es posible combinar ambas infracciones: copiar y modificar con IA'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Consecuencias y Tratamiento Institucional',
+        description: 'Históricamente el plagio tiene consecuencias más establecidas (décadas de precedente). Las políticas sobre IA son más recientes (mayoría establecidas 2023-2025) y están evolucionando. ESTADO ACTUAL: (1) Algunas universidades tratan uso de IA igual que plagio — mismas consecuencias. (2) Otras tienen categoría separada para "uso no autorizado de IA" con proceso diferente. (3) Muchas están en proceso de actualizar sus políticas. RECOMENDACIÓN: Consulta específicamente la política de IA de tu institución — no asumas que el tratamiento es idéntico al plagio.',
+        tips: [
+          'Las políticas de IA son muy dinámicas — verifica cada semestre si han cambiado',
+          'Algunas instituciones son más estrictas con IA que con plagio porque lo consideran más difícil de detectar',
+          'El historial importa: primera vez vs. reincidencia siempre afecta las consecuencias'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Cómo Evitar Ambos Problemas',
+        description: 'PARA EVITAR PLAGIO: (1) Cita siempre que uses ideas o palabras de otros. (2) Usa comillas para citas textuales. (3) Parafrasea con tus palabras y cita igualmente. (4) Usa un verificador de plagio antes de entregar. PARA EVITAR USO INDEBIDO DE IA: (1) Conoce la política de tu institución sobre IA. (2) Si usas IA, decláralo explícitamente. (3) Asegúrate de que el trabajo intelectual principal es tuyo. (4) Usa un detector de IA para ver cómo se percibe tu texto. REGLA GENERAL: Si no puedes defender cada parte de tu trabajo en una conversación con tu profesor, necesitas revisar.',
+        tips: [
+          'La verificación previa a la entrega es la mejor protección contra accidentes',
+          'Documenta tu proceso de trabajo — borradores, notas, fuentes — como evidencia',
+          'La transparencia desde el inicio es más fácil que explicaciones después'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Pensar que usar IA no es plagio porque no copias de ninguna persona',
+        solution: 'Aunque técnicamente no es "plagio" en el sentido legal estricto, el uso no declarado de IA viola la integridad académica de la misma manera. Las universidades lo tratan como infracción equivalente o comparable.'
+      },
+      {
+        mistake: 'Creer que humanizar el texto de IA lo convierte en trabajo propio',
+        solution: 'Pasar texto de IA por un humanizador para ocultarlo es una infracción adicional (intento de engaño). El trabajo sigue sin ser tuyo. Si el texto original fue de IA, debe declararse independientemente de cómo fue modificado después.'
+      },
+      {
+        mistake: 'Asumir que los detectores de plagio también detectan IA',
+        solution: 'Son herramientas diferentes. Turnitin busca coincidencias con textos existentes; los detectores de IA analizan patrones estadísticos del texto. Un texto de IA puede pasar Turnitin perfectamente y al mismo tiempo ser claramente identificado como IA por un detector específico.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Usar ChatGPT para hacer un trabajo es plagio?',
+        answer: 'Técnicamente, no es "plagio" en el sentido clásico (copiar de un autor identificable). Pero sí es una violación de integridad académica equivalente: presentas como propio un trabajo que no hiciste. Las universidades lo llaman "uso no autorizado de herramientas de IA" o lo incluyen directamente en sus definiciones ampliadas de plagio. El resultado práctico es el mismo: consecuencias académicas y falta de aprendizaje real.'
+      },
+      {
+        question: '¿Turnitin detecta texto de ChatGPT?',
+        answer: 'Turnitin ha incorporado funcionalidades de detección de IA (Turnitin AI Detector), pero son herramientas separadas a su detección de plagio tradicional. La función de detección de IA de Turnitin está disponible según la configuración de tu institución — no todas las universidades la activan. Además, los detectores de IA tienen tasas de error (falsos positivos y negativos), por lo que Turnitin recomienda usarlos como indicador, no como prueba definitiva.'
+      },
+      {
+        question: '¿Qué es más grave: plagiar o usar IA sin declarar?',
+        answer: 'DEPENDE DE LA INSTITUCIÓN y el contexto. Históricamente el plagio tiene consecuencias más establecidas. Pero algunas instituciones consideran el uso no declarado de IA más grave porque: (1) es difícil de detectar, (2) implica mayor intencionalidad (es difícil usar IA "accidentalmente"), (3) escala fácilmente. No hay una respuesta universal — consulta la política específica de tu institución.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Evitar Plagio Académico', slug: 'como-evitar-plagio-academico' },
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Mejores Prácticas de IA para Estudiantes', slug: 'mejores-practicas-uso-ia-estudiantes' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-plagio-vs-ia' },
+      { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=guia-plagio-vs-ia' }
+    ],
+    cta: {
+      text: 'Detectar si tu texto parece IA — gratis',
+      url: '/?ref=guia-plagio-vs-ia'
+    }
+  },
+
+  {
+    slug: 'chatgpt-para-trabajos-universitarios-guia',
+    title: 'ChatGPT para Trabajos Universitarios: Guía Completa',
+    keywords: [
+      'chatgpt trabajos universitarios',
+      'usar chatgpt trabajos universidad',
+      'chatgpt trabajos academicos como usar',
+      'guia chatgpt estudiantes universitarios',
+      'chatgpt ayuda trabajos uni'
+    ],
+    metaTitle: 'ChatGPT para Trabajos Universitarios: Guía Completa 2025',
+    metaDescription: 'Cómo usar ChatGPT éticamente para trabajos universitarios. Usos permitidos, cómo declararlo, cómo evitar el plagio y verificar la originalidad. Guía práctica para estudiantes.',
+    h1: 'ChatGPT para Trabajos Universitarios: Guía Ética y Práctica',
+    intro: 'ChatGPT es ya una herramienta cotidiana para millones de estudiantes universitarios. El problema no es usarlo — el problema es usarlo mal. Esta guía te enseña exactamente cómo aprovechar ChatGPT para mejorar tu rendimiento académico sin comprometer tu integridad ni tu aprendizaje real.',
+    overview: 'Esta guía cubre: (1) Usos legítimos y problemáticos de ChatGPT para trabajos universitarios, (2) Cómo solicitar ayuda sin que IA haga el trabajo por ti, (3) Cómo verificar y declarar el uso, (4) Qué hacer antes de entregar, (5) Herramientas para verificar si tu trabajo parece IA.',
+    steps: [
+      {
+        number: 1,
+        title: 'Conoce qué Permite tu Universidad (Antes de Usar ChatGPT)',
+        description: 'Esta es la pregunta más importante. Las políticas varían enormemente: (1) UNIVERSIDADES PERMISIVAS: Permiten ChatGPT con declaración explícita. (2) UNIVERSIDADES RESTRICTIVAS: Prohíben cualquier uso de IA en trabajos evaluados. (3) POLÍTICA POR PROFESOR: El profesor de cada curso decide. Cómo verificar: Lee el syllabus del curso, revisa el código de honor de tu universidad, y si no queda claro, pregunta directamente al profesor. No asumas nada.',
+        tips: [
+          'Guarda la respuesta del profesor por escrito (email) como protección',
+          'Las políticas cambian rápidamente — verifica cada semestre',
+          'Si el syllabus dice "no IA", es no IA — sin excepciones'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Los 5 Usos Legítimos de ChatGPT para Trabajos',
+        description: 'USO 1 — COMPRENSIÓN DE CONCEPTOS: Pide a ChatGPT que explique algo que no entendiste en clase. "Explícame el concepto de _____ con ejemplos simples." USO 2 — BRAINSTORMING: Genera ideas iniciales que TÚ luego desarrollas y filtras. "Dame 10 enfoques posibles para un ensayo sobre _____." USO 3 — FEEDBACK EN BORRADORES: Comparte TU borrador y pide crítica. "¿Qué partes de este texto están poco claras?" USO 4 — PRÁCTICA DE EJEMPLOS: Pide problemas de práctica para estudiar. "Genera 5 ejercicios de cálculo sobre derivadas." USO 5 — COMPRENSIÓN DE FUENTES: Pide que resuma un texto académico complejo para decidir si vale la pena leerlo completo.',
+        tips: [
+          'El criterio: ¿El trabajo intelectual final es tuyo? Si sí, el uso probablemente es legítimo',
+          'Usa ChatGPT como punto de partida, no como punto de llegada',
+          'Los mejores usos son los que te hacen aprender más, no los que te hacen trabajar menos'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Los 5 Usos Problemáticos que Debes Evitar',
+        description: 'USO 1 — GENERAR EL ENSAYO COMPLETO: "Escribe un ensayo de 2000 palabras sobre X para mi clase de Y." Esto es uso indebido claro. USO 2 — CÓDIGO SIN ENTENDER: Hacer que ChatGPT resuelva un ejercicio de programación que presentas sin entender. USO 3 — COPIAR SIN DECLARAR: Tomar una respuesta de ChatGPT y pegarla sin declaración. USO 4 — USAR HUMANIZADORES: Pasar texto de IA por un humanizador para hacerlo pasar como tuyo. USO 5 — EN EXÁMENES: Usar ChatGPT durante un examen o prueba (aunque sea remoto), a menos que esté explícitamente permitido.',
+        tips: [
+          'Test sencillo: "¿Podría explicar este trabajo sin mirar notas si el profesor me preguntara?" Si no, hay problema',
+          'Usar humanizadores para ocultar IA es considerado intento de engaño — consecuencias más graves',
+          'Los exámenes online también tienen reglas — lee las instrucciones antes'
+        ]
+      },
+      {
+        number: 4,
+        title: 'Cómo Verificar que Tu Trabajo No Parece Generado por IA',
+        description: 'Antes de entregar, verifica que tu trabajo sea percibido como genuinamente tuyo: (1) USA UN DETECTOR DE IA: Pega tu texto en DetectordeIA.ai o una herramienta similar. Un trabajo que escribiste tú mismo con ayuda de ChatGPT como herramienta de apoyo debería tener baja probabilidad de IA. (2) LEE EN VOZ ALTA: El texto de IA suena diferente al leerlo en voz alta — mecánico, sin variación natural. (3) REVISIÓN DE ESPECIFICIDAD: ¿Tu trabajo tiene ejemplos concretos, datos reales con fuentes, argumentos propios? Si todo es genérico, probablemente recibió demasiado apoyo de IA.',
+        tips: [
+          'Si el detector de IA marca tu trabajo con alta probabilidad, revisa qué secciones y reescríbelas con tu voz',
+          'Añadir tus propias opiniones y experiencias baja dramáticamente la probabilidad de IA',
+          'Un trabajo con algunas imperfecciones estilísticas tuyas suena más humano que uno perfecto de IA'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Cómo Declarar Correctamente el Uso de ChatGPT',
+        description: 'Si usaste ChatGPT de forma legítima, decláralo así: FORMATO ESTÁNDAR (al final del trabajo, antes de bibliografía):\n\n"Declaración de uso de IA: Utilicé ChatGPT (OpenAI, marzo 2025) para [especifica exactamente qué]: [ej: generar una lista inicial de argumentos posibles sobre el tema, de los cuales seleccioné y desarrollé 3 con mis propias palabras / recibir feedback sobre la claridad de mi argumento principal en el borrador]. Todo el contenido escrito en este trabajo es de mi autoría, basado en fuentes académicas, y fue verificado por mí."\n\nSé específico sobre el uso — "usé ChatGPT" es vago. "Usé ChatGPT para X finalidad concreta" es lo correcto.',
+        tips: [
+          'Guarda el link o screenshot de la conversación con ChatGPT que usaste',
+          'Si tu universidad tiene formato específico de declaración, úsalo',
+          'Incluye la fecha de la conversación y la versión de ChatGPT si la conoces'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Usar ChatGPT para todo el trabajo y luego cambiar "algunas palabras"',
+        solution: 'Cambiar palabras del texto de ChatGPT es patchwriting, que sigue siendo uso indebido. El trabajo intelectual de análisis, argumentación y síntesis debe ser tuyo. ChatGPT puede ayudarte con el proceso, no hacer el proceso por ti.'
+      },
+      {
+        mistake: 'Confiar en los "hechos" que da ChatGPT sin verificar',
+        solution: 'ChatGPT alucina: inventa citas que parecen reales, estadísticas falsas, autores inexistentes. Verifica SIEMPRE cualquier dato, cita o estadística específica en fuentes primarias antes de incluirlos en tu trabajo.'
+      },
+      {
+        mistake: 'Usar ChatGPT para escribir la introducción y conclusión (porque son "solo formato")',
+        solution: 'La introducción y conclusión son parte esencial del trabajo académico. Si las genera IA, el trabajo intelectual de definir tu argumento central y sintetizarlo es de la IA, no tuyo. Son secciones donde tu voz debe estar presente especialmente.'
+      },
+      {
+        mistake: 'No declarar porque "el profesor nunca lo va a saber"',
+        solution: 'Los detectores de IA cada vez son más precisos. Pero más allá de eso: no declarar cuando usaste IA es engaño — independientemente de si te atrapen. El riesgo reputacional de ser descubierto es mucho mayor que el beneficio de ahorrar tiempo.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Está permitido usar ChatGPT en trabajos universitarios?',
+        answer: 'DEPENDE de tu universidad y tu profesor. No hay una regla universal. Algunos cursos y universidades lo permiten con declaración explícita; otros lo prohíben completamente. Verifica el syllabus de tu curso y la política de tu institución. Si no queda claro, pregunta directamente al profesor antes de usarlo — siempre es mejor preguntar que asumir.'
+      },
+      {
+        question: '¿Puede el profesor saber que usé ChatGPT?',
+        answer: 'SÍ, con creciente probabilidad. Los profesores están entrenando su intuición para detectar texto de IA, y muchas instituciones ya tienen acceso a detectores como Turnitin AI Detector. Los detectores no son perfectos pero identifican patrones estadísticos. Además, si el estilo de tu trabajo es drásticamente diferente a tus trabajos anteriores, eso por sí solo levanta sospechas. No asumas que "nadie va a saber".'
+      },
+      {
+        question: '¿Es lo mismo usar ChatGPT que copiar de Wikipedia?',
+        answer: 'No exactamente. Wikipedia es una fuente identificable — si copias de ella sin citar, hay plagio clásico con fuente verificable. ChatGPT genera texto nuevo sin fuente identificable, lo que lo hace diferente técnicamente. Sin embargo, el efecto académico es similar: presentas trabajo no original como propio. Ambos requieren declaración y cita si los usas; ambos son problemáticos si no declara.'
+      },
+      {
+        question: '¿Cómo verifico si mi trabajo parece de IA antes de entregarlo?',
+        answer: 'Usa DetectordeIA.ai — es gratuito, está optimizado para español y te da un porcentaje de probabilidad de que el texto sea de IA. Pega tu trabajo completo para mejor precisión. Si el resultado es alto, revisa las secciones marcadas: típicamente son las más formales o más genéricas. Añade tu voz personal, ejemplos específicos y opiniones propias para bajar la probabilidad.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Cómo Citar IA en Trabajos Académicos', slug: 'como-citar-ia-en-trabajos-academicos' },
+      { title: 'Diferencia entre Plagio y Uso de IA', slug: 'diferencia-plagio-uso-ia-trabajos' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-chatgpt-trabajos-uni' },
+      { name: 'Humanizador de Texto', url: '/humanizador?ref=guia-chatgpt-trabajos-uni' }
+    ],
+    cta: {
+      text: 'Verificar si tu trabajo parece IA — gratis',
+      url: '/?ref=guia-chatgpt-trabajos-uni'
+    }
+  },
+
+  {
+    slug: 'politica-ia-universidades-latam-2025',
+    title: 'Política de IA en Universidades de LATAM 2025',
+    keywords: [
+      'politica ia universidades latam',
+      'universidades permitido chatgpt latam',
+      'normas ia universidades latinoamerica',
+      'reglamento ia universitarios',
+      'politica inteligencia artificial universidades'
+    ],
+    metaTitle: 'Política de IA en Universidades de LATAM 2025: Guía Actualizada',
+    metaDescription: 'Qué permiten y prohíben las principales universidades de América Latina y España sobre el uso de IA. UBA, UNAM, UCM, Javeriana y más. Actualizado 2025.',
+    h1: 'Política de IA en Universidades de LATAM y España 2025: Qué Permiten',
+    intro: 'Las universidades latinoamericanas y españolas están adaptando sus políticas al uso de inteligencia artificial a diferente ritmo. Esta guía resume el estado actual de las políticas en las principales instituciones y ofrece orientación para estudiantes que necesitan entender qué está permitido y qué no.',
+    overview: 'Esta guía cubre: (1) El panorama general de políticas de IA en universidades de LATAM, (2) Posiciones de las principales universidades por país, (3) Cómo encontrar la política específica de tu universidad, (4) Qué hacer cuando la política no está clara, (5) Tendencias para 2025-2026.',
+    steps: [
+      {
+        number: 1,
+        title: 'El Panorama General de Políticas en LATAM y España',
+        description: 'A 2025, las universidades latinoamericanas se dividen en tres grupos: (1) UNIVERSIDADES CON POLÍTICA CLARA PRO-REGULACIÓN: Han publicado guías específicas sobre uso de IA, generalmente permiten usos de apoyo con declaración obligatoria. Incluyen universidades como la UNAM (México), UBA (Argentina) y Complutense de Madrid. (2) UNIVERSIDADES EN PROCESO DE DEFINICIÓN: La mayoría están elaborando o actualizando sus políticas. Tienen lineamientos generales pero sin guías detalladas de IA. (3) UNIVERSIDADES SIN POLÍTICA ESPECÍFICA DE IA: Aplican sus políticas generales de integridad académica, que tipicamente incluyen el uso de IA como una forma de plagio.',
+        tips: [
+          'No asumas que si no hay política específica de IA, está todo permitido — lo contrario es más probable',
+          'Las políticas pueden cambiar durante el semestre — verifica periódicamente',
+          'La política de la institución es el mínimo; cada profesor puede ser más restrictivo'
+        ]
+      },
+      {
+        number: 2,
+        title: 'Políticas por País: México y Argentina',
+        description: 'MÉXICO — UNAM: Ha emitido orientaciones que permiten el uso de IA como herramienta de apoyo al aprendizaje, requiriendo declaración explícita. Cada facultad tiene margen para ser más restrictiva. IPN y universidades estatales generalmente siguen políticas similares aunque no siempre actualizadas. ARGENTINA — UBA: Ha adoptado una postura de regulación con transparencia — permite usos de apoyo con declaración, prohíbe sustitución del trabajo del estudiante. UNC y UNLP están en proceso de actualizar sus políticas. TENDENCIA EN AMBOS PAÍSES: Hacia la regulación con declaración obligatoria, no hacia la prohibición total.',
+        tips: [
+          'Verifica siempre la política actualizada en el sitio web oficial de tu institución',
+          'Las resoluciones del Consejo Académico de tu facultad tienen fuerza vinculante',
+          'Algunos programas de posgrado tienen políticas más estrictas que los de grado'
+        ]
+      },
+      {
+        number: 3,
+        title: 'Políticas por País: Colombia, Chile y Perú',
+        description: 'COLOMBIA — UNIVERSIDADES JAVERIANA Y UNIANDES: Entre las más avanzadas en políticas de IA en la región. Generalmente permiten uso con declaración en cursos donde el profesor lo autoriza. Los sílabos de cada curso especifican los alcances. UdeA y UNAL están desarrollando políticas institucionales. CHILE — PUC Y UNIVERSIDAD DE CHILE: Han emitido orientaciones generales que permiten usos de apoyo con declaración. Cada escuela puede tener políticas propias. PERÚ — PUCP Y UNM: En desarrollo de políticas. La PUCP ha emitido orientaciones que requieren transparencia en el uso. TENDENCIA REGIONAL: Las universidades privadas están siendo más ágiles en definir políticas claras que las públicas.',
+        tips: [
+          'El centro de escritura de tu universidad suele tener información actualizada sobre políticas de IA',
+          'Los programas con acreditación internacional (AACSB, EQUIS) tienen sus propias normas adicionales',
+          'Pregunta directamente a tu director de carrera si tienes dudas sobre la política'
+        ]
+      },
+      {
+        number: 4,
+        title: 'España: UCM, UAB, UPV y Otras',
+        description: 'España ha avanzado más rápido que LATAM en regularizar el uso de IA. ESTADO GENERAL: La CRUE (Conferencia de Rectores de Universidades Españolas) emitió en 2023 orientaciones sobre IA en educación. La mayoría de universidades españolas permiten uso de IA como herramienta con: (1) Declaración explícita del uso, (2) Autorización expresa del profesor, (3) Verificación de originalidad intelectual del estudiante. UCM, UAB, UPV y UAM tienen políticas más desarrolladas. Las universidades online (UNED, OBS, UNIR) tienen políticas específicas adaptadas a su modalidad.',
+        tips: [
+          'En España, la LOMLOE y el Pacto de Estado de la Educación incluyen referencias a IA',
+          'Los Trabajos de Fin de Grado y Máster tienen restricciones adicionales en la mayoría de universidades',
+          'El uso de IA en TFG/TFM puede requerir aprobación específica del tutor'
+        ]
+      },
+      {
+        number: 5,
+        title: 'Cómo Encontrar la Política Específica de Tu Universidad',
+        description: 'PASOS PARA ENCONTRAR LA POLÍTICA: (1) Busca en el sitio web de tu universidad: "política inteligencia artificial", "uso ChatGPT", "normativa IA". (2) Revisa el reglamento académico — puede incluir IA bajo "integridad académica" o "plagio". (3) Busca en el sitio web de tu facultad/escuela — muchas tienen normas propias. (4) Revisa el syllabus de cada curso — el profesor puede tener política específica. (5) Pregunta en la secretaría académica de tu departamento. SEÑAL DE ALERTA: Si no encuentras ninguna mención de IA, aplica la política más conservadora hasta preguntar explícitamente.',
+        tips: [
+          'Algunas universidades tienen un "chatbot de políticas" en su web — pregúntale sobre IA',
+          'Los decanos y directores de carrera pueden explicar el estado actual aunque no haya documento público',
+          'Formar parte de un comité estudiantil que trabaje en la política de IA es una manera de influir en ella'
+        ]
+      },
+      {
+        number: 6,
+        title: 'Tendencias para 2025-2026',
+        description: 'HACIA DÓNDE VA EL PANORAMA: (1) REGULACIÓN, NO PROHIBICIÓN: La tendencia mayoritaria es hacia permitir IA con transparencia y regulación, no hacia prohibirla. (2) DISTINCIÓN POR TIPO DE EVALUACIÓN: Exámenes presenciales = sin IA. Trabajos escritos = con declaración. (3) COMPETENCIAS DE IA COMO OBJETIVO: Algunas universidades ya incluyen "uso ético de IA" como competencia que los estudiantes deben desarrollar. (4) DETECCIÓN AUTOMATIZADA: Los sistemas como Turnitin incorporarán cada vez más capacidades de detección de IA. (5) ACTUALIZACIÓN CONTINUA: Las políticas se actualizarán con más frecuencia conforme evolucionen los modelos de IA.',
+        tips: [
+          'Desarrollar habilidades de uso ético de IA ahora es una ventaja competitiva real',
+          'Las empresas están empezando a pedir competencias de IA — las universidades lo sabrán adaptar',
+          'Participa en consultas sobre política de IA en tu universidad si las hay'
+        ]
+      }
+    ],
+    commonMistakes: [
+      {
+        mistake: 'Asumir que la política de otra universidad aplica a la tuya',
+        solution: 'Cada institución tiene su propia política. Que la UBA permita X no significa que tu universidad también lo permita. Siempre verifica en tu institución específica.'
+      },
+      {
+        mistake: 'Creer que la ausencia de política significa permiso total',
+        solution: 'La ausencia de política específica de IA generalmente significa que aplica la política general de integridad académica, que suele incluir el uso de IA como forma de plagio. Siempre pregunta explícitamente antes de usar IA.'
+      },
+      {
+        mistake: 'No actualizarse cuando la política cambia',
+        solution: 'Las políticas de IA están cambiando frecuentemente. Verifica la política al inicio de cada semestre y cada vez que tengas un trabajo importante. Lo que era permitido hace 6 meses puede no serlo ahora.'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Qué pasa si mi universidad no tiene política de IA definida?',
+        answer: 'Aplica el principio de transparencia: si usas IA, decláralo aunque no haya política específica. Esto te protege si después se establece una política retroactiva. Además, pregunta explícitamente al profesor de cada curso — muchos tienen posición clara aunque la institución no haya publicado una política formal. En caso de duda extrema, no uses IA para ese trabajo específico.'
+      },
+      {
+        question: '¿Las universidades van a prohibir definitivamente el uso de IA?',
+        answer: 'NO parece ser la tendencia dominante. La mayoría de expertos en educación y las propias universidades están apostando por la regulación con transparencia, no por la prohibición total. La IA ya es una herramienta del mercado laboral y las universidades necesitan preparar a los estudiantes para usarla responsablemente. Lo que sí continuará son restricciones en evaluaciones específicas (exámenes, TFG) donde se quiere medir las capacidades individuales del estudiante.'
+      },
+      {
+        question: '¿Puedo pedir a mi universidad que actualice su política de IA?',
+        answer: 'SÍ, y es recomendable. Los consejos de estudiantes, asociaciones estudiantiles y delegados pueden elevar peticiones formales para que la institución defina políticas claras de IA. Una política clara beneficia a todos — estudiantes saben qué está permitido, profesores saben qué evaluar, y la institución tiene protección legal. La presión estudiantil organizada ha sido efectiva en varias universidades para acelerar este proceso.'
+      }
+    ],
+    relatedGuides: [
+      { title: 'Cómo Usar IA Éticamente en la Universidad', slug: 'como-usar-ia-eticamente-universidad' },
+      { title: 'Mejores Prácticas de IA para Estudiantes', slug: 'mejores-practicas-uso-ia-estudiantes' },
+      { title: 'ChatGPT para Trabajos Universitarios', slug: 'chatgpt-para-trabajos-universitarios-guia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=guia-politica-ia-latam' },
+      { name: 'Humanizador de Texto IA', url: '/humanizador?ref=guia-politica-ia-latam' }
+    ],
+    cta: {
+      text: 'Verificar originalidad de tu trabajo — gratis',
+      url: '/?ref=guia-politica-ia-latam'
+    }
   }
 ];

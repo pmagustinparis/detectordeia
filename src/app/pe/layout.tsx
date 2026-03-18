@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'Herramienta gratuita para detectar si un texto fue generado por IA en Perú. Analiza textos en español con alta precisión. Sin registro, 100% privado.',
     locale: 'es_PE',
     type: 'website',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
   alternates: {
     canonical: 'https://detectordeia.ai/peru',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: 'Herramienta gratuita para detectar si un texto fue generado por IA en Perú. Analiza textos en español con alta precisión. Sin registro, 100% privado.',
     site: '@detectordeia',
     creator: '@detectordeia',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
 }; 
 

@@ -34,9 +34,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         siteName: 'DetectordeIA.ai',
         images: [
           {
-            url: 'https://detectordeia.ai/logo.png',
-            width: 800,
-            height: 600,
+            url: 'https://detectordeia.ai/og-default.png',
+            width: 1200,
+            height: 630,
             alt: `DetectordeIA.ai para ${useCase.audience}`,
           },
         ],
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         card: 'summary_large_image',
         title: useCase.title,
         description: useCase.description,
-        images: ['https://detectordeia.ai/logo.png'],
+        images: ['https://detectordeia.ai/og-default.png'],
       },
     };
   }
@@ -70,9 +70,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         siteName: 'DetectordeIA.ai',
         images: [
           {
-            url: 'https://detectordeia.ai/logo.png',
-            width: 800,
-            height: 600,
+            url: 'https://detectordeia.ai/og-default.png',
+            width: 1200,
+            height: 630,
             alt: feature.featureName,
           },
         ],
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         card: 'summary_large_image',
         title: feature.title,
         description: feature.description,
-        images: ['https://detectordeia.ai/logo.png'],
+        images: ['https://detectordeia.ai/og-default.png'],
       },
     };
   }

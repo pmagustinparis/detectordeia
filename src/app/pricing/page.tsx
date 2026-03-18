@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     siteName: 'DetectordeIA.ai',
     images: [
       {
-        url: 'https://detectordeia.ai/logo.png',
-        width: 800,
-        height: 600,
+        url: 'https://detectordeia.ai/og-default.png',
+        width: 1200,
+        height: 630,
         alt: 'Planes DetectordeIA.ai',
       },
     ],
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Planes | Detector de IA - DetectordeIA.ai',
     description: 'Plan Free gratis, Express $3.99/24h, Premium $12.99/mes. Herramientas de IA en español.',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
 };
 

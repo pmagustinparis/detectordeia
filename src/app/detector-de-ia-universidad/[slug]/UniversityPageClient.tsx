@@ -216,6 +216,36 @@ export default function UniversityPageClient({ university }: { university: Unive
           }),
         }}
       />
+      {/* BreadcrumbList schema — rich breadcrumbs en SERPs */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Inicio',
+                item: 'https://detectordeia.ai',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Universidades',
+                item: 'https://detectordeia.ai/universidades',
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: university.name,
+                item: `https://detectordeia.ai/detector-de-ia-universidad/${university.slug}`,
+              },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }

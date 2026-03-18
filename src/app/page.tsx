@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   description: 'Detector de IA, Humanizador y Parafraseador en español. Herramientas gratuitas, precisas y fáciles de usar para trabajar con contenido de inteligencia artificial. Sin registro, 100% privado.',
   alternates: {
     canonical: 'https://detectordeia.ai/',
+    languages: {
+      'es-ES': 'https://detectordeia.ai/es',
+      'es-MX': 'https://detectordeia.ai/mx',
+      'es-CO': 'https://detectordeia.ai/co',
+      'es-AR': 'https://detectordeia.ai/ar',
+      'es-CL': 'https://detectordeia.ai/cl',
+      'es-PE': 'https://detectordeia.ai/pe',
+      'x-default': 'https://detectordeia.ai/',
+    },
   },
   openGraph: {
     title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
@@ -15,9 +24,9 @@ export const metadata: Metadata = {
     siteName: 'DetectordeIA.ai',
     images: [
       {
-        url: 'https://detectordeia.ai/logo.png',
-        width: 800,
-        height: 600,
+        url: 'https://detectordeia.ai/og-default.png',
+        width: 1200,
+        height: 630,
         alt: 'DetectordeIA.ai - Herramientas de IA en Español',
       },
     ],
@@ -28,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
     description: 'Herramientas de IA en español: gratuitas, precisas y fáciles de usar. Pruébalas ahora.',
-    images: ['https://detectordeia.ai/logo.png'],
+    images: ['https://detectordeia.ai/og-default.png'],
   },
 };
 
