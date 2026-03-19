@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import DetectorMain from '@/app/components/DetectorMain';
 import { ProductIcons, Icon } from '@/lib/icons';
 
@@ -14,6 +15,9 @@ interface University {
   usesTurnitin: boolean;
   hasAIPolicy: boolean;
   keywords: string[];
+  aiPolicySummary?: string;
+  antiPlagiarismSoftware?: string;
+  topFaculties?: string[];
 }
 
 export default function UniversityPageClient({ university }: { university: University }) {
@@ -163,6 +167,34 @@ export default function UniversityPageClient({ university }: { university: Unive
               <strong>Guías académicas:</strong> Tutoriales sobre escritura académica y uso ético de IA
             </li>
           </ul>
+
+          {/* Internal links — always show guide; conditionally show Turnitin comparison */}
+          <div className="grid md:grid-cols-2 gap-4 mt-6">
+            <Link
+              href="/guias/como-usar-ia-eticamente-universidad"
+              className="flex flex-col gap-1 bg-violet-50 rounded-xl p-4 border border-violet-100 hover:border-violet-300 hover:bg-violet-100 transition-all group"
+            >
+              <span className="font-bold text-violet-700 group-hover:text-violet-900 text-sm">Guía: Usar IA éticamente en la universidad →</span>
+              <span className="text-gray-600 text-xs">Cuándo puedes usar IA y cómo declararla correctamente en {university.shortName}.</span>
+            </Link>
+            {university.usesTurnitin ? (
+              <Link
+                href="/detector-de-ia-vs/turnitin"
+                className="flex flex-col gap-1 bg-violet-50 rounded-xl p-4 border border-violet-100 hover:border-violet-300 hover:bg-violet-100 transition-all group"
+              >
+                <span className="font-bold text-violet-700 group-hover:text-violet-900 text-sm">DetectordeIA vs Turnitin →</span>
+                <span className="text-gray-600 text-xs">{university.shortName} usa Turnitin. Descubre cómo se complementan ambas herramientas.</span>
+              </Link>
+            ) : (
+              <Link
+                href="/guias/como-evitar-plagio-academico"
+                className="flex flex-col gap-1 bg-violet-50 rounded-xl p-4 border border-violet-100 hover:border-violet-300 hover:bg-violet-100 transition-all group"
+              >
+                <span className="font-bold text-violet-700 group-hover:text-violet-900 text-sm">Guía: Cómo evitar el plagio académico →</span>
+                <span className="text-gray-600 text-xs">Todo lo que necesitas saber sobre plagio e integridad académica en {university.shortName}.</span>
+              </Link>
+            )}
+          </div>
 
           <div className="bg-slate-50 rounded-xl p-6 mt-8 border-2 border-slate-200">
             <h3 className="text-xl font-bold text-gray-900 mb-3">

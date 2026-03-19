@@ -2230,10 +2230,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'La IA Explicable (XAI) es el conjunto de técnicas y métodos que permiten a los humanos entender y confiar en los resultados producidos por modelos de inteligencia artificial, haciendo transparente el proceso de toma de decisiones.',
     definition: 'La IA Explicable (Explainable AI o XAI) se refiere a métodos e interfaces que permiten que los humanos comprendan cómo los sistemas de IA llegan a sus conclusiones. A diferencia de los modelos de "caja negra", la XAI busca que el razonamiento del modelo sea interpretable, auditable y justificable.',
     characteristics: [
-      'Transparencia: el modelo puede describir su proceso de decisión',
-      'Interpretabilidad: los humanos pueden entender los patrones aprendidos',
-      'Justificabilidad: se pueden dar razones claras para cada predicción',
-      'Auditabilidad: el proceso puede ser revisado y verificado por terceros'
+      { icon: '🔍', title: 'Transparencia', description: 'El modelo puede describir su proceso de decisión de forma comprensible para los humanos.' },
+      { icon: '🧠', title: 'Interpretabilidad', description: 'Los humanos pueden entender los patrones que aprendió el modelo y cómo los aplica.' },
+      { icon: '⚖️', title: 'Justificabilidad', description: 'Se pueden dar razones claras y específicas para cada predicción o decisión del sistema.' },
+      { icon: '📋', title: 'Auditabilidad', description: 'El proceso de decisión puede ser revisado y verificado por terceros independientes.' }
     ],
     examples: [
       'Un sistema médico que explica por qué clasifica una imagen como tumor',
@@ -2261,10 +2261,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'La multimodalidad en IA se refiere a la capacidad de los modelos de inteligencia artificial para procesar y generar información en múltiples formatos: texto, imágenes, audio y video de forma integrada.',
     definition: 'Un modelo multimodal puede recibir como entrada texto, imágenes, audio o video, y generar salidas en cualquiera de esos formatos. Ejemplos destacados son GPT-4o, Gemini Ultra y Claude 3, que pueden analizar imágenes, transcribir audio o generar texto a partir de fotografías.',
     characteristics: [
-      'Procesamiento cruzado: relaciona información de diferentes modalidades',
-      'Comprensión contextual: entiende una imagen y responde en texto',
-      'Generación mixta: puede producir texto que describe imágenes analizadas',
-      'Unificación de modelos: un solo modelo reemplaza pipelines de varios modelos especializados'
+      { icon: '🔀', title: 'Procesamiento cruzado', description: 'Relaciona información de diferentes modalidades: texto, imagen, audio y video en un solo modelo.' },
+      { icon: '🖼️', title: 'Comprensión contextual', description: 'Entiende una imagen y responde en texto, o viceversa, de forma coherente y contextualizada.' },
+      { icon: '✍️', title: 'Generación mixta', description: 'Puede producir texto que describe imágenes analizadas, o imágenes a partir de descripciones textuales.' },
+      { icon: '🔧', title: 'Unificación de modelos', description: 'Un solo modelo reemplaza pipelines de varios modelos especializados, simplificando la arquitectura.' }
     ],
     examples: [
       'GPT-4o analizando una fotografía de un problema de matemáticas y resolviéndolo',
@@ -2292,10 +2292,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'La ventana de contexto (context window) es el límite máximo de texto que un modelo de lenguaje puede procesar en una sola interacción: incluye tanto el prompt del usuario como la respuesta del modelo.',
     definition: 'Los modelos de lenguaje tienen una memoria de trabajo limitada medida en tokens. La ventana de contexto define cuántos tokens puede "ver" el modelo simultáneamente. Una ventana pequeña limita las conversaciones largas; ventanas grandes (200K tokens) permiten analizar libros enteros.',
     characteristics: [
-      'Se mide en tokens, no en palabras (1 token ≈ 0.75 palabras en español)',
-      'Incluye el historial de conversación + el prompt actual + la respuesta',
-      'Cuando se supera el límite, el modelo "olvida" el inicio de la conversación',
-      'Ventanas más grandes permiten analizar documentos extensos'
+      { icon: '📏', title: 'Medida en tokens', description: 'Se mide en tokens, no en palabras. Aproximadamente 1 token equivale a 0.75 palabras en español.' },
+      { icon: '💬', title: 'Incluye todo el contexto', description: 'La ventana engloba el historial de conversación, el prompt actual y la respuesta del modelo.' },
+      { icon: '🔄', title: 'Olvido de contexto antiguo', description: 'Cuando se supera el límite, el modelo descarta las partes más antiguas de la conversación.' },
+      { icon: '📚', title: 'Ventanas extensas', description: 'Las ventanas de contexto grandes (200K tokens) permiten analizar documentos o libros enteros.' }
     ],
     examples: [
       'Claude 3 tiene una ventana de 200K tokens (≈150,000 palabras)',
@@ -2323,10 +2323,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'La arquitectura Transformer es el diseño de red neuronal que sustenta prácticamente todos los modelos de lenguaje modernos, desde GPT y BERT hasta Claude y Gemini. Fue introducida en el paper "Attention is All You Need" (2017).',
     definition: 'Un Transformer es una arquitectura de red neuronal basada en el mecanismo de "atención" (attention), que permite al modelo ponderar la importancia relativa de cada parte del texto de entrada. A diferencia de los modelos secuenciales anteriores (RNN/LSTM), los Transformers procesan toda la secuencia en paralelo.',
     characteristics: [
-      'Mecanismo de auto-atención: el modelo pondera qué partes del texto son más relevantes',
-      'Procesamiento paralelo: más eficiente que los modelos secuenciales',
-      'Escalabilidad: funciona mejor con más datos y más parámetros',
-      'Bidireccionalidad: puede considerar contexto anterior y posterior simultáneamente'
+      { icon: '👁️', title: 'Mecanismo de auto-atención', description: 'El modelo pondera qué partes del texto son más relevantes para cada token que está generando.' },
+      { icon: '⚡', title: 'Procesamiento paralelo', description: 'Procesa todos los tokens de la secuencia simultáneamente, lo que lo hace más eficiente que los modelos secuenciales.' },
+      { icon: '📈', title: 'Escalabilidad', description: 'Funciona notablemente mejor cuanto más datos de entrenamiento y más parámetros tiene el modelo.' },
+      { icon: '↔️', title: 'Bidireccionalidad', description: 'Puede considerar el contexto anterior y posterior de cada token simultáneamente.' }
     ],
     examples: [
       'GPT (Generative Pre-trained Transformer): variante autoregresiva para generación de texto',
@@ -2355,10 +2355,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'La IA en educación abarca todas las aplicaciones de inteligencia artificial que apoyan o transforman los procesos de enseñanza y aprendizaje: desde tutores virtuales hasta herramientas de evaluación automática y detección de uso de IA en trabajos académicos.',
     definition: 'La IA educativa incluye sistemas de tutoría inteligente, plataformas de aprendizaje adaptativo, herramientas de retroalimentación automática y, más recientemente, modelos de lenguaje que los estudiantes usan para redactar trabajos. Este último uso ha generado tensión con los principios de integridad académica.',
     characteristics: [
-      'Personalización: adapta el contenido al ritmo y nivel de cada estudiante',
-      'Accesibilidad: democratiza el acceso a tutorías de calidad',
-      'Riesgo de dependencia: los estudiantes pueden usarla para evitar aprender',
-      'Desafío institucional: las universidades deben actualizar sus políticas urgentemente'
+      { icon: '🎯', title: 'Personalización', description: 'Adapta el contenido al ritmo y nivel de cada estudiante, mejorando la eficacia del aprendizaje.' },
+      { icon: '🌐', title: 'Accesibilidad', description: 'Democratiza el acceso a tutorías de calidad para estudiantes sin recursos para clases particulares.' },
+      { icon: '⚠️', title: 'Riesgo de dependencia', description: 'Los estudiantes pueden usarla para evitar aprender, delegando el trabajo intelectual a la IA.' },
+      { icon: '🏛️', title: 'Desafío institucional', description: 'Las universidades deben actualizar urgentemente sus políticas para regular el uso de IA generativa.' }
     ],
     examples: [
       'Khan Academy Khanmigo: tutor de IA para matemáticas y ciencias',
@@ -2387,10 +2387,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'Stable Diffusion es un modelo de inteligencia artificial de código abierto para la generación de imágenes a partir de descripciones de texto. Fue desarrollado por Stability AI y lanzado en 2022.',
     definition: 'Stable Diffusion es un modelo de difusión latente que aprende a generar imágenes partiendo de ruido gaussiano y aplicando iterativamente pasos de "desruidado" guiados por una descripción textual. A diferencia de DALL-E, es open source y puede ejecutarse localmente.',
     characteristics: [
-      'Código abierto: cualquiera puede descargarlo y usarlo gratuitamente',
-      'Ejecutable localmente: no requiere API ni suscripción',
-      'Altamente personalizable: existen miles de modelos derivados (fine-tunes)',
-      'Base de muchos servicios: Civitai, Automatic1111, ComfyUI'
+      { icon: '🔓', title: 'Código abierto', description: 'Cualquiera puede descargarlo y usarlo gratuitamente. El código fuente es público y auditable.' },
+      { icon: '💻', title: 'Ejecutable localmente', description: 'No requiere API ni suscripción. Puede correr en hardware local con GPU suficiente.' },
+      { icon: '🎨', title: 'Altamente personalizable', description: 'Existen miles de modelos derivados (fine-tunes) especializados en estilos artísticos concretos.' },
+      { icon: '🔧', title: 'Base de ecosistema', description: 'Sustenta plataformas como Civitai, Automatic1111 y ComfyUI con millones de usuarios.' }
     ],
     examples: [
       'Generar ilustraciones para libros o presentaciones a partir de prompts de texto',
@@ -2419,10 +2419,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'Midjourney es un servicio de inteligencia artificial que genera imágenes de alta calidad artística a partir de descripciones de texto. Es uno de los generadores de imágenes IA más utilizados, especialmente para arte conceptual e ilustración.',
     definition: 'Midjourney es un modelo de difusión desarrollado por Midjourney, Inc., disponible principalmente a través de Discord o su web. Destaca por producir imágenes de alta calidad estética y por su facilidad de uso, aunque requiere suscripción de pago.',
     characteristics: [
-      'Alta calidad artística: especializado en estilos pictóricos y conceptuales',
-      'Acceso vía Discord y web: interfaz sencilla sin necesidad de hardware propio',
-      'De pago: varios planes de suscripción según uso',
-      'Iteraciones rápidas: permite variaciones y upscaling de imágenes generadas'
+      { icon: '🎨', title: 'Alta calidad artística', description: 'Especializado en estilos pictóricos y conceptuales. Produce imágenes de aspecto profesional por defecto.' },
+      { icon: '💬', title: 'Acceso vía Discord y web', description: 'Interfaz sencilla sin necesidad de hardware propio ni instalación local.' },
+      { icon: '💳', title: 'De pago', description: 'Requiere suscripción mensual. Ofrece varios planes según el volumen de imágenes generadas.' },
+      { icon: '🔄', title: 'Iteraciones rápidas', description: 'Genera 4 variaciones por prompt y permite hacer upscaling o variaciones sobre cualquiera de ellas.' }
     ],
     examples: [
       'Artistas que generan conceptos visuales para clientes',
@@ -2450,10 +2450,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'La IA Responsable (Responsible AI) es un marco de principios, prácticas y procesos que busca garantizar que los sistemas de inteligencia artificial sean seguros, equitativos, transparentes y beneficiosos para la sociedad.',
     definition: 'La IA Responsable abarca dimensiones técnicas, éticas y de gobernanza: desde diseñar modelos sin sesgos discriminatorios hasta garantizar la privacidad de los datos, explicar las decisiones automatizadas y establecer mecanismos de rendición de cuentas cuando la IA cause daños.',
     characteristics: [
-      'Equidad: los modelos no deben discriminar por raza, género u otros atributos',
-      'Transparencia: los procesos de decisión deben ser explicables',
-      'Privacidad: los datos personales deben protegerse durante el entrenamiento y uso',
-      'Rendición de cuentas: debe haber responsables humanos cuando la IA falla'
+      { icon: '⚖️', title: 'Equidad', description: 'Los modelos no deben discriminar por raza, género, origen u otros atributos protegidos.' },
+      { icon: '🔍', title: 'Transparencia', description: 'Los procesos de decisión deben ser explicables para los afectados y para los reguladores.' },
+      { icon: '🔒', title: 'Privacidad', description: 'Los datos personales deben protegerse durante el entrenamiento, uso e inferencia del modelo.' },
+      { icon: '👤', title: 'Rendición de cuentas', description: 'Debe haber responsables humanos identificables cuando la IA cause daños o tome decisiones erróneas.' }
     ],
     examples: [
       'Políticas de uso de IA de empresas como Google, Microsoft o Anthropic',
@@ -2482,10 +2482,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'El Reconocimiento Óptico de Caracteres (OCR) es la tecnología que convierte imágenes de texto —como documentos escaneados, fotografías o PDFs— en texto digital editable y buscable, usando inteligencia artificial.',
     definition: 'El OCR moderno combina visión por computadora con modelos de lenguaje para identificar caracteres, palabras y estructuras de párrafos en imágenes. Aplicaciones como Adobe Acrobat, Google Lens o Tesseract (open source) permiten digitalizar documentos físicos en segundos con alta precisión.',
     characteristics: [
-      'Conversión imagen a texto: digitaliza documentos físicos o PDFs escaneados',
-      'Soporte multiidioma: reconoce español, inglés, árabe, chino y más',
-      'Preservación de formato: mantiene tablas, columnas y diseño cuando es posible',
-      'Integración con IA: los sistemas modernos mejoran la precisión con contexto lingüístico'
+      { icon: '📄', title: 'Conversión imagen a texto', description: 'Digitaliza documentos físicos, fotografías o PDFs escaneados convirtiéndolos en texto editable.' },
+      { icon: '🌍', title: 'Soporte multiidioma', description: 'Reconoce texto en español, inglés, árabe, chino y decenas de idiomas más.' },
+      { icon: '📐', title: 'Preservación de formato', description: 'Mantiene tablas, columnas y el diseño del documento original cuando es técnicamente posible.' },
+      { icon: '🤖', title: 'Integración con IA', description: 'Los sistemas modernos combinan visión por computadora con modelos de lenguaje para mayor precisión.' }
     ],
     examples: [
       'Escanear apuntes escritos a mano y convertirlos en texto editable',
@@ -2513,10 +2513,10 @@ export const glossary: GlossaryPage[] = [
     intro: 'Este glosario reúne los términos de inteligencia artificial más relevantes para estudiantes, profesores e investigadores en español. Desde conceptos técnicos como transformers y fine-tuning hasta términos académicos como plagio e integridad académica.',
     definition: 'Un glosario de IA es una referencia estructurada de los conceptos, tecnologías y terminología asociados a la inteligencia artificial, especialmente los que son relevantes para entender cómo funcionan los modelos de lenguaje, cómo se detectan textos generados por IA y cómo se aplican las políticas de uso académico.',
     characteristics: [
-      'Más de 45 términos explicados en español claro y accesible',
-      'Enfoque académico: relevante para estudiantes y profesores universitarios',
-      'Actualizado en 2025: incluye términos emergentes como DeepSeek, Perplexity y RAG',
-      'Con ejemplos prácticos y preguntas frecuentes'
+      { icon: '📚', title: 'Más de 45 términos', description: 'Más de 45 términos de IA explicados en español claro y accesible, sin jerga técnica innecesaria.' },
+      { icon: '🎓', title: 'Enfoque académico', description: 'Relevante para estudiantes y profesores universitarios que necesitan entender la IA en contexto educativo.' },
+      { icon: '📅', title: 'Actualizado en 2025', description: 'Incluye términos emergentes como DeepSeek, Perplexity, RAG y otros conceptos clave de 2024-2025.' },
+      { icon: '💡', title: 'Ejemplos y FAQs', description: 'Cada término incluye ejemplos prácticos y preguntas frecuentes para facilitar la comprensión.' }
     ],
     examples: [
       'Términos técnicos: LLM, Transformer, Fine-Tuning, RAG, Temperatura',

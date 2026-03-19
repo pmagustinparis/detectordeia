@@ -157,6 +157,52 @@ export default function UseCasePageClient({ useCase }: Props) {
         </div>
       </section>
 
+      {/* INTERNAL LINKS — profesores */}
+      {useCase.slug === 'detector-de-ia-para-profesores' && (
+        <section className="max-w-4xl mx-auto mb-12 px-4">
+          <h2 className="text-2xl font-extrabold text-gray-800 mb-6 text-center">Recursos recomendados para profesores</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Link
+              href="/detector-de-ia-vs/turnitin"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+            >
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">DetectordeIA vs Turnitin →</p>
+              <p className="text-sm text-gray-600">Compará las dos herramientas más usadas por docentes para detectar IA y plagio académico.</p>
+            </Link>
+            <Link
+              href="/guias/como-usar-ia-eticamente-universidad"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+            >
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">Guía: Cómo usar IA éticamente →</p>
+              <p className="text-sm text-gray-600">Comparte esta guía con tus estudiantes para establecer expectativas claras sobre el uso de IA.</p>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* INTERNAL LINKS — estudiantes */}
+      {useCase.slug === 'detector-de-ia-para-estudiantes' && (
+        <section className="max-w-4xl mx-auto mb-12 px-4">
+          <h2 className="text-2xl font-extrabold text-gray-800 mb-6 text-center">Recursos para estudiantes</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Link
+              href="/guias/como-evitar-plagio-academico"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+            >
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">Guía: Cómo evitar el plagio académico →</p>
+              <p className="text-sm text-gray-600">Aprende qué cuenta como plagio, qué es el uso de IA y cómo citar correctamente.</p>
+            </Link>
+            <Link
+              href="/guias/como-usar-ia-eticamente-universidad"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+            >
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">Guía: Usar IA de forma ética →</p>
+              <p className="text-sm text-gray-600">Descubre cuándo puedes usar IA en tus trabajos y cómo declararla correctamente.</p>
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* FINAL CTA */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
         <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl shadow-2xl p-10 text-center text-white">
