@@ -47,13 +47,13 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
             </div>
 
             <p className="text-violet-700 font-semibold text-lg mb-4">
-              Plan Premium – Ya Disponible
+              Express Pass o Premium – acceso completo
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">Hasta 15,000 caracteres por uso</span>
+                <span className="text-sm text-gray-700">Sin límite de caracteres por uso</span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
@@ -61,16 +61,16 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">Historial completo de humanizaciones</span>
+                <span className="text-sm text-gray-700">Carga de archivos (.txt, .docx, .pdf)</span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">Carga de archivos (.txt, .docx, .pdf)</span>
+                <span className="text-sm text-gray-700">Historial completo de humanizaciones</span>
               </div>
             </div>
 
-            <p className="text-xl font-bold text-gray-800 mb-4">
-              Desde $10/mes • Ahorra 20% con plan anual
+            <p className="text-sm text-gray-500 mb-4">
+              Express Pass desde <strong className="text-gray-700">$3.99</strong> · pago único sin renovación &nbsp;·&nbsp; Premium desde <strong className="text-gray-700">$12.99/mes</strong>
             </p>
 
             <a
