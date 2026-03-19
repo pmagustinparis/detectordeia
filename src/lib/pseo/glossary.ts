@@ -2219,5 +2219,320 @@ export const glossary: GlossaryPage[] = [
       { name: 'Detector de IA Gratis', url: '/?ref=glosario-datos-entrenamiento' }
     ],
     cta: { text: 'Verificar si un texto fue generado por IA', url: '/?ref=glosario-datos-entrenamiento' }
+  },
+  {
+    slug: 'que-es-ia-explicable',
+    term: 'IA Explicable (XAI)',
+    keywords: ['ia explicable', 'xai inteligencia artificial', 'explainable ai', 'transparencia ia'],
+    title: '¿Qué es la IA Explicable (XAI)? — Glosario',
+    description: 'La IA Explicable (XAI) hace que los modelos de inteligencia artificial sean comprensibles para los humanos. Descubre por qué es crucial para la confianza y la ética en la IA.',
+    h1: '¿Qué es la IA Explicable (XAI)?',
+    intro: 'La IA Explicable (XAI) es el conjunto de técnicas y métodos que permiten a los humanos entender y confiar en los resultados producidos por modelos de inteligencia artificial, haciendo transparente el proceso de toma de decisiones.',
+    definition: 'La IA Explicable (Explainable AI o XAI) se refiere a métodos e interfaces que permiten que los humanos comprendan cómo los sistemas de IA llegan a sus conclusiones. A diferencia de los modelos de "caja negra", la XAI busca que el razonamiento del modelo sea interpretable, auditable y justificable.',
+    characteristics: [
+      'Transparencia: el modelo puede describir su proceso de decisión',
+      'Interpretabilidad: los humanos pueden entender los patrones aprendidos',
+      'Justificabilidad: se pueden dar razones claras para cada predicción',
+      'Auditabilidad: el proceso puede ser revisado y verificado por terceros'
+    ],
+    examples: [
+      'Un sistema médico que explica por qué clasifica una imagen como tumor',
+      'Un detector de fraude bancario que indica qué transacciones son sospechosas y por qué',
+      'Un detector de IA que muestra qué frases generaron la puntuación de IA'
+    ],
+    faqs: [
+      { question: '¿Por qué es importante la IA explicable?', answer: 'Porque permite auditar decisiones que afectan a personas, detectar sesgos y cumplir con regulaciones como el GDPR que exige el "derecho a explicación" en decisiones automatizadas.' },
+      { question: '¿Todos los modelos de IA pueden ser explicables?', answer: 'No todos fácilmente. Los modelos profundos (deep learning) son inherentemente complejos. Se usan técnicas como LIME, SHAP o árboles de decisión para aproximar explicaciones.' }
+    ],
+    relatedTerms: [
+      { term: 'Sesgo en la IA', slug: 'que-es-sesgo-ia' },
+      { term: 'Red Neuronal', slug: 'que-es-red-neuronal' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-ia-explicable' }],
+    cta: { text: 'Analizar texto con IA transparente', url: '/?ref=glosario-ia-explicable' }
+  },
+  {
+    slug: 'que-es-multimodalidad-ia',
+    term: 'Multimodalidad en IA',
+    keywords: ['multimodalidad ia', 'modelos multimodales', 'ia imagen texto', 'gpt-4v multimodal'],
+    title: '¿Qué es la Multimodalidad en IA? — Glosario',
+    description: 'Los modelos multimodales de IA pueden procesar y generar texto, imágenes, audio y video combinados. Entiende cómo funciona y para qué se usa esta tecnología.',
+    h1: '¿Qué es la Multimodalidad en IA?',
+    intro: 'La multimodalidad en IA se refiere a la capacidad de los modelos de inteligencia artificial para procesar y generar información en múltiples formatos: texto, imágenes, audio y video de forma integrada.',
+    definition: 'Un modelo multimodal puede recibir como entrada texto, imágenes, audio o video, y generar salidas en cualquiera de esos formatos. Ejemplos destacados son GPT-4o, Gemini Ultra y Claude 3, que pueden analizar imágenes, transcribir audio o generar texto a partir de fotografías.',
+    characteristics: [
+      'Procesamiento cruzado: relaciona información de diferentes modalidades',
+      'Comprensión contextual: entiende una imagen y responde en texto',
+      'Generación mixta: puede producir texto que describe imágenes analizadas',
+      'Unificación de modelos: un solo modelo reemplaza pipelines de varios modelos especializados'
+    ],
+    examples: [
+      'GPT-4o analizando una fotografía de un problema de matemáticas y resolviéndolo',
+      'Gemini describiendo el contenido de un video en texto',
+      'DALL-E generando imágenes a partir de descripciones textuales'
+    ],
+    faqs: [
+      { question: '¿En qué se diferencia un modelo multimodal de uno de texto?', answer: 'Los modelos de solo texto solo procesan y generan texto. Los multimodales también manejan imágenes, audio o video, ampliando enormemente sus capacidades.' },
+      { question: '¿Los detectores de IA pueden analizar imágenes generadas por IA?', answer: 'Algunos detectores multimodales sí pueden identificar imágenes generadas por IA, aunque es un campo más difícil que detectar texto generado.' }
+    ],
+    relatedTerms: [
+      { term: 'GPT-4', slug: 'que-es-gpt-4' },
+      { term: 'Gemini de Google', slug: 'que-es-gemini-google' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-multimodalidad' }],
+    cta: { text: 'Detectar texto generado por IA multimodal', url: '/?ref=glosario-multimodalidad' }
+  },
+  {
+    slug: 'que-es-ventana-contexto-ia',
+    term: 'Ventana de Contexto en IA',
+    keywords: ['ventana de contexto ia', 'context window', 'tokens contexto', 'memoria ia'],
+    title: '¿Qué es la Ventana de Contexto en IA? — Glosario',
+    description: 'La ventana de contexto determina cuánta información puede procesar un modelo de IA a la vez. Aprende qué significa y por qué afecta la calidad de las respuestas.',
+    h1: '¿Qué es la Ventana de Contexto en IA?',
+    intro: 'La ventana de contexto (context window) es el límite máximo de texto que un modelo de lenguaje puede procesar en una sola interacción: incluye tanto el prompt del usuario como la respuesta del modelo.',
+    definition: 'Los modelos de lenguaje tienen una memoria de trabajo limitada medida en tokens. La ventana de contexto define cuántos tokens puede "ver" el modelo simultáneamente. Una ventana pequeña limita las conversaciones largas; ventanas grandes (200K tokens) permiten analizar libros enteros.',
+    characteristics: [
+      'Se mide en tokens, no en palabras (1 token ≈ 0.75 palabras en español)',
+      'Incluye el historial de conversación + el prompt actual + la respuesta',
+      'Cuando se supera el límite, el modelo "olvida" el inicio de la conversación',
+      'Ventanas más grandes permiten analizar documentos extensos'
+    ],
+    examples: [
+      'Claude 3 tiene una ventana de 200K tokens (≈150,000 palabras)',
+      'GPT-4 Turbo soporta hasta 128K tokens',
+      'Los modelos más simples tienen 4K-16K tokens'
+    ],
+    faqs: [
+      { question: '¿Qué pasa cuando se supera la ventana de contexto?', answer: 'El modelo descarta las partes más antiguas de la conversación para hacer espacio al nuevo contenido, lo que puede causar inconsistencias o "olvidos".' },
+      { question: '¿Una ventana de contexto grande siempre es mejor?', answer: 'Más contexto disponible es generalmente mejor, pero los modelos con ventanas muy grandes pueden ser más lentos y costosos.' }
+    ],
+    relatedTerms: [
+      { term: 'Tokens en IA', slug: 'que-es-tokens-ia' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-ventana-contexto' }],
+    cta: { text: 'Verificar si tu texto fue generado por IA', url: '/?ref=glosario-ventana-contexto' }
+  },
+  {
+    slug: 'que-es-transformers-arquitectura',
+    term: 'Transformers (Arquitectura)',
+    keywords: ['transformers arquitectura ia', 'attention mechanism', 'bert gpt arquitectura', 'que es transformer'],
+    title: '¿Qué es la Arquitectura Transformer en IA? — Glosario',
+    description: 'Los Transformers son la arquitectura base de GPT, BERT y la mayoría de los modelos de IA modernos. Descubre cómo funciona y por qué revolucionó la inteligencia artificial.',
+    h1: '¿Qué es la Arquitectura Transformer?',
+    intro: 'La arquitectura Transformer es el diseño de red neuronal que sustenta prácticamente todos los modelos de lenguaje modernos, desde GPT y BERT hasta Claude y Gemini. Fue introducida en el paper "Attention is All You Need" (2017).',
+    definition: 'Un Transformer es una arquitectura de red neuronal basada en el mecanismo de "atención" (attention), que permite al modelo ponderar la importancia relativa de cada parte del texto de entrada. A diferencia de los modelos secuenciales anteriores (RNN/LSTM), los Transformers procesan toda la secuencia en paralelo.',
+    characteristics: [
+      'Mecanismo de auto-atención: el modelo pondera qué partes del texto son más relevantes',
+      'Procesamiento paralelo: más eficiente que los modelos secuenciales',
+      'Escalabilidad: funciona mejor con más datos y más parámetros',
+      'Bidireccionalidad: puede considerar contexto anterior y posterior simultáneamente'
+    ],
+    examples: [
+      'GPT (Generative Pre-trained Transformer): variante autoregresiva para generación de texto',
+      'BERT: para comprensión de lenguaje',
+      'T5, PaLM, LLaMA: todos basados en la misma arquitectura fundamental'
+    ],
+    faqs: [
+      { question: '¿Por qué los Transformers son tan importantes?', answer: 'Porque superaron a los modelos anteriores en casi todas las tareas de NLP y son la base de la explosión de IA generativa desde 2020. Sin Transformers, no existirían ChatGPT ni modelos similares.' },
+      { question: '¿Qué tiene que ver con la detección de IA?', answer: 'Los detectores de IA identifican patrones estadísticos característicos de textos generados por modelos Transformer, como distribuciones de probabilidad muy uniformes y alta predictibilidad.' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Red Neuronal', slug: 'que-es-red-neuronal' },
+      { term: 'Fine-Tuning', slug: 'que-es-fine-tuning' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-transformers' }],
+    cta: { text: 'Detectar texto generado por modelos Transformer', url: '/?ref=glosario-transformers' }
+  },
+  {
+    slug: 'que-es-ia-en-educacion',
+    term: 'IA en Educación',
+    keywords: ['ia en educacion', 'inteligencia artificial educacion', 'ia educativa', 'chatgpt universidades'],
+    title: '¿Qué es la IA en Educación? Usos, Riesgos y Oportunidades — Glosario',
+    description: 'La IA está transformando la educación con tutores virtuales, personalización del aprendizaje y nuevos retos de integridad académica. Descubre el panorama completo.',
+    h1: '¿Qué es la IA en Educación?',
+    intro: 'La IA en educación abarca todas las aplicaciones de inteligencia artificial que apoyan o transforman los procesos de enseñanza y aprendizaje: desde tutores virtuales hasta herramientas de evaluación automática y detección de uso de IA en trabajos académicos.',
+    definition: 'La IA educativa incluye sistemas de tutoría inteligente, plataformas de aprendizaje adaptativo, herramientas de retroalimentación automática y, más recientemente, modelos de lenguaje que los estudiantes usan para redactar trabajos. Este último uso ha generado tensión con los principios de integridad académica.',
+    characteristics: [
+      'Personalización: adapta el contenido al ritmo y nivel de cada estudiante',
+      'Accesibilidad: democratiza el acceso a tutorías de calidad',
+      'Riesgo de dependencia: los estudiantes pueden usarla para evitar aprender',
+      'Desafío institucional: las universidades deben actualizar sus políticas urgentemente'
+    ],
+    examples: [
+      'Khan Academy Khanmigo: tutor de IA para matemáticas y ciencias',
+      'ChatGPT usado por estudiantes para redactar ensayos',
+      'DetectordeIA.ai: herramienta que usan profesores para identificar trabajos generados por IA'
+    ],
+    faqs: [
+      { question: '¿Las universidades permiten usar IA en trabajos académicos?', answer: 'Las políticas varían. Algunas universidades prohíben su uso, otras lo permiten con declaración, y otras exigen que el trabajo sea verificado con detectores de IA. Consulta el reglamento de tu institución.' },
+      { question: '¿La IA en educación es positiva o negativa?', answer: 'Depende del uso. Usada como apoyo para entender conceptos es positiva; usada para sustituir el aprendizaje propio genera dependencia y reduce las habilidades del estudiante.' }
+    ],
+    relatedTerms: [
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' },
+      { term: 'Plagio', slug: 'que-es-plagio' },
+      { term: 'Hallucination en IA', slug: 'que-es-hallucination-ia' }
+    ],
+    relatedTools: [{ name: 'Detector de IA para Profesores', url: '/detector-de-ia-para-profesores' }],
+    cta: { text: 'Verificar trabajos académicos con IA', url: '/?ref=glosario-ia-educacion' }
+  },
+  {
+    slug: 'que-es-stable-diffusion',
+    term: 'Stable Diffusion',
+    keywords: ['que es stable diffusion', 'stable diffusion ia', 'generador imagenes ia', 'diffusion models'],
+    title: '¿Qué es Stable Diffusion? — Glosario de IA',
+    description: 'Stable Diffusion es un modelo de IA de código abierto que genera imágenes a partir de texto. Descubre cómo funciona, para qué se usa y cómo detectar imágenes generadas por IA.',
+    h1: '¿Qué es Stable Diffusion?',
+    intro: 'Stable Diffusion es un modelo de inteligencia artificial de código abierto para la generación de imágenes a partir de descripciones de texto. Fue desarrollado por Stability AI y lanzado en 2022.',
+    definition: 'Stable Diffusion es un modelo de difusión latente que aprende a generar imágenes partiendo de ruido gaussiano y aplicando iterativamente pasos de "desruidado" guiados por una descripción textual. A diferencia de DALL-E, es open source y puede ejecutarse localmente.',
+    characteristics: [
+      'Código abierto: cualquiera puede descargarlo y usarlo gratuitamente',
+      'Ejecutable localmente: no requiere API ni suscripción',
+      'Altamente personalizable: existen miles de modelos derivados (fine-tunes)',
+      'Base de muchos servicios: Civitai, Automatic1111, ComfyUI'
+    ],
+    examples: [
+      'Generar ilustraciones para libros o presentaciones a partir de prompts de texto',
+      'Crear avatares y personajes para juegos o redes sociales',
+      'Producir imágenes de productos para e-commerce sin fotografía'
+    ],
+    faqs: [
+      { question: '¿Cómo se diferencia de Midjourney?', answer: 'Midjourney es un servicio de pago con interfaz vía Discord; Stable Diffusion es gratuito, open source y se puede ejecutar sin conexión. Midjourney suele producir imágenes de mayor calidad estética por defecto.' },
+      { question: '¿Se pueden detectar imágenes generadas por Stable Diffusion?', answer: 'Existen detectores de imágenes IA, pero son menos precisos que los detectores de texto. Las imágenes generadas a veces presentan artefactos como manos con dedos incorrectos o texto ilegible.' }
+    ],
+    relatedTerms: [
+      { term: 'Midjourney', slug: 'que-es-midjourney' },
+      { term: 'Multimodalidad en IA', slug: 'que-es-multimodalidad-ia' },
+      { term: 'Datos de Entrenamiento', slug: 'que-es-datos-entrenamiento' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-stable-diffusion' }],
+    cta: { text: 'Detectar texto generado por IA', url: '/?ref=glosario-stable-diffusion' }
+  },
+  {
+    slug: 'que-es-midjourney',
+    term: 'Midjourney',
+    keywords: ['que es midjourney', 'midjourney ia imagenes', 'generador imagenes ia midjourney', 'midjourney vs dall-e'],
+    title: '¿Qué es Midjourney? El Generador de Imágenes IA — Glosario',
+    description: 'Midjourney es uno de los generadores de imágenes con IA más populares del mundo. Descubre cómo funciona, cuánto cuesta y cómo detectar imágenes creadas con Midjourney.',
+    h1: '¿Qué es Midjourney?',
+    intro: 'Midjourney es un servicio de inteligencia artificial que genera imágenes de alta calidad artística a partir de descripciones de texto. Es uno de los generadores de imágenes IA más utilizados, especialmente para arte conceptual e ilustración.',
+    definition: 'Midjourney es un modelo de difusión desarrollado por Midjourney, Inc., disponible principalmente a través de Discord o su web. Destaca por producir imágenes de alta calidad estética y por su facilidad de uso, aunque requiere suscripción de pago.',
+    characteristics: [
+      'Alta calidad artística: especializado en estilos pictóricos y conceptuales',
+      'Acceso vía Discord y web: interfaz sencilla sin necesidad de hardware propio',
+      'De pago: varios planes de suscripción según uso',
+      'Iteraciones rápidas: permite variaciones y upscaling de imágenes generadas'
+    ],
+    examples: [
+      'Artistas que generan conceptos visuales para clientes',
+      'Diseñadores que crean mockups rápidos de productos',
+      'Escritores que generan portadas de libros o ilustraciones de personajes'
+    ],
+    faqs: [
+      { question: '¿Midjourney es gratuito?', answer: 'No. Midjourney requiere suscripción de pago. Anteriormente ofrecía un plan gratuito limitado, pero fue eliminado por la alta demanda.' },
+      { question: '¿Cómo se usa Midjourney?', answer: 'Se accede a través de Discord (bot /imagine) o la web midjourney.com. Se escribe un prompt descriptivo en inglés para mejores resultados, y el modelo genera 4 variaciones.' }
+    ],
+    relatedTerms: [
+      { term: 'Stable Diffusion', slug: 'que-es-stable-diffusion' },
+      { term: 'Multimodalidad en IA', slug: 'que-es-multimodalidad-ia' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-midjourney' }],
+    cta: { text: 'Verificar si un texto fue generado por IA', url: '/?ref=glosario-midjourney' }
+  },
+  {
+    slug: 'que-es-ia-responsable',
+    term: 'IA Responsable',
+    keywords: ['ia responsable', 'responsible ai', 'etica inteligencia artificial', 'ia etica principios'],
+    title: '¿Qué es la IA Responsable? Principios y Aplicaciones — Glosario',
+    description: 'La IA Responsable establece principios éticos para el desarrollo y uso de inteligencia artificial: equidad, transparencia, privacidad y rendición de cuentas.',
+    h1: '¿Qué es la IA Responsable?',
+    intro: 'La IA Responsable (Responsible AI) es un marco de principios, prácticas y procesos que busca garantizar que los sistemas de inteligencia artificial sean seguros, equitativos, transparentes y beneficiosos para la sociedad.',
+    definition: 'La IA Responsable abarca dimensiones técnicas, éticas y de gobernanza: desde diseñar modelos sin sesgos discriminatorios hasta garantizar la privacidad de los datos, explicar las decisiones automatizadas y establecer mecanismos de rendición de cuentas cuando la IA cause daños.',
+    characteristics: [
+      'Equidad: los modelos no deben discriminar por raza, género u otros atributos',
+      'Transparencia: los procesos de decisión deben ser explicables',
+      'Privacidad: los datos personales deben protegerse durante el entrenamiento y uso',
+      'Rendición de cuentas: debe haber responsables humanos cuando la IA falla'
+    ],
+    examples: [
+      'Políticas de uso de IA de empresas como Google, Microsoft o Anthropic',
+      'El Reglamento de IA de la UE (AI Act) como marco regulatorio',
+      'Detectores de IA usados en academia para garantizar la equidad en evaluaciones'
+    ],
+    faqs: [
+      { question: '¿Qué es el AI Act europeo?', answer: 'Es el primer reglamento integral del mundo sobre IA, aprobado por la UE en 2024. Clasifica los sistemas de IA por nivel de riesgo e impone requisitos de transparencia y supervisión humana.' },
+      { question: '¿La IA responsable frena la innovación?', answer: 'No necesariamente. Los marcos de IA responsable buscan garantizar que la innovación sea sostenible y confiable a largo plazo, evitando daños que podrían provocar prohibiciones o pérdida de confianza.' }
+    ],
+    relatedTerms: [
+      { term: 'IA Explicable (XAI)', slug: 'que-es-ia-explicable' },
+      { term: 'Sesgo en la IA', slug: 'que-es-sesgo-ia' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-ia-responsable' }],
+    cta: { text: 'Usar IA de forma responsable: verificar tus textos', url: '/?ref=glosario-ia-responsable' }
+  },
+  {
+    slug: 'que-es-reconocimiento-texto',
+    term: 'Reconocimiento de Texto (OCR)',
+    keywords: ['reconocimiento de texto ia', 'ocr inteligencia artificial', 'que es ocr', 'reconocimiento optico caracteres'],
+    title: '¿Qué es el Reconocimiento de Texto (OCR) con IA? — Glosario',
+    description: 'El reconocimiento óptico de caracteres (OCR) con IA convierte imágenes o documentos escaneados en texto editable y buscable. Descubre cómo funciona y sus aplicaciones.',
+    h1: '¿Qué es el Reconocimiento de Texto (OCR)?',
+    intro: 'El Reconocimiento Óptico de Caracteres (OCR) es la tecnología que convierte imágenes de texto —como documentos escaneados, fotografías o PDFs— en texto digital editable y buscable, usando inteligencia artificial.',
+    definition: 'El OCR moderno combina visión por computadora con modelos de lenguaje para identificar caracteres, palabras y estructuras de párrafos en imágenes. Aplicaciones como Adobe Acrobat, Google Lens o Tesseract (open source) permiten digitalizar documentos físicos en segundos con alta precisión.',
+    characteristics: [
+      'Conversión imagen a texto: digitaliza documentos físicos o PDFs escaneados',
+      'Soporte multiidioma: reconoce español, inglés, árabe, chino y más',
+      'Preservación de formato: mantiene tablas, columnas y diseño cuando es posible',
+      'Integración con IA: los sistemas modernos mejoran la precisión con contexto lingüístico'
+    ],
+    examples: [
+      'Escanear apuntes escritos a mano y convertirlos en texto editable',
+      'Digitalizar facturas para sistemas contables automatizados',
+      'Buscar texto dentro de PDFs escaneados que no tienen capa de texto'
+    ],
+    faqs: [
+      { question: '¿El OCR puede reconocer escritura a mano?', answer: 'Sí, los OCR modernos con IA pueden reconocer escritura a mano con alta precisión, aunque con menor exactitud que el texto impreso.' },
+      { question: '¿Puede un detector de IA analizar texto de imágenes?', answer: 'No directamente. Primero se necesita el OCR para extraer el texto de la imagen y luego el detector analiza ese texto.' }
+    ],
+    relatedTerms: [
+      { term: 'Multimodalidad en IA', slug: 'que-es-multimodalidad-ia' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-ocr-texto' }],
+    cta: { text: 'Analizar texto con nuestro detector de IA', url: '/?ref=glosario-ocr-texto' }
+  },
+  {
+    slug: 'que-es-glosario-terminos-ia',
+    term: 'Glosario de Términos de IA',
+    keywords: ['glosario terminos ia', 'vocabulario inteligencia artificial', 'diccionario ia', 'terminos ia español'],
+    title: 'Glosario Completo de Términos de IA en Español — Diccionario de Inteligencia Artificial',
+    description: 'Glosario completo de términos de inteligencia artificial en español: desde LLM, tokens y transformers hasta plagio, integridad académica y detectores de IA. Más de 45 términos explicados.',
+    h1: 'Glosario de Términos de Inteligencia Artificial',
+    intro: 'Este glosario reúne los términos de inteligencia artificial más relevantes para estudiantes, profesores e investigadores en español. Desde conceptos técnicos como transformers y fine-tuning hasta términos académicos como plagio e integridad académica.',
+    definition: 'Un glosario de IA es una referencia estructurada de los conceptos, tecnologías y terminología asociados a la inteligencia artificial, especialmente los que son relevantes para entender cómo funcionan los modelos de lenguaje, cómo se detectan textos generados por IA y cómo se aplican las políticas de uso académico.',
+    characteristics: [
+      'Más de 45 términos explicados en español claro y accesible',
+      'Enfoque académico: relevante para estudiantes y profesores universitarios',
+      'Actualizado en 2025: incluye términos emergentes como DeepSeek, Perplexity y RAG',
+      'Con ejemplos prácticos y preguntas frecuentes'
+    ],
+    examples: [
+      'Términos técnicos: LLM, Transformer, Fine-Tuning, RAG, Temperatura',
+      'Modelos de IA: ChatGPT, GPT-4, Gemini, DeepSeek, Claude, Perplexity',
+      'Términos académicos: Plagio, Integridad Académica, Patchwriting, Texto Sintético'
+    ],
+    faqs: [
+      { question: '¿Por qué es útil un glosario de IA para estudiantes?', answer: 'Porque el vocabulario de la IA evoluciona rápido y muchos términos en inglés no tienen equivalentes claros en español. Un glosario actualizado ayuda a entender noticias, políticas universitarias y debates sobre ética en IA.' },
+      { question: '¿Dónde puedo encontrar más recursos sobre IA en educación?', answer: 'En nuestras guías sobre integridad académica y uso ético de la IA, y en las páginas de política de IA de las principales universidades de LATAM y España.' }
+    ],
+    relatedTerms: [
+      { term: 'IA Responsable', slug: 'que-es-ia-responsable' },
+      { term: 'Integridad Académica', slug: 'que-es-integridad-academica' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' }
+    ],
+    relatedTools: [{ name: 'Detector de IA Gratis', url: '/?ref=glosario-terminos-ia' }],
+    cta: { text: 'Explorar el detector de IA gratuito', url: '/?ref=glosario-terminos-ia' }
   }
 ];
