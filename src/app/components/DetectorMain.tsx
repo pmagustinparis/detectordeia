@@ -1332,40 +1332,37 @@ export default function DetectorMain({
                           Con el Plan Free podés procesar hasta <strong>{CHARACTER_LIMIT.toLocaleString()} caracteres</strong> por vez.
                         </p>
 
-                        {/* Premium Benefits */}
-                        <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-4">
-                          <p className="text-sm font-bold text-slate-800 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Premium obtenés:</span>
-                          </p>
-                          <ul className="space-y-1.5 text-xs text-slate-700">
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>Usos ilimitados</strong></span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>5 modos premium</strong> + archivos</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>Historial completo</strong></span>
-                            </li>
-                          </ul>
-                          <p className="text-xs text-slate-500 mt-2 font-medium">
-                            Desde $12.99/mes • Ahorra 20% anual
-                          </p>
+                        {/* Dual option: Express vs Premium */}
+                        <div className="grid grid-cols-2 gap-3 mb-4">
+                          <div className="border-2 border-amber-300 bg-amber-50 rounded-xl p-3">
+                            <p className="text-xs font-bold text-amber-800 mb-1">⚡ Express Pass</p>
+                            <p className="text-xl font-extrabold text-amber-900">$3.99</p>
+                            <p className="text-xs text-amber-700">/ 24 horas</p>
+                            <p className="text-xs text-amber-600 mt-1">Sin suscripción</p>
+                            <ul className="text-xs text-amber-800 mt-2 space-y-1">
+                              <li>✓ <strong>{CHARACTER_LIMITS.premium.toLocaleString()} chars</strong></li>
+                              <li>✓ Usos ilimitados hoy</li>
+                            </ul>
+                          </div>
+                          <div className="border-2 border-violet-300 bg-violet-50 rounded-xl p-3">
+                            <p className="text-xs font-bold text-violet-800 mb-1">🚀 Premium</p>
+                            <p className="text-xl font-extrabold text-violet-900">$12.99</p>
+                            <p className="text-xs text-violet-700">/ mes</p>
+                            <p className="text-xs text-violet-600 mt-1">Ahorra 20% anual</p>
+                            <ul className="text-xs text-violet-800 mt-2 space-y-1">
+                              <li>✓ <strong>{CHARACTER_LIMITS.premium.toLocaleString()} chars</strong></li>
+                              <li>✓ Usos ilimitados</li>
+                              <li>✓ 5 modos premium</li>
+                            </ul>
+                          </div>
                         </div>
 
-                        {/* CTA - Upgrade to Pro */}
+                        {/* CTA */}
                         <a
                           href="/pricing"
                           className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
                         >
-                          Ver Planes y Precios
+                          Ver Express y Premium
                         </a>
                       </>
                     )}

@@ -171,49 +171,42 @@ export default function CharacterLimitModal({
 
           {userType === 'free' && (
             <>
-              <p className="text-center text-gray-700 mb-6 leading-relaxed">
+              <p className="text-center text-gray-700 mb-5 leading-relaxed">
                 Tu texto tiene <strong>{excessChars.toLocaleString()} caracteres de más</strong>.
                 Con el Plan Free podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
               </p>
 
-              {/* Premium Benefits */}
-              <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
-                <p className="text-sm font-bold text-violet-900 mb-3">
-                  🚀 Con Plan Premium obtenés:
-                </p>
-                <ul className="space-y-2 text-sm text-violet-800">
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold text-base">✓</span>
-                    <span><strong>Hasta {premiumMaxChars.toLocaleString()} caracteres</strong> ({proMultiplier}x más)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold text-base">✓</span>
-                    <span><strong>Usos ilimitados</strong> todos los días</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold text-base">✓</span>
-                    <span><strong>5 modos premium</strong> en Humanizador y Parafraseador</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold text-base">✓</span>
-                    <span><strong>Subida de archivos</strong> (PDF, DOCX, TXT)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold text-base">✓</span>
-                    <span><strong>Historial completo</strong> de todos tus análisis</span>
-                  </li>
-                </ul>
-                <p className="text-xs text-violet-700 mt-3 font-medium">
-                  Express $3.99/24h • Premium $12.99/mes • Ahorra 20% anual
-                </p>
+              {/* Dual option: Express vs Premium */}
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                <div className="border-2 border-amber-300 bg-amber-50 rounded-xl p-4">
+                  <p className="text-xs font-bold text-amber-800 mb-1">⚡ Express Pass</p>
+                  <p className="text-2xl font-extrabold text-amber-900">$3.99</p>
+                  <p className="text-xs text-amber-700">/ 24 horas</p>
+                  <p className="text-xs text-amber-600 mt-1">Sin suscripción</p>
+                  <ul className="text-xs text-amber-800 mt-2 space-y-1">
+                    <li>✓ <strong>{premiumMaxChars.toLocaleString()} chars</strong></li>
+                    <li>✓ Usos ilimitados hoy</li>
+                  </ul>
+                </div>
+                <div className="border-2 border-violet-300 bg-violet-50 rounded-xl p-4">
+                  <p className="text-xs font-bold text-violet-800 mb-1">🚀 Premium</p>
+                  <p className="text-2xl font-extrabold text-violet-900">$12.99</p>
+                  <p className="text-xs text-violet-700">/ mes</p>
+                  <p className="text-xs text-violet-600 mt-1">Ahorra 20% anual</p>
+                  <ul className="text-xs text-violet-800 mt-2 space-y-1">
+                    <li>✓ <strong>{premiumMaxChars.toLocaleString()} chars</strong></li>
+                    <li>✓ Usos ilimitados</li>
+                    <li>✓ 5 modos premium</li>
+                  </ul>
+                </div>
               </div>
 
-              {/* CTA - Upgrade to Pro or Express */}
+              {/* CTA */}
               <a
                 href="/pricing"
                 className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
               >
-                Ver Planes
+                Ver Express y Premium
               </a>
             </>
           )}
