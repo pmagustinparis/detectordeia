@@ -1485,7 +1485,7 @@ export const glossary: GlossaryPage[] = [
     }
   },
 
-  // ── SPRINT 3 GLOSSARY TERMS ────────────────────────────────────────────
+  // ── SPRINT 3 + 4 GLOSSARY TERMS ───────────────────────────────────────
 
   {
     slug: 'que-es-patchwriting',
@@ -1853,5 +1853,371 @@ export const glossary: GlossaryPage[] = [
       { name: 'Verificador de Originalidad', url: '/verificador-de-ia?ref=glosario-plagio-ideas' }
     ],
     cta: { text: 'Verificar originalidad de tu texto', url: '/?ref=glosario-plagio-ideas' }
+  },
+
+  // ── SPRINT 4D ────────────────────────────────────────────────────────────
+
+  {
+    slug: 'que-es-gpt-4',
+    term: 'GPT-4',
+    keywords: ['que es gpt-4', 'gpt4 ia', 'gpt-4 vs gpt-3', 'gpt-4 openai', 'gpt4 estudiantes'],
+    title: '¿Qué es GPT-4? El Modelo Detrás de ChatGPT Explicado 2025',
+    description: 'GPT-4 es el modelo de lenguaje de OpenAI que potencia ChatGPT Plus. Aprende cómo funciona, qué lo diferencia de versiones anteriores y cómo detectar texto que genera.',
+    h1: '¿Qué es GPT-4? El Modelo que Cambió la IA Explicado',
+    intro: 'GPT-4 es el modelo de lenguaje de OpenAI lanzado en 2023, el más usado en el mundo académico a través de ChatGPT Plus. Entender qué es y cómo funciona te ayuda a usarlo mejor — y a entender por qué los detectores de IA lo identifican.',
+    definition: 'GPT-4 (Generative Pre-trained Transformer 4) es un modelo de lenguaje grande multimodal desarrollado por OpenAI. Puede procesar texto e imágenes como entrada y generar texto como salida. Se lanzó en marzo de 2023 y es la base de ChatGPT Plus y la API de OpenAI. Tiene capacidad para razonar, escribir código, analizar documentos y generar texto en más de 50 idiomas.',
+    characteristics: [
+      { icon: '🧠', title: 'Multimodal: procesa texto e imágenes', description: 'A diferencia de GPT-3.5, GPT-4 puede analizar imágenes además de texto, lo que lo hace útil para analizar gráficos, diagramas o fotografías.' },
+      { icon: '📏', title: 'Ventana de contexto extendida', description: 'La versión GPT-4 Turbo puede procesar hasta 128,000 tokens (aproximadamente 100,000 palabras) en una sola conversación.' },
+      { icon: '🎯', title: 'Mayor precisión en razonamiento complejo', description: 'GPT-4 supera significativamente a GPT-3.5 en tareas de razonamiento matemático, análisis jurídico y comprensión de textos científicos.' },
+      { icon: '🔄', title: 'Sucesor de GPT-3.5 (que alimenta la versión gratuita de ChatGPT)', description: 'ChatGPT gratuito usa GPT-3.5 Turbo. ChatGPT Plus (de pago) usa GPT-4 y sus variantes.' }
+    ],
+    examples: [
+      'ChatGPT Plus usa GPT-4 para responder preguntas, escribir ensayos y analizar documentos.',
+      'La API de OpenAI permite a empresas integrar GPT-4 en sus propias aplicaciones.',
+      'GPT-4o (2024) es una versión optimizada de GPT-4 con mayor velocidad y menor coste por token.'
+    ],
+    faqs: [
+      { question: '¿GPT-4 es mejor que GPT-3.5 para trabajos académicos?', answer: 'En general sí: GPT-4 tiene mayor precisión, menos alucinaciones y mejor razonamiento en tareas complejas. Sin embargo, en textos cortos y simples la diferencia es menor. Para trabajos largos, con análisis complejos o en disciplinas técnicas, GPT-4 produce outputs más confiables.' },
+      { question: '¿Los detectores de IA detectan texto de GPT-4?', answer: 'Sí. Los detectores como DetectordeIA.ai están entrenados para identificar los patrones estadísticos comunes a los textos de GPT-4, GPT-3.5 y otros modelos. GPT-4 genera texto de alta calidad pero con patrones reconocibles de baja perplejidad y uniformidad.' },
+      { question: '¿GPT-4 puede equivocarse?', answer: 'Sí, y lo hace. GPT-4 tiene menor tasa de alucinaciones que GPT-3.5, pero sigue inventando citas, datos y afirmaciones con confianza. Nunca incluyas información de GPT-4 en un trabajo académico sin verificarla en una fuente primaria.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Claude (Anthropic)', slug: 'que-es-claude-anthropic' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-gpt4' }
+    ],
+    cta: { text: 'Detectar si tu texto fue generado por GPT-4', url: '/?ref=glosario-gpt4' }
+  },
+
+  {
+    slug: 'que-es-chatbot',
+    term: 'Chatbot',
+    keywords: ['que es un chatbot', 'chatbot ia', 'chatbot definicion', 'chatbot vs ia generativa', 'chatbot educacion'],
+    title: '¿Qué es un Chatbot? Diferencias con la IA Generativa 2025',
+    description: 'Un chatbot es un programa que simula conversación. Descubre qué es, cómo difiere de la IA generativa moderna y por qué importa en educación.',
+    h1: '¿Qué es un Chatbot? De los Bots Simples a ChatGPT',
+    intro: 'Chatbot es un término genérico para cualquier programa que simula conversación con humanos. ChatGPT es un chatbot — pero no todos los chatbots son como ChatGPT. La diferencia técnica es importante para entender qué pueden y qué no pueden hacer.',
+    definition: 'Un chatbot es un programa de software diseñado para simular conversaciones con usuarios humanos, especialmente a través de interfaces de texto o voz. Los chatbots van desde sistemas basados en reglas simples (respuestas predefinidas para palabras clave) hasta sistemas avanzados basados en LLMs que pueden mantener conversaciones complejas y generar respuestas originales.',
+    characteristics: [
+      { icon: '🔄', title: 'Dos tipos: basados en reglas y basados en IA', description: 'Los chatbots de reglas responden con scripts predefinidos. Los basados en IA generativa (como ChatGPT) generan respuestas originales en tiempo real.' },
+      { icon: '💬', title: 'Interfaz conversacional', description: 'La interacción principal es en lenguaje natural — texto o voz — en lugar de menús o formularios.' },
+      { icon: '🎯', title: 'Propósitos variados', description: 'Atención al cliente, educación, entretenimiento, salud mental (con limitaciones), asistencia académica.' },
+      { icon: '⚡', title: 'Disponibilidad 24/7', description: 'Los chatbots no tienen horario, lo que los hace útiles para soporte continuo y asistencia fuera de horario de atención humana.' }
+    ],
+    examples: [
+      'ChatGPT, Claude y Gemini son chatbots basados en LLMs con capacidad generativa.',
+      'Los chatbots de atención al cliente de bancos y aerolíneas suelen ser de reglas o híbridos.',
+      'Duolingo usa chatbots para práctica conversacional de idiomas.',
+      'Muchas universidades experimentan con chatbots para responder preguntas frecuentes de estudiantes.'
+    ],
+    faqs: [
+      { question: '¿Cuál es la diferencia entre un chatbot y ChatGPT?', answer: 'ChatGPT es un chatbot, pero de nueva generación. Los chatbots tradicionales responden con frases predefinidas para palabras clave. ChatGPT usa un LLM que genera respuestas originales, mantiene el contexto de la conversación y puede razonar sobre temas complejos. Es la diferencia entre un menú de opciones y una conversación real.' },
+      { question: '¿Los chatbots de IA pueden reemplazar a los profesores?', answer: 'No. Pueden complementar la enseñanza respondiendo preguntas frecuentes, generando ejercicios de práctica y dando feedback inmediato sobre tareas concretas. Pero el rol del docente como guía, evaluador del pensamiento crítico y constructor de relaciones pedagógicas no es reemplazable.' },
+      { question: '¿Es seguro usar chatbots de IA para preguntas sobre salud?', answer: 'Con precaución. Los chatbots de IA pueden dar información general útil, pero no reemplazan la consulta médica. Pueden cometer errores factuales o no considerar el contexto individual del paciente. Para decisiones de salud, siempre consultar un profesional.' }
+    ],
+    relatedTerms: [
+      { term: 'ChatGPT', slug: 'que-es-chatgpt' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'IA Generativa', slug: 'que-es-ia-generativa' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-chatbot' }
+    ],
+    cta: { text: 'Verificar si un texto fue generado por un chatbot de IA', url: '/?ref=glosario-chatbot' }
+  },
+
+  {
+    slug: 'que-es-aprendizaje-automatico',
+    term: 'Aprendizaje Automático (Machine Learning)',
+    keywords: ['que es aprendizaje automatico', 'machine learning definicion', 'aprendizaje automatico ejemplos', 'ml ia diferencia', 'machine learning educacion'],
+    title: '¿Qué es el Aprendizaje Automático? Guía Clara 2025',
+    description: 'El aprendizaje automático (machine learning) es la base de la IA moderna. Explicación sencilla para estudiantes de qué es, cómo funciona y para qué sirve.',
+    h1: '¿Qué es el Aprendizaje Automático? Machine Learning Explicado',
+    intro: 'El aprendizaje automático (o machine learning) es la tecnología que permite a las máquinas aprender de datos sin ser programadas explícitamente para cada tarea. Es la base de los detectores de spam, los sistemas de recomendación de Netflix — y de los detectores de IA.',
+    definition: 'El aprendizaje automático (Machine Learning o ML) es una rama de la inteligencia artificial que desarrolla algoritmos capaces de aprender patrones a partir de datos y mejorar su rendimiento con la experiencia, sin ser programados con reglas explícitas para cada caso. Los LLMs como GPT-4 son un tipo de sistema de aprendizaje automático.',
+    characteristics: [
+      { icon: '📊', title: 'Aprende de datos, no de reglas', description: 'En lugar de programar "si el email contiene X palabras entonces es spam", el modelo aprende de miles de emails etiquetados como spam o no spam.' },
+      { icon: '🔄', title: 'Mejora con más datos', description: 'Cuantos más datos de entrenamiento, mejor el rendimiento — hasta cierto punto. Esta es una diferencia fundamental con el software tradicional.' },
+      { icon: '🎯', title: 'Tres tipos principales', description: 'Supervisado (aprende con ejemplos etiquetados), no supervisado (encuentra patrones sin etiquetas), y por refuerzo (aprende de recompensas y penalizaciones).' },
+      { icon: '🌐', title: 'Base de la IA moderna', description: 'Los detectores de spam, los sistemas de recomendación, los traductores automáticos y los LLMs son todos sistemas de aprendizaje automático.' }
+    ],
+    examples: [
+      'El detector de spam de Gmail usa ML para clasificar correos como spam o no spam.',
+      'Los detectores de IA como DetectordeIA.ai usan ML para clasificar texto como humano o de IA.',
+      'Los sistemas de recomendación de Spotify y Netflix usan ML para predecir qué te gustará.',
+      'El reconocimiento facial de tu teléfono usa ML para identificar tu cara.'
+    ],
+    faqs: [
+      { question: '¿Cuál es la diferencia entre ML e inteligencia artificial?', answer: 'La IA es el campo general (crear máquinas que se comporten inteligentemente). El ML es una técnica dentro de la IA (aprender de datos). Todo ML es IA, pero no toda IA es ML — hay sistemas de IA basados en reglas que no aprenden de datos.' },
+      { question: '¿Los detectores de IA usan machine learning?', answer: 'Sí. Los detectores de texto de IA son clasificadores de ML entrenados para distinguir texto humano de texto generado por LLMs. Analizan patrones estadísticos aprendidos de ejemplos etiquetados de texto humano y texto de IA.' },
+      { question: '¿Necesito saber programar para usar machine learning?', answer: 'Para usar herramientas basadas en ML (como ChatGPT o DetectordeIA.ai), no. Para desarrollar tus propios modelos de ML, sí necesitas conocimientos de programación (Python principalmente) y matemáticas (álgebra lineal, estadística).' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Red Neuronal', slug: 'que-es-red-neuronal' },
+      { term: 'IA Generativa', slug: 'que-es-ia-generativa' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA (basado en ML)', url: '/?ref=glosario-ml' }
+    ],
+    cta: { text: 'Probar el detector de IA basado en machine learning', url: '/?ref=glosario-ml' }
+  },
+
+  {
+    slug: 'que-es-red-neuronal',
+    term: 'Red Neuronal',
+    keywords: ['que es una red neuronal', 'red neuronal artificial', 'red neuronal ia', 'como funciona red neuronal', 'red neuronal deep learning'],
+    title: '¿Qué es una Red Neuronal? Explicación Simple 2025',
+    description: 'Una red neuronal es la arquitectura que hace posible la IA moderna. Explicación sin fórmulas para entender qué son, cómo aprenden y por qué importan.',
+    h1: '¿Qué es una Red Neuronal? La Arquitectura detrás de la IA Moderna',
+    intro: 'Las redes neuronales son la arquitectura computacional que hace posibles ChatGPT, los detectores de imágenes y los sistemas de reconocimiento de voz. No son neuronas reales — son unidades matemáticas organizadas en capas que aprenden a reconocer patrones.',
+    definition: 'Una red neuronal artificial es un sistema computacional inspirado en la estructura del cerebro humano, compuesto por capas de nodos (neuronas artificiales) interconectados que procesan información. Las redes neuronales aprenden ajustando los pesos de las conexiones entre nodos a través del proceso de entrenamiento con datos. Las redes profundas (deep learning) tienen muchas capas ocultas entre la entrada y la salida.',
+    characteristics: [
+      { icon: '🧱', title: 'Organización en capas', description: 'Capa de entrada (recibe los datos), capas ocultas (procesan la información), capa de salida (produce el resultado). El "deep" en deep learning se refiere a tener muchas capas ocultas.' },
+      { icon: '⚖️', title: 'Aprenden ajustando pesos', description: 'El entrenamiento ajusta los pesos de las conexiones para minimizar el error. Después de millones de ajustes, la red aprende a reconocer patrones.' },
+      { icon: '🌐', title: 'Base de los LLMs', description: 'Los modelos de lenguaje como GPT-4 y Claude están basados en redes neuronales transformer — una arquitectura específica de red neuronal diseñada para texto.' },
+      { icon: '📸', title: 'Versátiles por diseño', description: 'La misma arquitectura básica (con variaciones) funciona para texto, imágenes, audio y video.' }
+    ],
+    examples: [
+      'El reconocimiento de voz de Siri y Alexa usa redes neuronales para convertir audio en texto.',
+      'ChatGPT está basado en una red neuronal transformer con miles de millones de parámetros.',
+      'Los detectores de IA usan redes neuronales para clasificar si un texto es humano o de IA.',
+      'Tesla Autopilot usa redes neuronales para interpretar imágenes de cámaras y tomar decisiones de conducción.'
+    ],
+    faqs: [
+      { question: '¿Las redes neuronales artificiales funcionan como el cerebro humano?', answer: 'Están inspiradas en él, pero son muy diferentes. El cerebro tiene ~86 mil millones de neuronas con conexiones extremadamente complejas y mecanismos que aún no comprendemos completamente. Las redes neuronales artificiales son simplificaciones matemáticas que capturan algunos principios de aprendizaje, no réplicas del cerebro.' },
+      { question: '¿Cuántos parámetros tiene GPT-4?', answer: 'OpenAI no ha revelado oficialmente el número, pero se estima en alrededor de 1 billón de parámetros. Cada parámetro es un número que puede ajustarse durante el entrenamiento. El número enorme de parámetros es lo que le da a GPT-4 su capacidad de generalización.' },
+      { question: '¿Qué es el deep learning?', answer: 'Deep learning es el uso de redes neuronales con muchas capas (profundas) para aprender representaciones complejas de los datos. Es la tecnología que habilitó el salto cualitativo en IA de los últimos 10 años, especialmente para imágenes, audio y texto.' }
+    ],
+    relatedTerms: [
+      { term: 'Aprendizaje Automático', slug: 'que-es-aprendizaje-automatico' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Transformers (Arquitectura)', slug: 'que-es-transformers-arquitectura' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-red-neuronal' }
+    ],
+    cta: { text: 'Probar el detector de IA', url: '/?ref=glosario-red-neuronal' }
+  },
+
+  {
+    slug: 'que-es-sesgo-ia',
+    term: 'Sesgo en la IA (AI Bias)',
+    keywords: ['que es sesgo ia', 'bias ia', 'sesgo inteligencia artificial', 'ia discriminacion', 'sesgo algoritmos ia'],
+    title: '¿Qué es el Sesgo en la IA? AI Bias Explicado 2025',
+    description: 'El sesgo en la IA ocurre cuando los modelos perpetúan discriminaciones presentes en los datos de entrenamiento. Aprende qué es, por qué importa y cómo afecta a los estudiantes.',
+    h1: '¿Qué es el Sesgo en la IA? Por Qué los Algoritmos Discriminan',
+    intro: 'Los sistemas de IA no son neutrales — heredan los sesgos de los datos con los que se entrenaron. Si los datos de entrenamiento reflejan desigualdades históricas, el modelo las reproducirá y amplificará. Esto tiene consecuencias reales en educación, contratación y justicia.',
+    definition: 'El sesgo en la IA (AI bias) es la tendencia de los sistemas de inteligencia artificial a producir resultados sistemáticamente injustos, inexactos o discriminatorios debido a suposiciones sesgadas en el proceso de diseño, datos de entrenamiento no representativos, o la amplificación de desigualdades históricas presentes en los datos.',
+    characteristics: [
+      { icon: '📊', title: 'Origen en los datos de entrenamiento', description: 'Si el texto de entrenamiento de un LLM asocia ciertos términos con ciertos grupos de manera desigual, el modelo reproducirá esas asociaciones.' },
+      { icon: '🔄', title: 'Amplificación de desigualdades', description: 'Los modelos no solo reproducen sesgos — los pueden amplificar al escalar el problema a millones de interacciones.' },
+      { icon: '👁️', title: 'Difícil de detectar sin pruebas específicas', description: 'El sesgo en la IA puede ser invisible hasta que se prueban casos concretos con grupos diferentes.' },
+      { icon: '⚖️', title: 'Consecuencias reales', description: 'Sistemas de contratación, crédito, reconocimiento facial y detección de IA pueden discriminar sin que nadie lo haya programado explícitamente.' }
+    ],
+    examples: [
+      'Sistemas de reconocimiento facial con mayor tasa de error en personas de piel oscura debido a entrenamiento con datos predominantemente de personas blancas.',
+      'LLMs que asocian ciertos trabajos con géneros específicos cuando se les pide describir profesionales.',
+      'Detectores de IA con mayor tasa de falsos positivos en textos de escritores no nativos de inglés.'
+    ],
+    faqs: [
+      { question: '¿Los detectores de IA tienen sesgo racial o lingüístico?', answer: 'Sí, se han documentado casos. Detectores entrenados principalmente en inglés tienen mayor tasa de falsos positivos con texto de hablantes no nativos de inglés, ya que su estilo puede parecerse estadísticamente al texto generado por IA. DetectordeIA.ai está específicamente entrenado en español para reducir este sesgo.' },
+      { question: '¿Cómo puedo saber si la IA que uso tiene sesgo?', answer: 'Prueba con casos específicos de distintos grupos, géneros, regiones y lenguas. Observa si las respuestas son consistentes o varían según el grupo de referencia. Los investigadores usan técnicas como "auditorías algorítmicas" para detectar sesgos sistemáticos.' },
+      { question: '¿Se puede eliminar el sesgo de la IA?', answer: 'No completamente — pero sí reducirse con datos de entrenamiento más diversos, técnicas de debiasing durante el entrenamiento, y auditorías regulares. Es un problema activo de investigación en IA responsable.' }
+    ],
+    relatedTerms: [
+      { term: 'IA Responsable', slug: 'que-es-ia-responsable' },
+      { term: 'Datos de Entrenamiento', slug: 'que-es-datos-entrenamiento' },
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA en Español (optimizado para reducir sesgo)', url: '/?ref=glosario-sesgo-ia' }
+    ],
+    cta: { text: 'Probar el detector de IA en español', url: '/?ref=glosario-sesgo-ia' }
+  },
+
+  {
+    slug: 'que-es-fine-tuning',
+    term: 'Fine-Tuning (Ajuste Fino)',
+    keywords: ['que es fine tuning ia', 'fine tuning llm', 'ajuste fino modelo ia', 'fine tuning chatgpt', 'fine tuning definicion'],
+    title: '¿Qué es el Fine-Tuning en IA? Ajuste Fino Explicado 2025',
+    description: 'El fine-tuning permite personalizar modelos de IA para tareas específicas. Aprende qué es, cómo funciona y cómo afecta a la detección de texto generado por IA.',
+    h1: '¿Qué es el Fine-Tuning? Cómo se Especializan los Modelos de IA',
+    intro: 'El fine-tuning (ajuste fino) es la técnica que permite tomar un modelo de IA general y especializarlo para una tarea específica sin entrenarlo desde cero. Es la razón por la que existen versiones de ChatGPT especializadas en código, medicina o servicio al cliente.',
+    definition: 'El fine-tuning es un proceso de entrenamiento adicional de un modelo de IA pre-entrenado usando un dataset específico y más pequeño para adaptar el modelo a una tarea, dominio o estilo de respuesta particular. En lugar de entrenar desde cero (costoso y lento), el fine-tuning ajusta los parámetros existentes del modelo base con datos específicos.',
+    characteristics: [
+      { icon: '🎯', title: 'Especialización eficiente', description: 'Permite adaptar un modelo generalista a una tarea específica con mucho menos datos y cómputo que entrenar desde cero.' },
+      { icon: '📚', title: 'Requiere datos etiquetados específicos', description: 'El fine-tuning necesita ejemplos del comportamiento deseado: pares de pregunta-respuesta, ejemplos de estilo, o texto en el dominio específico.' },
+      { icon: '⚡', title: 'Preserva el conocimiento general', description: 'El modelo mantiene su conocimiento general del pre-entrenamiento mientras adquiere habilidades específicas.' },
+      { icon: '🔧', title: 'Disponible en la API de OpenAI', description: 'OpenAI permite hacer fine-tuning de GPT-3.5 y GPT-4 con datos propios, lo que empresas usan para crear versiones personalizadas.' }
+    ],
+    examples: [
+      'GitHub Copilot es GPT con fine-tuning específico en código de programación.',
+      'ChatGPT fue ajustado con fine-tuning para ser más útil y seguro mediante RLHF.',
+      'Los modelos médicos como Med-PaLM son LLMs con fine-tuning en literatura médica.',
+      'Un detector de IA puede hacer fine-tuning para mejorar en un idioma específico como el español.'
+    ],
+    faqs: [
+      { question: '¿El fine-tuning cambia cómo los detectores identifican el texto?', answer: 'Potencialmente sí. Un modelo con fine-tuning intensivo en un estilo específico puede producir texto con patrones diferentes al modelo base. Sin embargo, los patrones estadísticos fundamentales de los LLMs (baja perplejidad, uniformidad) tienden a persistir.' },
+      { question: '¿Puedo hacer fine-tuning de ChatGPT para mi uso personal?', answer: 'A través de la API de OpenAI, sí. Tiene un coste económico por los recursos de cómputo. Para uso personal casual, no suele ser necesario — el modelo base de ChatGPT ya es muy versátil. Es más útil para empresas que necesitan comportamientos muy específicos y consistentes.' },
+      { question: '¿Es lo mismo fine-tuning que prompt engineering?', answer: 'No. El prompt engineering cambia la instrucción que le das al modelo sin modificar sus parámetros. El fine-tuning modifica los parámetros del modelo mismo. El prompt engineering es más flexible y accesible; el fine-tuning produce cambios más profundos y consistentes.' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Prompt Engineering', slug: 'que-es-prompt-engineering' },
+      { term: 'Datos de Entrenamiento', slug: 'que-es-datos-entrenamiento' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-fine-tuning' }
+    ],
+    cta: { text: 'Probar el detector de IA', url: '/?ref=glosario-fine-tuning' }
+  },
+
+  {
+    slug: 'que-es-rag-retrieval',
+    term: 'RAG (Retrieval-Augmented Generation)',
+    keywords: ['que es rag ia', 'retrieval augmented generation', 'rag llm', 'rag chatgpt', 'ia con fuentes externas'],
+    title: '¿Qué es RAG (Retrieval-Augmented Generation)? Guía 2025',
+    description: 'RAG permite a los LLMs acceder a información actualizada y citar fuentes reales. Aprende cómo funciona y por qué reduce las alucinaciones de la IA.',
+    h1: '¿Qué es RAG? La Técnica que Hace a la IA Citar Fuentes Reales',
+    intro: 'RAG (Retrieval-Augmented Generation) es la técnica que permite a un LLM buscar información en documentos externos antes de responder, en lugar de depender solo de lo que aprendió durante el entrenamiento. Es la base de herramientas como Perplexity AI y NotebookLM.',
+    definition: 'RAG (Retrieval-Augmented Generation) es una arquitectura que combina un sistema de recuperación de información (que busca documentos relevantes en una base de datos) con un modelo de lenguaje generativo (que produce la respuesta final). El LLM recibe tanto la pregunta del usuario como los documentos recuperados, y genera una respuesta basada en esa información concreta.',
+    characteristics: [
+      { icon: '🔍', title: 'Recupera información antes de generar', description: 'En lugar de generar desde la memoria del modelo, RAG primero busca información relevante en documentos, páginas web o bases de datos.' },
+      { icon: '📎', title: 'Permite citar fuentes reales', description: 'Como la respuesta se basa en documentos específicos, el sistema puede citar las fuentes exactas de donde tomó la información.' },
+      { icon: '🔄', title: 'Reduce alucinaciones', description: 'Al basar las respuestas en documentos reales en lugar de memoria del modelo, RAG reduce (aunque no elimina) las alucinaciones.' },
+      { icon: '⚡', title: 'Actualizable sin reentrenamiento', description: 'Para actualizar el conocimiento, solo hay que actualizar la base de documentos — no reentrenar el modelo completo.' }
+    ],
+    examples: [
+      'Perplexity AI usa RAG para buscar en internet en tiempo real antes de responder.',
+      'Google NotebookLM usa RAG con tus propios documentos como base de conocimiento.',
+      'Los chatbots de empresas con documentación interna usan RAG para responder con información actualizada de la empresa.'
+    ],
+    faqs: [
+      { question: '¿El texto generado con RAG es detectable como IA?', answer: 'Sí. RAG cambia qué información usa el modelo para responder, pero no cambia cómo el modelo genera texto. Los patrones estadísticos del LLM (baja perplejidad, uniformidad) persisten independientemente de si usó RAG o no.' },
+      { question: '¿Por qué RAG reduce las alucinaciones?', answer: 'Porque el modelo genera la respuesta basándose en documentos concretos en lugar de en su memoria probabilística. Si la respuesta no está en los documentos recuperados, el sistema puede decir "no lo sé" en lugar de inventar.' },
+      { question: '¿Perplexity AI usa RAG?', answer: 'Sí. Perplexity busca páginas web relevantes en tiempo real (recuperación) y luego usa un LLM para sintetizar la respuesta basándose en esos resultados (generación). Por eso puede citar fuentes actualizadas, a diferencia de ChatGPT estándar.' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Alucinación de IA', slug: 'que-es-hallucination-ia' },
+      { term: 'Perplexity AI', slug: 'que-es-perplexity-ai' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-rag' }
+    ],
+    cta: { text: 'Verificar si un texto fue generado por IA', url: '/?ref=glosario-rag' }
+  },
+
+  {
+    slug: 'que-es-temperatura-ia',
+    term: 'Temperatura en IA',
+    keywords: ['temperatura ia', 'temperatura llm', 'temperatura chatgpt', 'que es temperatura modelo ia', 'temperature parameter ia'],
+    title: '¿Qué es la Temperatura en los Modelos de IA? Guía 2025',
+    description: 'La temperatura controla qué tan "creativo" o "predecible" es el texto de un modelo de IA. Aprende cómo funciona y cómo afecta a la detección de IA.',
+    h1: '¿Qué es la Temperatura en la IA? El Parámetro que Controla la Creatividad',
+    intro: 'Cuando usás la API de ChatGPT o cualquier LLM, hay un parámetro llamado "temperatura" que determina qué tan predecible o creativo es el output. Es uno de los factores que más afecta si el texto parece de IA o de humano.',
+    definition: 'La temperatura es un parámetro de los modelos de lenguaje que controla la aleatoriedad de las predicciones de texto. Una temperatura baja (cercana a 0) hace al modelo predecible y conservador (siempre elige las palabras más probables). Una temperatura alta (cercana a 1 o más) hace al modelo más variado y "creativo" (introduce más aleatoriedad en la selección de palabras).',
+    characteristics: [
+      { icon: '🌡️', title: 'Escala de 0 a 2 (aproximadamente)', description: 'Temperatura 0: muy determinístico. Temperatura 0.7: balance entre coherencia y variedad. Temperatura 1.5+: muy variado, puede volverse incoherente.' },
+      { icon: '🎯', title: 'Temperatura baja = más detectable como IA', description: 'Con temperatura baja, el modelo siempre elige las palabras más probables, produciendo texto muy uniforme y estadísticamente predecible — exactamente lo que detectan los detectores.' },
+      { icon: '🔀', title: 'Temperatura alta = más variado pero posibles errores', description: 'Con temperatura alta, el modelo puede producir texto más creativo pero también más propenso a errores y contradicciones.' },
+      { icon: '⚙️', title: 'Los usuarios de API pueden ajustarlo', description: 'A través de la API de OpenAI, Anthropic y otros, es posible ajustar la temperatura. ChatGPT consumer usa una temperatura fija predeterminada.' }
+    ],
+    examples: [
+      'Temperatura 0.0: el modelo siempre da la misma respuesta al mismo prompt. Útil para tareas de extracción de datos.',
+      'Temperatura 0.7: el default de ChatGPT. Balance entre coherencia y variedad natural.',
+      'Temperatura 1.5: el modelo puede producir poesía creativa o texto muy variado pero también incoherencias.'
+    ],
+    faqs: [
+      { question: '¿La temperatura afecta si el texto es detectable como IA?', answer: 'Sí, pero no lo suficiente para engañar a los detectores modernos. Temperatura más alta produce texto más variado, lo que puede reducir la señal de IA. Sin embargo, los patrones estadísticos fundamentales del LLM (distribución de vocabulario, estructura) persisten incluso con temperatura alta.' },
+      { question: '¿Qué temperatura usa ChatGPT por defecto?', answer: 'OpenAI no lo publica oficialmente, pero se estima que ChatGPT consumer usa algo cercano a 0.7 para conversación general. Para la API, el default es 1.0.' },
+      { question: '¿Los usuarios pueden cambiar la temperatura en ChatGPT?', answer: 'En ChatGPT consumer (web y app), no directamente. En la API de OpenAI sí. Algunos clientes de API de terceros exponen este parámetro al usuario.' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Prompt Engineering', slug: 'que-es-prompt-engineering' },
+      { term: 'Tokens en IA', slug: 'que-es-tokens-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-temperatura-ia' }
+    ],
+    cta: { text: 'Verificar si un texto fue generado con IA', url: '/?ref=glosario-temperatura-ia' }
+  },
+
+  {
+    slug: 'que-es-tokens-ia',
+    term: 'Tokens en IA',
+    keywords: ['que son tokens ia', 'tokens llm', 'tokens chatgpt', 'token ia definicion', 'como funcionan tokens ia'],
+    title: '¿Qué son los Tokens en IA? Cómo los LLMs Procesan el Texto',
+    description: 'Los tokens son las unidades básicas con las que los LLMs procesan el texto. Aprende qué son, cuántos hay en un texto típico y por qué afectan el coste de usar IA.',
+    h1: '¿Qué son los Tokens en IA? Las Unidades que Procesan el Texto',
+    intro: 'Cuando envías un texto a ChatGPT, no lo procesa palabra por palabra — lo procesa en tokens. Entender qué son los tokens te ayuda a entender los límites de los modelos, su coste y por qué algunos textos "caben" en una conversación y otros no.',
+    definition: 'En el contexto de los modelos de lenguaje, un token es la unidad básica de texto que el modelo procesa. Los tokens pueden ser palabras completas, partes de palabras, signos de puntuación o espacios. En inglés, un token equivale aproximadamente a 4 caracteres o 0.75 palabras. En español, los tokens suelen ser ligeramente diferentes por la morfología del idioma.',
+    characteristics: [
+      { icon: '🔤', title: 'No equivalen a palabras exactamente', description: '"Universidad" puede ser 1-3 tokens dependiendo del tokenizador. "ChatGPT" puede ser 1-2 tokens. Las palabras raras o en idiomas con menos representación pueden fraccionarse en más tokens.' },
+      { icon: '📏', title: 'Los modelos tienen límite de tokens', description: 'GPT-4 Turbo: 128,000 tokens de contexto (~96,000 palabras). GPT-3.5: 16,000 tokens. Claude 3: hasta 200,000 tokens.' },
+      { icon: '💰', title: 'El coste de la API se mide en tokens', description: 'OpenAI cobra por millones de tokens procesados. El coste de tokens de entrada (tu prompt) y tokens de salida (la respuesta del modelo) pueden ser diferentes.' },
+      { icon: '⚡', title: 'La "ventana de contexto" es el límite de tokens activos', description: 'La ventana de contexto es la cantidad de tokens que el modelo puede "recordar" en una conversación. Cuando se supera, el modelo pierde acceso a las partes más antiguas de la conversación.' }
+    ],
+    examples: [
+      '"Hola mundo" ≈ 3 tokens. "Inteligencia artificial generativa" ≈ 5-7 tokens.',
+      'Un ensayo de 1000 palabras en español ≈ 1,300-1,500 tokens.',
+      'GPT-4 Turbo con 128K tokens puede procesar un libro de ~300 páginas en una sola conversación.'
+    ],
+    faqs: [
+      { question: '¿Por qué importa conocer los tokens si solo uso ChatGPT gratis?', answer: 'Para el usuario casual de ChatGPT web, los tokens son transparentes. Importan más si usas la API (pagas por tokens), si trabajas con textos muy largos que pueden superar la ventana de contexto, o si desarrollas aplicaciones con IA.' },
+      { question: '¿El idioma afecta cuántos tokens usa un texto?', answer: 'Sí. Los tokenizadores están optimizados principalmente para inglés. El español y otros idiomas con morfología más compleja tienden a usar más tokens para el mismo contenido semántico. Esto tiene implicaciones de coste y límite de contexto para usuarios hispanohablantes.' },
+      { question: '¿Cómo saber cuántos tokens tiene mi texto?', answer: 'OpenAI tiene un tokenizador online (Tokenizer en platform.openai.com) que muestra exactamente cómo se tokeniza cualquier texto. También hay bibliotecas de Python (tiktoken) para calcularlo programáticamente.' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Ventana de Contexto', slug: 'que-es-ventana-contexto-ia' },
+      { term: 'Temperatura en IA', slug: 'que-es-temperatura-ia' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-tokens' }
+    ],
+    cta: { text: 'Verificar tu texto con el detector de IA', url: '/?ref=glosario-tokens' }
+  },
+
+  {
+    slug: 'que-es-datos-entrenamiento',
+    term: 'Datos de Entrenamiento',
+    keywords: ['datos de entrenamiento ia', 'training data ia', 'como se entrena ia', 'datos entrenamiento llm', 'dataset ia'],
+    title: '¿Qué son los Datos de Entrenamiento en IA? Guía 2025',
+    description: 'Los datos de entrenamiento son la base de todo modelo de IA. Aprende qué son, de dónde vienen, y por qué determinan las capacidades y limitaciones de los LLMs.',
+    h1: '¿Qué son los Datos de Entrenamiento en IA? La Base de Todo Modelo',
+    intro: 'Los modelos de IA son tan buenos como los datos con los que se entrenaron. Los datos de entrenamiento determinan qué sabe la IA, qué sesgos tiene, hasta cuándo tiene información actualizada y en qué idiomas funciona bien. Entender esto es fundamental para usar la IA de forma crítica.',
+    definition: 'Los datos de entrenamiento son el conjunto de información (texto, imágenes, código, audio u otros tipos según el modelo) con el que se entrena un sistema de IA. Para los LLMs como GPT-4 o Claude, los datos de entrenamiento son principalmente texto: páginas web, libros digitalizados, artículos académicos, código y otros corpus de texto. La calidad, diversidad y volumen de estos datos determina en gran medida las capacidades del modelo resultante.',
+    characteristics: [
+      { icon: '📚', title: 'Escala masiva para LLMs', description: 'GPT-4 se entrenó con billones de palabras de texto de internet, libros y otras fuentes. La escala de los datos es una de las razones del salto cualitativo en capacidades.' },
+      { icon: '📅', title: 'Fecha de corte (knowledge cutoff)', description: 'Los datos de entrenamiento tienen una fecha de corte. ChatGPT no sabe nada de lo que ocurrió después de su fecha de corte — por eso puede dar información desactualizada.' },
+      { icon: '⚖️', title: 'Determinan los sesgos del modelo', description: 'Si los datos sobrerepresentan ciertos grupos, idiomas o perspectivas, el modelo los sobrerepresenta también.' },
+      { icon: '🔒', title: 'Fuente de controversia legal', description: 'El uso de texto con copyright para entrenar modelos está bajo litigio en varios países. Autores y periódicos han demandado a OpenAI y otros por este motivo.' }
+    ],
+    examples: [
+      'Common Crawl: un snapshot de gran parte de internet, usado como base de entrenamiento por muchos LLMs.',
+      'The Pile: dataset de código abierto con diversas fuentes académicas, libros y código.',
+      'LAION: dataset masivo de imágenes y texto, base de modelos como Stable Diffusion.'
+    ],
+    faqs: [
+      { question: '¿ChatGPT fue entrenado con mis conversaciones?', answer: 'Depende de la configuración. Por defecto, OpenAI puede usar conversaciones para mejorar el modelo, pero permite optar por no participar en la configuración de privacidad. Las conversaciones de pago (Plus, API) tienen mayor protección. Lee la política de privacidad de cada plataforma.' },
+      { question: '¿Por qué ChatGPT no sabe sobre eventos recientes?', answer: 'Porque su conocimiento termina en la fecha de corte del entrenamiento. Lo que ocurrió después simplemente no está en sus datos. GPT-4o con acceso a internet (la versión con "búsqueda") puede acceder a información más reciente, pero usando RAG, no memoria del modelo.' },
+      { question: '¿Los datos de entrenamiento incluyen textos académicos?', answer: 'Sí, en general. Muchos LLMs incluyen arXiv (preprints científicos), Wikipedia, y otros corpus académicos. Algunos modelos especializados (como Med-PaLM) se entrenan específicamente con literatura médica. Sin embargo, los artículos detrás de paywalls pueden no estar incluidos.' }
+    ],
+    relatedTerms: [
+      { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
+      { term: 'Sesgo en la IA', slug: 'que-es-sesgo-ia' },
+      { term: 'Fine-Tuning', slug: 'que-es-fine-tuning' }
+    ],
+    relatedTools: [
+      { name: 'Detector de IA Gratis', url: '/?ref=glosario-datos-entrenamiento' }
+    ],
+    cta: { text: 'Verificar si un texto fue generado por IA', url: '/?ref=glosario-datos-entrenamiento' }
   }
 ];
