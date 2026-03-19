@@ -46,7 +46,7 @@ const CHARACTER_LIMITS = {
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
   titulo: 'Desbloquea todo el poder del Detector',
-  subtitulo: 'Incluido en Express y Pro',
+  subtitulo: 'Incluido en Express y Premium',
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
     '✨ Caracteres ilimitados en el Detector',
@@ -1059,7 +1059,7 @@ export default function DetectorMain({
                 )}
                 <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
 
-                {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
+                {/* FASE 5: Comparación visual Free vs Premium - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-4 p-4 bg-slate-50 border-2 border-slate-200 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
@@ -1206,7 +1206,7 @@ export default function DetectorMain({
                       <li>• Subida de archivos (PDF, DOCX, TXT)</li>
                       <li>• 5 modos premium en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
-                      <li>• Desde $10/mes o $96/año</li>
+                      <li>• Desde $12.99/mes o $124.68/año</li>
                     </ul>
                   </div>
                   <a
@@ -1286,7 +1286,7 @@ export default function DetectorMain({
                         {/* Pro Benefits */}
                         <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-slate-800 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Pro obtenés:</span>
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Premium obtenés:</span>
                           </p>
                           <ul className="space-y-1.5 text-xs text-slate-700">
                             <li className="flex items-start gap-2">
@@ -1303,7 +1303,7 @@ export default function DetectorMain({
                             </li>
                           </ul>
                           <p className="text-xs text-slate-500 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 
@@ -1320,7 +1320,7 @@ export default function DetectorMain({
                           href="/pricing"
                           className="block w-full text-center text-slate-600 hover:text-slate-800 font-semibold py-2 transition-colors text-sm"
                         >
-                          O ver Plan Pro →
+                          O ver planes →
                         </a>
                       </>
                     ) : (
@@ -1333,7 +1333,7 @@ export default function DetectorMain({
                         {/* Premium Benefits */}
                         <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-slate-800 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Pro obtenés:</span>
+                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Premium obtenés:</span>
                           </p>
                           <ul className="space-y-1.5 text-xs text-slate-700">
                             <li className="flex items-start gap-2">
@@ -1354,7 +1354,7 @@ export default function DetectorMain({
                             </li>
                           </ul>
                           <p className="text-xs text-slate-500 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 
