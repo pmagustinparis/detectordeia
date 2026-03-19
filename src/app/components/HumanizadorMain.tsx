@@ -256,7 +256,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
 
         // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
-          setError(data.message || 'Este modo requiere Plan Pro');
+          setError(data.message || 'Este modo requiere Plan Premium');
 
           // Track modo premium bloqueado
           trackEvent({
@@ -683,7 +683,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                               : 'bg-slate-100 text-slate-600'
                           }`}
                         >
-                          {mode.isPremium ? 'PRO' : 'FREE'}
+                          {mode.isPremium ? 'PREMIUM' : 'FREE'}
                         </span>
                       </div>
                       <p className="text-xs text-gray-600">{mode.description}</p>
@@ -696,16 +696,16 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                       <div className="flex items-start gap-2 mb-2">
                         <span className="text-xl"><Icon icon={ProductIcons.Locked} size="sm" className="inline" /></span>
                         <div>
-                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Pro</p>
+                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Premium</p>
                           <p className="text-amber-100 leading-relaxed">
                             Humaniza tu texto con <strong>{mode.name.toLowerCase()}</strong> profesional.
-                            Con Plan Pro obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
+                            Con Plan Premium obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
                           </p>
                         </div>
                       </div>
                       <div className="text-center mt-2 pt-2 border-t border-blue-500/50">
                         <p className="text-amber-100 font-semibold">
-                          Desde $10/mes • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
+                          Desde $12.99/mes • Ahorra 20% anual • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
                         </p>
                       </div>
                     </div>
@@ -881,12 +881,12 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                   </div>
                 ) : null}
 
-                {/* FASE 5: Comparación visual Free vs Pro - Solo para usuarios Free */}
+                {/* FASE 5: Comparación visual Free vs Premium - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
                   <div className="mt-3 p-4 bg-gradient-to-br from-amber-50 via-green-50 to-emerald-50 border-2 border-gray-300 rounded-xl shadow-md">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-blue-900" />
-                      <h3 className="text-sm font-bold text-amber-900">Comparación: Free vs Pro</h3>
+                      <h3 className="text-sm font-bold text-amber-900">Comparación: Free vs Premium</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">
@@ -931,7 +931,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                         </div>
                         <div className="flex items-center gap-2 mb-2">
                           <Icon icon={ProductIcons.Star} size="sm" className="text-blue-900" />
-                          <span className="text-xs font-bold text-amber-900">CON PLAN PRO</span>
+                          <span className="text-xs font-bold text-amber-900">CON PLAN PREMIUM</span>
                         </div>
                         <p className="text-xs font-bold text-amber-900 mb-2">Todo lo anterior PLUS:</p>
                         <ul className="text-xs text-amber-900 space-y-1.5">
@@ -971,7 +971,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-gray-600 mt-2">Desde $10/mes • Cancela cuando quieras</p>
+                      <p className="text-xs text-gray-600 mt-2">Desde $12.99/mes • Cancela cuando quieras</p>
                     </div>
                   </div>
                 )}
@@ -1084,7 +1084,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                         {/* Pro Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-gray-300 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-amber-900 mb-2">
-                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Premium obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-amber-800">
                             <li className="flex items-start gap-2">
@@ -1101,7 +1101,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                             </li>
                           </ul>
                           <p className="text-xs text-blue-900 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 
@@ -1118,7 +1118,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                           href="/pricing"
                           className="block w-full text-center text-blue-900 hover:text-blue-900 font-semibold py-2 transition-colors text-sm"
                         >
-                          O ver Plan Pro →
+                          O ver planes →
                         </a>
                       </>
                     ) : (
@@ -1131,7 +1131,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                         {/* Premium Benefits */}
                         <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-gray-300 rounded-xl p-4 mb-4">
                           <p className="text-sm font-bold text-amber-900 mb-2">
-                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Pro obtenés:
+                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Premium obtenés:
                           </p>
                           <ul className="space-y-1.5 text-xs text-amber-800">
                             <li className="flex items-start gap-2">
@@ -1152,7 +1152,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                             </li>
                           </ul>
                           <p className="text-xs text-blue-900 mt-2 font-medium">
-                            Desde $10/mes • Ahorra 20% anual
+                            Desde $12.99/mes • Ahorra 20% anual
                           </p>
                         </div>
 
