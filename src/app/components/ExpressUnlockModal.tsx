@@ -180,8 +180,18 @@ export default function ExpressUnlockModal({
               disabled={loading}
               className="w-full bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-colors text-sm"
             >
-              {loading ? 'Procesando...' : `Activar Express Pass · $${PRICES.express[duration]}`}
+              {loading
+                ? 'Procesando...'
+                : isAuthenticated
+                  ? `Activar Express Pass · $${PRICES.express[duration]}`
+                  : `Crear cuenta y activar · $${PRICES.express[duration]}`
+              }
             </button>
+            {!isAuthenticated && (
+              <p className="text-xs text-amber-700 text-center mt-1.5">
+                Registro gratuito · 10 segundos · activación inmediata
+              </p>
+            )}
           </div>
 
           {/* Premium - Opción secundaria */}

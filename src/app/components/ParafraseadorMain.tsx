@@ -37,6 +37,8 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
   const [emailModalSource, setEmailModalSource] = useState('');
   const [usageCount, setUsageCount] = useState(0);
   const [selectedMode, setSelectedMode] = useState<ParaphraserMode>('standard');
+  const [isPremiumModeModalOpen, setIsPremiumModeModalOpen] = useState(false);
+  const [lockedModeName, setLockedModeName] = useState<string>('');
 
   // Consolidated user status (replaces userPlan, expressExpiresAt, isExpressActive)
   const [userStatus, setUserStatus] = useState<UserStatus>(
@@ -571,11 +573,12 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
                   <label
                     className={`flex items-center p-2.5 border-2 rounded-xl transition-all ${
                       isLocked
-                        ? 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
+                        ? 'border-amber-200 bg-amber-50/50 cursor-pointer hover:border-amber-400 hover:bg-amber-50'
                         : isSelected
                         ? 'border-slate-800 bg-slate-50 cursor-pointer'
                         : 'border-gray-300 bg-white hover:border-gray-400 cursor-pointer'
                     }`}
+                    onClick={isLocked ? () => { setLockedModeName(mode.name); setIsPremiumModeModalOpen(true); } : undefined}
                   >
                     <input
                       type="radio"
@@ -584,7 +587,7 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
                       checked={isSelected}
                       disabled={isLocked}
                       onChange={() => !isLocked && setSelectedMode(modeKey)}
-                      className={`w-4 h-4 ${isLocked ? 'text-gray-400' : 'text-blue-900 focus:ring-blue-500'}`}
+                      className={`w-4 h-4 ${isLocked ? 'text-amber-400' : 'text-blue-900 focus:ring-blue-500'}`}
                     />
                     <div className="ml-2 flex-1">
                       <div className="flex items-center gap-2 mb-0.5">
@@ -849,6 +852,14 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
                 toolName="parafraseador"
                 excessChars={analyzedTextLength - CHARACTER_LIMIT}
                 charLimit={CHARACTER_LIMIT}
+              />
+              <ExpressUnlockModal
+                isOpen={isPremiumModeModalOpen}
+                onClose={() => setIsPremiumModeModalOpen(false)}
+                isAuthenticated={userStatus.isAuthenticated}
+                trigger="premium_mode"
+                toolName="parafraseador"
+                modeName={lockedModeName}
               />
 
             </div>
