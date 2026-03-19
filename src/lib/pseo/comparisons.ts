@@ -31,7 +31,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: '$12.99/mes o $96/año', competitor: 'Solo institucional ($100-$300/año)' },
+      { feature: 'Precio individual', detectordeia: '$12.99/mes o $124.68/año', competitor: 'Solo institucional ($100-$300/año)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Limitada' },
       { feature: 'Acceso sin institución', detectordeia: true, competitor: false },
       { feature: 'Tiempo de análisis', detectordeia: 'Instantáneo (<5 seg)', competitor: '5-15 minutos' },
@@ -46,7 +46,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Turnitin es la mejor opción si necesitás detección de plagio además de IA, o si tu institución ya tiene licencia. Para detección de IA pura en español con presupuesto limitado, DetectorDeIA es superior.',
 
     pricing: {
-      detectordeia: '$12.99/mes o $96/año (individual)',
+      detectordeia: '$12.99/mes o $124.68/año (individual)',
       competitor: '$100-$300/año (solo institucional)'
     },
 
@@ -121,7 +121,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'QuillBot es mejor si necesitás todas las herramientas en un solo lugar (grammar, plagio, parafraseo) y trabajás principalmente en inglés. Para detección de IA en español, DetectorDeIA es superior.',
 
     pricing: {
-      detectordeia: '$12.99/mes o $96/año',
+      detectordeia: '$12.99/mes o $124.68/año',
       competitor: '$19.95/mes o $99.95/año'
     },
 
@@ -192,7 +192,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Smodin puede ser útil si necesitás herramientas en múltiples idiomas (más de 100) o features adicionales como resumen de textos, traductor, etc. Para detección de IA pura en español, DetectorDeIA es más preciso y económico.',
 
     pricing: {
-      detectordeia: '$12.99/mes o $96/año (ilimitado)',
+      detectordeia: '$12.99/mes o $124.68/año (ilimitado)',
       competitor: 'Sistema de créditos ($8-$29/mes)'
     },
 
@@ -249,7 +249,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: '$12.99/mes o $96/año', competitor: '$15/mes o $144/año' },
+      { feature: 'Precio', detectordeia: '$12.99/mes o $124.68/año', competitor: '$15/mes o $144/año' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Solo inglés nativo' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '65-75%' },
       { feature: 'Precisión en inglés', detectordeia: 'No optimizado', competitor: '90%+' },
@@ -264,7 +264,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'GPTZero es mejor si escribís principalmente en inglés o necesitás API para integración. Para textos en español (académicos, profesionales, personales), DetectorDeIA es significativamente más preciso y económico.',
 
     pricing: {
-      detectordeia: '$12.99/mes o $96/año',
+      detectordeia: '$12.99/mes o $124.68/año',
       competitor: '$15/mes o $144/año'
     },
 
@@ -980,7 +980,7 @@ export const comparisons: ComparisonPage[] = [
     ],
     whenToUseCompetitor: 'Scribbr es ideal si necesitás revisión humana de tu tesis o trabajo académico, corrección de estilo APA/MLA y detección de plagio todo en uno. Para detección de IA pura en español con coste cero, DetectorDeIA es la opción más eficiente.',
     pricing: {
-      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $96/año',
+      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $124.68/año',
       competitor: 'Desde €9.95 por verificación de plagio; precio variable para revisión de tesis'
     },
     faqs: [
@@ -1049,7 +1049,7 @@ export const comparisons: ComparisonPage[] = [
     ],
     whenToUseCompetitor: 'iThenticate es el estándar para investigadores que deben verificar papers antes de someter a revistas científicas indexadas, y para doctorandos que requieren certificado de originalidad. Para verificación de IA previa y para uso sin licencia institucional, DetectorDeIA es más accesible.',
     pricing: {
-      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $96/año',
+      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $124.68/año',
       competitor: 'Suscripción institucional requerida; precio variable según institución (generalmente $100-$500/año para acceso individual editorial)'
     },
     faqs: [
