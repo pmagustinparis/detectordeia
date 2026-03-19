@@ -13,6 +13,7 @@ import { HUMANIZER_MODES, type HumanizerMode } from '@/lib/prompts/humanizer';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
 import type { UserStatus } from '@/lib/types/user-status';
+import ExpressPromoBanner from './ExpressPromoBanner';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -509,7 +510,9 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
   }
 
   return (
-    <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
+    <>
+      <ExpressPromoBanner />
+      <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
       {/* COLUMNA IZQUIERDA - INPUT */}
       <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px'}}>
@@ -1278,5 +1281,6 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
       />
 
     </div>
+    </>
   );
 }

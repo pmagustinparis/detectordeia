@@ -12,6 +12,7 @@ import { useAuth } from '@/lib/hooks/useAuth';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
 import type { UserStatus } from '@/lib/types/user-status';
+import ExpressPromoBanner from './ExpressPromoBanner';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -361,6 +362,7 @@ export default function DetectorMain({
         {h1}
       </h1>
       <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>{subtitle}</p>
+      <ExpressPromoBanner />
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
         {/* Input + Button (left) */}
         <div className="flex-1 bg-white rounded-2xl shadow-lg border border-blue-900/20 p-6 flex flex-col justify-between min-w-[320px]">
