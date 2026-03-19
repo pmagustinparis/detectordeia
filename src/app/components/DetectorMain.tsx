@@ -13,6 +13,8 @@ import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
 import type { UserStatus } from '@/lib/types/user-status';
 import ExpressPromoBanner from './ExpressPromoBanner';
+import ExpressUnlockModal from './ExpressUnlockModal';
+import ExpressPremiumComparisonCard from './ExpressPremiumComparisonCard';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -1230,156 +1232,15 @@ export default function DetectorMain({
               </div>
 
               {/* Overlay inline cuando se excede el límite */}
-              {isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
-                <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none z-10">
-                  <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto animate-scale-in">
-                    {/* Icon */}
-                    <div className="flex justify-center mb-4">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-green-100 flex items-center justify-center">
-                        <span className="text-4xl">📏</span>
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <h2 className="text-xl font-extrabold text-center text-gray-900 mb-2">
-                      Texto Demasiado Largo
-                    </h2>
-
-                    {/* Current usage */}
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <span className="text-sm font-medium text-gray-600">Caracteres:</span>
-                      <span className="text-lg font-bold text-red-600">{analyzedTextLength.toLocaleString()}</span>
-                      <span className="text-sm text-gray-400">/</span>
-                      <span className="text-sm text-gray-500">{CHARACTER_LIMIT.toLocaleString()}</span>
-                      <span className="text-xs px-2 py-1 bg-red-100 text-red-700 rounded-full font-medium">
-                        +{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} extra
-                      </span>
-                    </div>
-
-                    {/* Copy dinámico según tipo de usuario */}
-                    {!userStatus.isAuthenticated ? (
-                      <>
-                        <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
-                          Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
-                          Sin registro podés procesar hasta <strong>{CHARACTER_LIMIT.toLocaleString()} caracteres</strong> por vez.
-                        </p>
-
-                        {/* Free Benefits */}
-                        <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-3">
-                          <p className="text-sm font-bold text-slate-800 mb-2">
-                            Registrándote GRATIS obtenés:
-                          </p>
-                          <ul className="space-y-1.5 text-xs text-slate-700">
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>Hasta {CHARACTER_LIMITS.free.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.free / CHARACTER_LIMIT)}x más)</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>Historial</strong> de tus análisis</span>
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* Pro Benefits */}
-                        <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 mb-4">
-                          <p className="text-sm font-bold text-slate-800 mb-2">
-                            <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-slate-400" />Con Plan Premium obtenés:</span>
-                          </p>
-                          <ul className="space-y-1.5 text-xs text-slate-700">
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más que ahora)</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>Usos ilimitados</strong></span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-emerald-600 font-bold">✓</span>
-                              <span><strong>5 modos premium</strong> + archivos</span>
-                            </li>
-                          </ul>
-                          <p className="text-xs text-slate-500 mt-2 font-medium">
-                            Desde $12.99/mes • Ahorra 20% anual
-                          </p>
-                        </div>
-
-                        {/* CTA - Registro gratis primero */}
-                        <a
-                          href="/auth/signup"
-                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
-                        >
-                          Registrarme Gratis
-                        </a>
-
-                        {/* Secondary CTA - Ver Pro */}
-                        <a
-                          href="/pricing"
-                          className="block w-full text-center text-slate-600 hover:text-slate-800 font-semibold py-2 transition-colors text-sm"
-                        >
-                          O ver planes →
-                        </a>
-                      </>
-                    ) : (
-                      <>
-                        <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
-                          Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
-                          Con el Plan Free podés procesar hasta <strong>{CHARACTER_LIMIT.toLocaleString()} caracteres</strong> por vez.
-                        </p>
-
-                        {/* Dual option: Express vs Premium */}
-                        <div className="grid grid-cols-2 gap-3 mb-4">
-                          <div className="border-2 border-amber-300 bg-amber-50 rounded-xl p-3">
-                            <p className="text-xs font-bold text-amber-800 mb-1">⚡ Express Pass</p>
-                            <p className="text-xl font-extrabold text-amber-900">$3.99</p>
-                            <p className="text-xs text-amber-700">/ 24 horas</p>
-                            <p className="text-xs text-amber-600 mt-1">Sin suscripción</p>
-                            <ul className="text-xs text-amber-800 mt-2 space-y-1">
-                              <li>✓ <strong>{CHARACTER_LIMITS.premium.toLocaleString()} chars</strong></li>
-                              <li>✓ Usos ilimitados hoy</li>
-                            </ul>
-                          </div>
-                          <div className="border-2 border-violet-300 bg-violet-50 rounded-xl p-3">
-                            <p className="text-xs font-bold text-violet-800 mb-1">🚀 Premium</p>
-                            <p className="text-xl font-extrabold text-violet-900">$12.99</p>
-                            <p className="text-xs text-violet-700">/ mes</p>
-                            <p className="text-xs text-violet-600 mt-1">Ahorra 20% anual</p>
-                            <ul className="text-xs text-violet-800 mt-2 space-y-1">
-                              <li>✓ <strong>{CHARACTER_LIMITS.premium.toLocaleString()} chars</strong></li>
-                              <li>✓ Usos ilimitados</li>
-                              <li>✓ 5 modos premium</li>
-                            </ul>
-                          </div>
-                        </div>
-
-                        {/* CTA */}
-                        <a
-                          href="/pricing"
-                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
-                        >
-                          Ver Express y Premium
-                        </a>
-                      </>
-                    )}
-
-                    {/* Close button */}
-                    <button
-                      onClick={() => {
-                        setIsLimitExceeded(false);
-                        setResult(null);
-                      }}
-                      className="w-full text-center text-gray-600 hover:text-gray-800 font-medium py-2 transition-colors text-sm"
-                    >
-                      Volver y reducir mi texto
-                    </button>
-                  </div>
-                </div>
-              )}
+              <ExpressUnlockModal
+                isOpen={isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active}
+                onClose={() => { setIsLimitExceeded(false); setResult(null); }}
+                isAuthenticated={userStatus.isAuthenticated}
+                trigger="character_limit"
+                toolName="detector"
+                excessChars={analyzedTextLength - CHARACTER_LIMIT}
+                charLimit={CHARACTER_LIMIT}
+              />
 
               </div>
             ) : isAnalyzing ? (

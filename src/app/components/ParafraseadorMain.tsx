@@ -14,6 +14,8 @@ import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
 import type { UserStatus } from '@/lib/types/user-status';
 import ExpressPromoBanner from './ExpressPromoBanner';
+import ExpressUnlockModal from './ExpressUnlockModal';
+import ExpressPremiumComparisonCard from './ExpressPremiumComparisonCard';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -605,22 +607,28 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
 
                   {/* Tooltip para modos bloqueados */}
                   {isLocked && (
-                    <div className="absolute left-0 right-0 top-full mt-2 bg-blue-900 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border-2 border-blue-500">
-                      <div className="flex items-start gap-2 mb-2">
-                        <span className="text-xl"><Icon icon={ProductIcons.Locked} size="sm" className="inline" /></span>
-                        <div>
-                          <p className="font-bold text-sm mb-1">Modo {mode.name} - Plan Premium</p>
-                          <p className="text-amber-100 leading-relaxed">
-                            Parafrasea tu texto con estilo <strong>{mode.name.toLowerCase()}</strong> profesional.
-                            Con Plan Premium obtenés <strong>5 modos premium</strong> + <strong>usos ilimitados</strong> + <strong>✨ caracteres ilimitados</strong>.
-                          </p>
+                    <div className="absolute left-0 right-0 top-full mt-2 bg-slate-900 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border border-slate-700">
+                      <p className="font-bold text-sm mb-2">🔒 Modo {mode.name}</p>
+                      <p className="text-slate-300 mb-3 leading-relaxed">
+                        Disponible con Express Pass o Premium. Mayor diferencia respecto al original.
+                      </p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between bg-amber-500/20 rounded-lg px-2.5 py-1.5">
+                          <span className="text-amber-300 font-semibold">⚡ Express 24h</span>
+                          <span className="font-bold text-amber-200">$3.99</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-amber-500/10 rounded-lg px-2.5 py-1.5">
+                          <span className="text-amber-300 font-semibold">⚡ Express 7 días</span>
+                          <span className="font-bold text-amber-200">$8.99</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-violet-500/20 rounded-lg px-2.5 py-1.5">
+                          <span className="text-violet-300 font-semibold">🚀 Premium</span>
+                          <span className="font-bold text-violet-200">$12.99/mes</span>
                         </div>
                       </div>
-                      <div className="text-center mt-2 pt-2 border-t border-blue-500/50">
-                        <p className="text-amber-100 font-semibold">
-                          Desde $12.99/mes • Ahorra 20% anual • <a href="/pricing" className="underline hover:text-white">Ver planes</a>
-                        </p>
-                      </div>
+                      <a href="/pricing" className="block text-center text-slate-400 hover:text-white mt-2 underline text-xs">
+                        Ver planes →
+                      </a>
                     </div>
                   )}
                 </div>
@@ -783,99 +791,13 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
                   </div>
                 ) : null}
 
-                {/* FASE 5: Comparación visual Free vs Premium - Solo para usuarios Free */}
+                {/* Comparación Express vs Premium - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
-                  <div className="mt-3 p-4 bg-gradient-to-br from-amber-50 via-green-50 to-emerald-50 border-2 border-gray-300 rounded-xl shadow-md">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-blue-900" />
-                      <h3 className="text-sm font-bold text-amber-900">Comparación: Free vs Premium</h3>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-3 mb-3">
-                      {/* LO QUE TIENES (FREE) */}
-                      <div className="bg-white p-3 rounded-lg border-2 border-gray-200">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full font-bold">
-                            {userStatus.isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
-                          </span>
-                        </div>
-                        <p className="text-xs font-bold text-gray-800 mb-2">Lo que acabas de usar:</p>
-                        <ul className="text-xs text-gray-700 space-y-1.5">
-                          <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">✓</span>
-                            <span>Modo Standard gratis</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">✓</span>
-                            <span>Hasta {userStatus.isAuthenticated ? '600' : '400'} caracteres</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-green-600 font-bold">✓</span>
-                            <span>Análisis de similitud</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-gray-400 font-bold">✗</span>
-                            <span className="text-gray-400">Sin modos premium</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="text-gray-400 font-bold">✗</span>
-                            <span className="text-gray-400">Sin subida de archivos</span>
-                          </li>
-                        </ul>
-                      </div>
-
-                      {/* LO QUE OBTENDRÍAS (PRO) */}
-                      <div className="bg-gradient-to-br from-amber-100 to-green-100 p-3 rounded-lg border-2 border-gray-400 relative">
-                        <div className="absolute -top-2 -right-2">
-                          <span className="bg-slate-800 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg">
-                            PREMIUM
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <Icon icon={ProductIcons.Star} size="sm" className="text-blue-900" />
-                          <span className="text-xs font-bold text-amber-900">CON PLAN PREMIUM</span>
-                        </div>
-                        <p className="text-xs font-bold text-amber-900 mb-2">Todo lo anterior PLUS:</p>
-                        <ul className="text-xs text-amber-900 space-y-1.5">
-                          <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
-                            <span><strong>5 modos premium</strong> (Académico, Formal, etc.)</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
-                            <span><strong>✨ Caracteres ilimitados</strong> por texto</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
-                            <span><strong>Subida de archivos</strong> (PDF, DOCX, TXT)</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
-                            <span><strong>Usos ilimitados</strong> diarios</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <Icon icon={ProductIcons.Success} size="xs" className="text-blue-900 mt-0.5" />
-                            <span><strong>Mayor diferencia</strong> del original</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="text-center">
-                      <a
-                        href="/pricing"
-                        onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: 'parafraseador', metadata: { source: 'free_vs_pro_comparison' }})}
-                        className="inline-block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors"
-                      >
-                        <span className="flex items-center justify-center gap-2">
-                          <Icon icon={ProductIcons.Upgrade} size="md" />
-                          Ver Planes y Precios
-                        </span>
-                      </a>
-                      <p className="text-xs text-gray-600 mt-2">Express $3.99/24h (sin suscripción) · Premium $12.99/mes</p>
-                    </div>
-                  </div>
+                  <ExpressPremiumComparisonCard
+                    isAuthenticated={userStatus.isAuthenticated}
+                    toolName="parafraseador"
+                    source="free_vs_pro_comparison"
+                  />
                 )}
 
                 {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
@@ -919,156 +841,15 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
               </div>
 
               {/* Overlay inline cuando se excede el límite */}
-              {isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
-                <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none z-10">
-                  <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto animate-scale-in">
-                    {/* Icon */}
-                    <div className="flex justify-center mb-4">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center">
-                        <span className="text-4xl">📏</span>
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <h2 className="text-xl font-extrabold text-center text-gray-900 mb-2">
-                      Texto Demasiado Largo
-                    </h2>
-
-                    {/* Current usage */}
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <span className="text-sm font-medium text-gray-600">Caracteres:</span>
-                      <span className="text-lg font-bold text-red-600">{analyzedTextLength.toLocaleString()}</span>
-                      <span className="text-sm text-gray-400">/</span>
-                      <span className="text-sm text-gray-500">{CHARACTER_LIMIT.toLocaleString()}</span>
-                      <span className="text-xs px-2 py-1 bg-red-100 text-red-700 rounded-full font-medium">
-                        +{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} extra
-                      </span>
-                    </div>
-
-                    {/* Copy dinámico según tipo de usuario */}
-                    {!userStatus.isAuthenticated ? (
-                      <>
-                        <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
-                          Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
-                          Sin registro podés procesar hasta <strong>{CHARACTER_LIMIT.toLocaleString()} caracteres</strong> por vez.
-                        </p>
-
-                        {/* Free Benefits */}
-                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-4 mb-3">
-                          <p className="text-sm font-bold text-green-900 mb-2">
-                            🎁 Registrándote GRATIS obtenés:
-                          </p>
-                          <ul className="space-y-1.5 text-xs text-green-800">
-                            <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                              <span><strong>Hasta {CHARACTER_LIMITS.free.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.free / CHARACTER_LIMIT)}x más)</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                              <span><strong>15 usos diarios</strong> (vs 3 actual)</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                              <span><strong>Historial</strong> de tus análisis</span>
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* Pro Benefits */}
-                        <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-gray-300 rounded-xl p-4 mb-4">
-                          <p className="text-sm font-bold text-amber-900 mb-2">
-                            <Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /> Con Plan Premium obtenés:
-                          </p>
-                          <ul className="space-y-1.5 text-xs text-amber-800">
-                            <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                              <span><strong>Hasta {CHARACTER_LIMITS.premium.toLocaleString()} caracteres</strong> ({Math.round(CHARACTER_LIMITS.premium / CHARACTER_LIMIT)}x más)</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                              <span><strong>Usos ilimitados</strong></span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-green-600 font-bold"><Icon icon={ProductIcons.Success} size="xs" className="inline text-green-600" /></span>
-                              <span><strong>5 modos premium</strong> + archivos</span>
-                            </li>
-                          </ul>
-                          <p className="text-xs text-blue-900 mt-2 font-medium">
-                            Desde $12.99/mes • Ahorra 20% anual
-                          </p>
-                        </div>
-
-                        {/* CTA - Registro gratis primero */}
-                        <a
-                          href="/auth/signup"
-                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors mb-2"
-                        >
-                          Registrarme Gratis
-                        </a>
-
-                        {/* Secondary CTA - Ver Pro */}
-                        <a
-                          href="/pricing"
-                          className="block w-full text-center text-blue-900 hover:text-blue-900 font-semibold py-2 transition-colors text-sm"
-                        >
-                          O ver planes →
-                        </a>
-                      </>
-                    ) : (
-                      <>
-                        <p className="text-center text-gray-700 mb-4 leading-relaxed text-sm">
-                          Tu texto tiene <strong>{(analyzedTextLength - CHARACTER_LIMIT).toLocaleString()} caracteres de más</strong>.
-                          Con el Plan Free podés procesar hasta <strong>{CHARACTER_LIMIT.toLocaleString()} caracteres</strong> por vez.
-                        </p>
-
-                        {/* Dual option: Express vs Premium */}
-                        <div className="grid grid-cols-2 gap-3 mb-4">
-                          <div className="border-2 border-amber-300 bg-amber-50 rounded-xl p-3">
-                            <p className="text-xs font-bold text-amber-800 mb-1">⚡ Express Pass</p>
-                            <p className="text-xl font-extrabold text-amber-900">$3.99</p>
-                            <p className="text-xs text-amber-700">/ 24 horas</p>
-                            <p className="text-xs text-amber-600 mt-1">Sin suscripción</p>
-                            <ul className="text-xs text-amber-800 mt-2 space-y-1">
-                              <li>✓ <strong>{CHARACTER_LIMITS.premium.toLocaleString()} chars</strong></li>
-                              <li>✓ Usos ilimitados hoy</li>
-                            </ul>
-                          </div>
-                          <div className="border-2 border-violet-300 bg-violet-50 rounded-xl p-3">
-                            <p className="text-xs font-bold text-violet-800 mb-1">🚀 Premium</p>
-                            <p className="text-xl font-extrabold text-violet-900">$12.99</p>
-                            <p className="text-xs text-violet-700">/ mes</p>
-                            <p className="text-xs text-violet-600 mt-1">Ahorra 20% anual</p>
-                            <ul className="text-xs text-violet-800 mt-2 space-y-1">
-                              <li>✓ <strong>{CHARACTER_LIMITS.premium.toLocaleString()} chars</strong></li>
-                              <li>✓ Usos ilimitados</li>
-                              <li>✓ 5 modos premium</li>
-                            </ul>
-                          </div>
-                        </div>
-
-                        {/* CTA */}
-                        <a
-                          href="/pricing"
-                          className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-colors mb-2"
-                        >
-                          Ver Express y Premium
-                        </a>
-                      </>
-                    )}
-
-                    {/* Close button */}
-                    <button
-                      onClick={() => {
-                        setIsLimitExceeded(false);
-                        setResult(null);
-                      }}
-                      className="w-full text-center text-gray-600 hover:text-gray-800 font-medium py-2 transition-colors text-sm"
-                    >
-                      Volver y reducir mi texto
-                    </button>
-                  </div>
-                </div>
-              )}
+              <ExpressUnlockModal
+                isOpen={isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active}
+                onClose={() => { setIsLimitExceeded(false); setResult(null); }}
+                isAuthenticated={userStatus.isAuthenticated}
+                trigger="character_limit"
+                toolName="parafraseador"
+                excessChars={analyzedTextLength - CHARACTER_LIMIT}
+                charLimit={CHARACTER_LIMIT}
+              />
 
             </div>
           ) : isParaphrasing ? (

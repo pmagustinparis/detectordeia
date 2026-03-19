@@ -10,7 +10,7 @@
 
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface UsageLimitOverlayProps {
   isOpen: boolean;
@@ -29,6 +29,29 @@ export default function UsageLimitOverlay({
   resetAt,
   toolName,
 }: UsageLimitOverlayProps) {
+  const [loadingCheckout, setLoadingCheckout] = useState(false);
+
+  const handleExpressCheckout = async (duration: '24h' | '7d') => {
+    setLoadingCheckout(true);
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan_type: 'express', duration }),
+      });
+      const { url, error } = await response.json();
+      if (error || !url) {
+        alert('Error al crear la sesión de pago. Por favor, intentá de nuevo.');
+        setLoadingCheckout(false);
+        return;
+      }
+      window.location.href = url;
+    } catch {
+      alert('Error al procesar tu solicitud. Por favor, intentá de nuevo.');
+      setLoadingCheckout(false);
+    }
+  };
+
   // Función para obtener el nombre plural correcto de cada herramienta
   const getToolNamePlural = () => {
     switch (toolName) {
@@ -206,16 +229,24 @@ export default function UsageLimitOverlay({
               </div>
 
               {/* CTA Buttons */}
-              <div className="space-y-3 mb-3">
-                <a
-                  href="/pricing"
-                  className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              <div className="space-y-2 mb-3">
+                <button
+                  onClick={() => handleExpressCheckout('24h')}
+                  disabled={loadingCheckout}
+                  className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300"
                 >
-                  ⚡ Activar Express ($3.99/24h)
-                </a>
+                  {loadingCheckout ? 'Procesando...' : '⚡ Activar Express 24h · $3.99'}
+                </button>
+                <button
+                  onClick={() => handleExpressCheckout('7d')}
+                  disabled={loadingCheckout}
+                  className="block w-full text-center bg-amber-100 hover:bg-amber-200 disabled:opacity-60 text-amber-900 font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
+                >
+                  {loadingCheckout ? '...' : 'Express 7 días · $8.99 (ahorra 68%)'}
+                </button>
                 <a
                   href="/pricing"
-                  className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="block w-full text-center border border-blue-900/30 text-blue-900 hover:bg-blue-50 font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
                 >
                   Ver Plan Premium ($12.99/mes)
                 </a>
