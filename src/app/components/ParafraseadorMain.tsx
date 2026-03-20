@@ -351,6 +351,7 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
     if (result) {
       try {
         await navigator.clipboard.writeText(result);
+        trackEvent({ eventType: 'copied_result', metadata: { tool: 'parafraseador' } });
         const button = document.getElementById('copy-button');
         if (button) {
           const originalText = button.innerHTML;

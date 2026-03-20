@@ -410,6 +410,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
     if (result) {
       try {
         await navigator.clipboard.writeText(result);
+        trackEvent({ eventType: 'copied_result', metadata: { tool: 'humanizador' } });
         // Cambiar temporalmente el texto del botón para dar feedback
         const button = document.getElementById('copy-button');
         if (button) {

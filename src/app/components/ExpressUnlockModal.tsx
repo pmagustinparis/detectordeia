@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { trackEvent } from '@/lib/analytics/client';
 
 interface ExpressUnlockModalProps {
@@ -38,10 +38,32 @@ export default function ExpressUnlockModal({
   const [duration, setDuration] = useState<'24h' | '7d'>('24h');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      trackEvent({
+        eventType: 'upsell_modal_shown',
+        metadata: { trigger, tool: toolName, is_authenticated: isAuthenticated },
+      });
+    }
+  }, [isOpen, trigger, toolName, isAuthenticated]);
+
   if (!isOpen) return null;
+
+  const handleDismiss = () => {
+    trackEvent({
+      eventType: 'upsell_modal_dismissed',
+      metadata: { trigger, tool: toolName, is_authenticated: isAuthenticated },
+    });
+    onClose();
+  };
 
   const handleExpressCheckout = async () => {
     setLoading(true);
+
+    trackEvent({
+      eventType: 'upsell_modal_clicked',
+      metadata: { trigger, tool: toolName, duration, is_authenticated: isAuthenticated },
+    });
 
     trackEvent({
       eventType: 'checkout_started',
@@ -111,7 +133,7 @@ export default function ExpressUnlockModal({
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-        onClick={onClose}
+        onClick={handleDismiss}
       />
 
       {/* Modal */}
@@ -210,7 +232,7 @@ export default function ExpressUnlockModal({
 
           {/* Close */}
           <button
-            onClick={onClose}
+            onClick={handleDismiss}
             className="w-full text-center text-gray-500 hover:text-gray-700 text-sm py-1 transition-colors"
           >
             {trigger === 'character_limit' ? 'Volver y reducir mi texto' : 'Volver'}
