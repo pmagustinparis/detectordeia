@@ -125,6 +125,7 @@ async function handleCheckoutCompleted(
 
     // Determinar duración según tipo
     const hours = planType === 'express_semanal' ? 168 : 24; // 7 días = 168 horas
+    const expressPlanValue = planType === 'express_semanal' ? '7d' : '24h';
     console.log(`⏱️ Duration: ${hours} hours (${planType})`);
 
     // Leer estado actual del usuario con manejo de errores
@@ -169,6 +170,7 @@ async function handleCheckoutCompleted(
       .from('users')
       .update({
         express_expires_at: expiresAt.toISOString(),
+        express_plan: expressPlanValue,
         // plan_type se mantiene 'free' - Express no cambia el plan base
       })
       .eq('id', userId);
