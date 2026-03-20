@@ -258,6 +258,10 @@ export interface AnalyticsDashboardData {
   cohortAnalysis: CohortAnalysis;
   userInsights: UserInsights;
   registeredUsers: RegisteredUser[];
+  // New sections
+  dailyPulse: DailyPulse;
+  acquisitionMetrics: AcquisitionMetrics;
+  revenueMix: RevenueMix;
 
   // Meta info
   meta: {
@@ -267,6 +271,95 @@ export interface AnalyticsDashboardData {
       end: string;
     };
   };
+}
+
+// ============================================
+// ACQUISITION & SEO METRICS (NEW)
+// ============================================
+
+export interface AcquisitionMetrics {
+  // Traffico por landing page de entrada
+  topEntryPages: Array<{
+    page: string;
+    visits: number;
+    signups: number;
+    conversions: number;
+    signupRate: number;
+  }>;
+  // Referrer breakdown
+  topReferrers: Array<{
+    referrer: string;
+    category: string; // 'google', 'direct', 'social', 'other'
+    visits: number;
+    signups: number;
+  }>;
+  // DAU/WAU/MAU
+  dau: number;
+  wau: number;
+  mau: number;
+  dauWauRatio: number; // stickiness: DAU/WAU
+  // New users vs returning
+  newUsersToday: number;
+  returningUsersToday: number;
+}
+
+// ============================================
+// DAILY PULSE (NEW - morning check view)
+// ============================================
+
+export interface DailyPulse {
+  date: string;
+  // Revenue
+  mrrToday: number;          // Current MRR
+  mrrChange: number;         // vs yesterday (new - churned)
+  newPayingToday: number;    // New premium or express purchases today
+  // Users
+  activeToday: number;       // DAU
+  newSignupsToday: number;   // New registrations today
+  // Conversion signals
+  hotLeadsCount: number;     // Users ready to buy
+  checkoutsToday: number;    // Checkout starts today
+  // Product health
+  analysesToday: number;     // Total tool uses today
+  frictionEventsToday: number; // Limits/blocks today
+  frictionRatio: number;     // friction/total_uses
+  // Trend vs yesterday
+  trends: {
+    activeUsers: number;     // % change vs yesterday
+    analyses: number;
+    signups: number;
+  };
+}
+
+// ============================================
+// REVENUE MIX (NEW)
+// ============================================
+
+export interface RevenueMix {
+  // Express breakdown
+  express24h: {
+    purchases: number;
+    revenue: number;
+    repeatPurchasers: number; // users who bought >1 time
+  };
+  express7d: {
+    purchases: number;
+    revenue: number;
+  };
+  premiumMonthly: {
+    subscribers: number;
+    mrr: number;
+  };
+  premiumAnnual: {
+    subscribers: number;
+    mrr: number; // normalized to monthly
+  };
+  // Combined
+  totalRevenuePeriod: number;
+  expressVsPremiumSplit: number; // % express of total
+  arpu: number; // Average revenue per paying user
+  // Express repeat behavior
+  expressRepeatRate: number; // % who bought express >1 time
 }
 
 // ============================================

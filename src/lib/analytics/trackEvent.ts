@@ -27,12 +27,23 @@ export type AnalyticsEventType =
   | 'clicked_pricing_cta'
   | 'pricing_page_visited' // Usuario entra a /pricing
   | 'checkout_started' // Usuario hace click en un plan (antes de ir a Stripe)
+  | 'checkout_completed' // Vuelta de Stripe con éxito (nuevo)
+  | 'checkout_cancelled' // Usuario volvió de Stripe sin pagar (nuevo)
+  | 'upsell_modal_shown' // Se mostró modal de upsell (nuevo)
+  | 'upsell_modal_clicked' // Usuario clickeó CTA en modal upsell (nuevo)
+  | 'upsell_modal_dismissed' // Usuario cerró modal sin clickear (nuevo)
 
   // Uso exitoso
   | 'completed_analysis'
   | 'completed_humanization'
   | 'completed_paraphrase'
   | 'validation_completed' // Validación automática post-humanización (Fase 3)
+
+  // Engagement (nuevos)
+  | 'copied_result'       // Usuario copió resultado (señal de valor)
+  | 'downloaded_result'   // Usuario descargó resultado (señal de valor)
+  | 'used_history'        // Visitó historial (engagement)
+  | 'shared_result'       // Compartió resultado (viral signal)
 
   // Autenticación
   | 'signup'

@@ -18,6 +18,9 @@ import type {
   ChurnRiskUser,
   FunnelStage,
   AlertPriority,
+  DailyPulse,
+  AcquisitionMetrics,
+  RevenueMix,
 } from './types';
 
 // Test users to exclude from revenue metrics
@@ -1320,4 +1323,486 @@ export async function getAllRegisteredUsers(
   );
 
   return usersWithStats;
+}
+
+// ============================================
+// 9. DAILY PULSE
+// ============================================
+
+export async function fetchDailyPulse(
+  supabase: SupabaseClient
+): Promise<DailyPulse> {
+  const now = new Date();
+  const todayStart = new Date(now);
+  todayStart.setHours(0, 0, 0, 0);
+
+  const yesterdayStart = new Date(todayStart);
+  yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+
+  const yesterdayEnd = new Date(todayStart);
+
+  // ---- Revenue / paying users today ----
+  // New premium signups today
+  const { data: newPremiumToday } = await supabase
+    .from('users')
+    .select('id')
+    .eq('plan_type', 'premium')
+    .gte('created_at', todayStart.toISOString())
+    .not('email', 'in', `(${TEST_USER_CONFIG.emails.map(e => `"${e}"`).join(',')})`);
+
+  const newPayingToday = newPremiumToday?.length || 0;
+
+  // Total premium users (for MRR)
+  const { data: allPremium } = await supabase
+    .from('users')
+    .select('id')
+    .eq('plan_type', 'premium')
+    .not('email', 'in', `(${TEST_USER_CONFIG.emails.map(e => `"${e}"`).join(',')})`);
+
+  const mrrToday = (allPremium?.length || 0) * 12.99;
+
+  // ---- DAU today ----
+  const todayEvents = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [
+        { column: 'created_at', operator: 'gte', value: todayStart.toISOString() }
+      ]
+    }
+  );
+
+  const dauUsers = new Set(
+    todayEvents.map(e => e.user_id || e.anonymous_id).filter(Boolean)
+  );
+  const activeToday = dauUsers.size;
+
+  // ---- Yesterday active users (for trend) ----
+  const yesterdayEvents = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [
+        { column: 'created_at', operator: 'gte', value: yesterdayStart.toISOString() },
+        { column: 'created_at', operator: 'lt', value: yesterdayEnd.toISOString() }
+      ]
+    }
+  );
+
+  const yesterdayActiveUsers = new Set(
+    yesterdayEvents.map(e => e.user_id || e.anonymous_id).filter(Boolean)
+  ).size;
+
+  const activeUsersTrend = yesterdayActiveUsers > 0
+    ? ((activeToday - yesterdayActiveUsers) / yesterdayActiveUsers) * 100
+    : 0;
+
+  // ---- New signups today ----
+  const { count: newSignupsToday } = await supabase
+    .from('users')
+    .select('*', { count: 'exact', head: true })
+    .gte('created_at', todayStart.toISOString());
+
+  const { count: newSignupsYesterday } = await supabase
+    .from('users')
+    .select('*', { count: 'exact', head: true })
+    .gte('created_at', yesterdayStart.toISOString())
+    .lt('created_at', yesterdayEnd.toISOString());
+
+  const signupsTrend = (newSignupsYesterday || 0) > 0
+    ? (((newSignupsToday || 0) - (newSignupsYesterday || 0)) / (newSignupsYesterday || 0)) * 100
+    : 0;
+
+  // ---- Analyses today ----
+  const analysesTodayEvents = todayEvents.filter(() => true); // we already have all
+  // Re-query for specific event types today
+  const { data: analysesTodayData } = await supabase
+    .from('analytics_events')
+    .select('event_type')
+    .in('event_type', ['completed_analysis', 'completed_humanization', 'completed_paraphrase'])
+    .gte('created_at', todayStart.toISOString());
+
+  const { data: analysesYesterdayData } = await supabase
+    .from('analytics_events')
+    .select('event_type')
+    .in('event_type', ['completed_analysis', 'completed_humanization', 'completed_paraphrase'])
+    .gte('created_at', yesterdayStart.toISOString())
+    .lt('created_at', yesterdayEnd.toISOString());
+
+  const analysesToday = analysesTodayData?.length || 0;
+  const analysesYesterday = analysesYesterdayData?.length || 0;
+  const analysesTrend = analysesYesterday > 0
+    ? ((analysesToday - analysesYesterday) / analysesYesterday) * 100
+    : 0;
+
+  // ---- Friction events today ----
+  const { data: frictionToday } = await supabase
+    .from('analytics_events')
+    .select('event_type')
+    .in('event_type', ['hit_daily_limit', 'hit_character_limit', 'file_upload_blocked', 'premium_mode_blocked'])
+    .gte('created_at', todayStart.toISOString());
+
+  const frictionEventsToday = frictionToday?.length || 0;
+  const totalTodayEvents = todayEvents.length;
+  const frictionRatio = totalTodayEvents > 0 ? frictionEventsToday / totalTodayEvents : 0;
+
+  // ---- Checkouts today ----
+  const { count: checkoutsToday } = await supabase
+    .from('analytics_events')
+    .select('*', { count: 'exact', head: true })
+    .eq('event_type', 'checkout_started')
+    .gte('created_at', todayStart.toISOString());
+
+  // ---- Hot leads (limit hits in last 24h) ----
+  const last24h = new Date(now);
+  last24h.setHours(last24h.getHours() - 24);
+
+  const { data: limitHits24h } = await supabase
+    .from('analytics_events')
+    .select('user_id, anonymous_id')
+    .in('event_type', ['hit_daily_limit', 'hit_character_limit'])
+    .gte('created_at', last24h.toISOString());
+
+  const limitHitUsers: Record<string, number> = {};
+  limitHits24h?.forEach(e => {
+    const key = e.user_id || e.anonymous_id;
+    if (key) limitHitUsers[key] = (limitHitUsers[key] || 0) + 1;
+  });
+  const hotLeadsCount = Object.values(limitHitUsers).filter(c => c >= 2).length;
+
+  return {
+    date: now.toISOString(),
+    mrrToday,
+    mrrChange: newPayingToday * 12.99,
+    newPayingToday,
+    activeToday,
+    newSignupsToday: newSignupsToday || 0,
+    hotLeadsCount,
+    checkoutsToday: checkoutsToday || 0,
+    analysesToday,
+    frictionEventsToday,
+    frictionRatio,
+    trends: {
+      activeUsers: activeUsersTrend,
+      analyses: analysesTrend,
+      signups: signupsTrend,
+    },
+  };
+}
+
+// ============================================
+// 10. ACQUISITION METRICS
+// ============================================
+
+export async function fetchAcquisitionMetrics(
+  supabase: SupabaseClient,
+  timeframe: QueryTimeframe
+): Promise<AcquisitionMetrics> {
+  const now = new Date();
+  const todayStart = new Date(now);
+  todayStart.setHours(0, 0, 0, 0);
+
+  const weekStart = new Date(now);
+  weekStart.setDate(weekStart.getDate() - 7);
+
+  const monthStart = new Date(now);
+  monthStart.setDate(monthStart.getDate() - 30);
+
+  // ---- DAU ----
+  const dauEvents = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [{ column: 'created_at', operator: 'gte', value: todayStart.toISOString() }]
+    }
+  );
+  const dau = new Set(dauEvents.map(e => e.user_id || e.anonymous_id).filter(Boolean)).size;
+
+  // ---- WAU ----
+  const wauEvents = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [{ column: 'created_at', operator: 'gte', value: weekStart.toISOString() }]
+    }
+  );
+  const wau = new Set(wauEvents.map(e => e.user_id || e.anonymous_id).filter(Boolean)).size;
+
+  // ---- MAU ----
+  const mauEvents = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [{ column: 'created_at', operator: 'gte', value: monthStart.toISOString() }]
+    }
+  );
+  const mau = new Set(mauEvents.map(e => e.user_id || e.anonymous_id).filter(Boolean)).size;
+
+  // ---- New vs returning users today ----
+  const todayUserIds = new Set(dauEvents.map(e => e.user_id || e.anonymous_id).filter(Boolean));
+
+  // Count users who were also active yesterday (returning)
+  const yesterdayStart = new Date(todayStart);
+  yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+  const yesterdayEvents = await fetchAllEventsPaginated<{ user_id: string | null; anonymous_id: string | null }>(
+    supabase,
+    {
+      table: 'analytics_events',
+      select: 'user_id, anonymous_id',
+      filters: [
+        { column: 'created_at', operator: 'gte', value: yesterdayStart.toISOString() },
+        { column: 'created_at', operator: 'lt', value: todayStart.toISOString() }
+      ]
+    }
+  );
+  const yesterdayUserIds = new Set(yesterdayEvents.map(e => e.user_id || e.anonymous_id).filter(Boolean));
+
+  let returningUsersToday = 0;
+  todayUserIds.forEach(uid => {
+    if (uid && yesterdayUserIds.has(uid)) returningUsersToday++;
+  });
+  const newUsersToday = dau - returningUsersToday;
+
+  // ---- New signups today ----
+  const { count: newSignupsToday } = await supabase
+    .from('users')
+    .select('*', { count: 'exact', head: true })
+    .gte('created_at', todayStart.toISOString());
+
+  // ---- Entry pages (from page_url field) ----
+  const { data: pageUrlEvents } = await supabase
+    .from('analytics_events')
+    .select('page_url, user_id, event_type')
+    .gte('created_at', timeframe.startDate.toISOString())
+    .not('page_url', 'is', null)
+    .limit(10000);
+
+  const pageStats: Record<string, { visits: number; signups: number; conversions: number; uniqueUsers: Set<string> }> = {};
+
+  pageUrlEvents?.forEach(e => {
+    if (!e.page_url) return;
+    // Normalize URL to path only
+    let path = e.page_url;
+    try {
+      const url = new URL(e.page_url);
+      path = url.pathname;
+    } catch {}
+
+    // Simplify path
+    if (path.startsWith('/detector') || path === '/') path = '/detector';
+    else if (path.startsWith('/humanizador')) path = '/humanizador';
+    else if (path.startsWith('/parafraseador')) path = '/parafraseador';
+    else if (path.startsWith('/pricing')) path = '/pricing';
+    else if (path.startsWith('/blog')) path = '/blog';
+    else if (path.length > 40) path = path.substring(0, 40) + '...';
+
+    if (!pageStats[path]) {
+      pageStats[path] = { visits: 0, signups: 0, conversions: 0, uniqueUsers: new Set() };
+    }
+    pageStats[path].visits++;
+    if (e.user_id) pageStats[path].uniqueUsers.add(e.user_id);
+    if (e.event_type === 'signup') pageStats[path].signups++;
+    if (e.event_type === 'checkout_started') pageStats[path].conversions++;
+  });
+
+  const topEntryPages = Object.entries(pageStats)
+    .map(([page, stats]) => ({
+      page,
+      visits: stats.visits,
+      signups: stats.signups,
+      conversions: stats.conversions,
+      signupRate: stats.visits > 0 ? (stats.signups / stats.visits) * 100 : 0,
+    }))
+    .sort((a, b) => b.visits - a.visits)
+    .slice(0, 10);
+
+  // ---- Referrers ----
+  const { data: referrerEvents } = await supabase
+    .from('analytics_events')
+    .select('referrer, user_id, event_type')
+    .gte('created_at', timeframe.startDate.toISOString())
+    .not('referrer', 'is', null)
+    .limit(10000);
+
+  const referrerStats: Record<string, { visits: number; signups: number; category: string }> = {};
+
+  const categorizReferrer = (ref: string): string => {
+    if (!ref || ref === '' || ref === 'direct') return 'direct';
+    if (ref.includes('google') || ref.includes('bing') || ref.includes('yahoo')) return 'search';
+    if (ref.includes('instagram') || ref.includes('facebook') || ref.includes('tiktok') ||
+        ref.includes('twitter') || ref.includes('youtube') || ref.includes('reddit')) return 'social';
+    if (ref.includes('t.co') || ref.includes('l.instagram')) return 'social';
+    return 'other';
+  };
+
+  referrerEvents?.forEach(e => {
+    if (!e.referrer) return;
+    let ref = e.referrer;
+    try {
+      ref = new URL(e.referrer).hostname.replace('www.', '');
+    } catch {}
+
+    if (!referrerStats[ref]) {
+      referrerStats[ref] = { visits: 0, signups: 0, category: categorizReferrer(e.referrer) };
+    }
+    referrerStats[ref].visits++;
+    if (e.event_type === 'signup') referrerStats[ref].signups++;
+  });
+
+  // Add 'direct' for events with no referrer
+  const { count: directVisits } = await supabase
+    .from('analytics_events')
+    .select('*', { count: 'exact', head: true })
+    .gte('created_at', timeframe.startDate.toISOString())
+    .is('referrer', null);
+
+  if ((directVisits || 0) > 0) {
+    referrerStats['direct'] = {
+      visits: directVisits || 0,
+      signups: 0,
+      category: 'direct',
+    };
+  }
+
+  const topReferrers = Object.entries(referrerStats)
+    .map(([referrer, stats]) => ({
+      referrer: referrer || 'direct',
+      category: stats.category,
+      visits: stats.visits,
+      signups: stats.signups,
+    }))
+    .sort((a, b) => b.visits - a.visits)
+    .slice(0, 10);
+
+  return {
+    topEntryPages,
+    topReferrers,
+    dau,
+    wau,
+    mau,
+    dauWauRatio: wau > 0 ? dau / wau : 0,
+    newUsersToday,
+    returningUsersToday,
+  };
+}
+
+// ============================================
+// 11. REVENUE MIX
+// ============================================
+
+export async function fetchRevenueMix(
+  supabase: SupabaseClient,
+  timeframe: QueryTimeframe
+): Promise<RevenueMix> {
+  const EXPRESS_24H_PRICE = 3.99;
+  const EXPRESS_7D_PRICE = 8.99;
+  const PRO_MONTHLY_PRICE = 12.99;
+  const PRO_ANNUAL_PRICE_MONTHLY = 10.39; // $124.68/yr / 12
+
+  // ---- Premium monthly subscribers ----
+  const { data: premiumMonthlyUsers } = await supabase
+    .from('users')
+    .select('id, created_at, subscription_interval')
+    .eq('plan_type', 'premium')
+    .not('email', 'in', `(${TEST_USER_CONFIG.emails.map(e => `"${e}"`).join(',')})`)
+    .or('subscription_interval.eq.month,subscription_interval.is.null');
+
+  // ---- Premium annual subscribers ----
+  const { data: premiumAnnualUsers } = await supabase
+    .from('users')
+    .select('id, created_at')
+    .eq('plan_type', 'premium')
+    .eq('subscription_interval', 'year')
+    .not('email', 'in', `(${TEST_USER_CONFIG.emails.map(e => `"${e}"`).join(',')})`)
+    .limit(1000);
+
+  const monthlyCount = premiumMonthlyUsers?.length || 0;
+  const annualCount = premiumAnnualUsers?.length || 0;
+  const monthlyMRR = monthlyCount * PRO_MONTHLY_PRICE;
+  const annualMRR = annualCount * PRO_ANNUAL_PRICE_MONTHLY;
+
+  // ---- Express 24h purchases in period ----
+  // Check users with express_plan = '24h' or express plan fields
+  const { data: expressUsers } = await supabase
+    .from('users')
+    .select('id, express_expires_at, express_plan')
+    .not('express_expires_at', 'is', null)
+    .not('email', 'in', `(${TEST_USER_CONFIG.emails.map(e => `"${e}"`).join(',')})`)
+    .gte('express_expires_at', timeframe.startDate.toISOString())
+    .limit(10000);
+
+  // Separate 24h vs 7d based on plan field or duration
+  const express24hUsers = expressUsers?.filter(u => {
+    if (u.express_plan === '7d') return false;
+    // If no plan field, default to 24h
+    return true;
+  }) || [];
+
+  const express7dUsers = expressUsers?.filter(u => u.express_plan === '7d') || [];
+
+  // Check repeat purchasers: users who appear more than once
+  // We approximate by looking at users who had express passes in both halves of the period
+  const halfwayPoint = new Date((timeframe.startDate.getTime() + timeframe.endDate.getTime()) / 2);
+
+  const { data: expressFirstHalf } = await supabase
+    .from('users')
+    .select('id')
+    .not('express_expires_at', 'is', null)
+    .gte('express_expires_at', timeframe.startDate.toISOString())
+    .lt('express_expires_at', halfwayPoint.toISOString())
+    .limit(1000);
+
+  const { data: expressSecondHalf } = await supabase
+    .from('users')
+    .select('id')
+    .not('express_expires_at', 'is', null)
+    .gte('express_expires_at', halfwayPoint.toISOString())
+    .lt('express_expires_at', timeframe.endDate.toISOString())
+    .limit(1000);
+
+  const firstHalfIds = new Set(expressFirstHalf?.map(u => u.id) || []);
+  const repeatPurchasers = expressSecondHalf?.filter(u => firstHalfIds.has(u.id)).length || 0;
+
+  const express24hRevenue = express24hUsers.length * EXPRESS_24H_PRICE;
+  const express7dRevenue = express7dUsers.length * EXPRESS_7D_PRICE;
+  const totalExpressRevenue = express24hRevenue + express7dRevenue;
+  const totalPremiumRevenue = monthlyMRR + annualMRR;
+  const totalRevenuePeriod = totalExpressRevenue + totalPremiumRevenue;
+
+  const totalPayingUsers = (expressUsers?.length || 0) + monthlyCount + annualCount;
+  const arpu = totalPayingUsers > 0 ? totalRevenuePeriod / totalPayingUsers : 0;
+  const expressRepeatRate = (expressUsers?.length || 0) > 0
+    ? (repeatPurchasers / (expressUsers?.length || 1)) * 100
+    : 0;
+
+  return {
+    express24h: {
+      purchases: express24hUsers.length,
+      revenue: express24hRevenue,
+      repeatPurchasers,
+    },
+    express7d: {
+      purchases: express7dUsers.length,
+      revenue: express7dRevenue,
+    },
+    premiumMonthly: {
+      subscribers: monthlyCount,
+      mrr: monthlyMRR,
+    },
+    premiumAnnual: {
+      subscribers: annualCount,
+      mrr: annualMRR,
+    },
+    totalRevenuePeriod,
+    expressVsPremiumSplit: totalRevenuePeriod > 0
+      ? (totalExpressRevenue / totalRevenuePeriod) * 100
+      : 0,
+    arpu,
+    expressRepeatRate,
+  };
 }

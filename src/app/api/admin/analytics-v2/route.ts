@@ -19,6 +19,9 @@ import {
   fetchUserInsights,
   getAllRegisteredUsers,
   getQueryTimeframe,
+  fetchDailyPulse,
+  fetchAcquisitionMetrics,
+  fetchRevenueMix,
 } from '@/lib/analytics/queries';
 import { AnalyticsDashboardData, TimeframeOption } from '@/lib/analytics/types';
 
@@ -69,6 +72,9 @@ export async function GET(request: NextRequest) {
       cohortAnalysis,
       userInsights,
       registeredUsers,
+      dailyPulse,
+      acquisitionMetrics,
+      revenueMix,
     ] = await Promise.all([
       fetchNorthStarMetrics(supabase, queryTimeframe),
       fetchRevenueHealth(supabase, queryTimeframe),
@@ -78,6 +84,9 @@ export async function GET(request: NextRequest) {
       fetchCohortAnalysis(supabase, queryTimeframe),
       fetchUserInsights(supabase, queryTimeframe),
       getAllRegisteredUsers(supabase),
+      fetchDailyPulse(supabase),
+      fetchAcquisitionMetrics(supabase, queryTimeframe),
+      fetchRevenueMix(supabase, queryTimeframe),
     ]);
 
     // 6. Obtener total de eventos para meta
@@ -102,6 +111,9 @@ export async function GET(request: NextRequest) {
       cohortAnalysis,
       userInsights,
       registeredUsers,
+      dailyPulse,
+      acquisitionMetrics,
+      revenueMix,
       meta: {
         totalEvents: totalEvents || 0,
         dateRange: {
