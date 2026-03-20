@@ -18,6 +18,37 @@ import CohortRetentionTable from './components/CohortRetentionTable';
 import UserInsightsView from './components/UserInsightsView';
 import RegisteredUsersList from './components/RegisteredUsersList';
 import CollapsibleSection from './components/CollapsibleSection';
+import DailyPulseView from './components/DailyPulseView';
+import AcquisitionView from './components/AcquisitionView';
+import RevenueMixView from './components/RevenueMixView';
+
+type TabId =
+  | 'pulse'
+  | 'north-star'
+  | 'revenue'
+  | 'conversion'
+  | 'retention'
+  | 'hot-leads'
+  | 'acquisition'
+  | 'users';
+
+interface Tab {
+  id: TabId;
+  label: string;
+  icon: string;
+  description: string;
+}
+
+const TABS: Tab[] = [
+  { id: 'pulse', label: 'Daily Pulse', icon: '⚡', description: 'Chequeo de 30 segundos' },
+  { id: 'north-star', label: 'North Star', icon: '🎯', description: 'MRR, usuarios, conversión' },
+  { id: 'revenue', label: 'Revenue', icon: '💰', description: 'Revenue mix y salud financiera' },
+  { id: 'conversion', label: 'Conversión', icon: '🔄', description: 'Funnel y drop-offs' },
+  { id: 'retention', label: 'Retención', icon: '📅', description: 'Cohortes y engagement' },
+  { id: 'hot-leads', label: 'Hot Leads', icon: '🔥', description: 'Usuarios accionables' },
+  { id: 'acquisition', label: 'Adquisición', icon: '📈', description: 'SEO, referrers, DAU/WAU' },
+  { id: 'users', label: 'Usuarios', icon: '👥', description: 'Perfiles y lista completa' },
+];
 
 export default function AnalyticsDashboardV2() {
   const [data, setData] = useState<AnalyticsDashboardData | null>(null);
@@ -27,6 +58,7 @@ export default function AnalyticsDashboardV2() {
   const [authUser, setAuthUser] = useState('');
   const [authPass, setAuthPass] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabId>('pulse');
 
   const fetchData = async () => {
     if (!isAuthenticated) return;
@@ -182,31 +214,33 @@ export default function AnalyticsDashboardV2() {
 
   if (!data) return null;
 
+  const activeTabData = TABS.find(t => t.id === activeTab)!;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50">
       {/* Header */}
       <header className="bg-white border-b-4 border-violet-200 shadow-lg sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-extrabold text-gray-900 flex items-center gap-3">
-                <span className="text-4xl">📊</span>
-                Elite Analytics Dashboard
+              <h1 className="text-2xl font-extrabold text-gray-900 flex items-center gap-2">
+                <span className="text-3xl">📊</span>
+                Analytics
+                {loading && (
+                  <span className="text-sm font-normal text-gray-500 animate-pulse ml-2">Actualizando...</span>
+                )}
               </h1>
-              <p className="text-sm text-gray-600 mt-1">
-                Última actualización: {new Date(data.generatedAt).toLocaleString('es-ES')}
+              <p className="text-xs text-gray-500 mt-0.5">
+                {new Date(data.generatedAt).toLocaleString('es-ES')} · {data.meta.totalEvents.toLocaleString()} eventos totales
               </p>
             </div>
 
-            {/* Timeframe selector */}
-            <div className="flex items-center gap-3">
-              <label className="text-sm font-semibold text-gray-700">
-                Periodo:
-              </label>
+            {/* Controls */}
+            <div className="flex items-center gap-2">
               <select
                 value={timeframe}
                 onChange={(e) => setTimeframe(e.target.value as TimeframeOption)}
-                className="px-4 py-2 border-2 border-violet-300 rounded-xl bg-white font-semibold text-gray-900 focus:outline-none focus:border-violet-500 transition-colors cursor-pointer"
+                className="px-3 py-2 border-2 border-violet-300 rounded-xl bg-white text-sm font-semibold text-gray-900 focus:outline-none focus:border-violet-500 transition-colors cursor-pointer"
               >
                 <option value="7d">7 días</option>
                 <option value="14d">14 días</option>
@@ -216,71 +250,124 @@ export default function AnalyticsDashboardV2() {
               <button
                 onClick={fetchData}
                 disabled={loading}
-                className="px-4 py-2 bg-violet-600 hover:bg-violet-700 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors"
+                className="px-3 py-2 bg-violet-600 hover:bg-violet-700 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors text-sm"
               >
-                {loading ? '⚙️ Cargando...' : '🔄 Actualizar'}
+                {loading ? '⚙️' : '🔄'}
               </button>
             </div>
           </div>
         </div>
+
+        {/* Tab navigation */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex overflow-x-auto scrollbar-hide gap-1 pb-0 -mb-px">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-1.5 px-3 py-3 text-sm font-semibold whitespace-nowrap border-b-3 transition-colors shrink-0 ${
+                  activeTab === tab.id
+                    ? 'border-b-4 border-violet-600 text-violet-700 bg-violet-50/60'
+                    : 'border-b-4 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                }`}
+                style={{ borderBottom: activeTab === tab.id ? '4px solid #7c3aed' : '4px solid transparent' }}
+              >
+                <span>{tab.icon}</span>
+                <span className="hidden sm:inline">{tab.label}</span>
+                {/* Badge for hot leads count */}
+                {tab.id === 'hot-leads' && data.hotLeads.filter(l => l.priority === 'high').length > 0 && (
+                  <span className="bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                    {data.hotLeads.filter(l => l.priority === 'high').length}
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
       </header>
 
-      {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Section 1: North Star Metrics - LO MÁS IMPORTANTE */}
-        <section>
-          <NorthStarMetrics data={data.northStar} />
-        </section>
+      {/* Tab content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Tab description */}
+        <div className="mb-6">
+          <p className="text-xs text-gray-500">{activeTabData.description}</p>
+        </div>
 
-        {/* Section 2: Revenue Health */}
-        <section>
-          <RevenueHealth data={data.revenueHealth} />
-        </section>
+        {/* DAILY PULSE */}
+        {activeTab === 'pulse' && data.dailyPulse && (
+          <DailyPulseView data={data.dailyPulse} />
+        )}
 
-        {/* Section 3: Hot Leads - ACCIONABLE HOY */}
-        <section>
+        {/* NORTH STAR */}
+        {activeTab === 'north-star' && (
+          <div className="space-y-8">
+            <NorthStarMetrics data={data.northStar} />
+          </div>
+        )}
+
+        {/* REVENUE */}
+        {activeTab === 'revenue' && (
+          <div className="space-y-8">
+            <RevenueMixView data={data.revenueMix} />
+            <CollapsibleSection title="Revenue Health Detallado" icon="💵" defaultOpen={true}>
+              <RevenueHealth data={data.revenueHealth} />
+            </CollapsibleSection>
+          </div>
+        )}
+
+        {/* CONVERSION */}
+        {activeTab === 'conversion' && (
+          <div className="space-y-8">
+            <ConversionFunnelView data={data.conversionFunnel} />
+          </div>
+        )}
+
+        {/* RETENTION */}
+        {activeTab === 'retention' && (
+          <div className="space-y-8">
+            <ProductEngagementView data={data.productEngagement} />
+            <CollapsibleSection title="Cohort Retention" icon="📅" defaultOpen={true}>
+              <CohortRetentionTable data={data.cohortAnalysis} />
+            </CollapsibleSection>
+          </div>
+        )}
+
+        {/* HOT LEADS */}
+        {activeTab === 'hot-leads' && (
           <HotLeadsPanel leads={data.hotLeads} />
-        </section>
+        )}
 
-        {/* Section 4: Conversion Funnel */}
-        <CollapsibleSection title="Conversion Funnel" icon="🔄" defaultOpen={true}>
-          <ConversionFunnelView data={data.conversionFunnel} />
-        </CollapsibleSection>
+        {/* ACQUISITION */}
+        {activeTab === 'acquisition' && data.acquisitionMetrics && (
+          <AcquisitionView data={data.acquisitionMetrics} />
+        )}
 
-        {/* Section 5: Product Engagement */}
-        <CollapsibleSection title="Product Engagement" icon="📈" defaultOpen={true}>
-          <ProductEngagementView data={data.productEngagement} />
-        </CollapsibleSection>
-
-        {/* Section 6: Cohort Retention */}
-        <CollapsibleSection title="Cohort Retention" icon="📅" defaultOpen={false}>
-          <CohortRetentionTable data={data.cohortAnalysis} />
-        </CollapsibleSection>
-
-        {/* Section 7: User Insights */}
-        <CollapsibleSection title="User Insights" icon="🔍" defaultOpen={false}>
-          <UserInsightsView data={data.userInsights} />
-        </CollapsibleSection>
-
-        {/* Section 8: Registered Users List */}
-        <CollapsibleSection title="Usuarios Registrados" icon="👥" defaultOpen={true}>
-          <RegisteredUsersList users={data.registeredUsers} />
-        </CollapsibleSection>
+        {/* USERS */}
+        {activeTab === 'users' && (
+          <div className="space-y-8">
+            <CollapsibleSection title="User Insights" icon="🔍" defaultOpen={true}>
+              <UserInsightsView data={data.userInsights} />
+            </CollapsibleSection>
+            <CollapsibleSection title="Usuarios Registrados" icon="👥" defaultOpen={true}>
+              <RegisteredUsersList users={data.registeredUsers} />
+            </CollapsibleSection>
+          </div>
+        )}
 
         {/* Footer info */}
-        <footer className="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center">
-          <div className="space-y-2">
-            <p className="text-sm text-gray-600">
-              <strong>Rango de datos:</strong>{' '}
-              {new Date(data.meta.dateRange.start).toLocaleDateString('es-ES')} -{' '}
+        <footer className="mt-12 bg-white border-2 border-gray-200 rounded-2xl p-4 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500">
+            <span>
+              <strong>Período:</strong>{' '}
+              {new Date(data.meta.dateRange.start).toLocaleDateString('es-ES')} —{' '}
               {new Date(data.meta.dateRange.end).toLocaleDateString('es-ES')}
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Total de eventos:</strong> {data.meta.totalEvents.toLocaleString()}
-            </p>
-            <p className="text-xs text-gray-500 mt-4">
-              Analytics Dashboard V2 - Powered by DetectordeIA.ai Elite System
-            </p>
+            </span>
+            <span>•</span>
+            <span>
+              <strong>Eventos:</strong> {data.meta.totalEvents.toLocaleString()}
+            </span>
+            <span>•</span>
+            <span>Analytics Dashboard V2</span>
           </div>
         </footer>
       </main>
