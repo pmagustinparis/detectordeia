@@ -11,6 +11,7 @@ import LoadingSteps from './LoadingSteps';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { extractTextFromFile } from '@/lib/fileParser';
 import { trackEvent } from '@/lib/analytics/client';
+import { getAnonymousId } from '@/lib/tracking/anonymousId';
 import type { UserStatus } from '@/lib/types/user-status';
 import ExpressPromoBanner from './ExpressPromoBanner';
 import ExpressUnlockModal from './ExpressUnlockModal';
@@ -232,12 +233,14 @@ export default function DetectorMain({
         // Step 2: Detección de patrones (after 2 seconds)
         setTimeout(() => setLoadingStep(2), 2000);
 
+        const anonymousId = !userStatus.isAuthenticated ? getAnonymousId() : undefined;
+
         const response = await fetch('/api/analyze', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ text, textType }),
+          body: JSON.stringify({ text, textType, anonymousId }),
         });
 
         // Step 3: Validación final (when API responds)
