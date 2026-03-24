@@ -1,0 +1,266 @@
+import { ComparisonPage } from './types';
+
+export const humanizerComparisons: ComparisonPage[] = [
+  {
+    slug: 'quillbot',
+    competitorName: 'QuillBot',
+    competitorWebsite: 'https://www.quillbot.com',
+    keywords: [
+      'humanizador ia vs quillbot',
+      'humanizador alternativa quillbot',
+      'quillbot español',
+      'mejor que quillbot español',
+    ],
+    title: 'Humanizador de IA vs QuillBot: Comparación Completa 2025',
+    description: 'Comparación entre el Humanizador de IA de DetectorDeIA y QuillBot. Descubrí cuál es mejor para humanizar texto de IA en español.',
+    h1: 'Humanizador de IA vs QuillBot: ¿Cuál es Mejor en Español?',
+    intro: 'QuillBot es una herramienta popular de parafraseo, pero no está diseñada específicamente para humanizar texto generado por IA. Nuestro Humanizador está optimizado para convertir texto robótico de ChatGPT, Claude y Gemini en contenido natural en español de LATAM y España.',
+    whyBetter: [
+      'Especializado en humanizar texto de IA (no solo parafrasear): resultado más natural y menos detectable',
+      'Optimizado 100% para español de LATAM y España; QuillBot está diseñado principalmente para inglés',
+      'Validación post-humanización: verifica automáticamente que el texto humanizado supere los detectores de IA',
+      'Precio más accesible para usuarios hispanohablantes individuales',
+      'Incluye Detector de IA y Parafraseador en el mismo plan, sin costo adicional',
+      '5 modos de humanización (Estándar, Formal, Académico, Creativo, Simplificado)',
+      'Sin límite de palabras en plan Premium',
+    ],
+    comparisons: [
+      { feature: 'Optimización para español', detectordeia: '100% nativo', competitor: 'Limitada (diseñado para inglés)' },
+      { feature: 'Humanización de texto IA', detectordeia: 'Especializado', competitor: 'Parafraseo genérico' },
+      { feature: 'Validación post-humanización', detectordeia: true, competitor: false },
+      { feature: 'Precio individual', detectordeia: '$12.99/mes', competitor: 'Desde $19.95/mes (premium)' },
+      { feature: 'Plan gratuito', detectordeia: true, competitor: true },
+      { feature: 'Modos de humanización', detectordeia: '5 modos', competitor: '7 modos (parafraseo)' },
+      { feature: 'Detector de IA incluido', detectordeia: true, competitor: false },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: true },
+      { feature: 'Sin marca de agua', detectordeia: true, competitor: 'Solo en versión paga' },
+    ],
+    whenToUseCompetitor: 'QuillBot es buena opción si trabajás principalmente en inglés o necesitás parafraseo simple. Para humanizar texto de IA en español con validación integrada, nuestro Humanizador es superior.',
+    pricing: {
+      detectordeia: '$12.99/mes o $124.68/año',
+      competitor: 'Desde $19.95/mes (premium)',
+    },
+    faqs: [
+      {
+        question: '¿Cuál humaniza mejor el texto de ChatGPT en español?',
+        answer: 'Nuestro Humanizador está específicamente diseñado para convertir texto de ChatGPT, Claude y Gemini en español natural. QuillBot es un parafraseador de propósito general orientado al inglés. Para textos en español académico o profesional, nuestro Humanizador genera resultados notablemente más naturales y fluidos.',
+      },
+      {
+        question: '¿QuillBot detecta si el texto fue generado por IA?',
+        answer: 'No. QuillBot no incluye un detector de IA. Nuestro plan incluye tanto el Humanizador como el Detector de IA, lo que te permite verificar que el texto humanizado no sea detectado como generado por IA antes de entregarlo.',
+      },
+      {
+        question: '¿Es QuillBot gratis en español?',
+        answer: 'QuillBot tiene plan gratuito con límites. Nuestro Humanizador también ofrece plan gratuito con 3 usos diarios. La diferencia clave es que nuestro plan está optimizado para español, mientras que QuillBot prioriza el inglés en sus algoritmos.',
+      },
+      {
+        question: '¿Qué modo de humanización debo usar para trabajos académicos?',
+        answer: 'Para trabajos académicos recomendamos el modo Académico (requiere plan Premium). Este modo genera texto riguroso, técnico y formal, ideal para tesis, ensayos y monografías en español. El modo Estándar (gratuito) es suficiente para textos informales o correos.',
+      },
+    ],
+    cta: {
+      text: 'Probar Humanizador gratis',
+      url: '/humanizador?ref=vs-quillbot',
+    },
+  },
+  {
+    slug: 'undetectable-ai',
+    competitorName: 'Undetectable.ai',
+    competitorWebsite: 'https://www.undetectable.ai',
+    keywords: [
+      'humanizador ia vs undetectable',
+      'undetectable ai español',
+      'alternativa undetectable ai',
+      'humanizador texto ia español',
+    ],
+    title: 'Humanizador de IA vs Undetectable.ai: Comparación 2025',
+    description: 'Comparación entre el Humanizador de DetectorDeIA y Undetectable.ai. Cuál es mejor para humanizar texto de IA en español latinoamericano.',
+    h1: 'Humanizador de IA vs Undetectable.ai: ¿Cuál Elige en Español?',
+    intro: 'Undetectable.ai es un humanizador de IA orientado principalmente al inglés. Nuestro Humanizador fue construido desde el primer día para español de LATAM y España, con resultados naturales que suenan como texto humano genuino, no como traducción de un texto en inglés.',
+    whyBetter: [
+      'Nativo en español: no es una traducción de algoritmos en inglés, sino construido para el español',
+      'Precio hasta 3x más económico para usuarios latinoamericanos',
+      'Incluye Detector de IA para validar el resultado humanizado automáticamente',
+      'Sin límite de palabras en plan Premium (Undetectable.ai cobra por palabras)',
+      'Modos académicos específicos para universidades de LATAM y España',
+      'Privacidad total: no almacenamos los textos humanizados',
+      'Soporte en español para consultas y problemas técnicos',
+    ],
+    comparisons: [
+      { feature: 'Español nativo', detectordeia: true, competitor: false },
+      { feature: 'Precio mensual', detectordeia: '$12.99/mes', competitor: 'Desde $14.99/mes' },
+      { feature: 'Límite por palabras', detectordeia: 'Por caracteres (más generoso)', competitor: 'Por palabras (más restrictivo)' },
+      { feature: 'Detector de IA incluido', detectordeia: true, competitor: false },
+      { feature: 'Plan gratuito', detectordeia: true, competitor: 'Solo prueba limitada' },
+      { feature: 'Modos académicos', detectordeia: true, competitor: 'Limitado' },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
+      { feature: 'Privacidad de datos', detectordeia: 'Sin almacenamiento', competitor: 'No especificado' },
+    ],
+    whenToUseCompetitor: 'Undetectable.ai puede ser útil si trabajás principalmente en inglés o si necesitás procesar grandes volúmenes de texto. Para humanizar textos en español con presupuesto ajustado y validación integrada, nuestro Humanizador es la mejor opción.',
+    pricing: {
+      detectordeia: '$12.99/mes o $124.68/año',
+      competitor: 'Desde $14.99/mes (5,000 palabras)',
+    },
+    faqs: [
+      {
+        question: '¿Undetectable.ai funciona bien en español?',
+        answer: 'Undetectable.ai está diseñado principalmente para inglés. Aunque puede procesar texto en español, los resultados tienden a sonar menos naturales que textos humanizados con herramientas nativas en español. Nuestro Humanizador fue entrenado específicamente en patrones lingüísticos del español de LATAM y España.',
+      },
+      {
+        question: '¿Cómo valida DetectorDeIA que el texto humanizado pase los detectores?',
+        answer: 'Después de humanizar el texto, nuestro sistema puede validar automáticamente el resultado contra nuestro propio detector de IA. Esto te da confianza de que el texto humanizado no será marcado como generado por IA en plataformas como Turnitin, GPTZero u otros detectores.',
+      },
+      {
+        question: '¿Cuántas palabras puedo humanizar con el plan gratuito?',
+        answer: 'El plan gratuito permite humanizar textos de hasta 1,200 caracteres (aprox. 200 palabras) hasta 3 veces por día. Para textos más largos, el plan Premium ofrece hasta 15,000 caracteres por humanización sin límite diario.',
+      },
+    ],
+    cta: {
+      text: 'Probar Humanizador gratis',
+      url: '/humanizador?ref=vs-undetectable',
+    },
+  },
+  {
+    slug: 'wordtune',
+    competitorName: 'Wordtune',
+    competitorWebsite: 'https://www.wordtune.com',
+    keywords: [
+      'humanizador ia vs wordtune',
+      'wordtune español',
+      'alternativa wordtune humanizar ia',
+    ],
+    title: 'Humanizador de IA vs Wordtune: Comparación Completa 2025',
+    description: 'Humanizador de IA de DetectorDeIA vs Wordtune. Cuál es mejor para reescribir textos de IA en español de forma natural.',
+    h1: 'Humanizador de IA vs Wordtune: ¿Cuál es Mejor para Español?',
+    intro: 'Wordtune es una herramienta de reescritura de textos orientada principalmente al inglés. Nuestro Humanizador está específicamente diseñado para transformar texto generado por IA en contenido natural en español, con validación integrada para garantizar que supere los detectores de IA.',
+    whyBetter: [
+      'Especializado en humanizar texto de IA; Wordtune es una herramienta de reescritura genérica',
+      'Optimizado para español latinoamericano y de España (Wordtune prioriza el inglés)',
+      'Validación automática: verifica que el texto humanizado no sea detectado como IA',
+      'Precio más económico para usuarios hispanohablantes',
+      'Incluye detector de IA y parafraseador en el mismo plan',
+    ],
+    comparisons: [
+      { feature: 'Humanización de texto IA', detectordeia: 'Especializado', competitor: 'Reescritura genérica' },
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Limitada' },
+      { feature: 'Detector de IA incluido', detectordeia: true, competitor: false },
+      { feature: 'Precio', detectordeia: '$12.99/mes', competitor: 'Desde $24.99/mes' },
+      { feature: 'Plan gratuito', detectordeia: true, competitor: 'Muy limitado' },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: true },
+    ],
+    whenToUseCompetitor: 'Wordtune es útil para pulir y mejorar textos en inglés con sugerencias de reescritura. Para humanizar texto de IA en español y garantizar que supere los detectores, nuestro Humanizador es más efectivo.',
+    pricing: {
+      detectordeia: '$12.99/mes o $124.68/año',
+      competitor: 'Desde $24.99/mes',
+    },
+    faqs: [
+      {
+        question: '¿Wordtune puede humanizar texto de ChatGPT en español?',
+        answer: 'Wordtune puede reescribir texto en español, pero no está diseñado específicamente para humanizar texto de IA ni para validar que el resultado supere los detectores de IA. Nuestro Humanizador está optimizado para esta tarea y valida automáticamente el resultado.',
+      },
+      {
+        question: '¿Cuál es más económico para un estudiante universitario?',
+        answer: 'Nuestro plan Premium cuesta $12.99/mes e incluye Humanizador, Detector de IA y Parafraseador. Wordtune cuesta desde $24.99/mes y solo ofrece reescritura. Para estudiantes universitarios hispanohablantes, nuestro plan es significativamente más conveniente.',
+      },
+    ],
+    cta: {
+      text: 'Probar Humanizador gratis',
+      url: '/humanizador?ref=vs-wordtune',
+    },
+  },
+  {
+    slug: 'smodin',
+    competitorName: 'Smodin',
+    competitorWebsite: 'https://www.smodin.io',
+    keywords: [
+      'humanizador ia vs smodin',
+      'smodin humanizador español',
+      'alternativa smodin humanizar',
+    ],
+    title: 'Humanizador de IA vs Smodin: Comparación 2025',
+    description: 'Comparación entre el Humanizador de IA de DetectorDeIA y Smodin. Cuál es la mejor herramienta para humanizar texto de IA en español.',
+    h1: 'Humanizador de IA vs Smodin: ¿Cuál es Mejor en Español?',
+    intro: 'Smodin ofrece múltiples herramientas de escritura incluyendo un humanizador. Sin embargo, nuestro Humanizador está completamente optimizado para español y ofrece validación integrada con detector de IA, algo que Smodin no incluye en su flujo de trabajo.',
+    whyBetter: [
+      'Texto humanizado más natural en español: no suena como traducción automática',
+      'Validación integrada: detecta automáticamente si el resultado aún parece generado por IA',
+      'Sin publicidad y sin distractores en la interfaz',
+      'Precio más accesible para el mercado latinoamericano',
+      'Privacidad: los textos no se almacenan en nuestros servidores',
+    ],
+    comparisons: [
+      { feature: 'Calidad español', detectordeia: 'Excelente (nativo)', competitor: 'Buena' },
+      { feature: 'Validación post-humanización', detectordeia: true, competitor: false },
+      { feature: 'Precio mensual', detectordeia: '$12.99/mes', competitor: 'Desde $9.99/mes (limitado)' },
+      { feature: 'Plan gratuito', detectordeia: true, competitor: true },
+      { feature: 'Detector de IA incluido', detectordeia: true, competitor: 'Separado (costo extra)' },
+      { feature: 'Sin publicidad', detectordeia: true, competitor: false },
+    ],
+    whenToUseCompetitor: 'Smodin puede ser útil si necesitás múltiples herramientas de escritura en una sola plataforma y trabajás en varios idiomas. Para humanizar texto de IA en español con validación integrada, nuestro Humanizador es más confiable.',
+    pricing: {
+      detectordeia: '$12.99/mes o $124.68/año',
+      competitor: 'Desde $9.99/mes (con limitaciones)',
+    },
+    faqs: [
+      {
+        question: '¿Smodin humaniza bien el texto de IA en español?',
+        answer: 'Smodin tiene humanizador pero con resultados variables en español. Nuestro Humanizador fue desarrollado específicamente para el español y genera texto que suena genuinamente humano, no como una traducción o parafraseo mecánico.',
+      },
+      {
+        question: '¿Por qué es importante validar el texto humanizado?',
+        answer: 'Después de humanizar, es esencial verificar que el resultado supere los detectores de IA. Nuestro sistema hace esto automáticamente con nuestro propio detector. Smodin no incluye esta validación integrada, lo que significa que podrías entregar un texto que aún sea detectado como IA.',
+      },
+    ],
+    cta: {
+      text: 'Probar Humanizador gratis',
+      url: '/humanizador?ref=vs-smodin',
+    },
+  },
+  {
+    slug: 'humbot',
+    competitorName: 'Humbot',
+    competitorWebsite: 'https://www.humbot.ai',
+    keywords: [
+      'humanizador ia vs humbot',
+      'humbot español alternativa',
+      'humbot humanizar texto ia',
+    ],
+    title: 'Humanizador de IA vs Humbot: Comparación Completa 2025',
+    description: 'Comparación entre el Humanizador de IA de DetectorDeIA y Humbot. Cuál humaniza mejor texto de IA en español para uso académico.',
+    h1: 'Humanizador de IA vs Humbot: ¿Cuál Elige para Trabajos Académicos?',
+    intro: 'Humbot es un humanizador de IA orientado al inglés. Nuestro Humanizador está optimizado para el mercado hispanohablante, con modos académicos específicos para universidades de LATAM y España, e incluye validación integrada con nuestro detector de IA.',
+    whyBetter: [
+      'Nativo en español: genera texto que suena natural en LATAM y España',
+      'Modos académicos para tesis, ensayos y trabajos universitarios',
+      'Detector de IA incluido para validar el resultado automaticamente',
+      'Precio más accesible para el mercado latinoamericano',
+      'Parafraseador incluido sin costo adicional',
+    ],
+    comparisons: [
+      { feature: 'Español nativo', detectordeia: true, competitor: false },
+      { feature: 'Modos académicos', detectordeia: true, competitor: 'Limitado' },
+      { feature: 'Detector incluido', detectordeia: true, competitor: false },
+      { feature: 'Precio', detectordeia: '$12.99/mes', competitor: 'Desde $14.99/mes' },
+      { feature: 'Plan gratuito', detectordeia: true, competitor: 'Muy limitado' },
+    ],
+    whenToUseCompetitor: 'Humbot puede ser útil si trabajás en inglés. Para textos académicos en español con validación integrada, nuestro Humanizador es la opción más efectiva.',
+    pricing: {
+      detectordeia: '$12.99/mes o $124.68/año',
+      competitor: 'Desde $14.99/mes',
+    },
+    faqs: [
+      {
+        question: '¿Humbot funciona bien para textos académicos en español?',
+        answer: 'Humbot está diseñado principalmente para inglés. Los resultados en español pueden sonar artificiales o con frases poco naturales para el habla hispanohablante. Nuestro Humanizador fue entrenado con textos académicos en español de LATAM y España para generar resultados genuinamente naturales.',
+      },
+      {
+        question: '¿Cuál es mejor para evitar ser detectado en Turnitin?',
+        answer: 'Nuestro Humanizador incluye validación con nuestro detector de IA para garantizar que el texto humanizado supere los detectores. Además, está optimizado para el español, reduciendo patrones lingüísticos típicos de texto generado por IA en ese idioma.',
+      },
+    ],
+    cta: {
+      text: 'Probar Humanizador gratis',
+      url: '/humanizador?ref=vs-humbot',
+    },
+  },
+];

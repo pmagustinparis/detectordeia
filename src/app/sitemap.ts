@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 import { comparisons } from '@/lib/pseo/comparisons';
+import { humanizerComparisons } from '@/lib/pseo/humanizer-comparisons';
+import { paraphraserComparisons } from '@/lib/pseo/paraphraser-comparisons';
 import { useCases } from '@/lib/pseo/use-cases';
 import { features } from '@/lib/pseo/features';
 import { glossary } from '@/lib/pseo/glossary';
@@ -145,6 +147,58 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Páginas de universidades — Humanizador (Fase 3 pSEO)
+  const humanizerUniversityPages: MetadataRoute.Sitemap = universities.map((uni) => ({
+    url: `${baseUrl}/humanizador-universidad/${uni.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  // Hub Humanizador — Universidades
+  const humanizerUniversitiesHub: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/humanizadores-universidades`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
+
+  // Páginas de universidades — Parafraseador (Fase 3 pSEO)
+  const paraphraserUniversityPages: MetadataRoute.Sitemap = universities.map((uni) => ({
+    url: `${baseUrl}/parafraseador-universidad/${uni.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  // Hub Parafraseador — Universidades
+  const paraphraserUniversitiesHub: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/parafraseadores-universidades`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
+
+  // Comparativas Humanizador vs competidores
+  const humanizerComparisonPages: MetadataRoute.Sitemap = humanizerComparisons.map((comp) => ({
+    url: `${baseUrl}/humanizador-vs/${comp.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  // Comparativas Parafraseador vs competidores
+  const paraphraserComparisonPages: MetadataRoute.Sitemap = paraphraserComparisons.map((comp) => ({
+    url: `${baseUrl}/parafraseador-vs/${comp.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
   // Páginas regionales (targeting geográfico)
   const regionalPages: MetadataRoute.Sitemap = ['es', 'mx', 'co', 'ar', 'cl', 'pe'].map((region) => ({
     url: `${baseUrl}/${region}`,
@@ -164,6 +218,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...guidePages,
     ...universityPages,
     ...universitiesHub,
+    ...humanizerUniversityPages,
+    ...humanizerUniversitiesHub,
+    ...paraphraserUniversityPages,
+    ...paraphraserUniversitiesHub,
+    ...humanizerComparisonPages,
+    ...paraphraserComparisonPages,
     ...regionalPages,
   ];
 }
