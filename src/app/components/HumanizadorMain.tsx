@@ -16,6 +16,7 @@ import type { UserStatus } from '@/lib/types/user-status';
 import ExpressPromoBanner from './ExpressPromoBanner';
 import ExpressUnlockModal from './ExpressUnlockModal';
 import ExpressPremiumComparisonCard from './ExpressPremiumComparisonCard';
+import ExitIntentSurvey from './surveys/ExitIntentSurvey';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -1090,6 +1091,11 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
       />
 
     </div>
+    <ExitIntentSurvey
+      userPlan={userStatus.plan_type}
+      hasCompletedAction={result !== null}
+      toolType="humanizador"
+    />
     </>
   );
 }

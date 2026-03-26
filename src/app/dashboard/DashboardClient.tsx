@@ -1,10 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';
 import type { UsageStats } from '@/lib/queries/usageStats';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import UserProfileModal from '@/app/components/UserProfileModal';
+import ChurnSurvey from '@/app/components/surveys/ChurnSurvey';
 import ExpressTimer from '@/components/ExpressTimer';
 
 interface DashboardClientProps {
@@ -17,6 +19,7 @@ interface DashboardClientProps {
 }
 
 export default function DashboardClient({ user, usageStats, history, planType, hasStripeCustomer, expressExpiresAt }: DashboardClientProps) {
+  const searchParams = useSearchParams();
   const [selectedHistory, setSelectedHistory] = useState<any>(null);
   const [isLoadingPortal, setIsLoadingPortal] = useState(false);
   const [isBannerDismissed, setIsBannerDismissed] = useState(() => {
@@ -30,6 +33,14 @@ export default function DashboardClient({ user, usageStats, history, planType, h
   // User profile onboarding
   const { hasProfile, loading: profileLoading, refreshProfile } = useUserProfile();
   const [showProfileModal, setShowProfileModal] = useState(false);
+
+  // Churn survey — se activa cuando el usuario vuelve del portal de Stripe habiendo cancelado
+  const [showChurnSurvey, setShowChurnSurvey] = useState(false);
+  useEffect(() => {
+    if (searchParams.get('churn_survey') === '1') {
+      setTimeout(() => setShowChurnSurvey(true), 800);
+    }
+  }, [searchParams]);
 
   // Mostrar modal de perfil si el usuario no lo completó
   useEffect(() => {
@@ -532,6 +543,14 @@ export default function DashboardClient({ user, usageStats, history, planType, h
           setShowProfileModal(false);
         }}
       />
+
+      {/* Churn Survey — aparece cuando vuelve de cancelar en Stripe portal */}
+      {showChurnSurvey && (
+        <ChurnSurvey
+          onClose={() => setShowChurnSurvey(false)}
+          onRetain={() => setShowChurnSurvey(false)}
+        />
+      )}
     </div>
   );
 }

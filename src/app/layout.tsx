@@ -4,6 +4,7 @@ import CookieBanner from '../components/CookieBanner';
 import AppSidebar from './components/AppSidebar';
 import AppTopBar from './components/AppTopBar';
 import MobileBottomNav from './components/MobileBottomNav';
+import PassiveFeedbackWidget from './components/surveys/PassiveFeedbackWidget';
 
 export const metadata: Metadata = {
   title: "Detector de IA - Detecta si un texto fue escrito por inteligencia artificial",
@@ -186,6 +187,7 @@ export default function RootLayout({
           </div>{/* end main content area */}
         </div>{/* end flex min-h-screen */}
         <MobileBottomNav />
+        <PassiveFeedbackWidget />
         <CookieBanner />
       </body>
     </html>

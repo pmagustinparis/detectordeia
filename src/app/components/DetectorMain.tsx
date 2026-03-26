@@ -6,6 +6,7 @@ import { ProductIcons, Icon } from '@/lib/icons';
 import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
 import FeedbackBlock from './FeedbackBlock';
+import ExitIntentSurvey from './surveys/ExitIntentSurvey';
 import FileUploadButton from './FileUploadButton';
 import LoadingSteps from './LoadingSteps';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -362,6 +363,7 @@ export default function DetectorMain({
   }
 
   return (
+    <>
     <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
       <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight animate-fade-in text-blue-900" style={{fontFamily: "'Georgia', serif"}}>
         {h1}
@@ -1341,5 +1343,12 @@ export default function DetectorMain({
       )}
 
     </section>
+
+    <ExitIntentSurvey
+      userPlan={userStatus.plan_type}
+      hasCompletedAction={hasAnalyzed}
+      toolType="detector"
+    />
+    </>
   );
-} 
+}
