@@ -23,6 +23,7 @@ import {
   fetchAcquisitionMetrics,
   fetchRevenueMix,
 } from '@/lib/analytics/queries';
+import { fetchSegmentIntelligence } from '@/lib/analytics/segmentQueries';
 import { AnalyticsDashboardData, TimeframeOption } from '@/lib/analytics/types';
 
 // Force dynamic rendering (disable Next.js caching)
@@ -75,6 +76,7 @@ export async function GET(request: NextRequest) {
       dailyPulse,
       acquisitionMetrics,
       revenueMix,
+      segmentIntelligence,
     ] = await Promise.all([
       fetchNorthStarMetrics(supabase, queryTimeframe),
       fetchRevenueHealth(supabase, queryTimeframe),
@@ -87,6 +89,7 @@ export async function GET(request: NextRequest) {
       fetchDailyPulse(supabase),
       fetchAcquisitionMetrics(supabase, queryTimeframe),
       fetchRevenueMix(supabase, queryTimeframe),
+      fetchSegmentIntelligence(supabase),
     ]);
 
     // 6. Obtener total de eventos para meta
@@ -114,6 +117,7 @@ export async function GET(request: NextRequest) {
       dailyPulse,
       acquisitionMetrics,
       revenueMix,
+      segmentIntelligence,
       meta: {
         totalEvents: totalEvents || 0,
         dateRange: {

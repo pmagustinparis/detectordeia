@@ -21,6 +21,7 @@ import CollapsibleSection from './components/CollapsibleSection';
 import DailyPulseView from './components/DailyPulseView';
 import AcquisitionView from './components/AcquisitionView';
 import RevenueMixView from './components/RevenueMixView';
+import SegmentIntelligenceView from './components/SegmentIntelligenceView';
 
 type TabId =
   | 'pulse'
@@ -30,7 +31,8 @@ type TabId =
   | 'retention'
   | 'hot-leads'
   | 'acquisition'
-  | 'users';
+  | 'users'
+  | 'segments';
 
 interface Tab {
   id: TabId;
@@ -48,6 +50,7 @@ const TABS: Tab[] = [
   { id: 'hot-leads', label: 'Hot Leads', icon: '🔥', description: 'Usuarios accionables' },
   { id: 'acquisition', label: 'Adquisición', icon: '📈', description: 'SEO, referrers, DAU/WAU' },
   { id: 'users', label: 'Usuarios', icon: '👥', description: 'Perfiles y lista completa' },
+  { id: 'segments', label: 'Segmentos', icon: '🧠', description: 'Qué segmentos convierten, retienen y qué dicen' },
 ];
 
 export default function AnalyticsDashboardV2() {
@@ -340,6 +343,11 @@ export default function AnalyticsDashboardV2() {
         {/* ACQUISITION */}
         {activeTab === 'acquisition' && data.acquisitionMetrics && (
           <AcquisitionView data={data.acquisitionMetrics} />
+        )}
+
+        {/* SEGMENTS */}
+        {activeTab === 'segments' && data.segmentIntelligence && (
+          <SegmentIntelligenceView data={data.segmentIntelligence} />
         )}
 
         {/* USERS */}

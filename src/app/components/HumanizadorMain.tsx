@@ -17,6 +17,7 @@ import ExpressPromoBanner from './ExpressPromoBanner';
 import ExpressUnlockModal from './ExpressUnlockModal';
 import ExpressPremiumComparisonCard from './ExpressPremiumComparisonCard';
 import ExitIntentSurvey from './surveys/ExitIntentSurvey';
+import PostUseMicroSurvey from './surveys/PostUseMicroSurvey';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -1096,6 +1097,12 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
       hasCompletedAction={result !== null}
       toolType="humanizador"
     />
+    {result !== null && (
+      <PostUseMicroSurvey
+        toolType="humanizador"
+        userPlan={userStatus.plan_type}
+      />
+    )}
     </>
   );
 }

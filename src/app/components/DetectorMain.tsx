@@ -7,6 +7,7 @@ import PremiumUpsellBlock from './PremiumUpsellBlock';
 import PremiumUpsellCompact from './PremiumUpsellCompact';
 import FeedbackBlock from './FeedbackBlock';
 import ExitIntentSurvey from './surveys/ExitIntentSurvey';
+import PostUseMicroSurvey from './surveys/PostUseMicroSurvey';
 import FileUploadButton from './FileUploadButton';
 import LoadingSteps from './LoadingSteps';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -1349,6 +1350,12 @@ export default function DetectorMain({
       hasCompletedAction={hasAnalyzed}
       toolType="detector"
     />
+    {hasAnalyzed && (
+      <PostUseMicroSurvey
+        toolType="detector"
+        userPlan={userStatus.plan_type}
+      />
+    )}
     </>
   );
 }

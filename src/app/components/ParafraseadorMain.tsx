@@ -17,6 +17,7 @@ import ExpressPromoBanner from './ExpressPromoBanner';
 import ExpressUnlockModal from './ExpressUnlockModal';
 import ExpressPremiumComparisonCard from './ExpressPremiumComparisonCard';
 import ExitIntentSurvey from './surveys/ExitIntentSurvey';
+import PostUseMicroSurvey from './surveys/PostUseMicroSurvey';
 
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
@@ -968,6 +969,12 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
       hasCompletedAction={result !== null}
       toolType="parafraseador"
     />
+    {result !== null && (
+      <PostUseMicroSurvey
+        toolType="parafraseador"
+        userPlan={userStatus.plan_type}
+      />
+    )}
     </>
   );
 }

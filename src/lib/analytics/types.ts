@@ -262,6 +262,7 @@ export interface AnalyticsDashboardData {
   dailyPulse: DailyPulse;
   acquisitionMetrics: AcquisitionMetrics;
   revenueMix: RevenueMix;
+  segmentIntelligence?: import('@/lib/analytics/segmentQueries').SegmentIntelligence;
 
   // Meta info
   meta: {
