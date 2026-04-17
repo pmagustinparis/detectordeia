@@ -960,7 +960,7 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
                         <p className="text-xs text-green-700 mb-3">
                           Registrándote gratis obtenés:<br/>
                           • Historial de tus últimos usos<br/>
-                          • Más usos diarios (hasta 50/día)<br/>
+                          • 3 humanizaciones diarias con la cuenta gratis<br/>
                           • Acceso a futuras features
                         </p>
                         <a

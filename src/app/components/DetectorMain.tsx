@@ -1192,7 +1192,7 @@ export default function DetectorMain({
                     <p className="text-xs text-slate-500 mb-3 leading-relaxed">
                       Registrándote gratis obtenés:<br/>
                       • <strong>Historial</strong> de tus últimos análisis<br/>
-                      • <strong>Más usos diarios</strong> (hasta 50 usos/día)<br/>
+                      • <strong>15 análisis diarios</strong> en el Detector<br/>
                       • <strong>Acceso a futuras features</strong> antes que nadie
                     </p>
                     <a

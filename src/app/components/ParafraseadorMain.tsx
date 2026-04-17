@@ -834,7 +834,7 @@ export default function ParafraseadorMain({ initialUserStatus }: { initialUserSt
                     <p className="text-xs text-cyan-800 mb-3 leading-relaxed">
                       Registrándote gratis obtenés:<br/>
                       • <strong>Historial</strong> de tus últimos usos<br/>
-                      • <strong>Más usos diarios</strong> (hasta 50 usos/día)<br/>
+                      • <strong>10 paráfrasis diarias</strong> con la cuenta gratis<br/>
                       • <strong>Acceso a futuras features</strong> antes que nadie
                     </p>
                     <a
