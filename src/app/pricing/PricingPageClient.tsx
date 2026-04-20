@@ -271,11 +271,11 @@ export default function PricingPageClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-20">
+    <div className="min-h-screen bg-white pb-20">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto py-16 px-4">
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">
             <span className="gradient-text-primary">Planes</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
@@ -296,7 +296,7 @@ export default function PricingPageClient() {
               <p className="text-gray-600 text-sm">Prueba sin compromiso</p>
             </div>
             <div className="mb-8">
-              <span className="text-5xl font-extrabold text-gray-900">$0</span>
+              <span className="text-5xl font-bold text-gray-900">$0</span>
               <span className="text-xl text-gray-600">/siempre</span>
             </div>
             <ul className="space-y-4 mb-8 flex-grow w-full">
@@ -351,7 +351,7 @@ export default function PricingPageClient() {
               <h2 className="text-3xl font-bold text-slate-900 mb-3 text-center">
                 Express Pass
               </h2>
-              <p className="text-sm text-slate-600 font-semibold text-center mb-4">⚡ Acceso temporal ilimitado • 💰 Pago único</p>
+              <p className="text-sm text-slate-600 font-medium text-center mb-4">Acceso temporal ilimitado · Pago único sin renovación</p>
 
               {/* Tabs para duración */}
               <div className="flex gap-2 mb-4">
@@ -388,20 +388,20 @@ export default function PricingPageClient() {
             </div>
 
             {/* Copy dinámico según duración */}
-            <div className="bg-blue-50/50 border border-blue-900/15 rounded-lg px-4 py-3 mb-4 w-full">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 mb-4 w-full">
               <p className="text-slate-700 text-sm font-semibold text-center">
                 {expressDuration === '24h'
-                  ? '⚡ Perfecto para: Entrega urgente mañana, emergencia académica'
-                  : '📚 Perfecto para: Semana de exámenes, proyecto grupal, múltiples entregas'
+                  ? 'Ideal para: entrega urgente, emergencia académica'
+                  : 'Ideal para: semana de exámenes, proyecto grupal, múltiples entregas'
                 }
               </p>
             </div>
 
             {/* Badge de ahorro solo para 7d */}
             {expressDuration === '7d' && (
-              <div className="bg-green-50 border-2 border-green-400 rounded-lg px-3 py-2 mb-4 w-full">
+              <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 mb-4 w-full">
                 <p className="text-xs text-green-800 font-bold text-center">
-                  💰 Ahorra 68% vs 7 días individuales ($27.93)
+                  Ahorra 68% vs 7 días individuales ($27.93)
                 </p>
               </div>
             )}
@@ -452,7 +452,7 @@ export default function PricingPageClient() {
                 : 'Registrate y Activa'}
             </button>
             <p className="text-xs text-gray-600 mt-3 text-center w-full">
-              💳 Pago seguro con Stripe
+              Pago seguro con Stripe
             </p>
           </div>
 
@@ -462,7 +462,7 @@ export default function PricingPageClient() {
               <h2 className="text-3xl font-bold text-slate-900 mb-2">
                 Premium
               </h2>
-              <p className="text-gray-700 text-sm font-bold">🔄 Acceso continuo, sin interrupciones</p>
+              <p className="text-gray-600 text-sm font-medium">Acceso continuo, sin interrupciones</p>
             </div>
 
             {/* Botones de selección de billing */}
@@ -495,7 +495,7 @@ export default function PricingPageClient() {
             </div>
 
             <div className="mb-2">
-              <span className="text-5xl font-extrabold text-gray-900">
+              <span className="text-5xl font-bold text-gray-900">
                 ${billing === 'monthly' ? PRICES.pro.monthly : (PRICES.pro.annual / 12).toFixed(2)}
               </span>
               <span className="text-xl text-gray-600">/mes</span>
@@ -506,9 +506,9 @@ export default function PricingPageClient() {
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
-            <div className="bg-blue-50/50 border border-blue-900/15 rounded-lg px-4 py-3 mb-4 w-full">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 mb-4 w-full">
               <p className="text-slate-700 text-sm font-semibold text-center">
-                💎 Perfecto para: Uso diario profesional, estudiantes avanzados, creadores de contenido
+                Ideal para: uso diario profesional, estudiantes avanzados, creadores de contenido
               </p>
             </div>
             <ul className="space-y-4 mb-8 flex-grow w-full">
@@ -557,7 +557,7 @@ export default function PricingPageClient() {
             </ul>
             {getProCTA()}
             <p className="text-xs text-gray-600 mt-3 text-center w-full">
-              💳 Pago seguro con Stripe
+              Pago seguro con Stripe
             </p>
           </div>
         </div>
@@ -569,7 +569,7 @@ export default function PricingPageClient() {
             <span className="text-gray-900"> nuestros usuarios</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -581,7 +581,7 @@ export default function PricingPageClient() {
                 "Como docente universitario, DetectorDeIA me ha ayudado enormemente a identificar trabajos generados por IA. La precisión en español es excelente y los 5 modos del humanizador son perfectos para enseñar a mis estudiantes."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-lg">
                   MC
                 </div>
                 <div>
@@ -591,7 +591,7 @@ export default function PricingPageClient() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -603,7 +603,7 @@ export default function PricingPageClient() {
                 "Uso DetectorDeIA diariamente para verificar el contenido de mi blog. El plan Premium vale cada centavo - los usos ilimitados y los 5 modos del parafraseador me ahorran horas de trabajo manual."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-lg">
                   JR
                 </div>
                 <div>
@@ -613,7 +613,7 @@ export default function PricingPageClient() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -625,7 +625,7 @@ export default function PricingPageClient() {
                 "Impresionante herramienta para estudiantes. El modo académico del humanizador me ayuda a reescribir mis ensayos manteniendo el rigor académico. 100% recomendado."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-400 flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-lg">
                   SP
                 </div>
                 <div>
@@ -635,7 +635,7 @@ export default function PricingPageClient() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -647,7 +647,7 @@ export default function PricingPageClient() {
                 "Necesitaba revisar 20 trabajos antes de la fecha de entrega y los límites gratis no me alcanzaban. El Express me salvó - por $3.99 pude terminar todo en un día sin interrupciones."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-400 flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-lg">
                   CM
                 </div>
                 <div>
@@ -667,7 +667,7 @@ export default function PricingPageClient() {
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
+              <div key={index} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
                 <button
                   onClick={() => setFaqOpen(faqOpen === index ? null : index)}
                   className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
