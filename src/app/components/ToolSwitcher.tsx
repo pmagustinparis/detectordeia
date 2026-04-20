@@ -8,41 +8,20 @@ interface Tool {
   name: string;
   path: string;
   icon: LucideIcon;
-  color: string;
-  gradient: string;
   isPopular?: boolean;
 }
 
 const tools: Tool[] = [
-  {
-    name: 'Detector',
-    path: '/',
-    icon: ProductIcons.Detector,
-    color: 'text-violet-600',
-    gradient: 'from-violet-500 to-purple-500',
-  },
-  {
-    name: 'Humanizador',
-    path: '/humanizador',
-    icon: ProductIcons.Humanizer,
-    color: 'text-emerald-600',
-    gradient: 'from-emerald-500 to-teal-500',
-    isPopular: true,
-  },
-  {
-    name: 'Parafraseador',
-    path: '/parafraseador',
-    icon: ProductIcons.Paraphraser,
-    color: 'text-purple-600',
-    gradient: 'from-purple-500 to-pink-500',
-  },
+  { name: 'Detector', path: '/', icon: ProductIcons.Detector },
+  { name: 'Humanizador', path: '/humanizador', icon: ProductIcons.Humanizer, isPopular: true },
+  { name: 'Parafraseador', path: '/parafraseador', icon: ProductIcons.Paraphraser },
 ];
 
 export default function ToolSwitcher() {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm shadow-md border-b border-gray-200 mb-6">
+    <div className="sticky top-0 z-40 bg-white border-b border-gray-200 mb-6">
       <div className="max-w-5xl mx-auto px-4 py-3">
         <div className="flex items-center justify-center gap-2 md:gap-4">
           {tools.map((tool) => {
@@ -53,28 +32,22 @@ export default function ToolSwitcher() {
                 key={tool.path}
                 href={tool.path}
                 className={`
-                  relative flex items-center gap-2 px-4 md:px-6 py-2.5 rounded-xl font-semibold text-sm md:text-base
-                  transition-all duration-200
-                  ${
-                    isActive
-                      ? `bg-gradient-to-r ${tool.gradient} text-white shadow-lg scale-105`
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-102'
+                  relative flex items-center gap-2 px-4 md:px-6 py-2.5 rounded-lg font-semibold text-sm md:text-base
+                  transition-colors
+                  ${isActive
+                    ? 'bg-blue-900 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }
                 `}
               >
-                {/* Badge "Popular" */}
                 {tool.isPopular && !isActive && (
-                  <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">
-                    ⭐
+                  <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                    Popular
                   </span>
                 )}
-
-                {/* Icon */}
-                <div className={`hidden md:block ${isActive ? 'text-white' : tool.color}`}>
+                <div className={`hidden md:block ${isActive ? 'text-white' : 'text-blue-900'}`}>
                   <Icon icon={tool.icon} size="lg" />
                 </div>
-
-                {/* Name */}
                 <span className="whitespace-nowrap">{tool.name}</span>
               </a>
             );

@@ -9,7 +9,7 @@ const tabs = [
     name: 'Humanizador',
     path: '/humanizador',
     icon: ProductIcons.Humanizer,
-    color: 'text-violet-600',
+    color: 'text-blue-900',
     aliases: ['/convertidor-ia-a-humano', '/transformador-texto-ia'],
   },
   {
@@ -26,7 +26,7 @@ const tabs = [
     name: 'Parafraseador',
     path: '/parafraseador',
     icon: ProductIcons.Paraphraser,
-    color: 'text-purple-600',
+    color: 'text-blue-900',
     aliases: ['/reescritor-de-textos', '/reformulador-online'],
   },
 ];

@@ -89,7 +89,7 @@ export default function ExpressPremiumComparisonCard({
       : 'Desbloqueá más con Express o Premium';
 
   return (
-    <div className="mt-3 p-4 bg-white border-2 border-gray-200 rounded-2xl shadow-sm">
+    <div className="mt-3 p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
       <p className="text-sm font-bold text-gray-800 mb-3">{title}</p>
 
       <div className="grid grid-cols-2 gap-3 mb-3">
@@ -143,17 +143,17 @@ export default function ExpressPremiumComparisonCard({
         </div>
 
         {/* Premium - Columna derecha (secundaria) */}
-        <div className="border-2 border-violet-200 bg-violet-50 rounded-xl p-3 flex flex-col">
+        <div className="border-2 border-blue-200 bg-blue-900 rounded-xl p-3 flex flex-col">
           <div className="mb-2">
-            <span className="text-xs font-bold bg-violet-600 text-white px-2 py-0.5 rounded-full">
+            <span className="text-xs font-bold bg-blue-900 text-white px-2 py-0.5 rounded-full">
               PREMIUM
             </span>
           </div>
-          <p className="text-sm font-bold text-violet-900 mb-1">Plan Premium</p>
-          <p className="text-lg font-extrabold text-violet-900">$12.99</p>
-          <p className="text-xs text-violet-700 mb-2">/ mes · o $124.68/año</p>
+          <p className="text-sm font-bold text-blue-900 mb-1">Plan Premium</p>
+          <p className="text-lg font-bold text-blue-900">$12.99</p>
+          <p className="text-xs text-blue-900 mb-2">/ mes · o $124.68/año</p>
 
-          <ul className="text-xs text-violet-800 space-y-0.5 mb-3 flex-1">
+          <ul className="text-xs text-blue-900 space-y-0.5 mb-3 flex-1">
             <li>✓ Modos premium</li>
             <li>✓ Sin límite de chars</li>
             <li>✓ Historial completo</li>
@@ -169,7 +169,7 @@ export default function ExpressPremiumComparisonCard({
                 metadata: { source },
               })
             }
-            className="w-full text-center border-2 border-violet-600 text-violet-700 hover:bg-violet-100 font-bold py-2 px-3 rounded-lg transition-colors text-xs block"
+            className="w-full text-center border-2 border-blue-200 text-blue-900 hover:bg-blue-900 font-bold py-2 px-3 rounded-lg transition-colors text-xs block"
           >
             Ver Premium →
           </a>

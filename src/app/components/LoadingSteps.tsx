@@ -41,27 +41,27 @@ export default function LoadingSteps({
   }, [currentStep, progressPerStep]);
 
   return (
-    <div className="w-full p-8 bg-gradient-to-br from-violet-50 via-purple-50 to-blue-50 rounded-2xl border-2 border-violet-200 shadow-lg animate-fade-in">
+    <div className="w-full p-8 bg-blue-50 rounded-xl border-2 border-blue-200 shadow-lg ">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <div className="animate-spin">
-          <Icon icon={ProductIcons.Analytics} size="xl" className="text-violet-600" />
+          <Icon icon={ProductIcons.Analytics} size="xl" className="text-blue-900" />
         </div>
         <div>
-          <h3 className="text-lg font-bold text-violet-900">{title}</h3>
-          <p className="text-xs text-violet-600">Tiempo estimado: ~{estimatedTime} segundos</p>
+          <h3 className="text-lg font-bold text-blue-900">{title}</h3>
+          <p className="text-xs text-blue-900">Tiempo estimado: ~{estimatedTime} segundos</p>
         </div>
       </div>
 
       {/* Progress Bar */}
       <div className="mb-6">
-        <div className="flex justify-between text-xs text-violet-700 mb-2 font-medium">
+        <div className="flex justify-between text-xs text-blue-900 mb-2 font-medium">
           <span>Progreso</span>
           <span>{Math.round(progress)}%</span>
         </div>
-        <div className="w-full h-3 bg-violet-100 rounded-full overflow-hidden">
+        <div className="w-full h-3 bg-blue-900 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-violet-500 to-purple-600 rounded-full transition-all duration-300 ease-out"
+            className="h-full bg-blue-900 rounded-full transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -86,7 +86,7 @@ export default function LoadingSteps({
               {/* Icon/Status */}
               <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                 isCompleted ? 'bg-green-500' :
-                isCurrent ? 'bg-violet-500 animate-pulse' :
+                isCurrent ? 'bg-blue-900 animate-pulse' :
                 'bg-gray-300'
               }`}>
                 {isCompleted ? (
@@ -100,7 +100,7 @@ export default function LoadingSteps({
 
               {/* Label */}
               <span className={`text-sm font-medium ${
-                isCurrent ? 'text-violet-900' :
+                isCurrent ? 'text-blue-900' :
                 isCompleted ? 'text-green-700' :
                 'text-gray-500'
               }`}>
@@ -111,9 +111,9 @@ export default function LoadingSteps({
               {isCurrent && (
                 <div className="ml-auto">
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-violet-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                    <div className="w-2 h-2 bg-violet-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                    <div className="w-2 h-2 bg-violet-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    <div className="w-2 h-2 bg-blue-900 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                    <div className="w-2 h-2 bg-blue-900 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                    <div className="w-2 h-2 bg-blue-900 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                   </div>
                 </div>
               )}
@@ -123,11 +123,11 @@ export default function LoadingSteps({
       </div>
 
       {/* Skeleton Preview (opcional) */}
-      <div className="mt-6 p-4 bg-white/30 rounded-lg border border-violet-200/50">
+      <div className="mt-6 p-4 bg-white/30 rounded-lg border border-blue-200/50">
         <div className="animate-pulse space-y-3">
-          <div className="h-4 bg-violet-200/50 rounded w-3/4"></div>
-          <div className="h-4 bg-violet-200/50 rounded w-1/2"></div>
-          <div className="h-20 bg-violet-200/50 rounded"></div>
+          <div className="h-4 bg-blue-900/50 rounded w-3/4"></div>
+          <div className="h-4 bg-blue-900/50 rounded w-1/2"></div>
+          <div className="h-20 bg-blue-900/50 rounded"></div>
         </div>
       </div>
     </div>
