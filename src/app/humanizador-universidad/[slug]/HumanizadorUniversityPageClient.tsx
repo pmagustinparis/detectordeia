@@ -34,36 +34,36 @@ export default function HumanizadorUniversityPageClient({ university }: { univer
 
       {/* VALUE PROPS */}
       <section className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-4 animate-slide-in-bottom">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Optimizado para {university.shortName}</h3>
           <p className="text-gray-600 text-sm leading-relaxed">
             Humanizador especializado en español académico de {university.country}. Resultados naturales y fluidos.
           </p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Locked} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Locked} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Privacidad total</h3>
           <p className="text-gray-600 text-sm leading-relaxed">
             Tus trabajos de {university.shortName} están seguros. No almacenamos ni compartimos tu contenido.
           </p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Fast} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Fast} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Sin registro</h3>
           <p className="text-gray-600 text-sm leading-relaxed">
             Estudiantes de {university.shortName} pueden humanizar textos gratis, sin crear cuenta.
           </p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">
             {university.usesTurnitin ? 'Elude detección Turnitin' : 'Texto 100% original'}
@@ -78,7 +78,7 @@ export default function HumanizadorUniversityPageClient({ university }: { univer
 
       {/* SEO CONTENT */}
       <section className="max-w-5xl mx-auto mb-16 px-4">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-sm p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Humanizador de IA para {university.name}
           </h2>
@@ -183,7 +183,7 @@ export default function HumanizadorUniversityPageClient({ university }: { univer
             </Link>
           </div>
 
-          <div className="bg-slate-50 rounded-xl p-6 mt-8 border-2 border-slate-200">
+          <div className="bg-gray-50 rounded-xl p-6 mt-8 border border-gray-200">
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               ¿Sos estudiante de {university.shortName}?
             </h3>
@@ -193,7 +193,7 @@ export default function HumanizadorUniversityPageClient({ university }: { univer
             </p>
             <a
               href="/humanizador"
-              className="inline-block bg-gradient-to-r from-cyan-500 to-violet-600 text-white font-bold py-3 px-8 rounded-xl hover:shadow-lg transition-all"
+              className="inline-block bg-gradient-to-r from-cyan-500 to-violet-600 text-white font-bold py-3 px-8 rounded-xl hover:shadow-sm transition-all"
             >
               Humanizar texto de {university.shortName} gratis
             </a>

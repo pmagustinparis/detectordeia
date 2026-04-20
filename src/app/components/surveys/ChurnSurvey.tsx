@@ -66,24 +66,24 @@ export default function ChurnSurvey({ onClose, onRetain }: ChurnSurveyProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative">
 
         {submitted ? (
           <div className="text-center py-8">
             <div className="text-4xl mb-3">💙</div>
-            <p className="text-lg font-semibold text-slate-800">Gracias por tu tiempo</p>
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="text-lg font-semibold text-gray-700">Gracias por tu tiempo</p>
+            <p className="text-sm text-gray-700 mt-2">
               Tu feedback nos ayuda a mejorar para todos los usuarios.
             </p>
           </div>
         ) : (
           <>
             <div className="mb-5">
-              <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">Antes de irte</p>
-              <p className="text-lg font-semibold text-slate-800">
+              <p className="text-xs font-medium text-gray-700 uppercase tracking-wider mb-1">Antes de irte</p>
+              <p className="text-lg font-semibold text-gray-700">
                 ¿Por qué cancelás tu suscripción?
               </p>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-gray-700 mt-1">
                 Tu respuesta nos ayuda a mejorar el producto.
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function ChurnSurvey({ onClose, onRetain }: ChurnSurveyProps) {
                   className={`text-left text-sm px-4 py-3 rounded-xl border transition-all ${
                     selectedReason === reason.key
                       ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                      : 'border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                      : 'border-gray-200 text-gray-700 hover:border-gray-200 hover:bg-gray-50'
                   }`}
                 >
                   {reason.label}
@@ -114,7 +114,7 @@ export default function ChurnSurvey({ onClose, onRetain }: ChurnSurveyProps) {
                 value={followUpText}
                 onChange={(e) => setFollowUpText(e.target.value)}
                 placeholder={followUpPlaceholder}
-                className="w-full text-sm border border-slate-200 rounded-xl px-3 py-2.5 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700 placeholder:text-slate-400 mb-4"
+                className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2.5 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 placeholder:text-gray-700 mb-4"
                 rows={2}
                 maxLength={300}
                 autoFocus
@@ -126,7 +126,7 @@ export default function ChurnSurvey({ onClose, onRetain }: ChurnSurveyProps) {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting || !selectedReason}
-                className="w-full bg-slate-700 hover:bg-slate-800 disabled:bg-slate-100 disabled:text-slate-400 text-white text-sm font-medium py-2.5 rounded-xl transition-colors"
+                className="w-full bg-gray-50 hover:bg-gray-50 disabled:bg-gray-50 disabled:text-gray-700 text-white text-sm font-medium py-2.5 rounded-xl transition-colors"
               >
                 {isSubmitting ? 'Enviando...' : 'Cancelar de todas formas'}
               </button>
@@ -140,7 +140,7 @@ export default function ChurnSurvey({ onClose, onRetain }: ChurnSurveyProps) {
               )}
               <button
                 onClick={onClose}
-                className="text-xs text-slate-400 hover:text-slate-600 py-1 transition-colors"
+                className="text-xs text-gray-700 hover:text-gray-700 py-1 transition-colors"
               >
                 Cerrar sin responder
               </button>

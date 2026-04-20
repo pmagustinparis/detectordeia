@@ -15,30 +15,30 @@ export default function VerificadorPageClient() {
 
       {/* VALUE PROPS - Optimizado para keyword "verificar" */}
       <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8 animate-slide-in-bottom">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Verificación confiable</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Verifica contenido con alta precisión. Algoritmos optimizados para español.</p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Locked} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Locked} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Verificación privada</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Verifica textos con total privacidad. Tus datos no se almacenan.</p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Fast} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Fast} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Verificación rápida</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Verifica textos en segundos. Sin registro ni configuración.</p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-slate-600" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center text-center card-elevated group">
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Reportes de verificación</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Verifica con reportes detallados. Planes premium con historial completo.</p>
@@ -47,7 +47,7 @@ export default function VerificadorPageClient() {
 
       {/* SEO CONTENT - Optimizado para "verificador de ia" */}
       <section className="max-w-5xl mx-auto mb-16 px-4">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-sm p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué es un Verificador de IA?</h2>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Un verificador de IA es una herramienta especializada que permite verificar la autenticidad de textos, determinando si fueron

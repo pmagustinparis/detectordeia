@@ -16,29 +16,29 @@ export default function ComprobadorPageClient() {
       {/* VALUE PROPS - Optimizado para keyword "comprobar" */}
       <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8 animate-slide-in-bottom">
         <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
-          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-slate-600" />
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Confidence} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Comprobación precisa</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Comprueba contenido con alta precisión. Optimizado para textos en español.</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
-          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Locked} size="2xl" className="text-slate-600" />
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Locked} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Comprobación segura</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Comprueba textos con total seguridad. Privacidad 100% garantizada.</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
-          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Fast} size="2xl" className="text-slate-600" />
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Fast} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Comprobación instantánea</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Comprueba textos al instante. Sin esperas ni complicaciones.</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
-          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
-            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-slate-600" />
+          <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
+            <Icon icon={ProductIcons.Analytics} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Comprobación detallada</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Comprueba con reportes completos. Análisis detallado de resultados.</p>
@@ -47,7 +47,7 @@ export default function ComprobadorPageClient() {
 
       {/* SEO CONTENT - Optimizado para "comprobador de ia" */}
       <section className="max-w-5xl mx-auto mb-16 px-4">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-sm p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué es un Comprobador de IA?</h2>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Un comprobador de IA es una herramienta especializada diseñada para comprobar la autenticidad de textos, determinando si fueron

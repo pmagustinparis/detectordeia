@@ -105,23 +105,23 @@ export default function PostUseMicroSurvey({ toolType, userPlan, onDismiss }: Po
 
   return (
     <div
-      className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:w-72 z-40 bg-white border border-slate-200 rounded-2xl shadow-xl p-4 animate-fade-in"
+      className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:w-72 z-40 bg-white border border-gray-200 rounded-xl shadow-sm p-4"
       role="dialog"
       aria-label="Valorar experiencia"
     >
       {submitted ? (
         <div className="text-center py-3">
           <div className="text-3xl mb-1">🙌</div>
-          <p className="text-sm font-semibold text-slate-800">¡Gracias!</p>
-          <p className="text-xs text-slate-500 mt-0.5">Tu opinión mejora la herramienta.</p>
+          <p className="text-sm font-semibold text-gray-700">¡Gracias!</p>
+          <p className="text-xs text-gray-700 mt-0.5">Tu opinión mejora la herramienta.</p>
         </div>
       ) : (
         <>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-sm font-semibold text-slate-800">¿Cómo fue el resultado?</p>
+            <p className="text-sm font-semibold text-gray-700">¿Cómo fue el resultado?</p>
             <button
               onClick={handleDismiss}
-              className="text-slate-400 hover:text-slate-600 transition-colors ml-2 flex-shrink-0"
+              className="text-gray-700 hover:text-gray-700 transition-colors ml-2 flex-shrink-0"
               aria-label="Cerrar"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,12 +149,12 @@ export default function PostUseMicroSurvey({ toolType, userPlan, onDismiss }: Po
           {/* Follow-up contextual */}
           {rating !== null && (
             <div className="animate-fade-in">
-              <p className="text-xs text-slate-500 mb-1.5">{followUpQuestion}</p>
+              <p className="text-xs text-gray-700 mb-1.5">{followUpQuestion}</p>
               <textarea
                 value={followUpText}
                 onChange={(e) => setFollowUpText(e.target.value)}
                 placeholder="Opcional — podés dejarlo en blanco"
-                className="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700 placeholder:text-slate-400"
+                className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 placeholder:text-gray-700"
                 rows={2}
                 maxLength={400}
                 autoFocus
@@ -162,7 +162,7 @@ export default function PostUseMicroSurvey({ toolType, userPlan, onDismiss }: Po
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="mt-2 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-100 disabled:text-slate-400 text-white text-sm font-medium py-2 rounded-lg transition-colors"
+                className="mt-2 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-50 disabled:text-gray-700 text-white text-sm font-medium py-2 rounded-lg transition-colors"
               >
                 {isSubmitting ? 'Enviando...' : 'Enviar'}
               </button>

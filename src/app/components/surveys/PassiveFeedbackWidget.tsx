@@ -90,7 +90,7 @@ export default function PassiveFeedbackWidget() {
       {!isOpen && (
         <button
           onClick={handleOpen}
-          className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 bg-white border border-slate-200 text-slate-600 text-xs font-medium px-3 py-2 rounded-full shadow-md hover:shadow-lg hover:border-slate-300 hover:text-slate-800 transition-all flex items-center gap-1.5"
+          className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 bg-white border border-gray-200 text-gray-700 text-xs font-medium px-3 py-2 rounded-full shadow-md hover:shadow-sm hover:border-gray-200 hover:text-gray-700 transition-all flex items-center gap-1.5"
           aria-label="Dar feedback"
         >
           <span className="text-base leading-none">💬</span>
@@ -100,20 +100,20 @@ export default function PassiveFeedbackWidget() {
 
       {/* Panel de feedback */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 bg-white border border-slate-200 rounded-2xl shadow-xl w-72 p-4 animate-fade-in">
+        <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 bg-white border border-gray-200 rounded-xl shadow-sm w-72 p-4">
           {submitted ? (
             <div className="text-center py-4">
               <div className="text-3xl mb-2">🙌</div>
-              <p className="text-sm font-semibold text-slate-800">¡Gracias!</p>
-              <p className="text-xs text-slate-500 mt-1">Tu feedback nos ayuda a mejorar.</p>
+              <p className="text-sm font-semibold text-gray-700">¡Gracias!</p>
+              <p className="text-xs text-gray-700 mt-1">Tu feedback nos ayuda a mejorar.</p>
             </div>
           ) : (
             <>
               <div className="flex items-center justify-between mb-3">
-                <p className="text-sm font-semibold text-slate-800">¿Qué falta o qué mejorarías?</p>
+                <p className="text-sm font-semibold text-gray-700">¿Qué falta o qué mejorarías?</p>
                 <button
                   onClick={handleClose}
-                  className="text-slate-400 hover:text-slate-600 transition-colors ml-2 flex-shrink-0"
+                  className="text-gray-700 hover:text-gray-700 transition-colors ml-2 flex-shrink-0"
                   aria-label="Cerrar"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -137,7 +137,7 @@ export default function PassiveFeedbackWidget() {
                   </button>
                 ))}
                 {rating !== null && (
-                  <span className="text-xs text-slate-400 ml-1">
+                  <span className="text-xs text-gray-700 ml-1">
                     {rating <= 2 ? 'Mejorable' : rating === 3 ? 'Regular' : rating === 4 ? 'Bueno' : 'Excelente'}
                   </span>
                 )}
@@ -148,7 +148,7 @@ export default function PassiveFeedbackWidget() {
                 value={feedbackText}
                 onChange={(e) => setFeedbackText(e.target.value)}
                 placeholder="Cuéntanos qué te faltó o qué mejorarías..."
-                className="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700 placeholder:text-slate-400"
+                className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 placeholder:text-gray-700"
                 rows={3}
                 maxLength={500}
               />
@@ -157,7 +157,7 @@ export default function PassiveFeedbackWidget() {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting || (!feedbackText.trim() && rating === null)}
-                className="mt-2 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white text-sm font-medium py-2 rounded-lg transition-colors"
+                className="mt-2 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-50 disabled:text-gray-700 text-white text-sm font-medium py-2 rounded-lg transition-colors"
               >
                 {isSubmitting ? 'Enviando...' : 'Enviar'}
               </button>

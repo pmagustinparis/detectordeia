@@ -201,7 +201,7 @@ export default function PricingPageClient() {
       return (
         <button
           onClick={handleProCTAClick}
-          className="mt-auto w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all text-base cursor-pointer"
+          className="mt-auto w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:shadow-sm transition-all text-base cursor-pointer"
         >
           ✓ Plan Activo - Gestionar
         </button>
@@ -288,8 +288,8 @@ export default function PricingPageClient() {
           {/* Free Plan */}
           <div className={`bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border transition-all duration-300 ${
             isAuthenticated && userPlan === 'premium'
-              ? 'border-slate-200 opacity-60'
-              : 'border-slate-200'
+              ? 'border-gray-200 opacity-60'
+              : 'border-gray-200'
           }`}>
             <div className="mb-6">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Free</h2>
@@ -304,31 +304,31 @@ export default function PricingPageClient() {
                 <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-slate-700"><strong>3 usos/día</strong> del Humanizador</span>
+                <span className="text-gray-700"><strong>3 usos/día</strong> del Humanizador</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-slate-700">15 análisis/día con el Detector</span>
+                <span className="text-gray-700">15 análisis/día con el Detector</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-slate-700">Hasta 1,200 caracteres</span>
+                <span className="text-gray-700">Hasta 1,200 caracteres</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-slate-700">Solo modo Estándar</span>
+                <span className="text-gray-700">Solo modo Estándar</span>
               </li>
             </ul>
             {isAuthenticated && userPlan === 'premium' ? (
               <button
                 disabled
-                className="w-full text-center bg-slate-100 text-slate-400 font-semibold py-3 px-6 rounded-lg cursor-not-allowed"
+                className="w-full text-center bg-gray-50 text-gray-700 font-semibold py-3 px-6 rounded-lg cursor-not-allowed"
               >
                 Tu plan actual es Premium
               </button>
@@ -348,10 +348,10 @@ export default function PricingPageClient() {
               POPULAR
             </div>
             <div className="mb-4 w-full">
-              <h2 className="text-3xl font-bold text-slate-900 mb-3 text-center">
+              <h2 className="text-3xl font-bold text-gray-700 mb-3 text-center">
                 Express Pass
               </h2>
-              <p className="text-sm text-slate-600 font-medium text-center mb-4">Acceso temporal ilimitado · Pago único sin renovación</p>
+              <p className="text-sm text-gray-700 font-medium text-center mb-4">Acceso temporal ilimitado · Pago único sin renovación</p>
 
               {/* Tabs para duración */}
               <div className="flex gap-2 mb-4">
@@ -380,16 +380,16 @@ export default function PricingPageClient() {
 
             {/* Precio dinámico */}
             <div className="mb-4 text-center w-full">
-              <span className="text-5xl font-bold text-slate-900">${PRICES.express[expressDuration]}</span>
-              <span className="text-xl text-slate-600">/{expressDuration === '24h' ? '24h' : '7 días'}</span>
-              <p className="text-sm text-slate-600 font-semibold mt-2">
+              <span className="text-5xl font-bold text-gray-700">${PRICES.express[expressDuration]}</span>
+              <span className="text-xl text-gray-700">/{expressDuration === '24h' ? '24h' : '7 días'}</span>
+              <p className="text-sm text-gray-700 font-semibold mt-2">
                 Pago único • Sin renovación automática
               </p>
             </div>
 
             {/* Copy dinámico según duración */}
             <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 mb-4 w-full">
-              <p className="text-slate-700 text-sm font-semibold text-center">
+              <p className="text-gray-700 text-sm font-semibold text-center">
                 {expressDuration === '24h'
                   ? 'Ideal para: entrega urgente, emergencia académica'
                   : 'Ideal para: semana de exámenes, proyecto grupal, múltiples entregas'
@@ -457,9 +457,9 @@ export default function PricingPageClient() {
           </div>
 
           {/* Premium Plan */}
-          <div className="bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border border-slate-200 transition-all duration-300">
+          <div className="bg-white rounded-xl shadow-sm p-8 flex flex-col items-start border border-gray-200 transition-all duration-300">
             <div className="mb-4">
-              <h2 className="text-3xl font-bold text-slate-900 mb-2">
+              <h2 className="text-3xl font-bold text-gray-700 mb-2">
                 Premium
               </h2>
               <p className="text-gray-600 text-sm font-medium">Acceso continuo, sin interrupciones</p>
@@ -501,13 +501,13 @@ export default function PricingPageClient() {
               <span className="text-xl text-gray-600">/mes</span>
             </div>
             {billing === 'annual' && (
-              <p className="text-sm text-slate-600 font-semibold mb-6">
+              <p className="text-sm text-gray-700 font-semibold mb-6">
                 ${PRICES.pro.annual}/año • Ahorra 20%
               </p>
             )}
             {billing === 'monthly' && <div className="mb-6" />}
             <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 mb-4 w-full">
-              <p className="text-slate-700 text-sm font-semibold text-center">
+              <p className="text-gray-700 text-sm font-semibold text-center">
                 Ideal para: uso diario profesional, estudiantes avanzados, creadores de contenido
               </p>
             </div>
@@ -674,7 +674,7 @@ export default function PricingPageClient() {
                 >
                   <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
                   <svg
-                    className={`w-6 h-6 text-slate-500 flex-shrink-0 transition-transform ${
+                    className={`w-6 h-6 text-gray-700 flex-shrink-0 transition-transform ${
                       faqOpen === index ? 'transform rotate-180' : ''
                     }`}
                     fill="none"

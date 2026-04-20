@@ -90,7 +90,7 @@ export default function ParafraseadoresUniversidadesPage() {
 
           <a
             href="/parafraseador"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
           >
             <span>Parafrasear texto gratis</span>
             <span>→</span>
@@ -99,7 +99,7 @@ export default function ParafraseadoresUniversidadesPage() {
 
         {/* INTRO SECTION */}
         <section className="max-w-5xl mx-auto mb-12 px-2">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 p-8">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-emerald-100 p-8">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-gray-800">
               Reformulá cualquier texto sin perder el significado
             </h2>
@@ -111,7 +111,7 @@ export default function ParafraseadoresUniversidadesPage() {
             <div className="text-center">
               <a
                 href="/parafraseador"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
               >
                 <span>Probar Parafraseador Gratis</span>
                 <span>→</span>
@@ -129,7 +129,7 @@ export default function ParafraseadoresUniversidadesPage() {
 
           <div className="space-y-8">
             {countries.map((country) => (
-              <div key={country} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 p-6">
+              <div key={country} className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-emerald-100 p-6">
                 <h3 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
                   <span className="text-2xl">🎓</span>
                   {country}
@@ -195,7 +195,7 @@ export default function ParafraseadoresUniversidadesPage() {
 
         {/* CTA SECTION */}
         <section className="max-w-4xl mx-auto mb-16 px-2">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-100 p-8 text-center">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-emerald-100 p-8 text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">
               ¿Tu universidad no está en la lista?
             </h2>
@@ -205,7 +205,7 @@ export default function ParafraseadoresUniversidadesPage() {
             </p>
             <a
               href="/parafraseador"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
             >
               <span>Usar Parafraseador</span>
               <span>→</span>

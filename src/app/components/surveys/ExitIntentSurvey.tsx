@@ -168,12 +168,12 @@ export default function ExitIntentSurvey({ userPlan, hasCompletedAction, toolTyp
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/30 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-5 relative">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/30 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm p-5 relative">
         {/* Cerrar */}
         <button
           onClick={() => setIsVisible(false)}
-          className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 transition-colors"
+          className="absolute top-3 right-3 text-gray-700 hover:text-gray-700 transition-colors"
           aria-label="Cerrar"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,13 +184,13 @@ export default function ExitIntentSurvey({ userPlan, hasCompletedAction, toolTyp
         {submitted ? (
           <div className="text-center py-6">
             <div className="text-4xl mb-3">🙌</div>
-            <p className="font-semibold text-slate-800">¡Gracias por el feedback!</p>
-            <p className="text-sm text-slate-500 mt-1">Nos ayuda a mejorar cada día.</p>
+            <p className="font-semibold text-gray-700">¡Gracias por el feedback!</p>
+            <p className="text-sm text-gray-700 mt-1">Nos ayuda a mejorar cada día.</p>
           </div>
         ) : (
           <>
             <p className="text-xs font-medium text-blue-600 uppercase tracking-wider mb-1">Una pregunta rápida</p>
-            <p className="text-base font-semibold text-slate-800 mb-4">{question.text}</p>
+            <p className="text-base font-semibold text-gray-700 mb-4">{question.text}</p>
 
             {/* Tipo: opciones */}
             {question.type === 'options' && (
@@ -202,7 +202,7 @@ export default function ExitIntentSurvey({ userPlan, hasCompletedAction, toolTyp
                     className={`text-left text-sm px-3 py-2.5 rounded-lg border transition-all ${
                       selectedOption === opt
                         ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                        : 'border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                        : 'border-gray-200 text-gray-700 hover:border-gray-200 hover:bg-gray-50'
                     }`}
                   >
                     {opt}
@@ -217,7 +217,7 @@ export default function ExitIntentSurvey({ userPlan, hasCompletedAction, toolTyp
                 value={textValue}
                 onChange={(e) => setTextValue(e.target.value)}
                 placeholder={question.placeholder}
-                className="w-full text-sm border border-slate-200 rounded-lg px-3 py-2.5 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700 placeholder:text-slate-400"
+                className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 placeholder:text-gray-700"
                 rows={4}
                 maxLength={600}
               />
@@ -240,7 +240,7 @@ export default function ExitIntentSurvey({ userPlan, hasCompletedAction, toolTyp
                   ))}
                 </div>
                 {rating !== null && (
-                  <p className="text-xs text-center text-slate-500">
+                  <p className="text-xs text-center text-gray-700">
                     {rating === 1 ? 'Muy mala' : rating === 2 ? 'Mala' : rating === 3 ? 'Regular' : rating === 4 ? 'Buena' : 'Excelente'}
                   </p>
                 )}
@@ -255,13 +255,13 @@ export default function ExitIntentSurvey({ userPlan, hasCompletedAction, toolTyp
                 (question.type === 'text' && !textValue.trim()) ||
                 (question.type === 'rating' && rating === null)
               }
-              className="mt-4 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-100 disabled:text-slate-400 text-white text-sm font-medium py-2.5 rounded-lg transition-colors"
+              className="mt-4 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-50 disabled:text-gray-700 text-white text-sm font-medium py-2.5 rounded-lg transition-colors"
             >
               {isSubmitting ? 'Enviando...' : 'Enviar respuesta'}
             </button>
             <button
               onClick={() => setIsVisible(false)}
-              className="mt-2 w-full text-xs text-slate-400 hover:text-slate-600 py-1 transition-colors"
+              className="mt-2 w-full text-xs text-gray-700 hover:text-gray-700 py-1 transition-colors"
             >
               Ahora no
             </button>

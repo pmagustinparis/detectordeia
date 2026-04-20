@@ -529,7 +529,7 @@ export default function HumanizadorMain({
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-blue-900">
         {h1}
       </h1>
-      <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
+      <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl" style={{animationDelay: '0.2s'}}>
         {subtitle}
       </p>
       <ExpressPromoBanner />
@@ -541,7 +541,7 @@ export default function HumanizadorMain({
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           {!userStatus.isAuthenticated ? (
-            <span className="inline-flex items-center gap-1 bg-slate-100 text-slate-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+            <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -555,7 +555,7 @@ export default function HumanizadorMain({
               Cuenta activa
             </span>
           )}
-          <span className="inline-flex items-center gap-1 bg-slate-100 text-slate-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+          <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
             </svg>
@@ -683,7 +683,7 @@ export default function HumanizadorMain({
                       isLocked
                         ? 'border-amber-200 bg-amber-50/50 cursor-pointer hover:border-amber-400 hover:bg-amber-50'
                         : isSelected
-                        ? 'border-slate-800 bg-slate-50 cursor-pointer'
+                        ? 'border-gray-200 bg-gray-50 cursor-pointer'
                         : 'border-gray-300 bg-white hover:border-gray-400 cursor-pointer'
                     }`}
                     onClick={isLocked ? () => { setLockedModeName(mode.name); setIsPremiumModeModalOpen(true); } : undefined}
@@ -706,7 +706,7 @@ export default function HumanizadorMain({
                           className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                             mode.isPremium
                               ? 'bg-amber-50 text-amber-700'
-                              : 'bg-slate-100 text-slate-600'
+                              : 'bg-gray-50 text-gray-700'
                           }`}
                         >
                           {mode.isPremium ? 'PREMIUM' : 'FREE'}
@@ -718,9 +718,9 @@ export default function HumanizadorMain({
 
                   {/* Tooltip para modos bloqueados */}
                   {isLocked && (
-                    <div className="absolute left-0 right-0 top-full mt-2 bg-slate-900 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border border-slate-700">
+                    <div className="absolute left-0 right-0 top-full mt-2 bg-gray-50 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border border-gray-200">
                       <p className="font-bold text-sm mb-2">🔒 Modo {mode.name}</p>
-                      <p className="text-slate-300 mb-3 leading-relaxed">
+                      <p className="text-gray-700 mb-3 leading-relaxed">
                         Disponible con Express Pass o Premium. Mejor calidad para textos académicos y formales.
                       </p>
                       <div className="space-y-1.5">
@@ -737,7 +737,7 @@ export default function HumanizadorMain({
                           <span className="font-bold text-violet-200">$12.99/mes</span>
                         </div>
                       </div>
-                      <a href="/pricing" className="block text-center text-slate-400 hover:text-white mt-2 underline text-xs">
+                      <a href="/pricing" className="block text-center text-gray-700 hover:text-white mt-2 underline text-xs">
                         Ver planes →
                       </a>
                     </div>
@@ -759,7 +759,7 @@ export default function HumanizadorMain({
         <button
           onClick={handleHumanize}
           disabled={isHumanizing || !isButtonEnabled()}
-          className={`mt-2 w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isHumanizing ? 'animate-pulse-glow' : ''}`}
+          className={`mt-2 w-full bg-gray-50 hover:bg-gray-50 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isHumanizing ? 'animate-pulse-glow' : ''}`}
           aria-label="Humanizar texto"
         >
           {isHumanizing ? 'Humanizando...' : 'Humanizar Texto'}
@@ -777,7 +777,7 @@ export default function HumanizadorMain({
 
           {/* Header con icono */}
           <div className="flex items-center gap-2 mb-3">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 shadow-md">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-50 shadow-md">
               <span className="text-white text-lg"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
             </div>
             <div className="flex flex-col">
@@ -790,7 +790,7 @@ export default function HumanizadorMain({
             <div className="relative" style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
               <div className={isLimitExceeded ? "filter blur-sm" : ""} style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
                 {/* Área de resultado mejorada */}
-                <div className="w-full border border-gray-200 rounded-lg bg-gray-50 p-5 text-base text-gray-800 mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm animate-fade-in" style={{minHeight: '280px', maxHeight: '320px'}}>
+                <div className="w-full border border-gray-200 rounded-lg bg-gray-50 p-5 text-base text-gray-800 mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm" style={{minHeight: '280px', maxHeight: '320px'}}>
                   {result}
                 </div>
 
@@ -799,14 +799,14 @@ export default function HumanizadorMain({
                   <button
                     id="copy-button"
                     onClick={handleCopy}
-                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-sm transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <span>📋</span>
                     Copiar todo
                   </button>
                   <button
                     onClick={handleDownload}
-                    className="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-sm transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <span>⬇️</span>
                     Descargar .txt
@@ -815,7 +815,7 @@ export default function HumanizadorMain({
 
                 {/* VALIDACIÓN AUTOMÁTICA - Resultados con datos reales del detector (Fase 3) */}
                 {isValidating ? (
-                  <div className="mb-4 p-5 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-sm">
+                  <div className="mb-4 p-5 bg-gray-50 border-2 border-green-200 rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 justify-center">
                       <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600"></div>
                       <p className="text-base font-semibold text-green-900">Validando con el detector...</p>
@@ -828,7 +828,7 @@ export default function HumanizadorMain({
                     </p>
                   </div>
                 ) : originalScore !== null && humanizedScore !== null ? (
-                  <div className="mb-5 p-5 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-md animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  <div className="mb-5 p-5 bg-gray-50 border-2 border-green-200 rounded-xl shadow-md" style={{animationDelay: '0.2s'}}>
                     <div className="flex items-center gap-2 mb-4">
                       <Icon icon={ProductIcons.Detector} size="lg" className="text-green-700" />
                       <h3 className="text-base font-bold text-green-900">Validación con nuestro detector</h3>
@@ -942,7 +942,7 @@ export default function HumanizadorMain({
 
                 {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
                 {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
-                  <div className="p-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-gray-300 rounded-xl">
+                  <div className="p-3 bg-gray-50 border border-gray-300 rounded-xl">
                     <div className="flex items-start gap-2">
                       <span className="text-lg"><Icon icon={ProductIcons.Info} size="xs" className="inline" /></span>
                       <div className="flex-1">
@@ -964,7 +964,7 @@ export default function HumanizadorMain({
                 )}
 
                 {!userStatus.isAuthenticated && usageCount >= 5 && (
-                  <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl">
+                  <div className="p-4 bg-gray-50 border-2 border-green-200 rounded-xl">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl"><Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /></span>
                       <div className="flex-1">
@@ -1025,7 +1025,7 @@ export default function HumanizadorMain({
             <>
               {/* Estado vacío mejorado */}
               <div className="flex flex-col items-center justify-center text-center px-6 py-8" style={{flexGrow: 1}}>
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-6 shadow-lg animate-pulse">
+                <div className="w-20 h-20 rounded-xl bg-gray-50 flex items-center justify-center mb-6 shadow-sm animate-pulse">
                   <span className="text-white text-4xl"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-2">
@@ -1044,7 +1044,7 @@ export default function HumanizadorMain({
 
               {/* Hint dinámico según plan */}
               {userStatus.express.is_active && (
-                <div className="text-center text-sm bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 border border-orange-200">
+                <div className="text-center text-sm bg-gray-50 rounded-xl p-4 border border-orange-200">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <span>⚡</span>
                     <span className="font-bold text-orange-700">
@@ -1057,7 +1057,7 @@ export default function HumanizadorMain({
                 </div>
               )}
               {!userStatus.express.is_active && userStatus.plan_type !== 'premium' && (
-                <div className="text-center text-sm bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-4 border border-gray-200">
+                <div className="text-center text-sm bg-gray-50 rounded-xl p-4 border border-gray-200">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <svg className="w-5 h-5 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />

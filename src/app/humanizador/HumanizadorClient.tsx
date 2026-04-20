@@ -84,7 +84,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
         <div className="grid md:grid-cols-2 gap-8">
           {/* Beneficio 1 */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
+            <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-4 shadow-md">
               <Icon icon={ProductIcons.Confidence} size="2xl" className="text-blue-900" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Especializado en español</h3>
@@ -95,7 +95,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
 
           {/* Beneficio 2 */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
+            <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-4 shadow-md">
               <Icon icon={ProductIcons.Locked} size="2xl" className="text-blue-900" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">100% Privado</h3>
@@ -106,7 +106,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
 
           {/* Beneficio 3 */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
+            <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-4 shadow-md">
               <Icon icon={ProductIcons.Fast} size="2xl" className="text-blue-900" />
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Resultados instantáneos</h3>
@@ -236,13 +236,13 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href="/convertidor-ia-a-humano"
-              className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-200"
+              className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-200"
             >
               Convertidor IA a Humano
             </a>
             <a
               href="/transformador-texto-ia"
-              className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-200"
+              className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-200"
             >
               Transformador de Texto IA
             </a>
@@ -268,7 +268,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
                 </p>
                 <a
                   href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
                 >
                   <span>Probar el Detector de IA</span>
                   <span>→</span>
@@ -292,7 +292,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
                 </p>
                 <a
                   href="/parafraseador"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
                 >
                   <span>Probar el Parafraseador</span>
                   <span>→</span>
@@ -318,7 +318,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
+                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300 text-lg"
               >
                 Probar el humanizador gratis
               </button>

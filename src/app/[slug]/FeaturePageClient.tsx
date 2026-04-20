@@ -43,7 +43,7 @@ export default function FeaturePageClient({ feature }: Props) {
         </p>
         <Link
           href={feature.cta.url}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
         >
           <span>{feature.cta.text}</span>
           <span>→</span>
@@ -64,9 +64,9 @@ export default function FeaturePageClient({ feature }: Props) {
           {feature.benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg border border-emerald-50 p-6 group hover:border-emerald-200 transition-all"
+              className="bg-white rounded-xl shadow-sm border border-emerald-50 p-6 group hover:border-emerald-200 transition-all"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-4 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-4 shadow-md group-hover:shadow-sm group-hover:scale-110 transition-all">
                 <span className="text-3xl">{benefit.icon}</span>
               </div>
               <h3 className="font-bold text-lg mb-2 text-gray-800">{benefit.title}</h3>
@@ -86,7 +86,7 @@ export default function FeaturePageClient({ feature }: Props) {
           Paso a paso simple y rápido
         </p>
 
-        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg border border-emerald-200 p-8">
+        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-sm border border-emerald-200 p-8">
           <ol className="space-y-6">
             {feature.howToUse.map((step, index) => (
               <li key={index} className="flex items-start gap-4">
@@ -111,7 +111,7 @@ export default function FeaturePageClient({ feature }: Props) {
           </p>
           <Link
             href={feature.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-600 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-600 font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
           >
             <span>{feature.cta.text}</span>
             <span>→</span>
@@ -133,7 +133,7 @@ export default function FeaturePageClient({ feature }: Props) {
           {feature.faqs.map((faq, index) => (
             <details
               key={index}
-              className="bg-white rounded-xl shadow-lg border border-emerald-50 p-6 group open:ring-2 open:ring-emerald-300"
+              className="bg-white rounded-xl shadow-sm border border-emerald-50 p-6 group open:ring-2 open:ring-emerald-300"
             >
               <summary className="font-bold text-lg text-gray-800 cursor-pointer list-none flex items-center justify-between">
                 <span>{faq.question}</span>
@@ -165,7 +165,7 @@ export default function FeaturePageClient({ feature }: Props) {
           </p>
           <Link
             href={feature.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
           >
             <span>{feature.cta.text}</span>
             <span>→</span>
