@@ -345,7 +345,7 @@ export default function DetectorMain({
   if (isLoadingUserStatus) {
     return (
       <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900" style={{fontFamily: "'Georgia', serif"}}>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900">
           {h1}
         </h1>
         <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto">{subtitle}</p>
@@ -366,7 +366,7 @@ export default function DetectorMain({
   return (
     <>
     <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight animate-fade-in text-blue-900" style={{fontFamily: "'Georgia', serif"}}>
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight animate-fade-in text-blue-900">
         {h1}
       </h1>
       <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>{subtitle}</p>

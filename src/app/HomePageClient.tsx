@@ -23,7 +23,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
               <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Confidence} size="xl" className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Precisión en español</h3>
+              <h3 className="text-xl font-bold text-blue-900">Precisión en español</h3>
             </div>
             <p className="text-gray-700 text-base leading-relaxed">
               Optimizado para textos de España y LATAM. Resultados confiables y explicados en tu idioma.
@@ -36,7 +36,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
               <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Locked} size="xl" className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Privacidad total</h3>
+              <h3 className="text-xl font-bold text-blue-900">Privacidad total</h3>
             </div>
             <p className="text-gray-700 text-base leading-relaxed">
               Tus textos no se guardan ni comparten. 100% privado, seguro y sin datos guardados en servidores.
@@ -49,7 +49,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
               <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Fast} size="xl" className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-blue-900" style={{fontFamily: "'Georgia', serif"}}>Sin registro</h3>
+              <h3 className="text-xl font-bold text-blue-900">Sin registro</h3>
             </div>
             <p className="text-gray-700 text-base leading-relaxed">
               Analizá textos gratis, sin crear cuenta. 10 usos diarios sin necesidad de identificación.
@@ -64,7 +64,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
               <Icon icon={ProductIcons.Analytics} size="2xl" className="text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-blue-900 mb-2" style={{fontFamily: "'Georgia', serif"}}>Reportes avanzados</h3>
+              <h3 className="text-2xl font-bold text-blue-900 mb-2">Reportes avanzados</h3>
               <p className="text-gray-700 text-base leading-relaxed">
                 Planes premium con análisis de archivos, historial completo y reportes detallados para docentes y profesionales.
               </p>
@@ -94,7 +94,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
       {/* SECCIÓN DE BENEFICIOS - SIMPLIFICADA Y ACADÉMICA */}
       <section className="max-w-5xl mx-auto mb-32 px-2">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
             Confianza académica
           </h2>
           <p className="text-gray-700 text-lg max-w-3xl mx-auto">
@@ -105,7 +105,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Docentes */}
           <div className="bg-white border-l-4 border-blue-900 p-8 hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>Docentes</h3>
+            <h3 className="text-xl font-bold text-blue-900 mb-4">Docentes</h3>
             <p className="text-gray-700 text-base leading-relaxed">
               Verifica la autenticidad de trabajos académicos. Detecta contenido generado por IA en ensayos y trabajos finales de manera confiable.
             </p>
@@ -113,7 +113,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
 
           {/* Estudiantes */}
           <div className="bg-white border-l-4 border-red-600 p-8 hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>Estudiantes</h3>
+            <h3 className="text-xl font-bold text-blue-900 mb-4">Estudiantes</h3>
             <p className="text-gray-700 text-base leading-relaxed">
               Valida que tu trabajo sea reconocido como auténtico. Asegúrate antes de entregar ensayos, proyectos e investigaciones.
             </p>
@@ -121,7 +121,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
 
           {/* Instituciones */}
           <div className="bg-white border-l-4 border-blue-900 p-8 hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-bold text-blue-900 mb-4" style={{fontFamily: "'Georgia', serif"}}>Instituciones</h3>
+            <h3 className="text-xl font-bold text-blue-900 mb-4">Instituciones</h3>
             <p className="text-gray-700 text-base leading-relaxed">
               Implementa verificación de autenticidad en toda tu institución. Escalable y confiable para universidades y centros educativos.
             </p>
@@ -131,7 +131,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
 
       {/* OTRAS HERRAMIENTAS - GRID LIMPIO */}
       <section className="max-w-6xl mx-auto px-2">
-        <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6" style={{fontFamily: "'Georgia', serif"}}>
+        <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
           Amplía tu toolkit
         </h2>
         <p className="text-gray-700 text-lg max-w-2xl mb-16">
@@ -147,7 +147,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
               </div>
               <div className="flex-1">
                 <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">Herramienta popular</span>
-                <h3 className="text-3xl font-bold text-blue-900 mt-2" style={{fontFamily: "'Georgia', serif"}}>
+                <h3 className="text-3xl font-bold text-blue-900 mt-2">
                   Humanizador de IA
                 </h3>
               </div>
@@ -172,7 +172,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
               </div>
               <div className="flex-1">
                 <span className="text-xs font-bold text-blue-900 uppercase tracking-wider">Herramienta destacada</span>
-                <h3 className="text-3xl font-bold text-blue-900 mt-2" style={{fontFamily: "'Georgia', serif"}}>
+                <h3 className="text-3xl font-bold text-blue-900 mt-2">
                   Parafraseador
                 </h3>
               </div>

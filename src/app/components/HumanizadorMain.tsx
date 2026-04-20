@@ -526,7 +526,7 @@ export default function HumanizadorMain({
 
   return (
     <>
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900" style={{fontFamily: "'Georgia', serif"}}>
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900">
         {h1}
       </h1>
       <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
