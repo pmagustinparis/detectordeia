@@ -44,56 +44,44 @@ export default function Header() {
   }, [isAuthenticated]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm animate-slide-in-top">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-900 shadow-sm group-hover:shadow-md transition-all duration-300">
-              <span className="text-white font-black italic text-xl leading-none">D</span>
+            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-900 transition-colors duration-200 group-hover:bg-blue-800">
+              <span className="text-white font-black italic text-lg leading-none">D</span>
             </div>
-            <span className="hidden sm:block text-lg font-black tracking-tight text-blue-900">
-              Detector<span className="text-blue-600">deIA</span><span className="text-blue-400 font-semibold">.ai</span>
+            <span className="hidden sm:block text-base font-bold tracking-tight text-blue-900">
+              DetectordeIA<span className="text-blue-500">.ai</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             <Link
-              href="/#detector"
-              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+              href="/"
+              className="text-sm text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
             >
               Detector
             </Link>
             <Link
               href="/humanizador"
-              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+              className="text-sm text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
             >
               Humanizador
             </Link>
             <Link
               href="/parafraseador"
-              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+              className="text-sm text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
             >
               Parafraseador
             </Link>
             <Link
               href="/pricing"
-              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
+              className="text-sm text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
             >
-              Precios
-            </Link>
-            <Link
-              href="/#features"
-              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
-            >
-              Funciones
-            </Link>
-            <Link
-              href="/#faq"
-              className="text-gray-700 hover:text-blue-900 font-medium transition-colors duration-200"
-            >
-              FAQ
+              Planes
             </Link>
           </nav>
 
@@ -138,51 +126,37 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
-            <nav className="flex flex-col gap-3">
+          <div className="md:hidden border-t border-gray-100 py-3">
+            <nav className="flex flex-col">
               <Link
-                href="/#detector"
-                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                href="/"
+                className="px-2 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Detector
               </Link>
               <Link
                 href="/humanizador"
-                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                className="px-2 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Humanizador
               </Link>
               <Link
                 href="/parafraseador"
-                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                className="px-2 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Parafraseador
               </Link>
               <Link
                 href="/pricing"
-                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                className="px-2 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Precios
+                Planes
               </Link>
-              <Link
-                href="/#features"
-                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Funciones
-              </Link>
-              <Link
-                href="/#faq"
-                className="px-4 py-2 text-gray-700 hover:text-blue-900 hover:bg-blue-50 rounded-lg font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                FAQ
-              </Link>
-              <div className="px-4 mt-4 border-t border-gray-200 pt-4">
+              <div className="px-2 mt-3 border-t border-gray-100 pt-3">
                 {expressExpiresAt && (
                   <div className="mb-3">
                     <ExpressTimer expiresAt={expressExpiresAt} compact={false} />
