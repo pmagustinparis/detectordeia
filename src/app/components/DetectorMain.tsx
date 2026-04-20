@@ -345,7 +345,7 @@ export default function DetectorMain({
   if (isLoadingUserStatus) {
     return (
       <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-blue-900">
           {h1}
         </h1>
         <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto">{subtitle}</p>
@@ -373,7 +373,7 @@ export default function DetectorMain({
       <ExpressPromoBanner />
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
         {/* Input + Button (left) */}
-        <div className="flex-1 bg-white rounded-2xl shadow-lg border border-blue-900/20 p-6 flex flex-col justify-between min-w-[320px]">
+        <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col justify-between min-w-[320px]">
           {/* Trust indicators */}
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             {!userStatus.isAuthenticated ? (
@@ -487,7 +487,7 @@ export default function DetectorMain({
         </div>
         {/* Result block (right) */}
         <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-blue-900/20 p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
             <div className="flex items-center gap-2 mb-3">
               <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-900 shadow-md">
                 <span className="text-white text-lg">🛡️</span>
@@ -501,7 +501,7 @@ export default function DetectorMain({
               <div className="relative" style={{maxHeight: '500px', overflow: 'hidden'}}>
               <div className={isLimitExceeded ? "filter blur-sm overflow-y-auto" : "overflow-y-auto"} style={{maxHeight: '500px'}}>
                 {/* HERO CARD - Score Principal con diseño mejorado */}
-                <div className="mb-6 p-6 bg-gradient-to-br from-white via-blue-50/30 to-blue-50/50 rounded-2xl border-2 border-blue-900/15 shadow-xl animate-fade-in">
+                <div className="mb-6 p-6 bg-gradient-to-br rounded-lg bg-gray-50 border border-gray-200 animate-fade-in">
                   {/* Score gigante centrado */}
                   <div className="text-center mb-4">
                     <div className={`text-7xl md:text-8xl font-black leading-none mb-3 ${getResultColor(result.probability)} animate-scale-in`}>

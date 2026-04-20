@@ -507,14 +507,14 @@ export default function HumanizadorMain({
     return (
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
         {/* Loading skeleton */}
-        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+        <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 min-w-[320px]" style={{minHeight: '560px'}}>
           <div className="animate-pulse space-y-4">
             <div className="h-4 bg-gray-200 rounded w-3/4"></div>
             <div className="h-32 bg-gray-200 rounded"></div>
             <div className="h-10 bg-gray-200 rounded"></div>
           </div>
         </div>
-        <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+        <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 min-w-[320px]" style={{minHeight: '560px'}}>
           <div className="animate-pulse space-y-4">
             <div className="h-4 bg-gray-200 rounded w-3/4"></div>
             <div className="h-32 bg-gray-200 rounded"></div>
@@ -526,7 +526,7 @@ export default function HumanizadorMain({
 
   return (
     <>
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-blue-900">
         {h1}
       </h1>
       <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
@@ -536,7 +536,7 @@ export default function HumanizadorMain({
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
       {/* COLUMNA IZQUIERDA - INPUT */}
-      <div className="flex-1 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between min-w-[320px] card-elevated" style={{minHeight: '560px'}}>
+      <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col justify-between min-w-[320px]" style={{minHeight: '560px'}}>
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
@@ -587,7 +587,7 @@ export default function HumanizadorMain({
         <div className="flex flex-col" style={{flexGrow: 1}}>
           <textarea
             id="humanizador-textarea"
-            className="w-full border-2 border-gray-300 rounded-2xl shadow-inner focus:ring-4 focus:ring-blue-500/50 focus:border-blue-500 p-4 text-base text-gray-800 placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-gray-400 leading-relaxed"
+            className="w-full border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 p-4 text-base text-gray-800 placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-gray-400 leading-relaxed"
             style={{minHeight: '220px', flexGrow: 1}}
             placeholder="Pega aquí tu texto generado por ChatGPT, Claude, Gemini u otra IA..."
             value={text}
@@ -773,7 +773,7 @@ export default function HumanizadorMain({
 
       {/* COLUMNA DERECHA - OUTPUT */}
       <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200 p-6 flex flex-col justify-between relative card-elevated" style={{minHeight: '560px'}}>
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col justify-between relative" style={{minHeight: '560px'}}>
 
           {/* Header con icono */}
           <div className="flex items-center gap-2 mb-3">
@@ -790,7 +790,7 @@ export default function HumanizadorMain({
             <div className="relative" style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
               <div className={isLimitExceeded ? "filter blur-sm" : ""} style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
                 {/* Área de resultado mejorada */}
-                <div className="w-full border-2 border-emerald-300 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 p-5 text-base text-gray-800 mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm animate-fade-in" style={{minHeight: '280px', maxHeight: '320px'}}>
+                <div className="w-full border border-gray-200 rounded-lg bg-gray-50 p-5 text-base text-gray-800 mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm animate-fade-in" style={{minHeight: '280px', maxHeight: '320px'}}>
                   {result}
                 </div>
 
