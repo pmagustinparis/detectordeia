@@ -15,29 +15,29 @@ export default function IdentificadorPageClient() {
 
       {/* VALUE PROPS - Optimizado para keyword "identificar" */}
       <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8 animate-slide-in-bottom">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+        <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
             <Icon icon={ProductIcons.Confidence} size="2xl" className="text-slate-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Identificación precisa</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Identifica contenido de IA con alta precisión. Optimizado para español de España y LATAM.</p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+        <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
             <Icon icon={ProductIcons.Locked} size="2xl" className="text-slate-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Privado y seguro</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Tus textos no se almacenan. Identificación 100% privada y confidencial.</p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+        <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
             <Icon icon={ProductIcons.Fast} size="2xl" className="text-slate-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Instantáneo y gratis</h3>
           <p className="text-gray-600 text-sm leading-relaxed">Identifica textos al instante. Sin crear cuenta. 10 usos diarios gratis.</p>
         </div>
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 flex flex-col items-center text-center card-elevated group">
-          <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
+        <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg transition-all">
             <Icon icon={ProductIcons.Analytics} size="2xl" className="text-slate-600" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Múltiples IA identificadas</h3>
@@ -47,7 +47,7 @@ export default function IdentificadorPageClient() {
 
       {/* SEO CONTENT - Optimizado para "identificador de ia" */}
       <section className="max-w-5xl mx-auto mb-16 px-4">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué es un Identificador de IA?</h2>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Un identificador de IA es una herramienta que analiza textos para determinar si fueron escritos por inteligencia artificial

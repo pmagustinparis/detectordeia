@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 
 export default function SignupPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         {/* Logo y Header */}
         <div className="text-center mb-8">
           <a href="/" className="inline-block">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 rounded-xl bg-blue-900 flex items-center justify-center ">
                 <span className="text-2xl">🎯</span>
               </div>
               <h1 className="text-3xl font-bold text-gray-900">DetectorDeIA</h1>
@@ -29,13 +29,13 @@ export default function SignupPage() {
         </div>
 
         {/* Card con el formulario */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-100">
           {/* Botón de Google OAuth */}
           <SignupForm />
         </div>
 
         {/* Beneficios */}
-        <div className="mt-6 bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-violet-100">
+        <div className="mt-6 bg-white rounded-xl p-6 border border-blue-200">
           <p className="text-sm font-semibold text-gray-700 mb-3">
             ✨ Con tu cuenta gratis obtenés:
           </p>

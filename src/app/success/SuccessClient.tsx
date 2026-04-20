@@ -35,8 +35,8 @@ export default function SuccessClient({
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+      <div className="max-w-md w-full bg-white rounded-xl shadow-xl p-8 text-center">
         {/* Icon de éxito */}
         <div className="flex justify-center mb-6">
           <div className="bg-green-100 rounded-full p-4">
@@ -117,7 +117,7 @@ export default function SuccessClient({
           </p>
           <button
             onClick={() => router.push('/dashboard')}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200"
+            className="w-full bg-blue-900 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-800 transition-all duration-200"
           >
             Ir al Dashboard ahora
           </button>
