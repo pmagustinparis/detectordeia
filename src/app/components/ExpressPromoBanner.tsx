@@ -3,27 +3,18 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/lib/hooks/useAuth';
 
-/**
- * ExpressPromoBanner Component
- *
- * Banner promocional para el plan Express ($3.99/24h o $8.99/7d)
- * Solo se muestra para usuarios FREE (no Express ni Premium)
- * Dismissible con localStorage
- */
 export default function ExpressPromoBanner() {
   const { isAuthenticated } = useAuth();
   const [isDismissed, setIsDismissed] = useState(true);
   const [isExpressOrPremium, setIsExpressOrPremium] = useState(false);
 
   useEffect(() => {
-    // Check if banner was dismissed
     const dismissed = localStorage.getItem('express_promo_banner_dismissed');
     if (dismissed === 'true') {
       setIsDismissed(true);
       return;
     }
 
-    // Check if user has Express or Premium
     async function checkUserPlan() {
       if (!isAuthenticated) {
         setIsDismissed(false);
@@ -34,15 +25,11 @@ export default function ExpressPromoBanner() {
         const response = await fetch('/api/user/plan');
         if (response.ok) {
           const data = await response.json();
-
-          // Check if has Premium
           if (data.plan_type === 'premium') {
             setIsExpressOrPremium(true);
             setIsDismissed(true);
             return;
           }
-
-          // Check if has active Express
           if (data.express_expires_at) {
             const expiresAt = new Date(data.express_expires_at);
             if (expiresAt > new Date()) {
@@ -51,12 +38,9 @@ export default function ExpressPromoBanner() {
               return;
             }
           }
-
-          // Free user - show banner
           setIsDismissed(false);
         }
-      } catch (error) {
-        console.error('Error checking user plan:', error);
+      } catch {
         setIsDismissed(false);
       }
     }
@@ -69,52 +53,38 @@ export default function ExpressPromoBanner() {
     localStorage.setItem('express_promo_banner_dismissed', 'true');
   };
 
-  if (isDismissed || isExpressOrPremium) {
-    return null;
-  }
+  if (isDismissed || isExpressOrPremium) return null;
 
   return (
-    <div className="max-w-5xl mx-auto mb-6 px-2 animate-slide-in-top">
-      <div className="bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 rounded-2xl shadow-lg p-4 relative">
-        <button
-          onClick={handleDismiss}
-          className="absolute top-2 right-2 text-white/80 hover:text-white p-1 transition-colors"
-          aria-label="Cerrar banner"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        <div className="flex items-center gap-4 pr-8">
-          <div className="hidden sm:flex items-center justify-center w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex-shrink-0">
-            <span className="text-3xl">⚡</span>
+    <div className="max-w-5xl mx-auto mb-5 px-2">
+      <div className="flex items-center justify-between gap-4 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="flex-shrink-0 w-7 h-7 rounded-md bg-blue-900 flex items-center justify-center">
+            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+            </svg>
           </div>
-
-          <div className="flex-1">
-            <p className="text-white font-bold text-sm sm:text-base mb-1">
-              Express Pass: $3.99 por 24h • $8.99 por semana (ahorra 68%)
-            </p>
-            <p className="text-white/90 text-xs sm:text-sm">
-              Acceso completo e ilimitado • 5 modos premium • Perfecto para entregas urgentes
-            </p>
-          </div>
-
+          <p className="text-sm text-blue-900 font-medium truncate">
+            <span className="font-semibold">Express Pass:</span> acceso completo desde $3.99 · sin suscripción
+          </p>
+        </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
           <a
             href="/pricing"
-            className="hidden md:block bg-white text-orange-600 hover:bg-orange-50 font-bold py-2 px-5 rounded-lg shadow-md hover:shadow-lg transition-all whitespace-nowrap"
+            className="text-sm font-semibold text-blue-900 hover:text-blue-700 underline underline-offset-2 transition-colors whitespace-nowrap"
           >
-            Ver Express
+            Ver planes
           </a>
+          <button
+            onClick={handleDismiss}
+            className="text-blue-400 hover:text-blue-600 p-1 transition-colors"
+            aria-label="Cerrar"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-
-        {/* Mobile CTA */}
-        <a
-          href="/pricing"
-          className="md:hidden mt-3 block w-full bg-white text-orange-600 hover:bg-orange-50 font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all text-center"
-        >
-          Ver Express Pass
-        </a>
       </div>
     </div>
   );

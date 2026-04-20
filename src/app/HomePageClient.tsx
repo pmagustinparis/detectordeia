@@ -18,7 +18,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
       <section id="features" className="max-w-6xl mx-auto mb-32 px-2 mt-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Feature 1 */}
-          <div className="bg-white border-l-4 border-blue-900 p-8 animate-slide-in-left" style={{animationDelay: '0s'}}>
+          <div className="bg-white border-l-4 border-blue-900 p-8">
             <div className="flex items-start gap-4 mb-4">
               <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Confidence} size="xl" className="text-white" />
@@ -31,7 +31,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
           </div>
 
           {/* Feature 2 */}
-          <div className="bg-white border-l-4 border-red-600 p-8 animate-fade-in" style={{animationDelay: '0.1s'}}>
+          <div className="bg-white border-l-4 border-red-600 p-8">
             <div className="flex items-start gap-4 mb-4">
               <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Locked} size="xl" className="text-white" />
@@ -44,7 +44,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
           </div>
 
           {/* Feature 3 */}
-          <div className="bg-white border-l-4 border-blue-900 p-8 animate-slide-in-right" style={{animationDelay: '0.2s'}}>
+          <div className="bg-white border-l-4 border-blue-900 p-8">
             <div className="flex items-start gap-4 mb-4">
               <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Fast} size="xl" className="text-white" />
@@ -140,13 +140,13 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Humanizador */}
-          <div className="bg-white border-2 border-violet-600 rounded-lg p-8 hover:shadow-lg transition-shadow">
+          <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-sm transition-shadow">
             <div className="flex items-start gap-6 mb-6">
-              <div className="w-16 h-16 bg-violet-600 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Humanizer} size="2xl" className="text-white" />
               </div>
               <div className="flex-1">
-                <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">Herramienta popular</span>
+                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Herramienta popular</span>
                 <h3 className="text-3xl font-bold text-blue-900 mt-2">
                   Humanizador de IA
                 </h3>
@@ -157,7 +157,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
             </p>
             <a
               href="/humanizador"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-lg transition-all"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-lg transition-all"
             >
               <span>Probar ahora</span>
               <span>→</span>
@@ -165,7 +165,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
           </div>
 
           {/* Parafraseador */}
-          <div className="bg-white border-2 border-blue-900 rounded-lg p-8 hover:shadow-lg transition-shadow">
+          <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-sm transition-shadow">
             <div className="flex items-start gap-6 mb-6">
               <div className="w-16 h-16 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Icon icon={ProductIcons.Paraphraser} size="2xl" className="text-white" />

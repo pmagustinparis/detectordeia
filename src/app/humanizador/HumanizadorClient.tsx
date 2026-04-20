@@ -27,7 +27,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       {/* Premium Upsell Block - SOLO para usuarios FREE */}
       {userPlan !== 'premium' && (
         <section className="max-w-3xl mx-auto mt-12 mb-16 px-2">
-          <div className="bg-slate-50 rounded-3xl shadow-xl border border-slate-200 p-8 text-center card-elevated">
+          <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <span className="text-3xl">🔓</span>
               <h2 className="text-2xl font-bold text-gray-800">
@@ -35,7 +35,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
               </h2>
             </div>
 
-            <p className="text-violet-700 font-semibold text-lg mb-4">
+            <p className="text-blue-900 font-semibold text-lg mb-4">
               Express Pass o Premium – acceso completo
             </p>
 
@@ -84,7 +84,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Beneficio 1 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
               <Icon icon={ProductIcons.Confidence} size="2xl" className="text-slate-600" />
             </div>
@@ -95,7 +95,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           </div>
 
           {/* Beneficio 2 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
               <Icon icon={ProductIcons.Locked} size="2xl" className="text-slate-600" />
             </div>
@@ -106,7 +106,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           </div>
 
           {/* Beneficio 3 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
               <Icon icon={ProductIcons.Fast} size="2xl" className="text-slate-600" />
             </div>
@@ -117,7 +117,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           </div>
 
           {/* Beneficio 4 */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 card-elevated">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mb-4 shadow-md">
               <span className="text-3xl">✅</span>
             </div>
@@ -141,7 +141,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
               <span className="text-3xl">1️⃣</span>
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Pega tu texto</h3>
@@ -151,7 +151,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
               <span className="text-3xl">2️⃣</span>
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Haz clic en "Humanizar"</h3>
@@ -161,7 +161,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
               <span className="text-3xl">3️⃣</span>
             </div>
             <h3 className="font-bold text-lg mb-2 text-gray-800">Copia el resultado</h3>
@@ -307,7 +307,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       {/* CTA Final Section - SOLO para usuarios FREE */}
       {userPlan !== 'premium' && (
         <section className="max-w-4xl mx-auto mb-16 px-2">
-          <div className="bg-slate-800 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white relative overflow-hidden">
+          <div className="bg-blue-900 rounded-xl p-8 md:p-12 text-center text-white relative overflow-hidden">
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-extrabold mb-4 !text-white">
                 Comienza a humanizar tus textos ahora

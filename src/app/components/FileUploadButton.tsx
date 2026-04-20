@@ -85,7 +85,7 @@ export default function FileUploadButton({
             className={`
               inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all
               ${hasPremiumAccess
-                ? 'bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white shadow-md hover:shadow-lg'
+                ? 'bg-blue-900 hover:bg-blue-800 text-white'
                 : 'bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300'
               }
               ${(disabled || isProcessing) && 'opacity-50 cursor-not-allowed'}
@@ -107,7 +107,7 @@ export default function FileUploadButton({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
                 Subir archivo
-                {!hasPremiumAccess && ' 👑'}
+                {!hasPremiumAccess && ' +'}
               </>
             )}
           </button>
