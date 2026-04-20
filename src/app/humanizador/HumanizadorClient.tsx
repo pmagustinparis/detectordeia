@@ -21,17 +21,6 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
     <div className="min-h-screen bg-white pb-10 px-2">
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
-
-        {/* Hero Title */}
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900" style={{fontFamily: "'Georgia', serif"}}>
-          Humanizador de IA en Español
-        </h1>
-
-        <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
-          Transforma texto generado por IA en contenido natural y humano
-        </p>
-
-        {/* COMPONENTE PRINCIPAL - HERRAMIENTA */}
         <HumanizadorMain initialUserStatus={initialUserStatus} />
       </section>
 

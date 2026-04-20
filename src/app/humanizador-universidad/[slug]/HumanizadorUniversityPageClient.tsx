@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ProductIcons, Icon } from '@/lib/icons';
+import HumanizadorMain from '@/app/components/HumanizadorMain';
 
 interface University {
   slug: string;
@@ -23,29 +24,12 @@ export default function HumanizadorUniversityPageClient({ university }: { univer
   return (
     <div className="min-h-screen bg-white pb-10 px-2">
 
-      {/* HERO */}
-      <section className="w-full flex flex-col items-center justify-center pt-6 pb-8 px-4 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-3 mt-2 leading-tight animate-fade-in">
-          <span className="gradient-text-primary">Humanizador de IA</span>
-          <br />
-          <span className="text-gray-800">para {university.shortName}</span>
-        </h1>
-
-        <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
-          Convierte texto generado por IA en contenido natural y original. Especializado para trabajos académicos de {university.name} en {university.city}.
-        </p>
-
-        <a
-          href="/humanizador"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in text-lg"
-          style={{animationDelay: '0.3s'}}
-        >
-          <span>Humanizar texto gratis</span>
-          <span>→</span>
-        </a>
+      {/* HUMANIZADOR - Copy personalizado por universidad */}
+      <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2">
+        <HumanizadorMain
+          h1={`Humanizador de IA para ${university.shortName}`}
+          subtitle={`Convierte texto generado por IA en contenido natural y original. Especializado para trabajos académicos de ${university.name} en ${university.city}.`}
+        />
       </section>
 
       {/* VALUE PROPS */}

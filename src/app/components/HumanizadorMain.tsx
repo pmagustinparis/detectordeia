@@ -27,7 +27,15 @@ const CHARACTER_LIMITS = {
 };
 const MIN_CHARACTERS = 50;
 
-export default function HumanizadorMain({ initialUserStatus }: { initialUserStatus?: UserStatus } = {}) {
+export default function HumanizadorMain({
+  initialUserStatus,
+  h1 = 'Humanizador de IA en Español',
+  subtitle = 'Transforma texto generado por IA en contenido natural y humano',
+}: {
+  initialUserStatus?: UserStatus;
+  h1?: string;
+  subtitle?: string;
+} = {}) {
   const [text, setText] = useState('');
   const [isHumanizing, setIsHumanizing] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -518,6 +526,12 @@ export default function HumanizadorMain({ initialUserStatus }: { initialUserStat
 
   return (
     <>
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-2 leading-tight text-blue-900" style={{fontFamily: "'Georgia', serif"}}>
+        {h1}
+      </h1>
+      <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
+        {subtitle}
+      </p>
       <ExpressPromoBanner />
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
