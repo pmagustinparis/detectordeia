@@ -100,25 +100,25 @@ export default function UsageLimitOverlay({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 animate-fade-in"
+        className="fixed inset-0 bg-black/60 z-50 "
         onClick={onClose}
       />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 pointer-events-auto animate-scale-in"
+          className="bg-white rounded-xl shadow-lg max-w-md w-full p-8 pointer-events-auto "
           onClick={(e) => e.stopPropagation()}
         >
           {/* Icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center">
-              <span className="text-5xl">⏱️</span>
+            <div className="w-16 h-16 rounded-xl bg-amber-50 flex items-center justify-center">
+              <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
           </div>
 
           {/* Title */}
-          <h2 className="text-2xl font-extrabold text-center text-gray-900 mb-3">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-3">
             Límite Diario Alcanzado
           </h2>
 
@@ -129,9 +129,9 @@ export default function UsageLimitOverlay({
                 Ya usaste tus <strong>{limit} {getToolNamePlural()} gratis</strong> de hoy.
               </p>
 
-              <div className="bg-blue-900/5 border-2 border-blue-900/20 rounded-2xl p-5 mb-6">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
                 <p className="text-sm font-bold text-blue-900 mb-3">
-                  🎁 Registrándote gratis obtenés:
+                  Registrándote gratis obtenés:
                 </p>
                 <ul className="space-y-2 text-sm text-blue-900/80">
                   <li className="flex items-start gap-2">
@@ -178,9 +178,9 @@ export default function UsageLimitOverlay({
               </p>
 
               {/* Express Option - Destacado */}
-              <div className="bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-300 rounded-2xl p-5 mb-4 relative">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">
-                  ⚡ URGENTE
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-4 relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white px-3 py-0.5 rounded-md text-xs font-bold shadow-md">
+                  URGENTE
                 </div>
                 <p className="text-sm font-bold text-orange-900 mb-2 mt-2">
                   Express Pass - 24 horas ilimitadas
@@ -199,15 +199,15 @@ export default function UsageLimitOverlay({
                     <span>Perfecto para entregas urgentes</span>
                   </li>
                 </ul>
-                <p className="text-lg font-extrabold text-orange-900">
+                <p className="text-lg font-bold text-orange-900">
                   $3.99 • Pago único
                 </p>
               </div>
 
               {/* Pro Option */}
-              <div className="bg-blue-900/5 border-2 border-blue-900/20 rounded-2xl p-5 mb-6">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
                 <p className="text-sm font-bold text-blue-900 mb-2">
-                  🚀 Plan Premium - Uso continuo
+                  Plan Premium - Uso continuo
                 </p>
                 <ul className="space-y-1.5 text-sm text-blue-900/80 mb-3">
                   <li className="flex items-start gap-2">
@@ -223,7 +223,7 @@ export default function UsageLimitOverlay({
                     <span>Mejor para uso regular</span>
                   </li>
                 </ul>
-                <p className="text-lg font-extrabold text-blue-900">
+                <p className="text-lg font-bold text-blue-900">
                   $12.99/mes • $124.68/año
                 </p>
               </div>
@@ -233,9 +233,9 @@ export default function UsageLimitOverlay({
                 <button
                   onClick={() => handleExpressCheckout('24h')}
                   disabled={loadingCheckout}
-                  className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300"
+                  className="block w-full text-center bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300"
                 >
-                  {loadingCheckout ? 'Procesando...' : '⚡ Activar Express 24h · $3.99'}
+                  {loadingCheckout ? 'Procesando...' : 'Activar Express 24h · $3.99'}
                 </button>
                 <button
                   onClick={() => handleExpressCheckout('7d')}

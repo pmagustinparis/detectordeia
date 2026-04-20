@@ -2,29 +2,27 @@
 
 export default function HumanizadorPromoBanner() {
   return (
-    <div className="w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 py-3 px-4 mb-6 rounded-2xl shadow-lg animate-fade-in">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl backdrop-blur-sm">
-            <span className="text-2xl">✨</span>
-          </div>
-          <div className="text-white">
-            <p className="font-bold text-base md:text-lg flex items-center gap-2">
-              <span className="bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-md text-xs font-semibold">NUEVO</span>
-              Humanizador de IA en Español
-            </p>
-            <p className="text-sm text-white/90 hidden md:block">
-              Transforma texto de IA en contenido natural y humano • Gratis hasta 600 caracteres
-            </p>
-          </div>
+    <div className="flex items-center justify-between gap-4 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 mb-6">
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center shrink-0">
+          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
         </div>
-        <a
-          href="/humanizador"
-          className="px-6 py-2.5 bg-white text-emerald-600 font-bold rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 whitespace-nowrap"
-        >
-          Probar ahora →
-        </a>
+        <div>
+          <span className="text-xs font-bold text-blue-900 uppercase tracking-wide">Nuevo</span>
+          <p className="text-sm font-semibold text-blue-900">
+            Humanizador de IA en Español
+            <span className="hidden md:inline text-blue-700 font-normal"> · Gratis hasta 600 caracteres</span>
+          </p>
+        </div>
       </div>
+      <a
+        href="/humanizador"
+        className="shrink-0 px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white font-semibold text-sm rounded-lg transition-colors"
+      >
+        Probar →
+      </a>
     </div>
   );
 }

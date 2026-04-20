@@ -52,25 +52,25 @@ export default function FileUploadUpsellModal({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 animate-fade-in"
+        className="fixed inset-0 bg-black/60 z-50 "
         onClick={onClose}
       />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 pointer-events-auto animate-scale-in"
+          className="bg-white rounded-xl shadow-lg max-w-md w-full p-8 pointer-events-auto "
           onClick={(e) => e.stopPropagation()}
         >
           {/* Icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center">
-              <span className="text-5xl">📄</span>
+            <div className="w-16 h-16 rounded-xl bg-blue-900 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
             </div>
           </div>
 
           {/* Title */}
-          <h2 className="text-2xl font-extrabold text-center text-gray-900 mb-3">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-3">
             Sube Archivos Completos
           </h2>
 
@@ -79,18 +79,18 @@ export default function FileUploadUpsellModal({
           </p>
 
           {/* Benefits Box */}
-          <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
-            <p className="text-sm font-bold text-violet-900 mb-3">
-              🚀 Con Plan Premium obtenés:
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 mb-6">
+            <p className="text-sm font-bold text-blue-900 mb-3">
+              Con Plan Premium obtenés:
             </p>
-            <ul className="space-y-2 text-sm text-violet-800">
+            <ul className="space-y-2 text-sm text-blue-900">
               <li className="flex items-start gap-2">
                 <span className="text-green-600 font-bold">✓</span>
                 <span><strong>Subida de archivos</strong> PDF, DOCX, TXT</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-600 font-bold">✓</span>
-                <span><strong>✨ Caracteres ilimitados</strong> por análisis</span>
+                <span><strong>Caracteres ilimitados</strong> por análisis</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-600 font-bold">✓</span>
@@ -105,7 +105,7 @@ export default function FileUploadUpsellModal({
                 <span><strong>Historial completo</strong> de tus análisis</span>
               </li>
             </ul>
-            <p className="text-xs text-violet-700 mt-3 font-semibold">
+            <p className="text-xs text-blue-900 mt-3 font-semibold">
               Express $3.99/24h • Premium $12.99/mes • Ahorra 20% anual
             </p>
           </div>
@@ -114,7 +114,7 @@ export default function FileUploadUpsellModal({
           <div className="space-y-3">
             <a
               href="/pricing"
-              className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Ver Planes
             </a>

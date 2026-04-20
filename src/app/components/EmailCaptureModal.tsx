@@ -68,15 +68,15 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 ">
       {/* Overlay oscuro */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/50"
         onClick={handleClose}
       />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-scale-in">
+      <div className="relative bg-white rounded-xl shadow-lg max-w-md w-full p-8 ">
         {/* Botón cerrar */}
         <button
           onClick={handleClose}
@@ -92,8 +92,8 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
           <>
             {/* Header */}
             <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <span className="text-3xl">📧</span>
+              <div className="w-16 h-16 bg-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
                 Te avisaremos cuando Premium esté listo
@@ -115,7 +115,7 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
-                  className="w-full border-2 border-violet-200 rounded-xl px-4 py-3 text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-300 focus:border-violet-400 transition-all"
+                  className="w-full border-2 border-blue-200 rounded-xl px-4 py-3 text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-200 transition-all"
                   disabled={isSubmitting}
                   required
                 />
@@ -127,7 +127,7 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
                   type="checkbox"
                   checked={acceptedTerms}
                   onChange={(e) => setAcceptedTerms(e.target.checked)}
-                  className="mt-1 w-4 h-4 text-violet-600 border-gray-300 rounded focus:ring-violet-500"
+                  className="mt-1 w-4 h-4 text-blue-900 border-gray-300 rounded focus:ring-blue-200"
                   disabled={isSubmitting}
                   required
                 />
@@ -145,13 +145,13 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Enviando...' : 'Avisarme'}
               </button>
 
               <p className="text-xs text-center text-gray-500">
-                🔒 No spam. Puedes cancelar en cualquier momento.
+                No spam. Puedes cancelar en cualquier momento.
               </p>
             </form>
           </>
@@ -159,8 +159,8 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
           <>
             {/* Success state */}
             <div className="text-center py-4">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-4xl">✅</span>
+              <div className="w-16 h-16 bg-green-50 rounded-xl flex items-center justify-center mx-auto mb-4 border border-green-200">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
                 ¡Listo!
@@ -170,7 +170,7 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
               </p>
               <button
                 onClick={handleClose}
-                className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Volver al humanizador
               </button>

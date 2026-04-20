@@ -65,25 +65,25 @@ export default function CharacterLimitModal({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 animate-fade-in"
+        className="fixed inset-0 bg-black/60 z-50 "
         onClick={onClose}
       />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 pointer-events-auto animate-scale-in"
+          className="bg-white rounded-xl shadow-lg max-w-md w-full p-8 pointer-events-auto "
           onClick={(e) => e.stopPropagation()}
         >
           {/* Icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center">
-              <span className="text-5xl">📏</span>
+            <div className="w-16 h-16 rounded-xl bg-amber-50 flex items-center justify-center">
+              <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
             </div>
           </div>
 
           {/* Title */}
-          <h2 className="text-2xl font-extrabold text-center text-gray-900 mb-3">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-3">
             Texto Demasiado Largo
           </h2>
 
@@ -107,9 +107,9 @@ export default function CharacterLimitModal({
               </p>
 
               {/* Free Benefits */}
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-5 mb-4">
+              <div className="bg-green-50 border border-green-200 rounded-xl p-5 mb-4">
                 <p className="text-sm font-bold text-green-900 mb-3">
-                  🎁 Registrándote GRATIS obtenés:
+                  Registrándote GRATIS obtenés:
                 </p>
                 <ul className="space-y-2 text-sm text-green-800">
                   <li className="flex items-start gap-2">
@@ -128,11 +128,11 @@ export default function CharacterLimitModal({
               </div>
 
               {/* Pro Benefits */}
-              <div className="bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-200 rounded-2xl p-5 mb-6">
-                <p className="text-sm font-bold text-violet-900 mb-3">
-                  🚀 Con Plan Premium obtenés:
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 mb-6">
+                <p className="text-sm font-bold text-blue-900 mb-3">
+                  Con Plan Premium obtenés:
                 </p>
-                <ul className="space-y-2 text-sm text-violet-800">
+                <ul className="space-y-2 text-sm text-blue-900">
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold text-base">✓</span>
                     <span><strong>Hasta {premiumMaxChars.toLocaleString()} caracteres</strong> ({proMultiplier}x más que ahora)</span>
@@ -146,7 +146,7 @@ export default function CharacterLimitModal({
                     <span><strong>5 modos premium</strong> + subida de archivos</span>
                   </li>
                 </ul>
-                <p className="text-xs text-violet-700 mt-3 font-medium">
+                <p className="text-xs text-blue-900 mt-3 font-medium">
                   Express $3.99/24h • Premium $12.99/mes • Ahorra 20% anual
                 </p>
               </div>
@@ -154,7 +154,7 @@ export default function CharacterLimitModal({
               {/* CTA - Registro gratis primero */}
               <a
                 href="/auth/signup"
-                className="block w-full text-center bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
               >
                 Registrarme Gratis en 10 segundos
               </a>
@@ -162,7 +162,7 @@ export default function CharacterLimitModal({
               {/* Secondary CTA - Ver Planes */}
               <a
                 href="/pricing"
-                className="block w-full text-center text-violet-600 hover:text-violet-700 font-semibold py-2 transition-colors text-sm mb-3"
+                className="block w-full text-center text-blue-900 hover:text-blue-900 font-semibold py-2 transition-colors text-sm mb-3"
               >
                 O ver Express y Premium →
               </a>
@@ -178,9 +178,9 @@ export default function CharacterLimitModal({
 
               {/* Dual option: Express vs Premium */}
               <div className="grid grid-cols-2 gap-3 mb-5">
-                <div className="border-2 border-amber-300 bg-amber-50 rounded-xl p-4">
+                <div className="border border-amber-200 bg-amber-50 rounded-xl p-4">
                   <p className="text-xs font-bold text-amber-800 mb-1">⚡ Express Pass</p>
-                  <p className="text-2xl font-extrabold text-amber-900">$3.99</p>
+                  <p className="text-2xl font-bold text-amber-900">$3.99</p>
                   <p className="text-xs text-amber-700">/ 24 horas</p>
                   <p className="text-xs text-amber-600 mt-1">Sin suscripción</p>
                   <ul className="text-xs text-amber-800 mt-2 space-y-1">
@@ -188,12 +188,12 @@ export default function CharacterLimitModal({
                     <li>✓ Usos ilimitados hoy</li>
                   </ul>
                 </div>
-                <div className="border-2 border-violet-300 bg-violet-50 rounded-xl p-4">
-                  <p className="text-xs font-bold text-violet-800 mb-1">🚀 Premium</p>
-                  <p className="text-2xl font-extrabold text-violet-900">$12.99</p>
-                  <p className="text-xs text-violet-700">/ mes</p>
-                  <p className="text-xs text-violet-600 mt-1">Ahorra 20% anual</p>
-                  <ul className="text-xs text-violet-800 mt-2 space-y-1">
+                <div className="border-2 border-blue-200 bg-blue-50 rounded-xl p-4">
+                  <p className="text-xs font-bold text-blue-900 mb-1">Premium</p>
+                  <p className="text-2xl font-bold text-blue-900">$12.99</p>
+                  <p className="text-xs text-blue-900">/ mes</p>
+                  <p className="text-xs text-blue-900 mt-1">Ahorra 20% anual</p>
+                  <ul className="text-xs text-blue-900 mt-2 space-y-1">
                     <li>✓ <strong>{premiumMaxChars.toLocaleString()} chars</strong></li>
                     <li>✓ Usos ilimitados</li>
                     <li>✓ 5 modos premium</li>
@@ -204,7 +204,7 @@ export default function CharacterLimitModal({
               {/* CTA */}
               <a
                 href="/pricing"
-                className="block w-full text-center bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
+                className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
               >
                 Ver Express y Premium
               </a>
@@ -221,7 +221,7 @@ export default function CharacterLimitModal({
 
           {/* Trust badge */}
           <p className="text-xs text-center text-gray-500 mt-4">
-            💳 Pago seguro con Stripe • Cancela cuando quieras
+            Pago seguro con Stripe • Cancela cuando quieras
           </p>
         </div>
       </div>
@@ -247,11 +247,11 @@ export default function CharacterLimitModal({
           }
         }
 
-        .animate-fade-in {
+        . {
           animation: fade-in 0.2s ease-out;
         }
 
-        .animate-scale-in {
+        . {
           animation: scale-in 0.3s ease-out;
         }
       `}</style>

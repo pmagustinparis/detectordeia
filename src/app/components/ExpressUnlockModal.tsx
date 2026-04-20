@@ -109,10 +109,10 @@ export default function ExpressUnlockModal({
     return `Modo ${modeName || 'Premium'} Bloqueado`;
   };
 
-  const getIcon = () => {
-    if (trigger === 'character_limit') return '📏';
-    if (trigger === 'daily_limit') return '⏱️';
-    return '🔒';
+  const getIconSvg = () => {
+    if (trigger === 'character_limit') return <svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>;
+    if (trigger === 'daily_limit') return <svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
+    return <svg className="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>;
   };
 
   const getSubtitle = () => {
@@ -132,27 +132,27 @@ export default function ExpressUnlockModal({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+        className="fixed inset-0 bg-black/60 z-50"
         onClick={handleDismiss}
       />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 pointer-events-auto"
+          className="bg-white rounded-xl shadow-lg max-w-md w-full p-6 pointer-events-auto"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Icon + Title */}
           <div className="text-center mb-4">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mx-auto mb-3">
-              <span className="text-4xl">{getIcon()}</span>
+            <div className="w-14 h-14 rounded-xl bg-amber-50 flex items-center justify-center mx-auto mb-3">
+              {getIconSvg()}
             </div>
-            <h2 className="text-xl font-extrabold text-gray-900 mb-1">{getTitle()}</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-1">{getTitle()}</h2>
             <p className="text-sm text-gray-600 leading-relaxed">{getSubtitle()}</p>
           </div>
 
           {/* Express Pass - Opción principal */}
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-4 mb-3">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-3">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-lg">⚡</span>
               <div>
@@ -168,7 +168,7 @@ export default function ExpressUnlockModal({
                 className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-sm transition-colors ${
                   duration === '24h'
                     ? 'bg-amber-500 text-white shadow-md'
-                    : 'bg-white text-amber-800 border-2 border-amber-300 hover:bg-amber-50'
+                    : 'bg-white text-amber-800 border border-amber-200 hover:bg-amber-50'
                 }`}
               >
                 24 horas · $3.99
@@ -178,7 +178,7 @@ export default function ExpressUnlockModal({
                 className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-sm transition-colors ${
                   duration === '7d'
                     ? 'bg-amber-500 text-white shadow-md'
-                    : 'bg-white text-amber-800 border-2 border-amber-300 hover:bg-amber-50'
+                    : 'bg-white text-amber-800 border border-amber-200 hover:bg-amber-50'
                 }`}
               >
                 7 días · $8.99
