@@ -115,18 +115,18 @@ export default function GuidePageClient({ guide }: Props) {
 
       {/* HERO SECTION */}
       <section className="max-w-5xl mx-auto pt-8 pb-12 px-4">
-        <div className="inline-block px-4 py-2 bg-violet-100 text-violet-700 rounded-full text-sm font-semibold mb-4">
+        <div className="inline-block px-4 py-2 bg-blue-50 text-blue-900 rounded-full text-sm font-semibold mb-4">
           📖 Guía Práctica
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-6 animate-fade-in">
-          <span className="gradient-text-primary">{guide.h1}</span>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 ">
+          <span className="text-blue-900">{guide.h1}</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl leading-relaxed mb-6">
           {guide.intro}
         </p>
 
         {/* Overview Box */}
-        <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl shadow-md border border-violet-200 p-6">
+        <div className="bg-blue-50 rounded-xl shadow-sm border border-blue-200 p-6">
           <h2 className="font-bold text-lg mb-2 text-gray-800">
             📋 Lo que aprenderás:
           </h2>
@@ -136,8 +136,8 @@ export default function GuidePageClient({ guide }: Props) {
 
       {/* STEPS SECTION */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">Guía Paso</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
+          <span className="text-blue-900">Guía Paso</span>
           <span className="text-gray-800"> a Paso</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
@@ -148,11 +148,11 @@ export default function GuidePageClient({ guide }: Props) {
           {guide.steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg border border-violet-100 p-8 hover:shadow-xl transition-all"
+              className="bg-white rounded-xl shadow-sm border border-blue-200 p-8 hover:shadow-sm transition-all"
             >
               {/* Step Header */}
               <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center flex-shrink-0 text-white font-bold text-xl shadow-md">
+                <div className="w-12 h-12 rounded-xl bg-blue-900 flex items-center justify-center flex-shrink-0 text-white font-bold text-xl shadow-sm">
                   {step.number}
                 </div>
                 <div className="flex-1">
@@ -171,14 +171,14 @@ export default function GuidePageClient({ guide }: Props) {
 
               {/* Tips */}
               {step.tips && step.tips.length > 0 && (
-                <div className="pl-16 bg-violet-50 rounded-xl p-4 border-l-4 border-violet-500">
-                  <p className="font-semibold text-violet-700 mb-2 flex items-center gap-2">
+                <div className="pl-16 bg-blue-50 rounded-xl p-4 border-l-4 border-blue-200">
+                  <p className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
                     <span>💡</span> Consejos prácticos:
                   </p>
                   <ul className="space-y-2">
                     {step.tips.map((tip, tipIndex) => (
                       <li key={tipIndex} className="text-gray-700 text-sm flex items-start gap-2">
-                        <span className="text-violet-500 font-bold flex-shrink-0">•</span>
+                        <span className="text-blue-900 font-bold flex-shrink-0">•</span>
                         <span>{tip}</span>
                       </li>
                     ))}
@@ -192,9 +192,9 @@ export default function GuidePageClient({ guide }: Props) {
 
       {/* COMMON MISTAKES */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           <span className="text-gray-800">Errores</span>
-          <span className="gradient-text-primary"> Comunes</span>
+          <span className="text-blue-900"> Comunes</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
           Evita estos errores frecuentes
@@ -204,7 +204,7 @@ export default function GuidePageClient({ guide }: Props) {
           {guide.commonMistakes.map((mistake, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md border border-red-100 p-6 hover:border-red-200 transition-all"
+              className="bg-white rounded-xl shadow-sm border border-red-100 p-6 hover:border-red-200 transition-all"
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0">
@@ -229,8 +229,8 @@ export default function GuidePageClient({ guide }: Props) {
 
       {/* FAQS */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">Preguntas</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
+          <span className="text-blue-900">Preguntas</span>
           <span className="text-gray-800"> Frecuentes</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
@@ -241,18 +241,18 @@ export default function GuidePageClient({ guide }: Props) {
           {guide.faqs.map((faq, index) => (
             <details
               key={index}
-              className="bg-white rounded-xl shadow-md border border-violet-100 p-6 hover:border-violet-200 transition-all group"
+              className="bg-white rounded-xl shadow-sm border border-blue-200 p-6 hover:border-blue-200 transition-all group"
             >
               <summary className="font-bold text-lg text-gray-800 cursor-pointer list-none flex items-center justify-between">
                 <span className="pr-4 flex items-start gap-3">
-                  <span className="text-violet-500 flex-shrink-0">❓</span>
+                  <span className="text-blue-900 flex-shrink-0">❓</span>
                   <span>{faq.question}</span>
                 </span>
-                <span className="text-violet-500 group-open:rotate-180 transition-transform flex-shrink-0">
+                <span className="text-blue-900 group-open:rotate-180 transition-transform flex-shrink-0">
                   ▼
                 </span>
               </summary>
-              <p className="text-gray-700 mt-4 leading-relaxed pt-4 border-t border-violet-100 pl-9 whitespace-pre-line">
+              <p className="text-gray-700 mt-4 leading-relaxed pt-4 border-t border-blue-200 pl-9 whitespace-pre-line">
                 {faq.answer}
               </p>
             </details>
@@ -262,7 +262,7 @@ export default function GuidePageClient({ guide }: Props) {
 
       {/* RELATED CONTENT & CTA */}
       <section className="max-w-5xl mx-auto mb-12 px-4">
-        <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl shadow-lg border border-violet-200 p-8">
+        <div className="bg-blue-50 rounded-xl shadow-sm border border-blue-200 p-8">
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             {/* Related Guides */}
             {guide.relatedGuides && guide.relatedGuides.length > 0 && (
@@ -275,12 +275,12 @@ export default function GuidePageClient({ guide }: Props) {
                     <Link
                       key={index}
                       href={`/guias/${related.slug}`}
-                      className="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md border border-violet-200 hover:border-violet-300 transition-all group"
+                      className="block p-4 bg-white rounded-lg shadow-sm hover:shadow-sm border border-blue-200 hover:border-blue-200 transition-all group"
                     >
-                      <span className="text-gray-700 font-medium group-hover:text-violet-600">
+                      <span className="text-gray-700 font-medium group-hover:text-blue-900">
                         {related.title}
                       </span>
-                      <span className="text-violet-500 ml-2 group-hover:ml-3 transition-all">
+                      <span className="text-blue-900 ml-2 group-hover:ml-3 transition-all">
                         →
                       </span>
                     </Link>
@@ -300,12 +300,12 @@ export default function GuidePageClient({ guide }: Props) {
                     <Link
                       key={index}
                       href={tool.url}
-                      className="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md border border-violet-200 hover:border-violet-300 transition-all group"
+                      className="block p-4 bg-white rounded-lg shadow-sm hover:shadow-sm border border-blue-200 hover:border-blue-200 transition-all group"
                     >
-                      <span className="text-gray-700 font-medium group-hover:text-violet-600">
+                      <span className="text-gray-700 font-medium group-hover:text-blue-900">
                         {tool.name}
                       </span>
-                      <span className="text-violet-500 ml-2 group-hover:ml-3 transition-all">
+                      <span className="text-blue-900 ml-2 group-hover:ml-3 transition-all">
                         →
                       </span>
                     </Link>
@@ -316,13 +316,13 @@ export default function GuidePageClient({ guide }: Props) {
           </div>
 
           {/* CTA */}
-          <div className="text-center pt-6 border-t border-violet-200">
+          <div className="text-center pt-6 border-t border-blue-200">
             <p className="text-gray-700 mb-4 font-medium text-lg">
               ¿Listo para poner en práctica lo aprendido?
             </p>
             <Link
               href={guide.cta.url}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
             >
               <span>{guide.cta.text}</span>
               <span>→</span>

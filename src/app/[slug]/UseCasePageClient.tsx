@@ -32,18 +32,18 @@ export default function UseCasePageClient({ useCase }: Props) {
 
       {/* HERO SECTION */}
       <section className="max-w-5xl mx-auto pt-8 pb-12 px-4 text-center">
-        <div className="inline-block px-4 py-2 bg-violet-100 text-violet-700 rounded-full text-sm font-semibold mb-4">
+        <div className="inline-block px-4 py-2 bg-blue-50 text-blue-900 rounded-full text-sm font-semibold mb-4">
           Para {useCase.audience}
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 animate-fade-in">
-          <span className="gradient-text-primary">{useCase.h1}</span>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 ">
+          <span className="text-blue-900">{useCase.h1}</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
           {useCase.intro}
         </p>
         <Link
           href={useCase.cta.url}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
         >
           <span>{useCase.cta.text}</span>
           <span>→</span>
@@ -52,8 +52,8 @@ export default function UseCasePageClient({ useCase }: Props) {
 
       {/* BENEFITS */}
       <section className="max-w-6xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">Beneficios</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
+          <span className="text-blue-900">Beneficios</span>
           <span className="text-gray-800"> para {useCase.audience}</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
@@ -64,9 +64,9 @@ export default function UseCasePageClient({ useCase }: Props) {
           {useCase.benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 card-elevated group hover:border-violet-200 transition-all"
+              className="bg-white rounded-xl shadow-lg border border-blue-200 p-6 group hover:border-blue-200 transition-all"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center mb-4 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <div className="w-14 h-14 rounded-2xl bg-blue-900 flex items-center justify-center mb-4 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
                 <span className="text-3xl">{benefit.icon}</span>
               </div>
               <h3 className="font-bold text-lg mb-2 text-gray-800">{benefit.title}</h3>
@@ -78,19 +78,19 @@ export default function UseCasePageClient({ useCase }: Props) {
 
       {/* HOW IT WORKS */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           <span className="text-gray-800">¿Cómo</span>
-          <span className="gradient-text-primary"> funciona?</span>
+          <span className="text-blue-900"> funciona?</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
           Simple, rápido y efectivo en 5 pasos
         </p>
 
-        <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl shadow-lg border border-violet-200 p-8">
+        <div className="bg-blue-50 rounded-xl shadow-lg border border-blue-200 p-8">
           <ol className="space-y-6">
             {useCase.howItWorks.map((step, index) => (
               <li key={index} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center flex-shrink-0 text-white font-bold shadow-md">
+                <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0 text-white font-bold shadow-md">
                   {index + 1}
                 </div>
                 <p className="text-gray-700 leading-relaxed pt-1.5">{step}</p>
@@ -103,7 +103,7 @@ export default function UseCasePageClient({ useCase }: Props) {
       {/* TESTIMONIAL */}
       {useCase.testimonial && (
         <section className="max-w-4xl mx-auto mb-16 px-4">
-          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl shadow-lg border border-blue-200 p-8 md:p-10">
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl shadow-lg border border-blue-200 p-8 md:p-10">
             <div className="flex flex-col md:flex-row gap-6 items-center">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0 text-3xl">
                 💬
@@ -124,9 +124,9 @@ export default function UseCasePageClient({ useCase }: Props) {
 
       {/* FAQs */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           <span className="text-gray-800">Preguntas</span>
-          <span className="gradient-text-primary"> frecuentes</span>
+          <span className="text-blue-900"> frecuentes</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
           Todo lo que {useCase.audience.toLowerCase()} necesitan saber
@@ -136,12 +136,12 @@ export default function UseCasePageClient({ useCase }: Props) {
           {useCase.faqs.map((faq, index) => (
             <details
               key={index}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-50 p-6 card-elevated group open:ring-2 open:ring-violet-300"
+              className="bg-white rounded-xl shadow-lg border border-blue-200 p-6 group open:ring-2 open:ring-violet-300"
             >
               <summary className="font-bold text-lg text-gray-800 cursor-pointer list-none flex items-center justify-between">
                 <span>{faq.question}</span>
                 <svg
-                  className="w-5 h-5 text-violet-500 transition-transform group-open:rotate-180"
+                  className="w-5 h-5 text-blue-900 transition-transform group-open:rotate-180"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -160,20 +160,20 @@ export default function UseCasePageClient({ useCase }: Props) {
       {/* INTERNAL LINKS — profesores */}
       {useCase.slug === 'detector-de-ia-para-profesores' && (
         <section className="max-w-4xl mx-auto mb-12 px-4">
-          <h2 className="text-2xl font-extrabold text-gray-800 mb-6 text-center">Recursos recomendados para profesores</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Recursos recomendados para profesores</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <Link
               href="/detector-de-ia-vs/turnitin"
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+              className="bg-white rounded-xl shadow-md border border-blue-200 p-5 hover:border-blue-200 hover:shadow-lg transition-all group"
             >
-              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">DetectordeIA vs Turnitin →</p>
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-blue-900 transition-colors">DetectordeIA vs Turnitin →</p>
               <p className="text-sm text-gray-600">Compará las dos herramientas más usadas por docentes para detectar IA y plagio académico.</p>
             </Link>
             <Link
               href="/guias/como-usar-ia-eticamente-universidad"
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+              className="bg-white rounded-xl shadow-md border border-blue-200 p-5 hover:border-blue-200 hover:shadow-lg transition-all group"
             >
-              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">Guía: Cómo usar IA éticamente →</p>
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-blue-900 transition-colors">Guía: Cómo usar IA éticamente →</p>
               <p className="text-sm text-gray-600">Comparte esta guía con tus estudiantes para establecer expectativas claras sobre el uso de IA.</p>
             </Link>
           </div>
@@ -183,20 +183,20 @@ export default function UseCasePageClient({ useCase }: Props) {
       {/* INTERNAL LINKS — estudiantes */}
       {useCase.slug === 'detector-de-ia-para-estudiantes' && (
         <section className="max-w-4xl mx-auto mb-12 px-4">
-          <h2 className="text-2xl font-extrabold text-gray-800 mb-6 text-center">Recursos para estudiantes</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Recursos para estudiantes</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <Link
               href="/guias/como-evitar-plagio-academico"
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+              className="bg-white rounded-xl shadow-md border border-blue-200 p-5 hover:border-blue-200 hover:shadow-lg transition-all group"
             >
-              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">Guía: Cómo evitar el plagio académico →</p>
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-blue-900 transition-colors">Guía: Cómo evitar el plagio académico →</p>
               <p className="text-sm text-gray-600">Aprende qué cuenta como plagio, qué es el uso de IA y cómo citar correctamente.</p>
             </Link>
             <Link
               href="/guias/como-usar-ia-eticamente-universidad"
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-violet-100 p-5 hover:border-violet-300 hover:shadow-lg transition-all group"
+              className="bg-white rounded-xl shadow-md border border-blue-200 p-5 hover:border-blue-200 hover:shadow-lg transition-all group"
             >
-              <p className="font-bold text-gray-800 mb-1 group-hover:text-violet-600 transition-colors">Guía: Usar IA de forma ética →</p>
+              <p className="font-bold text-gray-800 mb-1 group-hover:text-blue-900 transition-colors">Guía: Usar IA de forma ética →</p>
               <p className="text-sm text-gray-600">Descubre cuándo puedes usar IA en tus trabajos y cómo declararla correctamente.</p>
             </Link>
           </div>
@@ -205,16 +205,16 @@ export default function UseCasePageClient({ useCase }: Props) {
 
       {/* FINAL CTA */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl shadow-2xl p-10 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <div className="bg-blue-900 rounded-xl shadow-2xl p-10 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             ¿Listo para empezar?
           </h2>
-          <p className="text-lg mb-8 text-violet-100">
+          <p className="text-lg mb-8 text-blue-900">
             Sin registro, sin tarjeta de crédito, 100% gratis para empezar.
           </p>
           <Link
             href={useCase.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             <span>{useCase.cta.text}</span>
             <span>→</span>
@@ -224,7 +224,7 @@ export default function UseCasePageClient({ useCase }: Props) {
 
       {/* BREADCRUMBS FOOTER */}
       <div className="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
-        <Link href="/" className="hover:text-violet-600 transition-colors">
+        <Link href="/" className="hover:text-blue-900 transition-colors">
           Inicio
         </Link>
         <span className="mx-2">›</span>

@@ -17,35 +17,35 @@ const countries = Object.keys(universitiesByCountry).sort();
 
 export default function UniversidadesClient() {
   return (
-    <div className="min-h-screen bg-gray-100 pb-10 px-2">
+    <div className="min-h-screen bg-white pb-10 px-2">
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-8 px-2 relative overflow-hidden">
         {/* Elementos decorativos de fondo */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-0 left-0 w-96 h-96  "></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96  " style={{animationDelay: '1s'}}></div>
 
         {/* Hero Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-3 mt-2 leading-tight animate-fade-in">
-          <span className="gradient-text-primary">Detector de IA</span>
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-3 mt-2 leading-tight ">
+          <span className="text-blue-900">Detector de IA</span>
           <br />
           <span className="text-gray-800">para Universidades</span>
         </h1>
 
-        <p className="text-base md:text-lg text-gray-600 text-center mb-4 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
+        <p className="text-base md:text-lg text-gray-600 text-center mb-4 max-w-2xl " style={{animationDelay: '0.2s'}}>
           Herramienta académica gratuita para estudiantes y profesores de las principales universidades de LATAM y España
         </p>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-6 animate-fade-in" style={{animationDelay: '0.4s'}}>
-          <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg shadow-md border border-violet-100">
-            <Icon icon={ProductIcons.Confidence} size="lg" className="text-violet-600" />
+        <div className="flex flex-wrap justify-center gap-3 mb-6 " style={{animationDelay: '0.4s'}}>
+          <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-gray-200">
+            <Icon icon={ProductIcons.Confidence} size="lg" className="text-blue-900" />
             <span className="text-sm font-medium text-gray-700">Preciso y confiable</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg shadow-md border border-violet-100">
-            <Icon icon={ProductIcons.Locked} size="lg" className="text-cyan-600" />
+          <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-gray-200">
+            <Icon icon={ProductIcons.Locked} size="lg" className="text-blue-900" />
             <span className="text-sm font-medium text-gray-700">100% privado</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg shadow-md border border-violet-100">
-            <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-emerald-600" />
+          <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-gray-200">
+            <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-blue-900" />
             <span className="text-sm font-medium text-gray-700">Compatible con políticas académicas</span>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function UniversidadesClient() {
 
       {/* INTRO SECTION */}
       <section className="max-w-5xl mx-auto mb-12 px-2">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-8">
+        <div className="bg-white rounded-xl border border-gray-200 p-8">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-gray-800">
             Verifica autenticidad académica con confianza
           </h2>
@@ -65,7 +65,7 @@ export default function UniversidadesClient() {
           <div className="text-center">
             <a
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-700 hover:to-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
             >
               <span>Probar Detector de IA Gratis</span>
               <span>→</span>
@@ -77,15 +77,15 @@ export default function UniversidadesClient() {
       {/* UNIVERSIDADES POR PAÍS */}
       <section className="max-w-6xl mx-auto mb-16 px-2">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">
-          <span className="gradient-text-primary">Universidades</span>
+          <span className="text-blue-900">Universidades</span>
           <span className="text-gray-800"> en nuestro sistema</span>
         </h2>
 
         <div className="space-y-8">
           {countries.map((country) => (
-            <div key={country} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6">
+            <div key={country} className="bg-white rounded-xl border border-gray-200 p-6">
               <h3 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
-                <span className="text-2xl">🎓</span>
+                
                 {country}
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -93,14 +93,14 @@ export default function UniversidadesClient() {
                   <a
                     key={uni.slug}
                     href={`/detector-de-ia-universidad/${uni.slug}`}
-                    className="group p-4 bg-gradient-to-br from-violet-50 to-purple-50 hover:from-violet-100 hover:to-purple-100 rounded-xl border border-violet-200 hover:border-violet-300 transition-all duration-300 shadow-sm hover:shadow-md"
+                    className="group p-4 bg-white hover:bg-blue-50 rounded-xl border border-gray-200 hover:border-blue-200 transition-all"
                   >
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-violet-600" />
+                      <div className="w-10 h-10 rounded-lg bg-blue-900 flex items-center justify-center flex-shrink-0">
+                        <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-blue-900" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-bold text-gray-800 text-sm mb-1 group-hover:text-violet-700 transition-colors">
+                        <h4 className="font-bold text-gray-800 text-sm mb-1 group-hover:text-blue-900 transition-colors">
                           {uni.shortName}
                         </h4>
                         <p className="text-xs text-gray-600 line-clamp-2">
@@ -126,22 +126,22 @@ export default function UniversidadesClient() {
 
       {/* STATS SECTION */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
-        <div className="bg-gradient-to-br from-violet-600 to-purple-600 rounded-3xl shadow-2xl p-8 md:p-12 text-white">
+        <div className="bg-blue-900 rounded-xl p-8 md:p-12 text-white">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
             DetectorDeIA.ai en números
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-extrabold mb-2">{universities.length}</div>
-              <div className="text-violet-100">Universidades</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">{universities.length}</div>
+              <div className="text-blue-100">Universidades</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-extrabold mb-2">12</div>
-              <div className="text-violet-100">Países</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">12</div>
+              <div className="text-blue-100">Países</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-extrabold mb-2">2M+</div>
-              <div className="text-violet-100">Estudiantes alcanzados</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">2M+</div>
+              <div className="text-blue-100">Estudiantes alcanzados</div>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function UniversidadesClient() {
 
       {/* CTA SECTION */}
       <section className="max-w-4xl mx-auto mb-16 px-2">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-8 text-center">
+        <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">
             ¿Tu universidad no está en la lista?
           </h2>
@@ -159,7 +159,7 @@ export default function UniversidadesClient() {
           </p>
           <a
             href="/"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
           >
             <span>Usar Detector Principal</span>
             <span>→</span>

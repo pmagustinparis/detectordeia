@@ -51,8 +51,8 @@ export default function FAQSection() {
 
   return (
     <section className="max-w-4xl mx-auto mb-16 px-2">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-        <span className="gradient-text-primary">Preguntas</span>
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
+        <span className="text-blue-900">Preguntas</span>
         <span className="text-gray-800"> frecuentes</span>
       </h2>
       <p className="text-center text-gray-600 mb-10">
@@ -63,7 +63,7 @@ export default function FAQSection() {
         {faqData.map((item, index) => (
           <div
             key={index}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-900/10 overflow-hidden card-elevated"
+            className="bg-white rounded-xl border border-gray-200 overflow-hidden"
           >
             <button
               onClick={() => toggleItem(index)}

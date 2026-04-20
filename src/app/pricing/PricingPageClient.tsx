@@ -276,7 +276,7 @@ export default function PricingPageClient() {
       <div className="max-w-5xl mx-auto py-16 px-4">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="gradient-text-primary">Planes</span>
+            <span className="text-blue-900">Planes</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Elige el plan que se adapta a tu ritmo. Acceso temporal o continuo, la decisión es tuya.
@@ -565,7 +565,7 @@ export default function PricingPageClient() {
         {/* Testimonials */}
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="gradient-text-primary">Lo que dicen</span>
+            <span className="text-blue-900">Lo que dicen</span>
             <span className="text-gray-900"> nuestros usuarios</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -662,7 +662,7 @@ export default function PricingPageClient() {
         {/* FAQ Section */}
         <div>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="gradient-text-primary">Preguntas</span>
+            <span className="text-blue-900">Preguntas</span>
             <span className="text-gray-900"> Frecuentes</span>
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">

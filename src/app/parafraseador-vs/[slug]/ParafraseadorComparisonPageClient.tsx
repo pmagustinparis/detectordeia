@@ -38,8 +38,8 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
 
       {/* HERO SECTION */}
       <section className="max-w-5xl mx-auto pt-8 pb-12 px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 animate-fade-in">
-          <span className="gradient-text-primary">{comparison.h1}</span>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 ">
+          <span className="text-blue-900">{comparison.h1}</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
           {comparison.intro}
@@ -48,17 +48,17 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
 
       {/* WHY BETTER */}
       <section className="max-w-5xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">¿Por qué elegir</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
+          <span className="text-blue-900">¿Por qué elegir</span>
           <span className="text-gray-800"> nuestro Parafraseador?</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">Ventajas clave sobre {comparison.competitorName}</p>
 
-        <div className="bg-gradient-to-br from-emerald-50 to-violet-50 rounded-3xl shadow-lg border border-emerald-200 p-8 card-elevated">
+        <div className="bg-blue-50 rounded-xl border border-blue-100 p-8">
           <ul className="space-y-4">
             {comparison.whyBetter.map((benefit, index) => (
               <li key={index} className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-500 to-violet-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
@@ -72,17 +72,17 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
 
       {/* COMPARISON TABLE */}
       <section className="max-w-5xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           <span className="text-gray-800">Comparación</span>
-          <span className="gradient-text-primary"> detallada</span>
+          <span className="text-blue-900"> detallada</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">Parafraseador vs {comparison.competitorName} lado a lado</p>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-emerald-50 overflow-hidden">
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-gradient-to-r from-emerald-500 to-violet-500 text-white">
+                <tr className="bg-blue-900 text-white">
                   <th className="px-6 py-4 text-left font-bold">Característica</th>
                   <th className="px-6 py-4 text-left font-bold">Parafraseador</th>
                   <th className="px-6 py-4 text-left font-bold">{comparison.competitorName}</th>
@@ -137,9 +137,9 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
       {/* WHEN TO USE COMPETITOR */}
       {comparison.whenToUseCompetitor && (
         <section className="max-w-4xl mx-auto mb-16 px-4">
-          <div className="bg-gradient-to-br from-blue-50 to-emerald-50 rounded-3xl shadow-lg border border-blue-200 p-8">
+          <div className="bg-blue-50 rounded-xl border border-blue-200 p-8">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-blue-900 flex items-center justify-center flex-shrink-0">
                 <span className="text-2xl">💡</span>
               </div>
               <div>
@@ -153,28 +153,28 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
 
       {/* PRICING */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10">
-          <span className="gradient-text-primary">Comparación</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+          <span className="text-blue-900">Comparación</span>
           <span className="text-gray-800"> de precios</span>
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-emerald-50 to-violet-50 rounded-3xl shadow-lg border-2 border-emerald-300 p-8 card-elevated">
+          <div className="bg-blue-50 rounded-xl border border-blue-200 p-8">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-800 mb-2">Parafraseador</h3>
-              <div className="text-4xl font-extrabold gradient-text-primary mb-2">{comparison.pricing.detectordeia}</div>
+              <div className="text-4xl font-bold text-blue-900 mb-2">{comparison.pricing.detectordeia}</div>
               <p className="text-sm text-gray-600">Incluye Detector + Humanizador</p>
             </div>
             <Link
               href={comparison.cta.url}
-              className="block w-full text-center bg-gradient-to-r from-emerald-500 to-violet-500 hover:from-emerald-600 hover:to-violet-600 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
             >
               Probar gratis ahora →
             </Link>
           </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-gray-200 p-8">
+          <div className="bg-white rounded-xl border border-gray-200 p-8">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-800 mb-2">{comparison.competitorName}</h3>
-              <div className="text-4xl font-extrabold text-gray-700 mb-2">{comparison.pricing.competitor}</div>
+              <div className="text-4xl font-bold text-gray-700 mb-2">{comparison.pricing.competitor}</div>
               <p className="text-sm text-gray-600">Precio del competidor</p>
             </div>
             {comparison.competitorWebsite && (
@@ -193,9 +193,9 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
 
       {/* FAQs */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           <span className="text-gray-800">Preguntas</span>
-          <span className="gradient-text-primary"> frecuentes</span>
+          <span className="text-blue-900"> frecuentes</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
           Todo lo que necesitás saber sobre Parafraseador vs {comparison.competitorName}
@@ -204,11 +204,11 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
           {comparison.faqs.map((faq, index) => (
             <details
               key={index}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-50 p-6 card-elevated group open:ring-2 open:ring-emerald-300"
+              className="bg-white rounded-xl border border-gray-200 p-6 group"
             >
               <summary className="font-bold text-lg text-gray-800 cursor-pointer list-none flex items-center justify-between">
                 <span>{faq.question}</span>
-                <svg className="w-5 h-5 text-emerald-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-blue-900 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
@@ -220,14 +220,14 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
 
       {/* FINAL CTA */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <div className="bg-gradient-to-br from-emerald-500 to-violet-600 rounded-3xl shadow-2xl p-10 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <div className="bg-blue-900 rounded-xl p-10 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             ¿Listo para parafrasear textos en español sin plagio?
           </h2>
-          <p className="text-lg mb-8 text-emerald-100">Sin registro, sin tarjeta de crédito, 100% gratis para empezar.</p>
+          <p className="text-lg mb-8 text-blue-900">Sin registro, sin tarjeta de crédito, 100% gratis para empezar.</p>
           <Link
             href={comparison.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-600 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             <span>{comparison.cta.text}</span>
             <span>→</span>
@@ -236,9 +236,9 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
       </section>
 
       <div className="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
-        <Link href="/" className="hover:text-emerald-600 transition-colors">Inicio</Link>
+        <Link href="/" className="hover:text-blue-900 transition-colors">Inicio</Link>
         <span className="mx-2">›</span>
-        <Link href="/parafraseador" className="hover:text-emerald-600 transition-colors">Parafraseador</Link>
+        <Link href="/parafraseador" className="hover:text-blue-900 transition-colors">Parafraseador</Link>
         <span className="mx-2">›</span>
         <span className="text-gray-700">Parafraseador vs {comparison.competitorName}</span>
       </div>

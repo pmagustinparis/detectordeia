@@ -35,8 +35,8 @@ export default function FeaturePageClient({ feature }: Props) {
         <div className="inline-block px-4 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 rounded-full text-sm font-semibold mb-4">
           {feature.featureName}
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 animate-fade-in">
-          <span className="gradient-text-primary">{feature.h1}</span>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 ">
+          <span className="text-blue-900">{feature.h1}</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
           {feature.intro}
@@ -52,8 +52,8 @@ export default function FeaturePageClient({ feature }: Props) {
 
       {/* BENEFITS */}
       <section className="max-w-6xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
-          <span className="gradient-text-primary">Beneficios</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
+          <span className="text-blue-900">Beneficios</span>
           <span className="text-gray-800"> principales</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
@@ -64,7 +64,7 @@ export default function FeaturePageClient({ feature }: Props) {
           {feature.benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-50 p-6 card-elevated group hover:border-emerald-200 transition-all"
+              className="bg-white rounded-xl shadow-lg border border-emerald-50 p-6 group hover:border-emerald-200 transition-all"
             >
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-4 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
                 <span className="text-3xl">{benefit.icon}</span>
@@ -78,15 +78,15 @@ export default function FeaturePageClient({ feature }: Props) {
 
       {/* HOW TO USE */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           <span className="text-gray-800">¿Cómo</span>
-          <span className="gradient-text-primary"> usar {feature.featureName}?</span>
+          <span className="text-blue-900"> usar {feature.featureName}?</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
           Paso a paso simple y rápido
         </p>
 
-        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl shadow-lg border border-emerald-200 p-8">
+        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl shadow-lg border border-emerald-200 p-8">
           <ol className="space-y-6">
             {feature.howToUse.map((step, index) => (
               <li key={index} className="flex items-start gap-4">
@@ -102,8 +102,8 @@ export default function FeaturePageClient({ feature }: Props) {
 
       {/* CALL TO ACTION - Mid page */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl shadow-2xl p-10 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-2xl p-10 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             ¿Listo para probar {feature.featureName}?
           </h2>
           <p className="text-lg mb-8 text-emerald-100">
@@ -121,9 +121,9 @@ export default function FeaturePageClient({ feature }: Props) {
 
       {/* FAQs */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
           <span className="text-gray-800">Preguntas</span>
-          <span className="gradient-text-primary"> frecuentes</span>
+          <span className="text-blue-900"> frecuentes</span>
         </h2>
         <p className="text-center text-gray-600 mb-10">
           Todo lo que necesitás saber sobre {feature.featureName}
@@ -133,7 +133,7 @@ export default function FeaturePageClient({ feature }: Props) {
           {feature.faqs.map((faq, index) => (
             <details
               key={index}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-emerald-50 p-6 card-elevated group open:ring-2 open:ring-emerald-300"
+              className="bg-white rounded-xl shadow-lg border border-emerald-50 p-6 group open:ring-2 open:ring-emerald-300"
             >
               <summary className="font-bold text-lg text-gray-800 cursor-pointer list-none flex items-center justify-between">
                 <span>{faq.question}</span>
@@ -156,16 +156,16 @@ export default function FeaturePageClient({ feature }: Props) {
 
       {/* FINAL CTA */}
       <section className="max-w-4xl mx-auto mb-16 px-4">
-        <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl shadow-2xl p-10 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <div className="bg-blue-900 rounded-xl shadow-2xl p-10 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Empezá a usar {feature.featureName} ahora
           </h2>
-          <p className="text-lg mb-8 text-violet-100">
+          <p className="text-lg mb-8 text-blue-900">
             Sin tarjeta de crédito. Sin registro obligatorio. 100% gratis para empezar.
           </p>
           <Link
             href={feature.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             <span>{feature.cta.text}</span>
             <span>→</span>

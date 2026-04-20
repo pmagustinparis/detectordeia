@@ -63,23 +63,23 @@ export default function HumanizadoresUniversidadesPage() {
           <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
 
-          <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-3 mt-2 leading-tight animate-fade-in">
-            <span className="gradient-text-primary">Humanizador de IA</span>
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-3 mt-2 leading-tight ">
+            <span className="text-blue-900">Humanizador de IA</span>
             <br />
             <span className="text-gray-800">para Universidades</span>
           </h1>
 
-          <p className="text-base md:text-lg text-gray-600 text-center mb-4 max-w-2xl animate-fade-in" style={{animationDelay: '0.2s'}}>
+          <p className="text-base md:text-lg text-gray-600 text-center mb-4 max-w-2xl " style={{animationDelay: '0.2s'}}>
             Convierte texto de ChatGPT, Claude y Gemini en contenido natural y académico. Herramienta gratuita para estudiantes de las principales universidades de LATAM y España.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-6 animate-fade-in" style={{animationDelay: '0.4s'}}>
+          <div className="flex flex-wrap justify-center gap-3 mb-6 " style={{animationDelay: '0.4s'}}>
             <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg shadow-md border border-cyan-100">
-              <Icon icon={ProductIcons.Confidence} size="lg" className="text-cyan-600" />
+              <Icon icon={ProductIcons.Confidence} size="lg" className="text-blue-900" />
               <span className="text-sm font-medium text-gray-700">Texto 100% natural</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg shadow-md border border-cyan-100">
-              <Icon icon={ProductIcons.Locked} size="lg" className="text-violet-600" />
+              <Icon icon={ProductIcons.Locked} size="lg" className="text-blue-900" />
               <span className="text-sm font-medium text-gray-700">100% privado</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg shadow-md border border-cyan-100">
@@ -123,7 +123,7 @@ export default function HumanizadoresUniversidadesPage() {
         {/* UNIVERSIDADES POR PAÍS */}
         <section className="max-w-6xl mx-auto mb-16 px-2">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">
-            <span className="gradient-text-primary">Universidades</span>
+            <span className="text-blue-900">Universidades</span>
             <span className="text-gray-800"> en nuestro sistema</span>
           </h2>
 
@@ -146,7 +146,7 @@ export default function HumanizadoresUniversidadesPage() {
                           <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-bold text-gray-800 text-sm mb-1 group-hover:text-cyan-700 transition-colors">
+                          <h4 className="font-bold text-gray-800 text-sm mb-1 group-hover:text-blue-900 transition-colors">
                             {uni.shortName}
                           </h4>
                           <p className="text-xs text-gray-600 line-clamp-2">
@@ -172,22 +172,22 @@ export default function HumanizadoresUniversidadesPage() {
 
         {/* STATS SECTION */}
         <section className="max-w-5xl mx-auto mb-16 px-2">
-          <div className="bg-gradient-to-br from-cyan-500 to-violet-600 rounded-3xl shadow-2xl p-8 md:p-12 text-white">
+          <div className="bg-gradient-to-br from-cyan-500 to-violet-600 rounded-xl shadow-2xl p-8 md:p-12 text-white">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
               Humanizador de IA en números
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">{universities.length}</div>
-                <div className="text-cyan-100">Universidades</div>
+                <div className="text-4xl md:text-5xl font-bold mb-2">{universities.length}</div>
+                <div className="text-blue-900">Universidades</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">5</div>
-                <div className="text-cyan-100">Modos de humanización</div>
+                <div className="text-4xl md:text-5xl font-bold mb-2">5</div>
+                <div className="text-blue-900">Modos de humanización</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">100%</div>
-                <div className="text-cyan-100">Privado y gratuito</div>
+                <div className="text-4xl md:text-5xl font-bold mb-2">100%</div>
+                <div className="text-blue-900">Privado y gratuito</div>
               </div>
             </div>
           </div>
