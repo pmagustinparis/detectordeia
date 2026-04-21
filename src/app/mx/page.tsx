@@ -53,7 +53,7 @@ export default async function DetectorMexico() {
 
       {/* Contexto IA en México */}
       <section className="max-w-3xl mx-auto mt-10 px-4">
-        <h2 className="text-2xl font-bold text-slate-800 mb-4">IA en las Universidades Mexicanas: Lo que Debes Saber</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">IA en las Universidades Mexicanas: Lo que Debes Saber</h2>
         <p className="text-gray-700 mb-4 leading-relaxed">
           La <strong>UNAM</strong>, con más de 350,000 estudiantes, es la universidad más grande de México y ha emitido orientaciones sobre el uso ético de la IA en actividades académicas. El <strong>IPN, Tec de Monterrey y UAM</strong> también están desarrollando políticas específicas para el uso de herramientas como ChatGPT en trabajos universitarios.
         </p>
@@ -62,7 +62,7 @@ export default async function DetectorMexico() {
         </p>
 
         {/* Universidades mexicanas */}
-        <h3 className="text-lg font-semibold text-slate-700 mt-6 mb-3">Detector de IA para Universidades de México</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mt-6 mb-3">Detector de IA para Universidades de México</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
           {[
             { name: 'UNAM', slug: 'unam' },
@@ -85,7 +85,7 @@ export default async function DetectorMexico() {
 
       {/* FAQs México */}
       <section className="max-w-3xl mx-auto px-4 mb-10">
-        <h2 className="text-xl font-bold text-slate-800 mb-4">Preguntas Frecuentes sobre IA en México</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Preguntas Frecuentes sobre IA en México</h2>
         <div className="space-y-3">
           {[
             {
@@ -105,7 +105,7 @@ export default async function DetectorMexico() {
               a: 'Agrega una nota al final de tu trabajo especificando qué herramienta usaste y para qué propósito. Por ejemplo: "Utilicé ChatGPT para generar ideas iniciales sobre el tema. El análisis y la redacción final son de mi autoría." Verifica si tu institución tiene un formato específico de declaración.'
             },
           ].map((faq, i) => (
-            <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-gray-800 text-sm">
+            <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-800 text-sm">
               <strong className="block mb-1">{faq.q}</strong>
               <p className="text-gray-600">{faq.a}</p>
             </div>

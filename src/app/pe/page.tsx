@@ -53,7 +53,7 @@ export default async function DetectorPeru() {
 
       {/* Contexto IA en Perú */}
       <section className="max-w-3xl mx-auto mt-10 px-4">
-        <h2 className="text-2xl font-bold text-slate-800 mb-4">IA en las Universidades Peruanas: Lo que Debes Saber</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">IA en las Universidades Peruanas: Lo que Debes Saber</h2>
         <p className="text-gray-700 mb-4 leading-relaxed">
           La <strong>UNMSM (Universidad Nacional Mayor de San Marcos)</strong>, la más antigua de América, y la <strong>PUCP (Pontificia Universidad Católica del Perú)</strong> están desarrollando activamente políticas sobre el uso de inteligencia artificial en trabajos académicos. La PUCP ha publicado recomendaciones que permiten el uso de IA con declaración expresa, mientras la UNMSM evalúa lineamientos más restrictivos para ciertas carreras.
         </p>
@@ -62,7 +62,7 @@ export default async function DetectorPeru() {
         </p>
 
         {/* Universidades peruanas */}
-        <h3 className="text-lg font-semibold text-slate-700 mt-6 mb-3">Detector de IA para Universidades Peruanas</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mt-6 mb-3">Detector de IA para Universidades Peruanas</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
           {[
             { name: 'UNMSM San Marcos', slug: 'universidad-san-marcos' },
@@ -82,7 +82,7 @@ export default async function DetectorPeru() {
 
       {/* FAQs Perú */}
       <section className="max-w-3xl mx-auto px-4 mb-10">
-        <h2 className="text-xl font-bold text-slate-800 mb-4">Preguntas Frecuentes sobre IA en Perú</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Preguntas Frecuentes sobre IA en Perú</h2>
         <div className="space-y-3">
           {[
             {
@@ -102,7 +102,7 @@ export default async function DetectorPeru() {
               a: 'La SUNEDU no ha emitido una norma específica sobre IA en trabajos académicos, pero su marco de licenciamiento exige que las universidades garanticen la calidad y originalidad del trabajo estudiantil. Usar IA para generar contenido sin declararlo puede vulnerar los reglamentos de cada institución y poner en riesgo la validez de los títulos obtenidos.'
             },
           ].map((faq, i) => (
-            <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-gray-800 text-sm">
+            <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-800 text-sm">
               <strong className="block mb-1">{faq.q}</strong>
               <p className="text-gray-600">{faq.a}</p>
             </div>

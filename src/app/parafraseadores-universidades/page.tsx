@@ -61,7 +61,7 @@ export default function ParafraseadoresUniversidadesPage() {
         {/* HERO SECTION */}
         <section className="w-full flex flex-col items-center justify-center pt-6 pb-8 px-2 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl -z-10 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 hidden" style={{animationDelay: '1s'}}></div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-3 mt-2 leading-tight ">
             <span className="text-blue-900">Parafraseador</span>
@@ -90,7 +90,7 @@ export default function ParafraseadoresUniversidadesPage() {
 
           <a
             href="/parafraseador"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl transition-all duration-300"
           >
             <span>Parafrasear texto gratis</span>
             <span>→</span>
@@ -111,7 +111,7 @@ export default function ParafraseadoresUniversidadesPage() {
             <div className="text-center">
               <a
                 href="/parafraseador"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl transition-all duration-300"
               >
                 <span>Probar Parafraseador Gratis</span>
                 <span>→</span>
@@ -139,10 +139,10 @@ export default function ParafraseadoresUniversidadesPage() {
                     <a
                       key={uni.slug}
                       href={`/parafraseador-universidad/${uni.slug}`}
-                      className="group p-4 bg-gradient-to-br from-emerald-50 to-violet-50 hover:from-emerald-100 hover:to-violet-100 rounded-xl border border-emerald-200 hover:border-emerald-300 transition-all duration-300 shadow-sm hover:shadow-md"
+                      className="group p-4 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md"
                     >
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-violet-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                        <div className="w-10 h-10 rounded-lg bg-blue-900 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                           <Icon icon={ProductIcons.GraduationCap} size="lg" className="text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -172,7 +172,7 @@ export default function ParafraseadoresUniversidadesPage() {
 
         {/* STATS SECTION */}
         <section className="max-w-5xl mx-auto mb-16 px-2">
-          <div className="bg-gradient-to-br from-emerald-500 to-violet-600 rounded-xl shadow-2xl p-8 md:p-12 text-white">
+          <div className="bg-blue-900 rounded-xl shadow-sm p-8 md:p-12 text-white">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
               Parafraseador en números
             </h2>
@@ -205,7 +205,7 @@ export default function ParafraseadoresUniversidadesPage() {
             </p>
             <a
               href="/parafraseador"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl transition-all duration-300"
             >
               <span>Usar Parafraseador</span>
               <span>→</span>

@@ -14,7 +14,7 @@ export default function CaptureEmail() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
-      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full flex flex-col items-center">
+      <div className="bg-white rounded-xl shadow-sm p-8 max-w-md w-full flex flex-col items-center">
         <h1 className="text-2xl font-extrabold text-[#a259f7] mb-2 text-center">¿Te interesan los planes premium?</h1>
         <p className="text-gray-700 mb-6 text-center">Dejanos tu email y te avisamos cuando estén disponibles. Además, podrás participar en la beta y recibir beneficios exclusivos.</p>
         {submitted ? (

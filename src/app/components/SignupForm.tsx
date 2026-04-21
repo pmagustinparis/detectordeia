@@ -169,7 +169,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
         </p>
         <a
           href="/auth/login"
-          className="inline-block bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl transition-all"
+          className="inline-block bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-xl transition-all"
         >
           Ir a Iniciar Sesión
         </a>
@@ -183,7 +183,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
       <button
         onClick={handleGoogleSignIn}
         type="button"
-        className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 border-2 border-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-xl transition-all shadow-md hover:shadow-lg"
+        className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 border-2 border-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-xl transition-all shadow-sm"
       >
         <svg className="w-5 h-5" viewBox="0 0 24 24">
           <path
@@ -230,7 +230,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-400"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-400"
           placeholder="Tu nombre"
         />
       </div>
@@ -247,7 +247,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-400"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 placeholder:text-gray-400"
           placeholder="tu@email.com"
         />
       </div>
@@ -265,7 +265,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             value={formData.password}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all pr-12 text-gray-900 placeholder:text-gray-400"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pr-12 text-gray-900 placeholder:text-gray-400"
             placeholder="Mínimo 8 caracteres"
           />
           <button
@@ -312,15 +312,15 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           id="terms"
           checked={acceptedTerms}
           onChange={(e) => setAcceptedTerms(e.target.checked)}
-          className="mt-1 w-4 h-4 text-violet-600 border-gray-300 rounded focus:ring-violet-500"
+          className="mt-1 w-4 h-4 text-blue-900 border-gray-300 rounded focus:ring-blue-500"
         />
         <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
           Acepto los{' '}
-          <a href="/terminos" target="_blank" className="text-violet-600 hover:underline">
+          <a href="/terminos" target="_blank" className="text-blue-900 hover:underline">
             términos y condiciones
           </a>{' '}
           y la{' '}
-          <a href="/privacidad" target="_blank" className="text-violet-600 hover:underline">
+          <a href="/privacidad" target="_blank" className="text-blue-900 hover:underline">
             política de privacidad
           </a>
         </label>
@@ -337,7 +337,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:cursor-not-allowed"
+        className="w-full bg-blue-900 hover:bg-blue-800 disabled:bg-gray-400 text-white font-bold py-3 px-8 rounded-xl transition-all disabled:cursor-not-allowed"
       >
         {loading ? (
           <span className="flex items-center justify-center gap-2">
@@ -367,7 +367,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
       {/* Link a login */}
       <p className="text-center text-sm text-gray-600">
         ¿Ya tienes cuenta?{' '}
-        <a href="/auth/login" className="text-violet-600 hover:underline font-semibold">
+        <a href="/auth/login" className="text-blue-900 hover:underline font-semibold">
           Inicia sesión
         </a>
       </p>

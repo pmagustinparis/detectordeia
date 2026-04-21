@@ -12,7 +12,7 @@ interface PremiumUpsellBlockProps {
 }
 
 const PremiumUpsellBlock: React.FC<PremiumUpsellBlockProps> = ({ textos }) => (
-  <div className="mt-8 bg-blue-900 border border-blue-800 rounded-2xl shadow-xl p-6 relative overflow-hidden">
+  <div className="mt-8 bg-blue-900 border border-blue-800 rounded-xl shadow-sm p-6 relative overflow-hidden">
     <div className="relative">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">

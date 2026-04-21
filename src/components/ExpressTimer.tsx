@@ -61,7 +61,7 @@ export default function ExpressTimer({ expiresAt, compact = false }: ExpressTime
         <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium cursor-help ${
           isExpired
             ? 'bg-gray-100 text-gray-600'
-            : 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm'
+            : 'bg-amber-500 text-white'
         }`}>
           <span>⚡</span>
           <span>{isExpired ? 'Expirado' : timeLeft}</span>
@@ -87,7 +87,7 @@ export default function ExpressTimer({ expiresAt, compact = false }: ExpressTime
     <div className={`rounded-xl p-4 ${
       isExpired
         ? 'bg-gray-100 border-2 border-gray-300'
-        : 'bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 shadow-lg'
+        : 'bg-amber-500'
     }`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">

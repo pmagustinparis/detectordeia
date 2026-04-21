@@ -1176,7 +1176,7 @@ export default function DetectorMain({
                     </p>
                     <a
                       href="/dashboard"
-                      className="inline-block text-xs font-bold text-gray-700 hover:text-slate-900 hover:underline"
+                      className="inline-block text-xs font-bold text-gray-700 hover:text-gray-900 hover:underline"
                     >
                       Crear cuenta gratis →
                     </a>

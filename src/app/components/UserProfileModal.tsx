@@ -78,11 +78,11 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 ">
+      <div className="bg-white rounded-xl shadow-lg max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in">
         {/* Header - Fixed */}
         <div className="text-center p-6 pb-4 shrink-0">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-500 to-purple-500 rounded-full mb-3">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-900 rounded-full mb-3">
             <span className="text-3xl">👋</span>
           </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-1">
@@ -96,7 +96,7 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
               <div
                 key={s}
                 className={`h-1.5 rounded-full transition-all ${
-                  s === step ? 'w-8 bg-violet-600' : 'w-1.5 bg-gray-300'
+                  s === step ? 'w-8 bg-blue-900' : 'w-1.5 bg-gray-300'
                 }`}
               />
             ))}
@@ -115,8 +115,8 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
                 onClick={() => setRole(r.value)}
                 className={`w-full p-3 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${
                   role === r.value
-                    ? 'border-violet-500 bg-violet-50'
-                    : 'border-gray-200 hover:border-violet-300 bg-white'
+                    ? 'border-blue-500 bg-blue-50'
+                    : 'border-gray-200 hover:border-blue-200 bg-white'
                 }`}
               >
                 <span className="text-2xl">{r.icon}</span>
@@ -138,8 +138,8 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
                 onClick={() => setPrimaryUse(use.value)}
                 className={`w-full p-3 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${
                   primaryUse === use.value
-                    ? 'border-violet-500 bg-violet-50'
-                    : 'border-gray-200 hover:border-violet-300 bg-white'
+                    ? 'border-blue-500 bg-blue-50'
+                    : 'border-gray-200 hover:border-blue-200 bg-white'
                 }`}
               >
                 <span className="text-2xl">{use.icon}</span>
@@ -161,8 +161,8 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
                 onClick={() => setDiscoverySource(source.value)}
                 className={`w-full p-3 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${
                   discoverySource === source.value
-                    ? 'border-violet-500 bg-violet-50'
-                    : 'border-gray-200 hover:border-violet-300 bg-white'
+                    ? 'border-blue-500 bg-blue-50'
+                    : 'border-gray-200 hover:border-blue-200 bg-white'
                 }`}
               >
                 <span className="text-2xl">{source.icon}</span>
@@ -187,7 +187,7 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
               <button
                 onClick={() => setStep(step + 1)}
                 disabled={!canContinue()}
-                className="flex-1 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:from-violet-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 px-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Siguiente
               </button>
@@ -195,7 +195,7 @@ export default function UserProfileModal({ isOpen, onClose, onComplete }: UserPr
               <button
                 onClick={handleSubmit}
                 disabled={!canContinue() || isSubmitting}
-                className="flex-1 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:from-violet-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 px-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Guardando...' : 'Completar'}
               </button>

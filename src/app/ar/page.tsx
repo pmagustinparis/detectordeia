@@ -53,7 +53,7 @@ export default async function DetectorArgentina() {
 
       {/* Contexto IA en Argentina */}
       <section className="max-w-3xl mx-auto mt-10 px-4">
-        <h2 className="text-2xl font-bold text-slate-800 mb-4">IA en las Universidades Argentinas: Lo que Debes Saber</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">IA en las Universidades Argentinas: Lo que Debes Saber</h2>
         <p className="text-gray-700 mb-4 leading-relaxed">
           La <strong>UBA (Universidad de Buenos Aires)</strong>, con más de 280,000 estudiantes, es la mayor universidad de Argentina y ha adoptado una postura de regulación con transparencia sobre el uso de IA. Permite usos de apoyo con declaración explícita, pero prohíbe la sustitución del trabajo del estudiante por IA.
         </p>
@@ -62,7 +62,7 @@ export default async function DetectorArgentina() {
         </p>
 
         {/* Universidades argentinas */}
-        <h3 className="text-lg font-semibold text-slate-700 mt-6 mb-3">Detector de IA para Universidades Argentinas</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mt-6 mb-3">Detector de IA para Universidades Argentinas</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
           {[
             { name: 'UBA Buenos Aires', slug: 'universidad-buenos-aires' },
@@ -85,7 +85,7 @@ export default async function DetectorArgentina() {
 
       {/* FAQs Argentina */}
       <section className="max-w-3xl mx-auto px-4 mb-10">
-        <h2 className="text-xl font-bold text-slate-800 mb-4">Preguntas Frecuentes sobre IA en Argentina</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Preguntas Frecuentes sobre IA en Argentina</h2>
         <div className="space-y-3">
           {[
             {
@@ -105,7 +105,7 @@ export default async function DetectorArgentina() {
               a: 'Sí, si usaste IA de forma significativa. La UBA requiere transparencia sobre el uso de herramientas. Agrega una nota al final del trabajo especificando qué herramienta usaste y con qué propósito. Consulta las indicaciones específicas de tu cátedra, ya que cada profesor puede tener sus propias reglas.'
             },
           ].map((faq, i) => (
-            <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-gray-800 text-sm">
+            <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-800 text-sm">
               <strong className="block mb-1">{faq.q}</strong>
               <p className="text-gray-600">{faq.a}</p>
             </div>
