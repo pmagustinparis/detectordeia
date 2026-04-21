@@ -227,7 +227,7 @@ export default function ParafraseadorComparisonPageClient({ comparison }: Props)
           <p className="text-lg mb-8 text-blue-900">Sin registro, sin tarjeta de crédito, 100% gratis para empezar.</p>
           <Link
             href={comparison.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <span>{comparison.cta.text}</span>
             <span>→</span>

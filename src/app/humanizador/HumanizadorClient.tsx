@@ -318,7 +318,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300 text-lg"
+                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300 text-lg"
               >
                 Probar el humanizador gratis
               </button>

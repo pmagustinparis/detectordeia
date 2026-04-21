@@ -14,7 +14,7 @@ export default function ComprobadorPageClient() {
       />
 
       {/* VALUE PROPS - Optimizado para keyword "comprobar" */}
-      <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8 animate-slide-in-bottom">
+      <section id="features" className="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-4 gap-6 px-2 mt-8">
         <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
           <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-3 shadow-md group-hover:shadow-sm transition-all">
             <Icon icon={ProductIcons.Confidence} size="2xl" className="text-gray-700" />

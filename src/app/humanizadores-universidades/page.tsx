@@ -60,7 +60,6 @@ export default function HumanizadoresUniversidadesPage() {
       <div className="min-h-screen bg-gray-100 pb-10 px-2">
         {/* HERO SECTION */}
         <section className="w-full flex flex-col items-center justify-center pt-6 pb-8 px-2 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl -z-10 animate-float"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 hidden" style={{animationDelay: '1s'}}></div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-3 mt-2 leading-tight ">

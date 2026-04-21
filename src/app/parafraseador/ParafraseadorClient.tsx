@@ -63,7 +63,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
 
             <a
               href="/pricing"
-              className="inline-block w-full md:w-auto px-8 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              className="inline-block w-full md:w-auto px-8 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm transition-all duration-300 text-center"
             >
               Ver Planes
             </a>
@@ -244,7 +244,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
                 </p>
                 <a
                   href="/humanizador"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm transition-all duration-300"
                 >
                   <span>Probar el Humanizador</span>
                   <span>→</span>
@@ -268,7 +268,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
                 </p>
                 <a
                   href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm transition-all duration-300"
                 >
                   <span>Probar el Detector</span>
                   <span>→</span>
@@ -294,7 +294,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
+                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm transition-all duration-300 text-lg"
               >
                 Probar el parafraseador gratis
               </button>

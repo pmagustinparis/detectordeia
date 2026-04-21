@@ -43,7 +43,7 @@ export default function UseCasePageClient({ useCase }: Props) {
         </p>
         <Link
           href={useCase.cta.url}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm transition-all duration-300"
         >
           <span>{useCase.cta.text}</span>
           <span>→</span>
@@ -66,7 +66,7 @@ export default function UseCasePageClient({ useCase }: Props) {
               key={index}
               className="bg-white rounded-xl shadow-lg border border-blue-200 p-6 group hover:border-blue-200 transition-all"
             >
-              <div className="w-14 h-14 rounded-2xl bg-blue-900 flex items-center justify-center mb-4 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <div className="w-14 h-14 rounded-2xl bg-blue-900 flex items-center justify-center mb-4 shadow-md group-hover:shadow-lg transition-all">
                 <span className="text-3xl">{benefit.icon}</span>
               </div>
               <h3 className="font-bold text-lg mb-2 text-gray-800">{benefit.title}</h3>
@@ -214,7 +214,7 @@ export default function UseCasePageClient({ useCase }: Props) {
           </p>
           <Link
             href={useCase.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm transition-all duration-300"
           >
             <span>{useCase.cta.text}</span>
             <span>→</span>

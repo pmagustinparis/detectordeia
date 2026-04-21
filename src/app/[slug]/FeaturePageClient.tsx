@@ -43,7 +43,7 @@ export default function FeaturePageClient({ feature }: Props) {
         </p>
         <Link
           href={feature.cta.url}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
         >
           <span>{feature.cta.text}</span>
           <span>→</span>
@@ -66,7 +66,7 @@ export default function FeaturePageClient({ feature }: Props) {
               key={index}
               className="bg-white rounded-xl shadow-sm border border-emerald-50 p-6 group hover:border-emerald-200 transition-all"
             >
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-4 shadow-md group-hover:shadow-sm group-hover:scale-110 transition-all">
+              <div className="w-14 h-14 rounded-xl bg-blue-900 flex items-center justify-center mb-4 shadow-sm transition-all">
                 <span className="text-3xl">{benefit.icon}</span>
               </div>
               <h3 className="font-bold text-lg mb-2 text-gray-800">{benefit.title}</h3>
@@ -90,7 +90,7 @@ export default function FeaturePageClient({ feature }: Props) {
           <ol className="space-y-6">
             {feature.howToUse.map((step, index) => (
               <li key={index} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 text-white font-bold shadow-md">
+                <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0 text-white font-bold shadow-md">
                   {index + 1}
                 </div>
                 <p className="text-gray-700 leading-relaxed pt-1.5">{step}</p>
@@ -111,7 +111,7 @@ export default function FeaturePageClient({ feature }: Props) {
           </p>
           <Link
             href={feature.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-600 font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
           >
             <span>{feature.cta.text}</span>
             <span>→</span>
@@ -165,7 +165,7 @@ export default function FeaturePageClient({ feature }: Props) {
           </p>
           <Link
             href={feature.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
           >
             <span>{feature.cta.text}</span>
             <span>→</span>
@@ -175,7 +175,7 @@ export default function FeaturePageClient({ feature }: Props) {
 
       {/* BREADCRUMBS FOOTER */}
       <div className="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
-        <Link href="/" className="hover:text-emerald-600 transition-colors">
+        <Link href="/" className="hover:text-blue-900 transition-colors">
           Inicio
         </Link>
         <span className="mx-2">›</span>

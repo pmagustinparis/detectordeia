@@ -110,7 +110,7 @@ export default function GlossaryPageClient({ term }: Props) {
               key={index}
               className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-blue-200 p-6 hover:border-blue-200 hover:shadow-sm transition-all group"
             >
-              <div className="w-14 h-14 rounded-xl bg-blue-900 flex items-center justify-center mb-4 shadow-sm group-hover:shadow-sm group-hover:scale-110 transition-all">
+              <div className="w-14 h-14 rounded-xl bg-blue-900 flex items-center justify-center mb-4 shadow-sm group-hover:shadow-sm transition-all">
                 <span className="text-3xl">{char.icon}</span>
               </div>
               <h3 className="font-bold text-lg mb-2 text-gray-800">{char.title}</h3>
@@ -219,7 +219,7 @@ export default function GlossaryPageClient({ term }: Props) {
             </p>
             <Link
               href={term.cta.url}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
             >
               <span>{term.cta.text}</span>
               <span>→</span>

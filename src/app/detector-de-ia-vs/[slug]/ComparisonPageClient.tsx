@@ -288,7 +288,7 @@ export default function ComparisonPageClient({ comparison }: Props) {
           </p>
           <Link
             href={comparison.cta.url}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm transition-all duration-300"
           >
             <span>{comparison.cta.text}</span>
             <span>→</span>

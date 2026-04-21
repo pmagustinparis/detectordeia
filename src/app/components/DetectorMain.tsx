@@ -1293,7 +1293,7 @@ export default function DetectorMain({
 
       {/* Banner de incentivo para registro - Anónimos que ya usaron 2+ veces */}
       {!userStatus.isAuthenticated && usageCount >= 2 && (
-        <div className="max-w-5xl mx-auto mt-8 px-2 animate-slide-in-bottom">
+        <div className="max-w-5xl mx-auto mt-8 px-2">
           <div className="bg-gray-50 border border-gray-200 rounded-xl shadow-sm p-6">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">

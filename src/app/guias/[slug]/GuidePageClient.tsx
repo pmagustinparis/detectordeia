@@ -322,7 +322,7 @@ export default function GuidePageClient({ guide }: Props) {
             </p>
             <Link
               href={guide.cta.url}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
             >
               <span>{guide.cta.text}</span>
               <span>→</span>
