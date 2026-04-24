@@ -745,7 +745,7 @@ export default function DetectorMain({
                 </div>
                 
                 {/* CTA premium compacto — solo si no hay flujo humanizador activo */}
-                {result.probability < 60 && (
+                {result.probability < 60 && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                   <div className="w-full flex flex-col items-center my-3">
                     <a
                       href="/pricing"
