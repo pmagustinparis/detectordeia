@@ -88,7 +88,7 @@ export async function POST(request: Request) {
           message:
             rateLimit.userType === 'anonymous'
               ? `Usaste tus ${rateLimit.limit} humanizaciones gratis hoy. Regístrate para obtener más humanizaciones diarias.`
-              : `Alcanzaste el límite de ${rateLimit.limit} humanizaciones diarias. Vuelve mañana o actualiza a Pro para humanizaciones ilimitadas.`,
+              : `Alcanzaste el límite de ${rateLimit.limit} humanizaciones diarias. Vuelve mañana o actualiza a Premium para humanizaciones ilimitadas.`,
           limit: rateLimit.limit,
           remaining: rateLimit.remaining,
           resetAt: rateLimit.resetAt,

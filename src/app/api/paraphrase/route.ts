@@ -88,7 +88,7 @@ export async function POST(request: Request) {
           message:
             rateLimit.userType === 'anonymous'
               ? `Usaste tus ${rateLimit.limit} paráfrasis gratis hoy. Regístrate para obtener más paráfrasis diarias.`
-              : `Alcanzaste el límite de ${rateLimit.limit} paráfrasis diarias. Vuelve mañana o actualiza a Pro para paráfrasis ilimitadas.`,
+              : `Alcanzaste el límite de ${rateLimit.limit} paráfrasis diarias. Vuelve mañana o actualiza a Premium para paráfrasis ilimitadas.`,
           limit: rateLimit.limit,
           remaining: rateLimit.remaining,
           resetAt: rateLimit.resetAt,

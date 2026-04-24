@@ -192,7 +192,7 @@ export async function POST(request: Request) {
           message:
             rateLimit.userType === 'anonymous'
               ? `Usaste tus ${rateLimit.limit} análisis gratis hoy. Regístrate para obtener más análisis diarios.`
-              : `Alcanzaste el límite de ${rateLimit.limit} análisis diarios. Vuelve mañana o actualiza a Pro para análisis ilimitados.`,
+              : `Alcanzaste el límite de ${rateLimit.limit} análisis diarios. Vuelve mañana o actualiza a Premium para análisis ilimitados.`,
           limit: rateLimit.limit,
           remaining: rateLimit.remaining,
           resetAt: rateLimit.resetAt,
