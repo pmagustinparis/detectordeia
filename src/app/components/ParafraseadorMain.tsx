@@ -112,10 +112,7 @@ export default function ParafraseadorMain({
         setIsLoadingUserStatus(false);
       }
     }
-    // If initial status was provided server-side, skip the fetch entirely
-    if (!initialUserStatus) {
-      fetchUserStatus();
-    }
+    fetchUserStatus();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -669,7 +666,7 @@ export default function ParafraseadorMain({
         <button
           onClick={handleParaphrase}
           disabled={isParaphrasing || !isButtonEnabled()}
-          className={`mt-2 w-full bg-gray-50 hover:bg-gray-50 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isParaphrasing ? 'animate-pulse-glow' : ''}`}
+          className={`mt-2 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isParaphrasing ? 'animate-pulse-glow' : ''}`}
           aria-label="Parafrasear texto"
         >
           {isParaphrasing ? 'Parafraseando...' : 'Parafrasear Texto'}
@@ -687,7 +684,7 @@ export default function ParafraseadorMain({
 
           {/* Header con icono */}
           <div className="flex items-center gap-2 mb-3">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-50 shadow-md">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-600 shadow-sm">
               <span className="text-white text-lg"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
             </div>
             <div className="flex flex-col">

@@ -231,7 +231,7 @@ export default function DashboardClient({ user, usageStats, history, planType, h
                   ? 'bg-blue-100 text-blue-900'
                   : 'bg-green-100 text-green-700'
               }`}>
-                {planType === 'premium' ? 'Plan Pro' : 'Plan Free'}
+                {planType === 'premium' ? 'Plan Premium' : 'Plan Free'}
               </span>
             </div>
           </div>

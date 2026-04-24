@@ -165,10 +165,7 @@ export default function DetectorMain({
         setIsLoadingUserStatus(false);
       }
     }
-    // If initial status was provided server-side, skip the fetch entirely
-    if (!initialUserStatus) {
-      fetchUserStatus();
-    }
+    fetchUserStatus();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
