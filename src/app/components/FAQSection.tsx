@@ -10,11 +10,11 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: '¿Es gratis el humanizador de IA?',
-    answer: 'Sí, puedes usar el humanizador de forma completamente gratuita sin necesidad de registro. El plan gratuito te permite humanizar hasta 600 caracteres por uso, con usos ilimitados al día.'
+    answer: 'Sí, puedes usar el humanizador de forma completamente gratuita sin necesidad de registro. Sin registro: 3 usos diarios. Con registro gratuito: 15 usos diarios. El límite es de 600 caracteres por humanización en el plan gratuito.'
   },
   {
     question: '¿Cuántas veces puedo usar el humanizador gratis?',
-    answer: '¡Todas las veces que quieras! No hay límite diario de usos en el plan gratuito. Solo hay un límite de 600 caracteres por cada humanización.'
+    answer: 'Con registro gratuito podés humanizar hasta 15 veces por día. Sin registro: 3 usos diarios. Para usos ilimitados, el plan Premium ($12.99/mes) o Express ($3.99/24h) eliminan todos los límites.'
   },
   {
     question: '¿El humanizador cambia el significado de mi texto?',
@@ -30,11 +30,11 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
-    answer: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. El Modo Avanzado (próximamente en Premium) ofrece humanización más profunda con adaptación regional (LATAM vs España) y mayor libertad de reformulación.'
+    answer: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. Los modos avanzados (Formal, Creativo, Simplificado, Académico) están disponibles con el plan Premium o Express, y permiten adaptar el tono y estilo según tu necesidad.'
   },
   {
-    question: '¿Cuándo estará disponible el plan Premium?',
-    answer: 'Estamos trabajando en el plan Premium que estará disponible próximamente. Incluirá límites más altos (15,000 caracteres), Modo Avanzado, historial, carga de archivos y más. Puedes dejar tu email para ser avisado cuando esté listo.'
+    question: '¿Qué incluye el plan Premium?',
+    answer: 'El plan Premium ($12.99/mes o $124.68/año) incluye usos y caracteres ilimitados en las 3 herramientas (Detector, Humanizador y Parafraseador), los 5 modos de humanización y paráfrasis, y subida de archivos PDF/DOCX. También está disponible el pase Express ($3.99/24h o $8.99/7 días) para necesidades puntuales.'
   },
   {
     question: '¿Puedo usar el texto humanizado para trabajos académicos?',

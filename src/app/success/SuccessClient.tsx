@@ -46,7 +46,7 @@ export default function SuccessClient({
 
         {/* Título */}
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          ¡Bienvenido a Pro! 🎉
+          ¡Bienvenido a Premium! 🎉
         </h1>
 
         {/* Descripción */}
@@ -65,7 +65,7 @@ export default function SuccessClient({
             <div className="flex justify-between">
               <span className="text-gray-600">Plan:</span>
               <span className="font-medium text-gray-900">
-                {planType === 'premium' ? 'Pro' : 'Free'}
+                {planType === 'premium' ? 'Premium' : 'Free'}
               </span>
             </div>
             {sessionId && (
@@ -87,15 +87,15 @@ export default function SuccessClient({
           <ul className="space-y-2 text-sm text-gray-600">
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>Detector: Usos ilimitados, hasta 15,000 caracteres</span>
+              <span>Detector: Usos y caracteres ilimitados</span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>Humanizador: Usos ilimitados, hasta 15,000 caracteres</span>
+              <span>Humanizador: Usos y caracteres ilimitados</span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>Parafraseador: Usos ilimitados, hasta 15,000 caracteres</span>
+              <span>Parafraseador: Usos y caracteres ilimitados</span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />

@@ -1108,7 +1108,7 @@ export default function DetectorMain({
                         </ul>
                       </div>
 
-                      {/* LO QUE OBTENDRÍAS (PRO) */}
+                      {/* LO QUE OBTENDRÍAS (PREMIUM) */}
                       <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 relative">
                         <div className="absolute -top-2 -right-2">
                           <span className="bg-blue-900 text-white text-xs px-3 py-1 rounded-full font-bold shadow-sm">
@@ -1210,7 +1210,7 @@ export default function DetectorMain({
                   <div className="text-xs text-gray-700 mb-2">
                     <ul className="text-left space-y-1">
                       <li>• Usos ilimitados en todas las herramientas</li>
-                      <li>• Hasta 15,000 caracteres por análisis</li>
+                      <li>• Hasta 100,000 caracteres por análisis</li>
                       <li>• Subida de archivos (PDF, DOCX, TXT)</li>
                       <li>• 5 modos premium en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>

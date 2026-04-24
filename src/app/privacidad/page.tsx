@@ -35,7 +35,7 @@ export default function Privacidad() {
         <li>Información de autenticación (tokens de sesión)</li>
       </ul>
 
-      <p className="text-gray-700 mb-2"><strong>Usuarios Premium (Plan Pro):</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Usuarios Plan Premium:</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Todos los datos de usuarios registrados</li>
         <li>Información de pago procesada por Stripe (nombre, email, método de pago)</li>

@@ -20,7 +20,7 @@ export default function Terminos() {
         <li><strong>Humanizador de IA:</strong> Reescribe textos generados por IA para que parezcan más humanos</li>
         <li><strong>Parafraseador:</strong> Reformula textos manteniendo el significado original</li>
       </ul>
-      <p className="text-gray-700 mb-4">Ofrecemos un Plan Free gratuito, Plan Express (pase de 24 horas) y Plan Pro (suscripción mensual/anual) con funcionalidades adicionales.</p>
+      <p className="text-gray-700 mb-4">Ofrecemos un Plan Free gratuito, Plan Express (pase de 24 horas o 7 días) y Plan Premium (suscripción mensual/anual) con funcionalidades adicionales.</p>
 
       <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">2. Planes y Servicios</h2>
       <p className="text-gray-700 mb-2"><strong>Plan Free:</strong></p>
@@ -41,7 +41,7 @@ export default function Terminos() {
         <li>Subida de archivos (PDF, DOCX, TXT)</li>
         <li>Perfecto para entregas urgentes</li>
       </ul>
-      <p className="text-gray-700 mb-2"><strong>Plan Pro ($12.99/mes o $124.68/año):</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Plan Premium ($12.99/mes o $124.68/año):</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Usos ilimitados diarios</li>
         <li>Caracteres ilimitados por análisis</li>

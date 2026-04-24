@@ -102,7 +102,7 @@ export const paraphraserComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Qué herramientas incluye el plan Premium de DetectorDeIA?',
-        answer: 'El plan Premium incluye Parafraseador sin límites (hasta 15,000 caracteres por sesión), Humanizador con 5 modos, y Detector de IA ilimitado. Todo por $12.99/mes, sin costos adicionales por cada herramienta.',
+        answer: 'El plan Premium incluye Parafraseador sin límites (hasta 100,000 caracteres por sesión), Humanizador con 5 modos, y Detector de IA ilimitado. Todo por $12.99/mes, sin costos adicionales por cada herramienta.',
       },
     ],
     cta: {
@@ -150,7 +150,7 @@ export const paraphraserComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cuánto tiempo tarda en parafrasear un texto?',
-        answer: 'Nuestro Parafraseador procesa textos de hasta 15,000 caracteres en segundos. No hay listas de espera ni procesos de revisión manual. Podés parafrasear múltiples textos en una sola sesión.',
+        answer: 'Nuestro Parafraseador procesa textos de hasta 100,000 caracteres en segundos (con plan Premium). No hay listas de espera ni procesos de revisión manual. Podés parafrasear múltiples textos en una sola sesión.',
       },
     ],
     cta: {

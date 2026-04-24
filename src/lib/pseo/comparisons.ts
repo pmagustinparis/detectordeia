@@ -39,8 +39,8 @@ export const comparisons: ComparisonPage[] = [
       { feature: 'Detección de plagio', detectordeia: false, competitor: true },
       { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
       { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
-      { feature: 'Caracteres por análisis', detectordeia: 'Hasta 15,000 (PRO)', competitor: 'Limitado por créditos' },
-      { feature: 'Soporte técnico', detectordeia: 'Email prioritario (PRO)', competitor: 'Solo institucional' }
+      { feature: 'Caracteres por análisis', detectordeia: 'Hasta 100,000 (Premium)', competitor: 'Limitado por créditos' },
+      { feature: 'Soporte técnico', detectordeia: 'Email prioritario (Premium)', competitor: 'Solo institucional' }
     ],
 
     whenToUseCompetitor: 'Turnitin es la mejor opción si necesitás detección de plagio además de IA, o si tu institución ya tiene licencia. Para detección de IA pura en español con presupuesto limitado, DetectorDeIA es superior.',
@@ -109,7 +109,7 @@ export const comparisons: ComparisonPage[] = [
       { feature: 'Precio', detectordeia: '$12.99/mes', competitor: '$19.95/mes' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Traducción automática' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '70-80%' },
-      { feature: 'Límite de palabras', detectordeia: 'Ilimitado (PRO)', competitor: '5,000 palabras/mes' },
+      { feature: 'Límite de palabras', detectordeia: 'Ilimitado (Premium)', competitor: '5,000 palabras/mes' },
       { feature: 'Modelos IA usados', detectordeia: 'GPT-3.5 + GPT-4o-mini', competitor: 'Modelo propietario' },
       { feature: 'Parafraseador', detectordeia: true, competitor: true },
       { feature: 'Humanizador', detectordeia: true, competitor: true },
@@ -181,7 +181,7 @@ export const comparisons: ComparisonPage[] = [
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '75-85%' },
       { feature: 'Análisis por texto', detectordeia: 'Multi-pasada (2-3)', competitor: 'Una sola pasada' },
       { feature: 'Métricas avanzadas', detectordeia: '5 métricas lingüísticas', competitor: 'Básicas' },
-      { feature: 'Caracteres por análisis', detectordeia: '15,000 (PRO)', competitor: 'Variable por créditos' },
+      { feature: 'Caracteres por análisis', detectordeia: 'Hasta 100,000 (Premium)', competitor: 'Variable por créditos' },
       { feature: 'Idiomas soportados', detectordeia: 'Español (optimizado)', competitor: '100+ idiomas' },
       { feature: 'Velocidad', detectordeia: '< 5 segundos', competitor: '10-20 segundos' },
       { feature: 'Humanizador incluido', detectordeia: true, competitor: true },
@@ -255,7 +255,7 @@ export const comparisons: ComparisonPage[] = [
       { feature: 'Precisión en inglés', detectordeia: 'No optimizado', competitor: '90%+' },
       { feature: 'Modelos usados', detectordeia: 'GPT-3.5 + GPT-4o-mini', competitor: 'Modelo propietario' },
       { feature: 'Análisis por texto', detectordeia: 'Multi-pasada (2-3)', competitor: 'Una pasada' },
-      { feature: 'Caracteres por análisis', detectordeia: '15,000 (PRO)', competitor: '50,000 (Premium)' },
+      { feature: 'Caracteres por análisis', detectordeia: 'Hasta 100,000 (Premium)', competitor: '50,000 (Premium)' },
       { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
       { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
       { feature: 'API disponible', detectordeia: false, competitor: true }
@@ -394,18 +394,18 @@ export const comparisons: ComparisonPage[] = [
 
     comparisons: [
       { feature: 'Precio gratis', detectordeia: '15 análisis/día', competitor: '3 análisis/día' },
-      { feature: 'Precio PRO', detectordeia: '$12.99/mes ilimitado', competitor: 'No tiene plan premium' },
+      { feature: 'Precio Premium', detectordeia: '$12.99/mes ilimitado', competitor: 'No tiene plan premium' },
       { feature: 'Anuncios', detectordeia: 'Sin anuncios', competitor: 'Publicidad invasiva' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Genérico multi-idioma' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '60-70%' },
       { feature: 'Análisis por texto', detectordeia: 'Multi-pasada', competitor: 'Una pasada simple' },
-      { feature: 'Caracteres límite gratis', detectordeia: '5,000', competitor: '15,000' },
+      { feature: 'Caracteres límite gratis', detectordeia: '1,200', competitor: '15,000' },
       { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
       { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
       { feature: 'Confiabilidad', detectordeia: 'Alta (metodología transparente)', competitor: 'Media (frecuentes falsos positivos)' }
     ],
 
-    whenToUseCompetitor: 'ZeroGPT es útil si necesitás analizar textos MUY largos en inglés (15,000+ caracteres) de forma gratuita. Para español, textos cortos/medios (<5,000 caracteres), o uso frecuente, DetectorDeIA es superior.',
+    whenToUseCompetitor: 'ZeroGPT es útil si necesitás analizar textos MUY largos en inglés (15,000+ caracteres) de forma gratuita. Para español, textos cortos/medios (<1,200 caracteres), o uso frecuente, DetectorDeIA es superior.',
 
     pricing: {
       detectordeia: 'Gratis (15/día) o $12.99/mes ilimitado',
@@ -427,7 +427,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cuál tiene mejor límite de caracteres gratis?',
-        answer: 'ZeroGPT: 15,000 caracteres (pero solo 3 usos/día). DetectorDeIA: 5,000 caracteres (pero 15 usos/día). Si necesitás analizar muchos textos cortos (común en académico), DetectorDeIA es mejor. Si analizás pocos textos muy largos, ZeroGPT.'
+        answer: 'ZeroGPT: 15,000 caracteres (pero solo 3 usos/día). DetectorDeIA: 1,200 caracteres gratis (pero 15 usos/día), o ilimitados con Premium. Si necesitás analizar muchos textos, DetectorDeIA es mejor. Si analizás pocos textos muy largos en inglés, ZeroGPT.'
       }
     ],
 
@@ -601,7 +601,7 @@ export const comparisons: ComparisonPage[] = [
     whyBetter: [
       'Precio fijo ($12.99/mes ilimitado) vs Undetectable sistema de créditos variable',
       'Optimizado 100% para español vs Undetectable diseñado para inglés',
-      'Sin créditos que administrar - usos ilimitados en PRO',
+      'Sin créditos que administrar - usos ilimitados en Premium',
       'Humanizador con 5 modos en español vs Undetectable genérico',
       'Incluye Parafraseador adicional sin costo extra',
       'Detección multi-pasada más precisa en español',
@@ -643,7 +643,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿DetectorDeIA tiene límite de palabras como Undetectable.AI?',
-        answer: 'Plan FREE: 5,000 caracteres por análisis/humanización. plan premium: 15,000 caracteres (~3,000 palabras) por análisis, pero ILIMITADOS análisis/mes. Undetectable.AI limita palabras totales al mes (ej: 250 palabras/mes en plan básico).'
+        answer: 'Plan FREE: 1,200 caracteres por análisis (600 en Humanizador/Parafraseador). Plan Premium: hasta 100,000 caracteres por uso, análisis ILIMITADOS al mes. Undetectable.AI limita palabras totales al mes (ej: 250 palabras/mes en plan básico).'
       }
     ],
 
@@ -963,11 +963,11 @@ export const comparisons: ComparisonPage[] = [
       'Optimizado específicamente para español de España y LATAM vs orientación principalmente a inglés de Scribbr',
       'Análisis instantáneo en segundos vs Scribbr que puede tardar minutos',
       'Incluye Humanizador y Parafraseador en el mismo plan sin coste adicional',
-      'Sin límite de caracteres en plan Pro (hasta 15,000 por análisis)',
+      'Sin límite de caracteres en plan Premium (hasta 100,000 por análisis)',
       'Interfaz en español completo, sin necesidad de traducción'
     ],
     comparisons: [
-      { feature: 'Precio detector IA', detectordeia: 'Gratis (básico) / $12.99/mes (Pro)', competitor: 'De pago por verificación' },
+      { feature: 'Precio detector IA', detectordeia: 'Gratis (básico) / $12.99/mes (Premium)', competitor: 'De pago por verificación' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Parcial (centrado en inglés)' },
       { feature: 'Especialización', detectordeia: 'Solo detección de IA', competitor: 'Corrección de tesis + plagio + IA' },
       { feature: 'Tiempo de análisis', detectordeia: 'Instantáneo (<5 seg)', competitor: '1-5 minutos' },
@@ -980,7 +980,7 @@ export const comparisons: ComparisonPage[] = [
     ],
     whenToUseCompetitor: 'Scribbr es ideal si necesitás revisión humana de tu tesis o trabajo académico, corrección de estilo APA/MLA y detección de plagio todo en uno. Para detección de IA pura en español con coste cero, DetectorDeIA es la opción más eficiente.',
     pricing: {
-      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $124.68/año',
+      detectordeia: 'Gratis (básico) / $12.99/mes (Premium) / $124.68/año',
       competitor: 'Desde €9.95 por verificación de plagio; precio variable para revisión de tesis'
     },
     faqs: [
@@ -1031,7 +1031,7 @@ export const comparisons: ComparisonPage[] = [
       'Acceso individual inmediato sin trámites institucionales vs iThenticate que requiere suscripción editorial o universitaria',
       'Análisis instantáneo en segundos vs iThenticate que puede tardar más en documentos largos',
       'Optimizado para español de España y LATAM, idiomas frecuentemente con menos cobertura en plataformas angloparlantes',
-      'Incluye Humanizador y Parafraseador en el mismo plan Pro',
+      'Incluye Humanizador y Parafraseador en el mismo plan Premium',
       'Interfaz completamente en español sin necesidad de traducción',
       'Ideal para verificación previa antes de la entrega a iThenticate o a revistas'
     ],
@@ -1049,7 +1049,7 @@ export const comparisons: ComparisonPage[] = [
     ],
     whenToUseCompetitor: 'iThenticate es el estándar para investigadores que deben verificar papers antes de someter a revistas científicas indexadas, y para doctorandos que requieren certificado de originalidad. Para verificación de IA previa y para uso sin licencia institucional, DetectorDeIA es más accesible.',
     pricing: {
-      detectordeia: 'Gratis (básico) / $12.99/mes (Pro) / $124.68/año',
+      detectordeia: 'Gratis (básico) / $12.99/mes (Premium) / $124.68/año',
       competitor: 'Suscripción institucional requerida; precio variable según institución (generalmente $100-$500/año para acceso individual editorial)'
     },
     faqs: [

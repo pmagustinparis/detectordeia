@@ -49,7 +49,7 @@ export const features: FeaturePage[] = [
       {
         icon: '🚀',
         title: '5 Modos PRO',
-        description: 'plan premium ($10/mes): Modo Formal, Creativo, Simplificado, Académico + 15,000 caracteres. Plan FREE: Modo Estándar (muy efectivo).'
+        description: 'plan premium ($12.99/mes): Modo Formal, Creativo, Simplificado, Académico + hasta 100,000 caracteres. Plan FREE: Modo Estándar (muy efectivo).'
       }
     ],
 
@@ -65,11 +65,11 @@ export const features: FeaturePage[] = [
     faqs: [
       {
         question: '¿Es realmente gratis el humanizador de IA?',
-        answer: 'SÍ. Ofrecemos 3 usos diarios sin registro (solo visitá la página). Si te registrás gratis, obtenés 15 usos diarios. El plan FREE permite humanizar hasta 600 caracteres por uso. Si necesitás más (hasta 15,000 caracteres), el plan premium cuesta solo $10/mes con usos ilimitados.'
+        answer: 'SÍ. Ofrecemos 3 usos diarios sin registro (solo visitá la página). Si te registrás gratis, obtenés 15 usos diarios. El plan FREE permite humanizar hasta 600 caracteres por uso. Si necesitás más (hasta hasta 100,000 caracteres), el plan premium cuesta solo $12.99/mes con usos ilimitados.'
       },
       {
         question: '¿Cuál es la diferencia entre el plan FREE y PRO?',
-        answer: 'Plan FREE: 15 usos diarios, 600 caracteres por uso, Modo Estándar (muy efectivo). plan premium ($10/mes): Usos ILIMITADOS, 15,000 caracteres por uso, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), subida de archivos PDF/DOCX, historial de humanizaciones.'
+        answer: 'Plan FREE: 15 usos diarios, 600 caracteres por uso, Modo Estándar (muy efectivo). plan premium ($12.99/mes): Usos ILIMITADOS, hasta 100,000 caracteres por uso, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), subida de archivos PDF/DOCX, historial de humanizaciones.'
       },
       {
         question: '¿El humanizador cambia el significado de mi texto?',
@@ -176,7 +176,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Es gratis parafrasear textos online?',
-        answer: 'SÍ. Plan FREE: 15 usos diarios gratis (con registro), 600 caracteres por paráfrasis. Sin registro: 3 usos diarios. plan premium ($10/mes): usos ILIMITADOS, 15,000 caracteres, 5 modos, archivos PDF/DOCX.'
+        answer: 'SÍ. Plan FREE: 15 usos diarios gratis (con registro), 600 caracteres por paráfrasis. Sin registro: 3 usos diarios. plan premium ($12.99/mes): usos ILIMITADOS, hasta 100,000 caracteres, 5 modos, archivos PDF/DOCX.'
       },
       {
         question: '¿Cuál es la diferencia entre parafrasear y resumir?',
@@ -192,7 +192,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Cuántas veces puedo parafrasear gratis por día?',
-        answer: 'Plan FREE con registro: 15 paráfrasis diarias (600 caracteres cada una). Sin registro: 3 paráfrasis diarias compartidas entre las 3 herramientas. plan premium: paráfrasis ILIMITADAS de hasta 15,000 caracteres.'
+        answer: 'Plan FREE con registro: 15 paráfrasis diarias (600 caracteres cada una). Sin registro: 3 paráfrasis diarias compartidas entre las 3 herramientas. plan premium: paráfrasis ILIMITADAS de hasta hasta 100,000 caracteres.'
       },
       {
         question: '¿Qué modos de parafraseo están disponibles?',
@@ -687,7 +687,7 @@ export const features: FeaturePage[] = [
       {
         icon: '🚀',
         title: '5 Modos PRO + Modo Estándar FREE',
-        description: 'Plan FREE: Modo Estándar (muy efectivo). plan premium ($10/mes): Formal, Creativo, Simplificado, Académico + 15,000 caracteres, usos ilimitados.'
+        description: 'Plan FREE: Modo Estándar (muy efectivo). plan premium ($12.99/mes): Formal, Creativo, Simplificado, Académico + hasta 100,000 caracteres, usos ilimitados.'
       }
     ],
 
@@ -712,7 +712,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Es realmente gratis humanizar ChatGPT?',
-        answer: 'SÍ. Plan FREE: 15 humanizaciones diarias (con registro gratuito), 600 caracteres por uso, Modo Estándar. Sin registro: 3 humanizaciones diarias. plan premium ($10/mes): humanizaciones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. Puedes usar FREE para siempre sin pagar.'
+        answer: 'SÍ. Plan FREE: 15 humanizaciones diarias (con registro gratuito), 600 caracteres por uso, Modo Estándar. Sin registro: 3 humanizaciones diarias. plan premium ($12.99/mes): humanizaciones ILIMITADAS, hasta 100,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. Puedes usar FREE para siempre sin pagar.'
       },
       {
         question: '¿El humanizador cambia el significado del texto de ChatGPT?',
@@ -794,7 +794,7 @@ export const features: FeaturePage[] = [
       {
         icon: '🚀',
         title: '5 Modos de Conversión',
-        description: 'Plan FREE: Modo Estándar. plan premium ($10/mes): Formal (profesional), Creativo (personalidad), Simplificado (fácil), Académico (universitario) + 15,000 caracteres.'
+        description: 'Plan FREE: Modo Estándar. plan premium ($12.99/mes): Formal (profesional), Creativo (personalidad), Simplificado (fácil), Académico (universitario) + hasta 100,000 caracteres.'
       }
     ],
 
@@ -819,7 +819,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Es realmente gratis convertir texto de IA a humano?',
-        answer: 'SÍ. Plan FREE: 15 conversiones diarias (con registro gratuito), 600 caracteres por conversión, Modo Estándar (muy efectivo). Sin registro: 3 conversiones diarias. plan premium ($10/mes): conversiones ILIMITADAS, 15,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. FREE es suficiente para la mayoría de usuarios.'
+        answer: 'SÍ. Plan FREE: 15 conversiones diarias (con registro gratuito), 600 caracteres por conversión, Modo Estándar (muy efectivo). Sin registro: 3 conversiones diarias. plan premium ($12.99/mes): conversiones ILIMITADAS, hasta 100,000 caracteres, 5 modos (Estándar, Formal, Creativo, Simplificado, Académico), archivos PDF/DOCX. FREE es suficiente para la mayoría de usuarios.'
       },
       {
         question: '¿El texto convertido pasará los detectores de IA?',
@@ -831,7 +831,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Cuánto tarda en convertir texto de IA a humano?',
-        answer: 'Entre 3-8 segundos dependiendo del largo y modo. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. plan premium (Modos avanzados): ~5-8 segundos para textos largos (hasta 15,000 caracteres). Mucho más rápido que reescribir manualmente eliminando patrones de IA.'
+        answer: 'Entre 3-8 segundos dependiendo del largo y modo. Plan FREE (Modo Estándar): ~3-5 segundos para 600 caracteres. plan premium (Modos avanzados): ~5-8 segundos para textos largos (hasta hasta 100,000 caracteres). Mucho más rápido que reescribir manualmente eliminando patrones de IA.'
       },
       {
         question: '¿Puedo usar texto convertido para trabajos académicos?',

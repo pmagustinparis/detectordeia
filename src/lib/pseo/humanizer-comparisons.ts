@@ -112,7 +112,7 @@ export const humanizerComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cuántas palabras puedo humanizar con el plan gratuito?',
-        answer: 'El plan gratuito permite humanizar textos de hasta 1,200 caracteres (aprox. 200 palabras) hasta 3 veces por día. Para textos más largos, el plan Premium ofrece hasta 15,000 caracteres por humanización sin límite diario.',
+        answer: 'El plan gratuito permite humanizar textos de hasta 600 caracteres (aprox. 100 palabras) hasta 3 veces por día sin registro, o 15 veces con registro gratuito. Para textos más largos, el plan Premium ofrece hasta 100,000 caracteres por humanización sin límite diario.',
       },
     ],
     cta: {

@@ -97,7 +97,7 @@ export default async function HumanizadorPage() {
                 name: '¿Cuántas veces puedo usar el humanizador gratis?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sin registro: 3 usos diarios totales entre las 3 herramientas. Registrándote gratis: 15 usos diarios del Humanizador. Con Plan Pro: usos ilimitados. Límite de 600 caracteres por humanización en planes gratuitos.',
+                  text: 'Sin registro: 3 usos diarios totales entre las 3 herramientas. Registrándote gratis: 15 usos diarios del Humanizador. Con Plan Premium: usos ilimitados. Límite de 600 caracteres por humanización en planes gratuitos.',
                 },
               },
               {
@@ -129,15 +129,15 @@ export default async function HumanizadorPage() {
                 name: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. Los Modos Avanzados (incluidos en Express y Pro) ofrecen humanización más profunda con adaptación regional (LATAM vs España), diferentes tonos (formal, creativo, académico) y mayor libertad de reformulación.',
+                  text: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. Los Modos Avanzados (incluidos en Express y Premium) ofrecen humanización más profunda con adaptación regional (LATAM vs España), diferentes tonos (formal, creativo, académico) y mayor libertad de reformulación.',
                 },
               },
               {
                 '@type': 'Question',
-                name: '¿Qué incluyen los planes Express y Pro?',
+                name: '¿Qué incluyen los planes Express y Premium?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Express ($3.99 por 24 horas) te da acceso ilimitado a todas las herramientas con 5 modos premium, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Pro ($12.99/mes o $124.68/año) incluye lo mismo pero de forma continua, con historial completo y soporte prioritario.',
+                  text: 'Express ($3.99 por 24 horas o $8.99 por 7 días) te da acceso ilimitado a todas las herramientas con 5 modos, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Premium ($12.99/mes o $124.68/año) incluye lo mismo de forma continua.',
                 },
               },
               {

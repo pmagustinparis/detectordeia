@@ -65,7 +65,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: 'Modo premium requerido',
-          message: `El modo "${HUMANIZER_MODES[selectedMode].name}" requiere Plan Pro o Express Pass. Actualiza tu plan para acceder a todos los modos de humanización.`,
+          message: `El modo "${HUMANIZER_MODES[selectedMode].name}" requiere Plan Premium o Express Pass. Actualiza tu plan para acceder a todos los modos de humanización.`,
           mode: selectedMode,
           requiresPremium: true,
         },
