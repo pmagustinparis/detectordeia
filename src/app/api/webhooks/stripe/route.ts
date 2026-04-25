@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // Inicializar Stripe
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -18,13 +21,29 @@ function getSupabaseAdmin() {
 }
 
 export async function POST(request: Request) {
+  console.log('🔔 Webhook received:', request.method, request.url);
+  console.log('🔔 Headers:', JSON.stringify({
+    'stripe-signature': request.headers.get('stripe-signature') ? 'present' : 'missing',
+    'content-type': request.headers.get('content-type'),
+    'user-agent': request.headers.get('user-agent'),
+  }));
+
   const stripe = getStripe();
   const supabase = getSupabaseAdmin();
 
-  const body = await request.text();
+  let body: string;
+  try {
+    body = await request.text();
+    console.log('🔔 Body length:', body.length);
+  } catch (err: any) {
+    console.error('❌ Error reading request body:', err);
+    return NextResponse.json({ error: 'Could not read body' }, { status: 400 });
+  }
+
   const signature = request.headers.get('stripe-signature');
 
   if (!signature) {
+    console.error('❌ No stripe-signature header');
     return NextResponse.json(
       { error: 'No signature provided' },
       { status: 400 }
@@ -40,8 +59,9 @@ export async function POST(request: Request) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
+    console.log('✅ Signature verified. Event type:', event.type);
   } catch (err: any) {
-    console.error('Webhook signature verification failed:', err.message);
+    console.error('❌ Webhook signature verification failed:', err.message);
     return NextResponse.json(
       { error: `Webhook Error: ${err.message}` },
       { status: 400 }
