@@ -34,7 +34,9 @@ export async function GET(request: NextRequest) {
   try {
     // 1. Verificar autenticación
     const authHeader = request.headers.get('authorization');
-    if (authHeader !== 'Basic ' + Buffer.from('Agus:1908').toString('base64')) {
+    const adminUser = process.env.ADMIN_USER;
+    const adminPass = process.env.ADMIN_PASS;
+    if (!adminUser || !adminPass || authHeader !== 'Basic ' + Buffer.from(`${adminUser}:${adminPass}`).toString('base64')) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

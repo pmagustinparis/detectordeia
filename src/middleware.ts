@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { updateSession } from '@/lib/supabase/middleware';
 
-const USER = 'Agus';
-const PASS = '1908';
+const USER = process.env.ADMIN_USER;
+const PASS = process.env.ADMIN_PASS;
 
 // Función para decodificar base64 compatible con Edge Runtime
 function decodeBase64(str: string): string {
@@ -36,7 +36,7 @@ export async function middleware(req: NextRequest) {
           const decoded = decodeBase64(authValue);
           const [user, pass] = decoded.split(':');
 
-          if (user === USER && pass === PASS) {
+          if (USER && PASS && user === USER && pass === PASS) {
             return NextResponse.next();
           }
         } catch (e) {
