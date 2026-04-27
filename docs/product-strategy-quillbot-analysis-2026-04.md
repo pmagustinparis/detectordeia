@@ -120,9 +120,9 @@ Los siguientes puntos tienen acuerdo fuerte:
 ### Semanas 7–12: Detector mejorado + planificación Plagiarism Checker
 
 **Detector — mejoras de confianza:**
-- 🔲 Puntaje de confianza (no solo sí/no) — ej: "87% de probabilidad de ser IA"
-- 🔲 Razonamiento: mostrar qué patrones activaron la detección
-- Impacto estimado: +20% conversión premium
+- ✅ Puntaje de confianza ya implementado — porcentaje en grande + `confidenceLevel` (low/medium/high) + `ConfidenceBar`
+- ✅ Razonamiento ya implementado — sección "¿Por qué detectamos esto como IA?" + `interpretation` en el resultado
+- 🔲 Evaluar si hay mejoras adicionales de UX para hacer más visible el razonamiento
 
 **Plagiarism Checker — investigación y planificación:**
 - 🔲 Evaluar APIs: CopyLeaks, PlagScan, Originality.ai (Turnitin es cerrado)
