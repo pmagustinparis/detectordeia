@@ -126,7 +126,7 @@ export const features: FeaturePage[] = [
       {
         icon: '💸',
         title: '100% Gratis',
-        description: 'Plan FREE: 15 usos diarios sin tarjeta de crédito. Registrate gratis y empezá a parafrasear. 600 caracteres por paráfrasis. Suficiente para la mayoría de textos.'
+        description: 'Plan FREE: 15 usos diarios sin tarjeta de crédito. Registrate gratis y empezá a parafrasear. 2,000 caracteres por paráfrasis. Suficiente para la mayoría de textos.'
       },
       {
         icon: '📚',
@@ -176,7 +176,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Es gratis parafrasear textos online?',
-        answer: 'SÍ. Plan FREE: 15 usos diarios gratis (con registro), 600 caracteres por paráfrasis. Sin registro: 3 usos diarios. plan premium ($12.99/mes): usos ILIMITADOS, hasta 100,000 caracteres, 5 modos, archivos PDF/DOCX.'
+        answer: 'SÍ. Plan FREE: 15 usos diarios gratis (con registro), 2,000 caracteres por paráfrasis. Sin registro: 3 usos diarios. plan premium ($12.99/mes): usos ILIMITADOS, hasta 100,000 caracteres, 5 modos, archivos PDF/DOCX.'
       },
       {
         question: '¿Cuál es la diferencia entre parafrasear y resumir?',
@@ -192,7 +192,7 @@ export const features: FeaturePage[] = [
       },
       {
         question: '¿Cuántas veces puedo parafrasear gratis por día?',
-        answer: 'Plan FREE con registro: 15 paráfrasis diarias (600 caracteres cada una). Sin registro: 3 paráfrasis diarias compartidas entre las 3 herramientas. plan premium: paráfrasis ILIMITADAS de hasta hasta 100,000 caracteres.'
+        answer: 'Plan FREE con registro: 15 paráfrasis diarias (2,000 caracteres cada una). Sin registro: 3 paráfrasis diarias compartidas entre las 3 herramientas. plan premium: paráfrasis ILIMITADAS de hasta 100,000 caracteres.'
       },
       {
         question: '¿Qué modos de parafraseo están disponibles?',

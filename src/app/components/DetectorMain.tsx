@@ -1315,7 +1315,7 @@ export default function DetectorMain({
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>
-                    <span><strong>600 caracteres</strong> en Humanizador y Parafraseador (vs 400 ahora)</span>
+                    <span><strong>600 caracteres</strong> en Humanizador · <strong>2,000 caracteres</strong> en Parafraseador (vs 400 ahora)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>

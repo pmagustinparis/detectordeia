@@ -3,7 +3,7 @@ import ParafraseadorClient from '../parafraseador/ParafraseadorClient';
 
 export const metadata: Metadata = {
   title: 'Reescritor de Textos Online Gratis | Reescribe Textos sin Plagio',
-  description: 'Reescribe textos con otras palabras manteniendo el significado. Sin plagio. Reescritor gratuito, sin registro, optimizado para español. Hasta 600 caracteres gratis.',
+  description: 'Reescribe textos con otras palabras manteniendo el significado. Sin plagio. Reescritor gratuito, sin registro, optimizado para español. Hasta 2,000 caracteres gratis.',
   keywords: ['reescritor de textos', 'reescribir texto', 'reescribir online', 'reescritor gratis', 'reescribir sin plagio', 'reescritor español', 'reescribir textos academicos'],
   alternates: {
     canonical: 'https://detectordeia.ai/reescritor-de-textos',
@@ -66,7 +66,7 @@ export default function ReescritorPage() {
               'Reescribir textos online',
               'Sin plagio',
               'Sin registro requerido',
-              '600 caracteres gratis',
+              '2,000 caracteres gratis',
               '15 usos diarios',
               '100% privado',
               'Optimizado para español',
@@ -96,7 +96,7 @@ export default function ReescritorPage() {
                 name: '¿Es gratis el reescritor de textos?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sí, puedes reescribir textos de forma gratuita. Ofrecemos 3 usos diarios sin registro y 15 usos diarios registrándote gratis. Cada reescritura permite hasta 600 caracteres.',
+                  text: 'Sí, puedes reescribir textos de forma gratuita. Ofrecemos 3 usos diarios sin registro y 15 usos diarios registrándote gratis. Cada reescritura permite hasta 2,000 caracteres.',
                 },
               },
               {

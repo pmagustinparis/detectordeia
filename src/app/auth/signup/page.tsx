@@ -50,7 +50,7 @@ export default function SignupPage() {
             </li>
             <li className="flex items-center gap-2">
               <span className="text-green-600">✓</span>
-              <span><strong>600 caracteres</strong> en Humanizador y Parafraseador</span>
+              <span><strong>600 caracteres</strong> en Humanizador · <strong>2,000 caracteres</strong> en Parafraseador</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-green-600">✓</span>

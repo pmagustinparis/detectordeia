@@ -22,7 +22,7 @@ import PostUseMicroSurvey from './surveys/PostUseMicroSurvey';
 // Límites de caracteres según tipo de usuario
 const CHARACTER_LIMITS = {
   anonymous: 400,  // Anónimos: 400 caracteres
-  free: 600,  // Free: 600 caracteres
+  free: 2000,  // Free: 2,000 caracteres
   premium: 100000,  // Premium: ILIMITADO (100k técnicamente)
 };
 const MIN_CHARACTERS = 50;
@@ -937,7 +937,7 @@ export default function ParafraseadorMain({
                   </div>
                   <p className="text-xs text-gray-600">
                     {userStatus.isAuthenticated
-                      ? 'Hasta 600 caracteres por uso'
+                      ? 'Hasta 2,000 caracteres por uso'
                       : 'Hasta 400 caracteres por uso • Registrate gratis para más'}
                   </p>
                 </div>

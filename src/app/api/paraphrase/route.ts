@@ -12,7 +12,7 @@ const openai = new OpenAI({
 });
 
 const MIN_CHARACTERS = 50;
-const MAX_CHARACTERS_FREE = 600;
+const MAX_CHARACTERS_FREE = 2000;
 const MAX_CHARACTERS_ABSOLUTE = 100000; // Límite absoluto ILIMITADO para PRO
 
 export async function POST(request: Request) {
@@ -118,7 +118,7 @@ export async function POST(request: Request) {
 
     // Límites de caracteres según plan (Pro o Express = ilimitado)
     const CHARACTER_LIMITS = {
-      free: 600,
+      free: 2000,
       premium: 100000, // ILIMITADO para PRO o Express
     };
 
@@ -128,7 +128,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: !hasPremiumAccess
-            ? 'El texto excede el límite de 600 caracteres del plan Free. Actualiza a Pro o Express para textos ilimitados.'
+            ? 'El texto excede el límite de 2,000 caracteres del plan Free. Actualiza a Premium o Express para textos ilimitados.'
             : 'El texto excede el límite máximo permitido.',
           charLimit,
           currentLength: text.length,

@@ -4,7 +4,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Parafraseador de IA en Español Gratis | DetectorDeIA',
-  description: 'Reescribe textos con otras palabras manteniendo el significado. Sin plagio. Parafraseador gratuito, sin registro, optimizado para español. Hasta 600 caracteres gratis.',
+  description: 'Reescribe textos con otras palabras manteniendo el significado. Sin plagio. Parafraseador gratuito, sin registro, optimizado para español. Hasta 2,000 caracteres gratis.',
   keywords: ['parafraseador', 'parafrasear online', 'reescribir texto', 'evitar plagio', 'parafrasear español', 'parafrasear gratis', 'reescribir sin plagio', 'parafraseador español', 'parafraseo online'],
   alternates: {
     canonical: 'https://detectordeia.ai/parafraseador',
@@ -68,7 +68,7 @@ export default async function ParafraseadorPage() {
               'Parafraseo de textos',
               'Sin plagio garantizado',
               'Sin registro requerido',
-              '600 caracteres gratis',
+              '2,000 caracteres gratis',
               '15 usos diarios',
               'Optimizado para español',
             ],
@@ -105,7 +105,7 @@ export default async function ParafraseadorPage() {
                 name: '¿Es gratis el parafraseador?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sí, puedes usar el parafraseador de forma gratuita sin registro (3 usos diarios) o registrarte gratis para obtener 15 usos diarios. El plan gratuito permite parafrasear hasta 600 caracteres por uso.',
+                  text: 'Sí, puedes usar el parafraseador de forma gratuita sin registro (3 usos diarios) o registrarte gratis para obtener 15 usos diarios. El plan gratuito permite parafrasear hasta 2,000 caracteres por uso.',
                 },
               },
               {
@@ -113,7 +113,7 @@ export default async function ParafraseadorPage() {
                 name: '¿Cuántas veces puedo usarlo gratis?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sin registro: 3 usos diarios totales entre las 3 herramientas. Registrándote gratis: 15 usos diarios del Parafraseador. Con Plan Premium: usos ilimitados. Límite de 600 caracteres por paráfrasis en planes gratuitos.',
+                  text: 'Sin registro: 3 usos diarios totales entre las 3 herramientas. Registrándote gratis: 15 usos diarios del Parafraseador. Con Plan Premium: usos ilimitados. Límite de 2,000 caracteres por paráfrasis en planes gratuitos.',
                 },
               },
               {

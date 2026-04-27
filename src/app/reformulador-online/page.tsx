@@ -3,7 +3,7 @@ import ParafraseadorClient from '../parafraseador/ParafraseadorClient';
 
 export const metadata: Metadata = {
   title: 'Reformulador Online Gratis | Reformula Textos sin Plagio',
-  description: 'Reformula textos con otras palabras manteniendo el significado. Sin plagio. Reformulador gratuito, sin registro, optimizado para español. Hasta 600 caracteres gratis.',
+  description: 'Reformula textos con otras palabras manteniendo el significado. Sin plagio. Reformulador gratuito, sin registro, optimizado para español. Hasta 2,000 caracteres gratis.',
   keywords: ['reformulador online', 'reformular texto', 'reformulador gratis', 'reformular sin plagio', 'reformulador español', 'reformular textos academicos'],
   alternates: {
     canonical: 'https://detectordeia.ai/reformulador-online',
@@ -66,7 +66,7 @@ export default function ReformuladorPage() {
               'Reformular textos online',
               'Sin plagio',
               'Sin registro requerido',
-              '600 caracteres gratis',
+              '2,000 caracteres gratis',
               '15 usos diarios',
               '100% privado',
               'Optimizado para español',
@@ -96,7 +96,7 @@ export default function ReformuladorPage() {
                 name: '¿Es gratis el reformulador online?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sí, puedes reformular textos de forma gratuita. Ofrecemos 3 usos diarios sin registro y 15 usos diarios registrándote gratis. Cada reformulación permite hasta 600 caracteres.',
+                  text: 'Sí, puedes reformular textos de forma gratuita. Ofrecemos 3 usos diarios sin registro y 15 usos diarios registrándote gratis. Cada reformulación permite hasta 2,000 caracteres.',
                 },
               },
               {
