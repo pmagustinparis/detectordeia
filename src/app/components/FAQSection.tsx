@@ -30,7 +30,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
-    answer: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. Los modos avanzados (Formal, Creativo, Simplificado, Académico) están disponibles con el plan Premium o Express, y permiten adaptar el tono y estilo según tu necesidad.'
+    answer: 'Los modos Estándar y Creativo están disponibles gratis. El Modo Estándar hace una humanización efectiva eliminando marcadores evidentes de IA. El Modo Creativo agrega personalidad y variedad. Los modos Formal, Simplificado y Académico están disponibles con el plan Premium o Express.'
   },
   {
     question: '¿Qué incluye el plan Premium?',

@@ -45,7 +45,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">5 modos premium (Formal, Creativo, etc.)</span>
+                <span className="text-sm text-gray-700">5 modos (Estándar + Creativo gratis, Formal/Simplificado/Académico en Premium)</span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600 text-lg">✓</span>

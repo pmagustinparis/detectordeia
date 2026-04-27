@@ -129,7 +129,7 @@ export default async function HumanizadorPage() {
                 name: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'El Modo Estándar (gratis) hace una humanización efectiva y confiable eliminando marcadores evidentes de IA. Los Modos Avanzados (incluidos en Express y Premium) ofrecen humanización más profunda con adaptación regional (LATAM vs España), diferentes tonos (formal, creativo, académico) y mayor libertad de reformulación.',
+                  text: 'Los modos Estándar y Creativo están disponibles gratis. El Estándar humaniza con tono neutral y natural; el Creativo agrega estilo expresivo y variado. Los modos Formal, Simplificado y Académico están incluidos en Express y Premium para humanización más específica.',
                 },
               },
               {

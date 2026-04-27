@@ -1,7 +1,8 @@
 /**
  * Prompts para los diferentes modos del Humanizador
  * - Estándar: FREE (disponible para todos)
- * - Formal, Creativo, Simplificado, Académico: PRO (requieren suscripción)
+ * - Creativo: FREE (desbloqueado para todos)
+ * - Formal, Simplificado, Académico: PRO (requieren suscripción)
  */
 
 export const HUMANIZER_MODES = {
@@ -20,7 +21,7 @@ export const HUMANIZER_MODES = {
   creative: {
     name: 'Creativo',
     icon: '🎨',
-    isPremium: true,
+    isPremium: false,
     description: 'Estilo expresivo y variado',
   },
   simplified: {
