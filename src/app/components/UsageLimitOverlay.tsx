@@ -192,7 +192,7 @@ export default function UsageLimitOverlay({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-orange-600 font-bold">✓</span>
-                    <span>5 modos premium + archivos</span>
+                    <span>Todos los modos + subida de archivos</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-orange-600 font-bold">✓</span>
@@ -216,7 +216,7 @@ export default function UsageLimitOverlay({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-900 font-bold">✓</span>
-                    <span>5 modos premium + archivos</span>
+                    <span>Todos los modos + subida de archivos</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-900 font-bold">✓</span>
