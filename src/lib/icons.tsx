@@ -31,6 +31,7 @@ import {
   AlertTriangle,
   TrendingUp,
   Activity,
+  BookOpen,
   type LucideIcon
 } from 'lucide-react';
 
@@ -84,6 +85,9 @@ export const ProductIcons = {
   Writer: PenTool,
   Company: Building2,
   Document: FileText,
+
+  // Generador de citas
+  Citation: BookOpen,
 
   // Aliases para compatibilidad directa con nombres de Lucide
   GraduationCap: GraduationCap,
@@ -141,4 +145,5 @@ export {
   AlertTriangle,
   TrendingUp,
   Activity,
+  BookOpen,
 };

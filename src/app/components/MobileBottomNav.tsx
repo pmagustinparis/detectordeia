@@ -29,6 +29,13 @@ const tabs = [
     color: 'text-blue-900',
     aliases: ['/reescritor-de-textos', '/reformulador-online'],
   },
+  {
+    name: 'Citador',
+    path: '/generador-de-citas',
+    icon: ProductIcons.Citation,
+    color: 'text-blue-900',
+    aliases: [],
+  },
 ];
 
 export default function MobileBottomNav() {

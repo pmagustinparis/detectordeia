@@ -10,11 +10,7 @@ import type { ToolType } from '../tracking/trackUsage';
 export interface UsageStats {
   usesToday: number;
   usesThisMonth: number;
-  usesTodayByTool: {
-    detector: number;
-    humanizador: number;
-    parafraseador: number;
-  };
+  usesTodayByTool: Record<string, number>;
   limit: number;
   remaining: number;
   resetAt: Date;
@@ -80,10 +76,11 @@ export async function getUserUsageStats(userId: string): Promise<UsageStats | nu
       .eq('user_id', user.id)
       .gte('created_at', startOfToday.toISOString());
 
-    const usesTodayByTool = {
+    const usesTodayByTool: Record<string, number> = {
       detector: 0,
       humanizador: 0,
       parafraseador: 0,
+      citador: 0,
     };
 
     if (usesTodayData) {

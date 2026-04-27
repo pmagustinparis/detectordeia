@@ -30,6 +30,14 @@ const tools = [
     isPopular: false,
     aliases: ['/reescritor-de-textos', '/reformulador-online'],
   },
+  {
+    name: 'Citador',
+    path: '/generador-de-citas',
+    icon: ProductIcons.Citation,
+    isPopular: false,
+    isNew: true,
+    aliases: [],
+  },
 ];
 
 export default function AppSidebar() {
@@ -79,6 +87,11 @@ export default function AppSidebar() {
               {tool.isPopular && (
                 <span className="text-[9px] font-bold bg-white/20 text-white px-1.5 py-0.5 rounded-full whitespace-nowrap">
                   Popular
+                </span>
+              )}
+              {(tool as any).isNew && !isActive && (
+                <span className="text-[9px] font-bold bg-green-500 text-white px-1.5 py-0.5 rounded-full whitespace-nowrap">
+                  Nuevo
                 </span>
               )}
             </Link>

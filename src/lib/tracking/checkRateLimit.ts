@@ -25,11 +25,13 @@ const RATE_LIMITS = {
     detector: 15,
     humanizador: 3, // REDUCIDO: impulsa conversión a PRO
     parafraseador: 10,
+    citador: 50, // Generoso — herramienta de adquisición
   },
   premium: {
     detector: Infinity,
     humanizador: Infinity,
     parafraseador: Infinity,
+    citador: Infinity,
   },
 };
 

@@ -9,7 +9,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 
-export type ToolType = 'detector' | 'humanizador' | 'parafraseador';
+export type ToolType = 'detector' | 'humanizador' | 'parafraseador' | 'citador';
 
 export interface TrackUsageParams {
   userId?: string; // UUID del usuario (si está autenticado)

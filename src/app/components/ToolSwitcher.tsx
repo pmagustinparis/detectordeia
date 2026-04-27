@@ -15,6 +15,7 @@ const tools: Tool[] = [
   { name: 'Detector', path: '/', icon: ProductIcons.Detector },
   { name: 'Humanizador', path: '/humanizador', icon: ProductIcons.Humanizer, isPopular: true },
   { name: 'Parafraseador', path: '/parafraseador', icon: ProductIcons.Paraphraser },
+  { name: 'Citador', path: '/generador-de-citas', icon: ProductIcons.Citation, isNew: true } as any,
 ];
 
 export default function ToolSwitcher() {
@@ -43,6 +44,11 @@ export default function ToolSwitcher() {
                 {tool.isPopular && !isActive && (
                   <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
                     Popular
+                  </span>
+                )}
+                {(tool as any).isNew && !isActive && (
+                  <span className="absolute -top-2 -right-2 bg-green-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                    Nuevo
                   </span>
                 )}
                 <div className={`hidden md:block ${isActive ? 'text-white' : 'text-blue-900'}`}>
