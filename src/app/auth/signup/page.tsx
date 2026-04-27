@@ -54,6 +54,10 @@ export default function SignupPage() {
             </li>
             <li className="flex items-center gap-2">
               <span className="text-green-600">✓</span>
+              <span><strong>Generador de citas</strong> APA, MLA, Chicago ilimitado</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✓</span>
               <span><strong>Historial</strong> de tus últimos 20 análisis</span>
             </li>
           </ul>

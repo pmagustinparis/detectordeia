@@ -3,8 +3,8 @@ import HomePageClient from './HomePageClient';
 import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
-  title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
-  description: 'Detector de IA, Humanizador y Parafraseador en español. Herramientas gratuitas, precisas y fáciles de usar para trabajar con contenido de inteligencia artificial. Sin registro, 100% privado.',
+  title: 'Detector de IA, Humanizador, Parafraseador y Citador | Gratis en Español',
+  description: 'Detector de IA, Humanizador, Parafraseador y Generador de citas en español. Herramientas gratuitas, precisas y fáciles de usar. Sin registro, 100% privado.',
   alternates: {
     canonical: 'https://detectordeia.ai/',
     languages: {
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Detector de IA, Humanizador y Parafraseador | Gratis en Español',
-    description: 'Herramientas de IA en español: Detector, Humanizador y Parafraseador. Gratuitas, precisas y sin registro.',
+    title: 'Detector de IA, Humanizador, Parafraseador y Citador | Gratis en Español',
+    description: 'Herramientas de IA en español: Detector, Humanizador, Parafraseador y Citador. Gratuitas, precisas y sin registro.',
     url: 'https://detectordeia.ai/',
     siteName: 'DetectordeIA.ai',
     images: [

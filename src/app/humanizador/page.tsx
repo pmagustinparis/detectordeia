@@ -97,7 +97,7 @@ export default async function HumanizadorPage() {
                 name: '¿Cuántas veces puedo usar el humanizador gratis?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sin registro: 3 usos diarios totales entre las 3 herramientas. Registrándote gratis: 15 usos diarios del Humanizador. Con Plan Premium: usos ilimitados. Límite de 600 caracteres por humanización en planes gratuitos.',
+                  text: 'Sin registro: 3 usos diarios totales entre las herramientas. Registrándote gratis: 15 usos diarios del Humanizador. Con Plan Premium: usos ilimitados. Límite de 600 caracteres por humanización en planes gratuitos. El Generador de citas es gratis e ilimitado para todos.',
                 },
               },
               {
