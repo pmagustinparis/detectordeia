@@ -36,7 +36,7 @@ const tools = [
     icon: ProductIcons.Citation,
     isPopular: false,
     isNew: true,
-    aliases: [],
+    aliases: ['/generador-citas-apa', '/generador-citas-apa-7', '/referencias-apa', '/citar-pagina-web-apa', '/citas-bibliograficas', '/generador-citas-mla', '/generador-citas-chicago'],
   },
 ];
 

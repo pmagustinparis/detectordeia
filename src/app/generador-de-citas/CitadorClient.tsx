@@ -89,9 +89,23 @@ function Field({ label, value, onChange, placeholder, required, half }: {
   );
 }
 
-export default function CitadorClient() {
-  const [sourceType, setSourceType] = useState<SourceType>('article');
-  const [style, setStyle] = useState<CitationStyle>('apa7');
+interface CitadorClientProps {
+  defaultStyle?: CitationStyle;
+  defaultSourceType?: SourceType;
+  h1?: string;
+  subtitle?: string;
+  extraFaqs?: { q: string; a: string }[];
+}
+
+export default function CitadorClient({
+  defaultStyle = 'apa7',
+  defaultSourceType = 'article',
+  h1 = 'Generador de Citas Bibliográficas',
+  subtitle = 'Generá citas en APA, MLA o Chicago al instante, sin registro.',
+  extraFaqs = [],
+}: CitadorClientProps) {
+  const [sourceType, setSourceType] = useState<SourceType>(defaultSourceType);
+  const [style, setStyle] = useState<CitationStyle>(defaultStyle);
   const [mode, setMode] = useState<InputMode>('auto');
   const [lookupVal, setLookupVal] = useState('');
   const [data, setData] = useState<CitationData>(EMPTY('article'));
@@ -161,10 +175,10 @@ export default function CitadorClient() {
       {/* Hero */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-4 px-4">
         <h1 className="text-3xl md:text-5xl font-bold text-center mb-3 leading-tight text-blue-900">
-          Generador de Citas Bibliográficas
+          {h1}
         </h1>
         <p className="text-base md:text-lg text-gray-600 text-center mb-4 max-w-2xl">
-          Generá citas en APA, MLA o Chicago al instante, sin registro.
+          {subtitle}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
           {['Sin registro', '100% gratis', 'Ilimitado', 'APA · MLA · Chicago'].map(b => (
@@ -480,6 +494,7 @@ export default function CitadorClient() {
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Preguntas frecuentes</h2>
         <div className="space-y-5">
           {[
+            ...extraFaqs,
             { q: '¿Qué es una cita bibliográfica?', a: 'Una cita bibliográfica es la referencia formal a una fuente consultada en un trabajo académico. Incluye datos como el autor, año, título y editorial, organizados según el estilo (APA, MLA, Chicago, etc.).' },
             { q: '¿Cuál es la diferencia entre APA, MLA y Chicago?', a: 'APA (American Psychological Association) se usa en ciencias sociales y educación. MLA (Modern Language Association) es estándar en humanidades y literatura. Chicago se usa en historia y algunos campos de ciencias sociales. Cada estilo tiene reglas específicas para el orden y formato de los elementos.' },
             { q: '¿Qué es un DOI?', a: 'Un DOI (Digital Object Identifier) es un código único que identifica permanentemente un artículo académico. Lo encontrás en la página del artículo o en la base de datos donde lo descargaste. Ejemplo: 10.1038/nature12345.' },
