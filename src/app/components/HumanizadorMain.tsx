@@ -713,32 +713,6 @@ export default function HumanizadorMain({
                     </div>
                   </label>
 
-                  {/* Tooltip para modos bloqueados */}
-                  {isLocked && (
-                    <div className="absolute left-0 right-0 top-full mt-2 bg-gray-50 text-white text-xs rounded-xl p-4 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border border-gray-200">
-                      <p className="font-bold text-sm mb-2">🔒 Modo {mode.name}</p>
-                      <p className="text-gray-700 mb-3 leading-relaxed">
-                        Disponible con Express Pass o Premium. Mejor calidad para textos académicos y formales.
-                      </p>
-                      <div className="space-y-1.5">
-                        <div className="flex items-center justify-between bg-amber-500/20 rounded-lg px-2.5 py-1.5">
-                          <span className="text-amber-300 font-semibold">⚡ Express 24h</span>
-                          <span className="font-bold text-amber-200">$3.99</span>
-                        </div>
-                        <div className="flex items-center justify-between bg-amber-500/10 rounded-lg px-2.5 py-1.5">
-                          <span className="text-amber-300 font-semibold">⚡ Express 7 días</span>
-                          <span className="font-bold text-amber-200">$8.99</span>
-                        </div>
-                        <div className="flex items-center justify-between bg-violet-500/20 rounded-lg px-2.5 py-1.5">
-                          <span className="text-violet-300 font-semibold">🚀 Premium</span>
-                          <span className="font-bold text-violet-200">$12.99/mes</span>
-                        </div>
-                      </div>
-                      <a href="/pricing" className="block text-center text-gray-700 hover:text-white mt-2 underline text-xs">
-                        Ver planes →
-                      </a>
-                    </div>
-                  )}
                 </div>
               );
             })}
