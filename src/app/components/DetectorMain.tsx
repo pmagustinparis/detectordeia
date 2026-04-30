@@ -1202,6 +1202,7 @@ export default function DetectorMain({
                 )}
 
                 {/* Bloque premium compacto al final cuando hay resultado */}
+                {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                 <div className="mt-6 mb-2 bg-white border border-gray-200 rounded-xl shadow p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">
                     <Icon icon={ProductIcons.Locked} size="xl" className="text-gray-400" />
@@ -1225,6 +1226,7 @@ export default function DetectorMain({
                   </a>
                   <p className="text-xs text-gray-500">Soporte prioritario vía email incluido</p>
                 </div>
+                )}
                 {/* Bloque de feedback */}
                 {!feedbackSent && result && !isLimitExceeded && (
                   <FeedbackBlock
