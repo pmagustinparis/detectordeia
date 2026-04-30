@@ -842,14 +842,6 @@ export default function ParafraseadorMain({
                 excessChars={analyzedTextLength - CHARACTER_LIMIT}
                 charLimit={CHARACTER_LIMIT}
               />
-              <ExpressUnlockModal
-                isOpen={isPremiumModeModalOpen}
-                onClose={() => setIsPremiumModeModalOpen(false)}
-                isAuthenticated={userStatus.isAuthenticated}
-                trigger="premium_mode"
-                toolName="parafraseador"
-                modeName={lockedModeName}
-              />
 
             </div>
           ) : isParaphrasing ? (
@@ -960,6 +952,14 @@ export default function ParafraseadorMain({
         userPlan={userStatus.plan_type}
       />
     )}
+    <ExpressUnlockModal
+      isOpen={isPremiumModeModalOpen}
+      onClose={() => setIsPremiumModeModalOpen(false)}
+      isAuthenticated={userStatus.isAuthenticated}
+      trigger="premium_mode"
+      toolName="parafraseador"
+      modeName={lockedModeName}
+    />
     </>
   );
 }

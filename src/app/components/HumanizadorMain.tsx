@@ -970,14 +970,6 @@ export default function HumanizadorMain({
                 excessChars={analyzedTextLength - CHARACTER_LIMIT}
                 charLimit={CHARACTER_LIMIT}
               />
-              <ExpressUnlockModal
-                isOpen={isPremiumModeModalOpen}
-                onClose={() => setIsPremiumModeModalOpen(false)}
-                isAuthenticated={userStatus.isAuthenticated}
-                trigger="premium_mode"
-                toolName="humanizador"
-                modeName={lockedModeName}
-              />
 
             </div>
           ) : isHumanizing ? (
@@ -1088,6 +1080,14 @@ export default function HumanizadorMain({
         userPlan={userStatus.plan_type}
       />
     )}
+    <ExpressUnlockModal
+      isOpen={isPremiumModeModalOpen}
+      onClose={() => setIsPremiumModeModalOpen(false)}
+      isAuthenticated={userStatus.isAuthenticated}
+      trigger="premium_mode"
+      toolName="humanizador"
+      modeName={lockedModeName}
+    />
     </>
   );
 }
