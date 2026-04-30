@@ -200,13 +200,13 @@ export default function ExpressUnlockModal({
             <button
               onClick={handleExpressCheckout}
               disabled={loading}
-              className="w-full bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-colors text-sm"
+              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 text-sm"
             >
               {loading
                 ? 'Procesando...'
                 : isAuthenticated
-                  ? `Activar Express Pass · $${PRICES.express[duration]}`
-                  : `Crear cuenta y activar · $${PRICES.express[duration]}`
+                  ? `⚡ Activar Express Pass · $${PRICES.express[duration]}`
+                  : `⚡ Crear cuenta y activar · $${PRICES.express[duration]}`
               }
             </button>
             {!isAuthenticated && (

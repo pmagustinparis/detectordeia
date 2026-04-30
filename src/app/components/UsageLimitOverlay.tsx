@@ -179,8 +179,8 @@ export default function UsageLimitOverlay({
 
               {/* Express Option - Destacado */}
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-4 relative">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white px-3 py-0.5 rounded-md text-xs font-bold shadow-md">
-                  URGENTE
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-0.5 rounded-md text-xs font-bold shadow-md">
+                  ⚡ URGENTE
                 </div>
                 <p className="text-sm font-bold text-orange-900 mb-2 mt-2">
                   Express Pass - 24 horas ilimitadas
@@ -233,9 +233,9 @@ export default function UsageLimitOverlay({
                 <button
                   onClick={() => handleExpressCheckout('24h')}
                   disabled={loadingCheckout}
-                  className="block w-full text-center bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300"
+                  className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300"
                 >
-                  {loadingCheckout ? 'Procesando...' : 'Activar Express 24h · $3.99'}
+                  {loadingCheckout ? 'Procesando...' : '⚡ Activar Express 24h · $3.99'}
                 </button>
                 <button
                   onClick={() => handleExpressCheckout('7d')}
