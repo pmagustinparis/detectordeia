@@ -57,27 +57,27 @@ export default function ExpressPromoBanner() {
 
   return (
     <div className="max-w-5xl mx-auto mb-5 px-2">
-      <div className="flex items-center justify-between gap-4 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3">
+      <div className="flex items-center justify-between gap-4 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex-shrink-0 w-7 h-7 rounded-md bg-blue-900 flex items-center justify-center">
+          <div className="flex-shrink-0 w-7 h-7 rounded-md bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center">
             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
             </svg>
           </div>
-          <p className="text-sm text-blue-900 font-medium truncate">
+          <p className="text-sm text-amber-900 font-medium truncate">
             <span className="font-semibold">Express Pass:</span> acceso completo desde $3.99 · sin suscripción
           </p>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           <a
             href="/pricing"
-            className="text-sm font-semibold text-blue-900 hover:text-blue-700 underline underline-offset-2 transition-colors whitespace-nowrap"
+            className="text-sm font-semibold text-amber-900 hover:text-amber-700 underline underline-offset-2 transition-colors whitespace-nowrap"
           >
             Ver planes
           </a>
           <button
             onClick={handleDismiss}
-            className="text-blue-400 hover:text-blue-600 p-1 transition-colors"
+            className="text-amber-400 hover:text-amber-600 p-1 transition-colors"
             aria-label="Cerrar"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
