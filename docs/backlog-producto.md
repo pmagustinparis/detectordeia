@@ -1,232 +1,251 @@
 # Backlog de Producto — detectordeia.ai
 **Última actualización:** Mayo 2026  
+**Criterio de priorización:** impacto en revenue directo  
 **Contexto:** Análisis basado en datos reales de Supabase, Stripe y Google Analytics
 
 ---
 
-## Contexto del negocio
+## Estado del negocio
 
 - **750 usuarios** registrados · 99.2% free · 0.8% premium
-- **MRR actual: $12.99** (1 suscripción activa tras churns de mayo)
-- **Revenue histórico total:** ~$230 desde nov 2025
+- **MRR actual: $12.99** (1 suscripción activa)
+- **Revenue histórico total:** ~$230 desde nov 2025 (~$35/mes promedio)
 - **Express Pass** genera más revenue acumulado que suscripciones ($102 vs $91)
+- **Churn suscripciones: 100%** en el primer mes — el modelo mensual no encaja con estudiantes
 - **Tráfico:** 70-120 usuarios únicos/día · 97% primera visita · 86% desktop
-- **Adquisición:** 72% Google orgánico · ChatGPT envía 223 sesiones/mes
+- **Adquisición:** 72% Google orgánico · ChatGPT envía 223 sesiones/mes sin hacer nada
 - **Perfil:** 64% estudiantes universitarios · 12% docentes · español nativo
 - **Geografía:** España 38% · México 15% · Perú 10% · Colombia 7%
-- **Churn suscripciones:** 100% en el primer mes (patrón de uso puntual, no mensual)
 
 ---
 
-## Herramientas actuales
+## Herramientas y planes
 
-| Herramienta | Usos/mes | Usuarios únicos | Bounce en su página |
-|---|---|---|---|
-| Detector | 1,337 | 651 | — (es la home) |
-| Humanizador | 154 | 57 | 13% |
-| Parafraseador | 63 | 19 | 23% |
-| Citador | — | — | 9% |
-
----
-
-## Planes actuales
-
-| Plan | Precio | Tipo |
+| Herramienta | Usos/mes | Bounce en su página |
 |---|---|---|
-| Free sin registro | $0 | Límites estrictos |
-| Free registrado | $0 | Límites estrictos |
-| Express 24h | $3.99 | One-time |
-| Express 7 días | $8.99 | One-time |
-| Premium Mensual | $12.99/mes | Recurrente |
-| Premium Anual | $10.39/mes ($124.68) | Recurrente |
+| Detector | 1,337 usos · 651 usuarios | — (es la home) |
+| Humanizador | 154 usos · 57 usuarios | **13%** (más bajo de todo el sitio) |
+| Parafraseador | 63 usos · 19 usuarios | 23% |
+| Citador | — | 9% |
+
+| Plan | Precio | Tipo | Ventas históricas |
+|---|---|---|---|
+| Free sin registro | $0 | — | — |
+| Free registrado | $0 | — | — |
+| Express 24h | $3.99 | One-time | 22 |
+| Express 7 días | $8.99 | One-time | 4 |
+| Premium Mensual | $12.99/mes | Recurrente | 6 creadas, todas churnearon |
+| Premium Anual | $10.39/mes | Recurrente | 0 |
 
 ---
 
-## TIER 1 — Esta semana (mínimo código, impacto directo)
+## TIER 0 — Sin código · Revenue esta semana
+
+### T0-1 · Email a 6 power users activos ahora mismo
+
+Usuarios con uso intenso esta semana en plan free. La acción de mayor ROI del backlog: costo 1 hora, potencial 1-2 conversiones inmediatas ($26-50).
+
+**Los 6 usuarios:**
+
+| Email | Usos totales | Usos esta semana | Señal |
+|---|---|---|---|
+| gisella.ceballos24@gmail.com | 40 | 12 | usuario recurrente de largo plazo |
+| escritora1506@gmail.com | 40 | 9 | nombre sugiere escritora/creadora |
+| leodominguezgarcia007@gmail.com | 27 | 7 | uso regular sostenido |
+| sanmartinnoa@gmail.com | 22 | 7 | uso regular sostenido |
+| cmpaclauuuu@gmail.com | 19 | 19 | nuevo esta semana, muy intenso |
+| 948692@unizar.es | 15 | 15 | estudiante Universidad de Zaragoza |
+
+---
+
+**EMAIL A — Para usuarios de largo plazo** (gisella, escritora, leo, sanmartin)
+
+> **Asunto:** una pregunta de quien hizo DetectordeIA
+>
+> Hola,
+>
+> Soy Agustín, el fundador de DetectordeIA.ai. Vi que usás el detector seguido y quería preguntarte directamente: ¿cómo te está yendo con el producto? ¿Para qué lo usás principalmente?
+>
+> Si en algún momento los límites te molestan, puedo darte un descuento personal en el Express Pass o en Premium. Solo respondé este mail.
+>
+> Gracias por usar el producto,
+> Agustín
+
+---
+
+**EMAIL B — Para cmpaclauuuu** (19 usos esta semana, usuario nuevo muy activo)
+
+> **Asunto:** ey, gracias por usar DetectordeIA
+>
+> Hola,
+>
+> Soy Agustín, el fundador de DetectordeIA.ai. Vi que empezaste a usar el detector esta semana y ya lo usaste bastante — me alegra que te esté sirviendo.
+>
+> ¿Para qué lo estás usando? Me ayuda saber para mejorar el producto. Y si los límites te cortan el ritmo, puedo darte acceso extendido con descuento — solo escribime.
+>
+> Gracias,
+> Agustín
+
+---
+
+**EMAIL C — Para 948692@unizar.es** (estudiante Unizar, 15 usos esta semana)
+
+> **Asunto:** hola desde DetectordeIA — una pregunta rápida
+>
+> Hola,
+>
+> Soy Agustín, el que hizo DetectordeIA.ai. Vi que usaste el detector varias veces esta semana desde la Unizar — espero que te haya sido útil para las entregas.
+>
+> ¿Tenés más trabajos esta temporada? Si necesitás acceso sin límites para el período de exámenes, puedo darte un descuento personal en el Express Pass. Solo respondé este mail.
+>
+> Suerte con los estudios,
+> Agustín
+
+---
+
+### T0-2 · Email a checkout abandonados recientes
+
+Usuarios que tuvieron la tarjeta en mano y algo falló. Los más recientes son los más recuperables.
+
+| Email | Intentos | Último intento | Acción |
+|---|---|---|---|
+| maria.cepeda.m@gmail.com | 2 | May 11 | Email esta semana |
+| halvaradoa2@miumg.edu.gt | 2 | May 1 | Email esta semana |
+| sanchezdebenito82@gmail.com | 2 | Abr 1 | Email si hay tiempo |
+| vanessaaraya179@gmail.com | 8 | Mar 14 | Frío, intentar igual |
+
+> **Asunto:** ¿tuviste problemas para completar el pago?
+>
+> Hola,
+>
+> Soy Agustín de DetectordeIA.ai. Vi que intentaste activar el Express Pass pero no llegó a completarse.
+>
+> ¿Hubo algún problema con el pago? Si querés, te puedo ayudar directamente o buscamos otra forma. Solo respondé este mail.
+>
+> Agustín
+
+---
+
+## TIER 1 — Esta semana · Alto impacto en conversión · Poco código
 
 ### T1-1 · Fix label hardcodeado en Dashboard ✅ DONE
 Label del historial ahora muestra `(Últimos 100 usos · 30 días)` a usuarios premium y `(Últimos 10 usos · 7 días)` a free.
 
 ### T1-2 · ExpressPromoBanner — restaurar naranja ✅ DONE
-**Problema:** El banner de Express Pass en páginas de universidad y herramientas era naranja/amber, quedó azul en algún commit intermedio. El modal (`ExpressUnlockModal`) sigue naranja — hay inconsistencia visual.  
-**Fix:** Cambiar `bg-blue-50 / border-blue-200 / bg-blue-900 / text-blue-900` → `bg-amber-50 / border-amber-200 / gradient orange-amber / text-amber-900` en `ExpressPromoBanner.tsx`.  
-**Esfuerzo:** 15 min  
-**Impacto:** Consistencia visual, mayor visibilidad del Express Pass
+Banner consistente con el modal: `bg-amber-50`, `border-amber-200`, gradiente `from-orange-500 to-amber-500`.
 
-### T1-3 · Decisión: History para usuarios Express
-**Situación:** `getUserHistory()` en `usageStats.ts:136` verifica `plan_type === 'premium'`. Los usuarios con Express activo tienen `plan_type = 'free'`, por lo que obtienen límites free (10 usos / 7 días) aunque pagaron.  
-**Decisión pendiente:** ¿Express users deben tener history extendido? Propuesta: 30 usos / 14 días como tier intermedio.  
+### T1-3 · pSEO — duplicados y Citador ✅ DONE
+- 9 slugs duplicados eliminados de `universities.json` (148 → 139 entradas únicas)
+- 139 páginas `/citador-universidad/[slug]` + hub `/citadores-universidades` creadas y en sitemap
+- Total pSEO universidades: 556 páginas (139 × 4 herramientas)
+
+### T1-4 · Verificar: Modal → ¿va a pricing o a checkout directo?
+**Por qué importa:** El `ExpressUnlockModal` es el momento de mayor intención de pago del producto. 713 veces/mes se muestra. Si el CTA lleva a `/pricing` en vez de directo al checkout de Stripe, hay una pantalla extra de fricción que mata conversión.  
+**Acción:** Revisar a dónde apunta el botón principal del modal. Si va a `/pricing`, cambiarlo a la URL de checkout de Stripe del Express Pass 24h.  
 **Esfuerzo:** 1-2 horas  
-**Impacto:** Retención Express, diferenciación de planes
+**Impacto:** Directo en conversión del touchpoint más visto del producto
 
-### T1-4 · Emails manuales a power users activos (sin código)
-**Usuarios con uso esta semana en free:**
-- gisella.ceballos24@gmail.com (12 usos esta semana)
-- escritora1506@gmail.com (9 usos)
-- leodominguezgarcia007@gmail.com (7 usos)
-- sanmartinnoa@gmail.com (7 usos)
-- cmpaclauuuu@gmail.com (19 usos esta semana, nuevo)
-- 948692@unizar.es (15 usos esta semana, Universidad de Zaragoza)
-
-**Acción:** Email personal del fundador, 4 líneas, oferta 30% off primer mes o Express Pass.  
+### T1-5 · Banner Express Pass — no permitir dismiss permanente
+**Situación:** Cuando el usuario cierra el `ExpressPromoBanner`, se guarda `express_promo_banner_dismissed: true` en localStorage y nunca más aparece. Correcto para no molestar en condiciones normales, pero incorrecto cuando el usuario acaba de chocar con un límite — ese es exactamente el momento en que más necesita ver el banner.  
+**Fix:** Resetear el flag de localStorage cuando se dispara `isLimitExceeded` en el detector/humanizador/parafraseador.  
 **Esfuerzo:** 1 hora  
-**Impacto:** 1-2 conversiones inmediatas
+**Impacto:** El banner vuelve a aparecer en el momento de máxima intención de pago
+
+### T1-6 · Cross-sell Detector → Humanizador (mejorar el existente)
+**Situación:** Existe en `DetectorMain.tsx:545`. Aparece cuando `probability >= 60`. Usa colores violeta que no matchean el design system. El Humanizador tiene el bounce más bajo del sitio (13%) — usuarios que llegan ahí están muy motivados y convierten más a Express Pass.  
+**Cambios:**
+1. Bajar threshold de 60% → 50% (más usuarios ven el CTA)
+2. Cambiar colores `violet` → `blue-900` + acento `amber` (consistencia)
+3. Copy con urgencia: *"¿Tenés la entrega hoy? Humanizalo en 1 clic."*
+
+**Esfuerzo:** 2-3 horas  
+**Impacto:** Más tráfico al Humanizador = más usuarios que choca con SUS límites = más conversión al Express Pass
 
 ---
 
-## TIER 2 — Próximas 2 semanas (conversion + acquisition)
+## TIER 2 — Próximas 2 semanas · Revenue sostenido
 
-### T2-1 · Plan Semestral
-**Por qué:** El 100% de suscripciones mensuales churnearon en el primer mes. Los estudiantes usan el producto intensamente durante períodos de entrega, no todos los meses igual. Un semestre es la unidad natural de compromiso académico.  
-**Propuesta:** $29.99 por 4 meses (~$7.50/mes equivalente). Frame: *"Para todo el semestre, sin interrupciones."*  
+### T2-1 · Plan Semestral ($29.99 / 4 meses)
+**Por qué:** 100% de suscripciones mensuales churnearon. Los estudiantes no necesitan el producto todos los meses con igual intensidad — lo usan por semestre. El semestral = 3x el revenue de un Express Pass 24h con un solo checkout.  
 **Implementación:**
-1. Crear producto en Stripe ($29.99, 4 meses)
-2. Agregar a pricing page entre Express 7d y Premium Mensual
-3. Copy específico para estudiantes
-4. Decidir si el Express 7d ($8.99) sigue teniendo sentido con este nuevo tier
+1. Crear producto en Stripe ($29.99, billing cada 4 meses)
+2. Agregar a pricing page con frame *"Para todo el semestre"*
+3. Revisar si el Express 7d ($8.99, solo 4 ventas históricas) sigue teniendo sentido junto al semestral
 
 **Esfuerzo:** 2-3 días  
-**Impacto:** Primera opción de conversión que encaja con el patrón de uso real del 87% de los usuarios
+**Impacto:** Primera opción de revenue recurrente que encaja con el patrón de uso real
 
 ### T2-2 · Email capture post-resultado (anónimos)
-**Por qué:** GA4 muestra 97% de usuarios como primera visita. 160-220 usuarios activos por semana en Supabase, pero solo 38-39 registros nuevos. La mayoría son anónimos que usan el producto y se van sin dejar nada.  
-**Propuesta:** Después del primer análisis completado por un usuario anónimo, mostrar inline (no modal bloqueante): *"¿Querés guardar este análisis? Solo tu email."* Un input + botón. Sin contraseña, sin registro completo.  
-**Flujo:** email capturado → guardado en `email_waitlist` o tabla nueva → secuencia de email automática (24h, 7d).  
+**Por qué:** 97% de los usuarios se van sin dejar email. Sin email no hay retargeting, no hay secuencias, no hay nada. Es la base de todo el revenue futuro.  
+**Propuesta:** Después del primer análisis de un usuario anónimo, mostrar inline (no modal): *"¿Querés guardar este análisis? Solo tu email."*  
+**Flujo:** email → `email_waitlist` → secuencia automática (24h recordatorio, 7d oferta Express Pass)  
 **Esfuerzo:** 2-3 días  
-**Impacto:** Capturar 20-30 emails/semana de usuarios que ya probaron el producto
+**Impacto:** Capturar 20-30 emails/semana de usuarios que ya probaron y obtuvieron valor
 
-### T2-3 · pSEO universidades — fixes y expansión
+### T2-3 · Flujo de cancelación — oferta antes de churnear
+**Situación:** Cuando un usuario cancela en Stripe, no hay nada que lo retenga. Sale sin fricción.  
+**Propuesta:** Email automático inmediato al cancelar: *"Antes de irte — ¿querés 2 semanas gratis para pensarlo?"* o 40% off el próximo mes.  
+**Esfuerzo:** 1 día (webhook Stripe + email)  
+**Impacto:** Rescatar 20-30% de churns = $2-4 MRR extra por cada cancelación evitada
 
-**Situación real (corregida):**
-Ya existen **417 páginas** generadas estáticamente:
-- `/detector-de-ia-universidad/[slug]` — 148 páginas ✅ rankeando
-- `/humanizador-universidad/[slug]` — 148 páginas ✅ construidas, tráfico bajo
-- `/parafraseador-universidad/[slug]` — 148 páginas ✅ construidas, tráfico bajo
-- `/citador-universidad/[slug]` — **no existe** ← oportunidad
-
-Cubre 148 universidades en 20 países hispanohablantes + Brasil.
-
-**Bug a resolver primero — 9 slugs duplicados en `universities.json`:**
-`universidad-sevilla`, `universidad-zaragoza`, `universidad-nacional-colombia`, `universidad-antioquia`, `universidad-valle-colombia`, `buap-puebla`, `puce-ecuador`, `espol-ecuador`, `uni-peru`. Cada uno aparece 2 veces → sitemap con URLs duplicadas → señal negativa para Google.  
-**Esfuerzo:** 30 min | **Impacto:** corregir indexación
-
-**Oportunidad 1 — Citador universidad (nueva):** ✅ DONE
-139 páginas `/citador-universidad/[slug]` + hub `/citadores-universidades` construidas y en sitemap.
-Copy específico por universidad (estilo recomendado según facultades, datos reales de estudiantes y año de fundación).
-Internal links cruzados: cada página de citador linkea al detector y humanizador de la misma universidad.
-
-**Oportunidad 2 — Rankear humanizador y parafraseador universidad:**
-Las páginas existen pero no generan tráfico medible. Verificar en Google Search Console si están indexadas y con qué posición. Si están en página 3-5, mejorar internal linking desde el hub `/humanizadores-universidades` y desde las páginas del detector.  
-**Esfuerzo:** 1 semana de análisis + optimización  
-**Impacto:** potencial de triplicar el tráfico de las páginas de universidades
-
-### T2-4 · Cross-sell Detector → Humanizador (mejoras)
-**Situación actual:** Existe en `DetectorMain.tsx:545`. Aparece cuando `probability >= 60`. Usa colores violeta que no matchean el design system.  
-**Mejoras propuestas:**
-1. Cambiar colores de `violet` → `blue-900/amber` (consistencia)
-2. Bajar threshold de 60% a 50% (más usuarios lo ven)
-3. Mejorar copy: agregar urgencia contextual (*"¿Tenés la entrega hoy?"*)
-4. Medir con analytics si el click-through al humanizador mejora
-
-**Esfuerzo:** 1 día  
-**Impacto:** El Humanizador tiene 13% bounce (el más bajo de todas las páginas) pero llega 10x menos tráfico que el Detector. Este CTA es el puente.
-
-### T2-5 · Trust signals en home
-**Por qué:** 23% de los que no se registran dicen "No confío en el sitio aún" (surveys). La home actual tiene "Privacidad total" y "En español" como señales principales.  
-**Propuesta:**
-1. Contador dinámico: `SELECT COUNT(*) FROM usage_tracking` — mostrar análisis realizados (ya tenés el dato)
-2. Logos o menciones de universidades (Complutense, Valencia, Málaga)
-3. Considerar: "Creado por [nombre], Buenos Aires 2025" — humaniza el producto
-4. Opcional: reseñas de Google si las hay
-
-**Esfuerzo:** 1-2 días  
-**Impacto:** Reducir objeción de confianza, mejorar conversión anónimo → registro
+### T2-4 · Métodos de pago latinoamericanos
+**Situación:** Múltiples pagos fallidos por `transaction_not_allowed`, `try_again_later` desde Colombia, Guatemala, Bolivia, Perú. Hay usuarios que QUIEREN pagar y el banco les bloquea la transacción en USD.  
+**Propuesta:** Habilitar en Stripe: OXXO (México), PSE (Colombia), MercadoPago (Argentina/LatAm)  
+**Esfuerzo:** 3-5 días  
+**Impacto:** Desbloquear revenue de usuarios que hoy no pueden pagar aunque quieran
 
 ---
 
-## TIER 3 — Próximo mes (producto + pricing estratégico)
+## TIER 3 — Próximo mes · Revenue a mediano plazo
 
-### T3-1 · Repensar pricing completo
-**Situación:** Con todos los datos encima, el gap más claro es la falta de un plan para estudiantes con uso regular pero no diario. El Express 7d ($8.99) tiene solo 4 ventas históricas — probablemente se canibaliza con el plan semestral si se lanza.
+### T3-1 · Secuencia email checkout abandonado (automatizada)
+**Situación:** 17 usuarios arrancaron checkout y no completaron. Sin seguimiento automático.  
+**Propuesta:** Si `checkout_started` no tiene `subscription_created` o pago en 24h → email automático *"¿Tuviste problemas con el pago?"*  
+**Esfuerzo:** 1 semana (setup Resend + trigger Supabase)  
+**Impacto:** Recuperar 2-3 conversiones/mes de manera automática
 
-**Preguntas a resolver antes de implementar:**
-- ¿El Express 7d sigue siendo útil si existe un Semestral?
-- ¿Qué features diferencia cada tier exactamente?
-- ¿Cómo se presenta visualmente la tabla de pricing con 5-6 opciones sin abrumar?
-- ¿El copy de pricing page habla al estudiante o al profesional?
-- ¿Hay que repensar los límites del plan free para ser más generosos (más adquisición) o más restrictivos (más conversión)?
+### T3-2 · Repensar pricing completo
+El gap más claro: no hay opción para el estudiante con uso regular pero no diario. Con el semestral resuelto, revisar si el Express 7d sigue teniendo sentido, y reescribir los copies de pricing para hablarle explícitamente a cada perfil (estudiante en época de exámenes, escritora habitual, docente).  
+**Esfuerzo:** 1 semana diseño + 1 semana código
 
-**Esfuerzo:** 1 semana diseño + 1 semana implementación  
-**Impacto:** Estructura de revenue más sostenible y alineada al patrón de uso real
+### T3-3 · Trust signals en home
+23% de los que no se registran dicen "No confío en el sitio aún". Agregar: contador dinámico de análisis realizados, menciones de universidades reales, línea de "creado por".  
+**Esfuerzo:** 1-2 días
 
-### T3-2 · Express Pass modal — revisión visual
-**Situación:** El modal `ExpressUnlockModal.tsx` ya tiene gradiente naranja en el botón CTA. El fondo es `bg-amber-50` (claro). Si antes se veía más llamativo, el cambio puede haber sido en el fondo del modal en sí o en el tamaño/posición.  
-**Acción:** Revisar `git log -- src/app/components/ExpressUnlockModal.tsx` y comparar con versión anterior. Evaluar si vale darkear el fondo o agrandar el área naranja.  
-**Esfuerzo:** Medio día  
-**Impacto:** Mayor conversión en el momento de mayor intención de pago
+### T3-4 · Investigar picos de tráfico (Apr 28-29, May 3-5)
+2x usuarios esos días vs baseline. Si la fuente es replicable, es el mejor dato de acquisition del producto. Revisar GSC y calendario académico español.  
+**Esfuerzo:** 2 horas
 
-### T3-3 · Investigar picos de tráfico (Apr 28-29, May 3-5)
-**Situación:** GA4 muestra esos días con 2x usuarios normales (106-120 vs baseline de 63-85). Puede ser: período de parciales en España, mención en foro académico, contenido viral.  
-**Acción:** Revisar Google Search Console para esas fechas específicas, cruzar con calendario académico español y latinoamericano.  
-**Esfuerzo:** 2 horas  
-**Impacto:** Si la fuente es replicable, es el mejor dato de acquisition del producto
-
-### T3-4 · Página de profesor bien construida
-**Situación actual:** `/detector-de-ia-para-profesores` tiene 69% de bounce. El mensaje actual habla de detectar IA en textos propios — no es el caso de uso del profesor, que quiere revisar trabajos de alumnos.  
-**Propuesta:**
-- Reescribir la página con el caso de uso real: *"Revisá los trabajos de tus alumnos antes de calificarlos"*
-- CTA diferente: no Express Pass (one-time) sino Premium o futuro plan Teacher
-- Mencionar el límite diario explícitamente para que evalúen si alcanza
-
-**Esfuerzo:** 1-2 días  
-**Impacto:** Reducir bounce del 69% en un segmento con mayor WTP
+### T3-5 · Decisión: History para usuarios Express
+`getUserHistory()` da límites free a usuarios con Express activo. Decidir si merecen límites extendidos (30 usos / 14 días) como diferenciador de plan.  
+**Esfuerzo:** 1-2 horas
 
 ---
 
 ## TIER 4 — Cuando haya más volumen
 
 ### T4-1 · Detección en lote para docentes
-**Caso de uso:** Un profesor sube 10-20 trabajos de alumnos en PDF/DOCX y obtiene resultados en tabla con porcentaje de IA por trabajo.  
-**Por qué esperar:** Requiere UX nueva, procesamiento asíncrono, UI de resultados. Complejo. El segmento existe pero es chico hoy.  
-**Por qué hacerlo eventualmente:** Único segmento con uso mensual recurrente natural. WTP mayor ($24.99-$49.99/mes). LTV 3-4x mayor que estudiante.  
-**Esfuerzo:** 3-4 semanas  
+Subir 10-20 trabajos y ver resultados en tabla. Único segmento con uso mensual recurrente natural. WTP $24-49/mes. LTV 3-4x mayor que estudiante.  
+**Esfuerzo:** 3-4 semanas
 
-### T4-2 · Secuencia de email para usuarios inactivos
-**Situación:** 47 usuarios usaron el producto una vez y no volvieron. Sin email automatizado de seguimiento.  
-**Propuesta:** Email a las 48h de inactividad post-primer uso: *"¿Pudiste con tu entrega?"* — corto, humano, sin template obvio. Requiere configurar Resend o similar con trigger por inactividad.  
-**Esfuerzo:** 1 semana (setup de email automation)  
-**Impacto:** Recuperar 10-20% de one-session users
+### T4-2 · Página de profesor reescrita
+`/detector-de-ia-para-profesores` tiene 69% bounce. El copy actual habla de detectar IA en texto propio, no en trabajos de alumnos. Hay que reescribirla.  
+**Esfuerzo:** 1-2 días
 
-### T4-3 · Generador de Citas — mejorar discovery
-**Situación:** Las páginas pSEO de citas (`/generador-citas-apa-7`, `/generador-citas-apa`) tienen tráfico (215 y 94 sesiones) pero la herramienta misma (`/generador-de-citas`) tiene solo 22 sesiones. El CTA de las páginas pSEO no está convirtiendo a uso de la herramienta.  
-**Acción:** Revisar el CTA en las páginas APA/MLA/Chicago y hacerlo más directo hacia la herramienta.  
-**Esfuerzo:** 1 día  
+### T4-3 · Rankear humanizador y parafraseador universidad en SEO
+Las páginas existen (139 cada una) pero no generan tráfico medible. Verificar posición en GSC y mejorar internal linking.  
+**Esfuerzo:** 1 semana
 
----
-
-## Datos clave para decisiones futuras
-
-### Usuarios con checkout abandonado (calientes para outreach)
-| Email | Intentos | Último intento |
-|---|---|---|
-| vanessaaraya179@gmail.com | 8 | Mar 14 |
-| halvaradoa2@miumg.edu.gt | 2 | May 1 |
-| maria.cepeda.m@gmail.com | 2 | May 11 |
-| sanchezdebenito82@gmail.com | 2 | Abr 1 |
-
-### Fuentes de referral inesperadas (a monitorear)
-- **chatgpt.com**: 223 sesiones/mes — ChatGPT recomienda el producto orgánicamente
-- **perplexity.ai + copilot.com**: 25 sesiones — AI search engines como canal emergente
-- **plataformavirtual.iugna.edu.ar**: 3 sesiones — alguien lo compartió en una plataforma universitaria argentina
-
-### Señales de alarma en pagos latinoamericanos
-Múltiples usuarios con intentos fallidos por `transaction_not_allowed`, `try_again_later`, `incorrect_number`. Revenue perdido por fricción de pago en USD con tarjetas locales. Evaluar métodos de pago alternativos (PSE Colombia, OXXO México) cuando el volumen lo justifique.
+### T4-4 · Generador de Citas — mejorar discovery desde pSEO
+Las páginas APA/MLA tienen 215 y 94 sesiones pero la herramienta misma tiene 22. El CTA no convierte.  
+**Esfuerzo:** 1 día
 
 ---
 
-## Lo que NO sabemos todavía y habría que medir
+## Lo que NO sabemos todavía
 
-- **¿Qué keywords exactas traen el tráfico orgánico?** Google Search Console vinculado a GA4 no está exportando datos de keywords al Data API. Revisar directamente en GSC.
-- **¿Por qué churnearon los suscriptores?** No hay offboarding survey. Agregar una pregunta de cancelación en Stripe o por email.
-- **¿Cuál es la tasa de conversión anónimo → Express Pass?** No hay evento de analytics que trackee el journey completo desde primer uso anónimo hasta compra.
-- **¿Qué tan usada es la feature de subida de archivos entre usuarios premium?** Sabemos que los free la intentan (69 eventos bloqueados) pero no cuántos premium la usan efectivamente.
+- **Keywords exactas de tráfico orgánico** — revisar GSC directamente, el Data API de GA4 no las exporta
+- **Por qué churnearon los suscriptores** — no hay offboarding survey. Agregar pregunta de cancelación en Stripe
+- **Tasa de conversión anónimo → Express Pass** — no hay evento que trackee ese journey completo
+- **Uso real de file upload entre usuarios premium** — sabemos que free la intenta (69 bloqueos/mes) pero no cuántos premium la usan
+- **A dónde va exactamente el CTA del modal** — verificar antes de T1-4
