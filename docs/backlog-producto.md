@@ -60,46 +60,60 @@ Usuarios con uso intenso esta semana en plan free. La acción de mayor ROI del b
 
 **EMAIL A — Para usuarios de largo plazo** (gisella, escritora, leo, sanmartin)
 
-> **Asunto:** una pregunta de quien hizo DetectordeIA
->
-> Hola,
->
-> Soy Agustín, el fundador de DetectordeIA.ai. Vi que usás el detector seguido y quería preguntarte directamente: ¿cómo te está yendo con el producto? ¿Para qué lo usás principalmente?
->
-> Si en algún momento los límites te molestan, puedo darte un descuento personal en el Express Pass o en Premium. Solo respondé este mail.
->
-> Gracias por usar el producto,
-> Agustín
+```
+Asunto: una pregunta de quien hizo DetectordeIA
+
+Hola,
+
+Soy Agustín, el fundador de DetectordeIA.ai. Vi que usás el detector seguido
+y quería preguntarte directamente: ¿cómo te está yendo con el producto?
+¿Para qué lo usás principalmente?
+
+Si en algún momento los límites te molestan, puedo darte un descuento personal
+en el Express Pass o en Premium. Solo respondé este mail.
+
+Gracias por usar el producto,
+Agustín
+```
 
 ---
 
 **EMAIL B — Para cmpaclauuuu** (19 usos esta semana, usuario nuevo muy activo)
 
-> **Asunto:** ey, gracias por usar DetectordeIA
->
-> Hola,
->
-> Soy Agustín, el fundador de DetectordeIA.ai. Vi que empezaste a usar el detector esta semana y ya lo usaste bastante — me alegra que te esté sirviendo.
->
-> ¿Para qué lo estás usando? Me ayuda saber para mejorar el producto. Y si los límites te cortan el ritmo, puedo darte acceso extendido con descuento — solo escribime.
->
-> Gracias,
-> Agustín
+```
+Asunto: ey, gracias por usar DetectordeIA
+
+Hola,
+
+Soy Agustín, el fundador de DetectordeIA.ai. Vi que empezaste a usar el detector
+esta semana y ya lo usaste bastante — me alegra que te esté sirviendo.
+
+¿Para qué lo estás usando? Me ayuda saber para mejorar el producto. Y si los
+límites te cortan el ritmo, puedo darte acceso extendido con descuento — solo escribime.
+
+Gracias,
+Agustín
+```
 
 ---
 
 **EMAIL C — Para 948692@unizar.es** (estudiante Unizar, 15 usos esta semana)
 
-> **Asunto:** hola desde DetectordeIA — una pregunta rápida
->
-> Hola,
->
-> Soy Agustín, el que hizo DetectordeIA.ai. Vi que usaste el detector varias veces esta semana desde la Unizar — espero que te haya sido útil para las entregas.
->
-> ¿Tenés más trabajos esta temporada? Si necesitás acceso sin límites para el período de exámenes, puedo darte un descuento personal en el Express Pass. Solo respondé este mail.
->
-> Suerte con los estudios,
-> Agustín
+```
+Asunto: hola desde DetectordeIA — una pregunta rápida
+
+Hola,
+
+Soy Agustín, el que hizo DetectordeIA.ai. Vi que usaste el detector varias veces
+esta semana desde la Unizar — espero que te haya sido útil para las entregas.
+
+¿Tenés más trabajos esta temporada? Si necesitás acceso sin límites para el
+período de exámenes, puedo darte un descuento personal en el Express Pass.
+Solo respondé este mail.
+
+Suerte con los estudios,
+Agustín
+```
 
 ---
 
@@ -114,15 +128,19 @@ Usuarios que tuvieron la tarjeta en mano y algo falló. Los más recientes son l
 | sanchezdebenito82@gmail.com | 2 | Abr 1 | Email si hay tiempo |
 | vanessaaraya179@gmail.com | 8 | Mar 14 | Frío, intentar igual |
 
-> **Asunto:** ¿tuviste problemas para completar el pago?
->
-> Hola,
->
-> Soy Agustín de DetectordeIA.ai. Vi que intentaste activar el Express Pass pero no llegó a completarse.
->
-> ¿Hubo algún problema con el pago? Si querés, te puedo ayudar directamente o buscamos otra forma. Solo respondé este mail.
->
-> Agustín
+```
+Asunto: ¿tuviste problemas para completar el pago?
+
+Hola,
+
+Soy Agustín de DetectordeIA.ai. Vi que intentaste activar el Express Pass
+pero no llegó a completarse.
+
+¿Hubo algún problema con el pago? Si querés, te puedo ayudar directamente
+o buscamos otra forma. Solo respondé este mail.
+
+Agustín
+```
 
 ---
 
