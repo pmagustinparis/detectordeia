@@ -353,7 +353,11 @@ export default function DashboardClient({ user, usageStats, history, planType, h
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Historial
-            <span className="text-sm font-normal text-gray-500">(Últimos 10 usos · 7 días)</span>
+            <span className="text-sm font-normal text-gray-500">
+              {planType === 'premium'
+                ? '(Últimos 100 usos · 30 días)'
+                : '(Últimos 10 usos · 7 días)'}
+            </span>
           </h2>
 
           {history.length === 0 ? (
