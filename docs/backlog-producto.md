@@ -44,11 +44,8 @@
 
 ## TIER 1 — Esta semana (mínimo código, impacto directo)
 
-### T1-1 · Fix label hardcodeado en Dashboard
-**Problema:** `DashboardClient.tsx:360` muestra `"(Últimos 10 usos · 7 días)"` a todos los usuarios sin importar su plan. Los usuarios premium tienen 100 usos / 30 días pero ven el label de free.  
-**Fix:** Renderizar el label según `planType`.  
-**Esfuerzo:** 30 min  
-**Impacto:** UX correcta para usuarios premium
+### T1-1 · Fix label hardcodeado en Dashboard ✅ DONE
+Label del historial ahora muestra `(Últimos 100 usos · 30 días)` a usuarios premium y `(Últimos 10 usos · 7 días)` a free.
 
 ### T1-2 · ExpressPromoBanner — restaurar naranja ✅ DONE
 **Problema:** El banner de Express Pass en páginas de universidad y herramientas era naranja/amber, quedó azul en algún commit intermedio. El modal (`ExpressUnlockModal`) sigue naranja — hay inconsistencia visual.  
