@@ -98,19 +98,30 @@
 **Esfuerzo:** 2-3 días  
 **Impacto:** Capturar 20-30 emails/semana de usuarios que ya probaron el producto
 
-### T2-3 · Escalar pSEO universidades
-**Por qué:** Las páginas de universidad tienen bounce 15-26% vs 41% de la home. Son la mejor landing page del producto. Tráfico predecible y creciente.  
-**Situación actual:** ~20 páginas de universidades españolas  
-**Oportunidad:**
-- España: Sevilla, Zaragoza, Salamanca, Politécnica Madrid, Politécnica Valencia, Vigo, Murcia, Alicante (~30 más)
-- México: UNAM, Tec, UAM, UANL, UDG, Iberoamericana (~15)
-- Colombia: U de los Andes, U Nacional, Javeriana, EAFIT (~10)
-- Chile: U de Chile, PUC, U de Santiago (~8)
-- Argentina: UBA, UNC, UTN, UNLP (~10)
-- Perú: PUCP, UNMSM, U Lima (~6)
+### T2-3 · pSEO universidades — fixes y expansión
 
-**Esfuerzo:** 1 semana de contenido (no requiere código nuevo)  
-**Impacto:** Duplicar tráfico orgánico en 60-90 días
+**Situación real (corregida):**
+Ya existen **417 páginas** generadas estáticamente:
+- `/detector-de-ia-universidad/[slug]` — 148 páginas ✅ rankeando
+- `/humanizador-universidad/[slug]` — 148 páginas ✅ construidas, tráfico bajo
+- `/parafraseador-universidad/[slug]` — 148 páginas ✅ construidas, tráfico bajo
+- `/citador-universidad/[slug]` — **no existe** ← oportunidad
+
+Cubre 148 universidades en 20 países hispanohablantes + Brasil.
+
+**Bug a resolver primero — 9 slugs duplicados en `universities.json`:**
+`universidad-sevilla`, `universidad-zaragoza`, `universidad-nacional-colombia`, `universidad-antioquia`, `universidad-valle-colombia`, `buap-puebla`, `puce-ecuador`, `espol-ecuador`, `uni-peru`. Cada uno aparece 2 veces → sitemap con URLs duplicadas → señal negativa para Google.  
+**Esfuerzo:** 30 min | **Impacto:** corregir indexación
+
+**Oportunidad 1 — Citador universidad (nueva):** ✅ DONE
+139 páginas `/citador-universidad/[slug]` + hub `/citadores-universidades` construidas y en sitemap.
+Copy específico por universidad (estilo recomendado según facultades, datos reales de estudiantes y año de fundación).
+Internal links cruzados: cada página de citador linkea al detector y humanizador de la misma universidad.
+
+**Oportunidad 2 — Rankear humanizador y parafraseador universidad:**
+Las páginas existen pero no generan tráfico medible. Verificar en Google Search Console si están indexadas y con qué posición. Si están en página 3-5, mejorar internal linking desde el hub `/humanizadores-universidades` y desde las páginas del detector.  
+**Esfuerzo:** 1 semana de análisis + optimización  
+**Impacto:** potencial de triplicar el tráfico de las páginas de universidades
 
 ### T2-4 · Cross-sell Detector → Humanizador (mejoras)
 **Situación actual:** Existe en `DetectorMain.tsx:545`. Aparece cuando `probability >= 60`. Usa colores violeta que no matchean el design system.  

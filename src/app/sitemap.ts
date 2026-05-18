@@ -231,6 +231,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Páginas de universidades — Citador (Fase 4 pSEO)
+  const citadorUniversityPages: MetadataRoute.Sitemap = universities.map((uni) => ({
+    url: `${baseUrl}/citador-universidad/${uni.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  // Hub Citador — Universidades
+  const citadorUniversitiesHub: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/citadores-universidades`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
+
   // Comparativas Humanizador vs competidores
   const humanizerComparisonPages: MetadataRoute.Sitemap = humanizerComparisons.map((comp) => ({
     url: `${baseUrl}/humanizador-vs/${comp.slug}`,
@@ -270,6 +288,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...humanizerUniversitiesHub,
     ...paraphraserUniversityPages,
     ...paraphraserUniversitiesHub,
+    ...citadorUniversityPages,
+    ...citadorUniversitiesHub,
     ...humanizerComparisonPages,
     ...paraphraserComparisonPages,
     ...regionalPages,
