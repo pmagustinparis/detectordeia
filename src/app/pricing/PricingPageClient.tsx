@@ -22,6 +22,7 @@ function CheckIcon({ amber = false }) {
 
 export default function PricingPageClient() {
   const { isAuthenticated } = useAuth();
+  const [expressDuration, setExpressDuration] = useState<'24h' | '7d'>('24h');
   const [premiumInterval, setPremiumInterval] = useState<'month' | 'year'>('month');
   const [userPlan, setUserPlan] = useState<string>('free');
   const [loadingCheckout, setLoadingCheckout] = useState<string | null>(null);
@@ -154,25 +155,40 @@ export default function PricingPageClient() {
             <p className="text-sm text-gray-500">Acceso completo · Pago único · Sin renovación</p>
           </div>
 
-          {/* 3. Dos botones-CTA directos en lugar del toggle */}
-          <div className="flex flex-col gap-2 mb-5">
+          {/* Toggle 24h / 7d */}
+          <div className="flex gap-2 mb-4">
             <button
-              onClick={() => handleCTA('express', '24h')}
-              disabled={loadingCheckout === 'express24h'}
-              className="w-full border-2 border-amber-400 hover:bg-amber-50 rounded-xl py-3 text-sm font-bold text-gray-900 text-left px-4 transition-colors disabled:opacity-60"
+              onClick={() => setExpressDuration('24h')}
+              className={`flex-1 py-2 rounded-lg text-sm font-bold transition-colors ${
+                expressDuration === '24h' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
             >
-              <span className="block">24 horas — $3.99</span>
-              <span className="block text-xs text-gray-400 font-normal mt-0.5">Para una necesidad puntual o urgente</span>
+              24 Horas
             </button>
             <button
-              onClick={() => handleCTA('express', '7d')}
-              disabled={loadingCheckout === 'express7d'}
-              className="w-full border-2 border-amber-400 hover:bg-amber-50 rounded-xl py-3 text-sm font-bold text-gray-900 text-left px-4 transition-colors disabled:opacity-60"
+              onClick={() => setExpressDuration('7d')}
+              className={`flex-1 py-2 rounded-lg text-sm font-bold transition-colors ${
+                expressDuration === '7d' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
             >
-              <span className="block">7 días — $8.99</span>
-              <span className="block text-xs text-amber-600 font-normal mt-0.5">Ahorrás 68% · Semana de trabajo intensivo</span>
+              7 Días
             </button>
           </div>
+
+          <div className="mb-1">
+            <span className="text-4xl font-bold text-gray-900">
+              ${expressDuration === '24h' ? '3.99' : '8.99'}
+            </span>
+            <span className="text-gray-500 text-sm ml-1">
+              {expressDuration === '24h' ? '/ 24 horas' : '/ 7 días'}
+            </span>
+          </div>
+          {expressDuration === '7d' && (
+            <p className="text-xs text-amber-600 font-semibold mb-4">Ahorrás 68% vs 7 días individuales</p>
+          )}
+          {expressDuration === '24h' && (
+            <p className="text-xs text-gray-400 mb-4">Para una necesidad puntual o urgente</p>
+          )}
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-gray-700">
             <li className="flex items-center gap-2"><CheckIcon /> Detector · Humanizador · Parafraseador</li>
@@ -181,7 +197,14 @@ export default function PricingPageClient() {
             <li className="flex items-center gap-2"><CheckIcon /> Subida de archivos (PDF, DOCX, TXT)</li>
           </ul>
 
-          <p className="text-xs text-center text-gray-400 mt-auto pt-2">Pago seguro con Stripe</p>
+          <button
+            onClick={() => handleCTA('express', expressDuration)}
+            disabled={loadingCheckout === 'express' + expressDuration}
+            className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all disabled:opacity-60 text-sm"
+          >
+            {loadingCheckout?.startsWith('express') ? 'Procesando...' : `⚡ Activar Express Pass · $${PRICES.express[expressDuration]}`}
+          </button>
+          <p className="text-xs text-center text-gray-400 mt-2">Pago seguro con Stripe</p>
         </div>
 
         {/* SEMESTRAL PASS — md:order-2, mobile order-1 (primero en mobile) */}
