@@ -207,7 +207,7 @@ export default function PricingPageClient() {
 
           <div className="mb-5 mt-2">
             <p className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">Para todo el semestre</p>
-            <h2 className="text-2xl font-bold text-white mb-1">Semestral Pass</h2>
+            <h2 className="text-2xl font-bold text-white mb-1" style={{color: '#ffffff'}}>Semestral Pass</h2>
             <p className="text-sm text-blue-200">4 meses · Pago único · Sin renovación automática</p>
           </div>
 
