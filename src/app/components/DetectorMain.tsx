@@ -544,19 +544,19 @@ export default function DetectorMain({
                   </div>
                 </div>
 
-                {/* CTA Detector → Humanizador: aparece cuando el texto tiene alta probabilidad de IA */}
-                {result.probability >= 60 && !isLimitExceeded && (
-                  <div className="mb-5 p-4 bg-violet-50 border border-violet-200 rounded-xl">
+                {/* CTA Detector → Humanizador: aparece cuando el texto tiene probabilidad de IA */}
+                {result.probability >= 50 && !isLimitExceeded && (
+                  <div className="mb-5 p-4 bg-amber-50 border border-amber-200 rounded-xl">
                     <div className="flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-violet-600 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shrink-0">
                         <Icon icon={ProductIcons.Humanizer} size="md" className="text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold text-violet-900 mb-0.5">
-                          Tu texto fue detectado como IA
+                        <p className="text-sm font-bold text-amber-900 mb-0.5">
+                          Tu texto tiene contenido de IA — {result.probability}% de probabilidad
                         </p>
-                        <p className="text-xs text-violet-700 mb-3">
-                          Humanizalo en 1 clic para que suene natural y pase la detección.
+                        <p className="text-xs text-amber-700 mb-3">
+                          Humanizalo ahora para que suene natural y pase los detectores de tu universidad.
                         </p>
                         <button
                           onClick={() => {
