@@ -157,11 +157,13 @@ Banner consistente con el modal: `bg-amber-50`, `border-amber-200`, gradiente `f
 - 139 páginas `/citador-universidad/[slug]` + hub `/citadores-universidades` creadas y en sitemap
 - Total pSEO universidades: 556 páginas (139 × 4 herramientas)
 
-### T1-4 · Verificar: Modal → ¿va a pricing o a checkout directo?
-**Por qué importa:** El `ExpressUnlockModal` es el momento de mayor intención de pago del producto. 713 veces/mes se muestra. Si el CTA lleva a `/pricing` en vez de directo al checkout de Stripe, hay una pantalla extra de fricción que mata conversión.  
-**Acción:** Revisar a dónde apunta el botón principal del modal. Si va a `/pricing`, cambiarlo a la URL de checkout de Stripe del Express Pass 24h.  
-**Esfuerzo:** 1-2 horas  
-**Impacto:** Directo en conversión del touchpoint más visto del producto
+### T1-4 · Fix flujo anónimo modal → signup → checkout ✅ DONE
+
+**Bug encontrado:** El modal para usuarios anónimos mandaba a `/auth/signup` sin `?next=/pricing`. Después del OAuth, el callback redirigía al dashboard y el flag `pending_plan_type` en localStorage quedaba huérfano — el usuario nunca llegaba al checkout.
+
+**Fix:** Modal → `/auth/signup?next=/pricing`. `SignupForm` y `LoginForm` leen el `next` param y lo propagan al `redirectTo` del OAuth. El callback lo recibe y redirige a `/pricing` donde `PricingPageClient` auto-dispara el checkout.
+
+Para usuarios autenticados: el modal ya iba directo a Stripe vía `/api/create-checkout-session` — correcto, sin cambios.
 
 ### T1-5 · Banner Express Pass — no permitir dismiss permanente
 **Situación:** Cuando el usuario cierra el `ExpressPromoBanner`, se guarda `express_promo_banner_dismissed: true` en localStorage y nunca más aparece. Correcto para no molestar en condiciones normales, pero incorrecto cuando el usuario acaba de chocar con un límite — ese es exactamente el momento en que más necesita ver el banner.  
