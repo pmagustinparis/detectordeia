@@ -117,9 +117,9 @@ Agustín
 
 ---
 
-### T0-2 · Email a checkout abandonados recientes
+### T0-2 · Email a checkout abandonados recientes ✅ DONE — 18 mayo 2026
 
-Usuarios que tuvieron la tarjeta en mano y algo falló. Los más recientes son los más recuperables.
+Emails enviados manualmente a los 4 usuarios con checkout abandonado.
 
 | Email | Intentos | Último intento | Acción |
 |---|---|---|---|
