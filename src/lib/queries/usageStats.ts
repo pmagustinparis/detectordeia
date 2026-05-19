@@ -117,10 +117,10 @@ export async function getUserHistory(userId: string) {
   try {
     const supabase = await createClient();
 
-    // Obtener id interno y plan del usuario
+    // Obtener id interno, plan y estado express
     const { data: user } = await supabase
       .from('users')
-      .select('id, plan_type')
+      .select('id, plan_type, express_plan, express_expires_at')
       .eq('auth_id', userId)
       .single();
 
@@ -129,8 +129,13 @@ export async function getUserHistory(userId: string) {
       return [];
     }
 
-    const planType = user.plan_type === 'premium' ? 'premium' : 'free';
-    const limits = planType === 'premium'
+    // Semestral activo → mismos límites que premium
+    const isSemestralActive = user.express_plan === 'semestral'
+      && user.express_expires_at
+      && new Date(user.express_expires_at) > new Date();
+
+    const hasPremiumHistory = user.plan_type === 'premium' || isSemestralActive;
+    const limits = hasPremiumHistory
       ? { maxRecords: 100, maxDays: 30 }
       : { maxRecords: 10, maxDays: 7 };
 

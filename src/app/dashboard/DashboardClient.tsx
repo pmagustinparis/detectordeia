@@ -16,9 +16,10 @@ interface DashboardClientProps {
   planType: 'free' | 'premium';
   hasStripeCustomer: boolean;
   expressExpiresAt: string | null;
+  isSemestralActive?: boolean;
 }
 
-export default function DashboardClient({ user, usageStats, history, planType, hasStripeCustomer, expressExpiresAt }: DashboardClientProps) {
+export default function DashboardClient({ user, usageStats, history, planType, hasStripeCustomer, expressExpiresAt, isSemestralActive }: DashboardClientProps) {
   const searchParams = useSearchParams();
   const [selectedHistory, setSelectedHistory] = useState<any>(null);
   const [isLoadingPortal, setIsLoadingPortal] = useState(false);
@@ -354,7 +355,7 @@ export default function DashboardClient({ user, usageStats, history, planType, h
             </svg>
             Historial
             <span className="text-sm font-normal text-gray-500">
-              {planType === 'premium'
+              {planType === 'premium' || isSemestralActive
                 ? '(Últimos 100 usos · 30 días)'
                 : '(Últimos 10 usos · 7 días)'}
             </span>
