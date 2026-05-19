@@ -179,15 +179,13 @@ Cuando el usuario choca con el límite en cualquier herramienta, se emite `expre
 
 ## TIER 2 — Próximas 2 semanas · Revenue sostenido
 
-### T2-1 · Plan Semestral ($29.99 / 4 meses)
-**Por qué:** 100% de suscripciones mensuales churnearon. Los estudiantes no necesitan el producto todos los meses con igual intensidad — lo usan por semestre. El semestral = 3x el revenue de un Express Pass 24h con un solo checkout.  
-**Implementación:**
-1. Crear producto en Stripe ($29.99, billing cada 4 meses)
-2. Agregar a pricing page con frame *"Para todo el semestre"*
-3. Revisar si el Express 7d ($8.99, solo 4 ventas históricas) sigue teniendo sentido junto al semestral
+### T2-1 · Plan Semestral ✅ DONE
 
-**Esfuerzo:** 2-3 días  
-**Impacto:** Primera opción de revenue recurrente que encaja con el patrón de uso real
+- $24.99 · pago único · 4 meses (2880hs de acceso via `express_expires_at`)
+- Pricing page rediseñada: 705 → ~270 líneas. 3 columnas con frame de use case claro.
+- Semestral destacado como "MÁS POPULAR" en el centro.
+- Checkout, webhook y env.example actualizados. Price ID: `price_1TYc1rR5MbTVVQlkQUg8LXhN`
+- Express 7d mantenido con copy más específico ("semana de exámenes").
 
 ### T2-2 · Email capture post-resultado (anónimos)
 **Por qué:** 97% de los usuarios se van sin dejar email. Sin email no hay retargeting, no hay secuencias, no hay nada. Es la base de todo el revenue futuro.  
