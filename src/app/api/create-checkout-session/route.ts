@@ -11,10 +11,10 @@ export async function POST(request: Request) {
 
     const { plan_type, plan_interval, duration } = await request.json();
 
-    // Validar plan_type (express o premium)
-    if (!plan_type || !['express', 'premium'].includes(plan_type)) {
+    // Validar plan_type
+    if (!plan_type || !['express', 'semestral', 'premium'].includes(plan_type)) {
       return NextResponse.json(
-        { error: 'plan_type debe ser "express" o "premium"' },
+        { error: 'plan_type debe ser "express", "semestral" o "premium"' },
         { status: 400 }
       );
     }
@@ -70,16 +70,18 @@ export async function POST(request: Request) {
     if (plan_type === 'express') {
       // Express Pass - Pago único
       mode = 'payment';
-
       if (duration === '7d') {
-        // Express Semanal - $8.99 / 7 días
         priceId = process.env.STRIPE_PRICE_EXPRESS_WEEKLY || 'price_1Sho71R5MbTVVQlkSbXwgWmk';
         planTypeForMetadata = 'express_semanal';
       } else {
-        // Express 24h - $3.99 / 24 horas
         priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1ScR9nR5MbTVVQlk2oIBvATK';
         planTypeForMetadata = 'express';
       }
+    } else if (plan_type === 'semestral') {
+      // Semestral Pass - Pago único, 4 meses
+      mode = 'payment';
+      priceId = process.env.STRIPE_PRICE_SEMESTRAL || '';
+      planTypeForMetadata = 'semestral';
     } else {
       // Premium - Suscripción ($12.99/mes o $124.68/año)
       priceId = plan_interval === 'month'
