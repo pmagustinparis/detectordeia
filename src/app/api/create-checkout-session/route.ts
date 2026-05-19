@@ -80,7 +80,7 @@ export async function POST(request: Request) {
     } else if (plan_type === 'semestral') {
       // Semestral Pass - Pago único, 4 meses
       mode = 'payment';
-      priceId = process.env.STRIPE_PRICE_SEMESTRAL || '';
+      priceId = process.env.STRIPE_PRICE_SEMESTRAL || 'price_1TYc1rR5MbTVVQlkQUg8LXhN';
       planTypeForMetadata = 'semestral';
     } else {
       // Premium - Suscripción ($12.99/mes o $124.68/año)
