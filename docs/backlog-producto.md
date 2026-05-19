@@ -41,9 +41,9 @@
 
 ## TIER 0 — Sin código · Revenue esta semana
 
-### T0-1 · Email a 6 power users activos ahora mismo
+### T0-1 · Email a 6 power users activos ahora mismo ✅ DONE — 18 mayo 2026
 
-Usuarios con uso intenso esta semana en plan free. La acción de mayor ROI del backlog: costo 1 hora, potencial 1-2 conversiones inmediatas ($26-50).
+Emails enviados manualmente. Potencial 1-2 conversiones en los próximos días.
 
 **Los 6 usuarios:**
 
