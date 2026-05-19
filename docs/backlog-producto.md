@@ -1,263 +1,221 @@
 # Backlog de Producto — detectordeia.ai
-**Última actualización:** Mayo 2026  
 **Criterio de priorización:** impacto en revenue directo  
 **Contexto:** Análisis basado en datos reales de Supabase, Stripe y Google Analytics
 
 ---
 
-## Estado del negocio
+## Estado del negocio (18 mayo 2026)
 
 - **750 usuarios** registrados · 99.2% free · 0.8% premium
 - **MRR actual: $12.99** (1 suscripción activa)
 - **Revenue histórico total:** ~$230 desde nov 2025 (~$35/mes promedio)
 - **Express Pass** genera más revenue acumulado que suscripciones ($102 vs $91)
-- **Churn suscripciones: 100%** en el primer mes — el modelo mensual no encaja con estudiantes
+- **Churn suscripciones: 100%** en el primer mes
 - **Tráfico:** 70-120 usuarios únicos/día · 97% primera visita · 86% desktop
-- **Adquisición:** 72% Google orgánico · ChatGPT envía 223 sesiones/mes sin hacer nada
+- **Adquisición:** 72% Google orgánico · ChatGPT envía 223 sesiones/mes
 - **Perfil:** 64% estudiantes universitarios · 12% docentes · español nativo
 - **Geografía:** España 38% · México 15% · Perú 10% · Colombia 7%
 
 ---
 
-## Herramientas y planes
+## Herramientas y planes (pre-18 mayo)
 
 | Herramienta | Usos/mes | Bounce en su página |
 |---|---|---|
 | Detector | 1,337 usos · 651 usuarios | — (es la home) |
-| Humanizador | 154 usos · 57 usuarios | **13%** (más bajo de todo el sitio) |
+| Humanizador | 154 usos · 57 usuarios | 13% |
 | Parafraseador | 63 usos · 19 usuarios | 23% |
 | Citador | — | 9% |
 
-| Plan | Precio | Tipo | Ventas históricas |
-|---|---|---|---|
-| Free sin registro | $0 | — | — |
-| Free registrado | $0 | — | — |
-| Express 24h | $3.99 | One-time | 22 |
-| Express 7 días | $8.99 | One-time | 4 |
-| Premium Mensual | $12.99/mes | Recurrente | 6 creadas, todas churnearon |
-| Premium Anual | $10.39/mes | Recurrente | 0 |
+| Plan | Precio | Ventas históricas |
+|---|---|---|
+| Express 24h | $3.99 one-time | 22 |
+| Express 7 días | $8.99 one-time | 4 |
+| Semestral Pass | $24.99 one-time | **NUEVO** |
+| Premium Mensual | $12.99/mes | 6 creadas, todas churnearon |
+| Premium Anual | $10.39/mes | 0 |
 
 ---
 
-## TIER 0 — Sin código · Revenue esta semana
+## ✅ SPRINT 18 MAYO 2026 — TODO LO QUE ENTRÓ EN PRODUCCIÓN
 
-### T0-1 · Email a 6 power users activos ahora mismo ✅ DONE — 18 mayo 2026
+### Sin código
+- **T0-1** — Emails manuales a 6 power users activos (gisella, escritora, leo, sanmartin, cmpaclauuuu, 948692@unizar.es)
+- **T0-2** — Emails a 4 checkout abandonados recientes (maria.cepeda, halvaradoa2, sanchezdebenito, vanessaaraya)
 
-Emails enviados manualmente. Potencial 1-2 conversiones en los próximos días.
+### Conversión directa
+- **T1-1** — Dashboard: label historial dinámico por plan (free vs premium)
+- **T1-2** — ExpressPromoBanner: restaurado a naranja/amber (era azul)
+- **T1-3** — pSEO: 9 slugs duplicados eliminados (148 → 139 universidades únicas) + 139 páginas de Citador por universidad creadas (556 páginas pSEO en total)
+- **T1-4** — Fix crítico: flujo anónimo modal → signup → checkout. El flag `pending_plan_type` ahora se consume correctamente después del OAuth via `?next=/pricing`
+- **T1-5** — Banner Express reaparece automáticamente cuando el usuario choca con un límite (custom event `express-limit-exceeded`)
+- **T1-6** — Cross-sell Detector → Humanizador: threshold 60% → 50%, colores violet → amber, copy con % exacto y urgencia
 
-**Los 6 usuarios:**
-
-| Email | Usos totales | Usos esta semana | Señal |
-|---|---|---|---|
-| gisella.ceballos24@gmail.com | 40 | 12 | usuario recurrente de largo plazo |
-| escritora1506@gmail.com | 40 | 9 | nombre sugiere escritora/creadora |
-| leodominguezgarcia007@gmail.com | 27 | 7 | uso regular sostenido |
-| sanmartinnoa@gmail.com | 22 | 7 | uso regular sostenido |
-| cmpaclauuuu@gmail.com | 19 | 19 | nuevo esta semana, muy intenso |
-| 948692@unizar.es | 15 | 15 | estudiante Universidad de Zaragoza |
-
----
-
-**EMAIL A — Para usuarios de largo plazo** (gisella, escritora, leo, sanmartin)
-
-```
-Asunto: una pregunta de quien hizo DetectordeIA
-
-Hola,
-
-Soy Agustín, el fundador de DetectordeIA.ai. Vi que usás el detector seguido
-y quería preguntarte directamente: ¿cómo te está yendo con el producto?
-¿Para qué lo usás principalmente?
-
-Si en algún momento los límites te molestan, puedo darte un descuento personal
-en el Express Pass o en Premium. Solo respondé este mail.
-
-Gracias por usar el producto,
-Agustín
-```
+### Nuevo producto
+- **T2-1** — Semestral Pass $24.99 (4 meses · pago único · sin renovación). Pricing page rediseñada (705 → 270 líneas). Semestral como "MÁS POPULAR" en el centro.
 
 ---
 
-**EMAIL B — Para cmpaclauuuu** (19 usos esta semana, usuario nuevo muy activo)
+## 📊 MEDICIÓN — Qué mirar y cuándo
 
+### Revisión 1 — Lunes 25 mayo (7 días)
+
+**Emails (T0-1, T0-2):**
+- ¿Cuántas respuestas recibiste de los 10 emails?
+- ¿Alguna conversión directa?
+- Métrica: respuestas ≥ 3 = bueno · conversiones ≥ 1 = excelente
+
+**Semestral Pass (T2-1):**
+- ¿Se vendió alguno? Revisar Stripe → Products → Semestral Pass
+- ¿Hay `checkout_started` con `plan_type: semestral` en Supabase?
+- Métrica objetivo: 1 venta en los primeros 7 días
+
+**Fix flujo anónimo (T1-4):**
+```sql
+SELECT COUNT(*) FROM analytics_events 
+WHERE event_type = 'checkout_started' 
+AND created_at >= '2026-05-18'
+AND metadata->>'plan_type' = 'express';
 ```
-Asunto: ey, gracias por usar DetectordeIA
+Comparar con la semana anterior. Si subió → el fix funcionó.
 
-Hola,
-
-Soy Agustín, el fundador de DetectordeIA.ai. Vi que empezaste a usar el detector
-esta semana y ya lo usaste bastante — me alegra que te esté sirviendo.
-
-¿Para qué lo estás usando? Me ayuda saber para mejorar el producto. Y si los
-límites te cortan el ritmo, puedo darte acceso extendido con descuento — solo escribime.
-
-Gracias,
-Agustín
-```
+**Cross-sell humanizador (T1-6):**
+- En GA4: sesiones a `/humanizador` esta semana vs semana anterior
+- Métrica: aumento ≥ 20% en sesiones al humanizador
 
 ---
 
-**EMAIL C — Para 948692@unizar.es** (estudiante Unizar, 15 usos esta semana)
+### Revisión 2 — Lunes 9 junio (3 semanas)
 
-```
-Asunto: hola desde DetectordeIA — una pregunta rápida
+**Revenue total:**
+- Comparar ingresos semana 19-25 mayo vs 26 mayo-9 junio
+- Métrica objetivo: ≥ $50 de revenue en los 3 primeros semanas post-lanzamiento
 
-Hola,
+**Semestral Pass:**
+- ¿Cuántas ventas acumuladas?
+- ¿Quiénes compraron? (perfil: España/LatAm, uso previo del detector)
+- Métrica objetivo: 3-5 ventas en 3 semanas
 
-Soy Agustín, el que hizo DetectordeIA.ai. Vi que usaste el detector varias veces
-esta semana desde la Unizar — espero que te haya sido útil para las entregas.
+**Express Pass:**
+- ¿Cambió la tasa de ventas semanales? (baseline: ~3-4/semana)
+- ¿Algún efecto del banner que reaparece al chocar con límite?
 
-¿Tenés más trabajos esta temporada? Si necesitás acceso sin límites para el
-período de exámenes, puedo darte un descuento personal en el Express Pass.
-Solo respondé este mail.
+**Humanizador:**
+- ¿Creció el tráfico al humanizador?
+- ¿Creció la conversión de humanizador a Express Pass?
 
-Suerte con los estudios,
-Agustín
-```
-
----
-
-### T0-2 · Email a checkout abandonados recientes ✅ DONE — 18 mayo 2026
-
-Emails enviados manualmente a los 4 usuarios con checkout abandonado.
-
-| Email | Intentos | Último intento | Acción |
-|---|---|---|---|
-| maria.cepeda.m@gmail.com | 2 | May 11 | Email esta semana |
-| halvaradoa2@miumg.edu.gt | 2 | May 1 | Email esta semana |
-| sanchezdebenito82@gmail.com | 2 | Abr 1 | Email si hay tiempo |
-| vanessaaraya179@gmail.com | 8 | Mar 14 | Frío, intentar igual |
-
-```
-Asunto: ¿tuviste problemas para completar el pago?
-
-Hola,
-
-Soy Agustín de DetectordeIA.ai. Vi que intentaste activar el Express Pass
-pero no llegó a completarse.
-
-¿Hubo algún problema con el pago? Si querés, te puedo ayudar directamente
-o buscamos otra forma. Solo respondé este mail.
-
-Agustín
-```
+**Emails de power users:**
+- ¿Alguno de los 6 convirtió en las 3 semanas? Revisar en Supabase por email.
 
 ---
 
-## TIER 1 — Esta semana · Alto impacto en conversión · Poco código
+### Revisión 3 — Lunes 29 junio (fin de semestre España)
 
-### T1-1 · Fix label hardcodeado en Dashboard ✅ DONE
-Label del historial ahora muestra `(Últimos 100 usos · 30 días)` a usuarios premium y `(Últimos 10 usos · 7 días)` a free.
+**La pregunta central:** ¿el Semestral Pass captura el pico de fin de semestre?
 
-### T1-2 · ExpressPromoBanner — restaurar naranja ✅ DONE
-Banner consistente con el modal: `bg-amber-50`, `border-amber-200`, gradiente `from-orange-500 to-amber-500`.
+El calendario académico español cierra exámenes en junio. Si el Semestral tiene tracción, debería verse un pico de ventas en la segunda quincena de junio — estudiantes que entran en modo exámenes y pagan por el semestre completo antes de que empiece el nuevo período.
 
-### T1-3 · pSEO — duplicados y Citador ✅ DONE
-- 9 slugs duplicados eliminados de `universities.json` (148 → 139 entradas únicas)
-- 139 páginas `/citador-universidad/[slug]` + hub `/citadores-universidades` creadas y en sitemap
-- Total pSEO universidades: 556 páginas (139 × 4 herramientas)
-
-### T1-4 · Fix flujo anónimo modal → signup → checkout ✅ DONE
-
-**Bug encontrado:** El modal para usuarios anónimos mandaba a `/auth/signup` sin `?next=/pricing`. Después del OAuth, el callback redirigía al dashboard y el flag `pending_plan_type` en localStorage quedaba huérfano — el usuario nunca llegaba al checkout.
-
-**Fix:** Modal → `/auth/signup?next=/pricing`. `SignupForm` y `LoginForm` leen el `next` param y lo propagan al `redirectTo` del OAuth. El callback lo recibe y redirige a `/pricing` donde `PricingPageClient` auto-dispara el checkout.
-
-Para usuarios autenticados: el modal ya iba directo a Stripe vía `/api/create-checkout-session` — correcto, sin cambios.
-
-### T1-5 · Banner Express Pass — resetear al chocar con límite ✅ DONE
-
-Cuando el usuario choca con el límite en cualquier herramienta, se emite `express-limit-exceeded` (custom event). El banner lo escucha y se muestra de nuevo, aunque el usuario lo haya cerrado antes. El flag de localStorage se limpia en ese momento.
-
-### T1-6 · Cross-sell Detector → Humanizador ✅ DONE
-
-- Threshold: 60% → 50% (más usuarios ven el CTA)
-- Colores: `violet` → `amber/naranja` (consistente con Express Pass)
-- Copy: muestra el % exacto + *"pase los detectores de tu universidad"*
+**Métricas a revisar:**
+- Revenue total mayo 18 → junio 29 vs igual período del año anterior (no tenemos, pero sirve como baseline futuro)
+- Distribución de ventas por tipo: Express 24h / Express 7d / Semestral / Premium
+- País de las conversiones: ¿España o LatAm lidera el Semestral?
 
 ---
 
-## TIER 2 — Próximas 2 semanas · Revenue sostenido
+## 🔜 PENDIENTE — Próximas semanas (mediano plazo)
 
-### T2-1 · Plan Semestral ✅ DONE
+### T2-2 · Email capture post-resultado (anónimos) ← PRÓXIMO
+**Por qué es el más importante a mediano plazo:** Sin emails de usuarios anónimos no hay retargeting, no hay secuencias de conversión, no hay nada. El 97% del tráfico se va sin dejar nada. Es la base de todo el revenue futuro.
 
-- $24.99 · pago único · 4 meses (2880hs de acceso via `express_expires_at`)
-- Pricing page rediseñada: 705 → ~270 líneas. 3 columnas con frame de use case claro.
-- Semestral destacado como "MÁS POPULAR" en el centro.
-- Checkout, webhook y env.example actualizados. Price ID: `price_1TYc1rR5MbTVVQlkQUg8LXhN`
-- Express 7d mantenido con copy más específico ("semana de exámenes").
+**Propuesta:** Después del primer análisis de un usuario anónimo, mostrar inline (no modal bloqueante): *"¿Querés guardar este análisis? Solo tu email."* Input + botón. Sin contraseña.
 
-### T2-2 · Email capture post-resultado (anónimos)
-**Por qué:** 97% de los usuarios se van sin dejar email. Sin email no hay retargeting, no hay secuencias, no hay nada. Es la base de todo el revenue futuro.  
-**Propuesta:** Después del primer análisis de un usuario anónimo, mostrar inline (no modal): *"¿Querés guardar este análisis? Solo tu email."*  
-**Flujo:** email → `email_waitlist` → secuencia automática (24h recordatorio, 7d oferta Express Pass)  
+**Flujo:** email → tabla `email_waitlist` → secuencia automática (24h, 7d)  
 **Esfuerzo:** 2-3 días  
-**Impacto:** Capturar 20-30 emails/semana de usuarios que ya probaron y obtuvieron valor
+**Impacto:** Capturar 20-30 emails/semana de usuarios que ya obtuvieron valor
+
+---
 
 ### T2-3 · Flujo de cancelación — oferta antes de churnear
-**Situación:** Cuando un usuario cancela en Stripe, no hay nada que lo retenga. Sale sin fricción.  
-**Propuesta:** Email automático inmediato al cancelar: *"Antes de irte — ¿querés 2 semanas gratis para pensarlo?"* o 40% off el próximo mes.  
+Cuando un usuario cancela en Stripe, email automático inmediato: *"Antes de irte — ¿querés 2 semanas gratis?"*  
 **Esfuerzo:** 1 día (webhook Stripe + email)  
-**Impacto:** Rescatar 20-30% de churns = $2-4 MRR extra por cada cancelación evitada
-
-### T2-4 · Métodos de pago latinoamericanos
-**Situación:** Múltiples pagos fallidos por `transaction_not_allowed`, `try_again_later` desde Colombia, Guatemala, Bolivia, Perú. Hay usuarios que QUIEREN pagar y el banco les bloquea la transacción en USD.  
-**Propuesta:** Habilitar en Stripe: OXXO (México), PSE (Colombia), MercadoPago (Argentina/LatAm)  
-**Esfuerzo:** 3-5 días  
-**Impacto:** Desbloquear revenue de usuarios que hoy no pueden pagar aunque quieran
+**Impacto:** Rescatar 20-30% de churns
 
 ---
 
-## TIER 3 — Próximo mes · Revenue a mediano plazo
+### T2-4 · Métodos de pago latinoamericanos
+Múltiples pagos fallidos por `transaction_not_allowed` desde Colombia, Guatemala, Bolivia. Habilitar OXXO (México), PSE (Colombia), MercadoPago.  
+**Esfuerzo:** 3-5 días  
+**Impacto:** Desbloquear revenue de usuarios que quieren pagar pero su banco rechaza USD
+
+---
 
 ### T3-1 · Secuencia email checkout abandonado (automatizada)
-**Situación:** 17 usuarios arrancaron checkout y no completaron. Sin seguimiento automático.  
-**Propuesta:** Si `checkout_started` no tiene `subscription_created` o pago en 24h → email automático *"¿Tuviste problemas con el pago?"*  
-**Esfuerzo:** 1 semana (setup Resend + trigger Supabase)  
-**Impacto:** Recuperar 2-3 conversiones/mes de manera automática
+Si `checkout_started` sin pago en 24h → email automático. Requiere Resend + trigger Supabase.  
+**Esfuerzo:** 1 semana
 
-### T3-2 · Repensar pricing completo
-El gap más claro: no hay opción para el estudiante con uso regular pero no diario. Con el semestral resuelto, revisar si el Express 7d sigue teniendo sentido, y reescribir los copies de pricing para hablarle explícitamente a cada perfil (estudiante en época de exámenes, escritora habitual, docente).  
-**Esfuerzo:** 1 semana diseño + 1 semana código
+---
 
-### T3-3 · Trust signals en home
-23% de los que no se registran dicen "No confío en el sitio aún". Agregar: contador dinámico de análisis realizados, menciones de universidades reales, línea de "creado por".  
+### T3-2 · Trust signals en home
+23% de los que no se registran dicen "No confío en el sitio aún". Contador dinámico de análisis, logos de universidades, línea de "creado por".  
 **Esfuerzo:** 1-2 días
 
-### T3-4 · Investigar picos de tráfico (Apr 28-29, May 3-5)
-2x usuarios esos días vs baseline. Si la fuente es replicable, es el mejor dato de acquisition del producto. Revisar GSC y calendario académico español.  
+---
+
+### T3-3 · Investigar picos de tráfico (Apr 28-29, May 3-5)
+2x usuarios esos días vs baseline. Revisar GSC y calendario académico.  
 **Esfuerzo:** 2 horas
 
-### T3-5 · Decisión: History para usuarios Express
-`getUserHistory()` da límites free a usuarios con Express activo. Decidir si merecen límites extendidos (30 usos / 14 días) como diferenciador de plan.  
+---
+
+### T3-4 · Decisión: History para usuarios Express
+Express users reciben límites free de historia (10/7d). Decidir si merecen extendido (30/14d).  
 **Esfuerzo:** 1-2 horas
 
 ---
 
 ## TIER 4 — Cuando haya más volumen
 
-### T4-1 · Detección en lote para docentes
-Subir 10-20 trabajos y ver resultados en tabla. Único segmento con uso mensual recurrente natural. WTP $24-49/mes. LTV 3-4x mayor que estudiante.  
-**Esfuerzo:** 3-4 semanas
+- **T4-1** · Detección en lote para docentes ($24-49/mes, uso mensual recurrente)
+- **T4-2** · Página de profesor reescrita (69% bounce actual)
+- **T4-3** · Rankear humanizador y parafraseador universidad en SEO
+- **T4-4** · Generador de Citas — mejorar discovery desde pSEO
 
-### T4-2 · Página de profesor reescrita
-`/detector-de-ia-para-profesores` tiene 69% bounce. El copy actual habla de detectar IA en texto propio, no en trabajos de alumnos. Hay que reescribirla.  
-**Esfuerzo:** 1-2 días
+---
 
-### T4-3 · Rankear humanizador y parafraseador universidad en SEO
-Las páginas existen (139 cada una) pero no generan tráfico medible. Verificar posición en GSC y mejorar internal linking.  
-**Esfuerzo:** 1 semana
+## Datos clave
 
-### T4-4 · Generador de Citas — mejorar discovery desde pSEO
-Las páginas APA/MLA tienen 215 y 94 sesiones pero la herramienta misma tiene 22. El CTA no convierte.  
-**Esfuerzo:** 1 día
+### Power users contactados el 18 mayo (seguimiento)
+| Email | Usos totales | Usos esa semana | Respondió | Convirtió |
+|---|---|---|---|---|
+| gisella.ceballos24@gmail.com | 40 | 12 | — | — |
+| escritora1506@gmail.com | 40 | 9 | — | — |
+| leodominguezgarcia007@gmail.com | 27 | 7 | — | — |
+| sanmartinnoa@gmail.com | 22 | 7 | — | — |
+| cmpaclauuuu@gmail.com | 19 | 19 | — | — |
+| 948692@unizar.es | 15 | 15 | — | — |
+
+### Checkout abandonados contactados el 18 mayo
+| Email | Intentos | Respondió | Convirtió |
+|---|---|---|---|
+| maria.cepeda.m@gmail.com | 2 | — | — |
+| halvaradoa2@miumg.edu.gt | 2 | — | — |
+| sanchezdebenito82@gmail.com | 2 | — | — |
+| vanessaaraya179@gmail.com | 8 | — | — |
+
+### Fuentes de referral inesperadas (monitorear)
+- **chatgpt.com**: 223 sesiones/mes orgánicas
+- **perplexity.ai + copilot.com**: 25 sesiones — AI search como canal emergente
+- **plataformavirtual.iugna.edu.ar**: universidad argentina que compartió el link
+
+### Pagos latinoamericanos fallidos (revenue perdido)
+`transaction_not_allowed`, `try_again_later`, `incorrect_number` — Colombia, Guatemala, Bolivia, Perú. Atacar con métodos de pago locales en T2-4.
 
 ---
 
 ## Lo que NO sabemos todavía
 
-- **Keywords exactas de tráfico orgánico** — revisar GSC directamente, el Data API de GA4 no las exporta
-- **Por qué churnearon los suscriptores** — no hay offboarding survey. Agregar pregunta de cancelación en Stripe
-- **Tasa de conversión anónimo → Express Pass** — no hay evento que trackee ese journey completo
-- **Uso real de file upload entre usuarios premium** — sabemos que free la intenta (69 bloqueos/mes) pero no cuántos premium la usan
-- **A dónde va exactamente el CTA del modal** — verificar antes de T1-4
+- Keywords exactas de tráfico orgánico → revisar GSC directamente
+- Por qué churnearon los suscriptores → no hay offboarding survey
+- Tasa de conversión anónimo → Express/Semestral → no hay evento que trackee el journey completo
+- Uso real de file upload entre usuarios premium
+- Fuente de los picos de tráfico de Apr 28-29 y May 3-5
