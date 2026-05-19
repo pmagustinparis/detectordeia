@@ -165,11 +165,9 @@ Banner consistente con el modal: `bg-amber-50`, `border-amber-200`, gradiente `f
 
 Para usuarios autenticados: el modal ya iba directo a Stripe vía `/api/create-checkout-session` — correcto, sin cambios.
 
-### T1-5 · Banner Express Pass — no permitir dismiss permanente
-**Situación:** Cuando el usuario cierra el `ExpressPromoBanner`, se guarda `express_promo_banner_dismissed: true` en localStorage y nunca más aparece. Correcto para no molestar en condiciones normales, pero incorrecto cuando el usuario acaba de chocar con un límite — ese es exactamente el momento en que más necesita ver el banner.  
-**Fix:** Resetear el flag de localStorage cuando se dispara `isLimitExceeded` en el detector/humanizador/parafraseador.  
-**Esfuerzo:** 1 hora  
-**Impacto:** El banner vuelve a aparecer en el momento de máxima intención de pago
+### T1-5 · Banner Express Pass — resetear al chocar con límite ✅ DONE
+
+Cuando el usuario choca con el límite en cualquier herramienta, se emite `express-limit-exceeded` (custom event). El banner lo escucha y se muestra de nuevo, aunque el usuario lo haya cerrado antes. El flag de localStorage se limpia en ese momento.
 
 ### T1-6 · Cross-sell Detector → Humanizador (mejorar el existente)
 **Situación:** Existe en `DetectorMain.tsx:545`. Aparece cuando `probability >= 60`. Usa colores violeta que no matchean el design system. El Humanizador tiene el bounce más bajo del sitio (13%) — usuarios que llegan ahí están muy motivados y convierten más a Express Pass.  
