@@ -28,10 +28,11 @@ export default function LoginForm() {
   };
 
   const handleGoogleSignIn = async () => {
+    const nextParam = new URLSearchParams(window.location.search).get('next') || '/dashboard';
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextParam)}`,
       },
     });
   };

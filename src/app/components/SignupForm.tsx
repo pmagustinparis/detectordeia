@@ -23,10 +23,11 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
   const supabase = createClient();
 
   const handleGoogleSignIn = async () => {
+    const nextParam = new URLSearchParams(window.location.search).get('next') || '/dashboard';
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextParam)}`,
       },
     });
   };
@@ -88,7 +89,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           data: {
             full_name: formData.name,
           },
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(new URLSearchParams(window.location.search).get('next') || '/dashboard')}`,
         },
       });
 

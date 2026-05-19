@@ -80,7 +80,7 @@ export default function ExpressUnlockModal({
     if (!isAuthenticated) {
       localStorage.setItem('pending_plan_type', 'express');
       localStorage.setItem('pending_express_duration', duration);
-      window.location.href = '/auth/signup';
+      window.location.href = '/auth/signup?next=/pricing';
       return;
     }
 
