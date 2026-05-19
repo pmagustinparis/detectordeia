@@ -169,15 +169,11 @@ Para usuarios autenticados: el modal ya iba directo a Stripe vía `/api/create-c
 
 Cuando el usuario choca con el límite en cualquier herramienta, se emite `express-limit-exceeded` (custom event). El banner lo escucha y se muestra de nuevo, aunque el usuario lo haya cerrado antes. El flag de localStorage se limpia en ese momento.
 
-### T1-6 · Cross-sell Detector → Humanizador (mejorar el existente)
-**Situación:** Existe en `DetectorMain.tsx:545`. Aparece cuando `probability >= 60`. Usa colores violeta que no matchean el design system. El Humanizador tiene el bounce más bajo del sitio (13%) — usuarios que llegan ahí están muy motivados y convierten más a Express Pass.  
-**Cambios:**
-1. Bajar threshold de 60% → 50% (más usuarios ven el CTA)
-2. Cambiar colores `violet` → `blue-900` + acento `amber` (consistencia)
-3. Copy con urgencia: *"¿Tenés la entrega hoy? Humanizalo en 1 clic."*
+### T1-6 · Cross-sell Detector → Humanizador ✅ DONE
 
-**Esfuerzo:** 2-3 horas  
-**Impacto:** Más tráfico al Humanizador = más usuarios que choca con SUS límites = más conversión al Express Pass
+- Threshold: 60% → 50% (más usuarios ven el CTA)
+- Colores: `violet` → `amber/naranja` (consistente con Express Pass)
+- Copy: muestra el % exacto + *"pase los detectores de tu universidad"*
 
 ---
 
