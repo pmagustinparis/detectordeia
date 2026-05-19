@@ -12,9 +12,9 @@ const PRICES = {
 
 type PlanType = 'express' | 'semestral' | 'premium';
 
-function CheckIcon() {
+function CheckIcon({ amber = false }) {
   return (
-    <svg className="w-5 h-5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+    <svg className={`w-5 h-5 flex-shrink-0 ${amber ? 'text-amber-400' : 'text-emerald-500'}`} fill="currentColor" viewBox="0 0 20 20">
       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
     </svg>
   );
@@ -22,10 +22,10 @@ function CheckIcon() {
 
 export default function PricingPageClient() {
   const { isAuthenticated } = useAuth();
-  const [expressDuration, setExpressDuration] = useState<'24h' | '7d'>('24h');
   const [premiumInterval, setPremiumInterval] = useState<'month' | 'year'>('month');
   const [userPlan, setUserPlan] = useState<string>('free');
-  const [loadingCheckout, setLoadingCheckout] = useState<PlanType | null>(null);
+  const [loadingCheckout, setLoadingCheckout] = useState<string | null>(null);
+  const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
   useEffect(() => {
     trackEvent({ eventType: 'pricing_page_visited', metadata: { referrer: document.referrer || 'direct' } });
@@ -36,7 +36,6 @@ export default function PricingPageClient() {
     fetch('/api/user/plan').then(r => r.json()).then(d => setUserPlan(d.plan_type || 'free')).catch(() => {});
   }, [isAuthenticated]);
 
-  // Auto-trigger checkout if user comes back from signup with pending plan
   useEffect(() => {
     if (!isAuthenticated) return;
     const pending = localStorage.getItem('pending_plan_type') as PlanType | null;
@@ -54,7 +53,7 @@ export default function PricingPageClient() {
   }, [isAuthenticated]);
 
   const triggerCheckout = async (plan: PlanType, option?: string) => {
-    setLoadingCheckout(plan);
+    setLoadingCheckout(plan + (option || ''));
     const duration = plan === 'express' ? (option as '24h' | '7d') : undefined;
     const plan_interval = plan === 'premium' ? (option as 'month' | 'year') : undefined;
     const price = plan === 'express' ? PRICES.express[duration || '24h']
@@ -92,16 +91,20 @@ export default function PricingPageClient() {
 
   const faqs = [
     {
-      q: "¿Qué diferencia hay entre Express y Semestral?",
-      a: "Express es para necesidades urgentes: 24 horas ($3.99) o una semana de exámenes ($8.99), pago único. Semestral es para todo un semestre académico: 4 meses de acceso completo por $24.99, también pago único sin renovación automática.",
+      q: "¿Es seguro pagar aquí? ¿Quién procesa el pago?",
+      a: "El pago es procesado íntegramente por Stripe, la plataforma de pagos usada por Amazon, Google y Spotify. Detectordeia.ai nunca ve ni almacena tus datos de tarjeta. Toda la transacción ocurre en los servidores de Stripe con encriptación de extremo a extremo.",
     },
     {
       q: "¿El Semestral se renueva automáticamente?",
-      a: "No. El Semestral Pass es un pago único de $24.99 que te da acceso completo por 4 meses. No hay cargos automáticos. Cuando expire, podés renovar manualmente si querés.",
+      a: "No. El Semestral Pass es un pago único de $24.99 que te da acceso completo por 4 meses. No hay cargos automáticos ni sorpresas. Cuando expire, podés renovar manualmente si querés.",
+    },
+    {
+      q: "¿Qué diferencia hay entre Express y Semestral?",
+      a: "Express es para necesidades puntuales: 24 horas ($3.99) o 7 días ($8.99), pago único. Semestral es para los próximos 4 meses: acceso completo por $24.99, también pago único sin renovación automática. Premium es la opción para uso frecuente y continuo con facturación mensual o anual.",
     },
     {
       q: "¿Qué incluyen Express, Semestral y Premium?",
-      a: "Los tres incluyen exactamente las mismas funcionalidades: detector, humanizador y parafraseador sin límites de caracteres, todos los modos premium, y subida de archivos. La diferencia es solo la duración y el modelo de pago.",
+      a: "Los tres incluyen exactamente las mismas funcionalidades: detector, humanizador y parafraseador sin límites de caracteres, todos los modos premium, subida de archivos y historial completo. La diferencia es solo la duración y el modelo de pago.",
     },
     {
       q: "¿El Generador de Citas es gratis?",
@@ -112,73 +115,64 @@ export default function PricingPageClient() {
       a: "Sí, el tiempo se acumula. Si te quedan 2 horas y comprás otro 24h, tendrás 26 horas en total.",
     },
     {
-      q: "¿Qué métodos de pago aceptan?",
-      a: "Tarjetas de crédito y débito (Visa, Mastercard, American Express) a través de Stripe. El pago es seguro y encriptado.",
-    },
-    {
       q: "¿Puedo cancelar Premium en cualquier momento?",
       a: "Sí, sin penalizaciones. Tu acceso se mantiene hasta el fin del período ya pagado.",
     },
   ];
 
-  const [faqOpen, setFaqOpen] = useState<number | null>(null);
-
   return (
     <div className="min-h-screen bg-white pb-20">
 
-      {/* Header */}
-      <div className="max-w-4xl mx-auto pt-14 pb-10 px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-3">Elegí tu acceso</h1>
+      {/* 1. Header — beneficio universal, pre-empta confianza */}
+      <div className="max-w-4xl mx-auto pt-14 pb-6 px-4 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-3">
+          Acceso completo, cuando lo necesitás
+        </h1>
         <p className="text-lg text-gray-500 max-w-xl mx-auto">
-          Pago único sin renovación automática, o suscripción mensual. Sin sorpresas.
+          Pago único sin renovación automática, o suscripción mensual. Sin sorpresas, sin compromisos forzados.
         </p>
       </div>
 
-      {/* Cards */}
+      {/* 4. Trust signals */}
+      <div className="max-w-3xl mx-auto px-4 mb-10">
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-gray-500">
+          <span className="flex items-center gap-1.5"><CheckIcon /> +2.000 usuarios activos</span>
+          <span className="flex items-center gap-1.5"><CheckIcon /> Pagos procesados por Stripe</span>
+          <span className="flex items-center gap-1.5"><CheckIcon /> Sin renovación automática en Express y Semestral</span>
+        </div>
+      </div>
+
+      {/* Cards — 7. orden mobile: Semestral primero */}
       <div className="max-w-5xl mx-auto px-4 grid md:grid-cols-3 gap-6 mb-16">
 
-        {/* EXPRESS PASS */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col shadow-sm">
+        {/* EXPRESS PASS — md:order-1, mobile order-2 */}
+        <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col shadow-sm md:order-1 order-2">
           <div className="mb-5">
-            <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-2">Para una entrega urgente</p>
+            {/* 2. Frame Express: "Para una necesidad urgente" */}
+            <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-2">Para una necesidad urgente</p>
             <h2 className="text-2xl font-bold text-gray-900 mb-1">Express Pass</h2>
             <p className="text-sm text-gray-500">Acceso completo · Pago único · Sin renovación</p>
           </div>
 
-          {/* Toggle 24h / 7d */}
-          <div className="flex gap-2 mb-4">
+          {/* 3. Dos botones-CTA directos en lugar del toggle */}
+          <div className="flex flex-col gap-2 mb-5">
             <button
-              onClick={() => setExpressDuration('24h')}
-              className={`flex-1 py-2 rounded-lg text-sm font-bold transition-colors ${
-                expressDuration === '24h' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
+              onClick={() => handleCTA('express', '24h')}
+              disabled={loadingCheckout === 'express24h'}
+              className="w-full border-2 border-amber-400 hover:bg-amber-50 rounded-xl py-3 text-sm font-bold text-gray-900 text-left px-4 transition-colors disabled:opacity-60"
             >
-              24 Horas
+              <span className="block">24 horas — $3.99</span>
+              <span className="block text-xs text-gray-400 font-normal mt-0.5">Para una necesidad puntual o urgente</span>
             </button>
             <button
-              onClick={() => setExpressDuration('7d')}
-              className={`flex-1 py-2 rounded-lg text-sm font-bold transition-colors ${
-                expressDuration === '7d' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
+              onClick={() => handleCTA('express', '7d')}
+              disabled={loadingCheckout === 'express7d'}
+              className="w-full border-2 border-amber-400 hover:bg-amber-50 rounded-xl py-3 text-sm font-bold text-gray-900 text-left px-4 transition-colors disabled:opacity-60"
             >
-              7 Días
+              <span className="block">7 días — $8.99</span>
+              <span className="block text-xs text-amber-600 font-normal mt-0.5">Ahorrás 68% · Semana de trabajo intensivo</span>
             </button>
           </div>
-
-          <div className="mb-1">
-            <span className="text-4xl font-bold text-gray-900">
-              ${expressDuration === '24h' ? '3.99' : '8.99'}
-            </span>
-            <span className="text-gray-500 text-sm ml-1">
-              {expressDuration === '24h' ? '/ 24 horas' : '/ 7 días'}
-            </span>
-          </div>
-          {expressDuration === '7d' && (
-            <p className="text-xs text-amber-600 font-semibold mb-4">Ahorrás 68% vs 7 días individuales</p>
-          )}
-          {expressDuration === '24h' && (
-            <p className="text-xs text-gray-400 mb-4">Ideal para entregas urgentes o emergencias académicas</p>
-          )}
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-gray-700">
             <li className="flex items-center gap-2"><CheckIcon /> Detector · Humanizador · Parafraseador</li>
@@ -187,18 +181,11 @@ export default function PricingPageClient() {
             <li className="flex items-center gap-2"><CheckIcon /> Subida de archivos (PDF, DOCX, TXT)</li>
           </ul>
 
-          <button
-            onClick={() => handleCTA('express', expressDuration)}
-            disabled={loadingCheckout === 'express'}
-            className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all disabled:opacity-60 text-sm"
-          >
-            {loadingCheckout === 'express' ? 'Procesando...' : `⚡ Activar Express Pass · $${PRICES.express[expressDuration]}`}
-          </button>
-          <p className="text-xs text-center text-gray-400 mt-2">Pago seguro con Stripe</p>
+          <p className="text-xs text-center text-gray-400 mt-auto pt-2">Pago seguro con Stripe</p>
         </div>
 
-        {/* SEMESTRAL PASS — destacado */}
-        <div className="bg-blue-900 rounded-2xl p-7 flex flex-col shadow-lg relative">
+        {/* SEMESTRAL PASS — md:order-2, mobile order-1 (primero en mobile) */}
+        <div className="bg-blue-900 rounded-2xl p-7 flex flex-col shadow-lg relative md:order-2 order-1">
           <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
             <span className="bg-amber-400 text-blue-900 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow">
               MÁS POPULAR
@@ -206,8 +193,9 @@ export default function PricingPageClient() {
           </div>
 
           <div className="mb-5 mt-2">
-            <p className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">Para todo el semestre</p>
-            <h2 className="text-2xl font-bold text-white mb-1" style={{color: '#ffffff'}}>Semestral Pass</h2>
+            {/* 2. Frame Semestral: "Para los próximos 4 meses" */}
+            <p className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">Para los próximos 4 meses</p>
+            <h2 className="text-2xl font-bold mb-1" style={{color: '#ffffff'}}>Semestral Pass</h2>
             <p className="text-sm text-blue-200">4 meses · Pago único · Sin renovación automática</p>
           </div>
 
@@ -218,30 +206,12 @@ export default function PricingPageClient() {
           <p className="text-xs text-amber-400 font-semibold mb-4">Equivale a $6.25/mes · Ahorrás 52% vs mensual</p>
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-blue-100">
-            <li className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-              Detector · Humanizador · Parafraseador
-            </li>
-            <li className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-              Caracteres y usos ilimitados
-            </li>
-            <li className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-              Todos los modos premium
-            </li>
-            <li className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-              Subida de archivos (PDF, DOCX, TXT)
-            </li>
-            <li className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-              Historial completo (100 usos · 30 días)
-            </li>
-            <li className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-              Sin renovación automática
-            </li>
+            <li className="flex items-center gap-2"><CheckIcon amber /> Detector · Humanizador · Parafraseador</li>
+            <li className="flex items-center gap-2"><CheckIcon amber /> Caracteres y usos ilimitados</li>
+            <li className="flex items-center gap-2"><CheckIcon amber /> Todos los modos premium</li>
+            <li className="flex items-center gap-2"><CheckIcon amber /> Subida de archivos (PDF, DOCX, TXT)</li>
+            <li className="flex items-center gap-2"><CheckIcon amber /> Historial completo (100 usos · 30 días)</li>
+            <li className="flex items-center gap-2"><CheckIcon amber /> Sin renovación automática</li>
           </ul>
 
           <button
@@ -254,15 +224,15 @@ export default function PricingPageClient() {
           <p className="text-xs text-center text-blue-300 mt-2">Pago seguro con Stripe</p>
         </div>
 
-        {/* PREMIUM */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col shadow-sm">
+        {/* PREMIUM — md:order-3, mobile order-3 */}
+        <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col shadow-sm md:order-3 order-3">
           <div className="mb-5">
-            <p className="text-xs font-bold text-blue-900 uppercase tracking-widest mb-2">Para uso profesional diario</p>
+            {/* 2. Frame Premium: "Para uso frecuente y continuo" */}
+            <p className="text-xs font-bold text-blue-900 uppercase tracking-widest mb-2">Para uso frecuente y continuo</p>
             <h2 className="text-2xl font-bold text-gray-900 mb-1">Premium</h2>
             <p className="text-sm text-gray-500">Acceso continuo · Sin interrupciones</p>
           </div>
 
-          {/* Toggle mensual / anual */}
           <div className="flex gap-2 mb-4">
             <button
               onClick={() => setPremiumInterval('month')}
@@ -292,7 +262,7 @@ export default function PricingPageClient() {
             <p className="text-xs text-emerald-600 font-semibold mb-4">$124.68/año · Ahorrás $31.20</p>
           )}
           {premiumInterval === 'month' && (
-            <p className="text-xs text-gray-400 mb-4">Para uso frecuente, cancela cuando quieras</p>
+            <p className="text-xs text-gray-400 mb-4">Cancelá cuando quieras, sin penalizaciones</p>
           )}
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-gray-700">
@@ -327,15 +297,15 @@ export default function PricingPageClient() {
         </div>
       </div>
 
-      {/* Free tier reminder */}
+      {/* 5. Free tier — mensaje positivo, no dubitativo */}
       <div className="max-w-2xl mx-auto px-4 mb-16 text-center">
         <p className="text-sm text-gray-500">
-          ¿No estás seguro? El plan <strong>Free</strong> incluye 15 análisis/día con el Detector, 3 usos del Humanizador y el Generador de Citas ilimitado — sin tarjeta, sin registro obligatorio.{' '}
-          <a href="/" className="text-blue-900 font-semibold hover:underline">Probarlo gratis →</a>
+          Podés empezar gratis hoy — 15 análisis diarios con el Detector, 3 usos del Humanizador y Generador de Citas ilimitado, sin tarjeta.{' '}
+          <a href="/" className="text-blue-900 font-semibold hover:underline">Probarlo ahora →</a>
         </p>
       </div>
 
-      {/* FAQs */}
+      {/* 6. FAQs — seguridad primero */}
       <div className="max-w-2xl mx-auto px-4">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Preguntas frecuentes</h2>
         <div className="space-y-3">
