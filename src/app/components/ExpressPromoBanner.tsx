@@ -9,6 +9,12 @@ export default function ExpressPromoBanner() {
   const [isExpressOrPremium, setIsExpressOrPremium] = useState(false);
 
   useEffect(() => {
+    const handler = () => setIsDismissed(false);
+    window.addEventListener('express-limit-exceeded', handler);
+    return () => window.removeEventListener('express-limit-exceeded', handler);
+  }, []);
+
+  useEffect(() => {
     const dismissed = localStorage.getItem('express_promo_banner_dismissed');
     if (dismissed === 'true') {
       setIsDismissed(true);

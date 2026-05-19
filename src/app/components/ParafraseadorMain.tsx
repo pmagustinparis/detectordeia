@@ -156,6 +156,8 @@ export default function ParafraseadorMain({
         setResult("Este es un ejemplo de texto parafraseado. Actualiza a Premium para procesar textos ilimitados y acceder a todos los modos de parafraseo.");
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
+        localStorage.removeItem('express_promo_banner_dismissed');
+        window.dispatchEvent(new Event('express-limit-exceeded'));
 
         // Track límite de caracteres excedido
         trackEvent({

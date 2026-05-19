@@ -197,6 +197,8 @@ export default function HumanizadorMain({
         setResult("Este es un ejemplo de texto humanizado. Actualiza a Premium para procesar textos ilimitados y acceder a todos los modos de humanización.");
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
+        localStorage.removeItem('express_promo_banner_dismissed');
+        window.dispatchEvent(new Event('express-limit-exceeded'));
 
         // Track límite de caracteres excedido
         trackEvent({

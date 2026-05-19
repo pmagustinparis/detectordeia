@@ -211,6 +211,8 @@ export default function DetectorMain({
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
         setHasAnalyzed(true);
+        localStorage.removeItem('express_promo_banner_dismissed');
+        window.dispatchEvent(new Event('express-limit-exceeded'));
 
         // Track límite de caracteres excedido
         trackEvent({
