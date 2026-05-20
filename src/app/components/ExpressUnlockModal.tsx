@@ -123,7 +123,7 @@ export default function ExpressUnlockModal({
       return `Alcanzaste tu límite de ${usageLimit} usos diarios.${hoursUntilReset ? ` Se restablece en ${hoursUntilReset}h.` : ''}`;
     }
     if (trigger === 'premium_mode' && modeName) {
-      return `El modo ${modeName} está disponible con Express Pass o Plan Premium.`;
+      return `El modo ${modeName} está disponible con Express Pass o Semestral Pass.`;
     }
     return 'Desbloqueá el acceso completo para continuar.';
   };
@@ -216,11 +216,11 @@ export default function ExpressUnlockModal({
             )}
           </div>
 
-          {/* Premium - Opción secundaria */}
+          {/* Semestral - Opción secundaria */}
           <div className="border border-gray-200 rounded-xl p-3 mb-4 flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-bold text-gray-700">Plan Premium · $12.99/mes</p>
-              <p className="text-xs text-gray-500">Para uso frecuente · Cancela cuando quieras</p>
+              <p className="text-xs font-bold text-gray-700">Semestral Pass · $24.99</p>
+              <p className="text-xs text-gray-500">6 meses · pago único · sin renovación automática</p>
             </div>
             <a
               href="/pricing"

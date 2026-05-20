@@ -50,11 +50,11 @@ export const paraphraserComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cuál es más económico para un estudiante universitario?',
-        answer: 'Nuestro plan Premium cuesta $12.99/mes e incluye Parafraseador, Humanizador y Detector de IA. QuillBot Premium cuesta $19.95/mes e incluye solo herramientas de escritura sin detector de IA. Para estudiantes universitarios hispanohablantes, nuestro plan ofrece más valor por menos dinero.',
+        answer: 'Nuestro Semestral Pass cuesta $24.99 por 6 meses (pago único, $4.17/mes) e incluye Parafraseador, Humanizador y Detector de IA. QuillBot Premium cuesta $19.95/mes y solo ofrece herramientas de escritura sin detector de IA. Para estudiantes universitarios hispanohablantes, nuestra opción ofrece más valor por menos dinero.',
       },
       {
         question: '¿Qué modo de parafraseo es mejor para trabajos académicos?',
-        answer: 'Recomendamos el modo Académico (plan Premium) para tesis, ensayos y monografías. Genera un parafraseo con vocabulario técnico y estructura formal apropiada para el ámbito universitario. El modo Estándar (gratuito) es adecuado para textos informales.',
+        answer: 'Recomendamos el modo Académico (disponible con Express Pass o Semestral Pass) para tesis, ensayos y monografías. Genera un parafraseo con vocabulario técnico y estructura formal apropiada para el ámbito universitario. El modo Estándar (gratuito) es adecuado para textos informales.',
       },
     ],
     cta: {
@@ -101,8 +101,8 @@ export const paraphraserComparisons: ComparisonPage[] = [
         answer: 'Smodin tiene soporte para español, pero con calidad variable. Los parafraseos pueden sonar mecánicos o poco naturales para lectores nativos. Nuestro Parafraseador fue desarrollado específicamente para el español con resultados consistentemente naturales.',
       },
       {
-        question: '¿Qué herramientas incluye el plan Premium de DetectorDeIA?',
-        answer: 'El plan Premium incluye Parafraseador sin límites (hasta 100,000 caracteres por sesión), Humanizador con 5 modos, y Detector de IA ilimitado. Todo por $12.99/mes, sin costos adicionales por cada herramienta.',
+        question: '¿Qué herramientas incluyen los planes de DetectorDeIA?',
+        answer: 'Express Pass y Semestral Pass incluyen Parafraseador sin límites (hasta 100,000 caracteres por sesión), Humanizador con 5 modos, y Detector de IA ilimitado. Semestral Pass cuesta $24.99 por 6 meses (pago único), sin costos adicionales por cada herramienta.',
       },
     ],
     cta: {
@@ -150,7 +150,7 @@ export const paraphraserComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cuánto tiempo tarda en parafrasear un texto?',
-        answer: 'Nuestro Parafraseador procesa textos de hasta 100,000 caracteres en segundos (con plan Premium). No hay listas de espera ni procesos de revisión manual. Podés parafrasear múltiples textos en una sola sesión.',
+        answer: 'Nuestro Parafraseador procesa textos de hasta 100,000 caracteres en segundos (con Express Pass o Semestral Pass). No hay listas de espera ni procesos de revisión manual. Podés parafrasear múltiples textos en una sola sesión.',
       },
     ],
     cta: {

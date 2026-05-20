@@ -204,15 +204,15 @@ export default function UsageLimitOverlay({
                 </p>
               </div>
 
-              {/* Pro Option */}
+              {/* Semestral Option */}
               <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
                 <p className="text-sm font-bold text-blue-900 mb-2">
-                  Plan Premium - Uso continuo
+                  Semestral Pass - Todo el semestre
                 </p>
                 <ul className="space-y-1.5 text-sm text-blue-900/80 mb-3">
                   <li className="flex items-start gap-2">
                     <span className="text-blue-900 font-bold">✓</span>
-                    <span><strong>Usos ilimitados</strong> permanentes</span>
+                    <span><strong>Usos ilimitados</strong> por 6 meses</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-900 font-bold">✓</span>
@@ -220,11 +220,11 @@ export default function UsageLimitOverlay({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-900 font-bold">✓</span>
-                    <span>Mejor para uso regular</span>
+                    <span>Pago único · sin renovación automática</span>
                   </li>
                 </ul>
                 <p className="text-lg font-bold text-blue-900">
-                  $12.99/mes • $124.68/año
+                  $24.99 · pago único
                 </p>
               </div>
 
@@ -248,7 +248,7 @@ export default function UsageLimitOverlay({
                   href="/pricing"
                   className="block w-full text-center border border-blue-900/30 text-blue-900 hover:bg-blue-50 font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
                 >
-                  Ver Plan Premium ($12.99/mes)
+                  Ver Semestral Pass ($24.99 · 6 meses)
                 </a>
               </div>
 

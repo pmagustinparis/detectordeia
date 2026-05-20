@@ -13,7 +13,7 @@ interface ExpressPremiumComparisonCardProps {
 
 const PRICES = {
   express: { '24h': 3.99, '7d': 8.99 },
-  premium: { monthly: 12.99, annual: 124.68 },
+  semestral: 24.99,
 };
 
 const TOOL_COPY: Record<string, { expressTag: string; weeklyPitch: string }> = {
@@ -86,7 +86,7 @@ export default function ExpressPremiumComparisonCard({
   const title =
     context === 'post_insufficient'
       ? 'El modo Académico mejora los resultados'
-      : 'Desbloqueá más con Express o Premium';
+      : 'Desbloqueá más con Express o Semestral';
 
   return (
     <div className="mt-3 p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
@@ -142,22 +142,22 @@ export default function ExpressPremiumComparisonCard({
           </button>
         </div>
 
-        {/* Premium - Columna derecha (secundaria) */}
+        {/* Semestral - Columna derecha (secundaria) */}
         <div className="border-2 border-blue-200 bg-blue-900 rounded-xl p-3 flex flex-col">
           <div className="mb-2">
-            <span className="text-xs font-bold bg-blue-900 text-white px-2 py-0.5 rounded-full">
-              PREMIUM
+            <span className="text-xs font-bold bg-white text-blue-900 px-2 py-0.5 rounded-full">
+              6 MESES
             </span>
           </div>
-          <p className="text-sm font-bold text-blue-900 mb-1">Plan Premium</p>
-          <p className="text-lg font-bold text-blue-900">$12.99</p>
-          <p className="text-xs text-blue-900 mb-2">/ mes · o $124.68/año</p>
+          <p className="text-sm font-bold text-white mb-1">Semestral Pass</p>
+          <p className="text-lg font-bold text-white">$24.99</p>
+          <p className="text-xs text-blue-200 mb-2">pago único · $4.17/mes</p>
 
-          <ul className="text-xs text-blue-900 space-y-0.5 mb-3 flex-1">
-            <li>✓ Modos premium</li>
+          <ul className="text-xs text-blue-100 space-y-0.5 mb-3 flex-1">
+            <li>✓ Todos los modos</li>
             <li>✓ Sin límite de chars</li>
             <li>✓ Historial completo</li>
-            <li>✓ Usos ilimitados</li>
+            <li>✓ Sin renovación</li>
           </ul>
 
           <a
@@ -169,9 +169,9 @@ export default function ExpressPremiumComparisonCard({
                 metadata: { source },
               })
             }
-            className="w-full text-center border-2 border-blue-200 text-blue-900 hover:bg-blue-900 font-bold py-2 px-3 rounded-lg transition-colors text-xs block"
+            className="w-full text-center border-2 border-white text-white hover:bg-white hover:text-blue-900 font-bold py-2 px-3 rounded-lg transition-colors text-xs block"
           >
-            Ver Premium →
+            Ver Semestral →
           </a>
         </div>
       </div>

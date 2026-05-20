@@ -46,14 +46,16 @@ export default function SuccessClient({
 
         {/* Título */}
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          {planType === 'express' ? '¡Express Pass activado! ⚡' : '¡Bienvenido a Premium! 🎉'}
+          {planType === 'express' ? '¡Express Pass activado! ⚡' : planType === 'semestral' ? '¡Semestral Pass activado! 🎓' : '¡Plan activado! 🎉'}
         </h1>
 
         {/* Descripción */}
         <p className="text-gray-600 mb-6">
           {planType === 'express'
             ? 'Tu pase Express ha sido activado. Tenés acceso ilimitado a todas las herramientas por las próximas horas.'
-            : 'Tu suscripción ha sido activada exitosamente. Ahora tenés acceso ilimitado a todas las herramientas de DetectorDeIA.'}
+            : planType === 'semestral'
+            ? 'Tu Semestral Pass ha sido activado. Tenés acceso ilimitado a todas las herramientas durante los próximos 6 meses.'
+            : 'Tu plan ha sido activado exitosamente. Ahora tenés acceso ilimitado a todas las herramientas de DetectorDeIA.'}
         </p>
 
         {/* Detalles */}
@@ -66,7 +68,7 @@ export default function SuccessClient({
             <div className="flex justify-between">
               <span className="text-gray-600">Plan:</span>
               <span className="font-medium text-gray-900">
-                {planType === 'premium' ? 'Premium' : planType === 'express' ? 'Express Pass' : 'Free'}
+                {planType === 'semestral' ? 'Semestral Pass' : planType === 'express' ? 'Express Pass' : planType === 'premium' ? 'Premium' : 'Free'}
               </span>
             </div>
             {sessionId && (

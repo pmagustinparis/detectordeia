@@ -66,7 +66,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-blue-900 mb-2">Reportes avanzados</h3>
               <p className="text-gray-700 text-base leading-relaxed">
-                Planes premium con análisis de archivos, historial completo y reportes detallados para docentes y profesionales.
+                Express Pass y Semestral Pass con análisis de archivos, historial completo y reportes detallados.
               </p>
             </div>
           </div>

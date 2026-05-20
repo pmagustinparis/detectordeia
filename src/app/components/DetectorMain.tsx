@@ -52,24 +52,23 @@ const CHARACTER_LIMITS = {
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
   titulo: 'Desbloquea todo el poder del Detector',
-  subtitulo: 'Incluido en Express y Premium',
+  subtitulo: 'Incluido en Express y Semestral',
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
     '✨ Caracteres ilimitados en el Detector',
     'Subida de archivos (PDF, DOCX, TXT)',
-    '5 modos premium en Humanizador y Parafraseador',
+    '5 modos en Humanizador y Parafraseador',
     'Historial completo de todos tus análisis',
-    'Soporte prioritario vía email',
   ],
-  precio: 'Express $3.99/24h o $8.99/sem • Premium $12.99/mes',
+  precio: 'Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses · pago único',
   cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: 'Desbloquea Express o Premium',
+  titulo: 'Desbloquea Express o Semestral',
   bullets: [
     'Usos ilimitados + Caracteres ilimitados',
-    '5 modos premium + Historial completo',
-    'Express $3.99/24h o $8.99/sem • Premium $12.99/mes',
+    '5 modos + Historial completo',
+    'Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses',
   ],
   cta: 'Ver Planes',
 };
@@ -1141,7 +1140,7 @@ export default function DetectorMain({
                           </li>
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-emerald-600 mt-0.5" />
-                            <span><strong>5 modos premium</strong> en Humanizador/Parafraseador</span>
+                            <span><strong>5 modos</strong> en Humanizador/Parafraseador</span>
                           </li>
                         </ul>
                       </div>
@@ -1208,16 +1207,16 @@ export default function DetectorMain({
                 <div className="mt-6 mb-2 bg-white border border-gray-200 rounded-xl shadow p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">
                     <Icon icon={ProductIcons.Locked} size="xl" className="text-gray-400" />
-                    <span className="font-bold text-base text-gray-800">¿Querés análisis premium?</span>
+                    <span className="font-bold text-base text-gray-800">¿Querés acceso completo?</span>
                   </div>
                   <div className="text-xs text-gray-700 mb-2">
                     <ul className="text-left space-y-1">
                       <li>• Usos ilimitados en todas las herramientas</li>
                       <li>• Hasta 100,000 caracteres por análisis</li>
                       <li>• Subida de archivos (PDF, DOCX, TXT)</li>
-                      <li>• 5 modos premium en Humanizador y Parafraseador</li>
+                      <li>• 5 modos en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
-                      <li>• Desde $12.99/mes o $124.68/año</li>
+                      <li>• Express $3.99/24h · Semestral $24.99/6 meses · pago único</li>
                     </ul>
                   </div>
                   <a

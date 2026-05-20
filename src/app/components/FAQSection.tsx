@@ -14,7 +14,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Cuántas veces puedo usar el humanizador gratis?',
-    answer: 'Con registro gratuito podés humanizar hasta 15 veces por día. Sin registro: 3 usos diarios. Para usos ilimitados, el plan Premium ($12.99/mes) o Express ($3.99/24h) eliminan todos los límites.'
+    answer: 'Con registro gratuito podés humanizar hasta 15 veces por día. Sin registro: 3 usos diarios. Para usos ilimitados, Express Pass ($3.99/24h o $8.99/7d) o Semestral Pass ($24.99/6 meses) eliminan todos los límites.'
   },
   {
     question: '¿El humanizador cambia el significado de mi texto?',
@@ -30,11 +30,11 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
-    answer: 'Los modos Estándar y Creativo están disponibles gratis. El Modo Estándar hace una humanización efectiva eliminando marcadores evidentes de IA. El Modo Creativo agrega personalidad y variedad. Los modos Formal, Simplificado y Académico están disponibles con el plan Premium o Express.'
+    answer: 'Los modos Estándar y Creativo están disponibles gratis. El Modo Estándar hace una humanización efectiva eliminando marcadores evidentes de IA. El Modo Creativo agrega personalidad y variedad. Los modos Formal, Simplificado y Académico están disponibles con Express Pass o Semestral Pass.'
   },
   {
-    question: '¿Qué incluye el plan Premium?',
-    answer: 'El plan Premium ($12.99/mes o $124.68/año) incluye usos y caracteres ilimitados en las 3 herramientas (Detector, Humanizador y Parafraseador), los 5 modos de humanización y paráfrasis, y subida de archivos PDF/DOCX. También está disponible el pase Express ($3.99/24h o $8.99/7 días) para necesidades puntuales.'
+    question: '¿Qué incluyen los planes de pago?',
+    answer: 'Express Pass ($3.99/24h o $8.99/7 días) y Semestral Pass ($24.99/6 meses) incluyen exactamente lo mismo: usos y caracteres ilimitados en las 3 herramientas (Detector, Humanizador y Parafraseador), los 5 modos de humanización y paráfrasis, y subida de archivos PDF/DOCX. Express es para necesidades puntuales, Semestral para todo el semestre.'
   },
   {
     question: '¿Puedo usar el texto humanizado para trabajos académicos?',

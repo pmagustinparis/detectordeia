@@ -643,7 +643,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿DetectorDeIA tiene límite de palabras como Undetectable.AI?',
-        answer: 'Plan FREE: 1,200 caracteres por análisis (600 en Humanizador/Parafraseador). Plan Premium: hasta 100,000 caracteres por uso, análisis ILIMITADOS al mes. Undetectable.AI limita palabras totales al mes (ej: 250 palabras/mes en plan básico).'
+        answer: 'Plan FREE: 1,200 caracteres por análisis (600 en Humanizador/Parafraseador). Con Express Pass o Semestral Pass: hasta 100,000 caracteres por uso, análisis ILIMITADOS. Undetectable.AI limita palabras totales al mes (ej: 250 palabras/mes en plan básico).'
       }
     ],
 
@@ -963,7 +963,7 @@ export const comparisons: ComparisonPage[] = [
       'Optimizado específicamente para español de España y LATAM vs orientación principalmente a inglés de Scribbr',
       'Análisis instantáneo en segundos vs Scribbr que puede tardar minutos',
       'Incluye Humanizador y Parafraseador en el mismo plan sin coste adicional',
-      'Sin límite de caracteres en plan Premium (hasta 100,000 por análisis)',
+      'Sin límite de caracteres con Express o Semestral Pass (hasta 100,000 por análisis)',
       'Interfaz en español completo, sin necesidad de traducción'
     ],
     comparisons: [
@@ -1031,7 +1031,7 @@ export const comparisons: ComparisonPage[] = [
       'Acceso individual inmediato sin trámites institucionales vs iThenticate que requiere suscripción editorial o universitaria',
       'Análisis instantáneo en segundos vs iThenticate que puede tardar más en documentos largos',
       'Optimizado para español de España y LATAM, idiomas frecuentemente con menos cobertura en plataformas angloparlantes',
-      'Incluye Humanizador y Parafraseador en el mismo plan Premium',
+      'Incluye Humanizador y Parafraseador en el mismo plan',
       'Interfaz completamente en español sin necesidad de traducción',
       'Ideal para verificación previa antes de la entrega a iThenticate o a revistas'
     ],

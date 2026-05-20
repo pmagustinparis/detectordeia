@@ -130,7 +130,7 @@ export default function CharacterLimitModal({
               {/* Pro Benefits */}
               <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 mb-6">
                 <p className="text-sm font-bold text-blue-900 mb-3">
-                  Con Plan Premium obtenés:
+                  Con Express o Semestral obtenés:
                 </p>
                 <ul className="space-y-2 text-sm text-blue-900">
                   <li className="flex items-start gap-2">
@@ -143,11 +143,11 @@ export default function CharacterLimitModal({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold text-base">✓</span>
-                    <span><strong>5 modos premium</strong> + subida de archivos</span>
+                    <span><strong>5 modos</strong> + subida de archivos</span>
                   </li>
                 </ul>
                 <p className="text-xs text-blue-900 mt-3 font-medium">
-                  Express $3.99/24h • Premium $12.99/mes • Ahorra 20% anual
+                  Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses
                 </p>
               </div>
 
@@ -164,7 +164,7 @@ export default function CharacterLimitModal({
                 href="/pricing"
                 className="block w-full text-center text-blue-900 hover:text-blue-900 font-semibold py-2 transition-colors text-sm mb-3"
               >
-                O ver Express y Premium →
+                O ver Express y Semestral →
               </a>
             </>
           )}
@@ -176,7 +176,7 @@ export default function CharacterLimitModal({
                 Con el Plan Free podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
               </p>
 
-              {/* Dual option: Express vs Premium */}
+              {/* Dual option: Express vs Semestral */}
               <div className="grid grid-cols-2 gap-3 mb-5">
                 <div className="border border-amber-200 bg-amber-50 rounded-xl p-4">
                   <p className="text-xs font-bold text-amber-800 mb-1">⚡ Express Pass</p>
@@ -189,14 +189,14 @@ export default function CharacterLimitModal({
                   </ul>
                 </div>
                 <div className="border-2 border-blue-200 bg-blue-50 rounded-xl p-4">
-                  <p className="text-xs font-bold text-blue-900 mb-1">Premium</p>
-                  <p className="text-2xl font-bold text-blue-900">$12.99</p>
-                  <p className="text-xs text-blue-900">/ mes</p>
-                  <p className="text-xs text-blue-900 mt-1">Ahorra 20% anual</p>
+                  <p className="text-xs font-bold text-blue-900 mb-1">Semestral Pass</p>
+                  <p className="text-2xl font-bold text-blue-900">$24.99</p>
+                  <p className="text-xs text-blue-900">/ 6 meses</p>
+                  <p className="text-xs text-blue-900 mt-1">$4.17/mes · sin renovación</p>
                   <ul className="text-xs text-blue-900 mt-2 space-y-1">
                     <li>✓ <strong>{premiumMaxChars.toLocaleString()} chars</strong></li>
                     <li>✓ Usos ilimitados</li>
-                    <li>✓ 5 modos premium</li>
+                    <li>✓ 5 modos</li>
                   </ul>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export default function CharacterLimitModal({
                 href="/pricing"
                 className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
               >
-                Ver Express y Premium
+                Ver Express y Semestral
               </a>
             </>
           )}

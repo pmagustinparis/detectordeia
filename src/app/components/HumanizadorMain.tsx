@@ -194,7 +194,7 @@ export default function HumanizadorMain({
 
         // Mostrar resultado simulado cuando se excede el límite
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
-        setResult("Este es un ejemplo de texto humanizado. Actualiza a Premium para procesar textos ilimitados y acceder a todos los modos de humanización.");
+        setResult("Este es un ejemplo de texto humanizado. Con Express Pass o Semestral Pass procesás textos ilimitados y accedés a todos los modos de humanización.");
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
         localStorage.removeItem('express_promo_banner_dismissed');
@@ -270,7 +270,7 @@ export default function HumanizadorMain({
 
         // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
-          setError(data.message || 'Este modo requiere Plan Premium');
+          setError(data.message || 'Este modo requiere Express Pass o Semestral Pass');
 
           // Track modo premium bloqueado
           trackEvent({
@@ -862,7 +862,7 @@ export default function HumanizadorMain({
                         </p>
                         <p className="text-xs">
                           Mejora de <strong>{Math.abs(originalScore - humanizedScore)} puntos</strong>.
-                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? ' Probá un modo premium para mejores resultados.' : ' Intenta humanizar nuevamente.'}
+                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? ' Probá un modo avanzado para mejores resultados.' : ' Intenta humanizar nuevamente.'}
                         </p>
                       </div>
                     ) : (
@@ -875,7 +875,7 @@ export default function HumanizadorMain({
                             ? `Mejora de ${Math.abs(originalScore - humanizedScore)} puntos, pero aún detectado. `
                             : 'No hubo mejora. '
                           }
-                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? 'Probá un modo premium para mejores resultados.' : 'Intenta humanizar nuevamente o usa otro modo.'}
+                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? 'Probá un modo avanzado para mejores resultados.' : 'Intenta humanizar nuevamente o usa otro modo.'}
                         </p>
                       </div>
                     )}

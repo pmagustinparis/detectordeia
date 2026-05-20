@@ -15,10 +15,10 @@ export default function CaptureEmail() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
       <div className="bg-white rounded-xl shadow-sm p-8 max-w-md w-full flex flex-col items-center">
-        <h1 className="text-2xl font-extrabold text-[#a259f7] mb-2 text-center">¿Te interesan los planes premium?</h1>
-        <p className="text-gray-700 mb-6 text-center">Dejanos tu email y te avisamos cuando estén disponibles. Además, podrás participar en la beta y recibir beneficios exclusivos.</p>
+        <h1 className="text-2xl font-extrabold text-[#a259f7] mb-2 text-center">¿Querés acceso completo?</h1>
+        <p className="text-gray-700 mb-6 text-center">Dejanos tu email y te contamos sobre Express Pass y Semestral Pass. Sin spam, solo lo que necesitás saber.</p>
         {submitted ? (
-          <div className="text-green-600 font-bold text-center">¡Gracias! Te avisaremos cuando lancemos los planes premium 🚀</div>
+          <div className="text-green-600 font-bold text-center">¡Gracias! Te enviamos la info a tu email 🚀</div>
         ) : (
           <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
             <input

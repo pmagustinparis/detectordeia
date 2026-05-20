@@ -41,7 +41,7 @@ export default function VerificadorPageClient() {
             <Icon icon={ProductIcons.Analytics} size="2xl" className="text-gray-700" />
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800">Reportes de verificación</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">Verifica con reportes detallados. Planes premium con historial completo.</p>
+          <p className="text-gray-600 text-sm leading-relaxed">Verifica con reportes detallados. Express y Semestral con historial completo.</p>
         </div>
       </section>
 

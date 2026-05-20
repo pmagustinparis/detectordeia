@@ -22,7 +22,7 @@ export const humanizerComparisons: ComparisonPage[] = [
       'Precio más accesible para usuarios hispanohablantes individuales',
       'Incluye Detector de IA y Parafraseador en el mismo plan, sin costo adicional',
       '5 modos de humanización (Estándar, Formal, Académico, Creativo, Simplificado)',
-      'Sin límite de palabras en plan Premium',
+      'Sin límite de palabras con Express Pass o Semestral Pass',
     ],
     comparisons: [
       { feature: 'Optimización para español', detectordeia: '100% nativo', competitor: 'Limitada (diseñado para inglés)' },
@@ -55,7 +55,7 @@ export const humanizerComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Qué modo de humanización debo usar para trabajos académicos?',
-        answer: 'Para trabajos académicos recomendamos el modo Académico (requiere plan Premium). Este modo genera texto riguroso, técnico y formal, ideal para tesis, ensayos y monografías en español. El modo Estándar (gratuito) es suficiente para textos informales o correos.',
+        answer: 'Para trabajos académicos recomendamos el modo Académico (disponible con Express Pass o Semestral Pass). Este modo genera texto riguroso, técnico y formal, ideal para tesis, ensayos y monografías en español. El modo Estándar (gratuito) es suficiente para textos informales o correos.',
       },
     ],
     cta: {
@@ -81,7 +81,7 @@ export const humanizerComparisons: ComparisonPage[] = [
       'Nativo en español: no es una traducción de algoritmos en inglés, sino construido para el español',
       'Precio hasta 3x más económico para usuarios latinoamericanos',
       'Incluye Detector de IA para validar el resultado humanizado automáticamente',
-      'Sin límite de palabras en plan Premium (Undetectable.ai cobra por palabras)',
+      'Sin límite de palabras con Express o Semestral Pass (Undetectable.ai cobra por palabras)',
       'Modos académicos específicos para universidades de LATAM y España',
       'Privacidad total: no almacenamos los textos humanizados',
       'Soporte en español para consultas y problemas técnicos',
@@ -112,7 +112,7 @@ export const humanizerComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cuántas palabras puedo humanizar con el plan gratuito?',
-        answer: 'El plan gratuito permite humanizar textos de hasta 600 caracteres (aprox. 100 palabras) hasta 3 veces por día sin registro, o 15 veces con registro gratuito. Para textos más largos, el plan Premium ofrece hasta 100,000 caracteres por humanización sin límite diario.',
+        answer: 'El plan gratuito permite humanizar textos de hasta 600 caracteres (aprox. 100 palabras) hasta 3 veces por día sin registro, o 15 veces con registro gratuito. Para textos más largos, Express Pass o Semestral Pass ofrecen hasta 100,000 caracteres por humanización sin límite diario.',
       },
     ],
     cta: {
@@ -160,7 +160,7 @@ export const humanizerComparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cuál es más económico para un estudiante universitario?',
-        answer: 'Nuestro plan Premium cuesta $12.99/mes e incluye Humanizador, Detector de IA y Parafraseador. Wordtune cuesta desde $24.99/mes y solo ofrece reescritura. Para estudiantes universitarios hispanohablantes, nuestro plan es significativamente más conveniente.',
+        answer: 'Nuestro Semestral Pass cuesta $24.99 por 6 meses (pago único) e incluye Humanizador, Detector de IA y Parafraseador. Wordtune cuesta desde $24.99/mes y solo ofrece reescritura. Para estudiantes universitarios hispanohablantes, nuestra opción es significativamente más conveniente.',
       },
     ],
     cta: {

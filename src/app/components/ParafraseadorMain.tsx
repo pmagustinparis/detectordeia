@@ -229,7 +229,7 @@ export default function ParafraseadorMain({
 
         // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
-          setError(data.message || 'Este modo requiere Plan Premium');
+          setError(data.message || 'Este modo requiere Express Pass o Semestral Pass');
 
           // Track modo premium bloqueado
           trackEvent({
@@ -764,7 +764,7 @@ export default function ParafraseadorMain({
                         </p>
                         <p className="text-xs">
                           Tu texto cambió <strong>{changePercentage}%</strong>.
-                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? ' Probá un modo premium para más cambios.' : ' Intenta parafrasear nuevamente.'}
+                          {userStatus.plan_type !== 'premium' && !userStatus.express.is_active ? ' Probá un modo avanzado para más cambios.' : ' Intenta parafrasear nuevamente.'}
                         </p>
                       </div>
                     ) : (

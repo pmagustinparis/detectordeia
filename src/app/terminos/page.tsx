@@ -20,7 +20,7 @@ export default function Terminos() {
         <li><strong>Humanizador de IA:</strong> Reescribe textos generados por IA para que parezcan más humanos</li>
         <li><strong>Parafraseador:</strong> Reformula textos manteniendo el significado original</li>
       </ul>
-      <p className="text-gray-700 mb-4">Ofrecemos un Plan Free gratuito, Plan Express (pase de 24 horas o 7 días) y Plan Premium (suscripción mensual/anual) con funcionalidades adicionales.</p>
+      <p className="text-gray-700 mb-4">Ofrecemos un Plan Free gratuito, Plan Express (pase de 24 horas o 7 días) y Semestral Pass (pago único de 6 meses) con funcionalidades adicionales.</p>
 
       <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">2. Planes y Servicios</h2>
       <p className="text-gray-700 mb-2"><strong>Plan Free:</strong></p>
@@ -37,18 +37,19 @@ export default function Terminos() {
         <li>Acceso completo por 24 horas</li>
         <li>Usos ilimitados en todas las herramientas</li>
         <li>Caracteres ilimitados por análisis</li>
-        <li>Acceso a 5 modos premium</li>
+        <li>Acceso a 5 modos (Estándar, Formal, Creativo, Simplificado, Académico)</li>
         <li>Subida de archivos (PDF, DOCX, TXT)</li>
         <li>Perfecto para entregas urgentes</li>
       </ul>
-      <p className="text-gray-700 mb-2"><strong>Plan Premium ($12.99/mes o $124.68/año):</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Semestral Pass ($24.99 · pago único · 6 meses):</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
+        <li>Acceso completo por 6 meses</li>
         <li>Usos ilimitados diarios</li>
         <li>Caracteres ilimitados por análisis</li>
-        <li>Acceso a 5 modos premium (Estándar, Formal, Creativo, Simplificado, Académico)</li>
+        <li>Acceso a 5 modos (Estándar, Formal, Creativo, Simplificado, Académico)</li>
         <li>Subida de archivos (PDF, DOCX, TXT)</li>
         <li>Historial completo de análisis</li>
-        <li>Soporte prioritario</li>
+        <li>Sin renovación automática</li>
       </ul>
 
       <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">3. Uso Permitido</h2>
@@ -74,13 +75,12 @@ export default function Terminos() {
       </ul>
 
       <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">6. Pagos y Suscripciones</h2>
-      <p className="text-gray-700 mb-4">Los pagos se procesan de forma segura a través de Stripe. Al suscribirte a un plan de pago:</p>
+      <p className="text-gray-700 mb-4">Los pagos se procesan de forma segura a través de Stripe. Al adquirir un plan de pago:</p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
-        <li>Autorizas cargos recurrentes según el plan elegido (mensual o anual)</li>
-        <li>Puedes cancelar en cualquier momento desde el portal de gestión de suscripción</li>
-        <li>Las cancelaciones surten efecto al final del período de facturación actual</li>
-        <li>No ofrecemos reembolsos. Al suscribirte, aceptas esta política de no reembolso</li>
-        <li>Al cancelar, mantendrás acceso hasta el final del período de facturación actual sin reembolso por días no utilizados</li>
+        <li>Express Pass y Semestral Pass son pagos únicos sin renovación automática</li>
+        <li>El acceso se activa de forma inmediata tras la confirmación del pago</li>
+        <li>No ofrecemos reembolsos una vez activado el plan</li>
+        <li>Al vencer el período contratado, podés renovar manualmente si lo deseás</li>
       </ul>
 
       <h2 className="text-2xl font-bold mt-8 mb-3 text-gray-900">7. Privacidad y Datos</h2>

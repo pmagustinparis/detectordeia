@@ -87,7 +87,7 @@ export default function ComprobadorPageClient() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">¿Es Gratis el Comprobador de IA?</h2>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Sí, nuestro comprobador de IA ofrece 10 comprobaciones diarias completamente gratis, sin necesidad de registro.
-            Para usuarios con mayores necesidades, ofrecemos planes premium con comprobaciones ilimitadas, carga de archivos,
+            Para usuarios con mayores necesidades, Express Pass y Semestral Pass ofrecen comprobaciones ilimitadas, carga de archivos,
             historial completo y reportes descargables. Comprueba ahora y descubre la diferencia de un comprobador optimizado para español.
           </p>
         </div>
