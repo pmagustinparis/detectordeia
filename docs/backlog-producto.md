@@ -1,5 +1,5 @@
 # Backlog de Producto — detectordeia.ai
-**Última sesión:** Lunes 18 mayo 2026, 22hs Argentina  
+**Última sesión:** Miércoles 20 mayo 2026  
 **Próxima revisión:** Lunes 25 mayo 2026  
 **Criterio de priorización:** impacto en revenue directo
 
@@ -7,33 +7,33 @@
 
 ## PARA RETOMAR EL LUNES 25 — LEÉ ESTO PRIMERO
 
-### Lo que hicimos el 18 mayo (22 commits en producción)
+### Lo que hicimos el 20 mayo (sesión de producto)
 
-Fue una sesión de análisis + ejecución completa. Conectamos Supabase, Stripe y Google Analytics por primera vez, analizamos todos los datos reales, y ejecutamos un sprint completo orientado a revenue.
+Sesión de decisiones de producto y ajustes. Sin análisis de datos nuevos (eso va el 25).
 
-**Lo más importante que descubrimos:**
-- MRR real era $12.99 (1 suscriptor), con 3 más a punto de cancelar
-- Había un bug crítico: usuarios anónimos que hacían clic en el modal de pago nunca llegaban al checkout después de registrarse (flag `pending_plan_type` nunca se consumía)
-- El banner del Express Pass estaba azul cuando debía ser naranja
-- 100% de suscripciones mensuales churnearon — el modelo mensual no encaja con estudiantes
-- 97% del tráfico es primera visita y se va sin dejar email
+**Decisiones tomadas:**
+- El Semestral Pass duraba 4 meses pero se llamaba "Semestral" → inconsistencia. Se extendió a 6 meses reales.
+- El plan Premium ($12.99/mes y $124.68/año) se retiró de toda la UI. Razón: 2×Semestral=$49.98/año vs Premium anual=$124.68, mismas funcionalidades. No tiene sentido vender la suscripción. Laura (única suscriptora) sigue activa — el backend no se tocó.
+- La oferta pública queda en dos opciones únicamente: **Express Pass** (24h/7d) y **Semestral Pass** (6 meses).
 
 **Lo que pusimos en producción:**
 
 | Item | Descripción |
 |---|---|
-| Fix bug auth | Flujo anónimo modal → signup → checkout arreglado. El `?next=/pricing` ahora se propaga |
-| Semestral Pass | $24.99 · 4 meses · pago único · historial extendido incluido. Price ID: `price_1TYc1rR5MbTVVQlkQUg8LXhN` |
-| Pricing page | Rediseñada: header universal, trust signals, FAQs con seguridad primero, frames de audiencia corregidos |
-| Cross-sell | Detector → Humanizador: threshold 60% → 50%, colores amber, copy con urgencia |
-| Banner Express | Restaurado a naranja. Ahora reaparece cuando el usuario choca con el límite |
-| pSEO | 9 duplicados eliminados en universities.json (148→139). 139 páginas nuevas de Citador por universidad (556 páginas pSEO en total) |
-| Dashboard | Label historial dinámico por plan (free/semestral/premium) |
-| Emails | 10 emails manuales enviados (6 power users + 4 checkout abandonados) |
+| Semestral 4→6 meses | Duración extendida de 2880h a 4380h. Precio igual ($24.99). Ahorro mensualizado: 52%→68% vs mensual |
+| Premium retirado de UI | 27 archivos, 202 líneas eliminadas. Modales, pricing page, FAQs, SEO/pSEO, términos, banners, dashboard |
+| Navbar mobile | Botón "Ver planes" (amber) siempre visible en mobile + hamburguesa. Antes no había acceso a planes desde mobile |
+
+**Lo que NO cambió (sesión del 18 mayo):**
+- Fix bug auth · Pricing page rediseñada · Cross-sell · Banner Express · pSEO · Dashboard historial · Emails enviados
+
+Ver detalles del 18 mayo en git log (`a7c246e` hacia atrás).
 
 ---
 
 ### Las preguntas correctas para el lunes 25
+
+> **Nota:** las preguntas 2, 4 y 5 siguen igual. Se agrega la pregunta 6 por los cambios del 20 mayo.
 
 **1. ¿Respondió alguien de los 10 emails?**
 Revisá tu bandeja. Si hay respuestas, son conversiones potenciales. Respondé de inmediato y ofrecé el Semestral a $24.99 o el Express Pass con 30% off si no lo compraron.
@@ -70,6 +70,18 @@ WHERE event_type = 'checkout_started'
   AND metadata->>'is_authenticated' = 'false';
 ```
 Si hay checkouts de usuarios no autenticados → el fix de `?next=/pricing` está funcionando.
+
+**6. ¿Apareció algún checkout de Semestral después del 20 mayo?**
+```sql
+SELECT DATE(created_at) as fecha, COUNT(*) as total,
+  metadata->>'plan_type' as plan
+FROM analytics_events
+WHERE event_type = 'checkout_started'
+  AND created_at >= '2026-05-20'
+  AND metadata->>'plan_type' = 'semestral'
+GROUP BY fecha, plan ORDER BY fecha;
+```
+Si hay checkouts de Semestral → la pricing page simplificada (solo 2 opciones) está convirtiendo mejor.
 
 ---
 
@@ -118,9 +130,9 @@ Si hay checkouts de usuarios no autenticados → el fix de `?next=/pricing` est�
 | Free registrado | $0 | — | ✅ |
 | Express 24h | $3.99 | One-time | ✅ |
 | Express 7 días | $8.99 | One-time | ✅ |
-| **Semestral Pass** | **$24.99** | **One-time · 4 meses** | **✅ NUEVO** |
-| Premium Mensual | $12.99/mes | Recurrente | ✅ |
-| Premium Anual | $10.39/mes ($124.68) | Recurrente | ✅ |
+| **Semestral Pass** | **$24.99** | **One-time · 6 meses** | **✅** |
+| ~~Premium Mensual~~ | ~~$12.99/mes~~ | ~~Recurrente~~ | ⚠️ funcional solo para Laura |
+| ~~Premium Anual~~ | ~~$10.39/mes ($124.68)~~ | ~~Recurrente~~ | ⚠️ funcional solo para Laura |
 
 **Price IDs Stripe:**
 - Express 24h: `price_1ScR9nR5MbTVVQlk2oIBvATK`
@@ -153,12 +165,9 @@ Input de email + botón. Sin contraseña, sin fricción. El email va a la tabla 
 
 ---
 
-### T2-3 · Flujo de cancelación — oferta antes de churnear
+### ~~T2-3 · Flujo de cancelación~~ — deprioritizado
 
-Cuando un usuario cancela Premium en Stripe, no hay nada que lo retenga. Un email inmediato tipo *"Antes de irte — ¿querés 2 semanas gratis?"* puede rescatar 20-30% de las cancelaciones.
-
-**Implementación:** webhook Stripe evento `customer.subscription.deleted` → email via Resend.
-**Esfuerzo:** 1 día
+~~Con el modelo de suscripción retirado de la UI, este item pierde sentido. El único usuario con suscripción activa (Laura) será contactado manualmente si cancela y se le ofrecerá migrar al Semestral.~~
 
 ---
 
