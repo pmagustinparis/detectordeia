@@ -22,7 +22,7 @@ Sesión de decisiones de producto y ajustes. Sin análisis de datos nuevos (eso 
 |---|---|
 | Semestral 4→6 meses | Duración extendida de 2880h a 4380h. Precio igual ($24.99). Ahorro mensualizado: 52%→68% vs mensual |
 | Premium retirado de UI | 27 archivos, 202 líneas eliminadas. Modales, pricing page, FAQs, SEO/pSEO, términos, banners, dashboard |
-| Navbar mobile | Botón "Ver planes" (amber) siempre visible en mobile + hamburguesa. Antes no había acceso a planes desde mobile |
+| Navbar mobile | Botón "Planes" (amber) siempre visible en mobile. El componente real es `AppTopBar.tsx` (no `Header.tsx`). El link tenía `hidden md:inline-flex` — visible solo en desktop. |
 
 **Lo que NO cambió (sesión del 18 mayo):**
 - Fix bug auth · Pricing page rediseñada · Cross-sell · Banner Express · pSEO · Dashboard historial · Emails enviados
@@ -91,8 +91,8 @@ Si hay checkouts de Semestral → la pricing page simplificada (solo 2 opciones)
 - **MRR: $12.99** (lauraperezdoval@usal.es — única suscripción activa)
 - **Revenue total histórico:** ~$230 desde nov 2025
 - **Express Pass:** $102 acumulado (44% del revenue total) — el modelo que funciona
-- **Semestral Pass:** $0 (lanzado hoy)
-- **Tráfico:** 70-120 usuarios/día · 97% primera visita · 86% desktop
+- **Semestral Pass:** $0 (lanzado 18 mayo · ahora 6 meses · sin ventas aún)
+- **Tráfico:** 70-120 usuarios/día · 97% primera visita · **86% desktop · 14% mobile** (sin acceso a /pricing hasta el 20 mayo)
 - **Adquisición:** 72% Google orgánico · ChatGPT 223 sesiones/mes (orgánico)
 - **Perfil:** 64% estudiantes universitarios · 12% docentes · español nativo
 - **Geografía:** España 38% · México 15% · Perú 10% · Colombia 7%
@@ -270,7 +270,10 @@ GROUP BY event_type ORDER BY total DESC;
 ## LO QUE NO SABEMOS TODAVÍA
 
 - Keywords exactas de tráfico orgánico → revisar GSC directamente (el Data API de GA4 no las exporta)
-- Por qué churnearon los suscriptores → no hay offboarding survey. Pendiente agregar pregunta de cancelación en Stripe
-- Efecto real del fix del flujo anónimo → medir en la revisión del 25 mayo
+- Por qué churnearon los suscriptores → no hay offboarding survey. Premium retirado de UI pero el aprendizaje sigue siendo válido
+- Efecto real del fix del flujo anónimo → medir el 25 mayo
 - Fuente de los picos de tráfico Apr 28-29 y May 3-5 → revisar GSC
 - Si el Semestral va a tener tracción → medir hasta el 9 junio para tener datos limpios
+- Si el pricing simplificado (2 opciones vs 3) mejora la conversión → comparar checkout_started pre/post 20 mayo
+- Si el botón "Planes" en mobile genera tráfico a /pricing desde el 14% de usuarios mobile → antes no llegaban
+- Qué hacer con Laura si cancela → contacto manual, ofrecer Semestral $24.99 (cubre 6 meses vs los ~$13 que le quedan de su mes actual)
