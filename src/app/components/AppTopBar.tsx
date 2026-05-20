@@ -60,9 +60,9 @@ export default function AppTopBar() {
         )}
         <Link
           href="/pricing"
-          className="hidden md:inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-900 border border-blue-900 rounded-lg hover:bg-blue-50 transition-colors"
+          className="inline-flex items-center px-3 py-1.5 text-xs md:text-sm font-bold bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-colors"
         >
-          Ver Planes
+          Planes
         </Link>
         <AuthButton />
       </div>
