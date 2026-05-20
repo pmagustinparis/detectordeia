@@ -129,7 +129,7 @@ async function handleCheckoutCompleted(
     return;
   }
 
-  // CASO 1: Pago único Express (24h, 7 días) o Semestral (4 meses)
+  // CASO 1: Pago único Express (24h, 7 días) o Semestral (6 meses)
   if (planType === 'express' || planType === 'express_semanal' || planType === 'semestral' || session.mode === 'payment') {
     console.log('🚀 Processing Express checkout:', {
       plan_type: planType,
@@ -144,7 +144,7 @@ async function handleCheckoutCompleted(
     }
 
     // Determinar duración según tipo
-    const hours = planType === 'semestral' ? 2880  // 4 meses = 120 días = 2880 horas
+    const hours = planType === 'semestral' ? 4380  // 6 meses = 183 días = 4380 horas
       : planType === 'express_semanal' ? 168       // 7 días
       : 24;                                        // 24 horas
     const expressPlanValue = planType === 'semestral' ? 'semestral'

@@ -97,11 +97,11 @@ export default function PricingPageClient() {
     },
     {
       q: "¿El Semestral se renueva automáticamente?",
-      a: "No. El Semestral Pass es un pago único de $24.99 que te da acceso completo por 4 meses. No hay cargos automáticos ni sorpresas. Cuando expire, podés renovar manualmente si querés.",
+      a: "No. El Semestral Pass es un pago único de $24.99 que te da acceso completo por 6 meses. No hay cargos automáticos ni sorpresas. Cuando expire, podés renovar manualmente si querés.",
     },
     {
       q: "¿Qué diferencia hay entre Express y Semestral?",
-      a: "Express es para necesidades puntuales: 24 horas ($3.99) o 7 días ($8.99), pago único. Semestral es para los próximos 4 meses: acceso completo por $24.99, también pago único sin renovación automática. Premium es la opción para uso frecuente y continuo con facturación mensual o anual.",
+      a: "Express es para necesidades puntuales: 24 horas ($3.99) o 7 días ($8.99), pago único. Semestral es para los próximos 6 meses: acceso completo por $24.99, también pago único sin renovación automática. Premium es la opción para uso frecuente y continuo con facturación mensual o anual.",
     },
     {
       q: "¿Qué incluyen Express, Semestral y Premium?",
@@ -216,17 +216,17 @@ export default function PricingPageClient() {
           </div>
 
           <div className="mb-5 mt-2">
-            {/* 2. Frame Semestral: "Para los próximos 4 meses" */}
-            <p className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">Para los próximos 4 meses</p>
+            {/* 2. Frame Semestral: "Para los próximos 6 meses" */}
+            <p className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">Para los próximos 6 meses</p>
             <h2 className="text-2xl font-bold mb-1" style={{color: '#ffffff'}}>Semestral Pass</h2>
-            <p className="text-sm text-blue-200">4 meses · Pago único · Sin renovación automática</p>
+            <p className="text-sm text-blue-200">6 meses · Pago único · Sin renovación automática</p>
           </div>
 
           <div className="mb-1">
             <span className="text-4xl font-bold text-white">$24.99</span>
-            <span className="text-blue-300 text-sm ml-1">/ 4 meses</span>
+            <span className="text-blue-300 text-sm ml-1">/ 6 meses</span>
           </div>
-          <p className="text-xs text-amber-400 font-semibold mb-4">Equivale a $6.25/mes · Ahorrás 52% vs mensual</p>
+          <p className="text-xs text-amber-400 font-semibold mb-4">Equivale a $4.17/mes · Ahorrás 68% vs mensual</p>
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-blue-100">
             <li className="flex items-center gap-2"><CheckIcon amber /> Detector · Humanizador · Parafraseador</li>
