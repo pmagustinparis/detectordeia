@@ -1,291 +1,116 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a2332;
-  --primary-navy: #1a3a52;
-  --primary-navy-dark: #0f1d2d;
-  --primary-navy-light: #2d5a7b;
-  --accent-red: #c1272d;
-  --accent-red-light: #d94449;
-  --accent-red-dark: #8b1a1f;
-  --neutral-cream: #f5f5f0;
-  --neutral-gray: #6b7280;
-  --neutral-dark: #2a2a24;
+  /* Base */
+  --tinta:        #1A1D24;
+  --tinta-soft:   #2D3138;
+  --papel:        #F7F5EF;
+  --papel-2:      #F1EEE6;
+  --papel-3:      #E8E3D7;
+  --line:         #D8D3C5;
+  --line-soft:    #E4DFD2;
+  --mute:         #7A7E86;
+
+  /* Verde biblioteca — COLOR DE MARCA */
+  --verde:        #3B6E55;
+  --verde-deep:   #2D5944;
+  --verde-soft:   #C7DECF;
+  --verde-050:    #EDF3EE;
+
+  /* Coral — solo para IA detectada */
+  --coral:        #DD6D4A;
+  --coral-soft:   #F5DCD0;
+
+  /* Tipografías */
+  --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --sans:  'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono:  'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-papel:       var(--papel);
+  --color-papel-2:     var(--papel-2);
+  --color-papel-3:     var(--papel-3);
+  --color-tinta:       var(--tinta);
+  --color-tinta-soft:  var(--tinta-soft);
+  --color-mute:        var(--mute);
+  --color-verde:       var(--verde);
+  --color-verde-deep:  var(--verde-deep);
+  --color-verde-soft:  var(--verde-soft);
+  --color-verde-050:   var(--verde-050);
+  --color-coral:       var(--coral);
+  --color-coral-soft:  var(--coral-soft);
+  --color-line:        var(--line);
+  --color-line-soft:   var(--line-soft);
+  --font-sans:         var(--sans);
+  --font-serif:        var(--serif);
+  --font-mono:         var(--mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--sans);
+  background: var(--papel);
+  color: var(--tinta);
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  color: var(--primary-navy);
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--tinta);
 }
 
-/* Animaciones refinadas */
+/* Animaciones sutiles de UI */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInFromTop {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 1;
-    box-shadow: 0 0 15px rgba(107, 142, 35, 0.25);
-  }
-  50% {
-    opacity: 0.9;
-    box-shadow: 0 0 25px rgba(107, 142, 35, 0.35);
-  }
-}
-
-@keyframes subtleShift {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes floatAround {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translateY(-8px) translateX(2px);
-  }
-  50% {
-    transform: translateY(-4px) translateX(-2px);
-  }
-  75% {
-    transform: translateY(-6px) translateX(1px);
-  }
-}
+.animate-fade-in       { animation: fadeIn 0.6s ease-out; }
+.animate-slide-in-top  { animation: slideInFromTop 0.5s ease-out; }
+.animate-slide-in-bottom { animation: slideInFromBottom 0.7s ease-out; }
+.animate-scale-in      { animation: scaleIn 0.5s ease-out; }
+.animate-slide-in-right { animation: slideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+.animate-slide-in-left  { animation: slideInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
 
-@keyframes scaleRotate {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.02) rotate(1deg);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out;
-}
-
-.animate-slide-in-top {
-  animation: slideInFromTop 0.5s ease-out;
-}
-
-.animate-slide-in-bottom {
-  animation: slideInFromBottom 0.7s ease-out;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.5s ease-out;
-}
-
-.animate-float {
-  animation: floatAround 4s ease-in-out infinite;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.animate-scale-rotate {
-  animation: scaleRotate 3s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    transparent 100%
-  );
-  background-size: 2000px 100%;
-  animation: shimmer 2s infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Estilos para cards elevadas */
+/* Card con hover sutil */
 .card-elevated {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(30, 58, 95, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--line-soft);
 }
-
 .card-elevated:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px -8px rgba(30, 58, 95, 0.12);
-  border-color: rgba(30, 58, 95, 0.2);
-}
-
-/* Fondos académicos limpios */
-.bg-cream {
-  background-color: var(--neutral-cream);
-}
-
-.bg-navy {
-  background-color: var(--primary-navy);
-}
-
-.text-accent {
-  color: var(--accent-red);
-}
-
-/* Botones con efectos refinados */
-.btn-glow {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-glow::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: left 0.6s ease;
-}
-
-.btn-glow:hover::before {
-  left: 100%;
-}
-
-/* Scrollbar limpio */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--neutral-cream);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-navy);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-navy-dark);
+  transform: translateY(-3px);
+  border-color: var(--line);
+  box-shadow: 0 8px 24px -8px rgba(26, 29, 36, 0.08);
 }

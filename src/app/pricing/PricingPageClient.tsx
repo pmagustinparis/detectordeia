@@ -11,9 +11,9 @@ const PRICES = {
 
 type PlanType = 'express' | 'semestral';
 
-function CheckIcon({ amber = false }) {
+function CheckIcon({ verde = false }) {
   return (
-    <svg className={`w-5 h-5 flex-shrink-0 ${amber ? 'text-amber-400' : 'text-emerald-500'}`} fill="currentColor" viewBox="0 0 20 20">
+    <svg className={`w-5 h-5 flex-shrink-0 ${verde ? 'text-verde-soft' : 'text-verde'}`} fill="currentColor" viewBox="0 0 20 20">
       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
     </svg>
   );
@@ -111,21 +111,21 @@ export default function PricingPageClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pb-20">
+    <div className="min-h-screen bg-papel pb-20">
 
-      {/* 1. Header — beneficio universal, pre-empta confianza */}
+      {/* Header */}
       <div className="max-w-4xl mx-auto pt-14 pb-6 px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-3">
+        <h1 className="text-4xl md:text-5xl text-tinta mb-3">
           Acceso completo, cuando lo necesitás
         </h1>
-        <p className="text-lg text-gray-500 max-w-xl mx-auto">
+        <p className="text-lg text-mute max-w-xl mx-auto">
           Pago único sin renovación automática. Sin sorpresas, sin compromisos.
         </p>
       </div>
 
-      {/* 4. Trust signals */}
+      {/* Trust signals */}
       <div className="max-w-3xl mx-auto px-4 mb-10">
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-gray-500">
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-mute">
           <span className="flex items-center gap-1.5"><CheckIcon /> +2.000 usuarios activos</span>
           <span className="flex items-center gap-1.5"><CheckIcon /> Pagos procesados por Stripe</span>
           <span className="flex items-center gap-1.5"><CheckIcon /> Sin renovación automática en Express y Semestral</span>
@@ -136,28 +136,31 @@ export default function PricingPageClient() {
       <div className="max-w-3xl mx-auto px-4 grid md:grid-cols-2 gap-6 mb-16">
 
         {/* EXPRESS PASS */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-7 flex flex-col shadow-sm">
+        <div className="bg-papel-2 border border-line rounded-2xl p-7 flex flex-col">
           <div className="mb-5">
-            {/* 2. Frame Express: "Para una necesidad urgente" */}
-            <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-2">Para una necesidad urgente</p>
-            <h2 className="text-2xl font-bold text-gray-900 mb-1">Express Pass</h2>
-            <p className="text-sm text-gray-500">Acceso completo · Pago único · Sin renovación</p>
+            <p className="font-mono text-xs font-medium text-mute uppercase tracking-widest mb-2">Para una necesidad urgente</p>
+            <h2 className="text-2xl text-tinta mb-1">Express Pass</h2>
+            <p className="text-sm text-mute">Acceso completo · Pago único · Sin renovación</p>
           </div>
 
           {/* Toggle 24h / 7d */}
           <div className="flex gap-2 mb-4">
             <button
               onClick={() => setExpressDuration('24h')}
-              className={`flex-1 py-2 rounded-lg text-sm font-bold transition-colors ${
-                expressDuration === '24h' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+                expressDuration === '24h'
+                  ? 'bg-tinta text-papel'
+                  : 'bg-papel-3 text-mute hover:bg-papel-3 hover:text-tinta-soft'
               }`}
             >
               24 Horas
             </button>
             <button
               onClick={() => setExpressDuration('7d')}
-              className={`flex-1 py-2 rounded-lg text-sm font-bold transition-colors ${
-                expressDuration === '7d' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+                expressDuration === '7d'
+                  ? 'bg-tinta text-papel'
+                  : 'bg-papel-3 text-mute hover:bg-papel-3 hover:text-tinta-soft'
               }`}
             >
               7 Días
@@ -165,21 +168,21 @@ export default function PricingPageClient() {
           </div>
 
           <div className="mb-1">
-            <span className="text-4xl font-bold text-gray-900">
+            <span className="font-mono text-4xl font-medium text-tinta">
               ${expressDuration === '24h' ? '3.99' : '8.99'}
             </span>
-            <span className="text-gray-500 text-sm ml-1">
+            <span className="text-mute text-sm ml-1">
               {expressDuration === '24h' ? '/ 24 horas' : '/ 7 días'}
             </span>
           </div>
           {expressDuration === '7d' && (
-            <p className="text-xs text-amber-600 font-semibold mb-4">Ahorrás 68% vs 7 días individuales</p>
+            <p className="text-xs text-verde font-medium mb-4">Ahorrás 68% vs 7 días individuales</p>
           )}
           {expressDuration === '24h' && (
-            <p className="text-xs text-gray-400 mb-4">Para una necesidad puntual o urgente</p>
+            <p className="text-xs text-mute mb-4">Para una necesidad puntual o urgente</p>
           )}
 
-          <ul className="space-y-2.5 mb-6 flex-grow text-sm text-gray-700">
+          <ul className="space-y-2.5 mb-6 flex-grow text-sm text-tinta-soft">
             <li className="flex items-center gap-2"><CheckIcon /> Detector · Humanizador · Parafraseador</li>
             <li className="flex items-center gap-2"><CheckIcon /> Caracteres y usos ilimitados</li>
             <li className="flex items-center gap-2"><CheckIcon /> Todos los modos premium</li>
@@ -189,83 +192,82 @@ export default function PricingPageClient() {
           <button
             onClick={() => handleCTA('express', expressDuration)}
             disabled={loadingCheckout === 'express' + expressDuration}
-            className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all disabled:opacity-60 text-sm"
+            className="w-full bg-tinta hover:bg-tinta-soft text-papel font-medium py-3 rounded-xl transition-all disabled:opacity-60 text-sm"
           >
-            {loadingCheckout?.startsWith('express') ? 'Procesando...' : `⚡ Activar Express Pass · $${PRICES.express[expressDuration]}`}
+            {loadingCheckout?.startsWith('express') ? 'Procesando...' : `Activar Express Pass · $${PRICES.express[expressDuration]}`}
           </button>
-          <p className="text-xs text-center text-gray-400 mt-2">Pago seguro con Stripe</p>
+          <p className="text-xs text-center text-mute mt-2">Pago seguro con Stripe</p>
         </div>
 
         {/* SEMESTRAL PASS */}
-        <div className="bg-blue-900 rounded-2xl p-7 flex flex-col shadow-lg relative">
+        <div className="bg-tinta rounded-2xl p-7 flex flex-col shadow-lg relative">
           <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-            <span className="bg-amber-400 text-blue-900 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow">
+            <span className="bg-verde text-papel text-xs font-medium px-4 py-1.5 rounded-full uppercase tracking-widest shadow font-mono">
               MÁS POPULAR
             </span>
           </div>
 
           <div className="mb-5 mt-2">
-            {/* 2. Frame Semestral: "Para los próximos 6 meses" */}
-            <p className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">Para los próximos 6 meses</p>
-            <h2 className="text-2xl font-bold mb-1" style={{color: '#ffffff'}}>Semestral Pass</h2>
-            <p className="text-sm text-blue-200">6 meses · Pago único · Sin renovación automática</p>
+            <p className="font-mono text-xs font-medium text-verde-soft uppercase tracking-widest mb-2">Para los próximos 6 meses</p>
+            <h2 className="text-2xl text-white mb-1">Semestral Pass</h2>
+            <p className="text-sm text-white/50">6 meses · Pago único · Sin renovación automática</p>
           </div>
 
           <div className="mb-1">
-            <span className="text-4xl font-bold text-white">$24.99</span>
-            <span className="text-blue-300 text-sm ml-1">/ 6 meses</span>
+            <span className="font-mono text-4xl font-medium text-white">$24.99</span>
+            <span className="text-white/50 text-sm ml-1">/ 6 meses</span>
           </div>
-          <p className="text-xs text-amber-400 font-semibold mb-4">Equivale a $4.17/mes · Ahorrás 68% vs mensual</p>
+          <p className="text-xs text-verde-soft font-medium mb-4">Equivale a $4.17/mes · Ahorrás 68% vs mensual</p>
 
-          <ul className="space-y-2.5 mb-6 flex-grow text-sm text-blue-100">
-            <li className="flex items-center gap-2"><CheckIcon amber /> Detector · Humanizador · Parafraseador</li>
-            <li className="flex items-center gap-2"><CheckIcon amber /> Caracteres y usos ilimitados</li>
-            <li className="flex items-center gap-2"><CheckIcon amber /> Todos los modos premium</li>
-            <li className="flex items-center gap-2"><CheckIcon amber /> Subida de archivos (PDF, DOCX, TXT)</li>
-            <li className="flex items-center gap-2"><CheckIcon amber /> Historial completo (100 usos · 30 días)</li>
-            <li className="flex items-center gap-2"><CheckIcon amber /> Sin renovación automática</li>
+          <ul className="space-y-2.5 mb-6 flex-grow text-sm text-white/70">
+            <li className="flex items-center gap-2"><CheckIcon verde /> Detector · Humanizador · Parafraseador</li>
+            <li className="flex items-center gap-2"><CheckIcon verde /> Caracteres y usos ilimitados</li>
+            <li className="flex items-center gap-2"><CheckIcon verde /> Todos los modos premium</li>
+            <li className="flex items-center gap-2"><CheckIcon verde /> Subida de archivos (PDF, DOCX, TXT)</li>
+            <li className="flex items-center gap-2"><CheckIcon verde /> Historial completo (100 usos · 30 días)</li>
+            <li className="flex items-center gap-2"><CheckIcon verde /> Sin renovación automática</li>
           </ul>
 
           <button
             onClick={() => handleCTA('semestral')}
             disabled={loadingCheckout === 'semestral'}
-            className="w-full bg-white hover:bg-gray-50 text-blue-900 font-bold py-3 rounded-xl transition-all disabled:opacity-60 text-sm shadow-sm"
+            className="w-full bg-papel hover:bg-papel-2 text-tinta font-medium py-3 rounded-xl transition-all disabled:opacity-60 text-sm"
           >
             {loadingCheckout === 'semestral' ? 'Procesando...' : 'Activar Semestral Pass · $24.99'}
           </button>
-          <p className="text-xs text-center text-blue-300 mt-2">Pago seguro con Stripe</p>
+          <p className="text-xs text-center text-white/30 mt-2">Pago seguro con Stripe</p>
         </div>
 
       </div>
 
-      {/* 5. Free tier — mensaje positivo, no dubitativo */}
+      {/* Free tier */}
       <div className="max-w-2xl mx-auto px-4 mb-16 text-center">
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-mute">
           Podés empezar gratis hoy — 15 análisis diarios con el Detector, 3 usos del Humanizador y Generador de Citas ilimitado, sin tarjeta.{' '}
-          <a href="/" className="text-blue-900 font-semibold hover:underline">Probarlo ahora →</a>
+          <a href="/" className="text-verde font-medium hover:underline">Probarlo ahora →</a>
         </p>
       </div>
 
-      {/* 6. FAQs — seguridad primero */}
+      {/* FAQs */}
       <div className="max-w-2xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Preguntas frecuentes</h2>
+        <h2 className="text-2xl text-tinta mb-6 text-center">Preguntas frecuentes</h2>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-gray-200 rounded-xl overflow-hidden">
+            <div key={i} className="border border-line rounded-xl overflow-hidden">
               <button
                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left hover:bg-papel-2 transition-colors"
               >
-                <span className="font-semibold text-gray-900 text-sm pr-4">{faq.q}</span>
+                <span className="font-medium text-tinta text-sm pr-4">{faq.q}</span>
                 <svg
-                  className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform ${faqOpen === i ? 'rotate-180' : ''}`}
+                  className={`w-5 h-5 text-mute flex-shrink-0 transition-transform ${faqOpen === i ? 'rotate-180' : ''}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               {faqOpen === i && (
-                <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                <div className="px-5 pb-5 text-sm text-tinta-soft leading-relaxed border-t border-line-soft pt-4">
                   {faq.a}
                 </div>
               )}

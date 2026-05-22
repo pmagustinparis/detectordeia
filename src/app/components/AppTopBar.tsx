@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import AuthButton from '@/components/AuthButton';
 import ExpressTimer from '@/components/ExpressTimer';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -39,15 +40,16 @@ export default function AppTopBar() {
   }, [isAuthenticated]);
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-blue-900/20 h-14 flex items-center px-4 gap-4">
+    <header className="sticky top-0 z-40 bg-papel border-b border-line-soft h-14 flex items-center px-4 gap-4">
       {/* Logo — visible on mobile only (desktop has it in sidebar) */}
-      <Link href="/" className="md:hidden flex items-center gap-2 shrink-0">
-        <div className="w-8 h-8 rounded-lg bg-blue-900 flex items-center justify-center">
-          <span className="text-white font-black italic text-base leading-none">D</span>
-        </div>
-        <span className="text-sm font-black tracking-tight text-blue-900">
-          Detector<span className="text-blue-600">deIA</span><span className="text-blue-400 font-semibold">.ai</span>
-        </span>
+      <Link href="/" className="md:hidden flex items-center shrink-0">
+        <Image
+          src="/brandidentity-detectordeia/logo-detectordeia.svg"
+          alt="detectordeIA"
+          width={120}
+          height={24}
+          priority
+        />
       </Link>
 
       {/* Spacer */}
@@ -60,7 +62,7 @@ export default function AppTopBar() {
         )}
         <Link
           href="/pricing"
-          className="inline-flex items-center px-3 py-1.5 text-xs md:text-sm font-bold bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-colors"
+          className="inline-flex items-center px-3 py-1.5 text-xs md:text-sm font-medium bg-verde hover:bg-verde-deep text-papel rounded-lg transition-colors"
         >
           Planes
         </Link>

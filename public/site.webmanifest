@@ -1,0 +1,27 @@
+{
+  "name": "detectordeIA",
+  "short_name": "detectordeIA",
+  "description": "Detector de IA, humanizador, parafraseador y citador APA en español. Suite académica para estudiantes y profesores.",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F5EF",
+  "theme_color": "#2D5944",
+  "icons": [
+    {
+      "src": "/android-chrome-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

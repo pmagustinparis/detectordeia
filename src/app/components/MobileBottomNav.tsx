@@ -9,14 +9,12 @@ const tabs = [
     name: 'Humanizador',
     path: '/humanizador',
     icon: ProductIcons.Humanizer,
-    color: 'text-blue-900',
     aliases: ['/convertidor-ia-a-humano', '/transformador-texto-ia'],
   },
   {
     name: 'Detector',
     path: '/',
     icon: ProductIcons.Detector,
-    color: 'text-blue-900',
     aliases: [
       '/ar', '/cl', '/co', '/es', '/mx', '/pe',
       '/identificador-de-ia', '/verificador-de-ia', '/comprobador-de-ia',
@@ -26,14 +24,12 @@ const tabs = [
     name: 'Parafraseador',
     path: '/parafraseador',
     icon: ProductIcons.Paraphraser,
-    color: 'text-blue-900',
     aliases: ['/reescritor-de-textos', '/reformulador-online'],
   },
   {
     name: 'Citador',
     path: '/generador-de-citas',
     icon: ProductIcons.Citation,
-    color: 'text-blue-900',
     aliases: ['/generador-citas-apa', '/generador-citas-apa-7', '/referencias-apa', '/citar-pagina-web-apa', '/citas-bibliograficas', '/generador-citas-mla', '/generador-citas-chicago'],
   },
 ];
@@ -47,7 +43,7 @@ export default function MobileBottomNav() {
   };
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 flex safe-area-inset-bottom">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-papel border-t border-line flex safe-area-inset-bottom">
       {tabs.map((tab) => {
         const isActive = isTabActive(tab);
         return (
@@ -55,10 +51,10 @@ export default function MobileBottomNav() {
             key={tab.path}
             href={tab.path}
             className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[11px] font-medium transition-colors
-              ${isActive ? tab.color : 'text-gray-500'}
+              ${isActive ? 'text-verde' : 'text-mute'}
             `}
           >
-            <div className={`${isActive ? tab.color : 'text-gray-400'}`}>
+            <div className={isActive ? 'text-verde' : 'text-mute'}>
               <Icon icon={tab.icon} size="md" />
             </div>
             <span>{tab.name}</span>
