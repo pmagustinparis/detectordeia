@@ -3,10 +3,10 @@ import { UseCasePage } from './types';
 export const useCases: UseCasePage[] = [
   {
     slug: 'detector-de-ia-para-profesores',
-    audience: 'Profesores y Docentes',
+    audience: 'Profesores y Profesores',
     keywords: [
       'detector de ia para profesores',
-      'detector de ia para docentes',
+      'detector de ia para profesores',
       'como detectar si un alumno uso chatgpt',
       'detectar trabajos con ia',
       'herramienta para profesores detectar ia'
@@ -14,7 +14,7 @@ export const useCases: UseCasePage[] = [
 
     // SEO
     title: 'Detector de IA para Profesores: Verifica Trabajos de Estudiantes 2025',
-    description: 'Herramienta gratis para profesores y docentes. Detecta si tus alumnos usaron ChatGPT, Claude o IA en trabajos. Optimizado para español. Sin registro.',
+    description: 'Herramienta gratis para profesores y profesores. Detecta si tus alumnos usaron ChatGPT, Claude o IA en trabajos. Optimizado para español. Sin registro.',
     h1: 'Detector de IA para Profesores: Verifica la Autenticidad de Trabajos',
 
     // Content
@@ -1301,7 +1301,7 @@ export const useCases: UseCasePage[] = [
     testimonial: {
       quote: 'Soy profe en la UBA y mis alumnos usan mucho ChatGPT. DetectorDeIA entiende perfecto el español argentino, no marca como IA solo porque usan "che" o "boludo". Me ahorra tiempo y me da evidencia objetiva para charlar con los pibes.',
       author: 'Martín Fernández',
-      role: 'Docente de Comunicación, Universidad de Buenos Aires'
+      role: 'Profesor de Comunicación, Universidad de Buenos Aires'
     },
 
     faqs: [
@@ -1327,7 +1327,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Los profesores argentinos pueden usarlo para revisar trabajos?',
-        answer: 'Absolutamente. Muchos docentes de universidades y colegios secundarios argentinos usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. El plan FREE alcanza para revisar trabajos sospechosos (10 por día). Si sos profe con muchos alumnos, plan premium da análisis ilimitados. Protegé la integridad académica sin gastar fortunas en Turnitin.'
+        answer: 'Absolutamente. Muchos profesores de universidades y colegios secundarios argentinos usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. El plan FREE alcanza para revisar trabajos sospechosos (10 por día). Si sos profe con muchos alumnos, plan premium da análisis ilimitados. Protegé la integridad académica sin gastar fortunas en Turnitin.'
       },
       {
         question: '¿Qué pasa si mi texto tiene muchas palabras argentinas?',
@@ -1507,7 +1507,7 @@ export const useCases: UseCasePage[] = [
     testimonial: {
       quote: 'Trabajo en la Universidad Nacional de Colombia y DetectorDeIA entiende perfecto nuestro español. No marca como IA solo porque los pelados usan "parce" o "bacano". Me ayuda muchísimo a identificar trabajos que necesitan más revisión.',
       author: 'Dra. Carolina Ramírez',
-      role: 'Docente de Ciencias Sociales, Universidad Nacional de Colombia'
+      role: 'Profesor de Ciencias Sociales, Universidad Nacional de Colombia'
     },
 
     faqs: [
@@ -1533,7 +1533,7 @@ export const useCases: UseCasePage[] = [
       },
       {
         question: '¿Los profesores colombianos pueden usarlo para revisar trabajos?',
-        answer: 'Claro que sí. Muchos docentes de universidades colombianas usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. Plan FREE alcanza para revisar trabajos sospechosos (10 por día). Profesores con muchos estudiantes usan plan premium para análisis ilimitados. Más económico que Turnitin y funciona mejor con español colombiano.'
+        answer: 'Claro que sí. Muchos profesores de universidades colombianas usan DetectorDeIA para identificar qué trabajos necesitan revisión adicional. Plan FREE alcanza para revisar trabajos sospechosos (10 por día). Profesores con muchos estudiantes usan plan premium para análisis ilimitados. Más económico que Turnitin y funciona mejor con español colombiano.'
       },
       {
         question: '¿Qué pasa si mi texto tiene muchas palabras colombianas?',

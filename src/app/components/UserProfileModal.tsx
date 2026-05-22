@@ -11,7 +11,7 @@ interface UserProfileModalProps {
 const ROLES = [
   { value: 'student_university', label: 'Estudiante Universitario', icon: '🎓' },
   { value: 'student_secondary', label: 'Estudiante Secundario/Colegio', icon: '📚' },
-  { value: 'teacher', label: 'Profesor/Docente', icon: '👨‍🏫' },
+  { value: 'teacher', label: 'Profesor', icon: '👨‍🏫' },
   { value: 'writer', label: 'Escritor/Creador de Contenido', icon: '✍️' },
   { value: 'journalist', label: 'Periodista', icon: '📰' },
   { value: 'professional', label: 'Profesional/Empresa', icon: '💼' },

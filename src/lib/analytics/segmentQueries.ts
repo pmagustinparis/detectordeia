@@ -64,7 +64,7 @@ const ROLE_LABELS: Record<string, string> = {
   student_university: 'Estudiante universitario',
   student_secondary: 'Estudiante secundario',
   student: 'Estudiante',
-  teacher: 'Profesor/Docente',
+  teacher: 'Profesor',
   writer: 'Escritor/Creador',
   journalist: 'Periodista',
   professional: 'Profesional/Empresa',

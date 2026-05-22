@@ -22,7 +22,7 @@ const ROLE_LABELS: Record<string, string> = {
   student_secondary: '📚 Estudiante Secundario',
   // Valores legacy (backward compatibility)
   student: '🎓 Estudiante',
-  teacher: '👨‍🏫 Profesor/Docente',
+  teacher: '👨‍🏫 Profesor',
   writer: '✍️ Escritor/Creador',
   journalist: '📰 Periodista',
   professional: '💼 Profesional/Empresa',

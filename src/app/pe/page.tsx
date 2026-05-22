@@ -4,7 +4,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Perú – DetectordeIA.ai',
-  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Perú. Herramienta gratuita, precisa y optimizada para Perú. Sin registro, ideal para estudiantes, docentes y empresas.',
+  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Perú. Herramienta gratuita, precisa y optimizada para Perú. Sin registro, ideal para estudiantes, profesores y empresas.',
   alternates: {
     canonical: 'https://detectordeia.ai/pe',
     languages: {
@@ -47,7 +47,7 @@ export default async function DetectorPeru() {
     <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para Perú"
-        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Perú. Herramienta gratuita, sin registro, optimizada para español de Perú. Ideal para estudiantes, docentes y empresas peruanas."
+        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Perú. Herramienta gratuita, sin registro, optimizada para español de Perú. Ideal para estudiantes, profesores y empresas peruanas."
         initialUserStatus={initialUserStatus}
       />
 
@@ -91,7 +91,7 @@ export default async function DetectorPeru() {
             },
             {
               q: '¿La PUCP y la UNMSM permiten usar ChatGPT en los trabajos?',
-              a: 'La PUCP permite el uso de IA como herramienta de apoyo con declaración explícita en el trabajo. La UNMSM está en proceso de definir su política formal; hasta entonces, se aplica el criterio del docente. En ambas instituciones está prohibido presentar texto generado íntegramente por IA como propio.'
+              a: 'La PUCP permite el uso de IA como herramienta de apoyo con declaración explícita en el trabajo. La UNMSM está en proceso de definir su política formal; hasta entonces, se aplica el criterio del profesor. En ambas instituciones está prohibido presentar texto generado íntegramente por IA como propio.'
             },
             {
               q: '¿Qué sistemas antiplagio se usan en las universidades peruanas?',

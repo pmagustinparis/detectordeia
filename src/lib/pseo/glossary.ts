@@ -1731,7 +1731,7 @@ export const glossary: GlossaryPage[] = [
     faqs: [
       { question: '¿Cuál es la diferencia entre IA generativa e IA tradicional?', answer: 'La IA tradicional (antes de 2020) se especializaba en tareas específicas: clasificar imágenes, detectar fraude, recomendar películas. La IA generativa puede crear contenido nuevo en múltiples dominios a partir de instrucciones en lenguaje natural. Es más flexible pero también más difícil de controlar.' },
       { question: '¿La IA generativa entiende lo que produce?', answer: 'No en el sentido humano. Los modelos generativos producen outputs estadísticamente coherentes con su entrenamiento, pero no tienen comprensión semántica real. Por eso pueden generar texto que "suena" bien pero es factualmente incorrecto (alucinaciones).' },
-      { question: '¿Cómo cambia la IA generativa la educación?', answer: 'Permite personalizar el aprendizaje a nivel individual, generar material de estudio bajo demanda y automatizar tareas rutinarias de los docentes. Al mismo tiempo, plantea desafíos de evaluación (¿cómo saber si el trabajo es del estudiante?) e integridad académica que las instituciones están resolviendo progresivamente.' }
+      { question: '¿Cómo cambia la IA generativa la educación?', answer: 'Permite personalizar el aprendizaje a nivel individual, generar material de estudio bajo demanda y automatizar tareas rutinarias de los profesores. Al mismo tiempo, plantea desafíos de evaluación (¿cómo saber si el trabajo es del estudiante?) e integridad académica que las instituciones están resolviendo progresivamente.' }
     ],
     relatedTerms: [
       { term: 'LLM (Large Language Model)', slug: 'que-es-llm-large-language-model' },
@@ -1916,7 +1916,7 @@ export const glossary: GlossaryPage[] = [
     ],
     faqs: [
       { question: '¿Cuál es la diferencia entre un chatbot y ChatGPT?', answer: 'ChatGPT es un chatbot, pero de nueva generación. Los chatbots tradicionales responden con frases predefinidas para palabras clave. ChatGPT usa un LLM que genera respuestas originales, mantiene el contexto de la conversación y puede razonar sobre temas complejos. Es la diferencia entre un menú de opciones y una conversación real.' },
-      { question: '¿Los chatbots de IA pueden reemplazar a los profesores?', answer: 'No. Pueden complementar la enseñanza respondiendo preguntas frecuentes, generando ejercicios de práctica y dando feedback inmediato sobre tareas concretas. Pero el rol del docente como guía, evaluador del pensamiento crítico y constructor de relaciones pedagógicas no es reemplazable.' },
+      { question: '¿Los chatbots de IA pueden reemplazar a los profesores?', answer: 'No. Pueden complementar la enseñanza respondiendo preguntas frecuentes, generando ejercicios de práctica y dando feedback inmediato sobre tareas concretas. Pero el rol del profesor como guía, evaluador del pensamiento crítico y constructor de relaciones pedagógicas no es reemplazable.' },
       { question: '¿Es seguro usar chatbots de IA para preguntas sobre salud?', answer: 'Con precaución. Los chatbots de IA pueden dar información general útil, pero no reemplazan la consulta médica. Pueden cometer errores factuales o no considerar el contexto individual del paciente. Para decisiones de salud, siempre consultar un profesional.' }
     ],
     relatedTerms: [

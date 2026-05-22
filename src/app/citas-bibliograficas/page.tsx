@@ -31,7 +31,7 @@ export default function Page() {
         },
         {
           q: '¿Qué estilo de cita debo usar?',
-          a: 'Depende de tu institución y disciplina: APA se usa en psicología, educación y ciencias sociales. MLA en humanidades, literatura y lenguas. Chicago en historia, arte y algunas ciencias sociales. Si no te indicaron un estilo específico, consultá con tu docente o institución.',
+          a: 'Depende de tu institución y disciplina: APA se usa en psicología, educación y ciencias sociales. MLA en humanidades, literatura y lenguas. Chicago en historia, arte y algunas ciencias sociales. Si no te indicaron un estilo específico, consultá con tu profesor o institución.',
         },
       ]}
     />

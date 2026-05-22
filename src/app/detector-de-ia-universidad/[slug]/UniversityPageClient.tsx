@@ -89,7 +89,7 @@ export default function UniversityPageClient({ university }: { university: Unive
 
           <h2 className="text-2xl text-tinta mb-4 mt-8">Para Profesores de {university.name}</h2>
           <p className="text-tinta-soft mb-4 leading-relaxed font-sans">
-            Los docentes de {university.shortName} pueden verificar trabajos estudiantiles de forma rápida y confiable. Nuestro detector identifica textos generados por ChatGPT, Claude, Gemini y otros modelos de IA, proporcionando un análisis detallado con porcentaje de probabilidad y nivel de confianza.
+            Los profesores de {university.shortName} pueden verificar trabajos estudiantiles de forma rápida y confiable. Nuestro detector identifica textos generados por ChatGPT, Claude, Gemini y otros modelos de IA, proporcionando un análisis detallado con porcentaje de probabilidad y nivel de confianza.
           </p>
 
           {university.hasAIPolicy && (

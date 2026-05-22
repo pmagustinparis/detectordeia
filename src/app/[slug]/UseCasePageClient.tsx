@@ -167,7 +167,7 @@ export default function UseCasePageClient({ useCase }: Props) {
               className="bg-white rounded-xl shadow-md border border-blue-200 p-5 hover:border-blue-200 hover:shadow-lg transition-all group"
             >
               <p className="font-bold text-gray-800 mb-1 group-hover:text-blue-900 transition-colors">DetectordeIA vs Turnitin →</p>
-              <p className="text-sm text-gray-600">Compará las dos herramientas más usadas por docentes para detectar IA y plagio académico.</p>
+              <p className="text-sm text-gray-600">Compará las dos herramientas más usadas por profesores para detectar IA y plagio académico.</p>
             </Link>
             <Link
               href="/guias/como-usar-ia-eticamente-universidad"

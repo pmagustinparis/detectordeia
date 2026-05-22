@@ -4,7 +4,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Argentina – DetectordeIA.ai',
-  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Argentina. Herramienta gratuita, precisa y optimizada para Argentina. Sin registro, ideal para estudiantes, docentes y empresas.',
+  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Argentina. Herramienta gratuita, precisa y optimizada para Argentina. Sin registro, ideal para estudiantes, profesores y empresas.',
   alternates: {
     canonical: 'https://detectordeia.ai/ar',
     languages: {
@@ -47,7 +47,7 @@ export default async function DetectorArgentina() {
     <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para Argentina"
-        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Argentina. Herramienta gratuita, sin registro, optimizada para español de Argentina. Ideal para estudiantes, docentes y empresas argentinas."
+        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Argentina. Herramienta gratuita, sin registro, optimizada para español de Argentina. Ideal para estudiantes, profesores y empresas argentinas."
         initialUserStatus={initialUserStatus}
       />
 

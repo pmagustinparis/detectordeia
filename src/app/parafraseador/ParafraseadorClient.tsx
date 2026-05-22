@@ -177,7 +177,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
           <span className="text-tinta"> el parafraseador?</span>
         </h2>
         <p className="text-center text-mute mb-10">
-          Ideal para estudiantes, escritores, docentes y profesionales
+          Ideal para estudiantes, escritores, profesores y profesionales
         </p>
 
         <div className="grid md:grid-cols-4 gap-6">
@@ -205,7 +205,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
               <Icon icon={ProductIcons.Users} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-tinta">Docentes</h3>
+            <h3 className="font-bold text-lg mb-2 text-tinta">Profesores</h3>
             <p className="text-mute text-sm leading-relaxed">
               Crea versiones alternativas de materiales educativos, ejercicios y exámenes.
             </p>

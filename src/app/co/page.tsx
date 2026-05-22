@@ -4,7 +4,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Colombia – DetectordeIA.ai',
-  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Colombia. Herramienta gratuita, precisa y optimizada para Colombia. Sin registro, ideal para estudiantes, docentes y empresas colombianas.',
+  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Colombia. Herramienta gratuita, precisa y optimizada para Colombia. Sin registro, ideal para estudiantes, profesores y empresas colombianas.',
   alternates: {
     canonical: 'https://detectordeia.ai/co',
     languages: {
@@ -47,7 +47,7 @@ export default async function DetectorColombia() {
     <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para Colombia"
-        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Colombia. Herramienta gratuita, sin registro, optimizada para español de Colombia. Ideal para estudiantes, docentes y empresas colombianas."
+        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Colombia. Herramienta gratuita, sin registro, optimizada para español de Colombia. Ideal para estudiantes, profesores y empresas colombianas."
         initialUserStatus={initialUserStatus}
       />
 
@@ -94,7 +94,7 @@ export default async function DetectorColombia() {
             },
             {
               q: '¿La UNAL y Uniandes permiten usar ChatGPT en los trabajos?',
-              a: 'Ambas instituciones permiten el uso de IA como herramienta de apoyo, pero exigen transparencia: debes declarar qué herramienta usaste y con qué finalidad. Está prohibido que la IA reemplace el razonamiento o la argumentación propia del estudiante. Consulta siempre las indicaciones de tu docente.'
+              a: 'Ambas instituciones permiten el uso de IA como herramienta de apoyo, pero exigen transparencia: debes declarar qué herramienta usaste y con qué finalidad. Está prohibido que la IA reemplace el razonamiento o la argumentación propia del estudiante. Consulta siempre las indicaciones de tu profesor.'
             },
             {
               q: '¿Qué sistemas antiplagio se usan en universidades colombianas?',
@@ -102,7 +102,7 @@ export default async function DetectorColombia() {
             },
             {
               q: '¿Cómo puede un profesor en Colombia detectar si un texto lo escribió ChatGPT?',
-              a: 'Además de usar nuestro detector gratuito, los docentes colombianos pueden observar señales como: ausencia de referencias locales específicas, vocabulario excesivamente neutro sin regionalismos, párrafos que no reflejan el nivel propio del estudiante, y falta de ejemplos concretos del contexto colombiano.'
+              a: 'Además de usar nuestro detector gratuito, los profesores colombianos pueden observar señales como: ausencia de referencias locales específicas, vocabulario excesivamente neutro sin regionalismos, párrafos que no reflejan el nivel propio del estudiante, y falta de ejemplos concretos del contexto colombiano.'
             },
           ].map((faq, i) => (
             <div key={i} className="bg-papel-2 border border-line rounded-xl p-4 text-tinta text-sm">

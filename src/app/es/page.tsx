@@ -4,7 +4,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para España – DetectordeIA.ai',
-  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de España. Herramienta gratuita, precisa y optimizada para España. Sin registro, ideal para estudiantes, docentes y empresas.',
+  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de España. Herramienta gratuita, precisa y optimizada para España. Sin registro, ideal para estudiantes, profesores y empresas.',
   alternates: {
     canonical: 'https://detectordeia.ai/es',
     languages: {
@@ -47,7 +47,7 @@ export default async function DetectorEspana() {
     <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para España"
-        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en España. Herramienta gratuita, sin registro, optimizada para español de España. Ideal para estudiantes, docentes y empresas españolas."
+        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en España. Herramienta gratuita, sin registro, optimizada para español de España. Ideal para estudiantes, profesores y empresas españolas."
         initialUserStatus={initialUserStatus}
       />
 

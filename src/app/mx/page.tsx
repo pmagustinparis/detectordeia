@@ -4,7 +4,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para México – DetectordeIA.ai',
-  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de México. Herramienta gratuita, precisa y optimizada para México. Sin registro, ideal para estudiantes, docentes y empresas.',
+  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de México. Herramienta gratuita, precisa y optimizada para México. Sin registro, ideal para estudiantes, profesores y empresas.',
   alternates: {
     canonical: 'https://detectordeia.ai/mx',
     languages: {
@@ -47,7 +47,7 @@ export default async function DetectorMexico() {
     <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para México"
-        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en México. Herramienta gratuita, sin registro, optimizada para español de México. Ideal para estudiantes, docentes y empresas mexicanas."
+        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en México. Herramienta gratuita, sin registro, optimizada para español de México. Ideal para estudiantes, profesores y empresas mexicanas."
         initialUserStatus={initialUserStatus}
       />
 

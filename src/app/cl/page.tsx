@@ -4,7 +4,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA para Chile – DetectordeIA.ai',
-  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Chile. Herramienta gratuita, precisa y optimizada para Chile. Sin registro, ideal para estudiantes, docentes y empresas chilenas.',
+  description: 'Detecta si un texto fue escrito por inteligencia artificial en español de Chile. Herramienta gratuita, precisa y optimizada para Chile. Sin registro, ideal para estudiantes, profesores y empresas chilenas.',
   alternates: {
     canonical: 'https://detectordeia.ai/cl',
     languages: {
@@ -47,7 +47,7 @@ export default async function DetectorChile() {
     <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para Chile"
-        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Chile. Herramienta gratuita, sin registro, optimizada para español de Chile. Ideal para estudiantes, docentes y empresas chilenas."
+        subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Chile. Herramienta gratuita, sin registro, optimizada para español de Chile. Ideal para estudiantes, profesores y empresas chilenas."
         initialUserStatus={initialUserStatus}
       />
 
@@ -91,7 +91,7 @@ export default async function DetectorChile() {
             },
             {
               q: '¿La UC y la U. de Chile permiten usar ChatGPT en los trabajos?',
-              a: 'Ambas instituciones permiten usar IA como herramienta de apoyo con declaración explícita. La UC ha publicado guías para docentes sobre cómo diseñar evaluaciones que reduzcan el riesgo de uso fraudulento de IA. En ningún caso se permite que la IA sustituya el razonamiento propio del estudiante.'
+              a: 'Ambas instituciones permiten usar IA como herramienta de apoyo con declaración explícita. La UC ha publicado guías para profesores sobre cómo diseñar evaluaciones que reduzcan el riesgo de uso fraudulento de IA. En ningún caso se permite que la IA sustituya el razonamiento propio del estudiante.'
             },
             {
               q: '¿Qué sistemas antiplagio usan las universidades chilenas?',

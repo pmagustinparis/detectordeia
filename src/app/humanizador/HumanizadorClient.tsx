@@ -178,7 +178,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           <span className="text-tinta"> el humanizador de IA?</span>
         </h2>
         <p className="text-center text-mute mb-10">
-          Ideal para estudiantes, profesionales, creadores y docentes
+          Ideal para estudiantes, profesionales, creadores y profesores
         </p>
 
         <div className="grid md:grid-cols-4 gap-6">
@@ -216,7 +216,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
               <Icon icon={ProductIcons.Users} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-tinta">Docentes</h3>
+            <h3 className="font-bold text-lg mb-2 text-tinta">Profesores</h3>
             <p className="text-mute text-sm leading-relaxed">
               Mejora materiales educativos generados con IA para que sean más comprensibles y cercanos.
             </p>

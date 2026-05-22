@@ -2742,7 +2742,7 @@ export const guides: GuidePage[] = [
       { mistake: 'Ignorar el debate sobre la IA en tu propia universidad', solution: 'Participar en el debate institucional te protege y posiciona como estudiante proactivo ante las nuevas normas.' }
     ],
     faqs: [
-      { question: '¿La IA va a reemplazar a los profesores?', answer: 'Según el consenso actual de investigadores en educación: no. La IA puede automatizar partes de la enseñanza rutinaria, pero el rol del docente como guía, mentor y evaluador de pensamiento crítico es irreemplazable.' },
+      { question: '¿La IA va a reemplazar a los profesores?', answer: 'Según el consenso actual de investigadores en educación: no. La IA puede automatizar partes de la enseñanza rutinaria, pero el rol del profesor como guía, mentor y evaluador de pensamiento crítico es irreemplazable.' },
       { question: '¿Es malo que los estudiantes usen IA para estudiar?', answer: 'No intrínsecamente. Lo que importa es si el uso de IA produce aprendizaje real. Un estudiante que usa IA para entender mejor un concepto está aprendiendo; uno que la usa para saltarse el proceso de pensar, no.' },
       { question: '¿Qué ventajas concretas tiene la IA para estudiantes universitarios?', answer: 'Explicaciones personalizadas a cualquier nivel de comprensión, feedback inmediato sobre escritura, generación de ejemplos y contraejemplos, síntesis de bibliografía extensa, y práctica de exámenes con corrección automática.' }
     ],
@@ -2873,7 +2873,7 @@ export const guides: GuidePage[] = [
   {
     slug: 'guia-politica-ia-para-profesores',
     title: 'Guía de Política de IA para Profesores Universitarios',
-    keywords: ['politica ia profesores', 'como detectar ia en trabajos', 'guia ia para docentes', 'deteccion ia estudiantes', 'profesor chatgpt trabajos'],
+    keywords: ['politica ia profesores', 'como detectar ia en trabajos', 'guia ia para profesores', 'deteccion ia estudiantes', 'profesor chatgpt trabajos'],
     metaTitle: 'Guía de Política de IA para Profesores: Cómo Detectar y Gestionar el Uso 2025',
     metaDescription: 'Guía práctica para profesores sobre cómo redactar políticas de IA, detectar uso no declarado y diseñar evaluaciones resistentes al fraude con IA.',
     h1: 'Guía de Política de IA para Profesores Universitarios en 2025',
@@ -3504,7 +3504,7 @@ export const guides: GuidePage[] = [
     metaTitle: 'Cómo Funciona un Detector de IA: Explicación Técnica 2025',
     metaDescription: 'Explicación clara y sin tecnicismos de cómo funcionan los detectores de IA internamente: qué analizan, por qué tienen falsos positivos y cómo se entrenan.',
     h1: 'Cómo Funciona un Detector de IA: Lo que Analizan Realmente',
-    intro: '¿Por qué un detector de IA puede distinguir el texto de ChatGPT del tuyo? No es magia — es estadística. Esta guía explica el funcionamiento interno de los detectores de IA en términos comprensibles para cualquier estudiante o docente.',
+    intro: '¿Por qué un detector de IA puede distinguir el texto de ChatGPT del tuyo? No es magia — es estadística. Esta guía explica el funcionamiento interno de los detectores de IA en términos comprensibles para cualquier estudiante o profesor.',
     overview: 'Cubre: (1) qué patrones analizan los detectores, (2) perplejidad y burstiness explicadas, (3) por qué existen falsos positivos, (4) cómo se entrenan los detectores, (5) limitaciones actuales.',
     steps: [
       { number: 1, title: 'Los detectores analizan la "predictibilidad" del texto', description: 'Los LLMs como ChatGPT generan texto eligiendo en cada posición la palabra más probable dado el contexto. El resultado es texto estadísticamente muy predecible. Los detectores miden qué tan predecible es cada palabra del texto — si es muy predecible en conjunto, probablemente lo generó una IA.' },

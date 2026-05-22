@@ -98,13 +98,13 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
             Confianza académica
           </h2>
           <p className="text-tinta-soft text-lg max-w-3xl mx-auto">
-            Utilizado por docentes, estudiantes e instituciones para verificar autenticidad
+            Utilizado por profesores, estudiantes e instituciones para verificar autenticidad
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-papel-2 border-l-2 border-verde p-8 card-elevated">
-            <h3 className="text-xl text-tinta mb-4">Docentes</h3>
+            <h3 className="text-xl text-tinta mb-4">Profesores</h3>
             <p className="text-tinta-soft text-base leading-relaxed">
               Verifica la autenticidad de trabajos académicos. Detecta contenido generado por IA en ensayos y trabajos finales de manera confiable.
             </p>
