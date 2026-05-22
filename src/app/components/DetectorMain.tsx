@@ -1158,7 +1158,7 @@ export default function DetectorMain({
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-gray-600 mt-2">Express $3.99/24h • Premium $12.99/mes • Cancela cuando quieras</p>
+                      <p className="text-xs text-gray-600 mt-2">Express Pass desde $3.99 · Semestral 6 meses por $24.99 · Pago único sin renovación</p>
                     </div>
                   </div>
                 )}

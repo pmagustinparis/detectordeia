@@ -27,43 +27,43 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       {/* Premium Upsell Block - SOLO para usuarios FREE */}
       {userPlan !== 'premium' && (
         <section className="max-w-3xl mx-auto mt-12 mb-16 px-2">
-          <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-8 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
-              <h2 className="text-2xl font-bold text-gray-800">
+              <h2 className="text-2xl text-tinta">
                 ¿Necesitas humanizar textos más largos?
               </h2>
             </div>
 
-            <p className="text-blue-900 font-semibold text-lg mb-4">
-              Express Pass o Premium – acceso completo
+            <p className="text-verde font-medium text-lg mb-4">
+              Express Pass o Semestral – acceso completo
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
               <div className="flex items-start gap-2">
-                <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">Sin límite de caracteres por uso</span>
+                <span className="text-verde text-lg">✓</span>
+                <span className="text-sm text-tinta-soft">Sin límite de caracteres por uso</span>
               </div>
               <div className="flex items-start gap-2">
-                <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">5 modos (Estándar + Creativo gratis, Formal/Simplificado/Académico en Premium)</span>
+                <span className="text-verde text-lg">✓</span>
+                <span className="text-sm text-tinta-soft">5 modos de humanización (Estándar, Creativo, Formal, Simplificado, Académico)</span>
               </div>
               <div className="flex items-start gap-2">
-                <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">Carga de archivos (.txt, .docx, .pdf)</span>
+                <span className="text-verde text-lg">✓</span>
+                <span className="text-sm text-tinta-soft">Carga de archivos (.txt, .docx, .pdf)</span>
               </div>
               <div className="flex items-start gap-2">
-                <span className="text-green-600 text-lg">✓</span>
-                <span className="text-sm text-gray-700">Historial completo de humanizaciones</span>
+                <span className="text-verde text-lg">✓</span>
+                <span className="text-sm text-tinta-soft">Historial completo de humanizaciones</span>
               </div>
             </div>
 
-            <p className="text-sm text-gray-500 mb-4">
-              Express Pass desde <strong className="text-gray-700">$3.99</strong> · pago único sin renovación &nbsp;·&nbsp; Premium desde <strong className="text-gray-700">$12.99/mes</strong>
+            <p className="text-sm text-mute mb-4">
+              Express Pass desde <strong className="text-tinta">$3.99</strong> · pago único · Semestral 6 meses por <strong className="text-tinta">$24.99</strong>
             </p>
 
             <a
               href="/pricing"
-              className="inline-block w-full md:w-auto px-8 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl transition-all text-center"
+              className="inline-block w-full md:w-auto px-8 py-3 bg-verde hover:bg-verde-deep text-papel font-medium rounded-xl transition-colors text-center"
             >
               Ver Planes
             </a>
