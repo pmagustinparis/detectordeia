@@ -18,7 +18,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
   };
 
   return (
-    <div className="min-h-screen bg-white pb-10 px-2">
+    <div className="min-h-screen bg-papel pb-10 px-2">
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
         <HumanizadorMain initialUserStatus={initialUserStatus} />
@@ -74,54 +74,54 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       {/* Por qué usar el humanizador Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          <span className="text-blue-900">¿Por qué usar</span>
-          <span className="text-gray-800"> el humanizador de DetectorDeIA?</span>
+          <span className="text-verde">¿Por qué usar</span>
+          <span className="text-tinta"> el humanizador de DetectorDeIA?</span>
         </h2>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-mute mb-10">
           La mejor opción para humanizar textos en español
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Beneficio 1 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4 shadow-md">
+              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Especializado en español</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Especializado en español</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Nuestro humanizador está optimizado específicamente para español, no es una simple traducción. Entiende modismos, regionalismos y estructuras del español de LATAM y España.
             </p>
           </div>
 
           {/* Beneficio 2 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Locked} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4 shadow-md">
+              <Icon icon={ProductIcons.Locked} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">100% Privado</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">100% Privado</h3>
+            <p className="text-mute text-sm leading-relaxed">
               No almacenamos tu contenido. Tu texto se procesa y se elimina inmediatamente. Usas la herramienta de forma completamente anónima sin necesidad de registro.
             </p>
           </div>
 
           {/* Beneficio 3 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-4 shadow-md">
-              <Icon icon={ProductIcons.Fast} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4 shadow-md">
+              <Icon icon={ProductIcons.Fast} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Resultados instantáneos</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Resultados instantáneos</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Obtén tu texto humanizado en 5-10 segundos. No esperes horas ni días. Humaniza y continúa con tu trabajo de inmediato.
             </p>
           </div>
 
           {/* Beneficio 4 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
-              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4">
+              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Mantiene el significado</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Mantiene el significado</h3>
+            <p className="text-mute text-sm leading-relaxed">
               No cambiamos el mensaje de tu texto, solo la forma en que está escrito. El contenido, ideas y argumentos se preservan intactos.
             </p>
           </div>
@@ -131,40 +131,40 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       {/* Cómo Funciona Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          <span className="text-blue-900">¿Cómo funciona</span>
-          <span className="text-gray-800"> el humanizador de IA?</span>
+          <span className="text-verde">¿Cómo funciona</span>
+          <span className="text-tinta"> el humanizador de IA?</span>
         </h2>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-mute mb-10">
           Tres simples pasos para transformar tu texto
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
+            <div className="w-10 h-10 rounded-full bg-verde flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-sm">1</span>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Pega tu texto</h3>
-            <p className="text-gray-600 text-sm">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Pega tu texto</h3>
+            <p className="text-mute text-sm">
               Copia el texto generado por cualquier IA (ChatGPT, Claude, Gemini, etc.) y pégalo en el cuadro.
             </p>
           </div>
 
           <div className="text-center">
-            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
+            <div className="w-10 h-10 rounded-full bg-verde flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-sm">2</span>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Haz clic en "Humanizar"</h3>
-            <p className="text-gray-600 text-sm">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Haz clic en "Humanizar"</h3>
+            <p className="text-mute text-sm">
               Nuestro sistema analizará y transformará tu texto en contenido natural en segundos.
             </p>
           </div>
 
           <div className="text-center">
-            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
+            <div className="w-10 h-10 rounded-full bg-verde flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-sm">3</span>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Copia el resultado</h3>
-            <p className="text-gray-600 text-sm">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Copia el resultado</h3>
+            <p className="text-mute text-sm">
               Obtén tu texto humanizado listo para usar. Cópialo o descárgalo como .txt.
             </p>
           </div>
@@ -174,50 +174,50 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       {/* Casos de Uso Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          <span className="text-blue-900">¿Quién usa</span>
-          <span className="text-gray-800"> el humanizador de IA?</span>
+          <span className="text-verde">¿Quién usa</span>
+          <span className="text-tinta"> el humanizador de IA?</span>
         </h2>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-mute mb-10">
           Ideal para estudiantes, profesionales, creadores y docentes
         </p>
 
         <div className="grid md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.GraduationCap} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.GraduationCap} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Estudiantes</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Estudiantes</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Humaniza ensayos y trabajos generados con IA para que suenen más naturales en tus entregas.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.Briefcase} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.Briefcase} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Profesionales</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Profesionales</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Mejora emails, reportes y presentaciones para que tengan un tono más personal y profesional.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.PenTool} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.PenTool} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Creadores</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Creadores</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Transforma borradores de IA en contenido auténtico para blogs, redes sociales y newsletters.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.Users} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.Users} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Docentes</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Docentes</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Mejora materiales educativos generados con IA para que sean más comprensibles y cercanos.
             </p>
           </div>
@@ -229,20 +229,20 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
 
       {/* VARIANTES DEL HUMANIZADOR - Internal Linking SEO */}
       <section className="max-w-5xl mx-auto mb-12 px-2">
-        <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-          <p className="text-gray-700 text-sm mb-3">
+        <div className="bg-papel-2 rounded-xl border border-line p-6 text-center">
+          <p className="text-tinta-soft text-sm mb-3">
             <span className="font-semibold">También buscado como:</span>
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href="/convertidor-ia-a-humano"
-              className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-200"
+              className="px-4 py-2 bg-white hover:bg-gray-50 text-tinta-soft font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-200"
             >
               Convertidor IA a Humano
             </a>
             <a
               href="/transformador-texto-ia"
-              className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-200"
+              className="px-4 py-2 bg-white hover:bg-gray-50 text-tinta-soft font-medium rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-200"
             >
               Transformador de Texto IA
             </a>
@@ -254,21 +254,21 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       <section className="max-w-4xl mx-auto mb-16 px-2">
         <div className="space-y-6">
           {/* Detector */}
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
+          <div className="bg-papel-2 border border-line rounded-xl p-8">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                <Icon icon={ProductIcons.Detector} size="2xl" className="text-blue-900" />
+                <Icon icon={ProductIcons.Detector} size="2xl" className="text-verde" />
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                <h3 className="text-xl text-tinta mb-2">
                   ¿Quieres verificar si tu texto pasa como humano?
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-mute text-sm mb-4">
                   Después de humanizar tu texto, usa nuestro Detector de IA para verificar que suene natural y no active detectores.
                 </p>
                 <a
                   href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-verde hover:bg-verde-deep text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
                 >
                   <span>Probar el Detector de IA</span>
                   <span>→</span>
@@ -278,21 +278,21 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
           </div>
 
           {/* Parafraseador */}
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
+          <div className="bg-papel-2 border border-line rounded-xl p-8">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                <Icon icon={ProductIcons.Paraphraser} size="2xl" className="text-blue-900" />
+                <Icon icon={ProductIcons.Paraphraser} size="2xl" className="text-verde" />
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                <h3 className="text-xl text-tinta mb-2">
                   ¿Necesitas reescribir tu texto con otras palabras?
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-mute text-sm mb-4">
                   Usa nuestro Parafraseador para reescribir tu texto manteniendo el significado. Sin plagio, optimizado para español.
                 </p>
                 <a
                   href="/parafraseador"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-verde hover:bg-verde-deep text-white font-bold rounded-xl shadow-md hover:shadow-sm transition-all duration-300"
                 >
                   <span>Probar el Parafraseador</span>
                   <span>→</span>
@@ -306,7 +306,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
       {/* CTA Final Section - SOLO para usuarios FREE */}
       {userPlan !== 'premium' && (
         <section className="max-w-4xl mx-auto mb-16 px-2">
-          <div className="bg-blue-900 rounded-xl p-8 md:p-12 text-center text-white relative overflow-hidden">
+          <div className="bg-tinta rounded-xl p-8 md:p-12 text-center text-white relative overflow-hidden">
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 !text-white">
                 Comienza a humanizar tus textos ahora
@@ -318,7 +318,7 @@ export default function HumanizadorClient({ initialUserStatus }: { initialUserSt
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300 text-lg"
+                className="px-8 py-4 bg-white text-verde font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300 text-lg"
               >
                 Probar el humanizador gratis
               </button>

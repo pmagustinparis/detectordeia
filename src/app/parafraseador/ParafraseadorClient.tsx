@@ -18,7 +18,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
   };
 
   return (
-    <div className="min-h-screen bg-white pb-10 px-2">
+    <div className="min-h-screen bg-papel pb-10 px-2">
       {/* HERO SECTION */}
       <section className="w-full flex flex-col items-center justify-center pt-6 pb-2 px-2 relative overflow-hidden">
         <ParafraseadorMain initialUserStatus={initialUserStatus} />
@@ -74,54 +74,54 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
       {/* Por qué usar el parafraseador Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          <span className="text-blue-900">¿Por qué usar</span>
-          <span className="text-gray-800"> el parafraseador de DetectorDeIA?</span>
+          <span className="text-verde">¿Por qué usar</span>
+          <span className="text-tinta"> el parafraseador de DetectorDeIA?</span>
         </h2>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-mute mb-10">
           La mejor opción para parafrasear textos en español
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Beneficio 1 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
-              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4">
+              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Sin plagio garantizado</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Sin plagio garantizado</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Nuestro parafraseador reescribe tu texto de forma única, garantizando que el resultado sea completamente original y libre de plagio para tus trabajos académicos o profesionales.
             </p>
           </div>
 
           {/* Beneficio 2 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
-              <Icon icon={ProductIcons.Fast} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4">
+              <Icon icon={ProductIcons.Fast} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Instantáneo</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Instantáneo</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Obtén tu texto parafraseado en menos de 10 segundos. No pierdas tiempo reescribiendo manualmente. Parafrasea y continúa con tu trabajo de inmediato.
             </p>
           </div>
 
           {/* Beneficio 3 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
-              <Icon icon={ProductIcons.Fast} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4">
+              <Icon icon={ProductIcons.Fast} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Especializado en español</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Especializado en español</h3>
+            <p className="text-mute text-sm leading-relaxed">
               No es una traducción del inglés. Nuestro parafraseador está optimizado específicamente para español, entendiendo matices, modismos y estructuras propias del idioma.
             </p>
           </div>
 
           {/* Beneficio 4 */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
-              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-blue-900" />
+          <div className="bg-papel-2 rounded-xl border border-line p-6">
+            <div className="w-14 h-14 rounded-xl bg-verde-050 flex items-center justify-center mb-4">
+              <Icon icon={ProductIcons.Confidence} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Significado preservado</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Significado preservado</h3>
+            <p className="text-mute text-sm leading-relaxed">
               No cambiamos el mensaje de tu texto, solo la forma en que está escrito. Todas las ideas, argumentos y datos se mantienen intactos.
             </p>
           </div>
@@ -130,40 +130,40 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
 
       {/* Cómo Funciona Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-blue-900">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-verde">
           ¿Cómo funciona el parafraseador?
         </h2>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-mute mb-10">
           Tres simples pasos para reescribir tu texto
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
+            <div className="w-10 h-10 rounded-full bg-verde flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-sm">1</span>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Pega tu texto</h3>
-            <p className="text-gray-600 text-sm">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Pega tu texto</h3>
+            <p className="text-mute text-sm">
               Copia cualquier texto que quieras reescribir. Puede ser un ensayo, artículo, trabajo académico o cualquier contenido.
             </p>
           </div>
 
           <div className="text-center">
-            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
+            <div className="w-10 h-10 rounded-full bg-verde flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-sm">2</span>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Haz clic en "Parafrasear"</h3>
-            <p className="text-gray-600 text-sm">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Haz clic en "Parafrasear"</h3>
+            <p className="text-mute text-sm">
               Nuestro sistema reescribirá tu texto con otras palabras, manteniendo exactamente el mismo significado en segundos.
             </p>
           </div>
 
           <div className="text-center">
-            <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mx-auto mb-4">
+            <div className="w-10 h-10 rounded-full bg-verde flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-sm">3</span>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Copia el resultado</h3>
-            <p className="text-gray-600 text-sm">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Copia el resultado</h3>
+            <p className="text-mute text-sm">
               Obtén tu texto parafraseado listo para usar. Cópialo directamente o descárgalo como .txt sin plagio.
             </p>
           </div>
@@ -173,50 +173,50 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
       {/* Casos de Uso Section */}
       <section className="max-w-5xl mx-auto mb-16 px-2">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          <span className="text-blue-900">¿Quién usa</span>
-          <span className="text-gray-800"> el parafraseador?</span>
+          <span className="text-verde">¿Quién usa</span>
+          <span className="text-tinta"> el parafraseador?</span>
         </h2>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-mute mb-10">
           Ideal para estudiantes, escritores, docentes y profesionales
         </p>
 
         <div className="grid md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.GraduationCap} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.GraduationCap} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Estudiantes</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Estudiantes</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Parafrasea citas, fuentes y textos de referencia para tus trabajos académicos sin caer en plagio.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.PenTool} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.PenTool} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Escritores</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Escritores</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Reescribe borradores, mejora artículos y genera versiones alternativas de tu contenido.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.Users} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.Users} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Docentes</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Docentes</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Crea versiones alternativas de materiales educativos, ejercicios y exámenes.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
-              <Icon icon={ProductIcons.Briefcase} size="2xl" className="text-blue-900" />
+              <Icon icon={ProductIcons.Briefcase} size="2xl" className="text-verde" />
             </div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Profesionales</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <h3 className="font-bold text-lg mb-2 text-tinta">Profesionales</h3>
+            <p className="text-mute text-sm leading-relaxed">
               Mejora documentos, reportes y comunicaciones empresariales de forma más clara.
             </p>
           </div>
@@ -230,21 +230,21 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
       <section className="max-w-4xl mx-auto mb-16 px-2">
         <div className="space-y-6">
           {/* Humanizador */}
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
+          <div className="bg-papel-2 border border-line rounded-xl p-8">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                <Icon icon={ProductIcons.Humanizer} size="2xl" className="text-blue-900" />
+                <Icon icon={ProductIcons.Humanizer} size="2xl" className="text-verde" />
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                <h3 className="text-xl text-tinta mb-2">
                   ¿Tu texto suena muy robótico o generado por IA?
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-mute text-sm mb-4">
                   Usa nuestro Humanizador de IA para hacer que tu texto parafraseado suene más natural y humano.
                 </p>
                 <a
                   href="/humanizador"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-verde hover:bg-verde-deep text-white font-medium rounded-xl transition-colors"
                 >
                   <span>Probar el Humanizador</span>
                   <span>→</span>
@@ -254,21 +254,21 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
           </div>
 
           {/* Detector */}
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
+          <div className="bg-papel-2 border border-line rounded-xl p-8">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                <Icon icon={ProductIcons.Detector} size="2xl" className="text-blue-900" />
+                <Icon icon={ProductIcons.Detector} size="2xl" className="text-verde" />
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
+                <h3 className="text-xl text-tinta mb-2">
                   ¿Quieres verificar si tu texto detecta como IA?
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-mute text-sm mb-4">
                   Usa nuestro Detector de IA para analizar si tu texto parafraseado pasa como contenido humano.
                 </p>
                 <a
                   href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-verde hover:bg-verde-deep text-white font-medium rounded-xl transition-colors"
                 >
                   <span>Probar el Detector</span>
                   <span>→</span>
@@ -282,7 +282,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
       {/* CTA Final Section - SOLO para usuarios FREE */}
       {userPlan !== 'premium' && (
         <section className="max-w-4xl mx-auto mb-16 px-2">
-          <div className="bg-blue-900 rounded-xl p-8 md:p-12 text-center text-white relative overflow-hidden">
+          <div className="bg-tinta rounded-xl p-8 md:p-12 text-center text-white relative overflow-hidden">
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 !text-white">
                 Comienza a parafrasear tus textos ahora
@@ -294,7 +294,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-sm transition-all duration-300 text-lg"
+                className="px-8 py-4 bg-white text-verde font-medium rounded-xl transition-colors text-lg"
               >
                 Probar el parafraseador gratis
               </button>
