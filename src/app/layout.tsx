@@ -159,9 +159,9 @@ export default function RootLayout({
                     <h3 className="font-sans font-semibold text-white/40 mb-4 text-xs uppercase tracking-wider">Universidades</h3>
                     <div className="flex flex-col gap-2.5">
                       <a href="/detector-de-ia-universidad/universidad-buenos-aires" className="text-white/60 hover:text-white transition-colors text-sm">UBA</a>
-                      <a href="/detector-de-ia-universidad/unam" className="text-white/60 hover:text-white transition-colors text-sm">UNAM</a>
+                      <a href="/detector-de-ia-universidad/universidad-nacional-mexico" className="text-white/60 hover:text-white transition-colors text-sm">UNAM</a>
                       <a href="/detector-de-ia-universidad/universidad-complutense-madrid" className="text-white/60 hover:text-white transition-colors text-sm">Complutense</a>
-                      <a href="/detector-de-ia-universidad/pontificia-universidad-javeriana" className="text-white/60 hover:text-white transition-colors text-sm">Javeriana</a>
+                      <a href="/detector-de-ia-universidad/universidad-javeriana" className="text-white/60 hover:text-white transition-colors text-sm">Javeriana</a>
                       <a href="/universidades" className="text-white/60 hover:text-white transition-colors text-sm">Ver todas →</a>
                     </div>
                   </div>
