@@ -57,8 +57,8 @@ export default function AppSidebar() {
           <Image
             src="/brandidentity-detectordeia/logo-detectordeia-white.svg"
             alt="detectordeIA"
-            width={136}
-            height={28}
+            width={150}
+            height={39}
             priority
           />
         </Link>

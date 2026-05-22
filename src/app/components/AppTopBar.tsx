@@ -47,7 +47,7 @@ export default function AppTopBar() {
           src="/brandidentity-detectordeia/logo-detectordeia.svg"
           alt="detectordeIA"
           width={120}
-          height={24}
+          height={31}
           priority
         />
       </Link>

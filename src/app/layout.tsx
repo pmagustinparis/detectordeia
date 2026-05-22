@@ -103,7 +103,7 @@ export default function RootLayout({
                         src="/brandidentity-detectordeia/logo-detectordeia-white.svg"
                         alt="detectordeIA"
                         width={160}
-                        height={32}
+                        height={42}
                         priority
                       />
                     </div>
