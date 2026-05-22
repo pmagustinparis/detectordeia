@@ -165,7 +165,7 @@ export default function HumanizadorMain({
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
     if (text.length > CHARACTER_LIMIT * 0.9) return 'text-yellow-600';
-    return 'text-gray-500';
+    return 'text-mute';
   };
 
   // Validar si el botón debe estar habilitado (solo mínimo, no máximo)
@@ -450,7 +450,7 @@ export default function HumanizadorMain({
 
   const handleDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
-    e.currentTarget.classList.remove('border-blue-500', 'bg-blue-50');
+    e.currentTarget.classList.remove('border-verde', 'bg-verde-050');
 
     if (userStatus.plan_type !== 'premium' && !userStatus.express.is_active) {
       // Track intento de subir archivo bloqueado
@@ -506,14 +506,14 @@ export default function HumanizadorMain({
     return (
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
         {/* Loading skeleton */}
-        <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+        <div className="flex-1 bg-papel-2 rounded-xl border border-line p-6 min-w-[320px]" style={{minHeight: '560px'}}>
           <div className="animate-pulse space-y-4">
             <div className="h-4 bg-gray-200 rounded w-3/4"></div>
             <div className="h-32 bg-gray-200 rounded"></div>
             <div className="h-10 bg-gray-200 rounded"></div>
           </div>
         </div>
-        <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 min-w-[320px]" style={{minHeight: '560px'}}>
+        <div className="flex-1 bg-papel-2 rounded-xl border border-line p-6 min-w-[320px]" style={{minHeight: '560px'}}>
           <div className="animate-pulse space-y-4">
             <div className="h-4 bg-gray-200 rounded w-3/4"></div>
             <div className="h-32 bg-gray-200 rounded"></div>
@@ -525,22 +525,22 @@ export default function HumanizadorMain({
 
   return (
     <>
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-blue-900">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-verde">
         {h1}
       </h1>
-      <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-2xl" style={{animationDelay: '0.2s'}}>
+      <p className="text-base md:text-lg text-tinta-soft text-center mb-6 max-w-2xl" style={{animationDelay: '0.2s'}}>
         {subtitle}
       </p>
       <ExpressPromoBanner />
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
 
       {/* COLUMNA IZQUIERDA - INPUT */}
-      <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col justify-between min-w-[320px]" style={{minHeight: '560px'}}>
+      <div className="flex-1 bg-papel-2 rounded-xl border border-line p-6 flex flex-col justify-between min-w-[320px]" style={{minHeight: '560px'}}>
 
         {/* Trust indicators (badges superiores) */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           {!userStatus.isAuthenticated ? (
-            <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+            <span className="inline-flex items-center gap-1 bg-papel-2 text-tinta-soft font-semibold rounded-full px-3 py-1.5 text-xs">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -554,7 +554,7 @@ export default function HumanizadorMain({
               Cuenta activa
             </span>
           )}
-          <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-700 font-semibold rounded-full px-3 py-1.5 text-xs">
+          <span className="inline-flex items-center gap-1 bg-papel-2 text-tinta-soft font-semibold rounded-full px-3 py-1.5 text-xs">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
             </svg>
@@ -568,7 +568,7 @@ export default function HumanizadorMain({
           </span>
         </div>
 
-        <label htmlFor="humanizador-textarea" className="block text-base font-semibold text-gray-800 mb-2">
+        <label htmlFor="humanizador-textarea" className="block text-base font-semibold text-tinta mb-2">
           Pega tu texto para humanizar
         </label>
 
@@ -586,7 +586,7 @@ export default function HumanizadorMain({
         <div className="flex flex-col" style={{flexGrow: 1}}>
           <textarea
             id="humanizador-textarea"
-            className="w-full border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 p-4 text-base text-gray-800 placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-gray-400 leading-relaxed"
+            className="w-full border border-line rounded-lg focus:ring-2 focus:ring-blue-500/30 focus:border-verde p-4 text-base text-tinta placeholder-gray-400 transition-all outline-none resize-none mb-1 hover:border-gray-400 leading-relaxed"
             style={{minHeight: '220px', flexGrow: 1}}
             placeholder="Pega aquí tu texto generado por ChatGPT, Claude, Gemini u otra IA..."
             value={text}
@@ -603,11 +603,11 @@ export default function HumanizadorMain({
             onDragOver={(e) => {
               e.preventDefault();
               if (userStatus.plan_type === 'premium' || userStatus.express.is_active) {
-                e.currentTarget.classList.add('border-blue-500', 'bg-blue-50');
+                e.currentTarget.classList.add('border-verde', 'bg-verde-050');
               }
             }}
             onDragLeave={(e) => {
-              e.currentTarget.classList.remove('border-blue-500', 'bg-blue-50');
+              e.currentTarget.classList.remove('border-verde', 'bg-verde-050');
             }}
             onDrop={handleDrop}
             aria-label="Texto a humanizar"
@@ -615,7 +615,7 @@ export default function HumanizadorMain({
         </div>
 
         {/* Contador de caracteres, usos restantes y botón limpiar */}
-        <div className="flex justify-between items-center text-sm text-gray-600 mt-0 mb-2 gap-2">
+        <div className="flex justify-between items-center text-sm text-tinta-soft mt-0 mb-2 gap-2">
           <div className="flex items-center gap-3">
             <span className={getCounterColor() + ' font-medium'}>
               {text.length}/{CHARACTER_LIMIT}
@@ -627,7 +627,7 @@ export default function HumanizadorMain({
                   ? 'bg-red-100 text-red-700'
                   : rateLimitStatus.remaining <= 1
                     ? 'bg-yellow-100 text-yellow-700'
-                    : 'bg-blue-100 text-blue-900'
+                    : 'bg-blue-100 text-verde'
               }`}>
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -640,7 +640,7 @@ export default function HumanizadorMain({
             )}
             {/* Badge ilimitado para Express */}
             {userStatus.express.is_active && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-900">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-verde">
                 <span>⚡</span>
                 Express Activo - Ilimitado
               </span>
@@ -657,7 +657,7 @@ export default function HumanizadorMain({
           </div>
           <button
             onClick={handleClear}
-            className="text-blue-900 font-semibold ml-2 hover:text-blue-900 hover:underline transition-all disabled:opacity-40"
+            className="text-verde font-semibold ml-2 hover:text-verde hover:underline transition-all disabled:opacity-40"
             type="button"
             disabled={text.length === 0 && !result}
             aria-label="Limpiar texto"
@@ -668,7 +668,7 @@ export default function HumanizadorMain({
 
         {/* SELECTOR DE MODO - 5 Modos Dinámicos */}
         <div className="mb-2">
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Modo de humanización</label>
+          <label className="block text-sm font-semibold text-tinta-soft mb-1.5">Modo de humanización</label>
           <div className="space-y-2">
             {Object.entries(HUMANIZER_MODES).map(([key, mode]) => {
               const modeKey = key as HumanizerMode;
@@ -682,8 +682,8 @@ export default function HumanizadorMain({
                       isLocked
                         ? 'border-amber-200 bg-amber-50/50 cursor-pointer hover:border-amber-400 hover:bg-amber-50'
                         : isSelected
-                        ? 'border-gray-200 bg-gray-50 cursor-pointer'
-                        : 'border-gray-300 bg-white hover:border-gray-400 cursor-pointer'
+                        ? 'border-line bg-papel-2 cursor-pointer'
+                        : 'border-line-soft bg-papel hover:border-line cursor-pointer'
                     }`}
                     onClick={isLocked ? () => { setLockedModeName(mode.name); setIsPremiumModeModalOpen(true); } : undefined}
                   >
@@ -694,24 +694,24 @@ export default function HumanizadorMain({
                       checked={isSelected}
                       disabled={isLocked}
                       onChange={() => !isLocked && setSelectedMode(modeKey)}
-                      className={`w-4 h-4 ${isLocked ? 'text-amber-400' : 'text-blue-900 focus:ring-blue-500'}`}
+                      className={`w-4 h-4 ${isLocked ? 'text-amber-400' : 'text-verde focus:ring-blue-500'}`}
                     />
                     <div className="ml-2 flex-1">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-sm font-semibold text-gray-800">
+                        <span className="text-sm font-semibold text-tinta">
                           {mode.icon} {mode.name}
                         </span>
                         <span
                           className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                             mode.isPremium
                               ? 'bg-amber-50 text-amber-700'
-                              : 'bg-gray-50 text-gray-700'
+                              : 'bg-papel-2 text-tinta-soft'
                           }`}
                         >
-                          {mode.isPremium ? 'PREMIUM' : 'FREE'}
+                          {mode.isPremium ? 'EXPRESS' : 'FREE'}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-600">{mode.description}</p>
+                      <p className="text-xs text-tinta-soft">{mode.description}</p>
                     </div>
                   </label>
 
@@ -739,14 +739,14 @@ export default function HumanizadorMain({
         </button>
 
         {/* DISCLAIMER */}
-        <p className="text-center text-sm text-gray-600 mt-2 font-medium">
+        <p className="text-center text-sm text-tinta-soft mt-2 font-medium">
           Sin registro. 100% privado. No almacenamos tu texto.
         </p>
       </div>
 
       {/* COLUMNA DERECHA - OUTPUT */}
       <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col justify-between relative" style={{minHeight: '560px'}}>
+        <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col justify-between relative" style={{minHeight: '560px'}}>
 
           {/* Header con icono */}
           <div className="flex items-center gap-2 mb-3">
@@ -754,8 +754,8 @@ export default function HumanizadorMain({
               <span className="text-white text-lg"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-gray-800 text-base">Texto humanizado</span>
-              <span className="text-xs text-gray-500">El resultado aparecerá aquí</span>
+              <span className="font-bold text-tinta text-base">Texto humanizado</span>
+              <span className="text-xs text-mute">El resultado aparecerá aquí</span>
             </div>
           </div>
 
@@ -763,7 +763,7 @@ export default function HumanizadorMain({
             <div className="relative" style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
               <div className={isLimitExceeded ? "filter blur-sm" : ""} style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
                 {/* Área de resultado mejorada */}
-                <div className="w-full border border-gray-200 rounded-lg bg-gray-50 p-5 text-base text-gray-800 mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm" style={{minHeight: '280px', maxHeight: '320px'}}>
+                <div className="w-full border border-line rounded-lg bg-papel-2 p-5 text-base text-tinta mb-4 whitespace-pre-wrap leading-relaxed overflow-y-auto shadow-sm" style={{minHeight: '280px', maxHeight: '320px'}}>
                   {result}
                 </div>
 
@@ -788,7 +788,7 @@ export default function HumanizadorMain({
 
                 {/* VALIDACIÓN AUTOMÁTICA - Resultados con datos reales del detector (Fase 3) */}
                 {isValidating ? (
-                  <div className="mb-4 p-5 bg-gray-50 border-2 border-green-200 rounded-xl shadow-sm">
+                  <div className="mb-4 p-5 bg-papel-2 border-2 border-green-200 rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 justify-center">
                       <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600"></div>
                       <p className="text-base font-semibold text-green-900">Validando con el detector...</p>
@@ -801,7 +801,7 @@ export default function HumanizadorMain({
                     </p>
                   </div>
                 ) : originalScore !== null && humanizedScore !== null ? (
-                  <div className="mb-5 p-5 bg-gray-50 border-2 border-green-200 rounded-xl shadow-md" style={{animationDelay: '0.2s'}}>
+                  <div className="mb-5 p-5 bg-papel-2 border-2 border-green-200 rounded-xl shadow-md" style={{animationDelay: '0.2s'}}>
                     <div className="flex items-center gap-2 mb-4">
                       <Icon icon={ProductIcons.Detector} size="lg" className="text-green-700" />
                       <h3 className="text-base font-bold text-green-900">Validación con nuestro detector</h3>
@@ -811,7 +811,7 @@ export default function HumanizadorMain({
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       {/* ANTES */}
                       <div className="text-center bg-red-50 p-4 rounded-xl border-2 border-red-200 shadow-sm">
-                        <p className="text-xs text-gray-600 mb-2 font-semibold uppercase tracking-wide">Texto Original</p>
+                        <p className="text-xs text-tinta-soft mb-2 font-semibold uppercase tracking-wide">Texto Original</p>
                         <p className="text-5xl font-black text-red-600 mb-2">{originalScore}%</p>
                         <p className="text-xs text-red-700 font-bold">
                           <Icon icon={ProductIcons.AI} size="sm" className="inline text-red-600" /> Detectado como IA
@@ -826,7 +826,7 @@ export default function HumanizadorMain({
                           ? 'bg-yellow-100 border-yellow-300'
                           : 'bg-red-100 border-red-300'
                       }`}>
-                        <p className="text-xs text-gray-600 mb-2 font-semibold uppercase tracking-wide">Texto Humanizado</p>
+                        <p className="text-xs text-tinta-soft mb-2 font-semibold uppercase tracking-wide">Texto Humanizado</p>
                         <p className={`text-5xl font-black mb-2 ${
                           humanizedScore < 30 ? 'text-green-600' : humanizedScore < 70 ? 'text-yellow-600' : 'text-red-600'
                         }`}>{humanizedScore}%</p>
@@ -880,7 +880,7 @@ export default function HumanizadorMain({
                       </div>
                     )}
 
-                    <p className="text-xs text-gray-600 text-center italic">
+                    <p className="text-xs text-tinta-soft text-center italic">
                       <Icon icon={ProductIcons.Info} size="xs" className="inline" /> Validación automática con nuestro detector de IA
                     </p>
 
@@ -915,19 +915,19 @@ export default function HumanizadorMain({
 
                 {/* Incentivo progresivo para registro (solo usuarios anónimos) */}
                 {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
-                  <div className="p-3 bg-gray-50 border border-gray-300 rounded-xl">
+                  <div className="p-3 bg-papel-2 border border-line-soft rounded-xl">
                     <div className="flex items-start gap-2">
                       <span className="text-lg"><Icon icon={ProductIcons.Info} size="xs" className="inline" /></span>
                       <div className="flex-1">
                         <p className="text-sm font-semibold text-amber-900 mb-1">
                           ¿Usás seguido las herramientas?
                         </p>
-                        <p className="text-xs text-blue-900 mb-2">
+                        <p className="text-xs text-verde mb-2">
                           Registrándote gratis podés guardar tu historial y obtener más usos diarios.
                         </p>
                         <a
                           href="/dashboard"
-                          className="inline-block text-xs font-semibold text-blue-900 hover:text-blue-900 underline"
+                          className="inline-block text-xs font-semibold text-verde hover:text-verde underline"
                         >
                           Crear cuenta gratis →
                         </a>
@@ -937,11 +937,11 @@ export default function HumanizadorMain({
                 )}
 
                 {!userStatus.isAuthenticated && usageCount >= 5 && (
-                  <div className="p-4 bg-gray-50 border-2 border-green-200 rounded-xl">
+                  <div className="p-4 bg-papel-2 border-2 border-green-200 rounded-xl">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl"><Icon icon={ProductIcons.Upgrade} size="sm" className="inline" /></span>
                       <div className="flex-1">
-                        <p className="text-sm font-bold text-cyan-900 mb-1">
+                        <p className="text-sm font-bold text-tinta mb-1">
                           ¡Ya usaste el Humanizador {usageCount} veces!
                         </p>
                         <p className="text-xs text-green-700 mb-3">
@@ -952,7 +952,7 @@ export default function HumanizadorMain({
                         </p>
                         <a
                           href="/dashboard"
-                          className="inline-block bg-cyan-600 hover:bg-cyan-700 text-white text-xs font-bold py-2 px-4 rounded-lg transition-all"
+                          className="inline-block bg-verde hover:bg-verde-deep text-white text-xs font-bold py-2 px-4 rounded-lg transition-all"
                         >
                           Crear cuenta gratis en 10 segundos
                         </a>
@@ -990,16 +990,16 @@ export default function HumanizadorMain({
             <>
               {/* Estado vacío mejorado */}
               <div className="flex flex-col items-center justify-center text-center px-6 py-8" style={{flexGrow: 1}}>
-                <div className="w-20 h-20 rounded-xl bg-gray-50 flex items-center justify-center mb-6 shadow-sm animate-pulse">
+                <div className="w-20 h-20 rounded-xl bg-papel-2 flex items-center justify-center mb-6 shadow-sm animate-pulse">
                   <span className="text-white text-4xl"><Icon icon={ProductIcons.Humanizer} size="sm" className="inline" /></span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-2">
+                <h3 className="text-lg font-bold text-tinta mb-2">
                   Esperando tu texto
                 </h3>
-                <p className="text-gray-600 text-sm mb-4 max-w-xs">
+                <p className="text-tinta-soft text-sm mb-4 max-w-xs">
                   Pega el texto generado por IA que quieres humanizar y haz clic en el botón
                 </p>
-                <div className="flex items-center gap-2 text-xs text-gray-500">
+                <div className="flex items-center gap-2 text-xs text-mute">
                   <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
@@ -1009,29 +1009,29 @@ export default function HumanizadorMain({
 
               {/* Hint dinámico según plan */}
               {userStatus.express.is_active && (
-                <div className="text-center text-sm bg-gray-50 rounded-xl p-4 border border-orange-200">
+                <div className="text-center text-sm bg-papel-2 rounded-xl p-4 border border-orange-200">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <span>⚡</span>
                     <span className="font-bold text-orange-700">
                       Express Activo - Acceso Ilimitado
                     </span>
                   </div>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-tinta-soft">
                     Usos y caracteres ilimitados por 24h
                   </p>
                 </div>
               )}
               {!userStatus.express.is_active && userStatus.plan_type !== 'premium' && (
-                <div className="text-center text-sm bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="text-center text-sm bg-papel-2 rounded-xl p-4 border border-line">
                   <div className="flex items-center justify-center gap-2 mb-1">
-                    <svg className="w-5 h-5 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-verde" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
-                    <span className="font-bold text-blue-900">
+                    <span className="font-bold text-verde">
                       {userStatus.isAuthenticated ? '3 usos diarios gratis' : '1 uso diario'}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-tinta-soft">
                     {userStatus.isAuthenticated
                       ? 'Hasta 600 caracteres por uso'
                       : 'Hasta 400 caracteres por uso • Registrate gratis para más'}

@@ -4,8 +4,8 @@
  * Modal/overlay que aparece cuando un usuario alcanza su límite diario.
  * Muestra mensajes diferentes según el tipo de usuario:
  * - Anonymous: CTA para registrarse (obtener más usos/día)
- * - Free: CTA para Express ($3.99/24h) o Pro ($12.99/mes)
- * - Express/Premium: No deberían ver este modal (tienen usos ilimitados)
+ * - Free: CTA para Express ($3.99/24h) o Semestral ($24.99/6 meses)
+ * - Express/Semestral: No deberían ver este modal (tienen usos ilimitados)
  */
 
 'use client';
@@ -107,7 +107,7 @@ export default function UsageLimitOverlay({
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-xl shadow-lg max-w-md w-full p-8 pointer-events-auto "
+          className="bg-papel rounded-xl shadow-lg max-w-md w-full p-8 pointer-events-auto "
           onClick={(e) => e.stopPropagation()}
         >
           {/* Icon */}
@@ -118,144 +118,74 @@ export default function UsageLimitOverlay({
           </div>
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-3">
+          <h2 className="text-2xl text-center text-tinta mb-3">
             Límite Diario Alcanzado
           </h2>
 
-          {/* Message - Anonymous User */}
           {userType === 'anonymous' && (
             <>
-              <p className="text-center text-gray-700 mb-6 leading-relaxed">
+              <p className="text-center text-tinta-soft mb-6 leading-relaxed font-sans">
                 Ya usaste tus <strong>{limit} {getToolNamePlural()} gratis</strong> de hoy.
               </p>
-
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
-                <p className="text-sm font-bold text-blue-900 mb-3">
-                  Registrándote gratis obtenés:
-                </p>
-                <ul className="space-y-2 text-sm text-blue-900/80">
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Más usos diarios</strong> en todas las herramientas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Historial</strong> de tus últimos usos</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><strong>Más caracteres</strong> por análisis</span>
-                  </li>
+              <div className="bg-verde-050 border border-verde-soft rounded-xl p-5 mb-6">
+                <p className="text-sm font-medium text-verde-deep mb-3 font-sans">Registrándote gratis obtenés:</p>
+                <ul className="space-y-2 text-sm text-tinta-soft font-sans">
+                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span><strong>Más usos diarios</strong> en todas las herramientas</span></li>
+                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span><strong>Historial</strong> de tus últimos usos</span></li>
+                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span><strong>Más caracteres</strong> por análisis</span></li>
                 </ul>
               </div>
-
-              {/* CTA - Register */}
-              <a
-                href="/dashboard"
-                className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
-              >
+              <a href="/dashboard" className="block w-full text-center bg-verde hover:bg-verde-deep text-papel font-medium py-4 px-6 rounded-xl transition-colors mb-3 font-sans">
                 Crear Cuenta Gratis en 10 Segundos
               </a>
-
-              <button
-                onClick={onClose}
-                className="block w-full text-center text-gray-600 hover:text-gray-800 font-medium py-2"
-              >
+              <button onClick={onClose} className="block w-full text-center text-mute hover:text-tinta font-medium py-2 font-sans">
                 Volver mañana ({hoursUntilReset}h hasta reset)
               </button>
             </>
           )}
 
-          {/* Message - Free User */}
           {userType === 'free' && (
             <>
-              <p className="text-center text-gray-700 mb-6 leading-relaxed">
+              <p className="text-center text-tinta-soft mb-6 leading-relaxed font-sans">
                 Alcanzaste tu límite de <strong>{limit} {getToolNamePlural()} diarios</strong>.
-                <br />
-                <span className="text-sm text-gray-600">
-                  Tu límite se restablece en {hoursUntilReset} horas.
-                </span>
+                <br /><span className="text-sm text-mute">Tu límite se restablece en {hoursUntilReset} horas.</span>
               </p>
 
-              {/* Express Option - Destacado */}
+              {/* Express — amber (se mantiene) */}
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-4 relative">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-0.5 rounded-md text-xs font-bold shadow-md">
-                  ⚡ URGENTE
-                </div>
-                <p className="text-sm font-bold text-orange-900 mb-2 mt-2">
-                  Express Pass - 24 horas ilimitadas
-                </p>
-                <ul className="space-y-1.5 text-sm text-orange-800 mb-3">
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600 font-bold">✓</span>
-                    <span><strong>Todo ilimitado</strong> por 24 horas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600 font-bold">✓</span>
-                    <span>Todos los modos + subida de archivos</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600 font-bold">✓</span>
-                    <span>Perfecto para entregas urgentes</span>
-                  </li>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-0.5 rounded-md text-xs font-bold shadow-md">⚡ URGENTE</div>
+                <p className="text-sm font-bold text-orange-900 mb-2 mt-2">Express Pass - 24 horas ilimitadas</p>
+                <ul className="space-y-1.5 text-sm text-orange-800 mb-3 font-sans">
+                  <li className="flex items-start gap-2"><span className="text-orange-600 font-bold">✓</span><span><strong>Todo ilimitado</strong> por 24 horas</span></li>
+                  <li className="flex items-start gap-2"><span className="text-orange-600 font-bold">✓</span><span>Todos los modos + subida de archivos</span></li>
+                  <li className="flex items-start gap-2"><span className="text-orange-600 font-bold">✓</span><span>Perfecto para entregas urgentes</span></li>
                 </ul>
-                <p className="text-lg font-bold text-orange-900">
-                  $3.99 • Pago único
-                </p>
+                <p className="text-lg font-bold text-orange-900">$3.99 • Pago único</p>
               </div>
 
-              {/* Semestral Option */}
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
-                <p className="text-sm font-bold text-blue-900 mb-2">
-                  Semestral Pass - Todo el semestre
-                </p>
-                <ul className="space-y-1.5 text-sm text-blue-900/80 mb-3">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-900 font-bold">✓</span>
-                    <span><strong>Usos ilimitados</strong> por 6 meses</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-900 font-bold">✓</span>
-                    <span>Todos los modos + subida de archivos</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-900 font-bold">✓</span>
-                    <span>Pago único · sin renovación automática</span>
-                  </li>
+              {/* Semestral */}
+              <div className="bg-papel-2 border border-line rounded-xl p-5 mb-6">
+                <p className="text-sm font-medium text-tinta mb-2 font-sans">Semestral Pass - Todo el semestre</p>
+                <ul className="space-y-1.5 text-sm text-tinta-soft mb-3 font-sans">
+                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span><strong>Usos ilimitados</strong> por 6 meses</span></li>
+                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span>Todos los modos + subida de archivos</span></li>
+                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span>Pago único · sin renovación automática</span></li>
                 </ul>
-                <p className="text-lg font-bold text-blue-900">
-                  $24.99 · pago único
-                </p>
+                <p className="font-mono text-lg font-medium text-tinta">$24.99 · pago único</p>
               </div>
 
-              {/* CTA Buttons */}
               <div className="space-y-2 mb-3">
-                <button
-                  onClick={() => handleExpressCheckout('24h')}
-                  disabled={loadingCheckout}
-                  className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300"
-                >
+                <button onClick={() => handleExpressCheckout('24h')} disabled={loadingCheckout} className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 font-sans">
                   {loadingCheckout ? 'Procesando...' : '⚡ Activar Express 24h · $3.99'}
                 </button>
-                <button
-                  onClick={() => handleExpressCheckout('7d')}
-                  disabled={loadingCheckout}
-                  className="block w-full text-center bg-amber-100 hover:bg-amber-200 disabled:opacity-60 text-amber-900 font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
-                >
+                <button onClick={() => handleExpressCheckout('7d')} disabled={loadingCheckout} className="block w-full text-center bg-amber-100 hover:bg-amber-200 disabled:opacity-60 text-amber-900 font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm font-sans">
                   {loadingCheckout ? '...' : 'Express 7 días · $8.99 (ahorra 68%)'}
                 </button>
-                <a
-                  href="/pricing"
-                  className="block w-full text-center border border-blue-900/30 text-blue-900 hover:bg-blue-50 font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
-                >
+                <a href="/pricing" className="block w-full text-center border border-line text-tinta hover:bg-papel-2 font-medium py-2.5 px-6 rounded-xl transition-colors text-sm font-sans">
                   Ver Semestral Pass ($24.99 · 6 meses)
                 </a>
               </div>
-
-              <button
-                onClick={onClose}
-                className="block w-full text-center text-gray-600 hover:text-gray-800 font-medium py-2"
-              >
+              <button onClick={onClose} className="block w-full text-center text-mute hover:text-tinta font-medium py-2 font-sans">
                 Volver mañana ({hoursUntilReset}h hasta reset)
               </button>
             </>

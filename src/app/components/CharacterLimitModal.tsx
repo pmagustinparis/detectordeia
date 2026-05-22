@@ -72,7 +72,7 @@ export default function CharacterLimitModal({
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-xl shadow-lg max-w-md w-full p-8 pointer-events-auto "
+          className="bg-papel rounded-xl shadow-lg max-w-md w-full p-8 pointer-events-auto "
           onClick={(e) => e.stopPropagation()}
         >
           {/* Icon */}
@@ -83,16 +83,16 @@ export default function CharacterLimitModal({
           </div>
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-3">
+          <h2 className="text-2xl text-center text-tinta mb-3">
             Texto Demasiado Largo
           </h2>
 
           {/* Current usage */}
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-sm font-medium text-gray-600">Caracteres:</span>
+            <span className="text-sm font-medium text-mute">Caracteres:</span>
             <span className="text-lg font-bold text-red-600">{currentChars.toLocaleString()}</span>
-            <span className="text-sm text-gray-400">/</span>
-            <span className="text-sm text-gray-500">{maxChars.toLocaleString()}</span>
+            <span className="text-sm text-mute">/</span>
+            <span className="text-sm text-mute">{maxChars.toLocaleString()}</span>
             <span className="text-xs px-2 py-1 bg-red-100 text-red-700 rounded-full font-medium">
               +{excessChars.toLocaleString()} extra
             </span>
@@ -101,7 +101,7 @@ export default function CharacterLimitModal({
           {/* Copy dinámico según tipo de usuario */}
           {userType === 'anonymous' && (
             <>
-              <p className="text-center text-gray-700 mb-6 leading-relaxed">
+              <p className="text-center text-tinta-soft mb-6 leading-relaxed">
                 Tu texto tiene <strong>{excessChars.toLocaleString()} caracteres de más</strong>.
                 Sin registro podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
               </p>
@@ -128,11 +128,11 @@ export default function CharacterLimitModal({
               </div>
 
               {/* Pro Benefits */}
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 mb-6">
-                <p className="text-sm font-bold text-blue-900 mb-3">
+              <div className="bg-verde-050 border-2 border-verde-soft rounded-xl p-5 mb-6">
+                <p className="text-sm font-medium text-verde-deep mb-3">
                   Con Express o Semestral obtenés:
                 </p>
-                <ul className="space-y-2 text-sm text-blue-900">
+                <ul className="space-y-2 text-sm text-tinta">
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 font-bold text-base">✓</span>
                     <span><strong>Hasta {premiumMaxChars.toLocaleString()} caracteres</strong> ({proMultiplier}x más que ahora)</span>
@@ -146,7 +146,7 @@ export default function CharacterLimitModal({
                     <span><strong>5 modos</strong> + subida de archivos</span>
                   </li>
                 </ul>
-                <p className="text-xs text-blue-900 mt-3 font-medium">
+                <p className="text-xs text-tinta mt-3 font-medium">
                   Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses
                 </p>
               </div>
@@ -154,7 +154,7 @@ export default function CharacterLimitModal({
               {/* CTA - Registro gratis primero */}
               <a
                 href="/auth/signup"
-                className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
+                className="block w-full text-center bg-verde hover:bg-verde-deep text-papel font-medium py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-2"
               >
                 Registrarme Gratis en 10 segundos
               </a>
@@ -162,7 +162,7 @@ export default function CharacterLimitModal({
               {/* Secondary CTA - Ver Planes */}
               <a
                 href="/pricing"
-                className="block w-full text-center text-blue-900 hover:text-blue-900 font-semibold py-2 transition-colors text-sm mb-3"
+                className="block w-full text-center text-verde hover:text-verde-deep font-semibold py-2 transition-colors text-sm mb-3"
               >
                 O ver Express y Semestral →
               </a>
@@ -171,7 +171,7 @@ export default function CharacterLimitModal({
 
           {userType === 'free' && (
             <>
-              <p className="text-center text-gray-700 mb-5 leading-relaxed">
+              <p className="text-center text-tinta-soft mb-5 leading-relaxed">
                 Tu texto tiene <strong>{excessChars.toLocaleString()} caracteres de más</strong>.
                 Con el Plan Free podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
               </p>
@@ -188,12 +188,12 @@ export default function CharacterLimitModal({
                     <li>✓ Usos ilimitados hoy</li>
                   </ul>
                 </div>
-                <div className="border-2 border-blue-200 bg-blue-50 rounded-xl p-4">
-                  <p className="text-xs font-bold text-blue-900 mb-1">Semestral Pass</p>
-                  <p className="text-2xl font-bold text-blue-900">$24.99</p>
-                  <p className="text-xs text-blue-900">/ 6 meses</p>
-                  <p className="text-xs text-blue-900 mt-1">$4.17/mes · sin renovación</p>
-                  <ul className="text-xs text-blue-900 mt-2 space-y-1">
+                <div className="bg-papel-2 border-2 border-line rounded-xl p-4">
+                  <p className="text-xs font-medium text-tinta mb-1">Semestral Pass</p>
+                  <p className="text-2xl font-medium text-tinta">$24.99</p>
+                  <p className="text-xs text-tinta">/ 6 meses</p>
+                  <p className="text-xs text-tinta mt-1">$4.17/mes · sin renovación</p>
+                  <ul className="text-xs text-tinta mt-2 space-y-1">
                     <li>✓ <strong>{premiumMaxChars.toLocaleString()} chars</strong></li>
                     <li>✓ Usos ilimitados</li>
                     <li>✓ 5 modos</li>
@@ -204,7 +204,7 @@ export default function CharacterLimitModal({
               {/* CTA */}
               <a
                 href="/pricing"
-                className="block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
+                className="block w-full text-center bg-verde hover:bg-verde-deep text-papel font-medium py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
               >
                 Ver Express y Semestral
               </a>
@@ -214,13 +214,13 @@ export default function CharacterLimitModal({
           {/* Alternative: Close and trim */}
           <button
             onClick={onClose}
-            className="w-full text-center text-gray-600 hover:text-gray-800 font-medium py-2 transition-colors text-sm"
+            className="w-full text-center text-mute hover:text-tinta font-medium py-2 transition-colors text-sm"
           >
             Volver y reducir mi texto
           </button>
 
           {/* Trust badge */}
-          <p className="text-xs text-center text-gray-500 mt-4">
+          <p className="text-xs text-center text-mute mt-4">
             Pago seguro con Stripe • Cancela cuando quieras
           </p>
         </div>

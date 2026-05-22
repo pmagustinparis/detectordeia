@@ -10,118 +10,76 @@ interface SuccessClientProps {
   planType: string;
 }
 
-export default function SuccessClient({
-  sessionId,
-  userEmail,
-  planType,
-}: SuccessClientProps) {
+export default function SuccessClient({ sessionId, userEmail, planType }: SuccessClientProps) {
   const router = useRouter();
   const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
-    // Countdown timer
     const timer = setInterval(() => {
       setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          router.push('/dashboard');
-          return 0;
-        }
+        if (prev <= 1) { clearInterval(timer); router.push('/dashboard'); return 0; }
         return prev - 1;
       });
     }, 1000);
-
     return () => clearInterval(timer);
   }, [router]);
 
+  const planLabel = planType === 'semestral' ? 'Semestral Pass' : planType === 'express' ? 'Express Pass' : planType;
+  const title = planType === 'express' ? '¡Express Pass activado!' : planType === 'semestral' ? '¡Semestral Pass activado!' : '¡Plan activado!';
+  const description = planType === 'express'
+    ? 'Tu pase Express ha sido activado. Tenés acceso ilimitado a todas las herramientas por las próximas horas.'
+    : planType === 'semestral'
+    ? 'Tu Semestral Pass ha sido activado. Tenés acceso ilimitado a todas las herramientas durante los próximos 6 meses.'
+    : 'Tu plan ha sido activado exitosamente. Ahora tenés acceso ilimitado a todas las herramientas de DetectorDeIA.';
+
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-xl p-8 text-center">
-        {/* Icon de éxito */}
+    <div className="min-h-screen bg-papel flex items-center justify-center px-4">
+      <div className="max-w-md w-full bg-papel-2 rounded-xl border border-line p-8 text-center">
         <div className="flex justify-center mb-6">
-          <div className="bg-green-100 rounded-full p-4">
-            <CheckCircle className="w-16 h-16 text-green-600" />
+          <div className="bg-verde-050 rounded-full p-4">
+            <CheckCircle className="w-16 h-16 text-verde" />
           </div>
         </div>
 
-        {/* Título */}
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          {planType === 'express' ? '¡Express Pass activado! ⚡' : planType === 'semestral' ? '¡Semestral Pass activado! 🎓' : '¡Plan activado! 🎉'}
-        </h1>
+        <h1 className="text-3xl text-tinta mb-4">{title}</h1>
+        <p className="text-tinta-soft mb-6 font-sans">{description}</p>
 
-        {/* Descripción */}
-        <p className="text-gray-600 mb-6">
-          {planType === 'express'
-            ? 'Tu pase Express ha sido activado. Tenés acceso ilimitado a todas las herramientas por las próximas horas.'
-            : planType === 'semestral'
-            ? 'Tu Semestral Pass ha sido activado. Tenés acceso ilimitado a todas las herramientas durante los próximos 6 meses.'
-            : 'Tu plan ha sido activado exitosamente. Ahora tenés acceso ilimitado a todas las herramientas de DetectorDeIA.'}
-        </p>
-
-        {/* Detalles */}
-        <div className="bg-gray-50 rounded-lg p-4 mb-6 text-left">
-          <div className="space-y-2">
+        <div className="bg-papel rounded-lg border border-line p-4 mb-6 text-left">
+          <div className="space-y-2 font-sans">
             <div className="flex justify-between">
-              <span className="text-gray-600">Email:</span>
-              <span className="font-medium text-gray-900">{userEmail}</span>
+              <span className="text-mute">Email:</span>
+              <span className="font-medium text-tinta">{userEmail}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Plan:</span>
-              <span className="font-medium text-gray-900">
-                {planType === 'semestral' ? 'Semestral Pass' : planType === 'express' ? 'Express Pass' : planType === 'premium' ? 'Premium' : 'Free'}
-              </span>
+              <span className="text-mute">Plan:</span>
+              <span className="font-medium text-tinta">{planLabel}</span>
             </div>
             {sessionId && (
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Sesión:</span>
-                <span className="font-mono text-gray-700 truncate max-w-[200px]">
-                  {sessionId.substring(0, 20)}...
-                </span>
+                <span className="text-mute">Sesión:</span>
+                <span className="font-mono text-tinta-soft truncate max-w-[200px]">{sessionId.substring(0, 20)}...</span>
               </div>
             )}
           </div>
         </div>
 
-        {/* Beneficios */}
         <div className="text-left mb-6">
-          <h3 className="font-semibold text-gray-900 mb-3">
-            Lo que incluye tu plan:
-          </h3>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li className="flex items-start">
-              <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>Detector: Usos y caracteres ilimitados</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>Humanizador: Usos y caracteres ilimitados</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>Parafraseador: Usos y caracteres ilimitados</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>5 modos premium para Humanizador y Parafraseador</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-              <span>Historial de 100 usos durante 30 días</span>
-            </li>
+          <h3 className="font-medium text-tinta mb-3 font-sans">Lo que incluye tu plan:</h3>
+          <ul className="space-y-2 text-sm text-tinta-soft font-sans">
+            {['Detector: Usos y caracteres ilimitados', 'Humanizador: Usos y caracteres ilimitados', 'Parafraseador: Usos y caracteres ilimitados', '5 modos avanzados para Humanizador y Parafraseador', 'Historial de 100 usos durante 30 días'].map((item, i) => (
+              <li key={i} className="flex items-start">
+                <CheckCircle className="w-4 h-4 text-verde mr-2 mt-0.5 flex-shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Countdown y botón */}
         <div className="space-y-3">
-          <p className="text-sm text-gray-500">
-            Redirigiendo al dashboard en{' '}
-            <span className="font-bold text-blue-600">{countdown}</span>{' '}
-            segundos...
+          <p className="text-sm text-mute font-sans">
+            Redirigiendo al dashboard en <span className="font-bold text-verde">{countdown}</span> segundos...
           </p>
-          <button
-            onClick={() => router.push('/dashboard')}
-            className="w-full bg-blue-900 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-800 transition-all duration-200"
-          >
+          <button onClick={() => router.push('/dashboard')} className="w-full bg-verde text-papel font-medium py-3 px-6 rounded-lg hover:bg-verde-deep transition-colors font-sans">
             Ir al Dashboard ahora
           </button>
         </div>

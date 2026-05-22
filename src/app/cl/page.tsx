@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 export default async function DetectorChile() {
   const initialUserStatus = await getUserStatus();
   return (
-    <div className="min-h-screen bg-white pb-10 px-2">
+    <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para Chile"
         subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en Chile. Herramienta gratuita, sin registro, optimizada para español de Chile. Ideal para estudiantes, docentes y empresas chilenas."
@@ -53,16 +53,16 @@ export default async function DetectorChile() {
 
       {/* Contexto IA en Chile */}
       <section className="max-w-3xl mx-auto mt-10 px-4">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">IA en las Universidades Chilenas: Lo que Debes Saber</h2>
-        <p className="text-gray-700 mb-4 leading-relaxed">
+        <h2 className="text-2xl text-tinta mb-4">IA en las Universidades Chilenas: Lo que Debes Saber</h2>
+        <p className="text-tinta-soft mb-4 leading-relaxed">
           La <strong>Universidad de Chile</strong> y la <strong>Pontificia Universidad Católica de Chile (UC)</strong> son las instituciones que lideran el debate sobre integridad académica y uso de IA en el país. Ambas han publicado lineamientos que exigen transparencia: si utilizas herramientas de IA generativa en un trabajo académico, debes declararlo explícitamente y describir de qué manera la empleaste.
         </p>
-        <p className="text-gray-700 mb-4 leading-relaxed">
+        <p className="text-tinta-soft mb-4 leading-relaxed">
           El <strong>CRUCH (Consejo de Rectores de Universidades Chilenas)</strong>, que agrupa a las 30 universidades estatales y tradicionales, está desarrollando un marco común de política de IA para la educación superior. Hasta que ese marco esté vigente, cada universidad aplica sus propias normas. Turnitin con detección de IA ya está activo en varias instituciones chilenas.
         </p>
 
         {/* Universidades chilenas */}
-        <h3 className="text-lg font-semibold text-gray-700 mt-6 mb-3">Detector de IA para Universidades Chilenas</h3>
+        <h3 className="text-lg text-tinta-soft mt-6 mb-3">Detector de IA para Universidades Chilenas</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
           {[
             { name: 'U. de Chile', slug: 'universidad-chile' },
@@ -72,7 +72,7 @@ export default async function DetectorChile() {
             <a
               key={uni.slug || 'all'}
               href={uni.slug ? `/detector-de-ia-universidad/${uni.slug}` : '/universidades'}
-              className="bg-red-50 hover:bg-red-100 text-red-700 rounded-lg px-3 py-2 text-sm font-medium text-center transition-colors"
+              className="bg-verde-050 hover:bg-verde-soft text-verde-deep rounded-lg px-3 py-2 text-sm font-medium text-center transition-colors"
             >
               {uni.name}
             </a>
@@ -82,7 +82,7 @@ export default async function DetectorChile() {
 
       {/* FAQs Chile */}
       <section className="max-w-3xl mx-auto px-4 mb-10">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Preguntas Frecuentes sobre IA en Chile</h2>
+        <h2 className="text-xl text-tinta mb-4">Preguntas Frecuentes sobre IA en Chile</h2>
         <div className="space-y-3">
           {[
             {
@@ -102,9 +102,9 @@ export default async function DetectorChile() {
               a: 'Mientras el CRUCH finaliza su marco común, cada institución aplica sus propias normas. Lo más seguro es declarar siempre el uso de IA, aunque no se te haya pedido explícitamente. Si tu profesor no ha dado indicaciones, pregunta antes de entregar. El desconocimiento de la política no exime de responsabilidad académica.'
             },
           ].map((faq, i) => (
-            <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-800 text-sm">
+            <div key={i} className="bg-papel-2 border border-line rounded-xl p-4 text-tinta text-sm">
               <strong className="block mb-1">{faq.q}</strong>
-              <p className="text-gray-600">{faq.a}</p>
+              <p className="text-mute">{faq.a}</p>
             </div>
           ))}
         </div>

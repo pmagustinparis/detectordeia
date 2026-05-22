@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 export default async function DetectorEspana() {
   const initialUserStatus = await getUserStatus();
   return (
-    <div className="min-h-screen bg-white pb-10 px-2">
+    <div className="min-h-screen bg-papel pb-10 px-2">
       <DetectorMain
         h1="Detector de IA para España"
         subtitle="Detecta si un texto fue escrito por inteligencia artificial con precisión líder en España. Herramienta gratuita, sin registro, optimizada para español de España. Ideal para estudiantes, docentes y empresas españolas."
@@ -53,16 +53,16 @@ export default async function DetectorEspana() {
 
       {/* Contexto IA en España */}
       <section className="max-w-3xl mx-auto mt-10 px-4">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">IA en la Universidad Española: Lo que Debes Saber</h2>
-        <p className="text-gray-700 mb-4 leading-relaxed">
+        <h2 className="text-2xl text-tinta mb-4">IA en la Universidad Española: Lo que Debes Saber</h2>
+        <p className="text-tinta-soft mb-4 leading-relaxed">
           Las universidades españolas están entre las más avanzadas de Europa en regular el uso de inteligencia artificial. La <strong>CRUE (Conferencia de Rectores de Universidades Españolas)</strong> emitió orientaciones en 2023 que permiten el uso de IA con declaración explícita. Universidades como la <strong>UCM, UAB, UPV y UAM</strong> ya tienen políticas propias actualizadas.
         </p>
-        <p className="text-gray-700 mb-4 leading-relaxed">
+        <p className="text-tinta-soft mb-4 leading-relaxed">
           El uso de detectores de IA se ha extendido en instituciones españolas. Turnitin, el sistema antiplagio más usado en España, incorporó funciones de detección de IA en 2023. Muchos profesores combinan Turnitin con herramientas adicionales para verificar la autenticidad de los trabajos.
         </p>
 
         {/* Universidades españolas */}
-        <h3 className="text-lg font-semibold text-gray-700 mt-6 mb-3">Detector de IA para Universidades Españolas</h3>
+        <h3 className="text-lg text-tinta-soft mt-6 mb-3">Detector de IA para Universidades Españolas</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
           {[
             { name: 'UCM Madrid', slug: 'universidad-complutense-madrid' },
@@ -75,7 +75,7 @@ export default async function DetectorEspana() {
             <a
               key={uni.slug || 'all'}
               href={uni.slug ? `/detector-de-ia-universidad/${uni.slug}` : '/universidades'}
-              className="bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg px-3 py-2 text-sm font-medium text-center transition-colors"
+              className="bg-verde-050 hover:bg-verde-soft text-verde-deep rounded-lg px-3 py-2 text-sm font-medium text-center transition-colors"
             >
               {uni.name}
             </a>
@@ -85,7 +85,7 @@ export default async function DetectorEspana() {
 
       {/* FAQs España */}
       <section className="max-w-3xl mx-auto px-4 mb-10">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Preguntas Frecuentes sobre IA en España</h2>
+        <h2 className="text-xl text-tinta mb-4">Preguntas Frecuentes sobre IA en España</h2>
         <div className="space-y-3">
           {[
             {
@@ -105,9 +105,9 @@ export default async function DetectorEspana() {
               a: 'En la mayoría de universidades españolas, sí. La declaración de uso de IA es ya una práctica estándar requerida por muchas instituciones. El formato varía por universidad, pero generalmente incluye especificar qué herramienta usaste y para qué.'
             },
           ].map((faq, i) => (
-            <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-800 text-sm">
+            <div key={i} className="bg-papel-2 border border-line rounded-xl p-4 text-tinta text-sm">
               <strong className="block mb-1">{faq.q}</strong>
-              <p className="text-gray-600">{faq.a}</p>
+              <p className="text-mute">{faq.a}</p>
             </div>
           ))}
         </div>

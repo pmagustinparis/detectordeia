@@ -171,7 +171,7 @@ export default function DetectorMain({
   const getCounterColor = () => {
     if (text.length > CHARACTER_LIMIT) return 'text-red-600';
     if (text.length > CHARACTER_LIMIT * 0.9) return 'text-yellow-600';
-    return 'text-gray-500';
+    return 'text-mute';
   };
 
   const handleAnalyze = async () => {
@@ -343,13 +343,13 @@ export default function DetectorMain({
   if (isLoadingUserStatus) {
     return (
       <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-blue-900">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-verde">
           {h1}
         </h1>
-        <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto">{subtitle}</p>
+        <p className="text-base md:text-lg text-tinta-soft text-center mb-6 max-w-3xl mx-auto">{subtitle}</p>
         <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center">
           {/* Loading skeleton */}
-          <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-6 min-w-[320px] max-h-[600px]">
+          <div className="flex-1 bg-papel-2 rounded-xl border border-line p-6 min-w-[320px] max-h-[600px]">
             <div className="animate-pulse space-y-4">
               <div className="h-4 bg-gray-200 rounded w-3/4"></div>
               <div className="h-32 bg-gray-200 rounded"></div>
@@ -364,45 +364,45 @@ export default function DetectorMain({
   return (
     <>
     <section className="w-full flex flex-col items-center justify-center pt-8 pb-2 px-2 relative overflow-hidden">
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-blue-900">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 leading-tight text-verde">
         {h1}
       </h1>
-      <p className="text-base md:text-lg text-gray-600 text-center mb-6 max-w-3xl mx-auto" style={{animationDelay: '0.2s'}}>{subtitle}</p>
+      <p className="text-base md:text-lg text-tinta-soft text-center mb-6 max-w-3xl mx-auto" style={{animationDelay: '0.2s'}}>{subtitle}</p>
       <ExpressPromoBanner />
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-8 items-stretch justify-center animate-scale-in" style={{animationDelay: '0.3s'}}>
         {/* Input + Button (left) */}
-        <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col justify-between min-w-[320px]">
+        <div className="flex-1 bg-papel-2 rounded-xl border border-line p-6 flex flex-col justify-between min-w-[320px]">
           {/* Trust indicators */}
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             {!userStatus.isAuthenticated ? (
-              <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <span className="inline-flex items-center gap-1 bg-verde-050 border border-blue-900/25 text-verde font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 Sin registro
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
+              <span className="inline-flex items-center gap-1 bg-verde-050 border border-blue-900/25 text-verde font-semibold rounded-full px-3 py-1.5 text-xs">
                 <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 Cuenta activa
               </span>
             )}
-            <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
-              <svg className="w-4 h-4 text-blue-900/60" fill="currentColor" viewBox="0 0 20 20">
+            <span className="inline-flex items-center gap-1 bg-verde-050 border border-blue-900/25 text-verde font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4 text-verde/60" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
               </svg>
               100% privado
             </span>
-            <span className="inline-flex items-center gap-1 bg-blue-50 border border-blue-900/25 text-blue-900 font-semibold rounded-full px-3 py-1.5 text-xs">
-              <svg className="w-4 h-4 text-blue-900/60" fill="currentColor" viewBox="0 0 20 20">
+            <span className="inline-flex items-center gap-1 bg-verde-050 border border-blue-900/25 text-verde font-semibold rounded-full px-3 py-1.5 text-xs">
+              <svg className="w-4 h-4 text-verde/60" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
               </svg>
               En español
             </span>
           </div>
-          <label htmlFor="detector-textarea" className="block text-base font-semibold text-gray-800 mb-2">Pega tu texto para analizar</label>
+          <label htmlFor="detector-textarea" className="block text-base font-semibold text-tinta mb-2">Pega tu texto para analizar</label>
 
           {/* File Upload Button */}
           <FileUploadButton
@@ -418,7 +418,7 @@ export default function DetectorMain({
           <div className="flex flex-col flex-grow">
             <textarea
               id="detector-textarea"
-              className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-2 border-blue-900/25 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 p-4 text-base text-gray-800 placeholder-gray-500 transition-all outline-none resize-none mb-1 hover:border-blue-900/50"
+              className="flex-grow w-full min-h-[180px] md:min-h-[260px] border-2 border-blue-900/25 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 p-4 text-base text-tinta placeholder-gray-500 transition-all outline-none resize-none mb-1 hover:border-blue-900/50"
               placeholder="Pega aquí el texto que quieras analizar (mínimo 80 caracteres)"
               value={text}
               onChange={(e) => {
@@ -433,21 +433,21 @@ export default function DetectorMain({
               onDragOver={(e) => {
                 e.preventDefault();
                 if (userStatus.plan_type === 'premium' || userStatus.express.is_active) {
-                  e.currentTarget.classList.add('border-blue-500', 'bg-blue-50');
+                  e.currentTarget.classList.add('border-verde', 'bg-verde-050');
                 }
               }}
               onDragLeave={(e) => {
-                e.currentTarget.classList.remove('border-blue-500', 'bg-blue-50');
+                e.currentTarget.classList.remove('border-verde', 'bg-verde-050');
               }}
               onDrop={handleDrop}
               aria-label="Texto a analizar"
             />
           </div>
-          <div className="flex justify-between items-center text-sm text-gray-600 mt-0 mb-1 gap-2">
+          <div className="flex justify-between items-center text-sm text-tinta-soft mt-0 mb-1 gap-2">
             <span className={getCounterColor() + ' font-medium'}>{text.length}/{CHARACTER_LIMIT}</span>
             <button
               onClick={handleClear}
-              className="text-blue-900 font-semibold ml-2 hover:text-blue-700 hover:underline transition-all disabled:opacity-40"
+              className="text-verde font-semibold ml-2 hover:text-blue-700 hover:underline transition-all disabled:opacity-40"
               type="button"
               disabled={text.length === 0 && !result}
               aria-label="Limpiar texto"
@@ -457,15 +457,15 @@ export default function DetectorMain({
           </div>
           {/* Selector de tipo de texto dentro de la tarjeta blanca */}
           <div className="mt-2 mb-2">
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Tipo de texto</label>
+            <label className="block text-sm font-semibold text-tinta-soft mb-1.5">Tipo de texto</label>
             <select
               value={textType}
               onChange={(e) => setTextType(e.target.value)}
-              className="w-full border-2 border-blue-900/25 rounded-lg px-3 py-2.5 text-sm bg-white hover:border-blue-900/50 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 transition-all text-gray-700"
+              className="w-full border-2 border-line rounded-lg px-3 py-2.5 text-sm bg-papel hover:border-verde/50 focus:outline-none focus:ring-2 focus:ring-verde/20 focus:border-verde transition-all text-tinta-soft"
             >
-              <option value="default" className="text-gray-700">Sin especificar</option>
-              <option value="academic" className="text-gray-700">Académico / formal</option>
-              <option value="informal" className="text-gray-700">Conversación / informal</option>
+              <option value="default" className="text-tinta-soft">Sin especificar</option>
+              <option value="academic" className="text-tinta-soft">Académico / formal</option>
+              <option value="informal" className="text-tinta-soft">Conversación / informal</option>
             </select>
           </div>
           {error && (
@@ -476,30 +476,30 @@ export default function DetectorMain({
           <button
             onClick={handleAnalyze}
             disabled={isAnalyzing || text.length < 80}
-            className={`mt-2 w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
+            className={`mt-2 w-full bg-verde hover:bg-verde-deep text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
             aria-label="Detectar contenido de IA"
           >
             {isAnalyzing ? 'Analizando...' : 'Analizar texto'}
           </button>
-          <p className="text-center text-sm text-gray-600 mt-2 font-medium">Sin registro. 100% privado. Precisión líder en español.</p>
+          <p className="text-center text-sm text-tinta-soft mt-2 font-medium">Sin registro. 100% privado. Precisión líder en español.</p>
         </div>
         {/* Result block (right) */}
         <div className="flex-1 flex flex-col gap-4 min-w-[320px]">
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
+          <div className="bg-papel-2 rounded-xl border border-line p-6 flex flex-col min-h-[260px] justify-between relative card-elevated">
             <div className="flex items-center gap-2 mb-3">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-900 shadow-sm">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-verde shadow-sm">
                 <span className="text-white text-lg">🛡️</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-gray-800 text-base">Resultado del análisis</span>
-                <span className="text-xs text-gray-500">Tecnología avanzada para español</span>
+                <span className="font-bold text-tinta text-base">Resultado del análisis</span>
+                <span className="text-xs text-mute">Tecnología avanzada para español</span>
               </div>
             </div>
             {result ? (
               <div className="relative" style={{maxHeight: '500px', overflow: 'hidden'}}>
               <div className={isLimitExceeded ? "filter blur-sm overflow-y-auto" : "overflow-y-auto"} style={{maxHeight: '500px'}}>
                 {/* HERO CARD - Score Principal con diseño mejorado */}
-                <div className="mb-6 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="mb-6 p-6 bg-papel-2 rounded-lg border border-line">
                   {/* Score gigante centrado */}
                   <div className="text-center mb-4">
                     <div className={`text-7xl md:text-8xl font-black leading-none mb-3 ${getResultColor(result.probability)} animate-scale-in`}>
@@ -562,7 +562,7 @@ export default function DetectorMain({
                             localStorage.setItem('humanizer_prefill_text', text);
                             router.push('/humanizador');
                           }}
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white text-sm font-bold rounded-lg transition-all"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-verde hover:bg-verde-deep text-white text-sm font-bold rounded-lg transition-all"
                         >
                           <Icon icon={ProductIcons.Humanizer} size="sm" className="text-white" />
                           Humanizar este texto →
@@ -688,9 +688,9 @@ export default function DetectorMain({
                 </div>
 
                 {/* Confidence Indicator mejorado */}
-                <div className="w-full mb-6 p-5 bg-white border border-gray-200 rounded-xl shadow-sm" style={{animationDelay: '0.2s'}}>
-                  <h3 className="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <Icon icon={ProductIcons.Confidence} size="lg" className="text-gray-700" /> Confianza del análisis
+                <div className="w-full mb-6 p-5 bg-papel-2 border border-line rounded-xl" style={{animationDelay: '0.2s'}}>
+                  <h3 className="text-base font-bold text-tinta mb-4 flex items-center gap-2">
+                    <Icon icon={ProductIcons.Confidence} size="lg" className="text-tinta-soft" /> Confianza del análisis
                   </h3>
 
                   {result.confidenceLevel === 'high' && (
@@ -699,14 +699,14 @@ export default function DetectorMain({
                         <div className="flex-1 h-3 bg-green-500 rounded-full"></div>
                         <span className="text-green-700 font-bold text-sm">Alta</span>
                       </div>
-                      <p className="text-xs text-gray-600 leading-relaxed">
+                      <p className="text-xs text-tinta-soft leading-relaxed">
                         ✅ Los 3 análisis independientes coinciden. Puedes confiar en este resultado con alta certeza.
                       </p>
                       <details className="mt-2">
-                        <summary className="text-xs text-gray-500 cursor-pointer hover:text-gray-700 font-medium">
+                        <summary className="text-xs text-mute cursor-pointer hover:text-tinta-soft font-medium">
                           ¿Qué significa "3 análisis"? 👆
                         </summary>
-                        <p className="text-xs text-gray-600 mt-2 p-3 bg-gray-50 rounded leading-relaxed">
+                        <p className="text-xs text-tinta-soft mt-2 p-3 bg-papel-2 rounded leading-relaxed">
                           Analizamos tu texto 3 veces usando diferentes enfoques y modelos de IA para mayor precisión.
                           Cuando los 3 resultados coinciden (±8%), tenemos alta confianza en la detección.
                         </p>
@@ -720,7 +720,7 @@ export default function DetectorMain({
                         <div className="flex-1 h-3 bg-yellow-500 rounded-full" style={{width: '70%'}}></div>
                         <span className="text-yellow-700 font-bold text-sm">Media</span>
                       </div>
-                      <p className="text-xs text-gray-600 leading-relaxed">
+                      <p className="text-xs text-tinta-soft leading-relaxed">
                         ⚠️ Los análisis muestran algunas diferencias. El resultado es confiable pero podría tener un margen de error del 10-15%.
                       </p>
                     </>
@@ -732,7 +732,7 @@ export default function DetectorMain({
                         <div className="flex-1 h-3 bg-red-500 rounded-full" style={{width: '50%'}}></div>
                         <span className="text-red-700 font-bold text-sm">Baja</span>
                       </div>
-                      <p className="text-xs text-gray-600 leading-relaxed mb-2">
+                      <p className="text-xs text-tinta-soft leading-relaxed mb-2">
                         ⚠️ Los análisis muestran resultados muy diferentes. Este texto es ambiguo.
                         <strong> Recomendamos una revisión manual.</strong>
                       </p>
@@ -750,23 +750,23 @@ export default function DetectorMain({
                   <div className="w-full flex flex-col items-center my-3">
                     <a
                       href="/pricing"
-                      className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded-xl shadow-sm transition-all text-base text-center"
+                      className="w-full bg-verde hover:bg-verde-deep text-white font-bold py-2 rounded-xl shadow-sm transition-all text-base text-center"
                     >
                       <span className="flex items-center justify-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Desbloquear análisis avanzado</span>
                     </a>
-                    <p className="text-xs text-gray-500 mt-1">Usos ilimitados + Caracteres ilimitados + subida de archivos</p>
+                    <p className="text-xs text-mute mt-1">Usos ilimitados + Caracteres ilimitados + subida de archivos</p>
                   </div>
                 )}
                 
                 {/* Interpretación explicativa */}
                 {result.interpretation && (
-                  <div className="mt-2 text-sm text-gray-600 italic">
+                  <div className="mt-2 text-sm text-tinta-soft italic">
                     {result.interpretation}
                   </div>
                 )}
                 {/* Indicador de ajuste por tipo de texto */}
                 {textType !== 'default' && (
-                  <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="mt-2 p-2 bg-verde-050 border border-verde-soft rounded-lg">
                     <div className="flex items-center gap-2 text-xs text-blue-800">
                       <span className="text-blue-600">⚙️</span>
                       <span className="font-medium">
@@ -780,15 +780,15 @@ export default function DetectorMain({
                 )}
                 {/* Análisis de patrones detectados */}
                 {result.scores_by_category && (
-                  <div className="w-full mb-6 p-5 bg-gray-50 border border-gray-200 rounded-xl shadow-sm" style={{animationDelay: '0.3s'}}>
-                    <h3 className="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
-                      <Icon icon={ProductIcons.Analytics} size="lg" className="text-gray-700" /> Análisis de patrones detectados
+                  <div className="w-full mb-6 p-5 bg-papel-2 border border-line rounded-xl shadow-sm" style={{animationDelay: '0.3s'}}>
+                    <h3 className="text-base font-bold text-tinta mb-4 flex items-center gap-2">
+                      <Icon icon={ProductIcons.Analytics} size="lg" className="text-tinta-soft" /> Análisis de patrones detectados
                     </h3>
 
                     {/* Señales de IA */}
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-semibold text-gray-700">
+                        <span className="text-sm font-semibold text-tinta-soft">
                           <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.AI} size="sm" className="text-red-600" />Señales de IA encontradas</span>
                         </span>
                         <span className="text-sm font-bold text-red-600">
@@ -801,7 +801,7 @@ export default function DetectorMain({
                           style={{width: `${(result.scores_by_category.markersIA / 25) * 100}%`}}
                         ></div>
                       </div>
-                      <p className="text-xs text-gray-600 leading-relaxed">
+                      <p className="text-xs text-tinta-soft leading-relaxed">
                         {result.scores_by_category.markersIA >= 15 &&
                           "Detectamos muchos patrones típicos de IA: frases cliché, estructura muy uniforme, puntuación perfecta."}
                         {result.scores_by_category.markersIA >= 8 && result.scores_by_category.markersIA < 15 &&
@@ -814,7 +814,7 @@ export default function DetectorMain({
                     {/* Señales Humanas */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-semibold text-gray-700">
+                        <span className="text-sm font-semibold text-tinta-soft">
                           <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Human} size="sm" className="text-green-600" />Señales humanas encontradas</span>
                         </span>
                         <span className="text-sm font-bold text-green-600">
@@ -827,7 +827,7 @@ export default function DetectorMain({
                           style={{width: `${(result.scores_by_category.markersHuman / 25) * 100}%`}}
                         ></div>
                       </div>
-                      <p className="text-xs text-gray-600 leading-relaxed">
+                      <p className="text-xs text-tinta-soft leading-relaxed">
                         {result.scores_by_category.markersHuman >= 15 &&
                           "Detectamos muchas señales humanas: modismos naturales, variación de estilo, expresiones espontáneas."}
                         {result.scores_by_category.markersHuman >= 8 && result.scores_by_category.markersHuman < 15 &&
@@ -839,10 +839,10 @@ export default function DetectorMain({
 
                     {/* Expandible: ¿Cómo interpretarlo? */}
                     <details className="mt-3">
-                      <summary className="text-xs text-gray-500 cursor-pointer hover:text-gray-700 font-medium">
+                      <summary className="text-xs text-mute cursor-pointer hover:text-tinta-soft font-medium">
                         ¿Cómo interpretar estos patrones? 👆
                       </summary>
-                      <div className="text-xs text-gray-600 mt-2 p-3 bg-white rounded-lg border border-gray-200 leading-relaxed">
+                      <div className="text-xs text-tinta-soft mt-2 p-3 bg-papel-2 rounded-lg border border-line leading-relaxed">
                         <p className="mb-2">
                           Analizamos <strong>25 patrones diferentes</strong> en tu texto:
                         </p>
@@ -850,7 +850,7 @@ export default function DetectorMain({
                           <li>• <strong>Patrones de IA:</strong> frases cliché ("es importante mencionar"), estructura perfecta, vocabulario muy técnico, puntuación impecable.</li>
                           <li>• <strong>Patrones humanos:</strong> modismos regionales, errores naturales, variación de estilo, opiniones subjetivas.</li>
                         </ul>
-                        <p className="mt-2 text-gray-700">
+                        <p className="mt-2 text-tinta-soft">
                           Cuantos más patrones de IA encontremos, mayor es la probabilidad de que el texto haya sido generado automáticamente.
                         </p>
                       </div>
@@ -860,8 +860,8 @@ export default function DetectorMain({
                 {/* Mostrar huellas lingüísticas solo si existen */}
                 {result.linguistic_footprints && result.linguistic_footprints.length > 0 && (
                   <div className="w-full mb-6" style={{animationDelay: '0.4s'}}>
-                    <h3 className="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
-                      <Icon icon={ProductIcons.Detector} size="lg" className="text-gray-700" /> Frases sospechosas encontradas en tu texto
+                    <h3 className="text-base font-bold text-tinta mb-4 flex items-center gap-2">
+                      <Icon icon={ProductIcons.Detector} size="lg" className="text-tinta-soft" /> Frases sospechosas encontradas en tu texto
                     </h3>
                     <div className="space-y-3">
                       {result.linguistic_footprints.map((item, index) => {
@@ -885,9 +885,9 @@ export default function DetectorMain({
                             </p>
 
                             {/* Contexto del texto */}
-                            <div className="text-xs bg-white p-2 rounded border border-yellow-200">
-                              <span className="text-gray-500 font-medium">En tu texto:</span>
-                              <p className="mt-1 text-gray-700 italic">
+                            <div className="text-xs bg-papel-2 p-2 rounded border border-yellow-200">
+                              <span className="text-mute font-medium">En tu texto:</span>
+                              <p className="mt-1 text-tinta-soft italic">
                                 "...{item.phrase}..."
                               </p>
                             </div>
@@ -898,7 +898,7 @@ export default function DetectorMain({
                                 <summary className="text-xs text-yellow-700 cursor-pointer hover:underline font-medium">
                                   ¿Por qué es sospechoso? 👆
                                 </summary>
-                                <p className="text-xs text-gray-600 mt-2 pl-4 border-l-2 border-yellow-300 leading-relaxed">
+                                <p className="text-xs text-tinta-soft mt-2 pl-4 border-l-2 border-yellow-300 leading-relaxed">
                                   {item.phrase.toLowerCase().includes('importante mencionar') &&
                                     "Los humanos rara vez usan esta frase en español natural. Es un patrón de traducción directa del inglés 'it's important to mention' muy común en modelos de IA."}
                                   {item.phrase.toLowerCase().includes('cabe destacar') &&
@@ -924,25 +924,25 @@ export default function DetectorMain({
                     <summary className="cursor-pointer list-none">
                       <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl hover:border-amber-300 transition-colors">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                            <Icon icon={ProductIcons.Analytics} size="md" className="text-gray-700" />
+                          <h3 className="text-sm font-bold text-tinta flex items-center gap-2">
+                            <Icon icon={ProductIcons.Analytics} size="md" className="text-tinta-soft" />
                             <span>Métricas lingüísticas avanzadas</span>
                             {result.analysisQuality?.usedPremiumModel && (
-                              <span className="text-xs px-2 py-0.5 bg-blue-900 text-white rounded-full font-semibold">
+                              <span className="text-xs px-2 py-0.5 bg-verde text-white rounded-full font-semibold">
                                 <span className="flex items-center gap-1"><Icon icon={ProductIcons.Fast} size="xs" />Análisis Mejorado</span>
                               </span>
                             )}
                           </h3>
-                          <span className="text-sm text-gray-500">Ver detalles ▼</span>
+                          <span className="text-sm text-mute">Ver detalles ▼</span>
                         </div>
                       </div>
                     </summary>
 
-                    <div className="mt-3 p-3 bg-white border-2 border-amber-100 rounded-xl">
+                    <div className="mt-3 p-3 bg-papel-2 border-2 border-amber-100 rounded-xl">
                       <div className="grid grid-cols-2 gap-2.5">
                         {/* Variedad de vocabulario */}
-                        <div className="bg-gray-50 rounded-lg p-2.5 border border-gray-200">
-                          <div className="text-xs text-gray-600 mb-1 font-medium">Variedad de vocabulario</div>
+                        <div className="bg-papel-2 rounded-lg p-2.5 border border-line">
+                          <div className="text-xs text-tinta-soft mb-1 font-medium">Variedad de vocabulario</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.lexicalDiversity < 0.4 ? 'text-red-600' : result.advancedMetrics.lexicalDiversity > 0.6 ? 'text-green-600' : 'text-yellow-600'}`}>
                               {(result.advancedMetrics.lexicalDiversity * 100).toFixed(0)}%
@@ -954,7 +954,7 @@ export default function DetectorMain({
                               style={{width: `${result.advancedMetrics.lexicalDiversity * 100}%`}}
                             ></div>
                           </div>
-                          <p className="text-xs text-gray-600 leading-relaxed">
+                          <p className="text-xs text-tinta-soft leading-relaxed">
                             {result.advancedMetrics.lexicalDiversity < 0.4 &&
                               "⚠️ Vocabulario repetitivo (normal: 60-80%). Típico de IA que reutiliza las mismas palabras."}
                             {result.advancedMetrics.lexicalDiversity >= 0.4 && result.advancedMetrics.lexicalDiversity < 0.6 &&
@@ -967,8 +967,8 @@ export default function DetectorMain({
                         </div>
 
                         {/* Variación de oraciones */}
-                        <div className="bg-gray-50 rounded-lg p-2.5 border border-gray-200">
-                          <div className="text-xs text-gray-600 mb-1 font-medium">Variación de oraciones</div>
+                        <div className="bg-papel-2 rounded-lg p-2.5 border border-line">
+                          <div className="text-xs text-tinta-soft mb-1 font-medium">Variación de oraciones</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.sentenceVariance < 2 ? 'text-red-600' : result.advancedMetrics.sentenceVariance > 5 ? 'text-green-600' : 'text-yellow-600'}`}>
                               {result.advancedMetrics.sentenceVariance.toFixed(1)}
@@ -980,7 +980,7 @@ export default function DetectorMain({
                               style={{width: `${Math.min(result.advancedMetrics.sentenceVariance / 10 * 100, 100)}%`}}
                             ></div>
                           </div>
-                          <p className="text-xs text-gray-600 leading-relaxed">
+                          <p className="text-xs text-tinta-soft leading-relaxed">
                             {result.advancedMetrics.sentenceVariance < 2 &&
                               "⚠️ Longitud muy uniforme (normal: 4-7). Las IA tienden a generar oraciones de longitud similar."}
                             {result.advancedMetrics.sentenceVariance >= 2 && result.advancedMetrics.sentenceVariance < 5 &&
@@ -993,13 +993,13 @@ export default function DetectorMain({
                         </div>
 
                         {/* Predictibilidad del texto */}
-                        <div className="bg-gray-50 rounded-lg p-2.5 border border-gray-200">
-                          <div className="text-xs text-gray-600 mb-1 font-medium">Predictibilidad del texto</div>
+                        <div className="bg-papel-2 rounded-lg p-2.5 border border-line">
+                          <div className="text-xs text-tinta-soft mb-1 font-medium">Predictibilidad del texto</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.perplexity < 3 ? 'text-red-600' : result.advancedMetrics.perplexity > 7 ? 'text-green-600' : 'text-yellow-600'}`}>
                               {result.advancedMetrics.perplexity.toFixed(1)}
                             </span>
-                            <span className="text-sm text-gray-500">/10</span>
+                            <span className="text-sm text-mute">/10</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
                             <div
@@ -1007,7 +1007,7 @@ export default function DetectorMain({
                               style={{width: `${(result.advancedMetrics.perplexity / 10) * 100}%`}}
                             ></div>
                           </div>
-                          <p className="text-xs text-gray-600 leading-relaxed">
+                          <p className="text-xs text-tinta-soft leading-relaxed">
                             {result.advancedMetrics.perplexity < 3 &&
                               "⚠️ Texto muy predecible (normal: 5-8). La IA sigue patrones predecibles."}
                             {result.advancedMetrics.perplexity >= 3 && result.advancedMetrics.perplexity < 7 &&
@@ -1020,13 +1020,13 @@ export default function DetectorMain({
                         </div>
 
                         {/* Patrones repetitivos */}
-                        <div className="bg-gray-50 rounded-lg p-2.5 border border-gray-200">
-                          <div className="text-xs text-gray-600 mb-1 font-medium">Patrones repetitivos</div>
+                        <div className="bg-papel-2 rounded-lg p-2.5 border border-line">
+                          <div className="text-xs text-tinta-soft mb-1 font-medium">Patrones repetitivos</div>
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`text-2xl font-bold ${result.advancedMetrics.ngramRepetition > 6 ? 'text-red-600' : result.advancedMetrics.ngramRepetition > 3 ? 'text-yellow-600' : 'text-green-600'}`}>
                               {result.advancedMetrics.ngramRepetition.toFixed(1)}
                             </span>
-                            <span className="text-sm text-gray-500">/10</span>
+                            <span className="text-sm text-mute">/10</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
                             <div
@@ -1034,7 +1034,7 @@ export default function DetectorMain({
                               style={{width: `${(result.advancedMetrics.ngramRepetition / 10) * 100}%`}}
                             ></div>
                           </div>
-                          <p className="text-xs text-gray-600 leading-relaxed">
+                          <p className="text-xs text-tinta-soft leading-relaxed">
                             {result.advancedMetrics.ngramRepetition > 6 &&
                               "⚠️ Muchas frases repetidas. Típico de IA que reutiliza construcciones."}
                             {result.advancedMetrics.ngramRepetition > 3 && result.advancedMetrics.ngramRepetition <= 6 &&
@@ -1047,15 +1047,15 @@ export default function DetectorMain({
 
                       {/* Información de calidad del análisis */}
                       {result.analysisQuality && (
-                        <div className="pt-2.5 mt-2.5 border-t border-gray-200">
+                        <div className="pt-2.5 mt-2.5 border-t border-line">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="text-gray-600 font-medium">Calidad del análisis:</span>
+                            <span className="text-tinta-soft font-medium">Calidad del análisis:</span>
                             <div className="flex items-center gap-2">
                               <span className="font-semibold text-amber-700">
                                 {result.analysisQuality.numberOfPasses} pasada{result.analysisQuality.numberOfPasses > 1 ? 's' : ''}
                               </span>
                               {result.analysisQuality.usedPremiumModel && (
-                                <span className="px-2 py-0.5 bg-blue-900 text-white rounded-full text-xs font-semibold">
+                                <span className="px-2 py-0.5 bg-verde text-white rounded-full text-xs font-semibold">
                                   GPT-4o-mini
                                 </span>
                               )}
@@ -1066,26 +1066,26 @@ export default function DetectorMain({
                     </div>
                   </details>
                 )}
-                <div className="text-xs text-gray-500 mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
+                <div className="text-xs text-mute mt-2 mb-1">Ningún detector es 100% infalible. Usa el resultado como orientación.</div>
 
                 {/* FASE 5: Comparación visual Free vs Premium - Solo para usuarios Free */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && !isLimitExceeded && (
-                  <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
+                  <div className="mt-4 p-4 bg-papel-2 border border-line rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 mb-3">
-                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-blue-900" />
-                      <h3 className="text-sm font-bold text-blue-900">Comparación: Free vs Express Pass</h3>
+                      <Icon icon={ProductIcons.Upgrade} size="lg" className="text-verde" />
+                      <h3 className="text-sm font-bold text-verde">Comparación: Free vs Express Pass</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">
                       {/* LO QUE TIENES (FREE) */}
-                      <div className="bg-white p-3 rounded-lg border border-gray-200">
+                      <div className="bg-papel-2 p-3 rounded-lg border border-line">
                         <div className="flex items-center gap-2 mb-2">
-                          <span className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full font-bold">
+                          <span className="text-xs px-2 py-1 bg-papel-3 text-tinta-soft rounded-full font-bold">
                             {userStatus.isAuthenticated ? 'TU PLAN: FREE' : 'SIN CUENTA'}
                           </span>
                         </div>
-                        <p className="text-xs font-bold text-gray-800 mb-2">Lo que acabas de recibir:</p>
-                        <ul className="text-xs text-gray-700 space-y-1.5">
+                        <p className="text-xs font-bold text-tinta mb-2">Lo que acabas de recibir:</p>
+                        <ul className="text-xs text-tinta-soft space-y-1.5">
                           <li className="flex items-start gap-2">
                             <span className="text-green-600 font-bold">✓</span>
                             <span>Análisis básico de IA</span>
@@ -1099,29 +1099,29 @@ export default function DetectorMain({
                             <span>Hasta {userStatus.isAuthenticated ? '1,200' : '800'} caracteres</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <span className="text-gray-400 font-bold">✗</span>
-                            <span className="text-gray-400">Sin subida de archivos</span>
+                            <span className="text-mute font-bold">✗</span>
+                            <span className="text-mute">Sin subida de archivos</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <span className="text-gray-400 font-bold">✗</span>
-                            <span className="text-gray-400">Sin historial guardado</span>
+                            <span className="text-mute font-bold">✗</span>
+                            <span className="text-mute">Sin historial guardado</span>
                           </li>
                         </ul>
                       </div>
 
                       {/* LO QUE OBTENDRÍAS (PREMIUM) */}
-                      <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 relative">
+                      <div className="bg-papel-2 p-3 rounded-lg border border-line relative">
                         <div className="absolute -top-2 -right-2">
-                          <span className="bg-blue-900 text-white text-xs px-3 py-1 rounded-full font-bold shadow-sm">
+                          <span className="bg-verde text-white text-xs px-3 py-1 rounded-full font-bold shadow-sm">
                             PREMIUM
                           </span>
                         </div>
                         <div className="flex items-center gap-2 mb-2">
-                          <Icon icon={ProductIcons.Star} size="sm" className="text-gray-600" />
-                          <span className="text-xs font-bold text-blue-900">CON PLAN PREMIUM</span>
+                          <Icon icon={ProductIcons.Star} size="sm" className="text-tinta-soft" />
+                          <span className="text-xs font-bold text-verde">CON PLAN PREMIUM</span>
                         </div>
-                        <p className="text-xs font-bold text-blue-900 mb-2">Todo lo anterior PLUS:</p>
-                        <ul className="text-xs text-gray-700 space-y-1.5">
+                        <p className="text-xs font-bold text-verde mb-2">Todo lo anterior PLUS:</p>
+                        <ul className="text-xs text-tinta-soft space-y-1.5">
                           <li className="flex items-start gap-2">
                             <Icon icon={ProductIcons.Success} size="xs" className="text-emerald-600 mt-0.5" />
                             <span><strong>Caracteres ilimitados</strong> por análisis</span>
@@ -1151,30 +1151,30 @@ export default function DetectorMain({
                       <a
                         href="/pricing"
                         onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: 'detector', metadata: { source: 'free_vs_pro_comparison' }})}
-                        className="inline-block w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
+                        className="inline-block w-full bg-verde hover:bg-verde-deep text-white font-bold py-3 px-6 rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
                       >
                         <span className="flex items-center justify-center gap-2">
                           <Icon icon={ProductIcons.Upgrade} size="md" />
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-gray-600 mt-2">Express Pass desde $3.99 · Semestral 6 meses por $24.99 · Pago único sin renovación</p>
+                      <p className="text-xs text-tinta-soft mt-2">Express Pass desde $3.99 · Semestral 6 meses por $24.99 · Pago único sin renovación</p>
                     </div>
                   </div>
                 )}
 
                 {/* Incentivo progresivo: Tip suave después de 2-4 usos */}
                 {!userStatus.isAuthenticated && usageCount >= 2 && usageCount < 5 && (
-                  <div className="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-xl">
-                    <p className="text-sm font-semibold text-blue-900 mb-1">
-                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Info} size="sm" className="text-gray-400" />¿Usás seguido las herramientas?</span>
+                  <div className="mt-4 p-3 bg-papel-2 border border-line rounded-xl">
+                    <p className="text-sm font-semibold text-verde mb-1">
+                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Info} size="sm" className="text-mute" />¿Usás seguido las herramientas?</span>
                     </p>
-                    <p className="text-xs text-gray-500 mb-2">
+                    <p className="text-xs text-mute mb-2">
                       Registrándote gratis podés guardar tu historial y acceder a todos tus análisis desde cualquier dispositivo.
                     </p>
                     <a
                       href="/dashboard"
-                      className="inline-block text-xs font-bold text-gray-700 hover:text-gray-900 hover:underline"
+                      className="inline-block text-xs font-bold text-tinta-soft hover:text-tinta hover:underline"
                     >
                       Crear cuenta gratis →
                     </a>
@@ -1183,11 +1183,11 @@ export default function DetectorMain({
 
                 {/* Incentivo progresivo: CTA fuerte después de 5+ usos */}
                 {!userStatus.isAuthenticated && usageCount >= 5 && (
-                  <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
-                    <p className="text-sm font-bold text-blue-900 mb-2">
-                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-gray-400" />¡Ya usaste el Detector {usageCount} veces!</span>
+                  <div className="mt-4 p-4 bg-papel-2 border border-line rounded-xl shadow-sm">
+                    <p className="text-sm font-bold text-verde mb-2">
+                      <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Upgrade} size="sm" className="text-mute" />¡Ya usaste el Detector {usageCount} veces!</span>
                     </p>
-                    <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+                    <p className="text-xs text-mute mb-3 leading-relaxed">
                       Registrándote gratis obtenés:<br/>
                       • <strong>Historial</strong> de tus últimos análisis<br/>
                       • <strong>15 análisis diarios</strong> en el Detector<br/>
@@ -1195,7 +1195,7 @@ export default function DetectorMain({
                     </p>
                     <a
                       href="/dashboard"
-                      className="inline-block w-full text-center bg-blue-900 hover:bg-blue-800 text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-sm hover:shadow-sm transition-all"
+                      className="inline-block w-full text-center bg-verde hover:bg-verde-deep text-white font-bold text-sm py-2.5 px-4 rounded-lg shadow-sm hover:shadow-sm transition-all"
                     >
                       Crear cuenta gratis en 10 segundos
                     </a>
@@ -1204,12 +1204,12 @@ export default function DetectorMain({
 
                 {/* Bloque premium compacto al final cuando hay resultado */}
                 {userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
-                <div className="mt-6 mb-2 bg-white border border-gray-200 rounded-xl shadow p-4 flex flex-col items-center text-center">
+                <div className="mt-6 mb-2 bg-papel-2 border border-line rounded-xl p-4 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 mb-1">
-                    <Icon icon={ProductIcons.Locked} size="xl" className="text-gray-400" />
-                    <span className="font-bold text-base text-gray-800">¿Querés acceso completo?</span>
+                    <Icon icon={ProductIcons.Locked} size="xl" className="text-mute" />
+                    <span className="font-bold text-base text-tinta">¿Querés acceso completo?</span>
                   </div>
-                  <div className="text-xs text-gray-700 mb-2">
+                  <div className="text-xs text-tinta-soft mb-2">
                     <ul className="text-left space-y-1">
                       <li>• Usos ilimitados en todas las herramientas</li>
                       <li>• Hasta 100,000 caracteres por análisis</li>
@@ -1221,11 +1221,11 @@ export default function DetectorMain({
                   </div>
                   <a
                     href="/pricing"
-                    className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-4 rounded-xl shadow-sm transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
+                    className="w-full bg-verde hover:bg-verde-deep text-white font-bold py-3 px-4 rounded-xl shadow-sm transition-all text-sm flex items-center justify-center gap-2 mb-2 text-center"
                   >
                     <span className="flex items-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Ver Planes y Precios</span>
                   </a>
-                  <p className="text-xs text-gray-500">Soporte prioritario vía email incluido</p>
+                  <p className="text-xs text-mute">Soporte prioritario vía email incluido</p>
                 </div>
                 )}
                 {/* Bloque de feedback */}
@@ -1265,21 +1265,21 @@ export default function DetectorMain({
             ) : (
               <>
                 <div className="flex items-end gap-3 mb-1">
-                  <span className="text-4xl font-bold text-gray-800 leading-none">0%</span>
-                  <span className="text-base font-bold text-gray-800">El resultado aparecerá aquí</span>
+                  <span className="text-4xl font-bold text-tinta leading-none">0%</span>
+                  <span className="text-base font-bold text-tinta">El resultado aparecerá aquí</span>
                 </div>
                 <ConfidenceBar value={0} />
                 <div className="w-full max-w-xs mx-auto mb-2 mt-2">
-                  <div className="flex justify-between text-base font-medium py-1 text-gray-800">
+                  <div className="flex justify-between text-base font-medium py-1 text-tinta">
                     <span>IA – Generado</span>
                     <span>0%</span>
                   </div>
-                  <div className="border-dotted border-b border-gray-300 mb-1" />
-                  <div className="flex justify-between text-base font-medium py-1 text-gray-800">
+                  <div className="border-dotted border-b border-line-soft mb-1" />
+                  <div className="flex justify-between text-base font-medium py-1 text-tinta">
                     <span>Humano – Escrito</span>
                     <span>0%</span>
                   </div>
-                  <div className="border-dotted border-b border-gray-300" />
+                  <div className="border-dotted border-b border-line-soft" />
                 </div>
                 {/* Bloque premium: solo tras primer análisis, SOLO para usuarios FREE */}
                 {hasAnalyzed && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
@@ -1294,20 +1294,20 @@ export default function DetectorMain({
       {/* Banner de incentivo para registro - Anónimos que ya usaron 2+ veces */}
       {!userStatus.isAuthenticated && usageCount >= 2 && (
         <div className="max-w-5xl mx-auto mt-8 px-2">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl shadow-sm p-6">
+          <div className="bg-papel-2 border border-line rounded-xl shadow-sm p-6">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 rounded-full bg-blue-900 flex items-center justify-center shadow-sm">
+                <div className="w-16 h-16 rounded-full bg-verde flex items-center justify-center shadow-sm">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />
                   </svg>
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-blue-900 mb-2">
+                <h3 className="text-xl font-bold text-verde mb-2">
                   ¿Te está gustando el Detector? Registrate gratis y obtené más
                 </h3>
-                <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-700 mb-3">
+                <div className="grid md:grid-cols-2 gap-2 text-sm text-tinta-soft mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>
                     <span><strong>15 usos diarios</strong> (vs 3 ahora)</span>
@@ -1325,12 +1325,12 @@ export default function DetectorMain({
                     <span><strong>Historial</strong> de tus últimos 20 análisis</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-500 mb-4">
-                  <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Secure} size="sm" className="text-gray-400" />100% gratis · Sin tarjeta · Registro en 30 segundos</span>
+                <p className="text-xs text-mute mb-4">
+                  <span className="flex items-center gap-1.5"><Icon icon={ProductIcons.Secure} size="sm" className="text-mute" />100% gratis · Sin tarjeta · Registro en 30 segundos</span>
                 </p>
                 <a
                   href="/auth/signup"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-verde hover:bg-verde-deep text-white font-bold rounded-xl shadow-sm hover:shadow-sm transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />

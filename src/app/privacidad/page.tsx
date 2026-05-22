@@ -35,7 +35,7 @@ export default function Privacidad() {
         <li>Información de autenticación (tokens de sesión)</li>
       </ul>
 
-      <p className="text-gray-700 mb-2"><strong>Usuarios Plan Premium:</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Usuarios Express o Semestral:</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Todos los datos de usuarios registrados</li>
         <li>Información de pago procesada por Stripe (nombre, email, método de pago)</li>
@@ -113,7 +113,7 @@ export default function Privacidad() {
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li><strong>Usuarios anónimos:</strong> Identificadores de sesión se eliminan tras 24 horas de inactividad</li>
         <li><strong>Usuarios registrados Free:</strong> Datos se conservan mientras la cuenta esté activa. Historial limitado a últimos 10 usos</li>
-        <li><strong>Usuarios Premium:</strong> Datos se conservan mientras la suscripción esté activa + 30 días tras cancelación</li>
+        <li><strong>Usuarios Express/Semestral:</strong> Datos se conservan mientras la suscripción esté activa + 30 días tras cancelación</li>
         <li><strong>Datos de facturación:</strong> Se conservan durante 5 años para cumplir obligaciones legales y fiscales</li>
         <li><strong>Textos analizados:</strong> Se eliminan inmediatamente tras procesar y devolver el resultado</li>
       </ul>
