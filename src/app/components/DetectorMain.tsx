@@ -202,10 +202,10 @@ export default function DetectorMain({
             markersHuman: 10
           },
           linguistic_footprints: [
-            { phrase: "Análisis completo disponible", reason: "Actualiza a Premium para ver detalles" }
+            { phrase: "Análisis completo disponible", reason: "Desbloqueá con Express Pass para ver detalles" }
           ],
           entropyScore: 4.5,
-          interpretation: "Actualiza a Premium para ver el análisis completo"
+          interpretation: "Desbloqueá con Express Pass para ver el análisis completo"
         });
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
@@ -1073,7 +1073,7 @@ export default function DetectorMain({
                   <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
                     <div className="flex items-center gap-2 mb-3">
                       <Icon icon={ProductIcons.Upgrade} size="lg" className="text-blue-900" />
-                      <h3 className="text-sm font-bold text-blue-900">Comparación: Free vs Premium</h3>
+                      <h3 className="text-sm font-bold text-blue-900">Comparación: Free vs Express Pass</h3>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-3 mb-3">

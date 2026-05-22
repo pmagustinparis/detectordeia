@@ -106,7 +106,7 @@ export default function ExpressUnlockModal({
   const getTitle = () => {
     if (trigger === 'character_limit') return 'Texto Demasiado Largo';
     if (trigger === 'daily_limit') return 'Límite Diario Alcanzado';
-    return `Modo ${modeName || 'Premium'} Bloqueado`;
+    return `Modo ${modeName || 'Avanzado'} Bloqueado`;
   };
 
   const getIconSvg = () => {

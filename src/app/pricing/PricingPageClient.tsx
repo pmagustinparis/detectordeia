@@ -217,7 +217,7 @@ export default function PricingPageClient() {
             <span className="font-mono text-4xl font-medium text-white">$24.99</span>
             <span className="text-white/50 text-sm ml-1">/ 6 meses</span>
           </div>
-          <p className="text-xs text-verde-soft font-medium mb-4">Equivale a $4.17/mes · Ahorrás 68% vs mensual</p>
+          <p className="text-xs text-verde-soft font-medium mb-4">Equivale a $4.17/mes · más económico que comprar Express repetidamente</p>
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-white/70">
             <li className="flex items-center gap-2"><CheckIcon verde /> Detector · Humanizador · Parafraseador</li>

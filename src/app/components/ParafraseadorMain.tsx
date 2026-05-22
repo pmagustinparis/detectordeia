@@ -153,7 +153,7 @@ export default function ParafraseadorMain({
 
         // Mostrar resultado simulado cuando se excede el límite
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
-        setResult("Este es un ejemplo de texto parafraseado. Actualiza a Premium para procesar textos ilimitados y acceder a todos los modos de parafraseo.");
+        setResult("Este es un ejemplo de texto parafraseado. Desbloqueá con Express Pass o Semestral para procesar textos ilimitados y acceder a todos los modos.");
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
         localStorage.removeItem('express_promo_banner_dismissed');

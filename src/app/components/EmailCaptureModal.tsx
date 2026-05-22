@@ -96,7 +96,7 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                Te avisaremos cuando Premium esté listo
+                Guardá tu resultado y recibí novedades
               </h2>
               <p className="text-gray-600 text-sm">
                 Déjanos tu email y serás el primero en saber
@@ -166,7 +166,7 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
                 ¡Listo!
               </h2>
               <p className="text-gray-600 mb-6">
-                Te avisaremos cuando Premium esté disponible
+                Te avisaremos cuando haya novedades
               </p>
               <button
                 onClick={handleClose}
