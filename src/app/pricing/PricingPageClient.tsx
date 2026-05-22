@@ -200,9 +200,9 @@ export default function PricingPageClient() {
         </div>
 
         {/* SEMESTRAL PASS */}
-        <div className="bg-tinta rounded-2xl p-7 flex flex-col shadow-lg relative">
+        <div className="bg-verde-deep rounded-2xl p-7 flex flex-col shadow-lg relative">
           <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-            <span className="bg-verde text-papel text-xs font-medium px-4 py-1.5 rounded-full uppercase tracking-widest shadow font-mono">
+            <span className="bg-papel text-verde-deep text-xs font-medium px-4 py-1.5 rounded-full uppercase tracking-widest shadow font-mono">
               MÁS POPULAR
             </span>
           </div>

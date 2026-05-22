@@ -59,11 +59,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--serif);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--tinta);
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--tinta);
+  }
 }
 
 /* Animaciones sutiles de UI */
