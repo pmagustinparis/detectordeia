@@ -1,11 +1,59 @@
 # Backlog de Producto — detectordeia.ai
-**Última sesión:** Miércoles 20 mayo 2026  
+**Última sesión:** Viernes 22 mayo 2026  
 **Próxima revisión:** Lunes 25 mayo 2026  
 **Criterio de priorización:** impacto en revenue directo
 
 ---
 
 ## PARA RETOMAR EL LUNES 25 — LEÉ ESTO PRIMERO
+
+### Lo que hicimos el 22 mayo (sesión de branding/diseño)
+
+Sesión enfocada 100% en identidad visual. Sin cambios funcionales ni de producto. El objetivo era despegarnos del look "vibecodeado" y acercarnos a la seriedad de QuillBot — suite académica consolidada en español.
+
+**Sistema visual aplicado (de Claude Design):**
+- **Paleta:** papel crema (`#F7F5EF`), verde biblioteca (`#3B6E55`), tinta (`#1A1D24`). Cero azul naval, cero blanco puro.
+- **Tipografía:** Source Serif 4 (titulares) + Geist (body) + Geist Mono (labels/métricas)
+- **Assets:** carpeta `public/brandidentity-detectordeia/` con logos SVG, favicons, OG image, webmanifest
+
+**Archivos modificados (resumen por capa):**
+
+| Capa | Archivos | Qué cambió |
+|---|---|---|
+| Fundación CSS | `globals.css` | Tokens CSS completos, fuentes nuevas, eliminadas animaciones vibecoded (floatAround, pulse-glow, shimmer) |
+| Shell global | `layout.tsx` | Head: favicon SVG verde, OG tags, theme-color. Footer: tinta oscuro, logo SVG blanco |
+| Navegación | `AppSidebar`, `AppTopBar`, `MobileBottomNav` | Sidebar tinta + logo SVG. TopBar papel crema + logo color. Active state → verde |
+| Landing pages | `HomePageClient`, `PricingPageClient` | Titulares serif, CTAs verde, fondos papel. Semestral card → verde-deep |
+| Templates pSEO | `ComparisonPageClient`, `UniversityPageClient`, `GuidePageClient` | Cubre ~50+ páginas generadas. Eliminado violet/blue, unificado a verde/tinta |
+| Páginas regionales | `mx`, `es`, `ar`, `co`, `cl`, `pe` | Colores por región unificados (antes cada uno tenía su color) |
+| Interfaces de herramienta | `DetectorMain`, `HumanizadorMain`, `ParafraseadorMain` | Blue-900 → verde, gray → papel, PREMIUM badge → EXPRESS |
+| Páginas de herramienta | `HumanizadorClient`, `ParafraseadorClient` | Secciones SEO (¿Por qué usar?, ¿Cómo funciona?) — mismos colores |
+| Componentes de soporte | `ExpressPremiumComparisonCard`, `UsageLimitOverlay`, `CharacterLimitModal`, `PremiumUpsellBlock`, `PremiumUpsellCompact`, `SuccessClient` | Azul naval → verde/tinta |
+| Datos comparativas | `src/lib/pseo/comparisons.ts` | 69 ocurrencias de "$12.99/mes" y "Premium" → precios reales actuales |
+| Copy disperso | Varios | "Premium" → "Express/Semestral" en todos los textos visibles al usuario |
+
+**Lo que se mantuvo intencionalmente:**
+- Banner naranja `ExpressPromoBanner.tsx` — el usuario quiere que llame la atención, se deja amber/orange
+- Backend de Laura (suscripción Premium) — sin tocar
+- Lógica funcional de cualquier tipo — esta sesión fue 100% visual
+
+**Fix adicional:**
+- 2 links rotos en footer: `/detector-de-ia-universidad/unam` → `universidad-nacional-mexico` y `/pontificia-universidad-javeriana` → `universidad-javeriana`. Escáneo completo confirmó que no hay más slugs rotos en los 139 slugs del sitio.
+
+**Commits de esta sesión:**
+```
+dbcef91 fix(footer): corregir slugs rotos de universidades en footer
+31ec521 fix(brand): aplicar brand a secciones SEO de HumanizadorClient y ParafraseadorClient
+a951b5c feat(brand): consistencia visual integral — eliminar azul-naval en todo el sitio
+99cee16 fix(ui): corregir títulos ocultos en fondos oscuros y mejorar card Semestral
+603cf25 fix(ui): badge Más Popular más llamativo en card Semestral
+dd1867e fix(brand): logos SVG visibles — embeber estilos y corregir dimensiones
+1e51e74 fix(copy): eliminar todas las menciones visibles a Premium del sitio público
+90c468b fix(copy): eliminar menciones a Premium de upsell blocks y detector
+a982395 feat(brand): aplicar nuevo sistema visual completo
+```
+
+---
 
 ### Lo que hicimos el 20 mayo (sesión de producto)
 
