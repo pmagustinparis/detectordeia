@@ -1,11 +1,98 @@
 # Backlog de Producto — detectordeia.ai
-**Última sesión:** Viernes 22 mayo 2026  
-**Próxima revisión:** Lunes 25 mayo 2026  
+**Última sesión:** Lunes 25 mayo 2026  
+**Próxima revisión:** A definir  
 **Criterio de priorización:** impacto en revenue directo
 
 ---
 
-## PARA RETOMAR EL LUNES 25 — LEÉ ESTO PRIMERO
+## PARA RETOMAR EN LA PRÓXIMA SESIÓN — LEÉ ESTO PRIMERO
+
+### Lo que hicimos el 25 mayo (sesión de datos + producto)
+
+Sesión de revisión de métricas post-lanzamiento y mejoras de conversión.
+
+**Datos revisados:**
+
+| Pregunta | Respuesta |
+|---|---|
+| ¿Respondió alguien de los 10 emails? | No. Ninguno. |
+| ¿Se vendió algún Semestral? | No. Cero ventas desde el lanzamiento el 18 mayo. |
+| ¿Subió el tráfico al humanizador? | +23.53% usuarios, -1.47% vistas. Más gente llega pero rebota más rápido. |
+| ¿Subió el tráfico general? | Sí. +16% usuarios, +16% vistas. |
+| ¿Subió /pricing? | **+53.85% usuarios** — el botón mobile del 20 mayo funciona. |
+| ¿Cambiaron los checkout_started? | Bajaron: ~1-2/día vs baseline de 3-4/día. |
+| ¿Checkouts anónimos? | 1 solo. El fix del flujo anónimo existía pero con demasiada fricción. |
+| ¿Checkouts de Semestral? | Cero. |
+
+**Ventas reales esta semana (6 Express 24h):**
+- jonathan.garcia1361@alumnos.udg.mx (activo hasta 26 may)
+- nicolashernandeztejero@gmail.com
+- imartinez.mpfn@gmail.com
+- lisrh9@gmail.com
+- chamalejuancarlos849@gmail.com
+- isaac.pucllas@gmail.com
+
+**Bug encontrado y corregido:**
+- `analytics_events` no tenía ningún evento `checkout_completed` — el webhook de Stripe nunca lo logueaba. Ya corregido: commit `da0bb4f`. A partir de ahora cada compra queda registrada con `plan_type`, `express_plan`, `session_id` y `hours`.
+
+**Lectura del funnel (18-25 mayo):**
+```
+234  completed_analysis
+231  upsell_modal_shown
+ 94  pricing_page_visited
+ 82  upsell_modal_dismissed
+ 11  checkout_started
+  6  compras reales (solo visible cruzando users table)
+  0  checkout_completed  ← ya corregido
+```
+Conversión checkout_started → compra: ~55%. El problema no es el cierre, es el volumen que llega al botón.
+
+**Cambios de producto deployados (commit `5fb5c94`):**
+
+| Cambio | Detalle |
+|---|---|
+| Guest checkout | Usuarios anónimos van directo a Stripe sin registro. El webhook crea la cuenta con `inviteUserByEmail` si el email no existe. |
+| Email de invitación | Template en español configurado en Supabase → Authentication → Email Templates → Invite User. Subject: "Tu acceso a DetectordeIA está listo". |
+| Escape hatch eliminado | Bloque "Podés empezar gratis hoy..." al pie de /pricing ya no existe. Mandaba gente de vuelta a home. |
+
+**Estado del users table (express_plan activos históricos):**
+- `24h`: 38 usuarios
+- `7d`: 2 usuarios
+- `full`: 1 usuario (Laura — Premium)
+
+---
+
+### Las preguntas correctas para la próxima sesión
+
+**1. ¿Subió el volumen de checkout_started post-guest-checkout?**
+Ahora que no hay fricción de registro, ¿llegan más anónimos a Stripe?
+```sql
+SELECT DATE(created_at) as fecha, COUNT(*) as total,
+  metadata->>'plan_type' as plan,
+  metadata->>'guest_checkout' as guest
+FROM analytics_events
+WHERE event_type = 'checkout_completed'
+  AND created_at >= '2026-05-25'
+GROUP BY fecha, plan, guest ORDER BY fecha;
+```
+
+**2. ¿Apareció algún checkout_completed registrado?**
+Primera métrica real de conversión end-to-end.
+
+**3. ¿Hay usuarios creados via guest checkout?**
+```sql
+SELECT email, express_plan, express_expires_at, created_at
+FROM users
+WHERE created_at >= '2026-05-25'
+ORDER BY created_at DESC;
+```
+
+**4. ¿Sigue sin venderse el Semestral?**
+Si para el 9 junio sigue en cero, hay que repensar el precio o la presentación.
+
+---
+
+## PARA RETOMAR EL LUNES 25 — ARCHIVADO (ya revisado)
 
 ### Lo que hicimos el 22 mayo (sesión de branding/diseño)
 
@@ -193,6 +280,11 @@ Si hay checkouts de Semestral → la pricing page simplificada (solo 2 opciones)
 
 ## BACKLOG PENDIENTE — ordenado por impacto revenue
 
+### ✅ Guest checkout (implementado 25 mayo)
+Usuarios anónimos ya pueden comprar sin registrarse. Ver commits `da0bb4f` y `5fb5c94`.
+
+---
+
 ### 🔜 T2-2 · Email capture post-resultado ← PRÓXIMO A IMPLEMENTAR
 
 **Por qué es el más importante a mediano plazo:**
@@ -319,9 +411,8 @@ GROUP BY event_type ORDER BY total DESC;
 
 - Keywords exactas de tráfico orgánico → revisar GSC directamente (el Data API de GA4 no las exporta)
 - Por qué churnearon los suscriptores → no hay offboarding survey. Premium retirado de UI pero el aprendizaje sigue siendo válido
-- Efecto real del fix del flujo anónimo → medir el 25 mayo
 - Fuente de los picos de tráfico Apr 28-29 y May 3-5 → revisar GSC
-- Si el Semestral va a tener tracción → medir hasta el 9 junio para tener datos limpios
-- Si el pricing simplificado (2 opciones vs 3) mejora la conversión → comparar checkout_started pre/post 20 mayo
-- Si el botón "Planes" en mobile genera tráfico a /pricing desde el 14% de usuarios mobile → antes no llegaban
+- Si el Semestral va a tener tracción → medir hasta el 9 junio para tener datos limpios. Hasta el 25 mayo: cero ventas.
+- Si el guest checkout mejora el volumen de checkout_started → medir en la próxima sesión (baseline: 1-2/día con fricción de registro)
+- Por qué el checkout_started bajó del baseline (3-4/día) a 1-2/día a pesar de +54% en /pricing → hipótesis: el tráfico mobile nuevo es más casual (llegó por el botón de nav, no por haber tocado el límite)
 - Qué hacer con Laura si cancela → contacto manual, ofrecer Semestral $24.99 (cubre 6 meses vs los ~$13 que le quedan de su mes actual)
