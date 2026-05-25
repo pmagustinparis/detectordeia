@@ -205,6 +205,19 @@ async function handleCheckoutCompleted(
     }
 
     console.log(`✅ Express activated successfully for user ${userId} - expires: ${expiresAt.toISOString()}`);
+
+    await supabase.from('analytics_events').insert({
+      event_type: 'checkout_completed',
+      user_id: userId,
+      tool_type: 'general',
+      metadata: {
+        plan_type: planType,
+        express_plan: expressPlanValue,
+        session_id: session.id,
+        hours,
+      },
+    });
+
     return;
   }
 
@@ -283,6 +296,17 @@ async function handleCheckoutCompleted(
     console.error('Error updating user plan:', userError);
     throw userError;
   }
+
+  await supabase.from('analytics_events').insert({
+    event_type: 'checkout_completed',
+    user_id: userId,
+    tool_type: 'general',
+    metadata: {
+      plan_type: 'premium',
+      plan_interval: planInterval,
+      session_id: session.id,
+    },
+  });
 
   console.log(`✅ User ${userId} upgraded to premium (${planInterval})`);
 }
