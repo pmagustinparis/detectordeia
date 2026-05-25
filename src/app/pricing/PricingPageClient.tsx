@@ -35,20 +35,6 @@ export default function PricingPageClient() {
     fetch('/api/user/plan').then(r => r.json()).then(d => setUserPlan(d.plan_type || 'free')).catch(() => {});
   }, [isAuthenticated]);
 
-  useEffect(() => {
-    if (!isAuthenticated) return;
-    const pending = localStorage.getItem('pending_plan_type') as PlanType | null;
-    const duration = localStorage.getItem('pending_express_duration') as '24h' | '7d' | null;
-    const interval = localStorage.getItem('pending_plan_checkout') as 'month' | 'year' | null;
-    if (!pending) return;
-    localStorage.removeItem('pending_plan_type');
-    localStorage.removeItem('pending_express_duration');
-    localStorage.removeItem('pending_plan_checkout');
-    setTimeout(() => {
-      if (pending === 'express') triggerCheckout('express', duration || '24h');
-      else if (pending === 'semestral') triggerCheckout('semestral');
-    }, 500);
-  }, [isAuthenticated]);
 
   const triggerCheckout = async (plan: PlanType, option?: string) => {
     setLoadingCheckout(plan + (option || ''));
@@ -74,12 +60,6 @@ export default function PricingPageClient() {
   };
 
   const handleCTA = (plan: PlanType, option?: string) => {
-    if (!isAuthenticated) {
-      localStorage.setItem('pending_plan_type', plan);
-      if (plan === 'express') localStorage.setItem('pending_express_duration', option || '24h');
-      window.location.href = '/auth/signup?next=/pricing';
-      return;
-    }
     triggerCheckout(plan, option);
   };
 
@@ -238,14 +218,6 @@ export default function PricingPageClient() {
           <p className="text-xs text-center text-white/30 mt-2">Pago seguro con Stripe</p>
         </div>
 
-      </div>
-
-      {/* Free tier */}
-      <div className="max-w-2xl mx-auto px-4 mb-16 text-center">
-        <p className="text-sm text-mute">
-          Podés empezar gratis hoy — 15 análisis diarios con el Detector, 3 usos del Humanizador y Generador de Citas ilimitado, sin tarjeta.{' '}
-          <a href="/" className="text-verde font-medium hover:underline">Probarlo ahora →</a>
-        </p>
       </div>
 
       {/* FAQs */}

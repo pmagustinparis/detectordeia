@@ -121,12 +121,54 @@ async function handleCheckoutCompleted(
     metadata: session.metadata,
   });
 
-  const userId = session.metadata?.supabase_user_id;
-  const planType = session.metadata?.plan_type; // 'express' o 'premium'
+  let userId = session.metadata?.supabase_user_id;
+  const planType = session.metadata?.plan_type;
+  const isGuest = session.metadata?.guest_checkout === 'true';
 
-  if (!userId) {
-    console.error('No user_id in checkout session metadata');
-    return;
+  // Guest checkout: encontrar o crear el usuario a partir del email de Stripe
+  if (isGuest || !userId) {
+    const email = session.customer_details?.email;
+    if (!email) {
+      console.error('No email in guest checkout session');
+      return;
+    }
+
+    const { data: existingUser } = await supabase
+      .from('users')
+      .select('id')
+      .eq('email', email)
+      .single();
+
+    if (existingUser) {
+      userId = existingUser.id;
+      console.log(`♻️ Guest checkout: found existing user ${userId} for ${email}`);
+    } else {
+      // Crear cuenta via invitación — Supabase envía el email automáticamente
+      const { data: inviteData, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email, {
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
+      });
+      if (inviteError || !inviteData?.user) {
+        console.error('❌ Error inviting guest user:', inviteError);
+        return;
+      }
+      const { error: insertError } = await supabase.from('users').insert({
+        auth_id: inviteData.user.id,
+        email,
+        plan_type: 'free',
+      });
+      if (insertError) {
+        console.error('❌ Error inserting guest user:', insertError);
+        return;
+      }
+      const { data: newUser } = await supabase.from('users').select('id').eq('auth_id', inviteData.user.id).single();
+      userId = newUser?.id;
+      console.log(`✨ Guest checkout: created user ${userId} for ${email}`);
+    }
+
+    if (!userId) {
+      console.error('❌ Could not resolve userId for guest checkout');
+      return;
+    }
   }
 
   // CASO 1: Pago único Express (24h, 7 días) o Semestral (6 meses)

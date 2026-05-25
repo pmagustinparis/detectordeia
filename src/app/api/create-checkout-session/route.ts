@@ -35,31 +35,28 @@ export async function POST(request: Request) {
       );
     }
 
-    // Verificar autenticación
+    // Verificar autenticación (opcional — se permite checkout anónimo)
     const supabase = await createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
 
-    if (!user) {
-      return NextResponse.json(
-        { error: 'Debes iniciar sesión para suscribirte' },
-        { status: 401 }
-      );
-    }
+    let userData: { id: string; email: string; stripe_customer_id: string | null } | null = null;
 
-    // Obtener datos del usuario de nuestra base de datos
-    const { data: userData, error: userError } = await supabase
-      .from('users')
-      .select('id, email, stripe_customer_id')
-      .eq('auth_id', user.id)
-      .single();
+    if (user) {
+      const { data, error: userError } = await supabase
+        .from('users')
+        .select('id, email, stripe_customer_id')
+        .eq('auth_id', user.id)
+        .single();
 
-    if (userError || !userData) {
-      return NextResponse.json(
-        { error: 'Error al obtener datos del usuario' },
-        { status: 500 }
-      );
+      if (userError || !data) {
+        return NextResponse.json(
+          { error: 'Error al obtener datos del usuario' },
+          { status: 500 }
+        );
+      }
+      userData = data;
     }
 
     // Seleccionar el Price ID según el plan
@@ -98,55 +95,42 @@ export async function POST(request: Request) {
       );
     }
 
-    let customerId = userData.stripe_customer_id;
+    let customerId: string | undefined;
 
-    // Crear Stripe Customer si no existe (o buscar existente)
-    if (!customerId) {
-      // Buscar si ya existe un customer con este email en Stripe
-      const existingCustomers = await stripe.customers.list({
-        email: userData.email,
-        limit: 1,
-      });
+    if (userData) {
+      customerId = userData.stripe_customer_id ?? undefined;
 
-      if (existingCustomers.data.length > 0) {
-        // Reutilizar customer existente
-        customerId = existingCustomers.data[0].id;
-        console.log(`♻️ Reusing existing Stripe customer: ${customerId} for ${userData.email}`);
-      } else {
-        // Crear nuevo customer solo si no existe
-        const customer = await stripe.customers.create({
-          email: userData.email,
-          metadata: {
-            supabase_user_id: userData.id,
-          },
-        });
-        customerId = customer.id;
-        console.log(`✨ Created new Stripe customer: ${customerId} for ${userData.email}`);
+      if (!customerId) {
+        const existingCustomers = await stripe.customers.list({ email: userData.email, limit: 1 });
+        if (existingCustomers.data.length > 0) {
+          customerId = existingCustomers.data[0].id;
+          console.log(`♻️ Reusing existing Stripe customer: ${customerId} for ${userData.email}`);
+        } else {
+          const customer = await stripe.customers.create({
+            email: userData.email,
+            metadata: { supabase_user_id: userData.id },
+          });
+          customerId = customer.id;
+          console.log(`✨ Created new Stripe customer: ${customerId} for ${userData.email}`);
+        }
+        await supabase.from('users').update({ stripe_customer_id: customerId }).eq('id', userData.id);
       }
-
-      // Guardar el customer_id en nuestra base de datos
-      await supabase
-        .from('users')
-        .update({ stripe_customer_id: customerId })
-        .eq('id', userData.id);
     }
 
     // Crear Checkout Session
+    const origin = request.headers.get('origin');
     const session = await stripe.checkout.sessions.create({
-      customer: customerId,
+      ...(customerId ? { customer: customerId } : { customer_creation: 'always' }),
       payment_method_types: ['card'],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
+      line_items: [{ price: priceId, quantity: 1 }],
       mode: mode,
-      success_url: `${request.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${request.headers.get('origin')}/pricing`,
+      billing_address_collection: 'auto',
+      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/pricing`,
       metadata: {
-        supabase_user_id: userData.id,
+        supabase_user_id: userData?.id ?? '',
         plan_type: planTypeForMetadata,
+        guest_checkout: userData ? 'false' : 'true',
         ...(plan_interval && { plan_interval }),
       },
     });
