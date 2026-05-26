@@ -1,6 +1,6 @@
 # Backlog de Producto — detectordeia.ai
 **Última sesión:** Lunes 25 mayo 2026  
-**Próxima revisión:** A definir  
+**Próxima revisión:** Lunes 1 junio 2026 · siguiente: Lunes 8 junio 2026  
 **Criterio de priorización:** impacto en revenue directo
 
 ---
@@ -62,7 +62,7 @@ Conversión checkout_started → compra: ~55%. El problema no es el cierre, es e
 
 ---
 
-### Las preguntas correctas para la próxima sesión
+### Las preguntas correctas para el Lunes 1 junio
 
 **1. ¿Subió el volumen de checkout_started post-guest-checkout?**
 Ahora que no hay fricción de registro, ¿llegan más anónimos a Stripe?
@@ -88,7 +88,40 @@ ORDER BY created_at DESC;
 ```
 
 **4. ¿Sigue sin venderse el Semestral?**
-Si para el 9 junio sigue en cero, hay que repensar el precio o la presentación.
+Si para el 8 junio sigue en cero, hay que repensar el precio o la presentación.
+
+---
+
+### Las preguntas correctas para el Lunes 8 junio
+
+El 8 junio es el corte limpio para el Semestral (21 días desde el lanzamiento el 18 mayo).
+
+**1. ¿Se vendió algún Semestral?**
+Si sigue en cero con guest checkout activo y ~80-100 usuarios/día → el problema es el precio ($24.99) o la propuesta de valor, no la fricción de compra.
+
+**2. ¿Cuántos checkouts completados via guest checkout?**
+```sql
+SELECT DATE(created_at) as fecha, COUNT(*) as total,
+  metadata->>'guest_checkout' as guest
+FROM analytics_events
+WHERE event_type = 'checkout_completed'
+  AND created_at >= '2026-05-25'
+GROUP BY fecha, guest ORDER BY fecha;
+```
+
+**3. ¿Cuántos usuarios nuevos se crearon via invitación (guest purchase)?**
+```sql
+SELECT COUNT(*) as usuarios_guest, DATE(created_at) as fecha
+FROM users
+WHERE created_at >= '2026-05-25'
+GROUP BY fecha ORDER BY fecha;
+```
+
+**4. Decisión sobre el Semestral:**
+Si 0 ventas en 21 días → opciones a evaluar:
+- Bajar precio a $19.99 (test)
+- Agregar urgencia ("oferta hasta el 30 junio")
+- Reposicionar como "Para el semestre universitario" con copy más específico
 
 ---
 
