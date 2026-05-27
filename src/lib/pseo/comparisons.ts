@@ -1012,6 +1012,367 @@ export const comparisons: ComparisonPage[] = [
   },
 
   {
+    slug: 'justdone',
+    competitorName: 'JustDone',
+    competitorWebsite: 'https://justdone.ai',
+    keywords: [
+      'justdone español',
+      'detector ia justdone alternativa',
+      'justdone vs detector ia',
+      'justdone ai en español',
+    ],
+
+    title: 'DetectorDeIA vs JustDone: ¿Cuál es Mejor para Detectar IA en Español?',
+    description: 'Comparación entre DetectorDeIA y JustDone AI Detector. JustDone tiene presencia en inglés pero falla en español. Descubrí cuál detecta mejor textos de ChatGPT en español para LATAM y España.',
+    h1: 'DetectorDeIA vs JustDone: ¿Cuál Detecta Mejor la IA en Español?',
+
+    intro: 'JustDone es una suite de herramientas de IA con detector y humanizador que tiene fuerte posicionamiento en inglés, pero con optimización limitada para el español. DetectorDeIA está diseñado desde cero para texto académico y profesional en español, con mejor precisión y precio más accesible para usuarios de LATAM y España.',
+
+    whyBetter: [
+      'Optimizado 100% para español (España + LATAM) vs JustDone con enfoque en inglés',
+      'Precio plano (Express $3.99 · Semestral $24.99) vs JustDone basado en créditos variables',
+      'Sin créditos que administrar — usos ilimitados con Express o Semestral',
+      'Humanización en español que respeta modismos regionales vs resultados artificiales de JustDone en español',
+      'Especialización en texto académico (TFG, ensayos, trabajos) vs suite genérica',
+      'Interfaz en español nativo, no traducida automáticamente',
+      'Plan gratis generoso (15 análisis/día) sin tarjeta de crédito'
+    ],
+
+    comparisons: [
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Sistema de créditos ($19-$49/mes)' },
+      { feature: 'Modelo de precio', detectordeia: 'Pago único fijo', competitor: 'Créditos variables por feature' },
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica (enfoque inglés)' },
+      { feature: 'Precisión en español', detectordeia: '95%', competitor: '70-80%' },
+      { feature: 'Análisis por texto', detectordeia: 'Multi-pasada (2-3)', competitor: 'Una pasada' },
+      { feature: 'Humanizador incluido', detectordeia: true, competitor: true },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: true },
+      { feature: 'Generador de contenido', detectordeia: false, competitor: true },
+      { feature: 'Plan gratis', detectordeia: '15 análisis/día', competitor: 'Muy limitado' },
+      { feature: 'Ideal para', detectordeia: 'Académico en español', competitor: 'Contenido en inglés' }
+    ],
+
+    whenToUseCompetitor: 'JustDone puede ser útil si necesitás generar contenido en inglés y querés todas las herramientas (generador, detector, humanizador) en una sola plataforma. Para detección y humanización de IA en español, DetectorDeIA es más preciso y económico.',
+
+    pricing: {
+      detectordeia: 'Express $3.99 · Semestral $24.99',
+      competitor: 'Desde $19/mes (créditos variables)'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué JustDone no funciona bien en español?',
+        answer: 'JustDone fue diseñado principalmente para el mercado angloparlante. Sus modelos de detección y humanización están entrenados en inglés. En español, los resultados de humanización pueden sonar artificiales y la detección tiene más falsos positivos. DetectorDeIA está entrenado específicamente en patrones de IA en español, incluyendo variantes regionales de España, Argentina, México, Colombia y más.'
+      },
+      {
+        question: '¿Cómo se compara el precio de JustDone con DetectorDeIA?',
+        answer: 'JustDone usa sistema de créditos donde cada uso consume créditos según la feature. Esto dificulta calcular el costo real. DetectorDeIA tiene precio transparente: Express $3.99 por 24 horas o $8.99 por 7 días, Semestral $24.99 por 6 meses con usos ilimitados. Sin créditos, sin sorpresas.'
+      },
+      {
+        question: '¿JustDone tiene plan gratuito?',
+        answer: 'JustDone ofrece créditos gratuitos muy limitados al inicio. DetectorDeIA tiene plan gratuito más generoso: 15 análisis diarios sin tarjeta de crédito, acceso al detector, humanizador básico y parafraseador básico, sin caducidad.'
+      },
+      {
+        question: '¿Puedo migrar de JustDone a DetectorDeIA?',
+        answer: 'Sí. DetectorDeIA cubre las features de detección de IA, humanización y parafraseo que usabas en JustDone, con mejor precisión en español y precio más simple. Si trabajás principalmente con textos en español, DetectorDeIA es la alternativa natural.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar DetectorDeIA gratis',
+      url: '/detector?ref=vs-justdone'
+    }
+  },
+
+  {
+    slug: 'hix-ai',
+    competitorName: 'Hix.ai',
+    competitorWebsite: 'https://hix.ai',
+    keywords: [
+      'hix ai español',
+      'hix ai alternativa español',
+      'detector ia hix',
+      'hix ai detector gratis',
+    ],
+
+    title: 'DetectorDeIA vs Hix.ai: Comparación para Texto Académico en Español',
+    description: 'Comparación entre DetectorDeIA y Hix.ai para estudiantes y profesores en español. Hix.ai ofrece muchas herramientas pero sin especialización en español. Analizamos precio, precisión y facilidad de uso.',
+    h1: 'DetectorDeIA vs Hix.ai: ¿Cuál Elegir para Texto en Español?',
+
+    intro: 'Hix.ai es una suite completa de herramientas de IA (editor, detector, humanizador, chatbot y más) con un enfoque generalista. DetectorDeIA se especializa exclusivamente en detección de IA, humanización y parafraseo para español, ofreciendo mayor precisión en textos académicos de LATAM y España a menor precio.',
+
+    whyBetter: [
+      'Especialización 100% en español vs Hix.ai suite genérica multi-idioma',
+      'Precio más accesible: Express $3.99 vs Hix.ai desde $19.99/mes',
+      'Sin curva de aprendizaje — solo 3 herramientas enfocadas vs 20+ features de Hix.ai',
+      'Optimizado para texto académico universitario en español',
+      'Humanización que respeta modismos de LATAM y España',
+      'Plan gratis generoso (15 análisis/día) sin tarjeta',
+      'Resultado más confiable: especialista vs generalista cuando está en juego tu nota'
+    ],
+
+    comparisons: [
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Desde $19.99/mes' },
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Multi-idioma genérico' },
+      { feature: 'Precisión en español', detectordeia: '95%', competitor: '75-85%' },
+      { feature: 'Número de herramientas', detectordeia: '3 (detector, humanizador, parafraseador)', competitor: '20+ herramientas' },
+      { feature: 'Enfoque', detectordeia: 'Texto académico en español', competitor: 'Contenido general' },
+      { feature: 'Detector de IA', detectordeia: true, competitor: true },
+      { feature: 'Humanizador', detectordeia: true, competitor: true },
+      { feature: 'Editor de IA', detectordeia: false, competitor: true },
+      { feature: 'Chatbot', detectordeia: false, competitor: true },
+      { feature: 'Plan gratis', detectordeia: '15 análisis/día', competitor: 'Muy limitado' }
+    ],
+
+    whenToUseCompetitor: 'Hix.ai es mejor si necesitás una suite completa de creación de contenido en inglés: editor, generador de artículos SEO, chatbot y más. Si solo necesitás detectar y mejorar textos en español, DetectorDeIA es más preciso, más simple y más económico.',
+
+    pricing: {
+      detectordeia: 'Express $3.99 · Semestral $24.99',
+      competitor: 'Desde $19.99/mes'
+    },
+
+    faqs: [
+      {
+        question: '¿Por qué elegir DetectorDeIA sobre Hix.ai si tengo el mismo trabajo?',
+        answer: 'Cuando tu trabajo académico está en juego, preferís un especialista a una navaja suiza. Hix.ai tiene 20+ herramientas de propósito general; DetectorDeIA tiene 3 herramientas afinadas específicamente para español académico. La diferencia en precisión de detección y calidad de humanización en español es significativa.'
+      },
+      {
+        question: '¿Hix.ai tiene detector de IA gratuito?',
+        answer: 'Hix.ai ofrece algunas funciones gratis pero el detector de IA y el humanizador avanzado requieren plan de pago desde $19.99/mes. DetectorDeIA tiene plan gratuito con 15 análisis diarios sin tarjeta, con acceso real al detector, humanizador y parafraseador.'
+      },
+      {
+        question: '¿Puedo usar Hix.ai para textos en español?',
+        answer: 'Hix.ai soporta varios idiomas, pero está optimizado para inglés. Para textos académicos en español, los resultados de detección pueden tener más falsos positivos y la humanización puede sonar más artificial que DetectorDeIA, que está entrenado específicamente en español de España y LATAM.'
+      },
+      {
+        question: '¿DetectorDeIA tiene editor de texto como Hix.ai?',
+        answer: 'No. DetectorDeIA no tiene editor de IA general. Se especializa en: (1) Detectar si un texto tiene IA, (2) Humanizarlo para que suene natural, (3) Parafrasearlo manteniendo el significado. Si necesitás generar contenido desde cero con IA, Hix.ai o similares son más completos.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar DetectorDeIA gratis',
+      url: '/detector?ref=vs-hixai'
+    }
+  },
+
+  {
+    slug: 'stealthwriter',
+    competitorName: 'StealthWriter',
+    competitorWebsite: 'https://stealthwriter.ai',
+    keywords: [
+      'stealthwriter español',
+      'stealthwriter alternativa',
+      'stealthwriter funciona español',
+      'stealthwriter ai detector',
+    ],
+
+    title: 'DetectorDeIA vs StealthWriter: Humanizador y Detector para Español',
+    description: 'Comparación entre DetectorDeIA y StealthWriter. StealthWriter promete textos "indetectables" pero falla en español. DetectorDeIA ofrece humanización natural optimizada para LATAM y España.',
+    h1: 'DetectorDeIA vs StealthWriter: ¿Cuál Humaniza Mejor en Español?',
+
+    intro: 'StealthWriter se posiciona como una herramienta para hacer textos de IA "indetectables", con enfoque en inglés. DetectorDeIA toma un enfoque diferente: mejorar la calidad lingüística real del texto en español para que suene auténtico, no solo evadir algoritmos. Para texto académico en español, la diferencia es notoria.',
+
+    whyBetter: [
+      'Humanización orientada a calidad lingüística real vs StealthWriter enfocado en burlar detectores',
+      'Optimizado para español de España y LATAM vs StealthWriter principalmente en inglés',
+      'Texto humanizado suena natural y académico, no artificialmente modificado',
+      'Precio más simple: Express $3.99 · Semestral $24.99 vs créditos variables de StealthWriter',
+      '5 modos de humanización (Estándar, Académico, Formal, Creativo, Simplificado) vs modo único',
+      'Incluye Detector de IA para verificar el resultado antes de entregar',
+      'Ético y educativo — mejora la redacción, no engaña sistemas'
+    ],
+
+    comparisons: [
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Desde $10/mes (créditos)' },
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica (enfoque inglés)' },
+      { feature: 'Modos humanizador', detectordeia: '5 modos', competitor: '1-2 modos' },
+      { feature: 'Enfoque', detectordeia: 'Calidad lingüística real', competitor: 'Evadir detectores' },
+      { feature: 'Detector incluido', detectordeia: true, competitor: 'Básico' },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
+      { feature: 'Calidad en español', detectordeia: 'Natural y académico', competitor: 'Artificial/traducido' },
+      { feature: 'Plan gratis', detectordeia: '15 análisis/día', competitor: 'Muy limitado' },
+      { feature: 'Ético', detectordeia: 'Sí (mejora redacción)', competitor: 'Cuestionable' },
+      { feature: 'Ideal para', detectordeia: 'Texto académico español', competitor: 'Contenido en inglés' }
+    ],
+
+    whenToUseCompetitor: 'StealthWriter puede ser opción si escribís en inglés y necesitás humanizar grandes volúmenes de contenido. Para texto académico en español (TFG, ensayos, trabajos de universidad), DetectorDeIA produce resultados más naturales y creíbles.',
+
+    pricing: {
+      detectordeia: 'Express $3.99 · Semestral $24.99',
+      competitor: 'Desde $10/mes (créditos variables)'
+    },
+
+    faqs: [
+      {
+        question: '¿StealthWriter funciona para texto en español?',
+        answer: 'StealthWriter fue diseñado para inglés. Al humanizar texto en español, los resultados suelen sonar artificiales o como una traducción automática, porque sus modelos no conocen los modismos, expresiones y estructura sintáctica del español académico de LATAM y España. DetectorDeIA está entrenado específicamente en estos patrones.'
+      },
+      {
+        question: '¿Es ético usar StealthWriter o DetectorDeIA?',
+        answer: 'Existe una diferencia de enfoque importante. StealthWriter se posiciona explícitamente para "burlar detectores" sin mejorar la calidad del texto. DetectorDeIA se posiciona como herramienta educativa para mejorar la redacción: eliminar clichés de IA, agregar variación natural, mejorar el estilo. Siempre respetá las políticas de integridad de tu institución.'
+      },
+      {
+        question: '¿Cuál detecta mejor si un texto es de IA?',
+        answer: 'Para español, DetectorDeIA es significativamente más preciso. Su sistema multi-pasada (2-3 análisis independientes con GPT-3.5 y GPT-4o-mini) produce menos falsos positivos que StealthWriter, que tiene un detector básico principalmente calibrado para inglés.'
+      },
+      {
+        question: '¿DetectorDeIA tiene los mismos modos de humanización que StealthWriter?',
+        answer: 'DetectorDeIA ofrece 5 modos específicos para español: Estándar, Académico (para universidades), Formal (profesional), Creativo y Simplificado. StealthWriter tiene modos genéricos sin especialización por idioma. Para texto académico universitario en español, el modo Académico de DetectorDeIA produce resultados más creíbles.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar DetectorDeIA gratis',
+      url: '/detector?ref=vs-stealthwriter'
+    }
+  },
+
+  {
+    slug: 'bypassai',
+    competitorName: 'BypassAI',
+    competitorWebsite: 'https://bypassai.ai',
+    keywords: [
+      'bypassai español',
+      'bypass ai detector',
+      'alternativa bypassai',
+      'como pasar detector ia español',
+      'bypass ai funciona',
+    ],
+
+    title: 'DetectorDeIA vs BypassAI: Detección Honesta vs Evasión de Detectores',
+    description: 'Comparación entre DetectorDeIA y BypassAI. BypassAI promete evitar la detección pero falla en español. DetectorDeIA humaniza éticamente para mejorar tu texto. Cuál elegir según tu objetivo.',
+    h1: 'DetectorDeIA vs BypassAI: ¿Cuál Conviene Usar en Español?',
+
+    intro: 'BypassAI se comercializa como herramienta para hacer texto de IA "indetectable" por sistemas como Turnitin o GPTZero. El problema: su humanización en español produce texto artificial con errores de idioma, y los detectores académicos modernos identifican estos patrones. DetectorDeIA humaniza mejorando la calidad lingüística real, lo que produce resultados más naturales y duraderos.',
+
+    whyBetter: [
+      'Humanización orientada a mejorar calidad vs BypassAI orientado a evadir algoritmos',
+      'Texto humanizado que suena natural en español vs resultados artificiales de BypassAI',
+      'Optimizado para español académico de LATAM y España vs BypassAI principalmente inglés',
+      'Incluye Detector de IA para verificar el resultado final',
+      '5 modos específicos (Académico, Formal, Creativo, Estándar, Simplificado)',
+      'Precio fijo sin créditos: Express $3.99 · Semestral $24.99',
+      'BypassAI en español produce texto que los profesores detectan fácilmente como modificado'
+    ],
+
+    comparisons: [
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica (falla en académico)' },
+      { feature: 'Calidad del texto resultado', detectordeia: 'Natural y creíble', competitor: 'Artificial / modificado visiblemente' },
+      { feature: 'Detector incluido', detectordeia: true, competitor: 'Básico' },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
+      { feature: 'Modos humanizador', detectordeia: '5 modos en español', competitor: 'Modos genéricos' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Créditos variables' },
+      { feature: 'Enfoque', detectordeia: 'Mejorar calidad lingüística', competitor: 'Evadir detectores' },
+      { feature: 'Funciona en texto académico español', detectordeia: 'Sí', competitor: 'Resultados inconsistentes' },
+      { feature: 'Plan gratis', detectordeia: '15 análisis/día', competitor: 'Muy limitado' },
+      { feature: 'Riesgo ético', detectordeia: 'Bajo (herramienta educativa)', competitor: 'Alto (evasión explícita)' }
+    ],
+
+    whenToUseCompetitor: 'BypassAI puede funcionar para humanizar texto en inglés de propósito general. Para texto académico en español — donde la calidad lingüística es evaluada por un profesor humano — DetectorDeIA produce resultados notablemente más naturales.',
+
+    pricing: {
+      detectordeia: 'Express $3.99 · Semestral $24.99',
+      competitor: 'Desde $9.99/mes (créditos)'
+    },
+
+    faqs: [
+      {
+        question: '¿BypassAI funciona para texto en español?',
+        answer: 'BypassAI está diseñado para inglés. En español académico, sus resultados suelen incluir estructuras gramaticales incorrectas, pérdida del tono formal y expresiones que no suenan naturales para un lector nativo. Un profesor hispano detecta fácilmente que el texto fue "procesado". DetectorDeIA humaniza respetando la gramática y el tono académico del español.'
+      },
+      {
+        question: '¿Los detectores académicos detectan textos humanizados con BypassAI?',
+        answer: 'Los detectores modernos (Turnitin, GPTZero) se actualizan constantemente para identificar patrones de evasión. El texto modificado por herramientas como BypassAI tiene su propio "fingerprint" de modificación que estos sistemas aprenden a reconocer. DetectorDeIA se enfoca en mejorar la calidad real del texto, lo que produce resultados más robustos a largo plazo.'
+      },
+      {
+        question: '¿Es ilegal o sancionable usar BypassAI o DetectorDeIA?',
+        answer: 'La herramienta en sí no es ilegal. Lo que puede ser sancionado es presentar trabajo que viola las políticas de integridad académica de tu institución. DetectorDeIA se posiciona como herramienta para mejorar la redacción y el aprendizaje, no para engañar sistemas. Verificá siempre las políticas de tu universidad.'
+      },
+      {
+        question: '¿Cómo sé si un texto humanizado pasará el detector de mi universidad?',
+        answer: 'Con DetectorDeIA podés humanizar tu texto y luego correr el Detector de IA sobre el resultado para verificar que la señal de IA bajó. El flujo es: pegar texto original → humanizar → detectar el resultado → si la probabilidad de IA bajó a <30%, el texto tiene mejor calidad lingüística natural.'
+      }
+    ],
+
+    cta: {
+      text: 'Humanizar texto en español — gratis',
+      url: '/humanizador?ref=vs-bypassai'
+    }
+  },
+
+  {
+    slug: 'winston-ai',
+    competitorName: 'Winston AI',
+    competitorWebsite: 'https://gowinston.ai',
+    keywords: [
+      'winston ai español',
+      'winston ai detector alternativa',
+      'winston ai precio',
+      'winston ai gratis',
+    ],
+
+    title: 'DetectorDeIA vs Winston AI: ¿Cuál Detector de IA es Mejor en Español?',
+    description: 'Comparación entre DetectorDeIA y Winston AI. Winston AI es preciso en inglés pero costoso ($18/mes) y limitado en español. Analizamos cuál es mejor para profesores y estudiantes de habla hispana.',
+    h1: 'DetectorDeIA vs Winston AI: Comparación para Español 2025',
+
+    intro: 'Winston AI es un detector de IA y plagio reconocido por su precisión, especialmente popular entre editores y agencias de contenido en inglés. Para profesores y estudiantes de español, su precio de $18/mes y limitaciones en español hacen que DetectorDeIA sea la alternativa más accesible y precisa para texto académico en LATAM y España.',
+
+    whyBetter: [
+      'Precio significativamente menor: Express $3.99 vs Winston AI $18/mes',
+      'Sin límite de palabras/mes — Winston AI limita a 80,000 palabras en plan básico',
+      'Optimizado para español académico vs Winston AI orientado a inglés',
+      'Sin necesidad de suscripción mensual — pago único con Express o Semestral',
+      'Plan gratis generoso (15 análisis/día) sin tarjeta de crédito',
+      'Incluye Humanizador y Parafraseador en el mismo precio',
+      'Para profesores independientes: acceso inmediato sin contratos'
+    ],
+
+    comparisons: [
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: '$18/mes (80,000 palabras)' },
+      { feature: 'Modelo de precio', detectordeia: 'Pago único o por período', competitor: 'Suscripción mensual' },
+      { feature: 'Límite de palabras', detectordeia: 'Ilimitado (Express/Semestral)', competitor: '80,000 palabras/mes (básico)' },
+      { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Limitada' },
+      { feature: 'Precisión en inglés', detectordeia: 'No optimizado', competitor: '99% (declarado)' },
+      { feature: 'Detección de plagio', detectordeia: false, competitor: true },
+      { feature: 'Humanizador incluido', detectordeia: true, competitor: false },
+      { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
+      { feature: 'Plan gratis real', detectordeia: '15 análisis/día', competitor: 'Solo 2,000 palabras de prueba' },
+      { feature: 'Ideal para', detectordeia: 'Español (académico, LATAM, España)', competitor: 'Inglés (editores, agencias)' }
+    ],
+
+    whenToUseCompetitor: 'Winston AI es la mejor opción si necesitás detección de IA + plagio en inglés con alta precisión, especialmente si sos editor de contenido o agencia en el mercado angloparlante. Para profesores y estudiantes en español, DetectorDeIA es más económico y preciso.',
+
+    pricing: {
+      detectordeia: 'Express $3.99 · Semestral $24.99',
+      competitor: '$18/mes (80,000 palabras) o $49/mes (ilimitado)'
+    },
+
+    faqs: [
+      {
+        question: '¿Winston AI tiene buena precisión en español?',
+        answer: 'Winston AI fue entrenado y calibrado principalmente para inglés. En español, la precisión baja considerablemente porque los modelos de IA generan texto en español con patrones diferentes al inglés. DetectorDeIA está entrenado específicamente en estos patrones del español, resultando en mayor precisión y menos falsos positivos para textos académicos en español.'
+      },
+      {
+        question: '¿Por qué $18/mes para un detector de IA parece caro?',
+        answer: 'Winston AI cobra $18/mes con límite de 80,000 palabras. Un trabajo académico promedio tiene 2,000-3,000 palabras. Si verificás 30-40 trabajos al mes, llegás al límite fácilmente. DetectorDeIA con Express $3.99/24h o Semestral $24.99/6 meses no tiene límite de palabras, siendo más económico para uso frecuente.'
+      },
+      {
+        question: '¿Winston AI detecta plagio además de IA?',
+        answer: 'Sí, Winston AI incluye detección de plagio, lo que es una ventaja sobre DetectorDeIA que solo detecta IA. Si necesitás ambas funciones en un mismo lugar, Winston AI es una opción (en inglés). Para detección de IA pura en español, DetectorDeIA es más preciso y mucho más económico.'
+      },
+      {
+        question: '¿DetectorDeIA tiene el mismo nivel de precisión que Winston AI?',
+        answer: 'En inglés, Winston AI declara 99% de precisión y es reconocido en ese idioma. En español, DetectorDeIA supera a Winston AI gracias a su especialización. Para textos académicos en español de LATAM y España, la diferencia en falsos positivos es significativa: DetectorDeIA produce resultados más confiables para este idioma.'
+      }
+    ],
+
+    cta: {
+      text: 'Probar DetectorDeIA gratis',
+      url: '/detector?ref=vs-winston'
+    }
+  },
+
+  {
     slug: 'ithenticate',
     competitorName: 'iThenticate',
     competitorWebsite: 'https://www.ithenticate.com',
