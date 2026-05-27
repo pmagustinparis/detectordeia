@@ -745,16 +745,22 @@ export default function DetectorMain({
                   )}
                 </div>
                 
-                {/* CTA premium compacto — solo si no hay flujo humanizador activo */}
-                {result.probability < 60 && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
+                {/* CTA premium compacto — visible para todos los no-premium cuando hay resultado */}
+                {!isLimitExceeded && userStatus.plan_type !== 'premium' && !userStatus.express.is_active && (
                   <div className="w-full flex flex-col items-center my-3">
                     <a
                       href="/pricing"
                       className="w-full bg-verde hover:bg-verde-deep text-white font-bold py-2 rounded-xl shadow-sm transition-all text-base text-center"
                     >
-                      <span className="flex items-center justify-center gap-2"><Icon icon={ProductIcons.Premium} size="md" />Desbloquear análisis avanzado</span>
+                      <span className="flex items-center justify-center gap-2">
+                        <Icon icon={ProductIcons.Premium} size="md" />
+                        {result.probability >= 70
+                          ? `Ver todos los patrones detectados — ${result.probability}% IA confirmado`
+                          : 'Desbloquear análisis avanzado'
+                        }
+                      </span>
                     </a>
-                    <p className="text-xs text-mute mt-1">Usos ilimitados + Caracteres ilimitados + subida de archivos</p>
+                    <p className="text-xs text-mute mt-1">Usos ilimitados · Caracteres ilimitados · Subida de archivos</p>
                   </div>
                 )}
                 
