@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { comparisons } from '@/lib/pseo/comparisons';
 import { humanizerComparisons } from '@/lib/pseo/humanizer-comparisons';
+import { humanizerUseCases } from '@/lib/pseo/humanizer-use-cases';
 import { paraphraserComparisons } from '@/lib/pseo/paraphraser-comparisons';
 import { useCases } from '@/lib/pseo/use-cases';
 import { features } from '@/lib/pseo/features';
@@ -257,6 +258,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Humanizador por caso de uso
+  const humanizerUseCasePages: MetadataRoute.Sitemap = humanizerUseCases.map((uc) => ({
+    url: `${baseUrl}/humanizador-para/${uc.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
   // Comparativas Parafraseador vs competidores
   const paraphraserComparisonPages: MetadataRoute.Sitemap = paraphraserComparisons.map((comp) => ({
     url: `${baseUrl}/parafraseador-vs/${comp.slug}`,
@@ -291,6 +300,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...citadorUniversityPages,
     ...citadorUniversitiesHub,
     ...humanizerComparisonPages,
+    ...humanizerUseCasePages,
     ...paraphraserComparisonPages,
     ...regionalPages,
   ];

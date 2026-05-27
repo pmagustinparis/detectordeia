@@ -75,6 +75,29 @@ export interface UseCasePage {
   cta: CTA;
 }
 
+// Página de humanizador por caso de uso
+export interface HumanizerUseCasePage {
+  slug: string;
+  useCaseName: string; // "tesis", "ensayo", etc.
+  keywords: string[];
+
+  // SEO
+  title: string;
+  description: string;
+  h1: string;
+
+  // Content
+  intro: string;
+  benefits: {
+    icon: string;
+    title: string;
+    description: string;
+  }[];
+  howItWorks: string[];
+  faqs: FAQ[];
+  cta: CTA;
+}
+
 // Página de feature
 export interface FeaturePage {
   slug: string;
