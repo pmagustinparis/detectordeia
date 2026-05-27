@@ -197,7 +197,18 @@ export default function PricingPageClient() {
             <span className="font-mono text-4xl font-medium text-white">$24.99</span>
             <span className="text-white/50 text-sm ml-1">/ 6 meses</span>
           </div>
-          <p className="text-xs text-verde-soft font-medium mb-4">Equivale a $4.17/mes · más económico que comprar Express repetidamente</p>
+
+          {/* Comparación de precio explícita */}
+          <div className="bg-white/8 border border-white/15 rounded-xl px-4 py-3 mb-4 space-y-1.5">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-white/50">3× Express 7 días</span>
+              <span className="text-white/50 line-through">$26.97</span>
+            </div>
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-verde-soft font-semibold">Semestral Pass · 6 meses</span>
+              <span className="text-verde-soft font-semibold">$24.99 ✓</span>
+            </div>
+          </div>
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-white/70">
             <li className="flex items-center gap-2"><CheckIcon verde /> Detector · Humanizador · Parafraseador</li>
