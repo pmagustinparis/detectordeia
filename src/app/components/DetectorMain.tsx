@@ -18,6 +18,7 @@ import type { UserStatus } from '@/lib/types/user-status';
 import ExpressPromoBanner from './ExpressPromoBanner';
 import ExpressUnlockModal from './ExpressUnlockModal';
 import ExpressPremiumComparisonCard from './ExpressPremiumComparisonCard';
+import EmailCaptureInline from './EmailCaptureInline';
 
 // Componente Barra de Confianza horizontal
 const ConfidenceBar = ({ value }: { value: number }) => {
@@ -542,6 +543,20 @@ export default function DetectorMain({
                     <ConfidenceBar value={result.probability} />
                   </div>
                 </div>
+
+                {/* Email capture inline: solo para anónimos, después del primer resultado real */}
+                {!isLimitExceeded && !userStatus.isAuthenticated && (() => {
+                  try { if (localStorage.getItem('email_capture_done')) return null; } catch {}
+                  return (
+                    <EmailCaptureInline
+                      probability={result.probability}
+                      confidence={result.confidenceLevel}
+                      toolType="detector"
+                      anonymousId={getAnonymousId()}
+                      textLength={analyzedTextLength}
+                    />
+                  );
+                })()}
 
                 {/* CTA Detector → Humanizador: aparece cuando el texto tiene probabilidad de IA */}
                 {result.probability >= 50 && !isLimitExceeded && (
