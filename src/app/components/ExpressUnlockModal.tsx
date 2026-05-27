@@ -38,6 +38,18 @@ export default function ExpressUnlockModal({
   const [duration, setDuration] = useState<'24h' | '7d'>('24h');
   const [loading, setLoading] = useState(false);
 
+  // Calcular hora de vencimiento para mostrar urgencia
+  const getExpiryLabel = () => {
+    if (duration === '24h') {
+      const expiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      const time = expiry.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+      return `Acceso hasta las ${time} de mañana`;
+    }
+    const expiry = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+    const date = expiry.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
+    return `Acceso hasta el ${date}`;
+  };
+
   useEffect(() => {
     if (isOpen) {
       trackEvent({
@@ -76,13 +88,6 @@ export default function ExpressUnlockModal({
         tool: toolName,
       },
     });
-
-    if (!isAuthenticated) {
-      localStorage.setItem('pending_plan_type', 'express');
-      localStorage.setItem('pending_express_duration', duration);
-      window.location.href = '/auth/signup?next=/pricing';
-      return;
-    }
 
     try {
       const response = await fetch('/api/create-checkout-session', {
@@ -202,18 +207,11 @@ export default function ExpressUnlockModal({
               disabled={loading}
               className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 text-sm"
             >
-              {loading
-                ? 'Procesando...'
-                : isAuthenticated
-                  ? `⚡ Activar Express Pass · $${PRICES.express[duration]}`
-                  : `⚡ Crear cuenta y activar · $${PRICES.express[duration]}`
-              }
+              {loading ? 'Procesando...' : `⚡ Activar Express Pass · $${PRICES.express[duration]}`}
             </button>
-            {!isAuthenticated && (
-              <p className="text-xs text-amber-700 text-center mt-1.5">
-                Registro gratuito · 10 segundos · activación inmediata
-              </p>
-            )}
+            <p className="text-xs text-amber-700 text-center mt-1.5">
+              {getExpiryLabel()} · Pago seguro con Stripe
+            </p>
           </div>
 
           {/* Semestral - Opción secundaria */}
