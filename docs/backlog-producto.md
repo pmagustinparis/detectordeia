@@ -1,5 +1,5 @@
 # Backlog de Producto — detectordeia.ai
-**Última sesión:** Lunes 25 mayo 2026  
+**Última sesión:** Miércoles 28 mayo 2026  
 **Próxima revisión:** Lunes 1 junio 2026 · siguiente: Lunes 8 junio 2026  
 **Criterio de priorización:** impacto en revenue directo
 
@@ -348,8 +348,25 @@ Input de email + botón. Sin contraseña, sin fricción. El email va a la tabla 
 
 Múltiples pagos fallidos confirmados en Stripe: `transaction_not_allowed`, `try_again_later` desde Colombia, Guatemala, Bolivia, Perú. Son usuarios que QUIEREN pagar y el banco los bloquea en USD.
 
-**Solución:** Habilitar en Stripe: OXXO (México), PSE (Colombia), MercadoPago (Argentina/LatAm).
-**Esfuerzo:** 3-5 días | **Impacto:** desbloquear revenue de usuarios que hoy no pueden pagar
+**Audiencia por país (GA4 Jun 2025–May 2026):** España 33% (sin problema con Stripe) · México 16% · Colombia 10% · Perú 6.5% · Chile 5.5% · Argentina 5.4%.
+
+**Alcance de esta iteración (OXXO + PSE vía Stripe nativo):**
+- **OXXO** (México) — pago en efectivo en tiendas OXXO. Stripe lo soporta nativamente para pagos únicos. Cubre la porción mexicana que no tiene tarjeta de crédito habilitada para USD.
+- **PSE** (Colombia) — transferencia bancaria directa. Stripe lo soporta nativamente para pagos únicos. Cubre usuarios colombianos bloqueados por sus bancos.
+- Ambos son pagos únicos → compatibles con Express 24h, 7d y Semestral sin cambios en la lógica de planes.
+
+**Lo que hay que hacer:**
+1. Habilitar OXXO y PSE en el Stripe Dashboard → Settings → Payment Methods
+2. Actualizar el endpoint de checkout (`/api/checkout`) para incluir los métodos en la sesión
+3. Agregar handler en el webhook para `checkout.session.async_payment_succeeded` — OXXO y PSE son asíncronos: `checkout.session.completed` se dispara con `payment_status: 'unpaid'` cuando se genera el voucher, y el plan se activa recién con `async_payment_succeeded` cuando el cliente efectúa el pago
+
+**MercadoPago:** descartado por ahora. Argentina es solo el 5.4% del tráfico. Se reevalúa si hay señal de demanda o si el tráfico argentino crece.
+
+**OXXO / PSE:** no disponibles — la cuenta de Stripe está registrada en España y estos métodos solo se habilitan para cuentas registradas en México/Colombia respectivamente.
+
+**✅ Google Pay — habilitado el 28 mayo (sin cambios en el código).** Stripe Checkout lo muestra automáticamente para usuarios con dispositivos compatibles. Cubre la porción de usuarios en México y Colombia con tarjetas locales vinculadas a Google Pay.
+
+**Esfuerzo:** completado | **Impacto:** usuarios en México (16%) + Colombia (10%) con Google Pay pueden pagar sin fricción adicional
 
 ---
 
