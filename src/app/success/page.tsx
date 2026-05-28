@@ -23,15 +23,17 @@ export default async function SuccessPage({
   // Obtener datos del usuario actualizado
   const { data: userData } = await supabase
     .from('users')
-    .select('plan_type, email')
+    .select('plan_type, email, express_plan')
     .eq('auth_id', user.id)
     .single();
+
+  const planType = userData?.express_plan || userData?.plan_type || 'free';
 
   return (
     <SuccessClient
       sessionId={params.session_id}
       userEmail={userData?.email || user.email || ''}
-      planType={userData?.plan_type || 'free'}
+      planType={planType}
     />
   );
 }

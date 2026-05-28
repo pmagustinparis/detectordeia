@@ -1237,7 +1237,7 @@ export default function DetectorMain({
                       <li>• Subida de archivos (PDF, DOCX, TXT)</li>
                       <li>• 5 modos en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
-                      <li>• Express $3.99/24h · Semestral $24.99/6 meses · pago único</li>
+                      <li>• Express $3.99/24h · $8.99/7d · Semestral $24.99/6 meses · pago único</li>
                     </ul>
                   </div>
                   <a

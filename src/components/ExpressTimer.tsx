@@ -72,7 +72,7 @@ export default function ExpressTimer({ expiresAt, compact = false }: ExpressTime
           <div className="font-bold mb-1">⚡ Express Pass Activo</div>
           <div className="text-gray-300">
             {isExpired
-              ? 'Tu pase de 24h ha expirado. Renuévalo para seguir con acceso ilimitado.'
+              ? 'Tu Express Pass ha expirado. Renuévalo para seguir con acceso ilimitado.'
               : 'Acceso ilimitado a todas las herramientas. Tu pase expira en ' + timeLeft + '.'
             }
           </div>

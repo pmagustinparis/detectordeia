@@ -24,13 +24,17 @@ export default function SuccessClient({ sessionId, userEmail, planType }: Succes
     return () => clearInterval(timer);
   }, [router]);
 
-  const planLabel = planType === 'semestral' ? 'Semestral Pass' : planType === 'express' ? 'Express Pass' : planType;
-  const title = planType === 'express' ? '¡Express Pass activado!' : planType === 'semestral' ? '¡Semestral Pass activado!' : '¡Plan activado!';
-  const description = planType === 'express'
-    ? 'Tu pase Express ha sido activado. Tenés acceso ilimitado a todas las herramientas por las próximas horas.'
-    : planType === 'semestral'
+  const isExpress = planType === '24h' || planType === '7d' || planType === 'express';
+  const isSemestral = planType === 'semestral';
+  const planLabel = isSemestral ? 'Semestral Pass' : isExpress ? 'Express Pass' : planType;
+  const title = isExpress ? '¡Express Pass activado!' : isSemestral ? '¡Semestral Pass activado!' : '¡Plan activado!';
+  const description = planType === '24h'
+    ? 'Tu pase Express ha sido activado. Tenés acceso ilimitado a todas las herramientas por las próximas 24 horas.'
+    : planType === '7d'
+    ? 'Tu pase Express ha sido activado. Tenés acceso ilimitado a todas las herramientas durante los próximos 7 días.'
+    : isSemestral
     ? 'Tu Semestral Pass ha sido activado. Tenés acceso ilimitado a todas las herramientas durante los próximos 6 meses.'
-    : 'Tu plan ha sido activado exitosamente. Ahora tenés acceso ilimitado a todas las herramientas de DetectorDeIA.';
+    : 'Tu plan ha sido activado exitosamente. Ahora tenés acceso ilimitado a todas las herramientas de detectordeia.ai.';
 
   return (
     <div className="min-h-screen bg-papel flex items-center justify-center px-4">
