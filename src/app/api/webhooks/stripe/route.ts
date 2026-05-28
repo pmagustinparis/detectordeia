@@ -151,15 +151,12 @@ async function handleCheckoutCompleted(
         console.error('❌ Error inviting guest user:', inviteError);
         return;
       }
-      const { error: insertError } = await supabase.from('users').insert({
-        auth_id: inviteData.user.id,
-        email,
-        plan_type: 'free',
-      });
-      if (insertError) {
-        console.error('❌ Error inserting guest user:', insertError);
-        return;
-      }
+      // El trigger on_auth_user_created ya creó el registro en public.users.
+      // Usamos upsert por si acaso no lo hizo (sin sobrescribir campos existentes).
+      await supabase.from('users').upsert(
+        { auth_id: inviteData.user.id, email, plan_type: 'free' },
+        { onConflict: 'auth_id', ignoreDuplicates: true }
+      );
       const { data: newUser } = await supabase.from('users').select('id').eq('auth_id', inviteData.user.id).single();
       userId = newUser?.id;
       console.log(`✨ Guest checkout: created user ${userId} for ${email}`);
