@@ -3,13 +3,13 @@ import PricingPageClient from './PricingPageClient'; // Importamos el componente
 
 export const metadata: Metadata = {
   title: 'Planes | Detector de IA - DetectordeIA.ai',
-  description: 'Elige el plan perfecto para ti. Plan Free gratis, Express Pass $3.99/24h para entregas urgentes, o Semestral Pass $24.99 por 6 meses con usos ilimitados. Detector, Humanizador y Parafraseador de IA en español.',
+  description: 'Elige el plan perfecto para ti. Plan Free gratis, Express Pass $5.99/24h para entregas urgentes. Detector, Humanizador y Parafraseador de IA en español.',
   alternates: {
     canonical: 'https://detectordeia.ai/pricing',
   },
   openGraph: {
     title: 'Planes | Detector de IA - DetectordeIA.ai',
-    description: 'Plan Free gratis, Express Pass $3.99/24h, Semestral Pass $24.99/6 meses · pago único. Detector, Humanizador y Parafraseador de IA en español.',
+    description: 'Plan Free gratis, Express Pass $5.99/24h. Detector, Humanizador y Parafraseador de IA en español.',
     url: 'https://detectordeia.ai/pricing',
     siteName: 'DetectordeIA.ai',
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Planes | Detector de IA - DetectordeIA.ai',
-    description: 'Plan Free gratis, Express Pass $3.99/24h, Semestral Pass $24.99/6 meses. Herramientas de IA en español.',
+    description: 'Plan Free gratis, Express Pass $5.99/24h. Herramientas de IA en español.',
     images: ['https://detectordeia.ai/og-default.png'],
   },
 };

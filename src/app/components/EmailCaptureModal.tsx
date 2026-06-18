@@ -132,7 +132,7 @@ export default function EmailCaptureModal({ isOpen, onClose, source }: EmailCapt
                   required
                 />
                 <label htmlFor="terms" className="text-sm text-gray-600">
-                  Acepto recibir actualizaciones sobre Express Pass y Semestral Pass
+                  Acepto recibir actualizaciones sobre Express Pass
                 </label>
               </div>
 

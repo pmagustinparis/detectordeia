@@ -97,7 +97,7 @@ export default async function HumanizadorPage() {
                 name: '¿Cuántas veces puedo usar el humanizador gratis?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sin registro: 3 usos diarios totales entre las herramientas. Registrándote gratis: 15 usos diarios del Humanizador. Con Express Pass o Semestral Pass: usos ilimitados. Límite de 600 caracteres por humanización en planes gratuitos. El Generador de citas es gratis e ilimitado para todos.',
+                  text: 'Sin registro: 3 usos diarios totales entre las herramientas. Registrándote gratis: 15 usos diarios del Humanizador. Con Express Pass: usos ilimitados. Límite de 600 caracteres por humanización en planes gratuitos. El Generador de citas es gratis e ilimitado para todos.',
                 },
               },
               {
@@ -129,15 +129,15 @@ export default async function HumanizadorPage() {
                 name: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Los modos Estándar y Creativo están disponibles gratis. El Estándar humaniza con tono neutral y natural; el Creativo agrega estilo expresivo y variado. Los modos Formal, Simplificado y Académico están incluidos en Express Pass y Semestral Pass para humanización más específica.',
+                  text: 'Los modos Estándar y Creativo están disponibles gratis. El Estándar humaniza con tono neutral y natural; el Creativo agrega estilo expresivo y variado. Los modos Formal, Simplificado y Académico están incluidos en Express Pass para humanización más específica.',
                 },
               },
               {
                 '@type': 'Question',
-                name: '¿Qué incluyen Express Pass y Semestral Pass?',
+                name: '¿Qué incluye el Express Pass?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Express Pass ($3.99 por 24 horas o $8.99 por 7 días) te da acceso ilimitado a todas las herramientas con 5 modos, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Semestral Pass ($24.99 pago único) incluye lo mismo durante 6 meses completos.',
+                  text: 'Express Pass ($5.99 por 24 horas o $8.99 por 7 días) te da acceso ilimitado a todas las herramientas con 5 modos, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Es un pago único sin renovación automática.',
                 },
               },
               {

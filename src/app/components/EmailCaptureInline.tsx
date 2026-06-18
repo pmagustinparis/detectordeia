@@ -74,7 +74,7 @@ export default function EmailCaptureInline({
           <p className="text-xs text-tinta-soft mt-0.5">
             Si querés usar el humanizador ahora,{' '}
             <a href="/pricing" className="underline text-tinta hover:text-tinta-soft">
-              Express Pass desde $3.99
+              Express Pass desde $5.99
             </a>.
           </p>
         </div>

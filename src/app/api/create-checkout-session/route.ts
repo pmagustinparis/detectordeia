@@ -71,7 +71,7 @@ export async function POST(request: Request) {
         priceId = process.env.STRIPE_PRICE_EXPRESS_WEEKLY || 'price_1Sho71R5MbTVVQlkSbXwgWmk';
         planTypeForMetadata = 'express_semanal';
       } else {
-        priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1ScR9nR5MbTVVQlk2oIBvATK';
+        priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1TjlD8R5MbTVVQlkao0ajETs';
         planTypeForMetadata = 'express';
       }
     } else if (plan_type === 'semestral') {
@@ -127,6 +127,13 @@ export async function POST(request: Request) {
       billing_address_collection: 'auto',
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/pricing`,
+      // Carrito abandonado: la sesión expira en 3h y dispara checkout.session.expired.
+      // recovery habilita un link para reanudar el mismo checkout desde el email.
+      // (Solo para pagos únicos — las suscripciones no soportan expires_at.)
+      ...(mode === 'payment' && {
+        expires_at: Math.floor(Date.now() / 1000) + 3 * 60 * 60,
+        after_expiration: { recovery: { enabled: true } },
+      }),
       metadata: {
         supabase_user_id: userData?.id ?? '',
         plan_type: planTypeForMetadata,

@@ -4,7 +4,7 @@
  * Modal/overlay que aparece cuando un usuario alcanza su límite diario.
  * Muestra mensajes diferentes según el tipo de usuario:
  * - Anonymous: CTA para registrarse (obtener más usos/día)
- * - Free: CTA para Express ($3.99/24h) o Semestral ($24.99/6 meses)
+ * - Free: CTA para Express ($5.99/24h o $8.99/7d)
  * - Express/Semestral: No deberían ver este modal (tienen usos ilimitados)
  */
 
@@ -160,30 +160,16 @@ export default function UsageLimitOverlay({
                   <li className="flex items-start gap-2"><span className="text-orange-600 font-bold">✓</span><span>Todos los modos + subida de archivos</span></li>
                   <li className="flex items-start gap-2"><span className="text-orange-600 font-bold">✓</span><span>Perfecto para entregas urgentes</span></li>
                 </ul>
-                <p className="text-lg font-bold text-orange-900">$3.99 • Pago único</p>
-              </div>
-
-              {/* Semestral */}
-              <div className="bg-papel-2 border border-line rounded-xl p-5 mb-6">
-                <p className="text-sm font-medium text-tinta mb-2 font-sans">Semestral Pass - Todo el semestre</p>
-                <ul className="space-y-1.5 text-sm text-tinta-soft mb-3 font-sans">
-                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span><strong>Usos ilimitados</strong> por 6 meses</span></li>
-                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span>Todos los modos + subida de archivos</span></li>
-                  <li className="flex items-start gap-2"><span className="text-verde font-bold">✓</span><span>Pago único · sin renovación automática</span></li>
-                </ul>
-                <p className="font-mono text-lg font-medium text-tinta">$24.99 · pago único</p>
+                <p className="text-lg font-bold text-orange-900">$5.99 • Pago único</p>
               </div>
 
               <div className="space-y-2 mb-3">
                 <button onClick={() => handleExpressCheckout('24h')} disabled={loadingCheckout} className="block w-full text-center bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 disabled:opacity-60 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 font-sans">
-                  {loadingCheckout ? 'Procesando...' : '⚡ Activar Express 24h · $3.99'}
+                  {loadingCheckout ? 'Procesando...' : '⚡ Activar Express 24h · $5.99'}
                 </button>
                 <button onClick={() => handleExpressCheckout('7d')} disabled={loadingCheckout} className="block w-full text-center bg-amber-100 hover:bg-amber-200 disabled:opacity-60 text-amber-900 font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm font-sans">
                   {loadingCheckout ? '...' : 'Express 7 días · $8.99 (ahorra 68%)'}
                 </button>
-                <a href="/pricing" className="block w-full text-center border border-line text-tinta hover:bg-papel-2 font-medium py-2.5 px-6 rounded-xl transition-colors text-sm font-sans">
-                  Ver Semestral Pass ($24.99 · 6 meses)
-                </a>
               </div>
               <button onClick={onClose} className="block w-full text-center text-mute hover:text-tinta font-medium py-2 font-sans">
                 Volver mañana ({hoursUntilReset}h hasta reset)

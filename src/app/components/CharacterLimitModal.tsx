@@ -147,7 +147,7 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-tinta mt-3 font-medium">
-                  Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses
+                  Express $5.99/24h · $8.99/7d · pago único
                 </p>
               </div>
 
@@ -164,7 +164,7 @@ export default function CharacterLimitModal({
                 href="/pricing"
                 className="block w-full text-center text-verde hover:text-verde-deep font-semibold py-2 transition-colors text-sm mb-3"
               >
-                O ver Express y Semestral →
+                O ver Express Pass →
               </a>
             </>
           )}
@@ -176,29 +176,18 @@ export default function CharacterLimitModal({
                 Con el Plan Free podés procesar hasta <strong>{maxChars.toLocaleString()} caracteres</strong> por vez.
               </p>
 
-              {/* Dual option: Express vs Semestral */}
-              <div className="grid grid-cols-2 gap-3 mb-5">
-                <div className="border border-amber-200 bg-amber-50 rounded-xl p-4">
-                  <p className="text-xs font-bold text-amber-800 mb-1">⚡ Express Pass</p>
-                  <p className="text-2xl font-bold text-amber-900">$3.99</p>
-                  <p className="text-xs text-amber-700">/ 24 horas</p>
-                  <p className="text-xs text-amber-600 mt-1">Sin suscripción</p>
-                  <ul className="text-xs text-amber-800 mt-2 space-y-1">
-                    <li>✓ <strong>{premiumMaxChars.toLocaleString()} chars</strong></li>
-                    <li>✓ Usos ilimitados hoy</li>
-                  </ul>
+              {/* Express Pass — opción única */}
+              <div className="border border-amber-200 bg-amber-50 rounded-xl p-4 mb-5">
+                <div className="flex items-baseline justify-between mb-1">
+                  <p className="text-sm font-bold text-amber-800">⚡ Express Pass</p>
+                  <p className="text-xs text-amber-600 line-through">antes Semestral $24.99</p>
                 </div>
-                <div className="bg-papel-2 border-2 border-line rounded-xl p-4">
-                  <p className="text-xs font-medium text-tinta mb-1">Semestral Pass</p>
-                  <p className="text-2xl font-medium text-tinta">$24.99</p>
-                  <p className="text-xs text-tinta">/ 6 meses</p>
-                  <p className="text-xs text-tinta mt-1">$4.17/mes · sin renovación</p>
-                  <ul className="text-xs text-tinta mt-2 space-y-1">
-                    <li>✓ <strong>{premiumMaxChars.toLocaleString()} chars</strong></li>
-                    <li>✓ Usos ilimitados</li>
-                    <li>✓ 5 modos</li>
-                  </ul>
-                </div>
+                <p className="text-3xl font-bold text-amber-900">$5.99 <span className="text-sm font-medium text-amber-700">/ 24 horas</span></p>
+                <p className="text-xs text-amber-600 mt-1">o $8.99 / 7 días · pago único · sin suscripción</p>
+                <ul className="text-xs text-amber-800 mt-2 space-y-1">
+                  <li>✓ <strong>{premiumMaxChars.toLocaleString()} caracteres</strong> por análisis</li>
+                  <li>✓ Usos ilimitados + 5 modos + subida de archivos</li>
+                </ul>
               </div>
 
               {/* CTA */}
@@ -206,7 +195,7 @@ export default function CharacterLimitModal({
                 href="/pricing"
                 className="block w-full text-center bg-verde hover:bg-verde-deep text-papel font-medium py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-3"
               >
-                Ver Express y Semestral
+                Activar Express Pass
               </a>
             </>
           )}

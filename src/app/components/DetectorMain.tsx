@@ -53,7 +53,7 @@ const CHARACTER_LIMITS = {
 // Textos para el upsell (pueden ser importados o centralizados por país)
 const premiumTextos = {
   titulo: 'Desbloquea todo el poder del Detector',
-  subtitulo: 'Incluido en Express y Semestral',
+  subtitulo: 'Incluido en Express Pass',
   bullets: [
     'Usos ilimitados diarios en todas las herramientas',
     '✨ Caracteres ilimitados en el Detector',
@@ -61,15 +61,15 @@ const premiumTextos = {
     '5 modos en Humanizador y Parafraseador',
     'Historial completo de todos tus análisis',
   ],
-  precio: 'Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses · pago único',
+  precio: 'Express $5.99/24h · $8.99/7d',
   cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
-  titulo: 'Desbloquea Express o Semestral',
+  titulo: 'Desbloquea Express Pass',
   bullets: [
     'Usos ilimitados + Caracteres ilimitados',
     '5 modos + Historial completo',
-    'Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses',
+    'Express $5.99/24h · $8.99/7d',
   ],
   cta: 'Ver Planes',
 };
@@ -1179,7 +1179,7 @@ export default function DetectorMain({
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-tinta-soft mt-2">Express Pass desde $3.99 · Semestral 6 meses por $24.99 · Pago único sin renovación</p>
+                      <p className="text-xs text-tinta-soft mt-2">Express Pass desde $5.99 · Pago único sin renovación</p>
                     </div>
                   </div>
                 )}
@@ -1237,7 +1237,7 @@ export default function DetectorMain({
                       <li>• Subida de archivos (PDF, DOCX, TXT)</li>
                       <li>• 5 modos en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
-                      <li>• Express $3.99/24h · $8.99/7d · Semestral $24.99/6 meses · pago único</li>
+                      <li>• Express $5.99/24h · $8.99/7d</li>
                     </ul>
                   </div>
                   <a

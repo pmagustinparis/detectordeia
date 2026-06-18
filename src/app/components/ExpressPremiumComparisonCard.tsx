@@ -11,8 +11,7 @@ interface ExpressPremiumComparisonCardProps {
 }
 
 const PRICES = {
-  express: { '24h': 3.99, '7d': 8.99 },
-  semestral: 24.99,
+  express: { '24h': 5.99, '7d': 8.99 },
 };
 
 const TOOL_COPY: Record<string, { expressTag: string; weeklyPitch: string }> = {
@@ -70,23 +69,24 @@ export default function ExpressPremiumComparisonCard({
 
   const title = context === 'post_insufficient'
     ? 'El modo Académico mejora los resultados'
-    : 'Desbloqueá más con Express o Semestral';
+    : 'Desbloqueá todo con Express Pass';
 
   return (
     <div className="mt-3 p-4 bg-papel-2 border border-line rounded-xl">
       <p className="text-sm font-medium text-tinta mb-3 font-sans">{title}</p>
 
-      <div className="grid grid-cols-2 gap-3 mb-3">
-        {/* Express — amber (se mantiene por decisión del usuario) */}
-        <div className="border-2 border-amber-300 bg-amber-50 rounded-xl p-3 flex flex-col">
-          <div className="mb-2">
+      <div className="mb-3">
+        {/* Express — opción única */}
+        <div className="border-2 border-amber-300 bg-amber-50 rounded-xl p-4 flex flex-col">
+          <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold bg-amber-500 text-white px-2 py-0.5 rounded-full">SIN SUSCRIPCIÓN</span>
+            <span className="text-xs text-amber-600 line-through">antes Semestral $24.99</span>
           </div>
           <p className="text-sm font-bold text-amber-900 mb-1">Express Pass</p>
           <p className="text-xs text-amber-700 mb-2">{toolCopy.expressTag}</p>
           <div className="flex gap-1 mb-2">
             <button onClick={() => setDuration('24h')} className={`flex-1 text-xs py-1.5 rounded-lg font-semibold transition-colors ${duration === '24h' ? 'bg-amber-500 text-white' : 'bg-white text-amber-800 border border-amber-300'}`}>
-              24h · $3.99
+              24h · $5.99
             </button>
             <button onClick={() => setDuration('7d')} className={`flex-1 text-xs py-1.5 rounded-lg font-semibold transition-colors ${duration === '7d' ? 'bg-amber-500 text-white' : 'bg-white text-amber-800 border border-amber-300'}`}>
               7d · $8.99
@@ -95,34 +95,11 @@ export default function ExpressPremiumComparisonCard({
           <ul className="text-xs text-amber-800 space-y-0.5 mb-3 flex-1">
             <li>✓ Modos avanzados hoy</li>
             <li>✓ Sin límite de caracteres</li>
-            <li>✓ Sin renovación</li>
+            <li>✓ Subida de archivos · sin renovación</li>
           </ul>
-          <button onClick={handleExpressCheckout} disabled={loading} className="w-full bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-bold py-2 px-3 rounded-lg transition-colors text-xs">
-            {loading ? 'Procesando...' : 'Activar Express'}
+          <button onClick={handleExpressCheckout} disabled={loading} className="w-full bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white font-bold py-2.5 px-3 rounded-lg transition-colors text-sm">
+            {loading ? 'Procesando...' : `Activar Express · $${PRICES.express[duration]}`}
           </button>
-        </div>
-
-        {/* Semestral — tinta (brand dark) */}
-        <div className="border border-white/10 bg-tinta rounded-xl p-3 flex flex-col">
-          <div className="mb-2">
-            <span className="text-xs font-medium bg-verde-soft text-verde-deep px-2 py-0.5 rounded-full">6 MESES</span>
-          </div>
-          <p className="text-sm font-medium text-white mb-1">Semestral Pass</p>
-          <p className="font-mono text-lg font-medium text-white">$24.99</p>
-          <p className="text-xs text-white/50 mb-2">pago único · $4.17/mes</p>
-          <ul className="text-xs text-white/70 space-y-0.5 mb-3 flex-1">
-            <li>✓ Todos los modos</li>
-            <li>✓ Sin límite de chars</li>
-            <li>✓ Historial completo</li>
-            <li>✓ Sin renovación</li>
-          </ul>
-          <a
-            href="/pricing"
-            onClick={() => trackEvent({ eventType: 'clicked_pricing_cta', toolType: toolName, metadata: { source } })}
-            className="w-full text-center border border-white/30 text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-colors text-xs block"
-          >
-            Ver Semestral →
-          </a>
         </div>
       </div>
 

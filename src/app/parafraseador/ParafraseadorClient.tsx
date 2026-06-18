@@ -35,7 +35,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
             </div>
 
             <p className="text-verde font-medium text-lg mb-4">
-              Express Pass o Semestral – acceso completo
+              Express Pass – acceso completo
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-6 text-left">
@@ -58,7 +58,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
             </div>
 
             <p className="text-sm text-mute mb-4">
-              Express Pass desde <strong className="text-tinta">$3.99</strong> · pago único · Semestral 6 meses por <strong className="text-tinta">$24.99</strong>
+              Express Pass desde <strong className="text-tinta">$5.99</strong> · pago único
             </p>
 
             <a

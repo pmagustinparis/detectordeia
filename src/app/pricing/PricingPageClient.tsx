@@ -5,7 +5,7 @@ import { useAuth } from "@/lib/hooks/useAuth";
 import { trackEvent } from "@/lib/analytics/client";
 
 const PRICES = {
-  express: { '24h': 3.99, '7d': 8.99 },
+  express: { '24h': 5.99, '7d': 8.99 },
   semestral: 24.99,
 };
 
@@ -69,16 +69,16 @@ export default function PricingPageClient() {
       a: "El pago es procesado íntegramente por Stripe, la plataforma de pagos usada por Amazon, Google y Spotify. Detectordeia.ai nunca ve ni almacena tus datos de tarjeta. Toda la transacción ocurre en los servidores de Stripe con encriptación de extremo a extremo.",
     },
     {
-      q: "¿El Semestral se renueva automáticamente?",
-      a: "No. El Semestral Pass es un pago único de $24.99 que te da acceso completo por 6 meses. No hay cargos automáticos ni sorpresas. Cuando expire, podés renovar manualmente si querés.",
+      q: "¿El Express se renueva automáticamente?",
+      a: "No. El Express Pass es un pago único (24 horas por $5.99 o 7 días por $8.99). No hay cargos automáticos ni suscripción ni sorpresas. Cuando expire, podés volver a comprarlo si lo necesitás.",
     },
     {
-      q: "¿Qué diferencia hay entre Express y Semestral?",
-      a: "Express es para necesidades puntuales: 24 horas ($3.99) o 7 días ($8.99), pago único. Semestral es para los próximos 6 meses: acceso completo por $24.99, también pago único sin renovación automática.",
+      q: "¿Qué diferencia hay entre 24 horas y 7 días?",
+      a: "Es solo la duración del acceso. 24 horas ($5.99) es ideal para una entrega puntual; 7 días ($8.99) conviene si tenés varios trabajos esta semana. Los dos incluyen exactamente las mismas funcionalidades.",
     },
     {
-      q: "¿Qué incluyen Express y Semestral?",
-      a: "Los dos incluyen exactamente las mismas funcionalidades: detector, humanizador y parafraseador sin límites de caracteres, todos los modos, subida de archivos y historial completo. La diferencia es solo la duración.",
+      q: "¿Qué incluye el Express Pass?",
+      a: "Incluye todo: detector, humanizador y parafraseador sin límites de caracteres, todos los modos premium, subida de archivos (PDF, DOCX, TXT) y usos ilimitados durante el período activo.",
     },
     {
       q: "¿El Generador de Citas es gratis?",
@@ -108,19 +108,19 @@ export default function PricingPageClient() {
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-mute">
           <span className="flex items-center gap-1.5"><CheckIcon /> +2.000 usuarios activos</span>
           <span className="flex items-center gap-1.5"><CheckIcon /> Pagos procesados por Stripe</span>
-          <span className="flex items-center gap-1.5"><CheckIcon /> Sin renovación automática en Express y Semestral</span>
+          <span className="flex items-center gap-1.5"><CheckIcon /> Pago único · sin renovación automática</span>
         </div>
       </div>
 
       {/* Cards */}
-      <div className="max-w-3xl mx-auto px-4 grid md:grid-cols-2 gap-6 mb-16">
+      <div className="max-w-md mx-auto px-4 mb-16">
 
         {/* EXPRESS PASS */}
-        <div className="bg-papel-2 border border-line rounded-2xl p-7 flex flex-col">
+        <div className="bg-papel-2 border border-line rounded-2xl p-7 flex flex-col shadow-sm">
           <div className="mb-5">
-            <p className="font-mono text-xs font-medium text-mute uppercase tracking-widest mb-2">Para una necesidad urgente</p>
+            <p className="font-mono text-xs font-medium text-mute uppercase tracking-widest mb-2">Acceso completo, pago único</p>
             <h2 className="text-2xl text-tinta mb-1">Express Pass</h2>
-            <p className="text-sm text-mute">Acceso completo · Pago único · Sin renovación</p>
+            <p className="text-sm text-mute">Todas las herramientas sin límites · Sin renovación</p>
           </div>
 
           {/* Toggle 24h / 7d */}
@@ -149,7 +149,7 @@ export default function PricingPageClient() {
 
           <div className="mb-1">
             <span className="font-mono text-4xl font-medium text-tinta">
-              ${expressDuration === '24h' ? '3.99' : '8.99'}
+              ${expressDuration === '24h' ? '5.99' : '8.99'}
             </span>
             <span className="text-mute text-sm ml-1">
               {expressDuration === '24h' ? '/ 24 horas' : '/ 7 días'}
@@ -161,6 +161,12 @@ export default function PricingPageClient() {
           {expressDuration === '24h' && (
             <p className="text-xs text-mute mb-4">Para una necesidad puntual o urgente</p>
           )}
+
+          {/* Ancla de precio */}
+          <div className="bg-papel-3 border border-line rounded-xl px-4 py-2.5 mb-5 flex items-center justify-between text-xs">
+            <span className="text-mute">Mismas funciones, acceso de 6 meses</span>
+            <span className="text-mute line-through">$24.99</span>
+          </div>
 
           <ul className="space-y-2.5 mb-6 flex-grow text-sm text-tinta-soft">
             <li className="flex items-center gap-2"><CheckIcon /> Detector · Humanizador · Parafraseador</li>
@@ -177,56 +183,6 @@ export default function PricingPageClient() {
             {loadingCheckout?.startsWith('express') ? 'Procesando...' : `Activar Express Pass · $${PRICES.express[expressDuration]}`}
           </button>
           <p className="text-xs text-center text-mute mt-2">Pago seguro con Stripe</p>
-        </div>
-
-        {/* SEMESTRAL PASS */}
-        <div className="bg-verde-deep rounded-2xl p-7 flex flex-col shadow-lg relative">
-          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-            <span className="bg-verde-soft text-verde-deep border border-verde/30 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md font-mono">
-              MÁS POPULAR
-            </span>
-          </div>
-
-          <div className="mb-5 mt-2">
-            <p className="font-mono text-xs font-medium text-verde-soft uppercase tracking-widest mb-2">Para los próximos 6 meses</p>
-            <h2 className="text-2xl text-white mb-1">Semestral Pass</h2>
-            <p className="text-sm text-white/50">6 meses · Pago único · Sin renovación automática</p>
-          </div>
-
-          <div className="mb-1">
-            <span className="font-mono text-4xl font-medium text-white">$24.99</span>
-            <span className="text-white/50 text-sm ml-1">/ 6 meses</span>
-          </div>
-
-          {/* Comparación de precio explícita */}
-          <div className="bg-white/8 border border-white/15 rounded-xl px-4 py-3 mb-4 space-y-1.5">
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-white/50">3× Express 7 días</span>
-              <span className="text-white/50 line-through">$26.97</span>
-            </div>
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-verde-soft font-semibold">Semestral Pass · 6 meses</span>
-              <span className="text-verde-soft font-semibold">$24.99 ✓</span>
-            </div>
-          </div>
-
-          <ul className="space-y-2.5 mb-6 flex-grow text-sm text-white/70">
-            <li className="flex items-center gap-2"><CheckIcon verde /> Detector · Humanizador · Parafraseador</li>
-            <li className="flex items-center gap-2"><CheckIcon verde /> Caracteres y usos ilimitados</li>
-            <li className="flex items-center gap-2"><CheckIcon verde /> Todos los modos premium</li>
-            <li className="flex items-center gap-2"><CheckIcon verde /> Subida de archivos (PDF, DOCX, TXT)</li>
-            <li className="flex items-center gap-2"><CheckIcon verde /> Historial completo (100 usos · 30 días)</li>
-            <li className="flex items-center gap-2"><CheckIcon verde /> Sin renovación automática</li>
-          </ul>
-
-          <button
-            onClick={() => handleCTA('semestral')}
-            disabled={loadingCheckout === 'semestral'}
-            className="w-full bg-papel hover:bg-papel-2 text-tinta font-medium py-3 rounded-xl transition-all disabled:opacity-60 text-sm"
-          >
-            {loadingCheckout === 'semestral' ? 'Procesando...' : 'Activar Semestral Pass · $24.99'}
-          </button>
-          <p className="text-xs text-center text-white/30 mt-2">Pago seguro con Stripe</p>
         </div>
 
       </div>

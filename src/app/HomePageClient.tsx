@@ -66,7 +66,7 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
             <div className="flex-1">
               <h3 className="text-2xl text-tinta mb-2">Reportes avanzados</h3>
               <p className="text-tinta-soft text-base leading-relaxed">
-                Express Pass y Semestral Pass con análisis de archivos, historial completo y reportes detallados.
+                Express Pass con análisis de archivos, historial completo y reportes detallados.
               </p>
             </div>
           </div>

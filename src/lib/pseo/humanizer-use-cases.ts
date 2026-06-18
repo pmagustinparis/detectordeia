@@ -55,7 +55,7 @@ export const humanizerUseCases: HumanizerUseCasePage[] = [
       },
       {
         question: '¿Cuántos caracteres tiene un ensayo universitario típico?',
-        answer: 'Un ensayo universitario promedio tiene entre 3.000 y 8.000 caracteres (800-2.000 palabras). El plan gratuito de DetectorDeIA permite humanizar hasta 600 caracteres por vez. Para ensayos completos, el Express Pass ($3.99/24h) o Semestral ($24.99/6 meses) permiten hasta 100.000 caracteres sin límite.',
+        answer: 'Un ensayo universitario promedio tiene entre 3.000 y 8.000 caracteres (800-2.000 palabras). El plan gratuito de DetectorDeIA permite humanizar hasta 600 caracteres por vez. Para ensayos completos, el Express Pass ($5.99/24h) o Semestral ($24.99/6 meses) permiten hasta 100.000 caracteres sin límite.',
       },
       {
         question: '¿Funciona para español de España y de LATAM?',
@@ -208,7 +208,7 @@ export const humanizerUseCases: HumanizerUseCasePage[] = [
       },
       {
         question: '¿El plan gratis es suficiente para un resumen de clase?',
-        answer: 'Depende del largo. Un resumen corto (100-150 palabras = ~700-900 caracteres) puede requerir el plan con acceso ampliado. El plan gratuito cubre hasta 600 caracteres (unas 80-100 palabras). Para resúmenes de una página completa, el Express Pass ($3.99/24h) es la opción más económica.',
+        answer: 'Depende del largo. Un resumen corto (100-150 palabras = ~700-900 caracteres) puede requerir el plan con acceso ampliado. El plan gratuito cubre hasta 600 caracteres (unas 80-100 palabras). Para resúmenes de una página completa, el Express Pass ($5.99/24h) es la opción más económica.',
       },
       {
         question: '¿Funciona para resúmenes de materias técnicas (química, física, matemáticas)?',
@@ -285,7 +285,7 @@ export const humanizerUseCases: HumanizerUseCasePage[] = [
       },
       {
         question: '¿Cuánto cuesta humanizar un TP completo?',
-        answer: 'Un TP típico de 500-1.500 palabras tiene entre 3.000 y 9.000 caracteres. El plan gratuito cubre hasta 600 caracteres por humanización. Para un TP completo, el Express Pass ($3.99/24h) es lo más económico para una sola entrega. Si tenés varios TPs en el semestre, el Semestral ($24.99/6 meses) es más conveniente.',
+        answer: 'Un TP típico de 500-1.500 palabras tiene entre 3.000 y 9.000 caracteres. El plan gratuito cubre hasta 600 caracteres por humanización. Para un TP completo, el Express Pass ($5.99/24h) es lo más económico para una sola entrega. Si tenés varios TPs en el semestre, el Semestral ($24.99/6 meses) es más conveniente.',
       },
       {
         question: '¿Funciona con plataformas como Turnitin o el sistema de mi universidad?',
@@ -370,7 +370,7 @@ export const humanizerUseCases: HumanizerUseCasePage[] = [
       },
       {
         question: '¿Cuánto cuesta humanizar un TFG completo?',
-        answer: 'Un TFG típico tiene entre 30.000 y 60.000 caracteres (8.000-15.000 palabras). Con el Express Pass ($3.99/24h) podés humanizar secciones de hasta 100.000 caracteres cada una — suficiente para varios capítulos en una sesión. Si estás en la fase de escritura del TFG durante varios meses, el Semestral ($24.99/6 meses) es la opción más conveniente.',
+        answer: 'Un TFG típico tiene entre 30.000 y 60.000 caracteres (8.000-15.000 palabras). Con el Express Pass ($5.99/24h) podés humanizar secciones de hasta 100.000 caracteres cada una — suficiente para varios capítulos en una sesión. Si estás en la fase de escritura del TFG durante varios meses, el Semestral ($24.99/6 meses) es la opción más conveniente.',
       },
     ],
 
