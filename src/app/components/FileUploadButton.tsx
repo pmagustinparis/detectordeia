@@ -91,7 +91,7 @@ export default function FileUploadButton({
               ${(disabled || isProcessing) && 'opacity-50 cursor-not-allowed'}
               relative group
             `}
-            title={!hasPremiumAccess ? 'Subir archivos requiere Express Pass o Semestral Pass 👑 Click para ver planes' : 'Subir archivo PDF, DOCX o TXT'}
+            title={!hasPremiumAccess ? 'Subir archivos requiere Express Pass 👑 Click para ver planes' : 'Subir archivo PDF, DOCX o TXT'}
           >
             {isProcessing ? (
               <>

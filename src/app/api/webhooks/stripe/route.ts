@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
+import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -92,6 +93,12 @@ export async function POST(request: Request) {
       case 'invoice.payment_failed': {
         const invoice = event.data.object as Stripe.Invoice;
         await handlePaymentFailed(invoice, supabase);
+        break;
+      }
+
+      case 'checkout.session.expired': {
+        const session = event.data.object as Stripe.Checkout.Session;
+        await handleCheckoutExpired(session, supabase);
         break;
       }
 
@@ -442,4 +449,89 @@ async function handlePaymentFailed(
     .eq('stripe_subscription_id', subscriptionId);
 
   console.log(`⚠️ Payment failed for subscription ${subscriptionId}`);
+}
+
+// Manejar carrito abandonado: la sesión expiró (3h) sin completarse.
+// Si el usuario dejó su email en Stripe y no tiene un plan activo, le mandamos
+// un email de recuperación con un link para reanudar el mismo checkout.
+async function handleCheckoutExpired(
+  session: Stripe.Checkout.Session,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
+  const email = session.customer_details?.email;
+  if (!email) {
+    console.log('🛒 Expired checkout sin email — no se puede recuperar');
+    return;
+  }
+
+  // Si ya tiene un plan Express/Semestral activo, no molestar (ya compró).
+  const { data: existingUser } = await supabase
+    .from('users')
+    .select('express_expires_at')
+    .eq('email', email)
+    .maybeSingle();
+
+  if (existingUser?.express_expires_at && new Date(existingUser.express_expires_at) > new Date()) {
+    console.log(`🛒 ${email} ya tiene plan activo — se omite recovery`);
+    return;
+  }
+
+  const recoveryUrl =
+    session.after_expiration?.recovery?.url ||
+    `${process.env.NEXT_PUBLIC_SITE_URL || 'https://detectordeia.ai'}/pricing`;
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error('🛒 RESEND_API_KEY no configurada — no se envía recovery');
+    return;
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const subject = 'Se te quedó el pago — terminá en 1 clic';
+  const html = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; color: #1A1D24;">
+      <div style="background: #3B6E55; color: #F7F5EF; padding: 24px; border-radius: 12px 12px 0 0;">
+        <h1 style="margin: 0; font-size: 20px;">Tu acceso Express te espera</h1>
+      </div>
+      <div style="background: #F7F5EF; padding: 24px; border-radius: 0 0 12px 12px;">
+        <p style="font-size: 15px; line-height: 1.6; margin: 0 0 16px;">
+          Hola 👋 Empezaste a activar tu <strong>Express Pass</strong> en DetectordeIA pero el pago quedó a mitad de camino.
+        </p>
+        <p style="font-size: 15px; line-height: 1.6; margin: 0 0 20px;">
+          Tu acceso completo —usos y caracteres ilimitados, todos los modos y subida de archivos— está a un clic. Terminá ahora:
+        </p>
+        <a href="${recoveryUrl}" style="display: inline-block; background: #3B6E55; color: #F7F5EF; text-decoration: none; font-weight: 600; padding: 14px 28px; border-radius: 10px; font-size: 15px;">
+          Completar mi compra →
+        </a>
+        <p style="font-size: 13px; color: #6b7280; line-height: 1.6; margin: 20px 0 0;">
+          Pago único, sin suscripción ni renovación automática. Si ya completaste tu compra, ignorá este mensaje.
+        </p>
+      </div>
+    </div>
+  `;
+
+  try {
+    const { error: sendError } = await resend.emails.send({
+      from: 'Detector de IA <hola@detectordeia.ai>',
+      to: email,
+      subject,
+      html,
+    });
+    if (sendError) {
+      console.error(`🛒 Error enviando recovery a ${email}:`, sendError);
+      return;
+    }
+    console.log(`✅ Recovery email enviado a ${email}`);
+
+    await supabase.from('analytics_events').insert({
+      event_type: 'checkout_recovery_sent',
+      tool_type: 'general',
+      metadata: {
+        email,
+        session_id: session.id,
+        plan_type: session.metadata?.plan_type ?? null,
+      },
+    });
+  } catch (err) {
+    console.error(`🛒 Excepción enviando recovery a ${email}:`, err);
+  }
 }

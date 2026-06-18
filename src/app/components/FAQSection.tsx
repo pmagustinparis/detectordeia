@@ -14,7 +14,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Cuántas veces puedo usar el humanizador gratis?',
-    answer: 'Con registro gratuito podés humanizar hasta 15 veces por día. Sin registro: 3 usos diarios. Para usos ilimitados, Express Pass ($3.99/24h o $8.99/7d) o Semestral Pass ($24.99/6 meses) eliminan todos los límites.'
+    answer: 'Con registro gratuito podés humanizar hasta 15 veces por día. Sin registro: 3 usos diarios. Para usos ilimitados, el Express Pass ($5.99/24h o $8.99/7d) elimina todos los límites.'
   },
   {
     question: '¿El humanizador cambia el significado de mi texto?',
@@ -30,11 +30,11 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Cuál es la diferencia entre el Modo Estándar y el Modo Avanzado?',
-    answer: 'Los modos Estándar y Creativo están disponibles gratis. El Modo Estándar hace una humanización efectiva eliminando marcadores evidentes de IA. El Modo Creativo agrega personalidad y variedad. Los modos Formal, Simplificado y Académico están disponibles con Express Pass o Semestral Pass.'
+    answer: 'Los modos Estándar y Creativo están disponibles gratis. El Modo Estándar hace una humanización efectiva eliminando marcadores evidentes de IA. El Modo Creativo agrega personalidad y variedad. Los modos Formal, Simplificado y Académico están disponibles con Express Pass.'
   },
   {
-    question: '¿Qué incluyen los planes de pago?',
-    answer: 'Express Pass ($3.99/24h o $8.99/7 días) y Semestral Pass ($24.99/6 meses) incluyen exactamente lo mismo: usos y caracteres ilimitados en las 3 herramientas (Detector, Humanizador y Parafraseador), los 5 modos de humanización y paráfrasis, y subida de archivos PDF/DOCX. Express es para necesidades puntuales, Semestral para todo el semestre.'
+    question: '¿Qué incluye el Express Pass?',
+    answer: 'El Express Pass ($5.99/24h o $8.99/7 días) incluye usos y caracteres ilimitados en las 3 herramientas (Detector, Humanizador y Parafraseador), los 5 modos de humanización y paráfrasis, y subida de archivos PDF/DOCX. Es un pago único sin renovación automática: 24 horas para una entrega puntual, 7 días si tenés varios trabajos esta semana.'
   },
   {
     question: '¿Puedo usar el texto humanizado para trabajos académicos?',

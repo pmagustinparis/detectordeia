@@ -71,7 +71,7 @@ export default function ExpressPromoBanner() {
             </svg>
           </div>
           <p className="text-sm text-amber-900 font-medium truncate">
-            <span className="font-semibold">Express Pass:</span> acceso completo desde $3.99 · sin suscripción
+            <span className="font-semibold">Express Pass:</span> acceso completo desde $5.99 · sin suscripción
           </p>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">

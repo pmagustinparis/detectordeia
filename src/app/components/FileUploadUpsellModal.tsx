@@ -75,13 +75,13 @@ export default function FileUploadUpsellModal({
           </h2>
 
           <p className="text-center text-gray-700 mb-6 leading-relaxed">
-            Con <strong>Express Pass</strong> o <strong>Semestral Pass</strong> podés analizar archivos PDF, DOCX y TXT completos sin tener que copiar y pegar.
+            Con <strong>Express Pass</strong> podés analizar archivos PDF, DOCX y TXT completos sin tener que copiar y pegar.
           </p>
 
           {/* Benefits Box */}
           <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 mb-6">
             <p className="text-sm font-bold text-blue-900 mb-3">
-              Con Express o Semestral obtenés:
+              Con Express Pass obtenés:
             </p>
             <ul className="space-y-2 text-sm text-blue-900">
               <li className="flex items-start gap-2">
@@ -106,7 +106,7 @@ export default function FileUploadUpsellModal({
               </li>
             </ul>
             <p className="text-xs text-blue-900 mt-3 font-semibold">
-              Express $3.99/24h · $8.99/7d • Semestral $24.99/6 meses · pago único
+              Express $5.99/24h · $8.99/7d · pago único
             </p>
           </div>
 

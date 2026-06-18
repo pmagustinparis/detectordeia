@@ -20,7 +20,7 @@ interface ExpressUnlockModalProps {
 }
 
 const PRICES = {
-  express: { '24h': 3.99, '7d': 8.99 },
+  express: { '24h': 5.99, '7d': 8.99 },
 };
 
 export default function ExpressUnlockModal({
@@ -128,7 +128,7 @@ export default function ExpressUnlockModal({
       return `Alcanzaste tu límite de ${usageLimit} usos diarios.${hoursUntilReset ? ` Se restablece en ${hoursUntilReset}h.` : ''}`;
     }
     if (trigger === 'premium_mode' && modeName) {
-      return `El modo ${modeName} está disponible con Express Pass o Semestral Pass.`;
+      return `El modo ${modeName} está disponible con Express Pass.`;
     }
     return 'Desbloqueá el acceso completo para continuar.';
   };
@@ -176,7 +176,7 @@ export default function ExpressUnlockModal({
                     : 'bg-white text-amber-800 border border-amber-200 hover:bg-amber-50'
                 }`}
               >
-                24 horas · $3.99
+                24 horas · $5.99
               </button>
               <button
                 onClick={() => setDuration('7d')}
@@ -212,20 +212,6 @@ export default function ExpressUnlockModal({
             <p className="text-xs text-amber-700 text-center mt-1.5">
               {getExpiryLabel()} · Pago seguro con Stripe
             </p>
-          </div>
-
-          {/* Semestral - Opción secundaria */}
-          <div className="border border-gray-200 rounded-xl p-3 mb-4 flex items-center justify-between gap-3">
-            <div>
-              <p className="text-xs font-bold text-gray-700">Semestral Pass · $24.99</p>
-              <p className="text-xs text-gray-500">6 meses · pago único · sin renovación automática</p>
-            </div>
-            <a
-              href="/pricing"
-              className="shrink-0 text-xs font-semibold text-blue-900 border border-blue-900/30 hover:bg-blue-50 px-3 py-1.5 rounded-lg transition-colors"
-            >
-              Ver →
-            </a>
           </div>
 
           {/* Close */}

@@ -153,7 +153,7 @@ export default function ParafraseadorMain({
 
         // Mostrar resultado simulado cuando se excede el límite
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simular delay
-        setResult("Este es un ejemplo de texto parafraseado. Desbloqueá con Express Pass o Semestral para procesar textos ilimitados y acceder a todos los modos.");
+        setResult("Este es un ejemplo de texto parafraseado. Desbloqueá con Express Pass para procesar textos ilimitados y acceder a todos los modos.");
         setAnalyzedTextLength(text.length);
         setIsLimitExceeded(true);
         localStorage.removeItem('express_promo_banner_dismissed');
@@ -229,7 +229,7 @@ export default function ParafraseadorMain({
 
         // <Icon icon={ProductIcons.Locked} size="sm" className="inline" /> MODO PREMIUM REQUERIDO (403)
         if (response.status === 403 && data.requiresPremium) {
-          setError(data.message || 'Este modo requiere Express Pass o Semestral Pass');
+          setError(data.message || 'Este modo requiere Express Pass');
 
           // Track modo premium bloqueado
           trackEvent({

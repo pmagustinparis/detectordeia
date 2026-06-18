@@ -113,7 +113,7 @@ export default async function ParafraseadorPage() {
                 name: '¿Cuántas veces puedo usarlo gratis?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Sin registro: 3 usos diarios totales entre las herramientas. Registrándote gratis: 15 usos diarios del Parafraseador. Con Express Pass o Semestral Pass: usos ilimitados. Límite de 2,000 caracteres por paráfrasis en planes gratuitos. El Generador de citas es gratis e ilimitado para todos.',
+                  text: 'Sin registro: 3 usos diarios totales entre las herramientas. Registrándote gratis: 15 usos diarios del Parafraseador. Con Express Pass: usos ilimitados. Límite de 2,000 caracteres por paráfrasis en planes gratuitos. El Generador de citas es gratis e ilimitado para todos.',
                 },
               },
               {
@@ -145,7 +145,7 @@ export default async function ParafraseadorPage() {
                 name: '¿Qué modos de parafraseo hay disponibles?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Los modos Estándar y Creativo están disponibles gratis. Con Express Pass ($3.99/24h o $8.99/7d) o Semestral Pass ($24.99/6 meses) obtenés 3 modos adicionales: Formal (tono profesional), Simplificado (más fácil de entender) y Académico (estilo universitario).',
+                  text: 'Los modos Estándar y Creativo están disponibles gratis. Con Express Pass ($5.99/24h o $8.99/7d) obtenés 3 modos adicionales: Formal (tono profesional), Simplificado (más fácil de entender) y Académico (estilo universitario).',
                 },
               },
             ],

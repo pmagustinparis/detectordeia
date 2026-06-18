@@ -32,7 +32,7 @@ export default function Terminos() {
         <li>Acceso al modo estándar únicamente</li>
         <li>Sin necesidad de registro (usuarios anónimos)</li>
       </ul>
-      <p className="text-gray-700 mb-2"><strong>Plan Express ($3.99/pago único):</strong></p>
+      <p className="text-gray-700 mb-2"><strong>Plan Express ($5.99/pago único):</strong></p>
       <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-1">
         <li>Acceso completo por 24 horas</li>
         <li>Usos ilimitados en todas las herramientas</li>
