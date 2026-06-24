@@ -5,7 +5,7 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 export const metadata: Metadata = {
   title: 'Parafraseador de IA en Español Gratis | DetectorDeIA',
   description: 'Reescribe textos con otras palabras manteniendo el significado. Sin plagio. Parafraseador gratuito, sin registro, optimizado para español. Hasta 2,000 caracteres gratis.',
-  keywords: ['parafraseador', 'parafrasear online', 'reescribir texto', 'evitar plagio', 'parafrasear español', 'parafrasear gratis', 'reescribir sin plagio', 'parafraseador español', 'parafraseo online'],
+  keywords: ['parafraseador', 'parafrasear online', 'reescribir texto', 'evitar plagio', 'parafrasear español', 'parafrasear gratis', 'reescribir sin plagio', 'parafraseador español', 'parafraseo online', 'parafrasear textos online gratis', 'parafrasear gratis sin registro', 'parafraseo online gratis', 'parafrasear sin plagio', 'como parafrasear sin copiar', 'parafraseo academico sin plagio', 'reescribir textos academicos', 'reescribir ensayos universitarios', 'reescribir trabajos universidad', 'sinonimos de textos online', 'cambiar palabras por sinonimos', 'reemplazar palabras sinonimos'],
   alternates: {
     canonical: 'https://detectordeia.ai/parafraseador',
   },
@@ -146,6 +146,30 @@ export default async function ParafraseadorPage() {
                 acceptedAnswer: {
                   '@type': 'Answer',
                   text: 'Los modos Estándar y Creativo están disponibles gratis. Con Express Pass ($1.99/24h o $8.99/7d) obtenés 3 modos adicionales: Formal (tono profesional), Simplificado (más fácil de entender) y Académico (estilo universitario).',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '¿Cómo parafrasear sin plagio?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Parafrasear sin plagio implica reescribir la idea con tu propia estructura y citar la fuente original. Cambiar solo algunas palabras manteniendo la estructura (patchwriting) sigue siendo plagio. Aunque parafrasees correctamente, en trabajos académicos debés citar la fuente parafraseada según APA o MLA.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '¿Cuál es la diferencia entre reescribir y parafrasear textos académicos?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Parafrasear mantiene el significado y el largo del texto original; reescribir puede cambiar también la estructura y el nivel de detalle. Ambos sirven para reescribir ensayos universitarios y trabajos académicos, pero siempre debés citar las fuentes y respetar la política de tu universidad sobre reutilización de trabajos propios.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '¿Cambiar palabras por sinónimos evita el plagio?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'No por sí solo. Reemplazar palabras por sinónimos manteniendo la misma estructura es patchwriting, que los detectores y revisores identifican como plagio. Un buen parafraseo reestructura la oración completa, no solo cambia palabras sueltas.',
                 },
               },
             ],

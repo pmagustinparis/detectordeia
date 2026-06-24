@@ -5,10 +5,20 @@ import { features } from '@/lib/pseo/features';
 import UseCasePageClient from './UseCasePageClient';
 import FeaturePageClient from './FeaturePageClient';
 
+// Slugs consolidados en /parafraseador vía 301 (Paso 3 SEO) — no generar ni indexar
+const REDIRECTED_SLUGS = new Set([
+  'parafrasear-textos-online-gratis',
+  'parafrasear-sin-plagio',
+  'reescribir-textos-academicos',
+  'sinonimos-de-textos-online',
+]);
+
 // Generar páginas estáticas en build time
 export async function generateStaticParams() {
   const useCaseSlugs = useCases.map((useCase) => ({ slug: useCase.slug }));
-  const featureSlugs = features.map((feature) => ({ slug: feature.slug }));
+  const featureSlugs = features
+    .filter((feature) => !REDIRECTED_SLUGS.has(feature.slug))
+    .map((feature) => ({ slug: feature.slug }));
   return [...useCaseSlugs, ...featureSlugs];
 }
 

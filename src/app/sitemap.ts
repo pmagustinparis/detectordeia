@@ -89,13 +89,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Páginas sinónimos Detector de IA (Fase 1 SEO)
+  // /identificador-de-ia consolidado en la home vía 301 (Paso 3 SEO)
   const detectorSynonymPages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/identificador-de-ia`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
     {
       url: `${baseUrl}/verificador-de-ia`,
       lastModified: new Date(),
@@ -154,13 +149,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Páginas de features
-  const featurePages: MetadataRoute.Sitemap = features.map((feature) => ({
-    url: `${baseUrl}/${feature.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  // Páginas de features — excluye el clúster de paráfrasis consolidado en /parafraseador (301, Paso 3 SEO)
+  const REDIRECTED_FEATURE_SLUGS = new Set([
+    'parafrasear-textos-online-gratis',
+    'parafrasear-sin-plagio',
+    'reescribir-textos-academicos',
+    'sinonimos-de-textos-online',
+  ]);
+  const featurePages: MetadataRoute.Sitemap = features
+    .filter((feature) => !REDIRECTED_FEATURE_SLUGS.has(feature.slug))
+    .map((feature) => ({
+      url: `${baseUrl}/${feature.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    }));
 
   // Páginas de glosario
   const glossaryPages: MetadataRoute.Sitemap = glossary.map((term) => ({

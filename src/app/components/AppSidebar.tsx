@@ -20,7 +20,7 @@ const tools = [
     isPopular: false,
     aliases: [
       '/ar', '/cl', '/co', '/es', '/mx', '/pe',
-      '/identificador-de-ia', '/verificador-de-ia', '/comprobador-de-ia',
+      '/verificador-de-ia', '/comprobador-de-ia',
       '/detector-de-ia-universidad',
     ],
   },
