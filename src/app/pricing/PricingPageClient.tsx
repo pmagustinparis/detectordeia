@@ -162,7 +162,7 @@ export default function PricingPageClient() {
             <p className="text-xs text-verde font-medium mb-4">Ahorrás 68% vs 7 días individuales</p>
           )}
           {expressDuration === '24h' && (
-            <p className="text-xs font-semibold text-orange-600 mb-4">Oferta de lanzamiento · 50% off</p>
+            <p className="text-xs font-bold text-orange-700 mb-4">Oferta de lanzamiento · 50% off</p>
           )}
 
           {/* Ancla de precio */}

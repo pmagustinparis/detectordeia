@@ -71,7 +71,7 @@ export default function ExpressPromoBanner() {
             </svg>
           </div>
           <p className="text-sm text-amber-900 font-medium truncate">
-            <span className="font-bold uppercase tracking-wide text-orange-600 mr-1.5">Oferta de lanzamiento</span>
+            <span className="font-bold uppercase tracking-wide text-orange-700 mr-1.5">Oferta de lanzamiento</span>
             <span className="font-semibold">Express Pass 24h a $1.99</span> <span className="line-through text-amber-700/50">$3.99</span> · acceso completo, sin suscripción
           </p>
         </div>

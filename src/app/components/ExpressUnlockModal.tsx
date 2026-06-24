@@ -197,8 +197,8 @@ export default function ExpressUnlockModal({
             )}
 
             {duration === '24h' && (
-              <p className="text-xs font-bold text-orange-600 text-center mb-2">
-                Oferta de lanzamiento · 24h a $1.99 <span className="line-through text-amber-700/50 font-semibold">$3.99</span>
+              <p className="text-xs font-bold text-orange-700 text-center mb-2">
+                Oferta de lanzamiento · 24h a $1.99 <span className="line-through text-amber-700 font-semibold">$3.99</span>
               </p>
             )}
 
