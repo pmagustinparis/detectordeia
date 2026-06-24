@@ -2700,5 +2700,101 @@
       "Informática",
       "Ciencias del Mar"
     ]
+  },
+  {
+    "slug": "universidad-cordoba",
+    "name": "Universidad de Córdoba",
+    "shortName": "UCO",
+    "country": "España",
+    "city": "Córdoba",
+    "students": "21000",
+    "foundedYear": "1972",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UCO",
+      "Universidad de Córdoba",
+      "UCO Córdoba"
+    ],
+    "aiPolicySummary": "La UCO usa Turnitin con informe de uso de IA y sigue las directrices de CRUE: la IA puede usarse como apoyo siempre que se declare y no sustituya el trabajo del estudiante.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Veterinaria",
+      "Medicina",
+      "Derecho y Ciencias Económicas",
+      "Filosofía y Letras"
+    ]
+  },
+  {
+    "slug": "universidad-cadiz",
+    "name": "Universidad de Cádiz",
+    "shortName": "UCA",
+    "country": "España",
+    "city": "Cádiz",
+    "students": "20000",
+    "foundedYear": "1979",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UCA",
+      "Universidad de Cádiz",
+      "UCA Cádiz"
+    ],
+    "aiPolicySummary": "La UCA publicó una Guía de uso de la IA generativa (Vicerrectorado de Transformación para la Universidad Digital) y forma a su profesorado: uso responsable, declarado y crítico de la IA.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Medicina",
+      "Ciencias del Mar y Ambientales",
+      "Derecho",
+      "Ciencias de la Educación"
+    ]
+  },
+  {
+    "slug": "universidad-rovira-virgili",
+    "name": "Universitat Rovira i Virgili",
+    "shortName": "URV",
+    "country": "España",
+    "city": "Tarragona",
+    "students": "14000",
+    "foundedYear": "1991",
+    "usesTurnitin": false,
+    "hasAIPolicy": true,
+    "keywords": [
+      "URV",
+      "Universitat Rovira i Virgili",
+      "URV Tarragona"
+    ],
+    "aiPolicySummary": "La URV renovó su sistema antiplagio e incorporó pruebas orales para combatir el uso fraudulento de ChatGPT; sus pautas piden citar la IA y verificar la autoría del trabajo.",
+    "antiPlagiarismSoftware": "Ouriginal",
+    "topFaculties": [
+      "Química",
+      "Medicina y Ciencias de la Salud",
+      "Enología",
+      "Turismo y Geografía"
+    ]
+  },
+  {
+    "slug": "universidad-miguel-hernandez",
+    "name": "Universidad Miguel Hernández de Elche",
+    "shortName": "UMH",
+    "country": "España",
+    "city": "Elche",
+    "students": "15000",
+    "foundedYear": "1996",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UMH",
+      "Universidad Miguel Hernández",
+      "UMH Elche"
+    ],
+    "aiPolicySummary": "La UMH ofrece Turnitin al profesorado para TFG, TFM y tesis, y publicó una guía de buenas prácticas en el uso de IA generativa para la docencia.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Medicina",
+      "Farmacia",
+      "Ciencias del Deporte",
+      "Bellas Artes"
+    ]
   }
 ]
