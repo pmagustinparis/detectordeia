@@ -103,7 +103,7 @@ export default function HumanizerUseCasePageClient({ useCase }: Props) {
             </div>
             <div className="bg-papel border border-amber-300 rounded-xl p-4 text-center ring-1 ring-amber-300">
               <p className="text-xs font-mono uppercase tracking-wider text-amber-700 mb-1">Express</p>
-              <p className="text-2xl font-bold text-tinta mb-1">$5.99</p>
+              <p className="text-2xl font-bold text-tinta mb-1">$1.99</p>
               <p className="text-xs text-tinta-soft mb-3">24 horas · Ilimitado</p>
               <p className="text-xs text-mute">Para una entrega urgente</p>
             </div>
