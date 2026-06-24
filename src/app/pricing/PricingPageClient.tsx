@@ -147,11 +147,14 @@ export default function PricingPageClient() {
             </button>
           </div>
 
-          <div className="mb-1">
+          <div className="mb-1 flex items-baseline gap-2">
             <span className="font-mono text-4xl font-medium text-tinta">
               ${expressDuration === '24h' ? '1.99' : '8.99'}
             </span>
-            <span className="text-mute text-sm ml-1">
+            {expressDuration === '24h' && (
+              <span className="font-mono text-xl text-mute line-through">$3.99</span>
+            )}
+            <span className="text-mute text-sm">
               {expressDuration === '24h' ? '/ 24 horas' : '/ 7 días'}
             </span>
           </div>
@@ -159,7 +162,7 @@ export default function PricingPageClient() {
             <p className="text-xs text-verde font-medium mb-4">Ahorrás 68% vs 7 días individuales</p>
           )}
           {expressDuration === '24h' && (
-            <p className="text-xs text-mute mb-4">Para una necesidad puntual o urgente</p>
+            <p className="text-xs font-semibold text-orange-600 mb-4">Oferta de lanzamiento · 50% off</p>
           )}
 
           {/* Ancla de precio */}
