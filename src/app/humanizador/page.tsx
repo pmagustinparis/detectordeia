@@ -137,7 +137,7 @@ export default async function HumanizadorPage() {
                 name: '¿Qué incluye el Express Pass?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Express Pass ($5.99 por 24 horas o $8.99 por 7 días) te da acceso ilimitado a todas las herramientas con 5 modos, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Es un pago único sin renovación automática.',
+                  text: 'Express Pass ($1.99 por 24 horas o $8.99 por 7 días) te da acceso ilimitado a todas las herramientas con 5 modos, subida de archivos y sin límite de caracteres - perfecto para entregas urgentes. Es un pago único sin renovación automática.',
                 },
               },
               {

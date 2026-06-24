@@ -5,7 +5,7 @@ import { useAuth } from "@/lib/hooks/useAuth";
 import { trackEvent } from "@/lib/analytics/client";
 
 const PRICES = {
-  express: { '24h': 5.99, '7d': 8.99 },
+  express: { '24h': 1.99, '7d': 8.99 },
   semestral: 24.99,
 };
 
@@ -70,11 +70,11 @@ export default function PricingPageClient() {
     },
     {
       q: "¿El Express se renueva automáticamente?",
-      a: "No. El Express Pass es un pago único (24 horas por $5.99 o 7 días por $8.99). No hay cargos automáticos ni suscripción ni sorpresas. Cuando expire, podés volver a comprarlo si lo necesitás.",
+      a: "No. El Express Pass es un pago único (24 horas por $1.99 o 7 días por $8.99). No hay cargos automáticos ni suscripción ni sorpresas. Cuando expire, podés volver a comprarlo si lo necesitás.",
     },
     {
       q: "¿Qué diferencia hay entre 24 horas y 7 días?",
-      a: "Es solo la duración del acceso. 24 horas ($5.99) es ideal para una entrega puntual; 7 días ($8.99) conviene si tenés varios trabajos esta semana. Los dos incluyen exactamente las mismas funcionalidades.",
+      a: "Es solo la duración del acceso. 24 horas ($1.99) es ideal para una entrega puntual; 7 días ($8.99) conviene si tenés varios trabajos esta semana. Los dos incluyen exactamente las mismas funcionalidades.",
     },
     {
       q: "¿Qué incluye el Express Pass?",
@@ -149,7 +149,7 @@ export default function PricingPageClient() {
 
           <div className="mb-1">
             <span className="font-mono text-4xl font-medium text-tinta">
-              ${expressDuration === '24h' ? '5.99' : '8.99'}
+              ${expressDuration === '24h' ? '1.99' : '8.99'}
             </span>
             <span className="text-mute text-sm ml-1">
               {expressDuration === '24h' ? '/ 24 horas' : '/ 7 días'}

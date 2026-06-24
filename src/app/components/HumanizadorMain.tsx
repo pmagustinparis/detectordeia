@@ -897,7 +897,7 @@ export default function HumanizadorMain({
                           href="/pricing"
                           className="inline-block text-xs font-bold text-amber-700 border border-amber-400 hover:bg-amber-100 px-3 py-1.5 rounded-lg transition-colors"
                         >
-                          Activar Express $5.99 →
+                          Activar Express $1.99 →
                         </a>
                       </div>
                     )}

@@ -61,7 +61,7 @@ const premiumTextos = {
     '5 modos en Humanizador y Parafraseador',
     'Historial completo de todos tus análisis',
   ],
-  precio: 'Express $5.99/24h · $8.99/7d',
+  precio: 'Express $1.99/24h · $8.99/7d',
   cta: 'Ver Planes y Precios',
 };
 const premiumCompactTextos = {
@@ -69,7 +69,7 @@ const premiumCompactTextos = {
   bullets: [
     'Usos ilimitados + Caracteres ilimitados',
     '5 modos + Historial completo',
-    'Express $5.99/24h · $8.99/7d',
+    'Express $1.99/24h · $8.99/7d',
   ],
   cta: 'Ver Planes',
 };
@@ -1179,7 +1179,7 @@ export default function DetectorMain({
                           Ver Planes y Precios
                         </span>
                       </a>
-                      <p className="text-xs text-tinta-soft mt-2">Express Pass desde $5.99 · Pago único sin renovación</p>
+                      <p className="text-xs text-tinta-soft mt-2">Express Pass desde $1.99 · Pago único sin renovación</p>
                     </div>
                   </div>
                 )}
@@ -1237,7 +1237,7 @@ export default function DetectorMain({
                       <li>• Subida de archivos (PDF, DOCX, TXT)</li>
                       <li>• 5 modos en Humanizador y Parafraseador</li>
                       <li>• Historial completo de análisis</li>
-                      <li>• Express $5.99/24h · $8.99/7d</li>
+                      <li>• Express $1.99/24h · $8.99/7d</li>
                     </ul>
                   </div>
                   <a

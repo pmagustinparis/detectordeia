@@ -20,7 +20,7 @@ interface ExpressUnlockModalProps {
 }
 
 const PRICES = {
-  express: { '24h': 5.99, '7d': 8.99 },
+  express: { '24h': 1.99, '7d': 8.99 },
 };
 
 export default function ExpressUnlockModal({
@@ -176,7 +176,7 @@ export default function ExpressUnlockModal({
                     : 'bg-white text-amber-800 border border-amber-200 hover:bg-amber-50'
                 }`}
               >
-                24 horas · $5.99
+                24 horas · $1.99
               </button>
               <button
                 onClick={() => setDuration('7d')}
