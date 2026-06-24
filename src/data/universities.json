@@ -2604,5 +2604,101 @@
       "Cochabamba",
       "Bolivia"
     ]
+  },
+  {
+    "slug": "universidad-nacional-educacion-distancia",
+    "name": "Universidad Nacional de Educación a Distancia",
+    "shortName": "UNED",
+    "country": "España",
+    "city": "Madrid",
+    "students": "150000",
+    "foundedYear": "1972",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UNED",
+      "Universidad Nacional de Educación a Distancia",
+      "UNED a distancia"
+    ],
+    "aiPolicySummary": "La UNED promueve el uso educativo de la IA generativa desde su Vicerrectorado de Innovación, siguiendo las directrices de CRUE: uso responsable y declarado, sin sustituir el trabajo del estudiante.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Derecho",
+      "Psicología",
+      "Educación",
+      "Económicas y Empresariales"
+    ]
+  },
+  {
+    "slug": "universidad-castilla-la-mancha",
+    "name": "Universidad de Castilla-La Mancha",
+    "shortName": "UCLM",
+    "country": "España",
+    "city": "Ciudad Real",
+    "students": "30000",
+    "foundedYear": "1982",
+    "usesTurnitin": false,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UCLM",
+      "Universidad Castilla-La Mancha",
+      "UCLM Ciudad Real"
+    ],
+    "aiPolicySummary": "La UCLM no prohíbe el uso de IA como apoyo, pero exige que el trabajo escrito sea propio del estudiante y transparencia sobre las herramientas de IA utilizadas.",
+    "antiPlagiarismSoftware": "Compilatio",
+    "topFaculties": [
+      "Medicina",
+      "Derecho",
+      "Educación",
+      "Ingeniería"
+    ]
+  },
+  {
+    "slug": "universidad-extremadura",
+    "name": "Universidad de Extremadura",
+    "shortName": "UEx",
+    "country": "España",
+    "city": "Badajoz",
+    "students": "20000",
+    "foundedYear": "1973",
+    "usesTurnitin": false,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UEx",
+      "Universidad de Extremadura",
+      "UEx Badajoz"
+    ],
+    "aiPolicySummary": "La UEx publicó una guía de uso responsable de IA generativa para el estudiantado (Vicerrectorado de Transformación Digital, 2025): integración ética, transparente y con revisión crítica de los resultados.",
+    "antiPlagiarismSoftware": "Ouriginal",
+    "topFaculties": [
+      "Medicina",
+      "Educación",
+      "Económicas y Empresariales",
+      "Veterinaria"
+    ]
+  },
+  {
+    "slug": "universidad-las-palmas-gran-canaria",
+    "name": "Universidad de Las Palmas de Gran Canaria",
+    "shortName": "ULPGC",
+    "country": "España",
+    "city": "Las Palmas de Gran Canaria",
+    "students": "18000",
+    "foundedYear": "1989",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "ULPGC",
+      "Universidad Las Palmas",
+      "ULPGC Gran Canaria"
+    ],
+    "aiPolicySummary": "La ULPGC revisa tesis, TFM y publicaciones con detección de plagio e informe de uso de IA; sigue las directrices de CRUE sobre uso responsable de la IA generativa.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Medicina",
+      "Veterinaria",
+      "Informática",
+      "Ciencias del Mar"
+    ]
   }
 ]
