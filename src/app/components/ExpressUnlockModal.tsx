@@ -196,6 +196,12 @@ export default function ExpressUnlockModal({
               </p>
             )}
 
+            {duration === '24h' && (
+              <p className="text-xs font-bold text-orange-600 text-center mb-2">
+                Oferta de lanzamiento · 24h a $1.99 <span className="line-through text-amber-700/50 font-semibold">$3.99</span>
+              </p>
+            )}
+
             <ul className="text-xs text-amber-900 space-y-1 mb-3">
               <li>✓ <strong>Modos premium</strong> · sin límite de caracteres</li>
               <li>✓ <strong>Subida de archivos</strong> · usos ilimitados</li>
