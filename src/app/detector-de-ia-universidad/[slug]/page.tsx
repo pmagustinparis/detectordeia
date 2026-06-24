@@ -21,8 +21,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const title = `Detector de IA para ${university.name} | DetectordeIA.ai`;
-  const description = `Detector de IA especializado para estudiantes y profesores de ${university.name} (${university.shortName}). Herramienta gratuita, precisa y optimizada para trabajos académicos de ${university.city}, ${university.country}.`;
+  const title = `Detector de IA ${university.shortName} — Gratis y sin registro | ${university.name}`;
+  const description = university.antiPlagiarismSoftware
+    ? `¿${university.shortName} detecta IA? Usa ${university.antiPlagiarismSoftware}. Revisá si tu trabajo parece generado por IA antes de entregarlo. Detector gratis, en español, sin registro.`
+    : `¿${university.shortName} detecta IA? Revisá si tu trabajo parece generado por IA antes de entregarlo. Detector gratis, en español, sin registro.`;
 
   return {
     title,
