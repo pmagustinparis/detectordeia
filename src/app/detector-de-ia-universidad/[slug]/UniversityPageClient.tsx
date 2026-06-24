@@ -92,11 +92,23 @@ export default function UniversityPageClient({ university }: { university: Unive
             Los profesores de {university.shortName} pueden verificar trabajos estudiantiles de forma rápida y confiable. Nuestro detector identifica textos generados por ChatGPT, Claude, Gemini y otros modelos de IA, proporcionando un análisis detallado con porcentaje de probabilidad y nivel de confianza.
           </p>
 
-          {university.hasAIPolicy && (
+          {university.aiPolicySummary && (
             <>
-              <h2 className="text-2xl text-tinta mb-4 mt-8">Política de IA en {university.shortName}</h2>
+              <h2 className="text-2xl text-tinta mb-4 mt-8">Qué dice {university.shortName} sobre la inteligencia artificial</h2>
               <p className="text-tinta-soft mb-4 leading-relaxed font-sans">
-                {university.name} ha establecido políticas claras sobre el uso de inteligencia artificial en trabajos académicos. Nuestro detector ayuda a estudiantes y profesores a cumplir con estas políticas, identificando contenido generado por IA y promoviendo la originalidad académica.
+                {university.aiPolicySummary}
+              </p>
+              <p className="text-tinta-soft mb-4 leading-relaxed font-sans">
+                {university.shortName} usa{' '}
+                <strong>{university.antiPlagiarismSoftware || 'software antiplagio'}</strong>{' '}
+                para revisar trabajos.
+                {university.topFaculties && university.topFaculties.length > 0 && (
+                  <> Antes de entregar en facultades como <strong>{university.topFaculties.join(', ')}</strong>, conviene verificar que tu texto no parezca generado por IA.</>
+                )}{' '}
+                Si lo parece, ajustalo con el{' '}
+                <Link href="/humanizador" className="text-verde-deep underline underline-offset-2 hover:text-verde font-medium">Humanizador de IA gratuito</Link>{' '}
+                o reescribilo con el{' '}
+                <Link href="/parafraseador" className="text-verde-deep underline underline-offset-2 hover:text-verde font-medium">Parafraseador para reescribir sin plagio</Link>.
               </p>
             </>
           )}
@@ -107,7 +119,7 @@ export default function UniversityPageClient({ university }: { university: Unive
             <li>Pega el texto en el detector (arriba en esta página)</li>
             <li>Haz clic en "Analizar Texto"</li>
             <li>Revisa el resultado: porcentaje de probabilidad de IA y explicación detallada</li>
-            <li>Si necesitas editar el texto, usa nuestro Humanizador de IA gratuito</li>
+            <li>Si necesitas editar el texto, usa nuestro <Link href="/humanizador" className="text-verde-deep underline underline-offset-2 hover:text-verde font-medium">Humanizador de IA gratuito</Link></li>
           </ol>
 
           <h2 className="text-2xl text-tinta mb-4 mt-8">Recursos para Estudiantes de {university.name}</h2>
@@ -115,9 +127,9 @@ export default function UniversityPageClient({ university }: { university: Unive
             Además del detector de IA, ofrecemos herramientas gratuitas para estudiantes de {university.shortName}:
           </p>
           <ul className="list-disc list-inside text-tinta-soft space-y-2 mb-4 font-sans">
-            <li><strong>Humanizador de IA:</strong> Transforma texto generado por IA en contenido más natural</li>
-            <li><strong>Parafraseador:</strong> Reescribe textos con otras palabras manteniendo el significado</li>
-            <li><strong>Guías académicas:</strong> Tutoriales sobre escritura académica y uso ético de IA</li>
+            <li><Link href="/humanizador" className="text-verde-deep underline underline-offset-2 hover:text-verde font-medium">Humanizar texto de IA gratis</Link> — transforma contenido generado por IA en algo más natural</li>
+            <li><Link href="/parafraseador" className="text-verde-deep underline underline-offset-2 hover:text-verde font-medium">Parafrasear sin plagio</Link> — reescribe textos con otras palabras manteniendo el significado</li>
+            <li><Link href="/guias/como-usar-ia-eticamente-universidad" className="text-verde-deep underline underline-offset-2 hover:text-verde font-medium">Guías académicas</Link> — tutoriales sobre escritura académica y uso ético de IA</li>
           </ul>
 
           <div className="grid md:grid-cols-2 gap-4 mt-6">
