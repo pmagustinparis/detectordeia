@@ -1567,17 +1567,17 @@
     "foundedYear": "1785",
     "usesTurnitin": false,
     "hasAIPolicy": false,
-    "aiPolicySummary": "La ULA aplica sus normas de integridad académica al uso de IA. En el contexto venezolano, el acceso a herramientas de IA avanzadas varía, pero su uso no declarado sigue siendo contrario a las normas estudiantiles.",
-    "antiPlagiarismSoftware": "Compilatio",
+    "aiPolicySummary": "La ULA estableció lineamientos generales sobre IA con un marco flexible que promueve un uso ético, crítico y transformador, con gobernanza transversal en docencia, investigación y gestión.",
+    "antiPlagiarismSoftware": "Sistemas de detección de similitud (sin herramienta única estandarizada)",
     "topFaculties": [
-      "Medicina",
-      "Ingeniería",
-      "Humanidades"
+      "Ciencias Económicas y Sociales",
+      "Ciencias Jurídicas y Políticas",
+      "Humanidades y Educación"
     ],
     "keywords": [
       "ULA",
-      "Universidad Los Andes",
-      "Mérida Venezuela"
+      "Universidad de Los Andes",
+      "ULA Mérida"
     ]
   },
   {
@@ -1742,76 +1742,6 @@
     ]
   },
   {
-    "slug": "ipn-mexico",
-    "name": "Instituto Politécnico Nacional",
-    "shortName": "IPN",
-    "country": "México",
-    "city": "Ciudad de México",
-    "students": "170000",
-    "foundedYear": "1936",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "El IPN permite el uso de herramientas de IA como apoyo pedagógico pero exige que los trabajos académicos reflejen el razonamiento propio del estudiante. Las escuelas y departamentos pueden establecer restricciones adicionales por carrera.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ingeniería",
-      "Ciencias Físico-Matemáticas",
-      "Medicina"
-    ],
-    "keywords": [
-      "IPN",
-      "Instituto Politécnico Nacional",
-      "México"
-    ]
-  },
-  {
-    "slug": "uam-mexico",
-    "name": "Universidad Autónoma Metropolitana",
-    "shortName": "UAM",
-    "country": "México",
-    "city": "Ciudad de México",
-    "students": "55000",
-    "foundedYear": "1974",
-    "usesTurnitin": false,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UAM promueve el uso ético de la IA en el proceso educativo. Requiere transparencia sobre el uso de herramientas de inteligencia artificial y no permite que sustituyan el trabajo intelectual del estudiante.",
-    "antiPlagiarismSoftware": "Compilatio",
-    "topFaculties": [
-      "Ciencias Sociales",
-      "Ciencias Biológicas",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UAM",
-      "Universidad Autónoma Metropolitana",
-      "México"
-    ]
-  },
-  {
-    "slug": "udeg-guadalajara",
-    "name": "Universidad de Guadalajara",
-    "shortName": "UdeG",
-    "country": "México",
-    "city": "Guadalajara",
-    "students": "250000",
-    "foundedYear": "1792",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UdeG implementó en 2024 lineamientos sobre uso de IA en trabajos académicos que obligan a declarar el uso de herramientas generativas. El Centro Universitario de Ciencias Exactas exige verificación con detector de IA.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ciencias de la Salud",
-      "Ciencias Exactas",
-      "Artes"
-    ],
-    "keywords": [
-      "UdeG",
-      "Universidad de Guadalajara",
-      "Jalisco",
-      "México"
-    ]
-  },
-  {
     "slug": "uaem-mexico",
     "name": "Universidad Autónoma del Estado de México",
     "shortName": "UAEM",
@@ -1856,77 +1786,6 @@
       "Universidad Córdoba",
       "Montería",
       "Colombia"
-    ]
-  },
-  {
-    "slug": "unmsm-peru",
-    "name": "Universidad Nacional Mayor de San Marcos",
-    "shortName": "UNMSM",
-    "country": "Perú",
-    "city": "Lima",
-    "students": "35000",
-    "foundedYear": "1551",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "San Marcos, la universidad más antigua de América, requiere declaración de uso de IA en trabajos académicos. La Vicerrectoría Académica emitió lineamientos en 2024 para el uso ético de herramientas de inteligencia artificial.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Medicina",
-      "Derecho",
-      "Ciencias Sociales"
-    ],
-    "keywords": [
-      "UNMSM",
-      "San Marcos",
-      "Lima",
-      "Perú"
-    ]
-  },
-  {
-    "slug": "pucp-peru",
-    "name": "Pontificia Universidad Católica del Perú",
-    "shortName": "PUCP",
-    "country": "Perú",
-    "city": "Lima",
-    "students": "25000",
-    "foundedYear": "1917",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La PUCP implementó en 2024 una política de uso ético de IA que clasifica los trabajos según el nivel de IA permitido: sin IA, con apoyo parcial, o uso libre con declaración. Usa Turnitin con módulo de detección de IA.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Derecho",
-      "Ingeniería",
-      "Humanidades"
-    ],
-    "keywords": [
-      "PUCP",
-      "Pontificia Católica Perú",
-      "Lima"
-    ]
-  },
-  {
-    "slug": "umsa-bolivia",
-    "name": "Universidad Mayor de San Andrés",
-    "shortName": "UMSA",
-    "country": "Bolivia",
-    "city": "La Paz",
-    "students": "80000",
-    "foundedYear": "1830",
-    "usesTurnitin": false,
-    "hasAIPolicy": false,
-    "aiPolicySummary": "La UMSA, la universidad más grande de Bolivia, aplica su reglamento de evaluación estudiantil ante el uso de IA. Está desarrollando una política institucional sobre integridad académica en la era de la IA generativa.",
-    "antiPlagiarismSoftware": "Urkund",
-    "topFaculties": [
-      "Derecho",
-      "Medicina",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UMSA",
-      "San Andrés",
-      "La Paz",
-      "Bolivia"
     ]
   },
   {
@@ -2208,170 +2067,6 @@
     ]
   },
   {
-    "slug": "upm-madrid",
-    "name": "Universidad Politécnica de Madrid",
-    "shortName": "UPM",
-    "country": "España",
-    "city": "Madrid",
-    "students": "40000",
-    "foundedYear": "1971",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UPM desarrolló en 2024 un protocolo de integridad académica en la era de la IA que clasifica los trabajos según el nivel de uso de IA permitido. Sus escuelas técnicas utilizan Turnitin con módulo de detección de contenido generado por IA.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ingeniería Informática",
-      "Ingeniería Industrial",
-      "Arquitectura"
-    ],
-    "keywords": [
-      "UPM",
-      "Politécnica Madrid",
-      "España"
-    ]
-  },
-  {
-    "slug": "uam-madrid",
-    "name": "Universidad Autónoma de Madrid",
-    "shortName": "UAM",
-    "country": "España",
-    "city": "Madrid",
-    "students": "30000",
-    "foundedYear": "1968",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UAM establece que los trabajos deben ser originales y que el uso de IA generativa debe declararse. Su Comisión de Ética Académica emitió en 2024 directrices específicas sobre el uso responsable de herramientas de IA en trabajos universitarios.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ciencias",
-      "Filosofía y Letras",
-      "Medicina"
-    ],
-    "keywords": [
-      "UAM",
-      "Autónoma Madrid",
-      "España"
-    ]
-  },
-  {
-    "slug": "uc3m-madrid",
-    "name": "Universidad Carlos III de Madrid",
-    "shortName": "UC3M",
-    "country": "España",
-    "city": "Leganés",
-    "students": "20000",
-    "foundedYear": "1989",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UC3M tiene una política clara sobre integridad académica que incluye el uso de IA. Requiere que los estudiantes declaren el uso de herramientas generativas y demuestre comprensión propia del contenido entregado.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ingeniería",
-      "Ciencias Sociales",
-      "Humanidades"
-    ],
-    "keywords": [
-      "UC3M",
-      "Carlos III",
-      "Madrid",
-      "España"
-    ]
-  },
-  {
-    "slug": "upv-valencia",
-    "name": "Universidad Politécnica de Valencia",
-    "shortName": "UPV",
-    "country": "España",
-    "city": "Valencia",
-    "students": "36000",
-    "foundedYear": "1968",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UPV implementó directrices institucionales sobre el uso de IA en trabajos académicos en 2024. Permite el uso de IA como herramienta de apoyo pero exige que los trabajos finales reflejen el esfuerzo intelectual propio del estudiante.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ingeniería Informática",
-      "Bellas Artes",
-      "Ingeniería Industrial"
-    ],
-    "keywords": [
-      "UPV",
-      "Politécnica Valencia",
-      "España"
-    ]
-  },
-  {
-    "slug": "usc-santiago",
-    "name": "Universidad de Santiago de Compostela",
-    "shortName": "USC",
-    "country": "España",
-    "city": "Santiago de Compostela",
-    "students": "25000",
-    "foundedYear": "1495",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La USC integra el uso ético de la IA en su marco de integridad académica. Exige declaración del uso de herramientas de IA y ofrece formación a su claustro docente sobre cómo detectar y gestionar el uso inadecuado de IA.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Medicina",
-      "Farmacia",
-      "Humanidades"
-    ],
-    "keywords": [
-      "USC",
-      "Santiago Compostela",
-      "Galicia",
-      "España"
-    ]
-  },
-  {
-    "slug": "uva-valladolid",
-    "name": "Universidad de Valladolid",
-    "shortName": "UVa",
-    "country": "España",
-    "city": "Valladolid",
-    "students": "22000",
-    "foundedYear": "1241",
-    "usesTurnitin": true,
-    "hasAIPolicy": false,
-    "aiPolicySummary": "La UVa aplica su normativa de evaluación e integridad académica al uso de herramientas de IA. Está elaborando guías específicas para docentes sobre cómo gestionar el uso de IA en el aula.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Derecho",
-      "Medicina",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UVa",
-      "Valladolid",
-      "Castilla y León",
-      "España"
-    ]
-  },
-  {
-    "slug": "usp-brasil",
-    "name": "Universidad de São Paulo",
-    "shortName": "USP",
-    "country": "Brasil",
-    "city": "São Paulo",
-    "students": "90000",
-    "foundedYear": "1934",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La USP, la universidad más grande de Brasil y referente de investigación en LATAM, aprobó en 2024 directrices sobre el uso de IA en trabajos académicos y de investigación. Exige declaración y prohíbe la generación automática de tesis.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Medicina",
-      "Ingeniería",
-      "Derecho"
-    ],
-    "keywords": [
-      "USP",
-      "São Paulo",
-      "Brasil"
-    ]
-  },
-  {
     "slug": "ufsc-brasil",
     "name": "Universidad Federal de Santa Catarina",
     "shortName": "UFSC",
@@ -2444,99 +2139,6 @@
     ]
   },
   {
-    "slug": "usach-chile",
-    "name": "Universidad de Santiago de Chile",
-    "shortName": "USACH",
-    "country": "Chile",
-    "city": "Santiago",
-    "students": "27000",
-    "foundedYear": "1849",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La USACH estableció directrices sobre el uso de IA generativa en trabajos académicos. Permite su uso como herramienta de apoyo pero exige que el estudiante demuestre comprensión propia y declare qué herramientas usó.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ingeniería",
-      "Ciencias Médicas",
-      "Humanidades"
-    ],
-    "keywords": [
-      "USACH",
-      "Santiago Chile",
-      "Chile"
-    ]
-  },
-  {
-    "slug": "udec-chile",
-    "name": "Universidad de Concepción",
-    "shortName": "UdeC",
-    "country": "Chile",
-    "city": "Concepción",
-    "students": "24000",
-    "foundedYear": "1919",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La Universidad de Concepción implementó en 2024 una política sobre uso de IA en trabajos académicos. Clasifica los trabajos según el nivel de IA permitido y usa Turnitin con módulo de detección de IA para trabajos de posgrado.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ciencias Naturales",
-      "Ingeniería",
-      "Medicina"
-    ],
-    "keywords": [
-      "UdeC",
-      "Concepción",
-      "Chile"
-    ]
-  },
-  {
-    "slug": "uach-chile",
-    "name": "Universidad Austral de Chile",
-    "shortName": "UACh",
-    "country": "Chile",
-    "city": "Valdivia",
-    "students": "16000",
-    "foundedYear": "1954",
-    "usesTurnitin": true,
-    "hasAIPolicy": false,
-    "aiPolicySummary": "La UACh aplica su reglamento de evaluación y conducta académica al uso de herramientas de IA. Está elaborando guías institucionales sobre el uso ético de IA generativa en el contexto académico.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ciencias",
-      "Ingeniería en Madera",
-      "Medicina Veterinaria"
-    ],
-    "keywords": [
-      "UACh",
-      "Austral Chile",
-      "Valdivia",
-      "Chile"
-    ]
-  },
-  {
-    "slug": "ucr-costa-rica",
-    "name": "Universidad de Costa Rica",
-    "shortName": "UCR",
-    "country": "Costa Rica",
-    "city": "San José",
-    "students": "44000",
-    "foundedYear": "1940",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UCR aprobó en 2024 lineamientos sobre el uso ético de la IA en actividades académicas. Requiere transparencia sobre las herramientas usadas y que el trabajo refleje el razonamiento propio del estudiante.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Medicina",
-      "Derecho",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UCR",
-      "Costa Rica",
-      "San José"
-    ]
-  },
-  {
     "slug": "una-costa-rica",
     "name": "Universidad Nacional de Costa Rica",
     "shortName": "UNA",
@@ -2606,52 +2208,6 @@
     ]
   },
   {
-    "slug": "unlp-argentina",
-    "name": "Universidad Nacional de La Plata",
-    "shortName": "UNLP",
-    "country": "Argentina",
-    "city": "La Plata",
-    "students": "110000",
-    "foundedYear": "1897",
-    "usesTurnitin": false,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UNLP aprobó en 2024 una declaración sobre el uso ético de la IA en la enseñanza universitaria. Establece que los trabajos académicos deben representar el esfuerzo intelectual propio y que el uso de IA debe ser declarado explícitamente.",
-    "antiPlagiarismSoftware": "Compilatio",
-    "topFaculties": [
-      "Derecho",
-      "Ciencias Exactas",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UNLP",
-      "La Plata",
-      "Argentina"
-    ]
-  },
-  {
-    "slug": "unc-argentina",
-    "name": "Universidad Nacional de Córdoba",
-    "shortName": "UNC",
-    "country": "Argentina",
-    "city": "Córdoba",
-    "students": "130000",
-    "foundedYear": "1613",
-    "usesTurnitin": false,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UNC, la universidad más antigua de Argentina, desarrolló en 2024 una política de uso ético de IA. Requiere que los estudiantes declaren el uso de herramientas de IA y que los trabajos reflejen su comprensión personal del tema.",
-    "antiPlagiarismSoftware": "Compilatio",
-    "topFaculties": [
-      "Medicina",
-      "Derecho",
-      "Ciencias Exactas"
-    ],
-    "keywords": [
-      "UNC",
-      "Nacional Córdoba",
-      "Argentina"
-    ]
-  },
-  {
     "slug": "uncu-argentina",
     "name": "Universidad Nacional de Cuyo",
     "shortName": "UNCUYO",
@@ -2672,29 +2228,6 @@
       "UNCUYO",
       "Cuyo",
       "Mendoza",
-      "Argentina"
-    ]
-  },
-  {
-    "slug": "unr-argentina",
-    "name": "Universidad Nacional de Rosario",
-    "shortName": "UNR",
-    "country": "Argentina",
-    "city": "Rosario",
-    "students": "85000",
-    "foundedYear": "1968",
-    "usesTurnitin": false,
-    "hasAIPolicy": false,
-    "aiPolicySummary": "La UNR aplica sus normas de integridad académica a los trabajos realizados con herramientas de IA. El Consejo Superior está revisando el reglamento académico para incluir disposiciones específicas sobre IA generativa.",
-    "antiPlagiarismSoftware": "Compilatio",
-    "topFaculties": [
-      "Medicina",
-      "Derecho",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UNR",
-      "Nacional Rosario",
       "Argentina"
     ]
   },
@@ -2770,53 +2303,6 @@
     ]
   },
   {
-    "slug": "ucv-venezuela",
-    "name": "Universidad Central de Venezuela",
-    "shortName": "UCV",
-    "country": "Venezuela",
-    "city": "Caracas",
-    "students": "50000",
-    "foundedYear": "1721",
-    "usesTurnitin": false,
-    "hasAIPolicy": false,
-    "aiPolicySummary": "La UCV, Patrimonio de la Humanidad UNESCO, aplica su reglamento de evaluación estudiantil al uso de herramientas de IA. Está desarrollando una política institucional sobre integridad académica en el contexto de la IA generativa.",
-    "antiPlagiarismSoftware": "iThenticate",
-    "topFaculties": [
-      "Medicina",
-      "Derecho",
-      "Ciencias"
-    ],
-    "keywords": [
-      "UCV",
-      "Central Venezuela",
-      "Caracas"
-    ]
-  },
-  {
-    "slug": "usb-venezuela",
-    "name": "Universidad Simón Bolívar",
-    "shortName": "USB",
-    "country": "Venezuela",
-    "city": "Caracas",
-    "students": "14000",
-    "foundedYear": "1967",
-    "usesTurnitin": true,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La USB establece que los trabajos deben reflejar el esfuerzo intelectual propio. El uso de herramientas de IA debe ser declarado y justificado. Sus departamentos técnicos usan Turnitin para verificar la originalidad.",
-    "antiPlagiarismSoftware": "Turnitin",
-    "topFaculties": [
-      "Ingeniería",
-      "Ciencias",
-      "Estudios Generales"
-    ],
-    "keywords": [
-      "USB",
-      "Simón Bolívar",
-      "Caracas",
-      "Venezuela"
-    ]
-  },
-  {
     "slug": "luz-venezuela",
     "name": "Universidad del Zulia",
     "shortName": "LUZ",
@@ -2838,29 +2324,6 @@
       "Zulia",
       "Maracaibo",
       "Venezuela"
-    ]
-  },
-  {
-    "slug": "uce-ecuador",
-    "name": "Universidad Central del Ecuador",
-    "shortName": "UCE",
-    "country": "Ecuador",
-    "city": "Quito",
-    "students": "42000",
-    "foundedYear": "1826",
-    "usesTurnitin": false,
-    "hasAIPolicy": false,
-    "aiPolicySummary": "La UCE aplica sus normativas de integridad académica al uso de herramientas de IA generativa. Está desarrollando lineamientos institucionales para regular el uso de IA en trabajos de pregrado y posgrado.",
-    "antiPlagiarismSoftware": "iThenticate",
-    "topFaculties": [
-      "Medicina",
-      "Jurisprudencia",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UCE",
-      "Central Ecuador",
-      "Quito"
     ]
   },
   {
@@ -2887,29 +2350,6 @@
     ]
   },
   {
-    "slug": "una-paraguay",
-    "name": "Universidad Nacional de Asunción",
-    "shortName": "UNA",
-    "country": "Paraguay",
-    "city": "Asunción",
-    "students": "40000",
-    "foundedYear": "1889",
-    "usesTurnitin": false,
-    "hasAIPolicy": false,
-    "aiPolicySummary": "La UNA aplica sus normativas de evaluación académica al uso de IA generativa. Está en proceso de elaborar lineamientos institucionales sobre el uso ético de herramientas de inteligencia artificial en trabajos universitarios.",
-    "antiPlagiarismSoftware": "iThenticate",
-    "topFaculties": [
-      "Medicina",
-      "Derecho",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UNA",
-      "Asunción",
-      "Paraguay"
-    ]
-  },
-  {
     "slug": "ucat-paraguay",
     "name": "Universidad Católica Nuestra Señora de la Asunción",
     "shortName": "UCNSA",
@@ -2930,29 +2370,6 @@
       "UCNSA",
       "Católica Asunción",
       "Paraguay"
-    ]
-  },
-  {
-    "slug": "udelar-uruguay",
-    "name": "Universidad de la República",
-    "shortName": "UdelaR",
-    "country": "Uruguay",
-    "city": "Montevideo",
-    "students": "130000",
-    "foundedYear": "1849",
-    "usesTurnitin": false,
-    "hasAIPolicy": true,
-    "aiPolicySummary": "La UdelaR aprobó en 2024 una declaración sobre el uso ético de la IA en la educación universitaria. Exige que los trabajos reflejen el razonamiento propio del estudiante y que el uso de herramientas de IA sea declarado explícitamente.",
-    "antiPlagiarismSoftware": "Compilatio",
-    "topFaculties": [
-      "Medicina",
-      "Derecho",
-      "Ingeniería"
-    ],
-    "keywords": [
-      "UdelaR",
-      "República Uruguay",
-      "Montevideo"
     ]
   },
   {
@@ -3119,7 +2536,7 @@
   },
   {
     "slug": "unibe-republica-dominicana",
-    "name": "Universidad Iberoamericana",
+    "name": "Universidad Iberoamericana (UNIBE)",
     "shortName": "UNIBE",
     "country": "República Dominicana",
     "city": "Santo Domingo",
@@ -3127,18 +2544,18 @@
     "foundedYear": "1982",
     "usesTurnitin": true,
     "hasAIPolicy": true,
-    "aiPolicySummary": "La UNIBE establece que el uso de herramientas de IA en trabajos académicos debe declararse. Su política clasifica el uso no declarado de IA como una violación a la integridad académica sujeta a sanciones disciplinarias.",
-    "antiPlagiarismSoftware": "Turnitin",
+    "aiPolicySummary": "UNIBE promueve la honestidad académica con guías para detectar plagio y contenido de IA; el uso de IA debe declararse y no sustituir el trabajo propio del estudiante.",
+    "antiPlagiarismSoftware": "SafeAssign (Blackboard) / Turnitin",
     "topFaculties": [
       "Medicina",
       "Odontología",
-      "Ciencias Jurídicas"
+      "Diseño",
+      "Negocios"
     ],
     "keywords": [
       "UNIBE",
-      "Iberoamericana",
-      "Santo Domingo",
-      "República Dominicana"
+      "Universidad Iberoamericana",
+      "UNIBE Santo Domingo"
     ]
   },
   {
