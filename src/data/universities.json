@@ -2796,5 +2796,102 @@
       "Ciencias del Deporte",
       "Bellas Artes"
     ]
+  },
+  {
+    "slug": "universidad-politecnica-cataluna",
+    "name": "Universitat Politècnica de Catalunya",
+    "shortName": "UPC",
+    "country": "España",
+    "city": "Barcelona",
+    "students": "30000",
+    "foundedYear": "1971",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UPC",
+      "Universitat Politècnica de Catalunya",
+      "UPC Barcelona",
+      "Politécnica Cataluña"
+    ],
+    "aiPolicySummary": "La UPC sigue las directrices de CRUE sobre IA generativa: uso permitido con declaración y supervisión docente; su biblioteca ofrece recursos para evitar el plagio con Turnitin.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Ingeniería Informática",
+      "Arquitectura",
+      "Ingeniería de Telecomunicación",
+      "Ingeniería Industrial"
+    ]
+  },
+  {
+    "slug": "universidad-la-laguna",
+    "name": "Universidad de La Laguna",
+    "shortName": "ULL",
+    "country": "España",
+    "city": "San Cristóbal de La Laguna",
+    "students": "20000",
+    "foundedYear": "1792",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "ULL",
+      "Universidad de La Laguna",
+      "ULL Tenerife"
+    ],
+    "aiPolicySummary": "La ULL tiene una política específica sobre IA generativa e integridad académica (Cátedra TECNOEDU) y usa Turnitin para TFG, TFM y tesis desde 2018.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Medicina",
+      "Derecho",
+      "Educación",
+      "Bellas Artes"
+    ]
+  },
+  {
+    "slug": "universidad-jaume-i",
+    "name": "Universitat Jaume I",
+    "shortName": "UJI",
+    "country": "España",
+    "city": "Castellón de la Plana",
+    "students": "14000",
+    "foundedYear": "1991",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UJI",
+      "Universitat Jaume I",
+      "UJI Castellón"
+    ],
+    "aiPolicySummary": "La UJI publicó un código ético sobre el uso de IA generativa; usa Turnitin (Aula Virtual) para trabajos e iThenticate para tesis doctorales.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Ciencias de la Salud",
+      "Ciencias Jurídicas y Económicas",
+      "Humanidades",
+      "Ciencias y Tecnología"
+    ]
+  },
+  {
+    "slug": "universidad-cantabria",
+    "name": "Universidad de Cantabria",
+    "shortName": "UC",
+    "country": "España",
+    "city": "Santander",
+    "students": "10000",
+    "foundedYear": "1972",
+    "usesTurnitin": true,
+    "hasAIPolicy": true,
+    "keywords": [
+      "UC",
+      "Universidad de Cantabria",
+      "UC Santander"
+    ],
+    "aiPolicySummary": "La UC integra Turnitin en Moodle con análisis de originalidad e informe de uso de IA, e iThenticate para investigación; mantiene normativa de conducta académica.",
+    "antiPlagiarismSoftware": "Turnitin",
+    "topFaculties": [
+      "Medicina",
+      "Ciencias",
+      "Ingeniería de Caminos",
+      "Económicas y Empresariales"
+    ]
   }
 ]
