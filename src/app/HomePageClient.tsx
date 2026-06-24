@@ -78,9 +78,6 @@ export default function HomePageClient({ initialUserStatus }: { initialUserStatu
         <div className="border-l-2 border-line pl-6">
           <p className="font-mono text-xs font-medium text-mute mb-6 uppercase tracking-wider">También conocido como</p>
           <div className="flex flex-wrap gap-3">
-            <a href="/identificador-de-ia" className="px-4 py-2.5 bg-tinta hover:bg-tinta-soft text-papel font-medium rounded-lg transition-all">
-              Identificador de IA
-            </a>
             <a href="/verificador-de-ia" className="px-4 py-2.5 bg-papel-2 hover:bg-papel-3 text-tinta font-medium rounded-lg border border-line transition-all">
               Verificador de IA
             </a>

@@ -4,7 +4,8 @@ import { getUserStatus } from '@/lib/user/getUserStatus';
 
 export const metadata: Metadata = {
   title: 'Detector de IA, Humanizador, Parafraseador y Citador | Gratis en Español',
-  description: 'Detector de IA, Humanizador, Parafraseador y Generador de citas en español. Herramientas gratuitas, precisas y fáciles de usar. Sin registro, 100% privado.',
+  description: 'Detector de IA (identificador de textos de IA), Humanizador, Parafraseador y Generador de citas en español. Identifica si un texto fue escrito por ChatGPT, Claude o Gemini. Gratis, sin registro, 100% privado.',
+  keywords: ['detector de ia', 'identificador de ia', 'identificar texto de ia', 'identificador de textos ia', 'detector de chatgpt', 'humanizador de ia', 'parafraseador', 'citador apa'],
   alternates: {
     canonical: 'https://detectordeia.ai/',
     languages: {

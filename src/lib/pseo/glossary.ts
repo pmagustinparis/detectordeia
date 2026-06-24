@@ -443,7 +443,7 @@ export const glossary: GlossaryPage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=glosario-plagio' },
-      { name: 'Parafrasear Textos Sin Plagio', url: '/parafrasear-sin-plagio?ref=glosario-plagio' }
+      { name: 'Parafrasear Textos Sin Plagio', url: '/parafraseador?ref=glosario-plagio' }
     ],
     cta: {
       text: 'Verificar originalidad de texto',
@@ -546,13 +546,13 @@ export const glossary: GlossaryPage[] = [
       { term: 'ChatGPT', slug: 'que-es-chatgpt' }
     ],
     relatedTools: [
-      { name: 'Parafrasear Textos Online Gratis', url: '/parafrasear-textos-online-gratis?ref=glosario-parafrasear' },
-      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=glosario-parafrasear' },
+      { name: 'Parafrasear Textos Online Gratis', url: '/parafraseador?ref=glosario-parafrasear' },
+      { name: 'Parafrasear Sin Plagio', url: '/parafraseador?ref=glosario-parafrasear' },
       { name: 'Detector de IA', url: '/?ref=glosario-parafrasear' }
     ],
     cta: {
       text: 'Parafrasear textos gratis',
-      url: '/parafrasear-textos-online-gratis?ref=glosario-parafrasear'
+      url: '/parafraseador?ref=glosario-parafrasear'
     }
   },
 
@@ -651,7 +651,7 @@ export const glossary: GlossaryPage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=glosario-patchwriting' },
-      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=glosario-patchwriting' }
+      { name: 'Parafrasear Sin Plagio', url: '/parafraseador?ref=glosario-patchwriting' }
     ],
     cta: {
       text: 'Verificar originalidad de texto',

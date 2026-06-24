@@ -176,7 +176,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-usar-ia-etico' },
-      { name: 'Parafrasear Textos Sin Plagio', url: '/parafrasear-sin-plagio?ref=guia-usar-ia-etico' }
+      { name: 'Parafrasear Textos Sin Plagio', url: '/parafraseador?ref=guia-usar-ia-etico' }
     ],
     cta: {
       text: 'Verificar si tu texto usa IA',
@@ -322,12 +322,12 @@ export const guides: GuidePage[] = [
       { title: 'Cómo Verificar Originalidad de un Texto', slug: 'como-verificar-originalidad-texto' }
     ],
     relatedTools: [
-      { name: 'Parafrasear Textos Sin Plagio', url: '/parafrasear-sin-plagio?ref=guia-citar-apa' },
+      { name: 'Parafrasear Textos Sin Plagio', url: '/parafraseador?ref=guia-citar-apa' },
       { name: 'Detector de IA Gratis', url: '/?ref=guia-citar-apa' }
     ],
     cta: {
       text: 'Parafrasear textos correctamente',
-      url: '/parafrasear-textos-online-gratis?ref=guia-citar-apa'
+      url: '/parafraseador?ref=guia-citar-apa'
     }
   },
 
@@ -499,7 +499,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-evitar-plagio' },
-      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=guia-evitar-plagio' }
+      { name: 'Parafrasear Sin Plagio', url: '/parafraseador?ref=guia-evitar-plagio' }
     ],
     cta: {
       text: 'Verificar originalidad de texto',
@@ -675,7 +675,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-ensayos-originales' },
-      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-ensayos-originales' }
+      { name: 'Parafrasear Textos Online', url: '/parafraseador?ref=guia-ensayos-originales' }
     ],
     cta: {
       text: 'Verificar originalidad de ensayo',
@@ -851,11 +851,11 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-mejorar-escritura' },
-      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-mejorar-escritura' }
+      { name: 'Parafrasear Textos Online', url: '/parafraseador?ref=guia-mejorar-escritura' }
     ],
     cta: {
       text: 'Mejorar calidad de textos',
-      url: '/parafrasear-textos-online-gratis?ref=guia-mejorar-escritura'
+      url: '/parafraseador?ref=guia-mejorar-escritura'
     }
   },
 
@@ -1026,12 +1026,12 @@ export const guides: GuidePage[] = [
       { title: 'Cómo Mejorar Escritura Académica', slug: 'como-mejorar-escritura-academica' }
     ],
     relatedTools: [
-      { name: 'Parafrasear Sin Plagio', url: '/parafrasear-sin-plagio?ref=guia-parafrasear' },
+      { name: 'Parafrasear Sin Plagio', url: '/parafraseador?ref=guia-parafrasear' },
       { name: 'Detector de IA y Plagio', url: '/?ref=guia-parafrasear' }
     ],
     cta: {
       text: 'Parafrasear textos correctamente',
-      url: '/parafrasear-sin-plagio?ref=guia-parafrasear'
+      url: '/parafraseador?ref=guia-parafrasear'
     }
   },
 
@@ -1203,7 +1203,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-bibliografia-apa' },
-      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-bibliografia-apa' }
+      { name: 'Parafrasear Textos Online', url: '/parafraseador?ref=guia-bibliografia-apa' }
     ],
     cta: {
       text: 'Verificar originalidad de trabajo',
@@ -1379,7 +1379,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-ensayo-argumentativo' },
-      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-ensayo-argumentativo' }
+      { name: 'Parafrasear Textos Online', url: '/parafraseador?ref=guia-ensayo-argumentativo' }
     ],
     cta: {
       text: 'Verificar originalidad de ensayo',
@@ -1555,7 +1555,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-investigar-fuentes' },
-      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-investigar-fuentes' }
+      { name: 'Parafrasear Textos Online', url: '/parafraseador?ref=guia-investigar-fuentes' }
     ],
     cta: {
       text: 'Verificar originalidad de investigación',
@@ -1731,7 +1731,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-gestion-tiempo' },
-      { name: 'Parafrasear Textos Online', url: '/parafrasear-textos-online-gratis?ref=guia-gestion-tiempo' }
+      { name: 'Parafrasear Textos Online', url: '/parafraseador?ref=guia-gestion-tiempo' }
     ],
     cta: {
       text: 'Verificar calidad de trabajos',
@@ -2003,7 +2003,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-verificar-originalidad' },
-      { name: 'Parafraseador sin Plagio', url: '/parafrasear-textos-online-gratis?ref=guia-verificar-originalidad' }
+      { name: 'Parafraseador sin Plagio', url: '/parafraseador?ref=guia-verificar-originalidad' }
     ],
     cta: {
       text: 'Verificar originalidad ahora — gratis',
@@ -2249,7 +2249,7 @@ export const guides: GuidePage[] = [
     ],
     relatedTools: [
       { name: 'Detector de IA Gratis', url: '/?ref=guia-citar-ia' },
-      { name: 'Parafraseador sin Plagio', url: '/parafrasear-textos-online-gratis?ref=guia-citar-ia' }
+      { name: 'Parafraseador sin Plagio', url: '/parafraseador?ref=guia-citar-ia' }
     ],
     cta: {
       text: 'Verificar si tu texto necesita declaración de IA',

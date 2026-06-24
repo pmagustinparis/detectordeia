@@ -223,6 +223,37 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
         </div>
       </section>
 
+      {/* Contenido específico (fold del clúster de paráfrasis) */}
+      <section className="max-w-3xl mx-auto mb-16 px-2 space-y-10">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-tinta mb-3">Parafrasear sin plagio: cómo hacerlo bien</h2>
+          <p className="text-tinta-soft leading-relaxed mb-3">
+            Parafrasear sin plagio no es solo cambiar palabras por sinónimos. Para parafrasear sin copiar de verdad, tenés que reescribir la idea con tu propia estructura y, en trabajos académicos, <strong>citar la fuente original</strong>. Cambiar apenas algunas palabras manteniendo la misma estructura se llama <em>patchwriting</em> y sigue contando como plagio.
+          </p>
+          <p className="text-tinta-soft leading-relaxed">
+            El parafraseador reescribe la oración completa —no solo reemplaza términos—, pero recordá: aunque parafrasees correctamente, en formatos como APA o MLA debés igual incluir la cita de la fuente parafraseada. Parafraseo académico sin plagio = reescribir con tus palabras + citar.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-tinta mb-3">Reescribir textos académicos y ensayos universitarios</h2>
+          <p className="text-tinta-soft leading-relaxed mb-3">
+            Si necesitás reescribir ensayos universitarios, trabajos de la facultad o reescritura académica en español, el parafraseador te da una versión alternativa manteniendo el significado. La diferencia entre <strong>reescribir y parafrasear</strong>: parafrasear mantiene el significado y el largo; reescribir puede cambiar también la estructura y el nivel de detalle.
+          </p>
+          <p className="text-tinta-soft leading-relaxed">
+            Es una herramienta para reescribir textos académicos propios y mejorar su redacción —no para presentar trabajo ajeno como propio. Reescribir tu trabajo anterior para reentregarlo puede considerarse autoplagio según la política de tu universidad: verificá siempre las normas de tu institución.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-tinta mb-3">Cambiar palabras por sinónimos (y por qué no alcanza)</h2>
+          <p className="text-tinta-soft leading-relaxed mb-3">
+            Una herramienta de sinónimos de textos online te ayuda a reemplazar palabras por sinónimos y enriquecer tu vocabulario. Pero seamos honestos: <strong>cambiar palabras por sinónimos por sí solo no evita el plagio</strong> —es justamente el patchwriting que los detectores y revisores identifican.
+          </p>
+          <p className="text-tinta-soft leading-relaxed">
+            Por eso nuestro parafraseador va más allá de reemplazar palabras: reestructura la oración completa para que el texto sea genuinamente original. Usá los sinónimos para afinar el tono, no como atajo para copiar.
+          </p>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <FAQSection />
 
