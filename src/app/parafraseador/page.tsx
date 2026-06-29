@@ -145,7 +145,7 @@ export default async function ParafraseadorPage() {
                 name: '¿Qué modos de parafraseo hay disponibles?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Los modos Estándar y Creativo están disponibles gratis. Con Express Pass ($1.99/24h o $8.99/7d) obtenés 3 modos adicionales: Formal (tono profesional), Simplificado (más fácil de entender) y Académico (estilo universitario).',
+                  text: 'Los modos Estándar y Creativo están disponibles gratis. Con Express Pass ($3.99/24h o $8.99/7d) obtenés 3 modos adicionales: Formal (tono profesional), Simplificado (más fácil de entender) y Académico (estilo universitario).',
                 },
               },
               {

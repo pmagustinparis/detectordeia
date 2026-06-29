@@ -58,7 +58,7 @@ export default function ParafraseadorClient({ initialUserStatus }: { initialUser
             </div>
 
             <p className="text-sm text-mute mb-4">
-              Express Pass desde <strong className="text-tinta">$1.99</strong> · pago único
+              Express Pass desde <strong className="text-tinta">$3.99</strong> · pago único
             </p>
 
             <a

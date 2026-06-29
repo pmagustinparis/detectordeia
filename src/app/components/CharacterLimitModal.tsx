@@ -147,7 +147,7 @@ export default function CharacterLimitModal({
                   </li>
                 </ul>
                 <p className="text-xs text-tinta mt-3 font-medium">
-                  Express $1.99/24h · $8.99/7d · pago único
+                  Express $3.99/24h · $8.99/7d · pago único
                 </p>
               </div>
 
@@ -182,7 +182,7 @@ export default function CharacterLimitModal({
                   <p className="text-sm font-bold text-amber-800">⚡ Express Pass</p>
                   <p className="text-xs text-amber-600 line-through">antes Semestral $24.99</p>
                 </div>
-                <p className="text-3xl font-bold text-amber-900">$1.99 <span className="text-sm font-medium text-amber-700">/ 24 horas</span></p>
+                <p className="text-3xl font-bold text-amber-900">$3.99 <span className="text-sm font-medium text-amber-700">/ 24 horas</span></p>
                 <p className="text-xs text-amber-600 mt-1">o $8.99 / 7 días · pago único · sin suscripción</p>
                 <ul className="text-xs text-amber-800 mt-2 space-y-1">
                   <li>✓ <strong>{premiumMaxChars.toLocaleString()} caracteres</strong> por análisis</li>

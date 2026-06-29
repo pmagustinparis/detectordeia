@@ -71,7 +71,7 @@ export async function POST(request: Request) {
         priceId = process.env.STRIPE_PRICE_EXPRESS_WEEKLY || 'price_1Sho71R5MbTVVQlkSbXwgWmk';
         planTypeForMetadata = 'express_semanal';
       } else {
-        priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1Tlr4KR5MbTVVQlkHnDbhswU';
+        priceId = process.env.STRIPE_PRICE_EXPRESS || 'price_1ScR9nR5MbTVVQlk2oIBvATK';
         planTypeForMetadata = 'express';
       }
     } else if (plan_type === 'semestral') {

@@ -14,7 +14,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Cuántas veces puedo usar el humanizador gratis?',
-    answer: 'Con registro gratuito podés humanizar hasta 15 veces por día. Sin registro: 3 usos diarios. Para usos ilimitados, el Express Pass ($1.99/24h o $8.99/7d) elimina todos los límites.'
+    answer: 'Con registro gratuito podés humanizar hasta 15 veces por día. Sin registro: 3 usos diarios. Para usos ilimitados, el Express Pass ($3.99/24h o $8.99/7d) elimina todos los límites.'
   },
   {
     question: '¿El humanizador cambia el significado de mi texto?',
@@ -34,7 +34,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: '¿Qué incluye el Express Pass?',
-    answer: 'El Express Pass ($1.99/24h o $8.99/7 días) incluye usos y caracteres ilimitados en las 3 herramientas (Detector, Humanizador y Parafraseador), los 5 modos de humanización y paráfrasis, y subida de archivos PDF/DOCX. Es un pago único sin renovación automática: 24 horas para una entrega puntual, 7 días si tenés varios trabajos esta semana.'
+    answer: 'El Express Pass ($3.99/24h o $8.99/7 días) incluye usos y caracteres ilimitados en las 3 herramientas (Detector, Humanizador y Parafraseador), los 5 modos de humanización y paráfrasis, y subida de archivos PDF/DOCX. Es un pago único sin renovación automática: 24 horas para una entrega puntual, 7 días si tenés varios trabajos esta semana.'
   },
   {
     question: '¿Puedo usar el texto humanizado para trabajos académicos?',

@@ -106,7 +106,7 @@ export default function FileUploadUpsellModal({
               </li>
             </ul>
             <p className="text-xs text-blue-900 mt-3 font-semibold">
-              Express $1.99/24h · $8.99/7d · pago único
+              Express $3.99/24h · $8.99/7d · pago único
             </p>
           </div>
 

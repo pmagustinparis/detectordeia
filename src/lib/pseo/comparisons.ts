@@ -22,7 +22,7 @@ export const comparisons: ComparisonPage[] = [
 
     whyBetter: [
       'Optimizado 100% para español (España y LATAM), mientras que Turnitin está diseñado principalmente para inglés',
-      'Precio hasta 10x más económico: Express desde $1.99 vs $100-$300/año de Turnitin institucional',
+      'Precio hasta 10x más económico: Express desde $3.99 vs $100-$300/año de Turnitin institucional',
       'Sin necesidad de licencia institucional - cualquiera puede usar DetectorDeIA',
       'Resultados instantáneos sin espera de procesamiento',
       'Análisis avanzado con métricas lingüísticas específicas para español',
@@ -31,7 +31,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: 'Express desde $1.99 · Semestral $24.99', competitor: 'Solo institucional ($100-$300/año)' },
+      { feature: 'Precio individual', detectordeia: 'Express desde $3.99 · Semestral $24.99', competitor: 'Solo institucional ($100-$300/año)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Limitada' },
       { feature: 'Acceso sin institución', detectordeia: true, competitor: false },
       { feature: 'Tiempo de análisis', detectordeia: 'Instantáneo (<5 seg)', competitor: '5-15 minutos' },
@@ -46,7 +46,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Turnitin es la mejor opción si necesitás detección de plagio además de IA, o si tu institución ya tiene licencia. Para detección de IA pura en español con presupuesto limitado, DetectorDeIA es superior.',
 
     pricing: {
-      detectordeia: 'Express desde $1.99 · Semestral $24.99',
+      detectordeia: 'Express desde $3.99 · Semestral $24.99',
       competitor: '$100-$300/año (solo institucional)'
     },
 
@@ -57,7 +57,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Puedo usar DetectorDeIA sin licencia institucional?',
-        answer: 'Sí, DetectorDeIA está diseñado para uso individual. Cualquier persona (profesor, estudiante, profesional) puede crear una cuenta gratis y usar el detector. El Express Pass o Semestral cuesta solo Express $1.99 · Semestral $24.99, sin necesidad de aprobación institucional.'
+        answer: 'Sí, DetectorDeIA está diseñado para uso individual. Cualquier persona (profesor, estudiante, profesional) puede crear una cuenta gratis y usar el detector. El Express Pass o Semestral cuesta solo Express $3.99 · Semestral $24.99, sin necesidad de aprobación institucional.'
       },
       {
         question: '¿DetectorDeIA detecta plagio como Turnitin?',
@@ -65,7 +65,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Qué ventajas tiene DetectorDeIA sobre Turnitin para profesores?',
-        answer: 'Acceso inmediato sin trámites institucionales, precio individual accesible (Express desde $1.99 · Semestral $24.99/6 meses vs $100-$300/año), resultados instantáneos (vs 5-15 minutos), optimización para español con menor tasa de falsos positivos, y herramientas adicionales (Humanizador y Parafraseador) para enseñar a los estudiantes.'
+        answer: 'Acceso inmediato sin trámites institucionales, precio individual accesible (Express desde $3.99 · Semestral $24.99/6 meses vs $100-$300/año), resultados instantáneos (vs 5-15 minutos), optimización para español con menor tasa de falsos positivos, y herramientas adicionales (Humanizador y Parafraseador) para enseñar a los estudiantes.'
       },
       {
         question: '¿Puedo usar DetectorDeIA si mi universidad usa Turnitin?',
@@ -100,13 +100,13 @@ export const comparisons: ComparisonPage[] = [
       'Multi-pasada con GPT-3.5 + GPT-4o-mini vs análisis de una sola pasada',
       'Métricas lingüísticas avanzadas específicas para español',
       'Sin límite mensual de palabras en Express Pass o Semestral (QuillBot tiene caps)',
-      'Precio más económico: Express $1.99 (pago único) · Semestral $24.99/6 meses vs $19.95/mes de QuillBot',
+      'Precio más económico: Express $3.99 (pago único) · Semestral $24.99/6 meses vs $19.95/mes de QuillBot',
       'Interfaz en español nativo, no traducida',
       'Mejor soporte para modismos de LATAM y España'
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: '$19.95/mes' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: '$19.95/mes' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Traducción automática' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '70-80%' },
       { feature: 'Límite de palabras', detectordeia: 'Ilimitado (Express/Semestral)', competitor: '5,000 palabras/mes' },
@@ -121,7 +121,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'QuillBot es mejor si necesitás todas las herramientas en un solo lugar (grammar, plagio, parafraseo) y trabajás principalmente en inglés. Para detección de IA en español, DetectorDeIA es superior.',
 
     pricing: {
-      detectordeia: 'Express desde $1.99 · Semestral $24.99',
+      detectordeia: 'Express desde $3.99 · Semestral $24.99',
       competitor: '$19.95/mes o $99.95/año'
     },
 
@@ -171,13 +171,13 @@ export const comparisons: ComparisonPage[] = [
       'Sistema multi-pasada (2-3 análisis) vs análisis único de Smodin',
       'Métricas lingüísticas avanzadas (perplejidad, diversidad léxica, etc.)',
       'Interfaz más limpia y enfocada vs Smodin con muchas features distractoras',
-      'Precio transparente (Express $1.99 · Semestral $24.99) vs modelo de créditos complejo',
+      'Precio transparente (Express $3.99 · Semestral $24.99) vs modelo de créditos complejo',
       'Sin límites artificiales de caracteres por análisis',
       'Mejor detección de modismos regionales (LATAM + España)'
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express desde $1.99 · Semestral $24.99', competitor: 'Sistema de créditos variable' },
+      { feature: 'Precio', detectordeia: 'Express desde $3.99 · Semestral $24.99', competitor: 'Sistema de créditos variable' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '75-85%' },
       { feature: 'Análisis por texto', detectordeia: 'Multi-pasada (2-3)', competitor: 'Una sola pasada' },
       { feature: 'Métricas avanzadas', detectordeia: '5 métricas lingüísticas', competitor: 'Básicas' },
@@ -192,7 +192,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Smodin puede ser útil si necesitás herramientas en múltiples idiomas (más de 100) o features adicionales como resumen de textos, traductor, etc. Para detección de IA pura en español, DetectorDeIA es más preciso y económico.',
 
     pricing: {
-      detectordeia: 'Express desde $1.99 · Semestral $24.99',
+      detectordeia: 'Express desde $3.99 · Semestral $24.99',
       competitor: 'Sistema de créditos ($8-$29/mes)'
     },
 
@@ -203,7 +203,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿El sistema de precios de DetectorDeIA es más simple que Smodin?',
-        answer: 'Sí. Smodin usa créditos que varían según la feature usada (detector, humanizador, etc.), lo que complica el cálculo. DetectorDeIA tiene precios claros: Express Pass $1.99/24h o $8.99/7 días, Semestral $24.99/6 meses con usos ilimitados. Sin sorpresas ni créditos que contar.'
+        answer: 'Sí. Smodin usa créditos que varían según la feature usada (detector, humanizador, etc.), lo que complica el cálculo. DetectorDeIA tiene precios claros: Express Pass $3.99/24h o $8.99/7 días, Semestral $24.99/6 meses con usos ilimitados. Sin sorpresas ni créditos que contar.'
       },
       {
         question: '¿DetectorDeIA tiene las mismas features que Smodin?',
@@ -242,14 +242,14 @@ export const comparisons: ComparisonPage[] = [
       'Optimizado 100% para español vs GPTZero diseñado para inglés',
       'Precisión 95% en español vs 65-75% de GPTZero en textos no ingleses',
       'Detecta modismos específicos de LATAM (che, vos, pibe) y España (tío, flipar)',
-      'Precio más económico: Express desde $1.99 · Semestral $24.99 vs $15/mes de GPTZero',
+      'Precio más económico: Express desde $3.99 · Semestral $24.99 vs $15/mes de GPTZero',
       'Sistema multi-pasada (GPT-3.5 + GPT-4o-mini) vs modelo único',
       'Incluye Humanizador y Parafraseador en el mismo plan',
       'Interfaz en español nativo, no traducida automáticamente'
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express desde $1.99 · Semestral $24.99', competitor: '$15/mes o $144/año' },
+      { feature: 'Precio', detectordeia: 'Express desde $3.99 · Semestral $24.99', competitor: '$15/mes o $144/año' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Solo inglés nativo' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '65-75%' },
       { feature: 'Precisión en inglés', detectordeia: 'No optimizado', competitor: '90%+' },
@@ -264,7 +264,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'GPTZero es mejor si escribís principalmente en inglés o necesitás API para integración. Para textos en español (académicos, profesionales, personales), DetectorDeIA es significativamente más preciso y económico.',
 
     pricing: {
-      detectordeia: 'Express desde $1.99 · Semestral $24.99',
+      detectordeia: 'Express desde $3.99 · Semestral $24.99',
       competitor: '$15/mes o $144/año'
     },
 
@@ -455,7 +455,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Copyleaks es una solución empresarial robusta con detección de plagio e IA, pero con precio institucional alto y optimización limitada para español. DetectorDeIA ofrece acceso individual económico y especialización total en español.',
 
     whyBetter: [
-      'Acceso individual (Express desde $1.99) vs Copyleaks solo institucional',
+      'Acceso individual (Express desde $3.99) vs Copyleaks solo institucional',
       'Sin necesidad de aprobación institucional - cualquiera puede usar DetectorDeIA',
       'Optimizado 100% para español vs Copyleaks diseñado para inglés',
       'Precio hasta 20x más económico para uso individual',
@@ -465,7 +465,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'No disponible (solo institucional)' },
+      { feature: 'Precio individual', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'No disponible (solo institucional)' },
       { feature: 'Precio institucional', detectordeia: 'No aplica', competitor: '$10-$20/estudiante/año' },
       { feature: 'Acceso sin institución', detectordeia: true, competitor: false },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Multi-idioma genérico' },
@@ -480,14 +480,14 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Copyleaks es mejor si tu institución necesita detección de plagio + IA con integración LMS, API y gestión de múltiples usuarios. Para uso individual en español (profesor independiente, estudiante, profesional), DetectorDeIA es más accesible y preciso.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Solo institucional ($10-$20/usuario/año)'
     },
 
     faqs: [
       {
         question: '¿Puedo usar Copyleaks como individuo?',
-        answer: 'Copyleaks está diseñado para instituciones y empresas. Aunque ofrecen prueba gratis, sus planes son institucionales con precios por usuario/año que requieren contrato. DetectorDeIA permite acceso individual inmediato con Express Pass ($1.99/24h) o Semestral ($24.99/6 meses), sin contrato.'
+        answer: 'Copyleaks está diseñado para instituciones y empresas. Aunque ofrecen prueba gratis, sus planes son institucionales con precios por usuario/año que requieren contrato. DetectorDeIA permite acceso individual inmediato con Express Pass ($3.99/24h) o Semestral ($24.99/6 meses), sin contrato.'
       },
       {
         question: '¿Copyleaks detecta plagio como Turnitin?',
@@ -495,7 +495,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿DetectorDeIA funciona para profesores sin apoyo institucional?',
-        answer: 'Exactamente. DetectorDeIA está diseñado para profesores que quieren verificar trabajos SIN necesidad de licencia institucional. Creás cuenta gratis, Express Pass desde $1.99 o Semestral $24.99 y listo. Ideal para profesores particulares, academias pequeñas, etc.'
+        answer: 'Exactamente. DetectorDeIA está diseñado para profesores que quieren verificar trabajos SIN necesidad de licencia institucional. Creás cuenta gratis, Express Pass desde $3.99 o Semestral $24.99 y listo. Ideal para profesores particulares, academias pequeñas, etc.'
       },
       {
         question: '¿Copyleaks tiene mejor precisión que DetectorDeIA?',
@@ -527,7 +527,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Writer.com es una plataforma empresarial de generación de contenido que incluye detector de IA, enfocada en equipos grandes con presupuesto corporativo. DetectorDeIA es la alternativa accesible para uso individual en español.',
 
     whyBetter: [
-      'Precio individual accesible (Express desde $1.99) vs Writer solo empresarial ($18+/usuario/mes)',
+      'Precio individual accesible (Express desde $3.99) vs Writer solo empresarial ($18+/usuario/mes)',
       'Sin necesidad de plan Team - uso individual directo',
       'Optimizado para español vs Writer diseñado para contenido empresarial en inglés',
       'Enfoque 100% en detección vs Writer mezclado con generación de contenido',
@@ -537,7 +537,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'No disponible (solo Team)' },
+      { feature: 'Precio individual', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'No disponible (solo Team)' },
       { feature: 'Precio Team', detectordeia: 'No aplica', competitor: '$18/usuario/mes (mín 5 usuarios)' },
       { feature: 'Mínimo de usuarios', detectordeia: '1 usuario', competitor: '5 usuarios ($90/mes mínimo)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica' },
@@ -552,14 +552,14 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Writer.com es mejor si tenés un equipo grande (5+ personas) que necesita crear Y detectar contenido en inglés con brand voice consistente. Para uso individual en español o equipos pequeños, DetectorDeIA es mucho más económico.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: '$18/usuario/mes (mínimo 5 usuarios)'
     },
 
     faqs: [
       {
         question: '¿Puedo usar Writer.com como individuo?',
-        answer: 'No fácilmente. Writer.com requiere mínimo 5 usuarios ($90/mes total) y está diseñado para equipos empresariales. DetectorDeIA permite uso individual con Express desde $1.99 o Semestral $24.99, sin mínimos ni contratos.'
+        answer: 'No fácilmente. Writer.com requiere mínimo 5 usuarios ($90/mes total) y está diseñado para equipos empresariales. DetectorDeIA permite uso individual con Express desde $3.99 o Semestral $24.99, sin mínimos ni contratos.'
       },
       {
         question: '¿Writer.com genera contenido además de detectar IA?',
@@ -670,7 +670,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Content at Scale es una plataforma de generación de contenido SEO a gran escala que incluye detector de IA, enfocada en agencias y publishers con alto volumen. DetectorDeIA es la alternativa para creadores individuales en español.',
 
     whyBetter: [
-      'Precio accesible (Express desde $1.99) vs Content at Scale desde $250/mes',
+      'Precio accesible (Express desde $3.99) vs Content at Scale desde $250/mes',
       'Enfoque en detección pura vs Content at Scale mezclado con generación',
       'Optimizado para español vs Content at Scale solo inglés',
       'Sin necesidad de generar contenido - solo detectar',
@@ -680,7 +680,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'Desde $250/mes' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Desde $250/mes' },
       { feature: 'Enfoque principal', detectordeia: 'Detección de IA', competitor: 'Generación SEO + detección' },
       { feature: 'Plan gratis', detectordeia: '15 usos/día', competitor: 'No disponible' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Solo inglés' },
@@ -695,7 +695,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Content at Scale es mejor si sos publisher grande o agencia que necesita generar 100+ artículos SEO optimizados por mes en inglés. Para detectar IA en contenido existente en español, DetectorDeIA es 25x más económico.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Desde $250/mes'
     },
 
@@ -741,7 +741,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Crossplag ofrece detección de plagio + IA enfocado en instituciones educativas, con precio por estudiante. DetectorDeIA ofrece acceso individual inmediato optimizado para español sin necesidad de licencia institucional.',
 
     whyBetter: [
-      'Acceso individual (Express desde $1.99) vs Crossplag solo institucional',
+      'Acceso individual (Express desde $3.99) vs Crossplag solo institucional',
       'Sin necesidad de aprobación institucional',
       'Optimizado 100% para español vs Crossplag multi-idioma genérico',
       'Precio transparente vs Crossplag requiere cotización',
@@ -751,7 +751,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio individual', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'No disponible (solo institucional)' },
+      { feature: 'Precio individual', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'No disponible (solo institucional)' },
       { feature: 'Acceso sin institución', detectordeia: true, competitor: false },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Multi-idioma genérico' },
       { feature: 'Detección de plagio', detectordeia: false, competitor: true },
@@ -766,14 +766,14 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Crossplag es mejor si tu institución necesita gestionar cientos de estudiantes con detección de plagio + IA integrada al LMS. Para profesores independientes o uso individual en español, DetectorDeIA es más accesible.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Institucional (requiere cotización)'
     },
 
     faqs: [
       {
         question: '¿Puedo usar Crossplag como profesor individual?',
-        answer: 'Crossplag está diseñado para instituciones que gestionan múltiples profesores y cientos de estudiantes. No tiene plan individual accesible. DetectorDeIA permite acceso inmediato con Express desde $1.99 o Semestral $24.99, sin trámites institucionales.'
+        answer: 'Crossplag está diseñado para instituciones que gestionan múltiples profesores y cientos de estudiantes. No tiene plan individual accesible. DetectorDeIA permite acceso inmediato con Express desde $3.99 o Semestral $24.99, sin trámites institucionales.'
       },
       {
         question: '¿Crossplag detecta plagio como Turnitin?',
@@ -813,7 +813,7 @@ export const comparisons: ComparisonPage[] = [
 
     whyBetter: [
       'Enfoque 100% en detección vs Sapling mezclado con autocomplete y chat assist',
-      'Precio individual (Express desde $1.99) vs Sapling desde $25/usuario/mes',
+      'Precio individual (Express desde $3.99) vs Sapling desde $25/usuario/mes',
       'Optimizado para español vs Sapling diseñado para customer service en inglés',
       'Sin necesidad de plan Team - uso individual directo',
       'Incluye Humanizador y Parafraseador integrados',
@@ -822,7 +822,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'Desde $25/usuario/mes' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Desde $25/usuario/mes' },
       { feature: 'Enfoque principal', detectordeia: 'Detección de IA', competitor: 'Customer service assist' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica' },
       { feature: 'Autocomplete', detectordeia: false, competitor: true },
@@ -837,7 +837,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Sapling es mejor si tenés un equipo de customer service que necesita autocomplete, chat assist y snippets integrados con CRM. Para detección pura de IA en español, DetectorDeIA es más simple y económico.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Desde $25/usuario/mes'
     },
 
@@ -967,7 +967,7 @@ export const comparisons: ComparisonPage[] = [
       'Interfaz en español completo, sin necesidad de traducción'
     ],
     comparisons: [
-      { feature: 'Precio detector IA', detectordeia: 'Gratis (básico) / Express $1.99 · Semestral $24.99', competitor: 'De pago por verificación' },
+      { feature: 'Precio detector IA', detectordeia: 'Gratis (básico) / Express $3.99 · Semestral $24.99', competitor: 'De pago por verificación' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Parcial (centrado en inglés)' },
       { feature: 'Especialización', detectordeia: 'Solo detección de IA', competitor: 'Corrección de tesis + plagio + IA' },
       { feature: 'Tiempo de análisis', detectordeia: 'Instantáneo (<5 seg)', competitor: '1-5 minutos' },
@@ -980,7 +980,7 @@ export const comparisons: ComparisonPage[] = [
     ],
     whenToUseCompetitor: 'Scribbr es ideal si necesitás revisión humana de tu tesis o trabajo académico, corrección de estilo APA/MLA y detección de plagio todo en uno. Para detección de IA pura en español con coste cero, DetectorDeIA es la opción más eficiente.',
     pricing: {
-      detectordeia: 'Gratis · Express $1.99 · Semestral $24.99',
+      detectordeia: 'Gratis · Express $3.99 · Semestral $24.99',
       competitor: 'Desde €9.95 por verificación de plagio; precio variable para revisión de tesis'
     },
     faqs: [
@@ -1030,7 +1030,7 @@ export const comparisons: ComparisonPage[] = [
 
     whyBetter: [
       'Optimizado 100% para español (España + LATAM) vs JustDone con enfoque en inglés',
-      'Precio plano (Express $1.99 · Semestral $24.99) vs JustDone basado en créditos variables',
+      'Precio plano (Express $3.99 · Semestral $24.99) vs JustDone basado en créditos variables',
       'Sin créditos que administrar — usos ilimitados con Express o Semestral',
       'Humanización en español que respeta modismos regionales vs resultados artificiales de JustDone en español',
       'Especialización en texto académico (TFG, ensayos, trabajos) vs suite genérica',
@@ -1039,7 +1039,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'Sistema de créditos ($19-$49/mes)' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Sistema de créditos ($19-$49/mes)' },
       { feature: 'Modelo de precio', detectordeia: 'Pago único fijo', competitor: 'Créditos variables por feature' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica (enfoque inglés)' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '70-80%' },
@@ -1054,7 +1054,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'JustDone puede ser útil si necesitás generar contenido en inglés y querés todas las herramientas (generador, detector, humanizador) en una sola plataforma. Para detección y humanización de IA en español, DetectorDeIA es más preciso y económico.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Desde $19/mes (créditos variables)'
     },
 
@@ -1065,7 +1065,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Cómo se compara el precio de JustDone con DetectorDeIA?',
-        answer: 'JustDone usa sistema de créditos donde cada uso consume créditos según la feature. Esto dificulta calcular el costo real. DetectorDeIA tiene precio transparente: Express $1.99 por 24 horas o $8.99 por 7 días, Semestral $24.99 por 6 meses con usos ilimitados. Sin créditos, sin sorpresas.'
+        answer: 'JustDone usa sistema de créditos donde cada uso consume créditos según la feature. Esto dificulta calcular el costo real. DetectorDeIA tiene precio transparente: Express $3.99 por 24 horas o $8.99 por 7 días, Semestral $24.99 por 6 meses con usos ilimitados. Sin créditos, sin sorpresas.'
       },
       {
         question: '¿JustDone tiene plan gratuito?',
@@ -1102,7 +1102,7 @@ export const comparisons: ComparisonPage[] = [
 
     whyBetter: [
       'Especialización 100% en español vs Hix.ai suite genérica multi-idioma',
-      'Precio más accesible: Express $1.99 vs Hix.ai desde $19.99/mes',
+      'Precio más accesible: Express $3.99 vs Hix.ai desde $19.99/mes',
       'Sin curva de aprendizaje — solo 3 herramientas enfocadas vs 20+ features de Hix.ai',
       'Optimizado para texto académico universitario en español',
       'Humanización que respeta modismos de LATAM y España',
@@ -1111,7 +1111,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'Desde $19.99/mes' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Desde $19.99/mes' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Multi-idioma genérico' },
       { feature: 'Precisión en español', detectordeia: '95%', competitor: '75-85%' },
       { feature: 'Número de herramientas', detectordeia: '3 (detector, humanizador, parafraseador)', competitor: '20+ herramientas' },
@@ -1126,7 +1126,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Hix.ai es mejor si necesitás una suite completa de creación de contenido en inglés: editor, generador de artículos SEO, chatbot y más. Si solo necesitás detectar y mejorar textos en español, DetectorDeIA es más preciso, más simple y más económico.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Desde $19.99/mes'
     },
 
@@ -1176,14 +1176,14 @@ export const comparisons: ComparisonPage[] = [
       'Humanización orientada a calidad lingüística real vs StealthWriter enfocado en burlar detectores',
       'Optimizado para español de España y LATAM vs StealthWriter principalmente en inglés',
       'Texto humanizado suena natural y académico, no artificialmente modificado',
-      'Precio más simple: Express $1.99 · Semestral $24.99 vs créditos variables de StealthWriter',
+      'Precio más simple: Express $3.99 · Semestral $24.99 vs créditos variables de StealthWriter',
       '5 modos de humanización (Estándar, Académico, Formal, Creativo, Simplificado) vs modo único',
       'Incluye Detector de IA para verificar el resultado antes de entregar',
       'Ético y educativo — mejora la redacción, no engaña sistemas'
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'Desde $10/mes (créditos)' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Desde $10/mes (créditos)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Básica (enfoque inglés)' },
       { feature: 'Modos humanizador', detectordeia: '5 modos', competitor: '1-2 modos' },
       { feature: 'Enfoque', detectordeia: 'Calidad lingüística real', competitor: 'Evadir detectores' },
@@ -1198,7 +1198,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'StealthWriter puede ser opción si escribís en inglés y necesitás humanizar grandes volúmenes de contenido. Para texto académico en español (TFG, ensayos, trabajos de universidad), DetectorDeIA produce resultados más naturales y creíbles.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Desde $10/mes (créditos variables)'
     },
 
@@ -1251,7 +1251,7 @@ export const comparisons: ComparisonPage[] = [
       'Optimizado para español académico de LATAM y España vs BypassAI principalmente inglés',
       'Incluye Detector de IA para verificar el resultado final',
       '5 modos específicos (Académico, Formal, Creativo, Estándar, Simplificado)',
-      'Precio fijo sin créditos: Express $1.99 · Semestral $24.99',
+      'Precio fijo sin créditos: Express $3.99 · Semestral $24.99',
       'BypassAI en español produce texto que los profesores detectan fácilmente como modificado'
     ],
 
@@ -1261,7 +1261,7 @@ export const comparisons: ComparisonPage[] = [
       { feature: 'Detector incluido', detectordeia: true, competitor: 'Básico' },
       { feature: 'Parafraseador incluido', detectordeia: true, competitor: false },
       { feature: 'Modos humanizador', detectordeia: '5 modos en español', competitor: 'Modos genéricos' },
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: 'Créditos variables' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: 'Créditos variables' },
       { feature: 'Enfoque', detectordeia: 'Mejorar calidad lingüística', competitor: 'Evadir detectores' },
       { feature: 'Funciona en texto académico español', detectordeia: 'Sí', competitor: 'Resultados inconsistentes' },
       { feature: 'Plan gratis', detectordeia: '15 análisis/día', competitor: 'Muy limitado' },
@@ -1271,7 +1271,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'BypassAI puede funcionar para humanizar texto en inglés de propósito general. Para texto académico en español — donde la calidad lingüística es evaluada por un profesor humano — DetectorDeIA produce resultados notablemente más naturales.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: 'Desde $9.99/mes (créditos)'
     },
 
@@ -1318,7 +1318,7 @@ export const comparisons: ComparisonPage[] = [
     intro: 'Winston AI es un detector de IA y plagio reconocido por su precisión, especialmente popular entre editores y agencias de contenido en inglés. Para profesores y estudiantes de español, su precio de $18/mes y limitaciones en español hacen que DetectorDeIA sea la alternativa más accesible y precisa para texto académico en LATAM y España.',
 
     whyBetter: [
-      'Precio significativamente menor: Express $1.99 vs Winston AI $18/mes',
+      'Precio significativamente menor: Express $3.99 vs Winston AI $18/mes',
       'Sin límite de palabras/mes — Winston AI limita a 80,000 palabras en plan básico',
       'Optimizado para español académico vs Winston AI orientado a inglés',
       'Sin necesidad de suscripción mensual — pago único con Express o Semestral',
@@ -1328,7 +1328,7 @@ export const comparisons: ComparisonPage[] = [
     ],
 
     comparisons: [
-      { feature: 'Precio', detectordeia: 'Express $1.99 · Semestral $24.99', competitor: '$18/mes (80,000 palabras)' },
+      { feature: 'Precio', detectordeia: 'Express $3.99 · Semestral $24.99', competitor: '$18/mes (80,000 palabras)' },
       { feature: 'Modelo de precio', detectordeia: 'Pago único o por período', competitor: 'Suscripción mensual' },
       { feature: 'Límite de palabras', detectordeia: 'Ilimitado (Express/Semestral)', competitor: '80,000 palabras/mes (básico)' },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Limitada' },
@@ -1343,7 +1343,7 @@ export const comparisons: ComparisonPage[] = [
     whenToUseCompetitor: 'Winston AI es la mejor opción si necesitás detección de IA + plagio en inglés con alta precisión, especialmente si sos editor de contenido o agencia en el mercado angloparlante. Para profesores y estudiantes en español, DetectorDeIA es más económico y preciso.',
 
     pricing: {
-      detectordeia: 'Express $1.99 · Semestral $24.99',
+      detectordeia: 'Express $3.99 · Semestral $24.99',
       competitor: '$18/mes (80,000 palabras) o $49/mes (ilimitado)'
     },
 
@@ -1354,7 +1354,7 @@ export const comparisons: ComparisonPage[] = [
       },
       {
         question: '¿Por qué $18/mes para un detector de IA parece caro?',
-        answer: 'Winston AI cobra $18/mes con límite de 80,000 palabras. Un trabajo académico promedio tiene 2,000-3,000 palabras. Si verificás 30-40 trabajos al mes, llegás al límite fácilmente. DetectorDeIA con Express $1.99/24h o Semestral $24.99/6 meses no tiene límite de palabras, siendo más económico para uso frecuente.'
+        answer: 'Winston AI cobra $18/mes con límite de 80,000 palabras. Un trabajo académico promedio tiene 2,000-3,000 palabras. Si verificás 30-40 trabajos al mes, llegás al límite fácilmente. DetectorDeIA con Express $3.99/24h o Semestral $24.99/6 meses no tiene límite de palabras, siendo más económico para uso frecuente.'
       },
       {
         question: '¿Winston AI detecta plagio además de IA?',
@@ -1398,7 +1398,7 @@ export const comparisons: ComparisonPage[] = [
     ],
     comparisons: [
       { feature: 'Acceso individual', detectordeia: 'Sí (gratis y Pro)', competitor: 'Solo institucional/editorial' },
-      { feature: 'Precio', detectordeia: 'Gratis / Express $1.99 · Semestral $24.99', competitor: 'Institucional (variable, generalmente cientos de dólares/año)' },
+      { feature: 'Precio', detectordeia: 'Gratis / Express $3.99 · Semestral $24.99', competitor: 'Institucional (variable, generalmente cientos de dólares/año)' },
       { feature: 'Detección de IA', detectordeia: true, competitor: 'Limitada (principalmente plagio)' },
       { feature: 'Detección de plagio', detectordeia: false, competitor: true },
       { feature: 'Optimización español', detectordeia: '100% nativo', competitor: 'Parcial' },
@@ -1410,7 +1410,7 @@ export const comparisons: ComparisonPage[] = [
     ],
     whenToUseCompetitor: 'iThenticate es el estándar para investigadores que deben verificar papers antes de someter a revistas científicas indexadas, y para doctorandos que requieren certificado de originalidad. Para verificación de IA previa y para uso sin licencia institucional, DetectorDeIA es más accesible.',
     pricing: {
-      detectordeia: 'Gratis · Express $1.99 · Semestral $24.99',
+      detectordeia: 'Gratis · Express $3.99 · Semestral $24.99',
       competitor: 'Suscripción institucional requerida; precio variable según institución (generalmente $100-$500/año para acceso individual editorial)'
     },
     faqs: [

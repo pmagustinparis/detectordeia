@@ -20,7 +20,7 @@ interface ExpressUnlockModalProps {
 }
 
 const PRICES = {
-  express: { '24h': 1.99, '7d': 8.99 },
+  express: { '24h': 3.99, '7d': 8.99 },
 };
 
 export default function ExpressUnlockModal({
@@ -176,7 +176,7 @@ export default function ExpressUnlockModal({
                     : 'bg-white text-amber-800 border border-amber-200 hover:bg-amber-50'
                 }`}
               >
-                24 horas · $1.99
+                24 horas · $3.99
               </button>
               <button
                 onClick={() => setDuration('7d')}
@@ -198,7 +198,7 @@ export default function ExpressUnlockModal({
 
             {duration === '24h' && (
               <p className="text-xs font-bold text-orange-700 text-center mb-2">
-                Oferta de lanzamiento · 24h a $1.99 <span className="line-through text-amber-700 font-semibold">$3.99</span>
+                Oferta · 33% OFF · 24h a $3.99 <span className="line-through text-amber-700 font-semibold">$5.99</span>
               </p>
             )}
 

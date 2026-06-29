@@ -93,7 +93,7 @@ function buildEmailHtml(opts: {
                   </a>
                   <br/>
                   <span style="font-size:11px;color:#9c9089;margin-top:6px;display:block;">
-                    Express Pass · $1.99 · 24 horas ilimitado
+                    Express Pass · $3.99 · 24 horas ilimitado
                   </span>
                 </td>
               </tr>

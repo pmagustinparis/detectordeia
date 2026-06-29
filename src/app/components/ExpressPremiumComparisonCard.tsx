@@ -11,7 +11,7 @@ interface ExpressPremiumComparisonCardProps {
 }
 
 const PRICES = {
-  express: { '24h': 1.99, '7d': 8.99 },
+  express: { '24h': 3.99, '7d': 8.99 },
 };
 
 const TOOL_COPY: Record<string, { expressTag: string; weeklyPitch: string }> = {
@@ -86,7 +86,7 @@ export default function ExpressPremiumComparisonCard({
           <p className="text-xs text-amber-700 mb-2">{toolCopy.expressTag}</p>
           <div className="flex gap-1 mb-2">
             <button onClick={() => setDuration('24h')} className={`flex-1 text-xs py-1.5 rounded-lg font-semibold transition-colors ${duration === '24h' ? 'bg-amber-500 text-white' : 'bg-white text-amber-800 border border-amber-300'}`}>
-              24h · $1.99
+              24h · $3.99
             </button>
             <button onClick={() => setDuration('7d')} className={`flex-1 text-xs py-1.5 rounded-lg font-semibold transition-colors ${duration === '7d' ? 'bg-amber-500 text-white' : 'bg-white text-amber-800 border border-amber-300'}`}>
               7d · $8.99
